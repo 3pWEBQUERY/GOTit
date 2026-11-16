@@ -1,0 +1,21 @@
+{
+  "metaTitle": "For providers",
+  "title": "A studio for your working day",
+  "intro": "Profile, media, calendar, messages and appointment requests live in one place, in the same interface as the marketplace.",
+  "sections": {
+    "trust": {
+      "title": "Trust cannot be bought",
+      "text": "Verified identity and verified photos appear as separate signals on your profile. A plan changes neither your verification nor your position in organic search. Paid placements always carry the word “Ad”."
+    },
+    "control": {
+      "title": "You decide",
+      "text": "You choose which region you show; an exact address is never published. You pause your profile with one click. Every appointment request is voluntary, and you can always cancel without giving a reason."
+    },
+    "review": {
+      "title": "Checked before it is visible",
+      "text": "Before a profile appears, age of majority and identity are verified and the profile is approved by hand. Identity documents are processed by a suitable provider; we store only the result, the time and the expiry."
+    }
+  },
+  "cta": "Create account",
+  "secondary": "View safety"
+}

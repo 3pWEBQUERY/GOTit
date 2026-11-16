@@ -1,0 +1,15 @@
+{
+  "notFound": {
+    "metaTitle": "Page not found",
+    "title": "This page does not exist",
+    "description": "The link is out of date, or the page is not available yet.",
+    "home": "Go to Discover",
+    "help": "Open help"
+  },
+  "error": {
+    "title": "The page could not be loaded",
+    "description": "An error occurred on the server. Saved data is not affected. Reload the page or go to Discover.",
+    "retry": "Reload page",
+    "home": "Go to Discover"
+  }
+}

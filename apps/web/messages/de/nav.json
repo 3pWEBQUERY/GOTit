@@ -1,0 +1,79 @@
+{
+  "profiles": "Profile",
+  "clubs": "Clubs",
+  "createAccount": "Konto erstellen",
+  "discover": {
+    "label": "Entdecken",
+    "regions": "Regionen",
+    "allCantons": "Alle Kantone",
+    "categories": "Kategorien",
+    "allCategories": "Alle Kategorien",
+    "now": "Jetzt",
+    "availableToday": "Heute verfügbar",
+    "newProfiles": "Neu dabei",
+    "onTour": "Auf Tour in deiner Region",
+    "withReviews": "Mit geprüften Bewertungen",
+    "forYou": "Für dich",
+    "savedSearches": "Gespeicherte Suchen",
+    "recentlyViewed": "Zuletzt angesehen",
+    "favouritesWithChanges": "Favoriten mit Änderungen",
+    "accountNote": "Mit einem Konto speicherst du Suchen und Favoriten."
+  },
+  "community": {
+    "label": "Community",
+    "read": "Lesen",
+    "feed": "Feed",
+    "stories": "Stories",
+    "blogs": "Blogs",
+    "outAndAbout": "Unterwegs",
+    "tours": "Touren",
+    "events": "Veranstaltungen",
+    "takePart": "Mitmachen",
+    "writePost": "Beitrag schreiben",
+    "rules": "Regeln",
+    "reportAndHelp": "Melden und Hilfe"
+  },
+  "more": {
+    "label": "Mehr",
+    "forProviders": "Für Anbieter",
+    "forClubs": "Für Clubs",
+    "pricing": "Preise",
+    "safety": "Sicherheit",
+    "help": "Hilfe",
+    "about": "Über uns"
+  },
+  "studio": {
+    "today": "Heute",
+    "profile": "Mein Profil",
+    "media": "Medien",
+    "messages": "Nachrichten",
+    "calendar": "Kalender",
+    "requests": "Anfragen",
+    "posts": "Beiträge",
+    "statistics": "Statistik",
+    "advertising": "Werbung",
+    "billing": "Abrechnung",
+    "settings": "Einstellungen"
+  },
+  "organization": {
+    "profile": "Unternehmensprofil",
+    "locations": "Standorte",
+    "providers": "Anbieter",
+    "team": "Team",
+    "offers": "Angebote",
+    "credentials": "Nachweise"
+  },
+  "tabs": {
+    "discover": "Entdecken",
+    "clubs": "Clubs",
+    "community": "Community",
+    "signIn": "Anmelden",
+    "messages": "Nachrichten",
+    "favourites": "Favoriten",
+    "me": "Ich",
+    "today": "Heute",
+    "calendar": "Kalender",
+    "statistics": "Statistik",
+    "more": "Mehr"
+  }
+}

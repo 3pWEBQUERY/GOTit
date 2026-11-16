@@ -1,0 +1,16 @@
+// Modul catalog: zentral gepflegte Dienstleistungskategorien (PRD 6.3, 7.8).
+model Category {
+  id        String   @id @default(cuid(2))
+  slug      String   @unique
+  nameDe    String
+  nameFr    String
+  nameIt    String
+  nameEn    String
+  approved  Boolean  @default(false)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([approved, sortOrder])
+  @@map("category")
+}

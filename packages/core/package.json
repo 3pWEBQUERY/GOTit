@@ -1,0 +1,32 @@
+{
+  "name": "@app/core",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./locale": "./src/locale/index.ts",
+    "./geo": "./src/geo/index.ts",
+    "./catalog": "./src/catalog/index.ts",
+    "./flags": "./src/flags/index.ts",
+    "./identity": "./src/identity/index.ts",
+    "./age-gate": "./src/age-gate/index.ts",
+    "./observability": "./src/observability/index.ts",
+    "./provider-profile": "./src/provider-profile/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@app/db": "workspace:*",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@app/config": "workspace:*",
+    "@types/node": "^22.20.5",
+    "eslint": "^9.39.5",
+    "typescript": "~6.0.3",
+    "vitest": "^5.1.0"
+  }
+}

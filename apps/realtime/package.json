@@ -1,0 +1,34 @@
+{
+  "name": "@app/realtime",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch --env-file-if-exists=../../.env src/index.ts",
+    "build": "node build.mjs",
+    "start": "node dist/index.js",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@app/auth": "workspace:*",
+    "@app/core": "workspace:*",
+    "@app/jobs": "workspace:*",
+    "better-auth": "^1.7.25",
+    "@prisma/adapter-pg": "^7.10.1",
+    "@prisma/client": "^7.10.1",
+    "pg": "^8.23.1",
+    "ioredis": "^5.6.0",
+    "ws": "^8.23.0"
+  },
+  "devDependencies": {
+    "@app/config": "workspace:*",
+    "@types/node": "^22.20.5",
+    "@types/ws": "^8.18.0",
+    "eslint": "^9.39.5",
+    "tsx": "^4.23.15",
+    "typescript": "~6.0.3",
+    "vitest": "^5.1.0"
+  }
+}

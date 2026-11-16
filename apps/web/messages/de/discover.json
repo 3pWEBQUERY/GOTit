@@ -1,0 +1,15 @@
+{
+  "metaTitle": "Entdecken",
+  "title": "Profile in {region}",
+  "titleNoRegion": "Entdecken",
+  "empty": {
+    "title": "In {region} gibt es noch keine Profile",
+    "description": "Sobald Anbieter in dieser Region geprüft und freigegeben sind, erscheinen sie hier.",
+    "otherRegions": "Andere Regionen"
+  },
+  "noRegions": {
+    "title": "Noch ist keine Region freigegeben",
+    "description": "Profile erscheinen, sobald eine Region freigegeben ist und Anbieter geprüft sind.",
+    "action": "Prüfung und Sicherheit ansehen"
+  }
+}

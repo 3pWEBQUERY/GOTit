@@ -1,0 +1,53 @@
+/* Grundregeln für jede Seite: Hintergrund, Schrift, Fokus, Bewegung. */
+@layer base {
+  html {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-optical-sizing: auto;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    min-height: 100dvh;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    overflow-wrap: break-word;
+  }
+
+  /* Fokus ist immer sichtbar: 2 px Akzent, 2 px Abstand (PRD 13). */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  table,
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--accent) 24%, transparent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-property: opacity, color, background-color, border-color !important;
+    }
+  }
+}
+
+/* Die Einstellung «Bewegung reduzieren» in /einstellungen/darstellung setzt dieses Attribut. */
+:root[data-motion="reduced"] *,
+:root[data-motion="reduced"] *::before,
+:root[data-motion="reduced"] *::after {
+  animation-duration: 1ms !important;
+  transition-property: opacity, color, background-color, border-color !important;
+}

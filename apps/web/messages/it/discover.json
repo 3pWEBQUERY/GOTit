@@ -1,0 +1,15 @@
+{
+  "metaTitle": "Scopri",
+  "title": "Profili a {region}",
+  "titleNoRegion": "Scopri",
+  "empty": {
+    "title": "A {region} non ci sono ancora profili",
+    "description": "Appena i fornitori di questa regione sono verificati e approvati, compaiono qui.",
+    "otherRegions": "Altre regioni"
+  },
+  "noRegions": {
+    "title": "Nessuna regione è ancora aperta",
+    "description": "I profili compaiono quando una regione è aperta e i fornitori sono verificati.",
+    "action": "Vedi verifica e sicurezza"
+  }
+}

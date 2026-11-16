@@ -1,0 +1,79 @@
+{
+  "profiles": "Profiles",
+  "clubs": "Clubs",
+  "createAccount": "Create account",
+  "discover": {
+    "label": "Discover",
+    "regions": "Regions",
+    "allCantons": "All cantons",
+    "categories": "Categories",
+    "allCategories": "All categories",
+    "now": "Now",
+    "availableToday": "Available today",
+    "newProfiles": "New here",
+    "onTour": "On tour in your region",
+    "withReviews": "With verified reviews",
+    "forYou": "For you",
+    "savedSearches": "Saved searches",
+    "recentlyViewed": "Recently viewed",
+    "favouritesWithChanges": "Favourites with changes",
+    "accountNote": "With an account you can save searches and favourites."
+  },
+  "community": {
+    "label": "Community",
+    "read": "Read",
+    "feed": "Feed",
+    "stories": "Stories",
+    "blogs": "Blogs",
+    "outAndAbout": "Out and about",
+    "tours": "Tours",
+    "events": "Events",
+    "takePart": "Take part",
+    "writePost": "Write a post",
+    "rules": "Rules",
+    "reportAndHelp": "Report and help"
+  },
+  "more": {
+    "label": "More",
+    "forProviders": "For providers",
+    "forClubs": "For clubs",
+    "pricing": "Pricing",
+    "safety": "Safety",
+    "help": "Help",
+    "about": "About us"
+  },
+  "studio": {
+    "today": "Today",
+    "profile": "My profile",
+    "media": "Media",
+    "messages": "Messages",
+    "calendar": "Calendar",
+    "requests": "Requests",
+    "posts": "Posts",
+    "statistics": "Statistics",
+    "advertising": "Advertising",
+    "billing": "Billing",
+    "settings": "Settings"
+  },
+  "organization": {
+    "profile": "Company profile",
+    "locations": "Locations",
+    "providers": "Providers",
+    "team": "Team",
+    "offers": "Offers",
+    "credentials": "Credentials"
+  },
+  "tabs": {
+    "discover": "Discover",
+    "clubs": "Clubs",
+    "community": "Community",
+    "signIn": "Sign in",
+    "messages": "Messages",
+    "favourites": "Favourites",
+    "me": "Me",
+    "today": "Today",
+    "calendar": "Calendar",
+    "statistics": "Statistics",
+    "more": "More"
+  }
+}

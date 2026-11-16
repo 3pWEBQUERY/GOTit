@@ -1,0 +1,79 @@
+{
+  "profiles": "Profili",
+  "clubs": "Club",
+  "createAccount": "Crea un account",
+  "discover": {
+    "label": "Scopri",
+    "regions": "Regioni",
+    "allCantons": "Tutti i cantoni",
+    "categories": "Categorie",
+    "allCategories": "Tutte le categorie",
+    "now": "Adesso",
+    "availableToday": "Disponibile oggi",
+    "newProfiles": "Nuovi profili",
+    "onTour": "In tour nella tua regione",
+    "withReviews": "Con recensioni verificate",
+    "forYou": "Per te",
+    "savedSearches": "Ricerche salvate",
+    "recentlyViewed": "Visti di recente",
+    "favouritesWithChanges": "Preferiti con modifiche",
+    "accountNote": "Con un account salvi ricerche e preferiti."
+  },
+  "community": {
+    "label": "Community",
+    "read": "Leggere",
+    "feed": "Feed",
+    "stories": "Storie",
+    "blogs": "Blog",
+    "outAndAbout": "In giro",
+    "tours": "Tour",
+    "events": "Eventi",
+    "takePart": "Partecipare",
+    "writePost": "Scrivi un post",
+    "rules": "Regole",
+    "reportAndHelp": "Segnalare e aiuto"
+  },
+  "more": {
+    "label": "Altro",
+    "forProviders": "Per fornitori",
+    "forClubs": "Per club",
+    "pricing": "Prezzi",
+    "safety": "Sicurezza",
+    "help": "Aiuto",
+    "about": "Chi siamo"
+  },
+  "studio": {
+    "today": "Oggi",
+    "profile": "Il mio profilo",
+    "media": "Media",
+    "messages": "Messaggi",
+    "calendar": "Calendario",
+    "requests": "Richieste",
+    "posts": "Post",
+    "statistics": "Statistiche",
+    "advertising": "Pubblicità",
+    "billing": "Fatturazione",
+    "settings": "Impostazioni"
+  },
+  "organization": {
+    "profile": "Profilo aziendale",
+    "locations": "Sedi",
+    "providers": "Fornitori",
+    "team": "Team",
+    "offers": "Offerte",
+    "credentials": "Documenti"
+  },
+  "tabs": {
+    "discover": "Scopri",
+    "clubs": "Club",
+    "community": "Community",
+    "signIn": "Accedi",
+    "messages": "Messaggi",
+    "favourites": "Preferiti",
+    "me": "Io",
+    "today": "Oggi",
+    "calendar": "Calendario",
+    "statistics": "Statistiche",
+    "more": "Altro"
+  }
+}

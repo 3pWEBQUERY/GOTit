@@ -1,0 +1,12 @@
+{
+  "metaTitle": "Altersprüfung",
+  "title": "Bist du mindestens 18 Jahre alt?",
+  "description": "Dieser Bereich zeigt Angebote für Erwachsene. Bestätige dein Alter, bevor du weitergehst.",
+  "points": {
+    "adults": "Die Inhalte richten sich ausschliesslich an volljährige Personen.",
+    "scope": "Deine Bestätigung gilt für diese Browser-Sitzung oder, wenn du angemeldet bist, für dein Konto.",
+    "noData": "Wir speichern dabei weder Geburtsdatum noch Ausweis."
+  },
+  "confirm": "Alter bestätigen",
+  "leave": "Zur Hilfe wechseln"
+}

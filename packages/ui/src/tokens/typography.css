@@ -1,0 +1,62 @@
+/* Schriftstile (PRD 5.2): Grösse / Zeilenhöhe, Mobile zuerst, Desktop ab 768 px. */
+@utility text-display {
+  font-size: 1.875rem;
+  line-height: 2.125rem;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  @variant md {
+    font-size: 2.5rem;
+    line-height: 2.75rem;
+  }
+}
+@utility text-h1 {
+  font-size: 1.625rem;
+  line-height: 1.9375rem;
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  @variant md {
+    font-size: 2rem;
+    line-height: 2.375rem;
+  }
+}
+@utility text-h2 {
+  font-size: 1.3125rem;
+  line-height: 1.625rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  @variant md {
+    font-size: 1.5rem;
+    line-height: 1.875rem;
+  }
+}
+@utility text-h3 {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  @variant md {
+    font-size: 1.1875rem;
+    line-height: 1.625rem;
+  }
+}
+@utility text-body {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  @variant md {
+    line-height: 1.5625rem;
+  }
+}
+@utility text-small {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+@utility text-label {
+  font-size: 0.8125rem;
+  line-height: 1rem;
+  font-weight: 550;
+  letter-spacing: 0.01em;
+}

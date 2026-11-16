@@ -1,0 +1,12 @@
+{
+  "metaTitle": "Vérification de l’âge",
+  "title": "As-tu au moins 18 ans ?",
+  "description": "Cet espace présente des offres pour adultes. Confirme ton âge avant de continuer.",
+  "points": {
+    "adults": "Les contenus s’adressent exclusivement aux personnes majeures.",
+    "scope": "Ta confirmation vaut pour cette session du navigateur ou, si tu es connecté, pour ton compte.",
+    "noData": "Nous n’enregistrons ni date de naissance ni pièce d’identité à cette occasion."
+  },
+  "confirm": "Confirmer mon âge",
+  "leave": "Aller à l’aide"
+}

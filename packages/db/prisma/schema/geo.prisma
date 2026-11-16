@@ -1,0 +1,28 @@
+// Modul geo: Regionen mit Freigabe. Nur freigegebene Regionen erscheinen in
+// Navigation und Suche (PRD 6.3, 7.8).
+enum RegionKind {
+  CANTON
+  CITY
+}
+
+model Region {
+  id           String     @id @default(cuid(2))
+  slug         String     @unique
+  kind         RegionKind
+  parentId     String?
+  nameDe       String
+  nameFr       String
+  nameIt       String
+  nameEn       String
+  approved     Boolean    @default(false)
+  // Reihenfolge im Mega-Menü; null = nicht hervorgehoben.
+  featuredRank Int?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  parent   Region?  @relation("RegionTree", fields: [parentId], references: [id])
+  children Region[] @relation("RegionTree")
+
+  @@index([approved, kind])
+  @@map("region")
+}

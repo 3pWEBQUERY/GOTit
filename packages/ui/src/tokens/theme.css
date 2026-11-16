@@ -1,0 +1,96 @@
+/* Bindet die Tokens an Tailwind 4 (PRD 5). Die Standardpalette, -radien,
+   -schatten und -breakpoints von Tailwind sind entfernt: Es gibt nur diese. */
+@theme inline {
+  --color-*: initial;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-error: var(--error);
+  --color-warning: var(--warning);
+  --color-success: var(--success);
+  --color-info: var(--info);
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme {
+  /* Raster: 4 px Basis. Erlaubte Stufen: 1 2 3 4 6 8 12 16 24 (4 bis 96 px). */
+  --spacing: 0.25rem;
+
+  --breakpoint-*: initial;
+  --breakpoint-xs: 30rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 96rem;
+
+  --container-*: initial;
+  --container-content: 80rem;
+  --container-reading: 42.5rem;
+  --container-panel: 30rem;
+  --container-prose: 68ch;
+
+  --radius-*: initial;
+  --radius-chip: 6px;
+  --radius-control: 10px;
+  --radius-card: 16px;
+  --radius-sheet: 28px;
+  --radius-full: 9999px;
+
+  /* Drei Ebenen: Inhalt ohne Schatten, erhöht, schwebend. */
+  --shadow-*: initial;
+  --shadow-raised: 0 4px 16px color-mix(in oklab, black 10%, transparent);
+  --shadow-floating: 0 12px 40px color-mix(in oklab, black 18%, transparent);
+
+  --ease-*: initial;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --default-transition-duration: 150ms;
+  --default-transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+
+  --animate-*: initial;
+  --animate-fade-in: fade-in 150ms cubic-bezier(0.2, 0, 0, 1);
+  --animate-layer-in: layer-in 250ms cubic-bezier(0.2, 0, 0, 1);
+  --animate-sheet-in: sheet-in 250ms cubic-bezier(0.2, 0, 0, 1);
+  --animate-panel-in: panel-in 250ms cubic-bezier(0.2, 0, 0, 1);
+  --animate-sidebar-in: sidebar-in 250ms cubic-bezier(0.2, 0, 0, 1);
+  --animate-skeleton: skeleton 1.6s ease-in-out infinite;
+  --animate-spin: spin 0.9s linear infinite;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+  }
+  @keyframes layer-in {
+    from { opacity: 0; transform: translateY(4px); }
+  }
+  @keyframes sheet-in {
+    from { transform: translateY(100%); }
+  }
+  @keyframes panel-in {
+    from { transform: translateX(100%); }
+  }
+  @keyframes sidebar-in {
+    from { transform: translateX(-100%); }
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes skeleton {
+    50% { opacity: 0.55; }
+  }
+}
+
+/* Dauer der zwei Bewegungsarten (PRD 5.3). */
+@utility duration-state {
+  transition-duration: 150ms;
+}
+@utility duration-layer {
+  transition-duration: 250ms;
+}

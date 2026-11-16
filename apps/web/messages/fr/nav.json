@@ -1,0 +1,79 @@
+{
+  "profiles": "Profils",
+  "clubs": "Clubs",
+  "createAccount": "Créer un compte",
+  "discover": {
+    "label": "Découvrir",
+    "regions": "Régions",
+    "allCantons": "Tous les cantons",
+    "categories": "Catégories",
+    "allCategories": "Toutes les catégories",
+    "now": "Maintenant",
+    "availableToday": "Disponible aujourd’hui",
+    "newProfiles": "Nouveaux profils",
+    "onTour": "En tournée dans ta région",
+    "withReviews": "Avec avis vérifiés",
+    "forYou": "Pour toi",
+    "savedSearches": "Recherches enregistrées",
+    "recentlyViewed": "Vus récemment",
+    "favouritesWithChanges": "Favoris modifiés",
+    "accountNote": "Avec un compte, tu enregistres tes recherches et tes favoris."
+  },
+  "community": {
+    "label": "Communauté",
+    "read": "Lire",
+    "feed": "Fil",
+    "stories": "Stories",
+    "blogs": "Blogs",
+    "outAndAbout": "En déplacement",
+    "tours": "Tournées",
+    "events": "Événements",
+    "takePart": "Participer",
+    "writePost": "Écrire une publication",
+    "rules": "Règles",
+    "reportAndHelp": "Signaler et aide"
+  },
+  "more": {
+    "label": "Plus",
+    "forProviders": "Pour prestataires",
+    "forClubs": "Pour clubs",
+    "pricing": "Tarifs",
+    "safety": "Sécurité",
+    "help": "Aide",
+    "about": "À propos"
+  },
+  "studio": {
+    "today": "Aujourd’hui",
+    "profile": "Mon profil",
+    "media": "Médias",
+    "messages": "Messages",
+    "calendar": "Calendrier",
+    "requests": "Demandes",
+    "posts": "Publications",
+    "statistics": "Statistiques",
+    "advertising": "Publicité",
+    "billing": "Facturation",
+    "settings": "Paramètres"
+  },
+  "organization": {
+    "profile": "Profil d’entreprise",
+    "locations": "Sites",
+    "providers": "Prestataires",
+    "team": "Équipe",
+    "offers": "Offres",
+    "credentials": "Justificatifs"
+  },
+  "tabs": {
+    "discover": "Découvrir",
+    "clubs": "Clubs",
+    "community": "Communauté",
+    "signIn": "Connexion",
+    "messages": "Messages",
+    "favourites": "Favoris",
+    "me": "Moi",
+    "today": "Aujourd’hui",
+    "calendar": "Calendrier",
+    "statistics": "Statistiques",
+    "more": "Plus"
+  }
+}

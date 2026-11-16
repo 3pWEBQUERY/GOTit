@@ -1,0 +1,15 @@
+{
+  "notFound": {
+    "metaTitle": "Seite nicht gefunden",
+    "title": "Diese Seite gibt es nicht",
+    "description": "Der Link ist veraltet, oder die Seite ist noch nicht verfügbar.",
+    "home": "Zu Entdecken wechseln",
+    "help": "Hilfe öffnen"
+  },
+  "error": {
+    "title": "Die Seite liess sich nicht laden",
+    "description": "Auf dem Server ist ein Fehler aufgetreten. Gespeicherte Daten sind nicht betroffen. Lade die Seite neu oder wechsle zu Entdecken.",
+    "retry": "Seite neu laden",
+    "home": "Zu Entdecken wechseln"
+  }
+}

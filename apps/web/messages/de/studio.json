@@ -1,0 +1,36 @@
+{
+  "sidebarLabel": "Studio",
+  "collapseSidebar": "Seitenleiste einklappen",
+  "expandSidebar": "Seitenleiste ausklappen",
+  "status": {
+    "prefix": "Profil:",
+    "DRAFT": "Entwurf",
+    "SUBMITTED": "In Prüfung",
+    "CHANGES_REQUESTED": "Zur Korrektur",
+    "PUBLISHED": "Online",
+    "PAUSED": "Pausiert",
+    "SUSPENDED": "Gesperrt",
+    "ARCHIVED": "Archiviert"
+  },
+  "pause": {
+    "pause": "Profil pausieren",
+    "resume": "Profil fortsetzen",
+    "paused": "Dein Profil ist pausiert",
+    "resumed": "Dein Profil ist wieder online",
+    "undo": "Rückgängig",
+    "failed": "Der Status liess sich nicht ändern. Dein Profil ist unverändert.",
+    "blockedNotPublished": "Pausieren geht, sobald dein Profil freigegeben ist.",
+    "blockedSuspended": "Dein Profil ist gesperrt. Der Support hilft dir weiter."
+  },
+  "today": {
+    "metaTitle": "Heute",
+    "title": "Heute, {date}",
+    "organizationTitle": "Heute bei {name}",
+    "todo": "Zu erledigen",
+    "nothingOpen": "Nichts offen",
+    "inReview": "Dein Profil wird geprüft. Du musst nichts tun.",
+    "changesRequested": "Dein Profil wurde zur Korrektur zurückgegeben.",
+    "suspended": "Dein Profil ist gesperrt. Der Support hilft dir weiter.",
+    "viewInMarketplace": "Im Marktplatz ansehen"
+  }
+}

@@ -1,0 +1,10 @@
+// Modul platform: Feature Flags. Module wie die Community liegen hinter einem
+// Flag und lassen sich pro Region abschalten (PRD 12.3).
+model FeatureFlag {
+  key             String   @id
+  enabled         Boolean  @default(false)
+  disabledRegions String[] @default([])
+  updatedAt       DateTime @updatedAt
+
+  @@map("feature_flag")
+}

@@ -1,0 +1,60 @@
+/* Liquid Glass (PRD 5.5): Material der mobilen Navigationsebene, nie für Inhalt,
+   nie Glas auf Glas. Startwerte aus der PRD. */
+.glass {
+  background: color-mix(in oklab, var(--surface) 62%, transparent);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid color-mix(in oklab, var(--ink) 10%, transparent);
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, white 55%, transparent),
+    0 8px 32px color-mix(in oklab, black 14%, transparent);
+}
+
+/* Die primäre Aktion einer Ansicht darf als einziges Glas-Element getönt sein. */
+.glass-accent {
+  background: color-mix(in oklab, var(--accent) 86%, transparent);
+  color: var(--on-accent);
+}
+
+/* Top-Leiste ohne Trennstrich: Inhalt läuft darunter durch und blendet am Rand weich aus. */
+.glass-edge {
+  border: 0;
+  box-shadow: none;
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent);
+  mask-image: linear-gradient(to bottom, black 70%, transparent);
+}
+
+/* Ab 768 px dürfen nur Mega-Menü und Popover eine leichte Unschärfe tragen. */
+.glass-light {
+  background: color-mix(in oklab, var(--surface) 92%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass,
+  .glass-light {
+    background: var(--surface);
+  }
+  .glass-accent {
+    background: var(--accent);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .glass,
+  .glass-light {
+    background: var(--surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-color: var(--border-strong);
+  }
+  .glass-accent {
+    background: var(--accent);
+  }
+  .glass-edge {
+    -webkit-mask-image: none;
+    mask-image: none;
+    border-bottom: 1px solid var(--border-strong);
+  }
+}

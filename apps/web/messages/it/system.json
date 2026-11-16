@@ -1,0 +1,15 @@
+{
+  "notFound": {
+    "metaTitle": "Pagina non trovata",
+    "title": "Questa pagina non esiste",
+    "description": "Il link è scaduto, oppure la pagina non è ancora disponibile.",
+    "home": "Vai a Scopri",
+    "help": "Apri l’aiuto"
+  },
+  "error": {
+    "title": "Non è stato possibile caricare la pagina",
+    "description": "Si è verificato un errore sul server. I dati salvati non sono coinvolti. Ricarica la pagina o vai a Scopri.",
+    "retry": "Ricarica la pagina",
+    "home": "Vai a Scopri"
+  }
+}

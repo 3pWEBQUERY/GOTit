@@ -1,0 +1,15 @@
+{
+  "metaTitle": "Découvrir",
+  "title": "Profils à {region}",
+  "titleNoRegion": "Découvrir",
+  "empty": {
+    "title": "Il n’y a pas encore de profils à {region}",
+    "description": "Dès que des prestataires de cette région sont vérifiés et validés, ils apparaissent ici.",
+    "otherRegions": "Autres régions"
+  },
+  "noRegions": {
+    "title": "Aucune région n’est encore ouverte",
+    "description": "Les profils apparaissent dès qu’une région est ouverte et que des prestataires sont vérifiés.",
+    "action": "Voir la vérification et la sécurité"
+  }
+}

@@ -1,0 +1,75 @@
+// Modul identity: Rollen einer Person. Eine Person hat ein Konto und kann
+// mehrere Rollen tragen; Organisationen sind eigene Entitäten (PRD 3).
+enum ProviderStatus {
+  DRAFT
+  SUBMITTED
+  CHANGES_REQUESTED
+  PUBLISHED
+  PAUSED
+  SUSPENDED
+  ARCHIVED
+}
+
+enum OrganizationKind {
+  CLUB
+  AGENCY
+}
+
+enum OrganizationStatus {
+  DRAFT
+  SUBMITTED
+  PUBLISHED
+  SUSPENDED
+  ARCHIVED
+}
+
+enum OrganizationRole {
+  OWNER
+  LOCATION_MANAGER
+  MARKETING
+  EDITOR
+  SCHEDULING
+}
+
+model ProviderProfile {
+  id          String         @id @default(cuid(2))
+  userId      String         @unique
+  slug        String         @unique
+  displayName String
+  status      ProviderStatus @default(DRAFT)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("provider_profile")
+}
+
+model Organization {
+  id        String             @id @default(cuid(2))
+  slug      String             @unique
+  name      String
+  kind      OrganizationKind
+  status    OrganizationStatus @default(DRAFT)
+  createdAt DateTime           @default(now())
+  updatedAt DateTime           @updatedAt
+
+  members OrganizationMember[]
+
+  @@map("organization")
+}
+
+model OrganizationMember {
+  id             String           @id @default(cuid(2))
+  organizationId String
+  userId         String
+  role           OrganizationRole
+  createdAt      DateTime         @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, userId])
+  @@index([userId])
+  @@map("organization_member")
+}

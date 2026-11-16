@@ -1,0 +1,36 @@
+{
+  "sidebarLabel": "Studio",
+  "collapseSidebar": "Collapse sidebar",
+  "expandSidebar": "Expand sidebar",
+  "status": {
+    "prefix": "Profile:",
+    "DRAFT": "Draft",
+    "SUBMITTED": "In review",
+    "CHANGES_REQUESTED": "Needs changes",
+    "PUBLISHED": "Online",
+    "PAUSED": "Paused",
+    "SUSPENDED": "Suspended",
+    "ARCHIVED": "Archived"
+  },
+  "pause": {
+    "pause": "Pause profile",
+    "resume": "Resume profile",
+    "paused": "Your profile is paused",
+    "resumed": "Your profile is online again",
+    "undo": "Undo",
+    "failed": "The status could not be changed. Your profile is unchanged.",
+    "blockedNotPublished": "You can pause once your profile is approved.",
+    "blockedSuspended": "Your profile is suspended. Support will help you."
+  },
+  "today": {
+    "metaTitle": "Today",
+    "title": "Today, {date}",
+    "organizationTitle": "Today at {name}",
+    "todo": "To do",
+    "nothingOpen": "Nothing open",
+    "inReview": "Your profile is being reviewed. There is nothing you need to do.",
+    "changesRequested": "Your profile was returned for changes.",
+    "suspended": "Your profile is suspended. Support will help you.",
+    "viewInMarketplace": "View in marketplace"
+  }
+}

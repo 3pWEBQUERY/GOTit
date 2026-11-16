@@ -1,0 +1,15 @@
+{
+  "metaTitle": "Discover",
+  "title": "Profiles in {region}",
+  "titleNoRegion": "Discover",
+  "empty": {
+    "title": "There are no profiles in {region} yet",
+    "description": "As soon as providers in this region are verified and approved, they appear here.",
+    "otherRegions": "Other regions"
+  },
+  "noRegions": {
+    "title": "No region has been approved yet",
+    "description": "Profiles appear once a region is approved and providers are verified.",
+    "action": "View verification and safety"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "metaTitle": "Per fornitori",
+  "title": "Uno studio per il tuo lavoro quotidiano",
+  "intro": "Profilo, media, calendario, messaggi e richieste di appuntamento sono in un unico posto, nella stessa interfaccia del marketplace.",
+  "sections": {
+    "trust": {
+      "title": "La fiducia non si compra",
+      "text": "Identità verificata e foto verificate compaiono come segnali distinti sul tuo profilo. Un piano non cambia né la tua verifica né la tua posizione nella ricerca organica. Le posizioni a pagamento portano sempre la parola «Annuncio»."
+    },
+    "control": {
+      "title": "Decidi tu",
+      "text": "Scegli tu quale regione mostrare; un indirizzo esatto non viene mai pubblicato. Metti in pausa il profilo con un clic. Ogni richiesta di appuntamento è facoltativa e puoi sempre annullare senza motivazione."
+    },
+    "review": {
+      "title": "Verificato prima di essere visibile",
+      "text": "Prima che un profilo compaia, vengono verificate la maggiore età e l’identità e il profilo viene approvato a mano. I documenti d’identità sono trattati da un fornitore idoneo; noi conserviamo solo esito, data e scadenza."
+    }
+  },
+  "cta": "Crea un account",
+  "secondary": "Vedi la sicurezza"
+}

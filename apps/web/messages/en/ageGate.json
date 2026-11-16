@@ -1,0 +1,12 @@
+{
+  "metaTitle": "Age check",
+  "title": "Are you at least 18 years old?",
+  "description": "This area shows offers for adults. Confirm your age before you continue.",
+  "points": {
+    "adults": "The content is intended exclusively for adults.",
+    "scope": "Your confirmation applies to this browser session or, if you are signed in, to your account.",
+    "noData": "We store neither a date of birth nor an identity document for this."
+  },
+  "confirm": "Confirm age",
+  "leave": "Go to help"
+}

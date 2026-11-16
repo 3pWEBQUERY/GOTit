@@ -1,0 +1,21 @@
+{
+  "metaTitle": "Für Anbieter",
+  "title": "Ein Studio für deinen Arbeitsalltag",
+  "intro": "Profil, Medien, Kalender, Nachrichten und Terminanfragen liegen an einem Ort, in derselben Oberfläche wie der Marktplatz.",
+  "sections": {
+    "trust": {
+      "title": "Vertrauen lässt sich nicht kaufen",
+      "text": "Geprüfte Identität und geprüfte Fotos stehen als eigene Signale auf deinem Profil. Ein Tarif ändert weder deine Verifizierung noch deine Position in der organischen Suche. Bezahlte Platzierungen tragen immer das Wort «Anzeige»."
+    },
+    "control": {
+      "title": "Du entscheidest",
+      "text": "Du wählst, welche Region du zeigst; eine genaue Adresse wird nie veröffentlicht. Dein Profil pausierst du mit einem Klick. Jede Terminanfrage ist freiwillig, absagen geht immer und ohne Begründung."
+    },
+    "review": {
+      "title": "Geprüft, bevor es sichtbar wird",
+      "text": "Bevor ein Profil erscheint, werden Volljährigkeit und Identität geprüft, und das Profil wird von Hand freigegeben. Ausweisdokumente verarbeitet ein dafür geeigneter Dienstleister; wir speichern nur Ergebnis, Zeitpunkt und Ablauf."
+    }
+  },
+  "cta": "Konto erstellen",
+  "secondary": "Sicherheit ansehen"
+}

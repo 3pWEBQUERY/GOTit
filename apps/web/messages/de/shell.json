@@ -1,0 +1,41 @@
+{
+  "skipToContent": "Zum Inhalt springen",
+  "mainNavigation": "Hauptnavigation",
+  "openNavigation": "Navigation öffnen",
+  "navigationTitle": "Navigation",
+  "close": "Schliessen",
+  "sheetHandle": "Höhe ändern",
+  "back": "Zurück",
+  "tabBar": "Bereiche",
+  "signIn": "Anmelden",
+  "startAsProvider": "Als Anbieter starten",
+  "notifications": "Benachrichtigungen",
+  "messages": "Nachrichten",
+  "favourites": "Favoriten",
+  "search": {
+    "label": "Suche",
+    "placeholder": "Ort, Name, Kategorie",
+    "clear": "Suchfeld leeren"
+  },
+  "mode": {
+    "label": "Bereich wechseln",
+    "marketplace": "Marktplatz",
+    "studio": "Studio",
+    "ownProfile": "Mein Profil",
+    "context": "Kontext wählen"
+  },
+  "account": {
+    "label": "Konto-Menü öffnen",
+    "overview": "Übersicht",
+    "appointments": "Termine",
+    "savedSearches": "Gespeicherte Suchen",
+    "reviews": "Bewertungen",
+    "settings": "Einstellungen",
+    "signOut": "Abmelden"
+  },
+  "palette": {
+    "title": "Seite suchen",
+    "input": "Seite oder Bereich eingeben",
+    "empty": "Keine Seite gefunden. Prüfe die Schreibweise oder suche im Marktplatz."
+  }
+}

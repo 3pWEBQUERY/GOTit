@@ -1,0 +1,41 @@
+{
+  "skipToContent": "Skip to content",
+  "mainNavigation": "Main navigation",
+  "openNavigation": "Open navigation",
+  "navigationTitle": "Navigation",
+  "close": "Close",
+  "sheetHandle": "Change height",
+  "back": "Back",
+  "tabBar": "Sections",
+  "signIn": "Sign in",
+  "startAsProvider": "Start as a provider",
+  "notifications": "Notifications",
+  "messages": "Messages",
+  "favourites": "Favourites",
+  "search": {
+    "label": "Search",
+    "placeholder": "Place, name, category",
+    "clear": "Clear search field"
+  },
+  "mode": {
+    "label": "Switch area",
+    "marketplace": "Marketplace",
+    "studio": "Studio",
+    "ownProfile": "My profile",
+    "context": "Choose context"
+  },
+  "account": {
+    "label": "Open account menu",
+    "overview": "Overview",
+    "appointments": "Appointments",
+    "savedSearches": "Saved searches",
+    "reviews": "Reviews",
+    "settings": "Settings",
+    "signOut": "Sign out"
+  },
+  "palette": {
+    "title": "Find a page",
+    "input": "Type a page or area",
+    "empty": "No page found. Check the spelling or search the marketplace."
+  }
+}

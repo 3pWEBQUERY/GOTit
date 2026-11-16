@@ -1,0 +1,15 @@
+{
+  "notFound": {
+    "metaTitle": "Page introuvable",
+    "title": "Cette page n’existe pas",
+    "description": "Le lien est périmé, ou la page n’est pas encore disponible.",
+    "home": "Aller à Découvrir",
+    "help": "Ouvrir l’aide"
+  },
+  "error": {
+    "title": "La page n’a pas pu être chargée",
+    "description": "Une erreur s’est produite sur le serveur. Les données enregistrées ne sont pas touchées. Recharge la page ou va à Découvrir.",
+    "retry": "Recharger la page",
+    "home": "Aller à Découvrir"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "@app/web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test --trace off"
+  },
+  "dependencies": {
+    "@app/auth": "workspace:*",
+    "@app/core": "workspace:*",
+    "@app/db": "workspace:*",
+    "@app/ui": "workspace:*",
+    "@prisma/adapter-pg": "^7.10.1",
+    "@prisma/client": "^7.10.1",
+    "better-auth": "^1.7.25",
+    "lucide-react": "^1.73.0",
+    "next": "^16.4.6",
+    "next-intl": "^4.15.1",
+    "pg": "^8.23.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@app/config": "workspace:*",
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "1.63.0",
+    "@tailwindcss/postcss": "^4.3.5",
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "eslint": "^9.39.5",
+    "tailwindcss": "^4.3.5",
+    "typescript": "~6.0.3",
+    "vitest": "^5.1.0"
+  }
+}

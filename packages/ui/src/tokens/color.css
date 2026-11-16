@@ -1,0 +1,27 @@
+/* Farb-Tokens (PRD 5.1). Erster Wert hell, zweiter dunkel. Komponenten
+   verwenden nur diese Namen, nie Hex-Werte. Der Kontrasttest liest diese Datei. */
+:root {
+  color-scheme: light dark;
+
+  --bg: light-dark(#faf8f5, #141312);
+  --surface: light-dark(#ffffff, #1e1c1a);
+  --surface-2: light-dark(#f1ede7, #282523);
+  --ink: light-dark(#1a1816, #f2eee8);
+  --ink-muted: light-dark(#6b655e, #a39c93);
+  --border: light-dark(#e4ded6, #34302d);
+  --border-strong: light-dark(#8a837a, #7a736b);
+  --accent: light-dark(#1f4d43, #7fc4b0);
+  --on-accent: light-dark(#ffffff, #141312);
+  --error: light-dark(#a8321f, #f0907f);
+  --warning: light-dark(#8a5a00, #e5b55a);
+  --success: light-dark(#1e6b3a, #7ccb93);
+  --info: light-dark(#1f5a8a, #8cbde8);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}

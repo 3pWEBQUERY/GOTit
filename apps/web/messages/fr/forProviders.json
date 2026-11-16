@@ -1,0 +1,21 @@
+{
+  "metaTitle": "Pour prestataires",
+  "title": "Un studio pour ton quotidien",
+  "intro": "Profil, médias, calendrier, messages et demandes de rendez-vous sont réunis au même endroit, dans la même interface que la place de marché.",
+  "sections": {
+    "trust": {
+      "title": "La confiance ne s’achète pas",
+      "text": "L’identité vérifiée et les photos vérifiées figurent comme signaux distincts sur ton profil. Un abonnement ne change ni ta vérification ni ta position dans la recherche organique. Les emplacements payants portent toujours le mot « Annonce »."
+    },
+    "control": {
+      "title": "Tu décides",
+      "text": "Tu choisis la région que tu affiches ; une adresse exacte n’est jamais publiée. Tu mets ton profil en pause d’un clic. Chaque demande de rendez-vous est facultative, et tu peux toujours annuler sans donner de raison."
+    },
+    "review": {
+      "title": "Vérifié avant d’être visible",
+      "text": "Avant qu’un profil apparaisse, la majorité et l’identité sont vérifiées et le profil est validé à la main. Les pièces d’identité sont traitées par un prestataire adapté ; nous ne conservons que le résultat, la date et l’échéance."
+    }
+  },
+  "cta": "Créer un compte",
+  "secondary": "Voir la sécurité"
+}

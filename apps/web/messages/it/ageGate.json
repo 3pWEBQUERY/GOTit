@@ -1,0 +1,12 @@
+{
+  "metaTitle": "Verifica dell’età",
+  "title": "Hai almeno 18 anni?",
+  "description": "Quest’area mostra offerte per adulti. Conferma la tua età prima di continuare.",
+  "points": {
+    "adults": "I contenuti sono rivolti esclusivamente a persone maggiorenni.",
+    "scope": "La conferma vale per questa sessione del browser o, se hai effettuato l’accesso, per il tuo account.",
+    "noData": "Non salviamo né la data di nascita né un documento d’identità."
+  },
+  "confirm": "Conferma l’età",
+  "leave": "Vai all’aiuto"
+}

@@ -1,0 +1,41 @@
+{
+  "skipToContent": "Aller au contenu",
+  "mainNavigation": "Navigation principale",
+  "openNavigation": "Ouvrir la navigation",
+  "navigationTitle": "Navigation",
+  "close": "Fermer",
+  "sheetHandle": "Modifier la hauteur",
+  "back": "Retour",
+  "tabBar": "Sections",
+  "signIn": "Se connecter",
+  "startAsProvider": "Commencer comme prestataire",
+  "notifications": "Notifications",
+  "messages": "Messages",
+  "favourites": "Favoris",
+  "search": {
+    "label": "Recherche",
+    "placeholder": "Lieu, nom, catégorie",
+    "clear": "Vider le champ de recherche"
+  },
+  "mode": {
+    "label": "Changer d’espace",
+    "marketplace": "Place de marché",
+    "studio": "Studio",
+    "ownProfile": "Mon profil",
+    "context": "Choisir le contexte"
+  },
+  "account": {
+    "label": "Ouvrir le menu du compte",
+    "overview": "Aperçu",
+    "appointments": "Rendez-vous",
+    "savedSearches": "Recherches enregistrées",
+    "reviews": "Avis",
+    "settings": "Paramètres",
+    "signOut": "Se déconnecter"
+  },
+  "palette": {
+    "title": "Chercher une page",
+    "input": "Saisir une page ou un espace",
+    "empty": "Aucune page trouvée. Vérifie l’orthographe ou cherche dans la place de marché."
+  }
+}

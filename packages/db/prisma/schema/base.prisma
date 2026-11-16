@@ -1,0 +1,9 @@
+// Mehrdatei-Schema (PRD 4.1): eine Datei pro Modul. Jedes Modul besitzt seine Tabellen.
+generator client {
+  provider = "prisma-client"
+  output   = "../../src/generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}

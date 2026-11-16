@@ -1,0 +1,21 @@
+{
+  "name": "marketplace-platform",
+  "private": true,
+  "packageManager": "pnpm@10.28.0",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "test:e2e": "pnpm --filter @app/web test:e2e",
+    "check:file-size": "node packages/config/scripts/check-file-size.mjs",
+    "db:migrate": "pnpm --filter @app/db migrate:deploy",
+    "db:seed": "pnpm --filter @app/db seed"
+  },
+  "devDependencies": {
+    "turbo": "^2.11.11",
+    "typescript": "~6.0.3"
+  }
+}
