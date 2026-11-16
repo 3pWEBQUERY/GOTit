@@ -90,8 +90,8 @@ test.describe("Registrierung (PRD 7.4, Abnahme 1–7)", () => {
     await expect(submit).toBeEnabled();
     await submit.click();
 
-    const summary = page.getByRole("alert").filter({ hasText: "6 Angaben fehlen oder stimmen nicht" });
-    await expect(summary).toBeVisible();
+    const summary = page.getByRole("alert").filter({ hasText: /Angaben fehlen oder stimmen nicht/ });
+    await expect(summary).toContainText("6 Angaben fehlen oder stimmen nicht");
     await expect(page.getByRole("radio", { name: "Mitglied" })).toBeFocused();
     await expect(page.getByText("Wähle einen Kontotyp.").first()).toBeVisible();
     await expectNoSeriousAxeFindings(page);

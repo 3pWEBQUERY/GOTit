@@ -29,6 +29,10 @@ describe("Registrierung", () => {
     expect(result.error?.issues[0]).toMatchObject({ path: ["organizationName"], message: "organizationNameRequired" });
     expect(registrationSchema.safeParse({ ...valid, accountType: "ORGANIZATION", organizationName: "Testclub" }).success).toBe(true);
   });
+  it("meldet den fehlenden Namen der Organisation auch, wenn andere Felder noch fehlen", () => {
+    const result = registrationSchema.safeParse({ accountType: "ORGANIZATION" });
+    expect(result.error?.issues.map((issue) => issue.message)).toContain("organizationNameRequired");
+  });
   it("kennt nur die drei Kontotypen", () => {
     expect(registrationSchema.safeParse({ ...valid, accountType: "ADMIN" }).success).toBe(false);
   });

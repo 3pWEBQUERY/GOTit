@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import { mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { request, type FullConfig } from "@playwright/test";
@@ -12,6 +13,9 @@ export const AUTH_DIR = join(import.meta.dirname, ".auth");
  * die Grenze abzuschalten.
  */
 export default async function globalSetup(config: FullConfig): Promise<void> {
+  // Fiktive Testkonten in ihren festgelegten Zustand bringen (zum Beispiel ein
+  // Profil, das ein abgebrochener Lauf pausiert zurückliess).
+  execFileSync("pnpm", ["--filter", "@app/db", "seed:fixtures"], { stdio: "ignore", cwd: join(import.meta.dirname, "..", "..", "..") });
   mkdirSync(AUTH_DIR, { recursive: true });
   const baseURL = config.projects[0]?.use.baseURL;
   for (const account of ACCOUNTS) {

@@ -66,7 +66,6 @@ export function DataSettings({ deletionDate, homeHref }: DataSettingsProps) {
     await fetch("/api/auth/sign-out", { method: "POST", headers: { "content-type": "application/json" }, body: "{}" }).catch(() => undefined);
     toast({ title: t(mode === "deactivate" ? "data.deactivated" : "data.deleted"), tone: "success", durationMs: 12_000 });
     router.replace(homeHref);
-    router.refresh();
   }
 
   function confirm(mode: "deactivate" | "delete", title: string, description: ReactNode, label: string) {

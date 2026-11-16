@@ -9,8 +9,10 @@ describe("E-Mail-Versand", () => {
     expect(resolveMailTransport({ MAIL_TRANSPORT: "smtp", SMTP_URL: "smtp://x" })).toBeNull();
     expect(resolveMailTransport({ MAIL_TRANSPORT: "smtp", SMTP_URL: "smtp://x", MAIL_FROM: "a@b.test" })).toBe("smtp");
   });
-  it("erlaubt den Ausgang nie in der Produktion", () => {
-    expect(resolveMailTransport({ MAIL_TRANSPORT: "outbox", NODE_ENV: "production" })).toBeNull();
-    expect(resolveMailTransport({ MAIL_TRANSPORT: "outbox", NODE_ENV: "test" })).toBe("outbox");
+  it("erlaubt den Ausgang nie in der Produktionsumgebung, wohl aber in einem Test-Build", () => {
+    expect(resolveMailTransport({ MAIL_TRANSPORT: "outbox", APP_ENV: "production" })).toBeNull();
+    expect(resolveMailTransport({ MAIL_TRANSPORT: "outbox", APP_ENV: "production", NODE_ENV: "production" })).toBeNull();
+    expect(resolveMailTransport({ MAIL_TRANSPORT: "outbox", NODE_ENV: "production" })).toBe("outbox");
+    expect(resolveMailTransport({ MAIL_TRANSPORT: "outbox", APP_ENV: "staging" })).toBe("outbox");
   });
 });

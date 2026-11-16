@@ -1,8 +1,8 @@
-import type { AccountTypeInput } from "./account-schemas";
+import type { AccountTypeInput, OrganizationKindInput } from "./account-schemas";
 
 /**
- * Die vier Kontotypen der Oberfläche (PRD 7.4). Clubs und Agenturen sind im
- * Schema beide eine Organisation; die Unterscheidung gibt es nur hier.
+ * Die vier Kontotypen der Oberfläche (PRD 7.4). Clubs und Agenturen sind
+ * Organisationen; ihre Art steht in `organizationKind`.
  */
 export const ACCOUNT_CHOICES = ["member", "provider", "club", "agency"] as const;
 export type AccountChoice = (typeof ACCOUNT_CHOICES)[number];
@@ -24,4 +24,10 @@ export function accountTypeFor(choice: AccountChoice | ""): AccountTypeInput | u
 
 export function needsOrganization(choice: AccountChoice | ""): boolean {
   return choice === "club" || choice === "agency";
+}
+
+export function organizationKindFor(choice: AccountChoice | ""): OrganizationKindInput | undefined {
+  if (choice === "club") return "CLUB";
+  if (choice === "agency") return "AGENCY";
+  return undefined;
 }

@@ -15,7 +15,8 @@
     "./mail": "./src/mail/index.ts",
     "./rate-limit": "./src/rate-limit/index.ts",
     "./retention": "./src/retention/index.ts",
-    "./account": "./src/account/index.ts"
+    "./account": "./src/account/index.ts",
+    "./account/schemas": "./src/account/schemas.ts"
   },
   "scripts": {
     "lint": "eslint .",

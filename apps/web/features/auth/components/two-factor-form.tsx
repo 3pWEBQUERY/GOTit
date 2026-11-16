@@ -105,7 +105,7 @@ function CodeForm({ mode, target, signInHref }: { mode: Mode; target: string; si
         value={form.values.code}
         error={message(form.errors.code)}
         onChange={(event) => form.setValue("code", event.target.value)}
-        onBlur={() => form.blur("code")}
+        onBlur={(event) => form.blur("code", event.relatedTarget)}
       />
       <Checkbox
         label={t("trustDevice.label")}

@@ -95,7 +95,7 @@ export function SignInForm({ links }: { links: SignInLinks }) {
           value={form.values.email}
           error={message(form.errors.email)}
           onChange={(event) => form.setValue("email", event.target.value)}
-          onBlur={() => form.blur("email")}
+          onBlur={(event) => form.blur("email", event.relatedTarget)}
         />
         <TextField
           id={idFor("password")}
@@ -105,7 +105,7 @@ export function SignInForm({ links }: { links: SignInLinks }) {
           value={form.values.password}
           error={message(form.errors.password)}
           onChange={(event) => form.setValue("password", event.target.value)}
-          onBlur={() => form.blur("password")}
+          onBlur={(event) => form.blur("password", event.relatedTarget)}
         />
         <p className="-mt-2">
           <UiLink href={links.forgotPassword} className="inline-flex min-h-11 items-center text-small text-ink underline underline-offset-2">

@@ -65,7 +65,7 @@ test.describe("Sicherheit (Abnahme 16)", () => {
     const account = await createAccount();
     await openSecurity(page, account);
     await page.getByRole("button", { name: "Zweiten Faktor einrichten" }).click();
-    await page.getByLabel("Passwort", { exact: true }).fill(PASSWORD);
+    await page.locator("#zweifaktor-passwort").fill(PASSWORD);
     await page.getByRole("button", { name: "Passwort bestätigen" }).click();
 
     await expect(page.getByRole("img", { name: "QR-Code für die Authenticator-App" })).toBeVisible();
@@ -184,7 +184,7 @@ test.describe("Sicherheit (Abnahme 16)", () => {
     await page.getByLabel("Neues Passwort wiederholen").fill(newPassword);
     await page.getByLabel("Andere Geräte abmelden").check();
     await page.getByRole("button", { name: "Passwort ändern" }).click();
-    await expect(page.getByText("Andere Geräte sind abgemeldet.")).toBeVisible();
+    await expect(page.getByText("Andere Geräte sind abgemeldet.").first()).toBeVisible();
     expect(await hasSession(other)).toBe(false);
     expect(await hasSession(page.request)).toBe(true);
     await expect(page.getByRole("list", { name: "Ereignisse" })).toContainText("Passwort geändert");
@@ -225,7 +225,7 @@ test.describe("Daten und Konto (Abnahme 20)", () => {
     await expect(dialog).toContainText(/Am \d{2}\.\d{2}\.\d{4} löschen wir/);
     await dialog.getByRole("button", { name: "Löschung beantragen" }).click();
 
-    await expect(page.getByText("Löschung beantragt.")).toBeVisible();
+    await expect(page.getByText("Löschung beantragt.").first()).toBeVisible();
     await expect(page).not.toHaveURL(/einstellungen/);
     expect(await hasSession(page.request)).toBe(false);
     const [requested] = await query<{ deletionRequestedAt: Date | null }>(`select "deletionRequestedAt" from "user" where id = $1`, [account.id]);
@@ -247,7 +247,7 @@ test.describe("Daten und Konto (Abnahme 20)", () => {
     await page.goto("/de/einstellungen/daten");
     await page.getByRole("button", { name: "Konto deaktivieren" }).click();
     await page.getByRole("alertdialog").getByRole("button", { name: "Konto deaktivieren" }).click();
-    await expect(page.getByText("Dein Konto ist deaktiviert.")).toBeVisible();
+    await expect(page.getByText("Dein Konto ist deaktiviert.").first()).toBeVisible();
     expect(await hasSession(page.request)).toBe(false);
     expect(await hasSession(other)).toBe(false);
     const [row] = await query<{ deactivatedAt: Date | null }>(`select "deactivatedAt" from "user" where id = $1`, [account.id]);

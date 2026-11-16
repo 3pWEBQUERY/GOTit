@@ -33,6 +33,6 @@ export async function register(locale: Locale, input: unknown): Promise<ActionRe
     body: { email: data.email, password: data.password, name: data.name, callbackURL },
     headers: requestHeaders,
   });
-  await provisionAccountType(result.user.id, data.accountType, { name: data.name, organizationName: data.organizationName });
+  await provisionAccountType(result.user.id, data.accountType, { name: data.name, organizationName: data.organizationName, organizationKind: data.organizationKind });
   return { ok: true };
 }

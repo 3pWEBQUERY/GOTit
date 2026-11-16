@@ -4,7 +4,7 @@ const port = Number(process.env.PORT ?? 3000);
 const baseURL = `http://localhost:${port}`;
 const ci = Boolean(process.env.CI);
 // E-Mails landen in Tests im Ausgang (Tabelle email_outbox), nie bei echten Empfängern.
-const env = { ENABLE_DEV_UI: "1", MAIL_TRANSPORT: "outbox", APP_URL: baseURL };
+const env = { ENABLE_DEV_UI: "1", MAIL_TRANSPORT: "outbox", APP_ENV: "test", APP_URL: baseURL };
 
 /** End-to-End-Tests laufen gegen einen Build (CI) oder den Dev-Server (lokal), jeweils mit Worker. */
 export default defineConfig({

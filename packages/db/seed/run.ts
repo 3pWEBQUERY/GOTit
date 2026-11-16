@@ -6,7 +6,7 @@ import { seedReference } from "./reference/seed-reference";
 config({ path: ["../../.env", ".env"], quiet: true });
 
 const withFixtures = process.argv.includes("--fixtures");
-if (withFixtures && process.env.NODE_ENV === "production") {
+if (withFixtures && (process.env.APP_ENV === "production" || process.env.NODE_ENV === "production")) {
   throw new Error("Fiktive Testkonten werden in der Produktion nicht geladen.");
 }
 

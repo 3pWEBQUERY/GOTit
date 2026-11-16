@@ -8,6 +8,7 @@ export {
   ACCOUNT_TYPES,
   NOTIFICATION_CHANNELS,
   NOTIFICATION_EVENTS,
+  ORGANIZATION_KINDS,
   PASSWORD_MIN_LENGTH,
   USERNAME_PATTERN,
   changePasswordSchema,
@@ -19,6 +20,7 @@ export {
   type AccountTypeInput,
   type NotificationChannel,
   type NotificationEvent,
+  type OrganizationKindInput,
   type PreferenceInput,
   type RegistrationInput,
 } from "./schemas";

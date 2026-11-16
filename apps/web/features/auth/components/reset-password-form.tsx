@@ -82,7 +82,7 @@ export function ResetPasswordForm({ token, forgotHref, signInHref }: ResetPasswo
         value={form.values.password}
         error={message(form.errors.password)}
         onChange={(event) => form.setValue("password", event.target.value)}
-        onBlur={() => form.blur("password")}
+        onBlur={(event) => form.blur("password", event.relatedTarget)}
       />
       <TextField
         id={idFor("passwordRepeat")}
@@ -92,7 +92,7 @@ export function ResetPasswordForm({ token, forgotHref, signInHref }: ResetPasswo
         value={form.values.passwordRepeat}
         error={message(form.errors.passwordRepeat)}
         onChange={(event) => form.setValue("passwordRepeat", event.target.value)}
-        onBlur={() => form.blur("passwordRepeat")}
+        onBlur={(event) => form.blur("passwordRepeat", event.relatedTarget)}
       />
       <Button type="submit" variant="primary" width="full" loading={pending}>
         {t("submit")}

@@ -33,12 +33,20 @@ export const databaseHooks = {
   },
   user: {
     update: {
-      /** Änderungen an 2FA und Bestätigung der E-Mail-Adresse protokollieren. */
-      before: async (data: Record<string, unknown> & { id?: string }) => {
-        const userId = typeof data.id === "string" ? data.id : null;
-        if (!userId) return;
-        if (data.twoFactorEnabled === true) await recordSecurityEvent(userId, "TWO_FACTOR_ENABLED");
-        if (data.emailVerified === true) await recordSecurityEvent(userId, "EMAIL_VERIFIED");
+      /**
+       * Änderungen am Konto protokollieren. `after` erhält das ganze Konto samt
+       * ID; `before` bekäme nur die geänderten Felder. Ob 2FA eingerichtet oder
+       * die Adresse bestätigt wurde, verrät der Pfad: Die Anmeldung mit Code
+       * ändert das Konto nicht und löst diesen Hook deshalb nicht aus.
+       */
+      after: async (user: { id: string; twoFactorEnabled?: unknown; emailVerified?: unknown }, context: { path?: string; headers?: Headers } | null) => {
+        const userAgent = context?.headers?.get("user-agent");
+        if (context?.path === "/two-factor/verify-totp" && user.twoFactorEnabled === true) {
+          await recordSecurityEvent(user.id, "TWO_FACTOR_ENABLED", userAgent);
+        }
+        if (context?.path === "/verify-email" && user.emailVerified === true) {
+          await recordSecurityEvent(user.id, "EMAIL_VERIFIED", userAgent);
+        }
       },
     },
   },

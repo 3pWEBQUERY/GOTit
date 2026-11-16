@@ -9,7 +9,7 @@ import { register } from "@/features/account/actions/register";
 import { getPathname, useRouter } from "@/i18n/navigation";
 import { useErrorMessage } from "../hooks/use-error-message";
 import { useSchemaForm } from "../hooks/use-schema-form";
-import { accountTypeFor, needsOrganization, type AccountChoice } from "../lib/account-choice";
+import { accountTypeFor, needsOrganization, organizationKindFor, type AccountChoice } from "../lib/account-choice";
 import { focusFirstError, summaryItems } from "../lib/first-error";
 import { rememberPendingEmail } from "../lib/pending-email";
 import { AccountTypeField } from "./account-type-field";
@@ -37,6 +37,7 @@ function toInput(values: RegisterValues) {
     accountType: accountTypeFor(values.accountType),
     name: values.name,
     organizationName: needsOrganization(values.accountType) ? values.organizationName : undefined,
+    organizationKind: organizationKindFor(values.accountType),
     email: values.email,
     password: values.password,
     ageConfirmed: values.ageConfirmed,
@@ -99,7 +100,7 @@ export function RegisterForm({ locale }: { locale: Locale }) {
         value={values.name}
         error={message(errors.name)}
         onChange={(event) => form.setValue("name", event.target.value)}
-        onBlur={() => form.blur("name")}
+        onBlur={(event) => form.blur("name", event.relatedTarget)}
       />
       {organization ? (
         <TextField
@@ -109,7 +110,7 @@ export function RegisterForm({ locale }: { locale: Locale }) {
           value={values.organizationName}
           error={message(errors.organizationName)}
           onChange={(event) => form.setValue("organizationName", event.target.value)}
-          onBlur={() => form.blur("organizationName")}
+          onBlur={(event) => form.blur("organizationName", event.relatedTarget)}
         />
       ) : null}
       <TextField
@@ -122,7 +123,7 @@ export function RegisterForm({ locale }: { locale: Locale }) {
         value={values.email}
         error={message(errors.email)}
         onChange={(event) => form.setValue("email", event.target.value)}
-        onBlur={() => form.blur("email")}
+        onBlur={(event) => form.blur("email", event.relatedTarget)}
       />
       <TextField
         id={idFor("password")}
@@ -133,7 +134,7 @@ export function RegisterForm({ locale }: { locale: Locale }) {
         value={values.password}
         error={message(errors.password)}
         onChange={(event) => form.setValue("password", event.target.value)}
-        onBlur={() => form.blur("password")}
+        onBlur={(event) => form.blur("password", event.relatedTarget)}
       />
       <ConsentFields
         locale={locale}

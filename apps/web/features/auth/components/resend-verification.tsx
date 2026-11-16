@@ -60,7 +60,7 @@ export function ResendVerification({ email, callbackURL, idPrefix }: ResendVerif
           value={form.values.email}
           error={message(form.errors.email)}
           onChange={(event) => form.setValue("email", event.target.value)}
-          onBlur={() => form.blur("email")}
+          onBlur={(event) => form.blur("email", event.relatedTarget)}
         />
       )}
       <FormProblemAlert problem={problem} />

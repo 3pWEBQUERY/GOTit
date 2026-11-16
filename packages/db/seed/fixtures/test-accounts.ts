@@ -30,7 +30,7 @@ export async function seedTestAccounts(db: PrismaClient): Promise<void> {
     await db.user.upsert({
       where: { id },
       create: { id, email, name: account.name, emailVerified: true, ageConfirmedAt: new Date() },
-      update: { name: account.name },
+      update: { name: account.name, deactivatedAt: null, deletionRequestedAt: null },
     });
     await db.account.upsert({
       where: { id: `${id}_credential` },

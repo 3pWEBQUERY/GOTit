@@ -44,6 +44,16 @@ async function signInFresh(page: Page, username: string | null = null): Promise<
   return { id, email };
 }
 
+/** Die Bestätigung am Ort, die gerade sichtbar ist. */
+function saved(page: Page) {
+  return page.getByText("Gespeichert", { exact: true }).filter({ visible: true }).first();
+}
+
+/** Wartet, bis so viele Einstellungen ihr «Gespeichert» zeigen; erst dann darf neu geladen werden. */
+async function expectSavedCount(page: Page, count: number): Promise<void> {
+  await expect(page.getByText("Gespeichert", { exact: true }).filter({ visible: true })).toHaveCount(count);
+}
+
 test.describe("Zugriff (Abnahme 23)", () => {
   for (const path of ["/de/ich", "/de/einstellungen/profil", "/de/einstellungen/sicherheit"]) {
     test(`${path} verlangt die Anmeldung`, async ({ page }) => {
@@ -101,7 +111,7 @@ test.describe("Profil (Abnahme 15)", () => {
     await page.getByLabel("Name", { exact: true }).fill("Neuer Name Fiktiv");
     await page.getByLabel("Benutzername").fill(own);
     await page.getByRole("button", { name: "Profil speichern" }).click();
-    await expect(page.getByText("Profil gespeichert")).toBeVisible();
+    await expect(page.getByText("Profil gespeichert").first()).toBeVisible();
     await page.reload();
     await expect(page.getByLabel("Name", { exact: true })).toHaveValue("Neuer Name Fiktiv");
     await expect(page.getByLabel("Benutzername")).toHaveValue(own);
@@ -116,17 +126,19 @@ test.describe("Darstellung (Abnahme 19)", () => {
 
     await page.getByRole("radio", { name: "Dunkel" }).click();
     await expect(html).toHaveAttribute("data-theme", "dark");
-    await expect(page.getByText("Gespeichert").first()).toBeVisible();
+    await expect(saved(page)).toBeVisible();
 
     const motion = page.getByRole("switch", { name: "Bewegung reduzieren" });
     await motion.click();
     await expect(html).toHaveAttribute("data-motion", "reduced");
     await expect(motion).toHaveAttribute("aria-checked", "true");
+    await expectSavedCount(page, 2);
 
     const neutral = page.getByRole("switch", { name: "Neutraler Seitentitel" });
     await neutral.click();
     await expect(page).toHaveTitle("Übersicht");
     await expect(neutral).toHaveAttribute("aria-checked", "true");
+    await expectSavedCount(page, 3);
 
     await page.reload();
     await expect(html).toHaveAttribute("data-theme", "dark");
@@ -160,8 +172,9 @@ test.describe("Privatsphäre und Benachrichtigungen (Abnahme 17, 18, 21)", () =>
     await expect(page.getByText("Blockieren kommt zusammen mit den Nachrichten.")).toBeVisible();
     await expect(page.getByRole("button", { name: /speichern/i })).toHaveCount(0);
     await online.click();
-    await expect(page.getByText("Gespeichert")).toBeVisible();
+    await expect(saved(page)).toBeVisible();
     await page.getByRole("radio", { name: "Niemand" }).click();
+    await expectSavedCount(page, 2);
     await page.reload();
     await expect(page.getByRole("switch", { name: "Online-Status zeigen" })).toHaveAttribute("aria-checked", "true");
     await expect(page.getByRole("radio", { name: "Niemand" })).toBeChecked();
@@ -173,7 +186,7 @@ test.describe("Privatsphäre und Benachrichtigungen (Abnahme 17, 18, 21)", () =>
     const message = page.getByRole("switch", { name: "E-Mail bei «Neue Nachricht»" });
     await expect(message).toHaveAttribute("aria-checked", "true");
     await message.click();
-    await expect(page.getByText("Gespeichert")).toBeVisible();
+    await expect(saved(page)).toBeVisible();
     await page.reload();
     await expect(page.getByRole("switch", { name: "E-Mail bei «Neue Nachricht»" })).toHaveAttribute("aria-checked", "false");
 

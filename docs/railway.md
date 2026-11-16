@@ -28,7 +28,7 @@ Projekt **GOTit** im Workspace «3pwebquery's Projects», Umgebung `production`,
 
 ## Variablen
 
-Geteilt (Umgebung `production`): `BETTER_AUTH_SECRET`, `AGE_GATE_SECRET`, `APP_NAME`. Dienste referenzieren sie mit `${{shared.NAME}}`.
+Geteilt (Umgebung `production`): `BETTER_AUTH_SECRET`, `AGE_GATE_SECRET`, `APP_NAME`, `APP_ENV=production`. Dienste referenzieren sie mit `${{shared.NAME}}`.
 
 | Variable | Dienste | Wert |
 | --- | --- | --- |
@@ -37,6 +37,7 @@ Geteilt (Umgebung `production`): `BETTER_AUTH_SECRET`, `AGE_GATE_SECRET`, `APP_N
 | `BETTER_AUTH_SECRET` | web, realtime | `${{shared.BETTER_AUTH_SECRET}}` |
 | `AGE_GATE_SECRET` | web | `${{shared.AGE_GATE_SECRET}}` |
 | `APP_URL` | web | `https://${{RAILWAY_PUBLIC_DOMAIN}}` |
+| `APP_ENV` | web, worker | `${{shared.APP_ENV}}`; verbietet den E-Mail-Ausgang und fiktive Testkonten |
 | `REALTIME_URL` | web | `wss://${{realtime.RAILWAY_PUBLIC_DOMAIN}}` |
 
 `NODE_ENV` wird bewusst nicht gesetzt: Mit `production` liesse `pnpm install` beim Build die Entwicklungsabhängigkeiten weg (Next.js-Build, Prisma-CLI, Turbo). `next start` setzt den Produktionsmodus selbst. Eine geteilte `NODE_ENV` liegt noch in der Umgebung, wird aber von keinem Dienst referenziert und wirkt daher nicht; sie lässt sich im Dashboard unter «Shared Variables» löschen.

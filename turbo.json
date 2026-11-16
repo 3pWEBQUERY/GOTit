@@ -1,15 +1,64 @@
 {
   "$schema": "https://turborepo.com/schema.json",
   "tasks": {
-    "generate": { "cache": false },
-    "build": {
-      "dependsOn": ["^generate", "generate", "^build"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**"],
-      "env": ["APP_NAME", "APP_URL", "NODE_ENV"]
+    "generate": {
+      "cache": false
     },
-    "lint": { "dependsOn": ["^generate", "generate"] },
-    "typecheck": { "dependsOn": ["^generate", "generate"] },
-    "test": { "dependsOn": ["^generate", "generate"] },
-    "dev": { "dependsOn": ["^generate", "generate"], "cache": false, "persistent": true }
-  }
+    "build": {
+      "dependsOn": [
+        "^generate",
+        "generate",
+        "^build"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "dist/**"
+      ],
+      "env": [
+        "APP_NAME",
+        "APP_URL",
+        "NODE_ENV"
+      ]
+    },
+    "lint": {
+      "dependsOn": [
+        "^generate",
+        "generate"
+      ]
+    },
+    "typecheck": {
+      "dependsOn": [
+        "^generate",
+        "generate"
+      ]
+    },
+    "test": {
+      "dependsOn": [
+        "^generate",
+        "generate"
+      ]
+    },
+    "dev": {
+      "dependsOn": [
+        "^generate",
+        "generate"
+      ],
+      "cache": false,
+      "persistent": true
+    }
+  },
+  "globalPassThroughEnv": [
+    "DATABASE_URL",
+    "REDIS_URL",
+    "BETTER_AUTH_SECRET",
+    "AGE_GATE_SECRET",
+    "APP_URL",
+    "APP_ENV",
+    "MAIL_TRANSPORT",
+    "SMTP_URL",
+    "MAIL_FROM",
+    "ENABLE_DEV_UI",
+    "CI"
+  ]
 }

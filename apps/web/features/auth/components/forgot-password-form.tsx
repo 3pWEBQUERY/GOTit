@@ -71,7 +71,7 @@ export function ForgotPasswordForm({ redirectTo, signInHref }: { redirectTo: str
         value={form.values.email}
         error={message(form.errors.email)}
         onChange={(event) => form.setValue("email", event.target.value)}
-        onBlur={() => form.blur("email")}
+        onBlur={(event) => form.blur("email", event.relatedTarget)}
       />
       <Button type="submit" variant="primary" width="full" loading={pending}>
         {t("submit")}

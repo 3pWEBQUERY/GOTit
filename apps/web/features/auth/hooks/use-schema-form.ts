@@ -13,8 +13,12 @@ export interface SchemaForm<Values extends object, Output> {
   /** Ob schon einmal gesendet wurde; erst dann erscheint die Zusammenfassung oben. */
   submitted: boolean;
   setValue: <Name extends keyof Values>(name: Name, value: Values[Name], options?: { validate?: boolean }) => void;
-  /** Prüfung beim Verlassen des Felds (PRD 13), nicht beim Tippen. */
-  blur: (name: keyof Values & string) => void;
+  /**
+   * Prüfung beim Verlassen des Felds (PRD 13), nicht beim Tippen. Geht der
+   * Fokus auf den Senden-Button, prüft das Senden; sonst verschiebt die neue
+   * Fehlermeldung den Button unter dem Klick.
+   */
+  blur: (name: keyof Values & string, nextFocus?: EventTarget | null) => void;
   /** Prüft alles, setzt die Fehler und liefert die geprüften Daten oder die Fehler. */
   validate: () => { ok: true; data: Output } | { ok: false; errors: FieldErrors };
   /** Fehler vom Server (Server Action) übernehmen. */
@@ -36,6 +40,11 @@ export function useSchemaForm<Values extends object, Schema extends z.ZodType>(
   const [errors, setErrorState] = useState<FieldErrors>({});
   const [submitted, setSubmitted] = useState(false);
   const latest = useRef(values);
+  /** Werte zum Zeitpunkt der letzten Prüfung; unverändert verlassene Felder behalten ihre Meldung (auch die vom Server). */
+  const checked = useRef<Partial<Values>>({});
+  const remember = useCallback((current: Values) => {
+    checked.current = { ...current };
+  }, []);
 
   const errorsFor = useCallback(
     (current: Values): FieldErrors => {
@@ -67,10 +76,20 @@ export function useSchemaForm<Values extends object, Schema extends z.ZodType>(
     [revalidateField],
   );
 
-  const blur = useCallback((name: keyof Values & string) => revalidateField(name, latest.current), [revalidateField]);
+  const blur = useCallback(
+    (name: keyof Values & string, nextFocus?: EventTarget | null) => {
+      if (nextFocus instanceof HTMLButtonElement && nextFocus.type === "submit") return;
+      const current = latest.current;
+      if (name in checked.current && Object.is(checked.current[name], current[name])) return;
+      checked.current = { ...checked.current, [name]: current[name] };
+      revalidateField(name, current);
+    },
+    [revalidateField],
+  );
 
   const validate = useCallback((): { ok: true; data: z.output<Schema> } | { ok: false; errors: FieldErrors } => {
     setSubmitted(true);
+    remember(latest.current);
     const result = schema.safeParse(toInput(latest.current));
     if (result.success) {
       setErrorState({});
@@ -79,12 +98,16 @@ export function useSchemaForm<Values extends object, Schema extends z.ZodType>(
     const next = fieldErrorsFromZod(result.error.issues);
     setErrorState(next);
     return { ok: false, errors: next };
-  }, [schema, toInput]);
+  }, [schema, toInput, remember]);
 
-  const setErrors = useCallback((next: FieldErrors) => {
-    setSubmitted(true);
-    setErrorState(next);
-  }, []);
+  const setErrors = useCallback(
+    (next: FieldErrors) => {
+      setSubmitted(true);
+      remember(latest.current);
+      setErrorState(next);
+    },
+    [remember],
+  );
 
   return { values, errors, submitted, setValue, blur, validate, setErrors };
 }

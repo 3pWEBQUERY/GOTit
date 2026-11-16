@@ -1,14 +1,14 @@
 import { randomBytes } from "node:crypto";
 import { getDb } from "@app/db";
 import { draftSlug } from "./policy";
-import type { AccountTypeInput } from "./schemas";
+import type { AccountTypeInput, OrganizationKindInput } from "./schemas";
 
 /**
  * Legt nach der Registrierung an, was der Kontotyp braucht: ein Anbieterprofil
  * im Entwurf oder eine Organisation im Entwurf mit dem Konto als Inhaber.
  * Öffentlich wird davon nichts ohne Prüfung und Freigabe (PRD 16.1).
  */
-export async function provisionAccountType(userId: string, type: AccountTypeInput, names: { name: string; organizationName?: string | undefined }): Promise<void> {
+export async function provisionAccountType(userId: string, type: AccountTypeInput, names: { name: string; organizationName?: string | undefined; organizationKind?: OrganizationKindInput | undefined }): Promise<void> {
   const db = getDb();
   const suffix = randomBytes(3).toString("hex");
   await db.user.update({ where: { id: userId }, data: { accountType: type, ageConfirmedAt: new Date() } });
@@ -20,7 +20,7 @@ export async function provisionAccountType(userId: string, type: AccountTypeInpu
       data: {
         slug: draftSlug(names.organizationName, suffix),
         name: names.organizationName,
-        kind: "CLUB",
+        kind: names.organizationKind ?? "CLUB",
         status: "DRAFT",
         members: { create: { userId, role: "OWNER" } },
       },

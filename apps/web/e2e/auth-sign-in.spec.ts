@@ -96,11 +96,13 @@ test.describe("Anmeldung (PRD 7.4, Abnahme 8–12)", () => {
     const email = uniqueEmail("zweifaktor");
     await registerMember(page, email, true);
 
-    const enable = await page.request.post("/api/auth/two-factor/enable", { data: { password: PASSWORD } });
-    expect(enable.ok()).toBe(true);
+    // Better Auth prüft bei Anfragen mit Sitzungscookie die Herkunft (CSRF-Schutz).
+    const origin = new URL(page.url()).origin;
+    const enable = await page.request.post("/api/auth/two-factor/enable", { data: { password: PASSWORD }, headers: { origin } });
+    expect(enable.ok(), await enable.text()).toBe(true);
     const { totpURI } = (await enable.json()) as { totpURI: string };
     const secret = secretFromOtpauth(totpURI);
-    const verify = await page.request.post("/api/auth/two-factor/verify-totp", { data: { code: totp(secret) } });
+    const verify = await page.request.post("/api/auth/two-factor/verify-totp", { data: { code: totp(secret) }, headers: { origin } });
     expect(verify.ok()).toBe(true);
     await page.context().clearCookies();
 

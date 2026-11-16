@@ -3,6 +3,9 @@ import { z } from "zod";
 /** Ein Schema pro Vorgang, geteilt zwischen Formular und Server (PRD 4.2). Fehlertexte sind Schlüssel. */
 export const ACCOUNT_TYPES = ["MEMBER", "PROVIDER", "ORGANIZATION"] as const;
 export type AccountTypeInput = (typeof ACCOUNT_TYPES)[number];
+/** Art der Organisation bei Kontotyp ORGANIZATION (PRD 3: Club oder Agentur). */
+export const ORGANIZATION_KINDS = ["CLUB", "AGENCY"] as const;
+export type OrganizationKindInput = (typeof ORGANIZATION_KINDS)[number];
 
 export const PASSWORD_MIN_LENGTH = 12;
 export const USERNAME_PATTERN = /^[a-z0-9](?:[a-z0-9._-]{1,28}[a-z0-9])$/;
@@ -15,6 +18,7 @@ export const registrationSchema = z
     accountType: z.enum(ACCOUNT_TYPES, "accountTypeRequired"),
     name: z.string().trim().min(2, "nameTooShort").max(80, "nameTooLong"),
     organizationName: z.string().trim().max(120, "organizationNameTooLong").optional(),
+    organizationKind: z.enum(ORGANIZATION_KINDS).optional(),
     email,
     password,
     ageConfirmed: z.literal(true, "ageRequired"),
@@ -23,6 +27,11 @@ export const registrationSchema = z
   .refine((input) => input.accountType !== "ORGANIZATION" || (input.organizationName?.length ?? 0) >= 2, {
     path: ["organizationName"],
     message: "organizationNameRequired",
+    // Auch prüfen, wenn andere Felder noch Fehler haben: Alle Fehler erscheinen auf einmal (PRD 13).
+    when: (payload) => {
+      const value = payload.value as { accountType?: unknown; organizationName?: unknown };
+      return value.accountType === "ORGANIZATION" && (typeof value.organizationName === "string" || value.organizationName === undefined);
+    },
   });
 export type RegistrationInput = z.input<typeof registrationSchema>;
 
