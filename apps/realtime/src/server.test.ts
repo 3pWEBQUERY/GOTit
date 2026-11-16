@@ -1,7 +1,7 @@
 import type { AddressInfo } from "node:net";
-import { createRealtimeToken } from "@app/auth";
+import { createRealtimeToken } from "@app/auth/realtime-token";
 import { createLogger } from "@app/core/observability";
-import { userChannel } from "@app/jobs";
+import { userChannel } from "@app/jobs/redis";
 import { afterEach, describe, expect, it } from "vitest";
 import { WebSocket } from "ws";
 import { createRealtimeServer, type Subscriber } from "./server";

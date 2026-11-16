@@ -1,7 +1,7 @@
 import { createServer, type Server } from "node:http";
-import { verifyRealtimeToken } from "@app/auth";
+import { verifyRealtimeToken } from "@app/auth/realtime-token";
 import type { Logger } from "@app/core/observability";
-import { USER_CHANNEL_PREFIX } from "@app/jobs";
+import { USER_CHANNEL_PREFIX } from "@app/jobs/redis";
 import { WebSocketServer, type WebSocket } from "ws";
 
 /** Der Teil eines Redis-Abonnenten, den der Dienst braucht. */

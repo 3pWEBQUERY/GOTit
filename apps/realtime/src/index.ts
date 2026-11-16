@@ -1,5 +1,5 @@
 import { createLogger } from "@app/core/observability";
-import { createRedisConnection } from "@app/jobs";
+import { createRedisConnection } from "@app/jobs/redis";
 import { createRealtimeServer } from "./server";
 
 const logger = createLogger("realtime");

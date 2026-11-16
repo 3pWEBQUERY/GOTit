@@ -15,10 +15,6 @@
     "@app/auth": "workspace:*",
     "@app/core": "workspace:*",
     "@app/jobs": "workspace:*",
-    "better-auth": "^1.7.25",
-    "@prisma/adapter-pg": "^7.10.1",
-    "@prisma/client": "^7.10.1",
-    "pg": "^8.23.1",
     "ioredis": "^5.6.0",
     "ws": "^8.23.0"
   },
