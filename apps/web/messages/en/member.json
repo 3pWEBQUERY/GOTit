@@ -1,1 +1,39 @@
-{}
+{
+  "overview": {
+    "metaTitle": "Overview",
+    "title": "Overview",
+    "greeting": "Hello {name}",
+    "loading": "Loading overview",
+    "requests": {
+      "title": "Open requests",
+      "emptyTitle": "No open requests",
+      "emptyText": "As soon as you send an appointment request to a profile, you see it here until it is answered."
+    },
+    "conversations": {
+      "title": "Unread conversations",
+      "emptyTitle": "No unread conversations",
+      "emptyText": "New messages from providers appear here until you have read them."
+    },
+    "appointments": {
+      "title": "Upcoming appointments",
+      "emptyTitle": "No upcoming appointments",
+      "emptyText": "Confirmed appointments appear here, the next one at the top."
+    },
+    "recentlyViewed": {
+      "title": "Recently viewed",
+      "emptyTitle": "No profiles viewed yet",
+      "emptyText": "Profiles you open can be found here again."
+    },
+    "discover": "Discover profiles",
+    "shortcuts": {
+      "title": "Shortcuts",
+      "favourites": "Favourites",
+      "savedSearches": "Saved searches",
+      "reviews": "Reviews"
+    },
+    "settingsTitle": "Settings",
+    "errorTitle": "The overview could not be loaded.",
+    "errorDescription": "Your account and your data are unchanged.",
+    "reload": "Reload overview"
+  }
+}

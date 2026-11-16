@@ -1,1 +1,39 @@
-{}
+{
+  "overview": {
+    "metaTitle": "Panoramica",
+    "title": "Panoramica",
+    "greeting": "Ciao {name}",
+    "loading": "Caricamento della panoramica",
+    "requests": {
+      "title": "Richieste aperte",
+      "emptyTitle": "Nessuna richiesta aperta",
+      "emptyText": "Appena invii una richiesta di appuntamento a un profilo, la vedi qui finché non riceve risposta."
+    },
+    "conversations": {
+      "title": "Conversazioni non lette",
+      "emptyTitle": "Nessuna conversazione non letta",
+      "emptyText": "I nuovi messaggi dei fornitori compaiono qui finché non li leggi."
+    },
+    "appointments": {
+      "title": "Prossimi appuntamenti",
+      "emptyTitle": "Nessun appuntamento in programma",
+      "emptyText": "Gli appuntamenti confermati compaiono qui, il prossimo in cima."
+    },
+    "recentlyViewed": {
+      "title": "Visti di recente",
+      "emptyTitle": "Ancora nessun profilo visto",
+      "emptyText": "Qui ritrovi i profili che apri."
+    },
+    "discover": "Scopri i profili",
+    "shortcuts": {
+      "title": "Collegamenti rapidi",
+      "favourites": "Preferiti",
+      "savedSearches": "Ricerche salvate",
+      "reviews": "Recensioni"
+    },
+    "settingsTitle": "Impostazioni",
+    "errorTitle": "Non è stato possibile caricare la panoramica.",
+    "errorDescription": "Il tuo account e i tuoi dati sono invariati.",
+    "reload": "Ricarica la panoramica"
+  }
+}

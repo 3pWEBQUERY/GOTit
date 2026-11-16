@@ -1,1 +1,39 @@
-{}
+{
+  "overview": {
+    "metaTitle": "Übersicht",
+    "title": "Übersicht",
+    "greeting": "Hallo {name}",
+    "loading": "Übersicht wird geladen",
+    "requests": {
+      "title": "Offene Anfragen",
+      "emptyTitle": "Keine offenen Anfragen",
+      "emptyText": "Sobald du einem Profil eine Terminanfrage sendest, siehst du sie hier, bis sie beantwortet ist."
+    },
+    "conversations": {
+      "title": "Ungelesene Unterhaltungen",
+      "emptyTitle": "Keine ungelesenen Unterhaltungen",
+      "emptyText": "Neue Nachrichten von Anbietern erscheinen hier, bis du sie gelesen hast."
+    },
+    "appointments": {
+      "title": "Nächste Termine",
+      "emptyTitle": "Keine anstehenden Termine",
+      "emptyText": "Bestätigte Termine erscheinen hier, der nächste zuoberst."
+    },
+    "recentlyViewed": {
+      "title": "Zuletzt angesehen",
+      "emptyTitle": "Noch keine Profile angesehen",
+      "emptyText": "Profile, die du öffnest, findest du hier wieder."
+    },
+    "discover": "Profile entdecken",
+    "shortcuts": {
+      "title": "Kurzlinks",
+      "favourites": "Favoriten",
+      "savedSearches": "Gespeicherte Suchen",
+      "reviews": "Bewertungen"
+    },
+    "settingsTitle": "Einstellungen",
+    "errorTitle": "Die Übersicht liess sich nicht laden.",
+    "errorDescription": "Dein Konto und deine Daten sind unverändert.",
+    "reload": "Übersicht neu laden"
+  }
+}

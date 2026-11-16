@@ -1,1 +1,39 @@
-{}
+{
+  "overview": {
+    "metaTitle": "Aperçu",
+    "title": "Aperçu",
+    "greeting": "Bonjour {name}",
+    "loading": "Chargement de l’aperçu",
+    "requests": {
+      "title": "Demandes en cours",
+      "emptyTitle": "Aucune demande en cours",
+      "emptyText": "Dès que tu envoies une demande de rendez-vous à un profil, tu la vois ici jusqu’à ce qu’elle reçoive une réponse."
+    },
+    "conversations": {
+      "title": "Conversations non lues",
+      "emptyTitle": "Aucune conversation non lue",
+      "emptyText": "Les nouveaux messages des prestataires apparaissent ici jusqu’à ce que tu les lises."
+    },
+    "appointments": {
+      "title": "Prochains rendez-vous",
+      "emptyTitle": "Aucun rendez-vous à venir",
+      "emptyText": "Les rendez-vous confirmés apparaissent ici, le prochain en haut."
+    },
+    "recentlyViewed": {
+      "title": "Consultés récemment",
+      "emptyTitle": "Aucun profil consulté pour l’instant",
+      "emptyText": "Tu retrouves ici les profils que tu ouvres."
+    },
+    "discover": "Découvrir des profils",
+    "shortcuts": {
+      "title": "Raccourcis",
+      "favourites": "Favoris",
+      "savedSearches": "Recherches enregistrées",
+      "reviews": "Avis"
+    },
+    "settingsTitle": "Paramètres",
+    "errorTitle": "L’aperçu n’a pas pu être chargé.",
+    "errorDescription": "Ton compte et tes données sont inchangés.",
+    "reload": "Recharger l’aperçu"
+  }
+}
