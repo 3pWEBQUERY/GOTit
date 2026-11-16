@@ -23,6 +23,8 @@ model User {
   passkeys            Passkey[]
   preference          UserPreference?
   securityEvents      SecurityEvent[]
+  identityChecks      IdentityCheck[]
+  internalRoles       InternalRoleAssignment[]
   providerProfile     ProviderProfile?
   organizationMembers OrganizationMember[]
 

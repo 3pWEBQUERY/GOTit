@@ -1,0 +1,38 @@
+// Modul admin: interne Rollen und Audit-Log (PRD 3, 7.8, 12.4, 16.2).
+enum InternalRole {
+  SUPER_ADMIN
+  PLATFORM_ADMIN
+  MODERATOR
+  TRUST_SAFETY
+  SUPPORT
+  FINANCE
+  CONTENT_EDITOR
+}
+
+model InternalRoleAssignment {
+  userId    String
+  role      InternalRole
+  grantedAt DateTime     @default(now())
+  grantedBy String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, role])
+  @@map("internal_role_assignment")
+}
+
+// Jede Entscheidung und jeder Zugriff auf sensible Daten, ohne Kopie des Inhalts (PRD 16.2).
+model AuditEvent {
+  id         String   @id @default(cuid(2))
+  actorId    String?
+  action     String
+  // Betroffenes Objekt, zum Beispiel «profile_review:abc».
+  target     String
+  // Begründung, wo verlangt (Entscheid, Aufdecken sensibler Daten).
+  reason     String?
+  createdAt  DateTime @default(now())
+
+  @@index([target, createdAt])
+  @@index([actorId, createdAt])
+  @@map("audit_event")
+}

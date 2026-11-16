@@ -59,6 +59,7 @@
     "SMTP_URL",
     "MAIL_FROM",
     "ENABLE_DEV_UI",
-    "CI"
+    "CI",
+    "IDENTITY_PROVIDER"
   ]
 }

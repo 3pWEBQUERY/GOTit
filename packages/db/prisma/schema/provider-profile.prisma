@@ -1,0 +1,38 @@
+// Modul provider-profile: Inhalte eines Anbieterprofils, die Onboarding und Studio pflegen.
+model ProviderRegion {
+  providerProfileId String
+  regionId          String
+
+  providerProfile ProviderProfile @relation(fields: [providerProfileId], references: [id], onDelete: Cascade)
+  region          Region          @relation(fields: [regionId], references: [id])
+
+  @@id([providerProfileId, regionId])
+  @@map("provider_region")
+}
+
+model ProviderService {
+  providerProfileId String
+  categoryId        String
+
+  providerProfile ProviderProfile @relation(fields: [providerProfileId], references: [id], onDelete: Cascade)
+  category        Category        @relation(fields: [categoryId], references: [id])
+
+  @@id([providerProfileId, categoryId])
+  @@map("provider_service")
+}
+
+// Preise als echte Tabelle mit Änderungsdatum (PRD 10.1).
+model RateItem {
+  id                String   @id @default(cuid(2))
+  providerProfileId String
+  durationMinutes   Int
+  priceChf          Int
+  note              String?
+  sortOrder         Int      @default(0)
+  updatedAt         DateTime @updatedAt
+
+  providerProfile ProviderProfile @relation(fields: [providerProfileId], references: [id], onDelete: Cascade)
+
+  @@index([providerProfileId, sortOrder])
+  @@map("rate_item")
+}

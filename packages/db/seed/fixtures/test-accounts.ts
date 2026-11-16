@@ -11,6 +11,7 @@ export const TEST_PASSWORD = "nur-fuer-tests-0000";
 interface TestAccount {
   key: string;
   name: string;
+  internalRole?: "SUPER_ADMIN" | "SUPPORT";
   provider?: { slug: string; displayName: string; status: ProviderStatus };
   organization?: { slug: string; name: string };
 }
@@ -20,6 +21,9 @@ export const testAccounts: TestAccount[] = [
   { key: "anbieter", name: "Testanbieter Fiktiv", provider: { slug: "testprofil-fiktiv", displayName: "Testprofil Fiktiv", status: "PUBLISHED" } },
   { key: "entwurf", name: "Testentwurf Fiktiv", provider: { slug: "testentwurf-fiktiv", displayName: "Testentwurf Fiktiv", status: "DRAFT" } },
   { key: "club", name: "Testclub-Inhaber Fiktiv", organization: { slug: "testclub-fiktiv", name: "Testclub Fiktiv" } },
+  // Interne Rollen ohne 2FA: Die Admin-Anwendung verlangt den zweiten Faktor, Tests richten ihn selbst ein.
+  { key: "admin", name: "Testadmin Fiktiv", internalRole: "SUPER_ADMIN" },
+  { key: "support", name: "Testsupport Fiktiv", internalRole: "SUPPORT" },
 ];
 
 export async function seedTestAccounts(db: PrismaClient): Promise<void> {
@@ -37,6 +41,13 @@ export async function seedTestAccounts(db: PrismaClient): Promise<void> {
       create: { id: `${id}_credential`, accountId: id, providerId: "credential", userId: id, password },
       update: { password },
     });
+    if (account.internalRole) {
+      await db.internalRoleAssignment.upsert({
+        where: { userId_role: { userId: id, role: account.internalRole } },
+        create: { userId: id, role: account.internalRole, grantedBy: "seed" },
+        update: {},
+      });
+    }
     if (account.provider) {
       await db.providerProfile.upsert({ where: { userId: id }, create: { userId: id, ...account.provider }, update: { status: account.provider.status } });
     }

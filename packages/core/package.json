@@ -16,7 +16,11 @@
     "./rate-limit": "./src/rate-limit/index.ts",
     "./retention": "./src/retention/index.ts",
     "./account": "./src/account/index.ts",
-    "./account/schemas": "./src/account/schemas.ts"
+    "./account/schemas": "./src/account/schemas.ts",
+    "./verification": "./src/verification/index.ts",
+    "./onboarding": "./src/onboarding/index.ts",
+    "./onboarding/schemas": "./src/onboarding/schemas.ts",
+    "./admin": "./src/admin/index.ts"
   },
   "scripts": {
     "lint": "eslint .",

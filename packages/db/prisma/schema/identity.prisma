@@ -37,11 +37,23 @@ model ProviderProfile {
   slug        String         @unique
   displayName String
   status      ProviderStatus @default(DRAFT)
+  // Inhalte aus dem Onboarding (PRD 11.8) und dem Profil-Editor (PRD 11.2).
+  description String?
+  languages   String[]       @default([])
+  // Erledigte Onboarding-Schritte, zum Beispiel ["identity", "regions"].
+  onboardingSteps String[]   @default([])
+  submittedAt DateTime?
+  publishedAt DateTime?
   createdAt   DateTime       @default(now())
   updatedAt   DateTime       @updatedAt
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user     User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  regions  ProviderRegion[]
+  services ProviderService[]
+  rates    RateItem[]
+  reviews  ProfileReview[]
 
+  @@index([status])
   @@map("provider_profile")
 }
 

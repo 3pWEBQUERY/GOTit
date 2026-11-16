@@ -13,7 +13,8 @@
     "seed": "tsx seed/run.ts",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "seed:fixtures": "tsx seed/run.ts --fixtures"
+    "seed:fixtures": "tsx seed/run.ts --fixtures",
+    "grant-role": "tsx scripts/grant-role.ts"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.10.1",

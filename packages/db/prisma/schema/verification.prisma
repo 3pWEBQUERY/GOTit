@@ -1,0 +1,60 @@
+// Modul verification: Volljährigkeits- und Identitätsprüfung beim Dienstleister (PRD 16.1).
+// Gespeichert werden nur Ergebnis, Zeitpunkt und Ablauf, nie Dokumentkopien.
+enum IdentityCheckStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  EXPIRED
+  CANCELLED
+}
+
+model IdentityCheck {
+  id             String              @id @default(cuid(2))
+  userId         String
+  // Kennung des Dienstleisters, zum Beispiel «test» oder später der gewählte Anbieter.
+  provider       String
+  // Referenz der Prüfung beim Dienstleister; nicht erratbar, eindeutig.
+  externalRef    String              @unique
+  status         IdentityCheckStatus @default(PENDING)
+  ageOver18      Boolean?
+  livenessPassed Boolean?
+  checkedAt      DateTime?
+  expiresAt      DateTime?
+  // Grund als Schlüssel, ohne Dokumentdaten (zum Beispiel «document-unreadable»).
+  failureReason  String?
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+  @@map("identity_check")
+}
+
+enum ReviewDecision {
+  APPROVED
+  CHANGES_REQUESTED
+  REJECTED
+}
+
+// Manuelle Freigabe eines Anbieterprofils (PRD 16.1). Jede Einreichung ist ein Fall.
+model ProfileReview {
+  id                String          @id @default(cuid(2))
+  providerProfileId String
+  submittedAt       DateTime        @default(now())
+  assignedToId      String?
+  decidedAt         DateTime?
+  decidedById       String?
+  decision          ReviewDecision?
+  // Begründung (Pflicht) und Regelbezug (PRD 12.4).
+  reason            String?
+  rule              String?
+  // Grund pro Feld bei Rückgabe zur Korrektur, zum Beispiel {"description": "…"}.
+  fieldNotes        Json            @default("{}")
+
+  providerProfile ProviderProfile @relation(fields: [providerProfileId], references: [id], onDelete: Cascade)
+
+  @@index([decision, submittedAt])
+  @@index([providerProfileId, submittedAt])
+  @@map("profile_review")
+}
