@@ -1,33 +1,51 @@
 # Betrieb auf Railway
 
-Alles läuft in einem Railway-Projekt in einer EU-Region (PRD 14.2). Die Konfiguration der Dienste liegt als Code im Repo; Geheimnisse liegen ausschliesslich als Railway-Variablen vor, pro Umgebung getrennt.
+Projekt **GOTit** im Workspace «3pwebquery's Projects», Umgebung `production`, alles in der EU (PRD 14.2): Dienste und Volumes in `europe-west4` (Amsterdam), Buckets in `ams`.
+
+| | URL |
+| --- | --- |
+| web | https://web-production-fe2fa516.up.railway.app |
+| realtime | wss://realtime-production-b88d47b7.up.railway.app |
 
 ## Dienste
 
-| Dienst | Config-Datei (absoluter Pfad im Repo) | Öffentlich | Healthcheck |
-| --- | --- | --- | --- |
-| `web` | `/apps/web/railway.json` | Ja | `/api/health` (prüft die Datenbank) |
-| `realtime` | `/apps/realtime/railway.json` | Ja, eigene Subdomain | `/health` |
-| `worker` | `/apps/worker/railway.json` | Nein | – |
-| `cron` | `/apps/cron/railway.json` | Nein | – |
-| Postgres, Redis | Railway-Vorlagen | Nein, nur privates Netz | – |
+| Dienst | Quelle | Build | Start | Healthcheck | Öffentlich |
+| --- | --- | --- | --- | --- | --- |
+| `web` | GitHub `3pWEBQUERY/GOTit` | `pnpm turbo run build --filter=@app/web` | `pnpm --filter @app/web start` | `/api/health` (prüft die Datenbank) | Ja |
+| `realtime` | GitHub `3pWEBQUERY/GOTit` | `pnpm turbo run build --filter=@app/realtime` | `pnpm --filter @app/realtime start` | `/health` | Ja |
+| `worker` | GitHub `3pWEBQUERY/GOTit` | `pnpm turbo run build --filter=@app/worker` | `pnpm --filter @app/worker start` | – | Nein |
+| `Postgres` | Vorlage (Postgres 18) | – | – | – | Nein |
+| `Redis` | Vorlage (Redis 8) | – | – | – | Nein |
+| Bucket `originals` | – | – | – | – | privat |
+| Bucket `derivatives` | – | – | – | – | privat |
 
-Das Repo ist ein geteiltes Monorepo: Das Root Directory jedes Dienstes bleibt `/`, und in den Dienst-Einstellungen wird der Pfad der Config-Datei gesetzt. Railway folgt dem Root Directory dabei nicht; der Pfad muss absolut sein.
-
-`cron` bekommt pro Aufgabe einen eigenen Railway-Dienst mit Cron-Zeitplan und dem Startbefehl `pnpm --filter @app/cron start <aufgabe>`. Solange `apps/cron/src/tasks.ts` leer ist, wird kein solcher Dienst angelegt.
+- Root Directory aller Dienste ist `/` (geteiltes Monorepo). Builder ist Railpack; es liest Node-Version (`.nvmrc`) und pnpm-Version (`packageManager`).
+- **Pre-Deploy von `web`:** `pnpm release` führt die Migrationen aus und lädt die Referenzdaten (Regionen, Flags). Fiktive Testkonten werden dort nie geladen.
+- **Watch-Pfade:** Jeder Dienst baut nur bei Änderungen an seinem Ordner und den Paketen, die er nutzt.
+- **Neustart:** bei Fehler, höchstens 5 Versuche.
+- **`cron`:** Bekommt pro Aufgabe einen eigenen Dienst mit Zeitplan und dem Start `pnpm --filter @app/cron start <aufgabe>`. Solange `apps/cron/src/tasks.ts` leer ist, gibt es keinen solchen Dienst.
 
 ## Variablen
 
-| Variable | Dienste | Quelle |
+Geteilt (Umgebung `production`): `BETTER_AUTH_SECRET`, `AGE_GATE_SECRET`, `APP_NAME`. Dienste referenzieren sie mit `${{shared.NAME}}`.
+
+| Variable | Dienste | Wert |
 | --- | --- | --- |
-| `DATABASE_URL` | web, worker, cron | Referenz `${{Postgres.DATABASE_URL}}` |
-| `REDIS_URL` | web, realtime, worker | Referenz `${{Redis.REDIS_URL}}` |
-| `BETTER_AUTH_SECRET` | web, realtime | pro Umgebung erzeugt, mindestens 32 Zeichen |
-| `AGE_GATE_SECRET` | web | pro Umgebung erzeugt, mindestens 32 Zeichen |
-| `APP_URL`, `APP_NAME` | web | pro Umgebung |
+| `DATABASE_URL` | web, worker | `${{Postgres.DATABASE_URL}}` |
+| `REDIS_URL` | web, realtime, worker | `${{Redis.REDIS_URL}}` |
+| `BETTER_AUTH_SECRET` | web, realtime | `${{shared.BETTER_AUTH_SECRET}}` |
+| `AGE_GATE_SECRET` | web | `${{shared.AGE_GATE_SECRET}}` |
+| `APP_URL` | web | `https://${{RAILWAY_PUBLIC_DOMAIN}}` |
+| `REALTIME_URL` | web | `wss://${{realtime.RAILWAY_PUBLIC_DOMAIN}}` |
 
-Migrationen laufen als Pre-Deploy-Schritt von `web`, zusammen mit den Referenzdaten (Regionen, Flags). Fiktive Testkonten werden in der Produktion nie geladen; `seed/run.ts` bricht dort ab.
+`NODE_ENV` wird bewusst nicht gesetzt: Mit `production` liesse `pnpm install` beim Build die Entwicklungsabhängigkeiten weg (Next.js-Build, Prisma-CLI, Turbo). `next start` setzt den Produktionsmodus selbst. Eine geteilte `NODE_ENV` liegt noch in der Umgebung, wird aber von keinem Dienst referenziert und wirkt daher nicht; sie lässt sich im Dashboard unter «Shared Variables» löschen.
 
-## Stand
+## Konfiguration als Code
 
-Die Konfiguration ist geschrieben und lokal gebaut. Ein Railway-Projekt für diese Plattform ist noch **nicht** angelegt: Das kostet Geld und setzt laut PRD 16.3 die schriftliche Bestätigung von Railway zur Acceptable Use Policy voraus. Beides entscheidet Alexander.
+Die PRD verlangt `railway.json` pro Dienst. Railway nimmt für neu angelegte Dienste keine Config-Datei mehr an; der Nachfolger ist Infrastructure as Code (`.railway/railway.ts`, angewendet mit der Railway-CLI). Bis das eingerichtet ist, gilt diese Datei als Beschreibung der Soll-Konfiguration, und die Werte sind direkt an den Diensten gesetzt (siehe `docs/decisions/0007-railway-konfiguration.md`).
+
+## Noch nicht eingerichtet
+
+- Umgebung `staging` und PR-Umgebungen (PRD 14.2).
+- Tägliche Backups von Postgres mit getestetem Restore und verschlüsseltem Dump in einen dritten Bucket (PRD 14.2): kommt mit dem `cron`-Dienst in Schritt 1.14.
+- Bucket-Zugangsdaten für `web` und `worker`: kommen mit der Medien-Pipeline in Schritt 1.6.

@@ -14,7 +14,8 @@
     "test:e2e": "pnpm --filter @app/web test:e2e",
     "check:file-size": "node packages/config/scripts/check-file-size.mjs",
     "db:migrate": "pnpm --filter @app/db migrate:deploy",
-    "db:seed": "pnpm --filter @app/db seed"
+    "db:seed": "pnpm --filter @app/db seed",
+    "release": "pnpm --filter @app/db migrate:deploy && pnpm --filter @app/db seed"
   },
   "devDependencies": {
     "turbo": "^2.11.11",

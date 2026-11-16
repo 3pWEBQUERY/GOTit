@@ -13,7 +13,7 @@ Kurz: Fundament, Designsystem und Shell sind gebaut und lokal vollständig getes
 - ESLint mit `max-lines` 600 (Fehler), `max-lines-per-function` 120 (Warnung), `page.tsx` höchstens 80 Zeilen, Verbot tiefer Importe, TypeScript `strict` ohne `any`.
 - Dateigrössen-Prüfung `pnpm check:file-size` für `.ts`, `.tsx`, `.css`, `.prisma`, `.json` unter `apps/` und `packages/`; verbietet zusätzlich `utils.ts` und `part1.tsx`.
 - CI (`.github/workflows/ci.yml`): Dateigrösse, Lint, Typen, Unit-Tests, Abhängigkeits-Scan, End-to-End mit Postgres und Redis.
-- Railway-Konfiguration als Code pro Dienst (`apps/*/railway.json`), Healthchecks, Migration als Pre-Deploy-Schritt; Beschreibung in `docs/railway.md`.
+- Railway-Projekt mit `web`, `realtime`, `worker`, Postgres, Redis und zwei Buckets in der EU; Konfiguration in `docs/railway.md`, Entscheid zur fehlenden `railway.json` in `docs/decisions/0007`.
 - Echtzeit-Dienst: nimmt nur Verbindungen mit kurzlebigem, signiertem Token an und stellt Ereignisse nur dem adressierten Konto zu. Worker und Cron sind lauffähige Rahmen; Jobs und Aufgaben kommen mit ihren Schritten.
 
 ### 1.2 Designsystem
