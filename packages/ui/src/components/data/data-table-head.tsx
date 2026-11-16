@@ -21,7 +21,7 @@ export interface DataTableHeadProps<Row> {
  * erster Klick aufsteigend, jeder weitere kehrt die Richtung um.
  */
 export function DataTableHead<Row>({ columns, sort, onSortChange, density, selectAll, rowActionsLabel }: DataTableHeadProps<Row>) {
-  const cell = cn("sticky top-(--data-table-sticky-top,0px) z-10 border-b border-border-strong bg-bg text-label text-ink-muted", density === "compact" ? "h-10 px-3" : "h-12 px-4");
+  const cell = cn("sticky top-[var(--data-table-sticky-top,0px)] z-10 border-b border-border-strong bg-bg text-label text-ink-muted", density === "compact" ? "h-10 px-3" : "h-12 px-4");
   return (
     <thead>
       <tr>
