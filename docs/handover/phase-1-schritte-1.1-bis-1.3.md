@@ -2,7 +2,7 @@
 
 **Stand:** 16.11.2026, Branch `claude/trusting-carson-zd6syt`
 
-Kurz: Fundament, Designsystem und Shell sind gebaut und lokal vollständig getestet. Nicht erfüllt ist das Abnahmekriterium von 1.1 «Ein leerer Deploy läuft auf Staging»: Auf Railway ist nichts angelegt (Gründe unten).
+Kurz: Fundament, Designsystem und Shell sind gebaut und vollständig getestet. Die Plattform läuft auf Railway in der Umgebung `production` (Amsterdam). Das Abnahmekriterium von 1.1 verlangt einen Deploy auf **Staging**; diese Umgebung fehlt noch, weil Railway das Anlegen von Umgebungen nur im Dashboard erlaubt (siehe unten).
 
 ## Was gebaut ist
 
@@ -63,7 +63,7 @@ Die End-to-End-Tests belegen die Abnahmekriterien von 1.2 und 1.3:
 
 ## Was nicht geprüft ist
 
-- **Staging-Deploy auf Railway.** Nicht angelegt, weil es Kosten verursacht und PRD 16.3 vorher die schriftliche Bestätigung von Railway zur Acceptable Use Policy verlangt. Das Abnahmekriterium «Ein leerer Deploy läuft auf Staging» ist damit **offen**.
+- **Umgebung `staging` auf Railway.** Die Umgebung `production` läuft: Migration, Referenzdaten, alle Healthchecks, über 130 Anfragen ohne Fehler in der ersten Stunde. `staging` lässt sich nur im Dashboard anlegen (Umgebung duplizieren); Anleitung in `docs/railway.md`. Bis dahin ist das Kriterium «auf Staging» **offen**.
 - **Die CI auf GitHub ist noch nie gelaufen.** Lokal sind dieselben Befehle grün. Ob die GitHub-Runner den Workflow so ausführen (Dienst-Container, Browser-Installation), zeigt erst der erste Lauf.
 - **Echte Geräte:** Glas über Fotos, Blur-Leistung auf Mittelklasse-Android, Safe Areas auf iOS. Geprüft ist nur in Chromium.
 - **Screenreader:** Geprüft sind nur axe und die zugänglichen Namen in Tests, nicht VoiceOver oder NVDA.
@@ -74,7 +74,7 @@ Die End-to-End-Tests belegen die Abnahmekriterien von 1.2 und 1.3:
 ### Braucht eine Entscheidung oder Unterlagen von Alexander
 
 1. **PRD v1.0 fehlt.** v2.0 verweist für Funktionsanforderungen (FR-AUTH bis FR-BUSINESS), Entitäten (12.2, 12.3) und die Abnahmekriterien 20.1 bis 20.7 darauf. Schritt 1.4 und folgende lassen sich ohne sie nur aus v2.0 ableiten. Das Datenmodell ist bis dahin bewusst minimal (`docs/decisions/0003`).
-2. **Railway:** Projekt anlegen, sobald die AUP-Bestätigung vorliegt. Die Konfiguration ist bereit (`docs/railway.md`).
+2. **Railway:** Projekt läuft auf Anweisung von Alexander. Die schriftliche Bestätigung von Railway zur Acceptable Use Policy (PRD 16.3) steht weiterhin aus und bleibt ein Gate vor dem öffentlichen Start.
 3. **Dienstleistungskategorien:** Die PRD nennt keine. Die Navigation zeigt bis dahin nur «Alle Kategorien» (`docs/decisions/0004`).
 4. **Altersprüfung für Besucher:** Umgesetzt als Selbstauskunft. Ob das genügt, ist Teil der rechtlichen Einordnung (`docs/decisions/0002`).
 5. **Produktname:** offen; Voreinstellung «GOTit» über `APP_NAME`.

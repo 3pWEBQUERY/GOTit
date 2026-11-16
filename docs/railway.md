@@ -51,6 +51,11 @@ Nicht eingerichtet: Gate 16.3 der PRD (Anbieter, der die Branche zulässt) ist o
 
 ## Noch nicht eingerichtet
 
-- Umgebung `staging` und PR-Umgebungen (PRD 14.2).
+- **Umgebung `staging`** (PRD 14.2). Railway erlaubt das Anlegen von Umgebungen nur im Dashboard oder mit der CLI:
+  1. Im Projekt GOTit oben die Umgebung `production` duplizieren und `staging` nennen; die gestagten Änderungen prüfen und anwenden.
+  2. In `staging` für `web` und `realtime` je eine Domain erzeugen.
+  3. In `staging` neue Werte für `BETTER_AUTH_SECRET` und `AGE_GATE_SECRET` setzen (die Duplizierung kopiert die Werte aus Produktion; Geheimnisse sind pro Umgebung getrennt).
+  4. Bei Bedarf in `staging` `MAIL_TRANSPORT=outbox` setzen, damit sich die Registrierung ohne echten Versand testen lässt.
+- **PR-Umgebungen:** in den Projekteinstellungen einschalten, sobald Pull Requests genutzt werden.
 - Tägliche Backups von Postgres mit getestetem Restore und verschlüsseltem Dump in einen dritten Bucket (PRD 14.2): kommt mit dem `cron`-Dienst in Schritt 1.14.
 - Bucket-Zugangsdaten für `web` und `worker`: kommen mit der Medien-Pipeline in Schritt 1.6.
