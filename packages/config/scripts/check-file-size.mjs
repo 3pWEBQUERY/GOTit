@@ -16,7 +16,7 @@ function* walk(dir) {
     const path = join(dir, entry);
     const stats = statSync(path);
     if (stats.isDirectory()) {
-      if (!SKIPPED_DIRS.has(entry)) yield* walk(path);
+      if (!SKIPPED_DIRS.has(entry) && !entry.startsWith(".next-")) yield* walk(path);
     } else if (!SKIPPED_FILES.has(entry) && EXTENSIONS.some((ext) => entry.endsWith(ext))) {
       yield path;
     }

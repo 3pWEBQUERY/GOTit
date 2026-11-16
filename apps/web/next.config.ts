@@ -12,6 +12,8 @@ const securityHeaders = [
 ];
 
 const config: NextConfig = {
+  // Eigener Build-Ordner pro paralleler Arbeitskopie (zum Beispiel .next-a), damit sich Builds nicht überschreiben.
+  distDir: process.env.NEXT_DIST_DIR ?? ".next",
   transpilePackages: ["@app/ui", "@app/core", "@app/db", "@app/auth", "@app/jobs"],
   serverExternalPackages: ["@prisma/client", "@prisma/adapter-pg", "pg", "bullmq", "ioredis"],
   poweredByHeader: false,

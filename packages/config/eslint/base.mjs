@@ -15,7 +15,7 @@ export const deepImportPatterns = [
 ];
 
 export default tseslint.config(
-  { ignores: ["**/node_modules/**", "**/.next/**", "**/dist/**", "**/generated/**", "**/next-env.d.ts", "**/test-results/**", "**/playwright-report/**"] },
+  { ignores: ["**/node_modules/**", "**/.next/**", "**/.next-*/**", "**/dist/**", "**/generated/**", "**/next-env.d.ts", "**/test-results/**", "**/playwright-report/**"] },
   js.configs.recommended,
   ...tseslint.configs.strict,
   {
