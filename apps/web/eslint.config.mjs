@@ -8,6 +8,11 @@ export default [
     rules: { "max-lines": ["error", { max: 80, skipBlankLines: true, skipComments: true }] },
   },
   {
+    // Playwright-Fixtures heissen `use`; das ist kein React-Hook.
+    files: ["e2e/**/*.ts"],
+    rules: { "react-hooks/rules-of-hooks": "off" },
+  },
+  {
     settings: { next: { rootDir: import.meta.dirname } },
     rules: { "@next/next/no-html-link-for-pages": "off" },
   },
