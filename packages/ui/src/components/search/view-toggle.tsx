@@ -32,7 +32,7 @@ export function ViewToggle({ value, onValueChange, label, labels, disabled, clas
       disabled={disabled}
       // Radix meldet beim erneuten Klick auf die aktive Wahl einen leeren Wert; die Ansicht bleibt dann stehen.
       onValueChange={(next) => (next === "grid" || next === "list" ? onValueChange(next) : undefined)}
-      className={cn("inline-flex shrink-0 gap-1 rounded-control border border-border-strong bg-surface p-1", className)}
+      className={cn("inline-flex w-fit shrink-0 gap-1 rounded-control border border-border-strong bg-surface p-1", className)}
     >
       <ToggleGroupPrimitive.Item value="grid" aria-label={labels.grid} title={labels.grid} className={itemClass}>
         <LayoutGrid aria-hidden strokeWidth={1.5} className="size-5" />

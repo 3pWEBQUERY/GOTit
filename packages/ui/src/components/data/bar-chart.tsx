@@ -49,7 +49,7 @@ export function BarChart({ layout = "vertical", height = 240, ...frame }: BarCha
   return (
     <ChartFrame {...frame} height={height}>
       <ResponsiveContainer width="100%" height={height}>
-        <BarChartPrimitive data={rows} accessibilityLayer={false} margin={{ top: 8, right: 12, bottom: 0, left: 0 }}>
+        <BarChartPrimitive data={rows} accessibilityLayer={false} margin={{ top: 8, right: 24, bottom: 0, left: 0 }}>
           <CartesianGrid stroke="var(--border)" vertical={false} />
           <XAxis dataKey="label" stroke="var(--border-strong)" tick={tick} tickLine={false} tickMargin={8} minTickGap={8} />
           <YAxis stroke="var(--ink-muted)" tick={tick} tickLine={false} axisLine={false} tickFormatter={formatValue} width="auto" allowDecimals={false} />

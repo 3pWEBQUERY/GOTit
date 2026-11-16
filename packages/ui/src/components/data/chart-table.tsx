@@ -27,7 +27,9 @@ export function ChartTable({ caption, data, formatValue, labelColumn, valueColum
   const head = "border-b border-border-strong px-3 py-3 text-label text-ink-muted first:pl-0 last:pr-0";
   const cell = "border-b border-border px-3 py-3 text-small text-ink first:pl-0 last:pr-0";
   return (
-    <table className={cn("w-full border-separate border-spacing-0", !visible && "sr-only")}>
+    // Die Hülle trägt `sr-only`: Eine Tabelle selbst lässt sich nicht auf 1 px beschneiden.
+    <div data-chart-table className={cn("min-w-0", !visible && "sr-only")}>
+      <table className="w-full border-separate border-spacing-0">
       <caption className="sr-only">{caption}</caption>
       <thead>
         <tr>
@@ -55,6 +57,7 @@ export function ChartTable({ caption, data, formatValue, labelColumn, valueColum
           </tr>
         ))}
       </tbody>
-    </table>
+      </table>
+    </div>
   );
 }

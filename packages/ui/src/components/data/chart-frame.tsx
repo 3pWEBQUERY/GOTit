@@ -52,7 +52,7 @@ export function ChartFrame({ title, titleAs: Heading = "h3", data, formatValue, 
   const empty = data.length === 0;
 
   return (
-    <section aria-labelledby={titleId} data-view={empty ? "empty" : view} className={cn("flex min-w-0 flex-col gap-3 text-ink", className)}>
+    <section aria-labelledby={titleId} data-view={empty ? "empty" : view} className={cn("relative flex min-w-0 flex-col gap-3 text-ink", className)}>
       <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         <Heading id={titleId} className="text-h3">
           {title}

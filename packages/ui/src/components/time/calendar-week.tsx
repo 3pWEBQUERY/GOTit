@@ -57,7 +57,7 @@ export function CalendarWeek({ date, entries, locale, label, labels, startHour =
       {timeZoneNote ? <CalendarTimeZoneNote>{timeZoneNote}</CalendarTimeZoneNote> : null}
       <div className="flex">
         <CalendarHourAxis hours={hours} className="mt-12" />
-        <table aria-label={label} className="min-w-0 flex-1 table-fixed border-collapse">
+        <table aria-label={label} className="w-full min-w-0 flex-1 table-fixed border-collapse">
           <thead>
             <tr>
               {weekDays(date).map((iso) => {

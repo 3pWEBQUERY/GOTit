@@ -32,11 +32,11 @@ describe("LineChart", () => {
 
     // Die Tabelle ist schon in der Grafikansicht die Textfassung für Screenreader.
     const table = screen.getByRole("table", { name: "Profilaufrufe pro Tag" });
-    expect(table.className).toContain("sr-only");
+    expect(table.parentElement?.className).toContain("sr-only");
 
     await user.click(screen.getByRole("button", { name: "Als Tabelle anzeigen" }));
     expect(container.querySelector("[data-chart-canvas]")).toBeNull();
-    expect(table.className).not.toContain("sr-only");
+    expect(table.parentElement?.className).not.toContain("sr-only");
     expect(within(table).getAllByRole("columnheader").map((cell) => cell.textContent)).toEqual(["Tag", "Profilaufrufe"]);
     expect(within(table).getAllByRole("rowheader").map((cell) => cell.textContent)).toEqual(["Mo", "Di", "Mi"]);
     expect(within(table).getAllByRole("cell").map((cell) => cell.textContent)).toEqual(["40 Aufrufe", "62 Aufrufe", "51 Aufrufe"]);
