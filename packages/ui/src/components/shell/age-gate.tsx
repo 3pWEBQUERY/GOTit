@@ -1,7 +1,9 @@
-import type { ReactNode } from "react";
+import { useId, type ReactNode } from "react";
 
 export interface AgeGateProps {
   title: string;
+  /** Auf der Seite /alterspruefung die h1; eingebettet eine tiefere Ebene. */
+  titleAs?: "h1" | "h2" | "h3";
   description: string;
   /** Was die Bestätigung bedeutet und was nicht. */
   points: readonly string[];
@@ -10,12 +12,13 @@ export interface AgeGateProps {
 }
 
 /** Altersprüfung vor beschränkten Inhalten (PRD 7.1). Deckende Fläche, kein Glas. */
-export function AgeGate({ title, description, points, children }: AgeGateProps) {
+export function AgeGate({ title, titleAs: Heading = "h1", description, points, children }: AgeGateProps) {
+  const titleId = useId();
   return (
-    <section aria-labelledby="age-gate-title" className="mx-auto flex max-w-reading flex-col gap-6 rounded-card border border-border bg-surface p-4 md:p-6">
-      <h1 id="age-gate-title" className="text-h1">
+    <section aria-labelledby={titleId} className="mx-auto flex max-w-reading flex-col gap-6 rounded-card border border-border bg-surface p-4 md:p-6">
+      <Heading id={titleId} className="text-h1">
         {title}
-      </h1>
+      </Heading>
       <p className="max-w-prose text-body">{description}</p>
       <ul className="flex max-w-prose list-disc flex-col gap-2 pl-6 text-small text-ink-muted">
         {points.map((point) => (

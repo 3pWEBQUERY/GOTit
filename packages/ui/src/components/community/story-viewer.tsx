@@ -76,6 +76,7 @@ interface StoryViewerContentProps extends Omit<StoryViewerProps, "open" | "onOpe
 /** Inhalt des Viewers. Lebt nur, solange der Dialog offen ist; jeder Start beginnt beim gewählten Teil. */
 function StoryViewerContent({ title, author, time, exactTime, dateTime, parts, labels, onReport, durationMs, initialIndex, onComplete, onClose }: StoryViewerContentProps) {
   const surfaceRef = useRef<HTMLDivElement>(null);
+  const returnFocusRef = useRef<HTMLElement | null>(null);
   const [holding, setHolding] = useState(false);
   const reducedMotion = useReducedMotion();
   const progress = useStoryProgress({
@@ -112,7 +113,13 @@ function StoryViewerContent({ title, author, time, exactTime, dateTime, parts, l
       onOpenAutoFocus={(event) => {
         // Der Fokus liegt auf der Fläche, damit die Leertaste sofort anhält.
         event.preventDefault();
+        returnFocusRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
         surfaceRef.current?.focus();
+      }}
+      onCloseAutoFocus={(event) => {
+        // Ohne Radix-Auslöser kehrt der Fokus zu dem Element zurück, das den Viewer geöffnet hat.
+        event.preventDefault();
+        returnFocusRef.current?.focus();
       }}
       className="fixed inset-0 z-50 flex animate-fade-in justify-center bg-bg text-ink"
     >

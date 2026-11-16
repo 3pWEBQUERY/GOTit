@@ -102,7 +102,7 @@ export function FileDrop({ label, dropHint, hint, error, optionalLabel, labels, 
           "flex flex-col items-center gap-3 rounded-card border border-dashed border-border-strong bg-surface px-4 py-6 text-center transition-colors duration-state",
           "data-dragging:border-solid data-dragging:border-ink data-dragging:bg-surface-2",
           error && "border-error",
-          disabled && "opacity-55",
+          disabled && "bg-surface-2",
         )}
       >
         <Upload aria-hidden strokeWidth={1.5} className="size-6 text-ink-muted" />

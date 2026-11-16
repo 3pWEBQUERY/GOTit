@@ -61,7 +61,7 @@ describe("FilterBar", () => {
     const glass = bar.querySelector("[data-filter-bar-glass]");
     expect(glass?.className).toContain("glass");
     expect(glass?.className).toContain("md:hidden");
-    expect(screen.getByRole("button", { name: "Filter 2" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: /^Filter\s?2$/ })).toBeTruthy();
 
     rerender(
       <FilterBar label="Schnellfilter">

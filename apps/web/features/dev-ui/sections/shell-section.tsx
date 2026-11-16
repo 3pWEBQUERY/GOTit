@@ -84,7 +84,7 @@ export function ShellSection() {
       </section>
       <section className="flex flex-col gap-4">
         <h2 className="text-h2">AgeGate</h2>
-        <AgeGate title="Bist du mindestens 18 Jahre alt?" description="Beispieltext der Altersprüfung." points={["Erster Hinweis", "Zweiter Hinweis"]}>
+        <AgeGate titleAs="h3" title="Bist du mindestens 18 Jahre alt?" description="Beispieltext der Altersprüfung." points={["Erster Hinweis", "Zweiter Hinweis"]}>
           <Button variant="primary">Alter bestätigen</Button>
         </AgeGate>
       </section>

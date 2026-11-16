@@ -1,6 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import type { ComponentPropsWithRef, ReactNode } from "react";
 import { cn } from "../../cn";
+import { BadgeName } from "./badge-name";
 
 const iconButtonVariants = cva(
   [
@@ -22,7 +23,7 @@ const iconButtonVariants = cva(
 export interface IconButtonProps
   extends Omit<ComponentPropsWithRef<"button">, "children" | "aria-label">,
     VariantProps<typeof iconButtonVariants> {
-  /** Zugänglicher Name. Pflicht, weil das Icon allein nichts sagt. */
+  /** Zugänglicher Name. Pflicht, weil das Icon allein nichts sagt. Steht als unsichtbarer Text im Button. */
   label: string;
   icon: ReactNode;
   /** Kleine Zahl am Icon, zum Beispiel ungelesene Nachrichten. Steht auch im Namen. */
@@ -31,17 +32,12 @@ export interface IconButtonProps
 
 /** Button, der nur ein Icon zeigt. Tippfläche 44 × 44 px. */
 export function IconButton({ label, icon, badge, variant, className, type, ...props }: IconButtonProps) {
-  const name = badge ? `${label} (${badge})` : label;
   return (
-    <button type={type ?? "button"} aria-label={name} title={label} className={cn(iconButtonVariants({ variant }), "relative", className)} {...props}>
+    <button type={type ?? "button"} title={label} className={cn(iconButtonVariants({ variant }), "relative", className)} {...props}>
       <span aria-hidden className="contents">
         {icon}
       </span>
-      {badge ? (
-        <span aria-hidden className="tabular absolute top-1 right-1 min-w-4 rounded-full bg-ink px-1 text-center text-[0.8125rem]/4 font-[550] text-bg">
-          {badge > 99 ? "99+" : badge}
-        </span>
-      ) : null}
+      <BadgeName label={label} badge={badge} />
     </button>
   );
 }

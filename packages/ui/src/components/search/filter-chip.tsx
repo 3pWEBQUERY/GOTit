@@ -40,7 +40,7 @@ export function FilterChip(props: FilterChipProps) {
   if (props.variant === "removable") {
     const { children, removeLabel, onRemove, disabled, className } = props;
     return (
-      <span className={cn(shape, "border-border-strong bg-surface pl-4 text-ink", disabled && "opacity-55", className)}>
+      <span className={cn(shape, "border-border-strong bg-surface pl-4 text-ink", disabled && "bg-surface-2 text-ink-muted", className)}>
         <span>{children}</span>
         <button
           type="button"

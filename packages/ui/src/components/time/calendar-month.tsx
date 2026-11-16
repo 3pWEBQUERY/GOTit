@@ -105,7 +105,7 @@ export function CalendarMonth({ month, entries, locale, label, dayLabel, todayLa
                   className={cn(
                     "flex min-h-16 w-full flex-col items-center gap-1 rounded-control border border-transparent py-2 text-small text-ink transition-colors duration-state",
                     "hover:bg-surface-2",
-                    outside && "text-ink-muted opacity-55",
+                    outside && "text-ink-muted",
                     selected && "border-ink bg-surface-2",
                   )}
                 >

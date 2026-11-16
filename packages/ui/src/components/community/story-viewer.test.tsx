@@ -1,4 +1,4 @@
-import { act, fireEvent, render, renderHook, screen } from "@testing-library/react";
+import { act, fireEvent, render, renderHook, screen, waitFor } from "@testing-library/react";
 import { useState } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { StoryViewer, type StoryPart } from "./story-viewer";
@@ -178,6 +178,30 @@ describe("StoryViewer", () => {
     fireEvent.click(screen.getByRole("button", { name: "Nächster Teil" }));
     expect(screen.getByText("Teil 2 von 3")).toBeTruthy();
     expect(screen.getByRole("button", { name: "Story melden" })).toBeTruthy();
+  });
+});
+
+describe("StoryViewer Fokus", () => {
+  it("gibt den Fokus beim Schliessen an das öffnende Element zurück", async () => {
+    function Opener() {
+      const [open, setOpen] = useState(false);
+      return (
+        <>
+          <button type="button" onClick={() => setOpen(true)}>
+            Beispielstory öffnen
+          </button>
+          <StoryViewer open={open} onOpenChange={setOpen} title="Story von Beispielname" author={{ name: "Beispielname", initials: "BN" }} time="vor 2 Stunden" exactTime="16.11.2026, 10:00" parts={parts} labels={labels} onReport={() => undefined} />
+        </>
+      );
+    }
+    render(<Opener />);
+    const opener = screen.getByRole("button", { name: "Beispielstory öffnen" });
+    opener.focus();
+    fireEvent.click(opener);
+    const dialog = await screen.findByRole("dialog");
+    await waitFor(() => expect(document.activeElement).toBe(dialog));
+    fireEvent.keyDown(dialog, { key: "Escape" });
+    await waitFor(() => expect(document.activeElement).toBe(opener));
   });
 });
 

@@ -64,7 +64,6 @@ export function CalendarDay({ date, entries, locale, labels, onDateChange, weekS
               <button
                 key={iso}
                 type="button"
-                aria-label={fullName(iso)}
                 aria-pressed={selected}
                 aria-current={isToday ? "date" : undefined}
                 onClick={() => onDateChange?.(iso)}
@@ -74,10 +73,10 @@ export function CalendarDay({ date, entries, locale, labels, onDateChange, weekS
                   isToday && "border-border-strong text-ink",
                 )}
               >
-                <span aria-hidden>{formats.weekday.format(utc)}</span>
-                <span aria-hidden className={cn("tabular text-small", (isToday || selected) && "font-[650]")}>
-                  {formats.day.format(utc)}
-                </span>
+                {/* Der Name beginnt mit dem sichtbaren Kurztext (WCAG 2.5.3) und nennt danach das volle Datum. */}
+                <span>{formats.weekday.format(utc)}</span>
+                <span className={cn("tabular text-small", (isToday || selected) && "font-[650]")}>{formats.day.format(utc)}</span>
+                <span className="sr-only">, {fullName(iso)}</span>
                 {isToday ? <span aria-hidden className="h-0.5 w-4 rounded-full bg-accent" /> : null}
               </button>
             );

@@ -8,6 +8,11 @@ import { CalendarToolbar } from "./calendar-toolbar";
 import type { CalendarDayCounts, CalendarEntry, CalendarView } from "./calendar-types";
 import { CalendarWeek } from "./calendar-week";
 
+/** Zeit, Label und Status im Namen. jsdom setzt zwischen den Zeilen kein Leerzeichen, der Browser schon. */
+function entryName(text: string): RegExp {
+  return new RegExp(`^${text.split(", ").map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join(",\\s?")}$`);
+}
+
 const entries: CalendarEntry[] = [
   { id: "frei", start: "2026-11-16T14:00", end: "2026-11-16T18:00", kind: "available", label: "Arbeitszeit", statusLabel: "Verfügbar" },
   { id: "anfrage", start: "2026-11-18T16:00", end: "2026-11-18T17:00", kind: "request", label: "Terminanfrage", statusLabel: "Angefragt" },
@@ -37,9 +42,9 @@ describe("CalendarWeek", () => {
   it("nennt bei jedem Eintrag Zeit, Label und Status im Namen und zeigt den Status als Wort", () => {
     renderWeek();
     const table = screen.getByRole("table", { name: "Kalender, 16. bis 22. November 2026" });
-    const names = ["14:00–18:00, Arbeitszeit, Verfügbar", "16:00–17:00, Terminanfrage, Angefragt", "18:00–19:30, Termin, Bestätigt"];
+    const names = ["14:00–18:00, Arbeitszeit, Verfügbar", "16:00–17:00, Terminanfrage, Angefragt", "18:00–19:30, Termin, Bestätigt"].map(entryName);
     for (const name of names) expect(within(table).getByRole("button", { name })).toBeTruthy();
-    expect(within(table).getByRole("link", { name: "18:00–20:00, Privat, Blockiert" }).getAttribute("href")).toBe("/studio/kalender/blocker");
+    expect(within(table).getByRole("link", { name: entryName("18:00–20:00, Privat, Blockiert") }).getAttribute("href")).toBe("/studio/kalender/blocker");
     for (const entry of entries) {
       const block = table.querySelector(`[data-kind="${entry.kind}"]`);
       expect(block?.textContent).toContain(entry.statusLabel);
@@ -49,7 +54,7 @@ describe("CalendarWeek", () => {
   it("meldet die Auswahl eines Eintrags per Tastatur", async () => {
     const user = userEvent.setup();
     const onEntrySelect = renderWeek();
-    const block = screen.getByRole("button", { name: "18:00–19:30, Termin, Bestätigt" });
+    const block = screen.getByRole("button", { name: entryName("18:00–19:30, Termin, Bestätigt") });
     block.focus();
     await user.keyboard("{Enter}");
     expect(onEntrySelect).toHaveBeenCalledWith(entries[2]);
@@ -61,9 +66,9 @@ describe("CalendarWeek", () => {
     const user = userEvent.setup();
     renderWeek();
     await user.tab();
-    expect(document.activeElement?.getAttribute("aria-label")).toBe("14:00–18:00, Arbeitszeit, Verfügbar");
+    expect(document.activeElement?.textContent).toMatch(entryName("14:00–18:00, Arbeitszeit, Verfügbar"));
     await user.tab();
-    expect(document.activeElement?.getAttribute("aria-label")).toBe("18:00–19:30, Termin, Bestätigt");
+    expect(document.activeElement?.textContent).toMatch(entryName("18:00–19:30, Termin, Bestätigt"));
   });
 
   it("zeigt den Hinweis zur Zeitzone nur, wenn er gesetzt ist", () => {
@@ -86,9 +91,9 @@ describe("CalendarDay", () => {
     expect(days[2]?.getAttribute("aria-pressed")).toBe("true");
     expect(days[0]?.getAttribute("aria-pressed")).toBe("false");
 
-    await user.click(within(strip).getByRole("button", { name: "Freitag, 20. November 2026" }));
+    await user.click(within(strip).getByRole("button", { name: /^Fr\s?20, Freitag, 20. November 2026$/ }));
     expect(onDateChange).toHaveBeenCalledWith("2026-11-20");
-    expect(screen.getByRole("button", { name: "16:00–17:00, Terminanfrage, Angefragt" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: entryName("16:00–17:00, Terminanfrage, Angefragt") })).toBeTruthy();
   });
 
   it("sagt, wenn ein Tag leer ist", () => {

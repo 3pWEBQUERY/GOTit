@@ -84,7 +84,7 @@ function FilterBarDemo() {
 
       <div className="flex flex-col gap-3">
         <h3 className="text-h3">Mit Filter-Button und Anzahl</h3>
-        <FilterBar label="Schnellfilter mit Filter-Button" leading={<FilterBarButton count={pressed.length} accessibleLabel={`Filter anzeigen, ${pressed.length} aktiv`}>Filter</FilterBarButton>}>
+        <FilterBar label="Schnellfilter mit Filter-Button" leading={<FilterBarButton count={pressed.length} countSuffix="aktiv">Filter</FilterBarButton>}>
           {chips}
         </FilterBar>
       </div>

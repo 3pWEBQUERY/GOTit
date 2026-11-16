@@ -19,7 +19,7 @@ export interface StoryRingProps {
 
 /** Runder Avatar mit Ring als Einstieg in eine Story. Der Name steht einzeilig darunter. */
 export function StoryRing({ name, initials, avatarSrc, seen = false, stateLabel, href, onSelect, className }: StoryRingProps) {
-  const classes = cn("group flex w-20 shrink-0 flex-col items-center gap-2 rounded-control py-1 text-small text-ink", className);
+  const classes = cn("group relative flex w-20 shrink-0 flex-col items-center gap-2 rounded-control py-1 text-small text-ink", className);
   const content = (
     <>
       <span className={cn("rounded-full border-2 p-1 transition-colors duration-state", seen ? "border-border-strong" : "border-accent")}>

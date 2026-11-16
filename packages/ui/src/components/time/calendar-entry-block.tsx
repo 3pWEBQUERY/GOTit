@@ -47,26 +47,31 @@ export function CalendarEntryBlock({ segment, onSelect, className }: CalendarEnt
     kindClasses[entry.kind],
     className,
   );
-  const name = `${time}, ${entry.label}, ${entry.statusLabel}`;
   const content = (
     <>
       {entry.kind === "blocker" ? <Hatch /> : null}
       <span className={cn("relative flex max-w-full min-w-0 flex-col", entry.kind === "blocker" && "rounded-chip bg-surface px-1")}>
-        <span className="tabular text-label">{time}</span>
-        <span className="text-small font-[550]">{entry.label}</span>
+        <span className="tabular text-label">
+          {time}
+          <span className="sr-only">,</span>
+        </span>
+        <span className="text-small font-[550]">
+          {entry.label}
+          <span className="sr-only">,</span>
+        </span>
         <span className="text-label font-normal">{entry.statusLabel}</span>
       </span>
     </>
   );
   if (entry.href) {
     return (
-      <UiLink href={entry.href} aria-label={name} data-kind={entry.kind} className={classes} onClick={() => onSelect?.(entry)}>
+      <UiLink href={entry.href} data-kind={entry.kind} className={classes} onClick={() => onSelect?.(entry)}>
         {content}
       </UiLink>
     );
   }
   return (
-    <button type="button" aria-label={name} data-kind={entry.kind} className={classes} onClick={() => onSelect?.(entry)}>
+    <button type="button" data-kind={entry.kind} className={classes} onClick={() => onSelect?.(entry)}>
       {content}
     </button>
   );

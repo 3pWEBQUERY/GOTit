@@ -36,10 +36,9 @@ export function SortMenu<Value extends string = string>({ label, options, value,
   return (
     <Menu>
       <MenuTrigger asChild>
-        {/* Der Name fasst Bezeichnung und Wahl zusammen; aus den zwei Textteilen allein entstünde ein Wort ohne Leerzeichen. */}
-        <Button variant="quiet" disabled={disabled} aria-label={current ? `${label} ${current.label}` : label} className={cn("group", className)}>
+        <Button variant="quiet" disabled={disabled} className={cn("group", className)}>
           <span className="inline-flex flex-wrap items-center justify-center gap-x-2">
-            <span className="font-normal text-ink-muted">{label}</span>
+            <span className="font-normal text-ink-muted">{label}</span>{" "}
             <span>{current?.label}</span>
             <ChevronDown aria-hidden strokeWidth={1.5} className="text-ink-muted transition-transform duration-state group-data-[state=open]:rotate-180" />
           </span>

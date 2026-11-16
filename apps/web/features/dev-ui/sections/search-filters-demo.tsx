@@ -107,7 +107,7 @@ function FilterSheetDemo() {
           applyLabel={count === 1 ? "1 Beispielprofil anzeigen" : `${count} Beispielprofile anzeigen`}
           onApply={() => setApplied(draft)}
           onOpenChange={(open) => (open ? setDraft(applied) : undefined)}
-          trigger={<FilterBarButton count={countActive(applied)} accessibleLabel={`Filter anzeigen, ${countActive(applied)} aktiv`}>Filter</FilterBarButton>}
+          trigger={<FilterBarButton count={countActive(applied)} countSuffix="aktiv">Filter</FilterBarButton>}
         >
           <FilterFields filters={draft} onChange={setDraft} prefix="sheet" />
         </FilterSheet>
