@@ -8,7 +8,13 @@ export function rateLimitSubject(...parts: Array<string | null | undefined>): st
     .slice(0, 32);
 }
 
-/** Erste Adresse aus `x-forwarded-for` (Railway setzt sie), sonst `unknown`. */
+/**
+ * Adresse des Clients. Railway setzt `x-real-ip` am Rand des Netzes. Der erste
+ * Eintrag von `x-forwarded-for` stammt dagegen vom Client und liesse sich
+ * fälschen; er wird deshalb nicht verwendet.
+ */
+export const CLIENT_IP_HEADER = "x-real-ip";
+
 export function clientIp(headers: Headers): string {
-  return headers.get("x-forwarded-for")?.split(",")[0]?.trim() || headers.get("x-real-ip") || "unknown";
+  return headers.get(CLIENT_IP_HEADER)?.trim() || "unknown";
 }

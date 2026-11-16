@@ -46,7 +46,7 @@ describe("Registrierung (PRD 7.4, 16.2)", () => {
     const response = await getAuth().handler(
       new Request("http://localhost:3000/api/auth/sign-in/email", {
         method: "POST",
-        headers: { "content-type": "application/json", origin: "http://localhost:3000", "x-forwarded-for": `10.0.0.${Date.now() % 250}` },
+        headers: { "content-type": "application/json", origin: "http://localhost:3000", "x-real-ip": `10.0.0.${Date.now() % 250}` },
         body: JSON.stringify({ email, password: "ein-langes-passwort" }),
       }),
     );

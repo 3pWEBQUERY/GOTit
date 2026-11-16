@@ -13,5 +13,9 @@ export const infoPathnames = {
   "/recht/richtlinien": { de: "/recht/richtlinien", fr: "/legal/directives", it: "/legale/linee-guida", en: "/legal/guidelines" },
   "/ueber-uns": { de: "/ueber-uns", fr: "/a-propos", it: "/chi-siamo", en: "/about" },
   "/anmelden": { de: "/anmelden", fr: "/connexion", it: "/accedi", en: "/sign-in" },
+  "/anmelden/2fa": { de: "/anmelden/2fa", fr: "/connexion/2fa", it: "/accedi/2fa", en: "/sign-in/2fa" },
   "/registrieren": { de: "/registrieren", fr: "/inscription", it: "/registrati", en: "/sign-up" },
+  "/registrieren/bestaetigen": { de: "/registrieren/bestaetigen", fr: "/inscription/confirmer", it: "/registrati/conferma", en: "/sign-up/confirm" },
+  "/passwort/vergessen": { de: "/passwort/vergessen", fr: "/mot-de-passe/oublie", it: "/password/dimenticata", en: "/password/forgot" },
+  "/passwort/neu": { de: "/passwort/neu", fr: "/mot-de-passe/nouveau", it: "/password/nuova", en: "/password/new" },
 } as const;

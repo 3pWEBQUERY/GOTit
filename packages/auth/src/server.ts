@@ -1,3 +1,4 @@
+import { CLIENT_IP_HEADER } from "@app/core/rate-limit";
 import { getDb } from "@app/db";
 import { passkey } from "@better-auth/passkey";
 import { betterAuth } from "better-auth";
@@ -55,7 +56,8 @@ function createAuth() {
     },
     hooks: { after: afterHook },
     databaseHooks,
-    advanced: { cookiePrefix: "app", useSecureCookies: production },
+    // Rate Limits nach der Adresse, die Railway am Rand setzt, nicht nach dem fälschbaren x-forwarded-for.
+    advanced: { cookiePrefix: "app", useSecureCookies: production, ipAddress: { ipAddressHeaders: [CLIENT_IP_HEADER] } },
     telemetry: { enabled: false },
     plugins: [
       twoFactor({ issuer: appName }),

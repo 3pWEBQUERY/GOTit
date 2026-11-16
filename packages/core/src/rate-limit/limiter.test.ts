@@ -20,8 +20,8 @@ describe("Rate Limits (PRD 16.2)", () => {
     expect(rateLimitSubject("1.2.3.4", "person@fiktiv.test")).not.toContain("fiktiv");
   });
 
-  it("liest die erste Adresse aus x-forwarded-for", () => {
-    expect(clientIp(new Headers({ "x-forwarded-for": "9.9.9.9, 10.0.0.1" }))).toBe("9.9.9.9");
-    expect(clientIp(new Headers())).toBe("unknown");
+  it("liest die Adresse aus x-real-ip und ignoriert das fälschbare x-forwarded-for", () => {
+    expect(clientIp(new Headers({ "x-real-ip": "9.9.9.9" }))).toBe("9.9.9.9");
+    expect(clientIp(new Headers({ "x-forwarded-for": "6.6.6.6" }))).toBe("unknown");
   });
 });

@@ -5,6 +5,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Inter } from "next/font/google";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
+import { MOTION_COOKIE, NEUTRAL_TITLE_COOKIE } from "@/features/appearance/preference-cookies";
+import { NeutralTitle } from "@/features/appearance/components/neutral-title";
 import { THEME_COOKIE, parseTheme } from "@/features/appearance/theme";
 import { Providers } from "@/features/shell/components/providers";
 import "../globals.css";
@@ -26,12 +28,16 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[lo
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   setRequestLocale(locale);
-  const theme = parseTheme((await cookies()).get(THEME_COOKIE)?.value);
+  const cookieStore = await cookies();
+  const theme = parseTheme(cookieStore.get(THEME_COOKIE)?.value);
+  const reducedMotion = cookieStore.get(MOTION_COOKIE)?.value === "reduced";
+  const neutralTitle = cookieStore.get(NEUTRAL_TITLE_COOKIE)?.value === "1";
   const t = await getTranslations({ locale, namespace: "common" });
 
   return (
-    <html lang={locale} data-theme={theme === "system" ? undefined : theme} className={inter.variable}>
+    <html lang={locale} data-theme={theme === "system" ? undefined : theme} data-motion={reducedMotion ? "reduced" : undefined} className={inter.variable}>
       <body>
+        {neutralTitle ? <NeutralTitle title={t("neutralTitle")} /> : null}
         <NextIntlClientProvider>
           <Providers toastLabels={{ close: t("closeNotification"), region: t("notificationsRegion") }}>{children}</Providers>
         </NextIntlClientProvider>

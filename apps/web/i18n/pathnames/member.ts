@@ -8,6 +8,20 @@ export const memberPathnames = {
   "/bewertungen": { de: "/bewertungen", fr: "/avis", it: "/recensioni", en: "/reviews" },
   "/benachrichtigungen": { de: "/benachrichtigungen", fr: "/notifications", it: "/notifiche", en: "/notifications" },
   "/einstellungen/profil": { de: "/einstellungen/profil", fr: "/parametres/profil", it: "/impostazioni/profilo", en: "/settings/profile" },
+  "/einstellungen/sicherheit": { de: "/einstellungen/sicherheit", fr: "/parametres/securite", it: "/impostazioni/sicurezza", en: "/settings/security" },
+  "/einstellungen/privatsphaere": {
+    de: "/einstellungen/privatsphaere",
+    fr: "/parametres/confidentialite",
+    it: "/impostazioni/privacy",
+    en: "/settings/privacy",
+  },
+  "/einstellungen/benachrichtigungen": {
+    de: "/einstellungen/benachrichtigungen",
+    fr: "/parametres/notifications",
+    it: "/impostazioni/notifiche",
+    en: "/settings/notifications",
+  },
+  "/einstellungen/daten": { de: "/einstellungen/daten", fr: "/parametres/donnees", it: "/impostazioni/dati", en: "/settings/data" },
   "/einstellungen/darstellung": {
     de: "/einstellungen/darstellung",
     fr: "/parametres/affichage",

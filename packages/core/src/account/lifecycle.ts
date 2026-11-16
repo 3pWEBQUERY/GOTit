@@ -28,24 +28,26 @@ export async function provisionAccountType(userId: string, type: AccountTypeInpu
   }
 }
 
-/** Deaktivieren: Sitzungen enden, ein öffentliches Profil wird pausiert. Eine neue Anmeldung hebt das auf. */
+/**
+ * Deaktivieren: ein öffentliches Profil wird pausiert. Eine neue Anmeldung hebt
+ * das auf. Die Sitzungen beendet der Aufrufer über die Auth-API, weil sie auch
+ * im Redis-Zweitspeicher liegen.
+ */
 export async function deactivateOwnAccount(userId: string): Promise<void> {
   const db = getDb();
   await db.$transaction([
     db.user.update({ where: { id: userId }, data: { deactivatedAt: new Date() } }),
     db.providerProfile.updateMany({ where: { userId, status: "PUBLISHED" }, data: { status: "PAUSED" } }),
-    db.session.deleteMany({ where: { userId } }),
   ]);
 }
 
-/** Löschung beantragen: wie Deaktivieren, dazu der Zeitpunkt, ab dem der `cron`-Dienst endgültig löscht. */
+/** Löschung beantragen: wie Deaktivieren, dazu der Zeitpunkt, ab dem der `cron`-Dienst endgültig löscht. Sitzungen beendet der Aufrufer. */
 export async function requestOwnDeletion(userId: string): Promise<Date> {
   const requestedAt = new Date();
   const db = getDb();
   await db.$transaction([
     db.user.update({ where: { id: userId }, data: { deactivatedAt: requestedAt, deletionRequestedAt: requestedAt } }),
     db.providerProfile.updateMany({ where: { userId, status: "PUBLISHED" }, data: { status: "PAUSED" } }),
-    db.session.deleteMany({ where: { userId } }),
   ]);
   return requestedAt;
 }

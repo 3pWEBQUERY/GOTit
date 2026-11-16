@@ -15,7 +15,7 @@ export default async function globalSetup(config: FullConfig): Promise<void> {
   mkdirSync(AUTH_DIR, { recursive: true });
   const baseURL = config.projects[0]?.use.baseURL;
   for (const account of ACCOUNTS) {
-    const context = await request.newContext({ baseURL });
+    const context = await request.newContext({ baseURL, extraHTTPHeaders: { "x-real-ip": `10.200.0.${ACCOUNTS.indexOf(account) + 1}` } });
     for (let attempt = 0; ; attempt += 1) {
       const response = await context.post("/api/auth/sign-in/email", { data: { email: `${account}@fiktiv.test`, password: TEST_PASSWORD } });
       if (response.ok()) break;

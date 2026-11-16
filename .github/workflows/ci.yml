@@ -19,6 +19,7 @@ env:
   # Nur für die CI erzeugte Werte, keine Geheimnisse einer echten Umgebung.
   BETTER_AUTH_SECRET: ci-only-secret-ci-only-secret-ci-only-secret
   AGE_GATE_SECRET: ci-only-age-gate-ci-only-age-gate-ci-only
+  MAIL_TRANSPORT: outbox
 
 jobs:
   quality:

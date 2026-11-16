@@ -12,8 +12,8 @@ const securityHeaders = [
 ];
 
 const config: NextConfig = {
-  transpilePackages: ["@app/ui", "@app/core", "@app/db", "@app/auth"],
-  serverExternalPackages: ["@prisma/client", "@prisma/adapter-pg", "pg"],
+  transpilePackages: ["@app/ui", "@app/core", "@app/db", "@app/auth", "@app/jobs"],
+  serverExternalPackages: ["@prisma/client", "@prisma/adapter-pg", "pg", "bullmq", "ioredis"],
   poweredByHeader: false,
   reactStrictMode: true,
   typedRoutes: false,
