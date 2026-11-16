@@ -1,7 +1,12 @@
+import { createSendEmailJob } from "./jobs/send-email";
+import { createMailSender } from "./mail/transport";
+
 /**
  * Ein Handler pro Queue, jeder in einer eigenen Datei unter `jobs/`.
  * Die Payload ist beim Aufruf bereits mit dem Schema der Queue geprüft.
  */
-export type JobHandler = (payload: unknown) => Promise<void>;
+export type JobHandler = (payload: never) => Promise<void>;
 
-export const handlers: Readonly<Record<string, JobHandler>> = {};
+export function createHandlers(): Readonly<Record<string, JobHandler>> {
+  return { email: createSendEmailJob(createMailSender()) };
+}

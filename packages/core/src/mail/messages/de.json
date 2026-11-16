@@ -1,0 +1,15 @@
+{
+  "appSignature": "Diese E-Mail wurde automatisch versendet. Wenn du diese Aktion nicht ausgelöst hast, kannst du sie ignorieren.",
+  "verify-email": {
+    "subject": "Bestätige deine E-Mail-Adresse",
+    "intro": "Bitte bestätige deine E-Mail-Adresse, damit dein Konto aktiv wird.",
+    "action": "Zum Bestätigen diesen Link öffnen:",
+    "expiry": "Der Link ist 24 Stunden gültig."
+  },
+  "reset-password": {
+    "subject": "Neues Passwort festlegen",
+    "intro": "Du hast ein neues Passwort angefordert.",
+    "action": "Zum Festlegen diesen Link öffnen:",
+    "expiry": "Der Link ist 1 Stunde gültig."
+  }
+}

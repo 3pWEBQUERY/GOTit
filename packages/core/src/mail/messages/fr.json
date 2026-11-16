@@ -1,0 +1,15 @@
+{
+  "appSignature": "Cet e-mail a été envoyé automatiquement. Si tu n’es pas à l’origine de cette action, tu peux l’ignorer.",
+  "verify-email": {
+    "subject": "Confirme ton adresse e-mail",
+    "intro": "Confirme ton adresse e-mail pour activer ton compte.",
+    "action": "Ouvre ce lien pour confirmer :",
+    "expiry": "Le lien est valable 24 heures."
+  },
+  "reset-password": {
+    "subject": "Définir un nouveau mot de passe",
+    "intro": "Tu as demandé un nouveau mot de passe.",
+    "action": "Ouvre ce lien pour le définir :",
+    "expiry": "Le lien est valable 1 heure."
+  }
+}

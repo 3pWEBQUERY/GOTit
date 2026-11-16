@@ -1,0 +1,15 @@
+{
+  "appSignature": "This email was sent automatically. If you did not trigger this action, you can ignore it.",
+  "verify-email": {
+    "subject": "Confirm your email address",
+    "intro": "Please confirm your email address to activate your account.",
+    "action": "Open this link to confirm:",
+    "expiry": "The link is valid for 24 hours."
+  },
+  "reset-password": {
+    "subject": "Set a new password",
+    "intro": "You requested a new password.",
+    "action": "Open this link to set it:",
+    "expiry": "The link is valid for 1 hour."
+  }
+}

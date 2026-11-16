@@ -1,0 +1,15 @@
+{
+  "appSignature": "Questa e-mail è stata inviata automaticamente. Se non hai avviato tu questa azione, puoi ignorarla.",
+  "verify-email": {
+    "subject": "Conferma il tuo indirizzo e-mail",
+    "intro": "Conferma il tuo indirizzo e-mail per attivare il tuo account.",
+    "action": "Apri questo link per confermare:",
+    "expiry": "Il link è valido 24 ore."
+  },
+  "reset-password": {
+    "subject": "Imposta una nuova password",
+    "intro": "Hai richiesto una nuova password.",
+    "action": "Apri questo link per impostarla:",
+    "expiry": "Il link è valido 1 ora."
+  }
+}

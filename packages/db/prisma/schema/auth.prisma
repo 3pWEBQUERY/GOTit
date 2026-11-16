@@ -6,12 +6,23 @@ model User {
   emailVerified  Boolean   @default(false)
   image          String?
   // Zeitpunkt der Altersbestätigung des Kontos («einmal pro Sitzung/Konto», PRD 8).
-  ageConfirmedAt DateTime?
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
+  ageConfirmedAt      DateTime?
+  twoFactorEnabled    Boolean      @default(false)
+  // Gewählter Kontotyp bei der Registrierung (PRD 7.4).
+  accountType         AccountType  @default(MEMBER)
+  // Öffentlicher Benutzername im Mitgliederbereich (PRD 7.5); frei wählbar, eindeutig.
+  username            String?      @unique
+  deactivatedAt       DateTime?
+  deletionRequestedAt DateTime?
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
 
   sessions            Session[]
   accounts            Account[]
+  twoFactors          TwoFactor[]
+  passkeys            Passkey[]
+  preference          UserPreference?
+  securityEvents      SecurityEvent[]
   providerProfile     ProviderProfile?
   organizationMembers OrganizationMember[]
 
@@ -65,4 +76,42 @@ model Verification {
 
   @@index([identifier])
   @@map("verification")
+}
+
+// Better Auth, Plugin two-factor: TOTP und Ersatzcodes (PRD 14.1).
+model TwoFactor {
+  id                      String    @id
+  secret                  String
+  backupCodes             String
+  userId                  String
+  verified                Boolean   @default(true)
+  failedVerificationCount Int       @default(0)
+  lockedUntil             DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([secret])
+  @@map("twoFactor")
+}
+
+// Better Auth, Plugin passkey (PRD 14.1).
+model Passkey {
+  id           String    @id
+  name         String?
+  publicKey    String
+  userId       String
+  credentialID String
+  counter      Int
+  deviceType   String
+  backedUp     Boolean
+  transports   String?
+  createdAt    DateTime? @default(now())
+  aaguid       String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([credentialID])
+  @@map("passkey")
 }
