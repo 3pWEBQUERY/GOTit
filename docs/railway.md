@@ -56,13 +56,16 @@ Anbieter: **Resend** (Entscheid vom 17.11.2026), angebunden über die HTTP-API (
 
 ## Noch nicht eingerichtet
 
-- **Umgebung `staging`** (PRD 14.2). Railway erlaubt das Anlegen von Umgebungen nur im Dashboard oder mit der CLI:
-  1. Im Projekt GOTit oben die Umgebung `production` duplizieren und `staging` nennen; die gestagten Änderungen prüfen und anwenden.
-  2. In `staging` für `web` und `realtime` je eine Domain erzeugen.
-  3. In `staging` neue Werte für `BETTER_AUTH_SECRET` und `AGE_GATE_SECRET` setzen (die Duplizierung kopiert die Werte aus Produktion; Geheimnisse sind pro Umgebung getrennt).
-  4. Bei Bedarf in `staging` `MAIL_TRANSPORT=outbox` setzen, damit sich die Registrierung ohne echten Versand testen lässt.
-  5. `APP_ENV=staging` als gemeinsame Variable setzen; die Duplizierung übernimmt sonst `production`.
-  6. Den kopierten Dienst `staging` in der neuen Umgebung löschen. Er war eine Kopie von `web` in `production` mit der Produktionsdatenbank und wird auch dort gelöscht.
+- **Umgebung `staging`** (PRD 14.2), angelegt am 17.11.2026 als Kopie von `production`:
+  - **Eigene Daten:** eigene Postgres- und Redis-Instanzen und eigene Buckets (`originals-…`, `derivatives-…`). Alle Verbindungen sind Referenzen und zeigen auf die Dienste von Staging; die erste Bereitstellung hat alle Migrationen auf eine leere Datenbank angewendet.
+  - **Domains:** `web-staging-8db1eddb.up.railway.app`, `realtime-staging-c7b8e78a.up.railway.app`.
+  - **Variablen nur in Staging:**
+    - `APP_ENV=staging` (geteilt),
+    - `MAIL_TRANSPORT=outbox` an `web` und `worker`: E-Mails landen in der Tabelle `email_outbox`,
+    - `IDENTITY_PROVIDER=test` an `web`: Die Identitätsprüfung lässt sich mit `/dev/verifizierung/[ref]` durchspielen.
+
+    Beides ist in `production` gesperrt.
+  - **Offen:** Die geteilten `BETTER_AUTH_SECRET` und `AGE_GATE_SECRET` stammen noch aus der Kopie von `production`. Sie bekommen in Staging neue Werte im Dashboard (Shared Variables), damit eine Sitzung aus Staging nie in der Produktion gilt.
 - **PR-Umgebungen:** in den Projekteinstellungen einschalten, sobald Pull Requests genutzt werden.
 - Tägliche Backups von Postgres mit getestetem Restore und verschlüsseltem Dump in einen dritten Bucket (PRD 14.2): kommt mit dem `cron`-Dienst in Schritt 1.14.
 - Bucket-Zugangsdaten für `web` und `worker`: kommen mit der Medien-Pipeline in Schritt 1.6.
