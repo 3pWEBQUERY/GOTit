@@ -10,6 +10,7 @@ export const marketplacePathnames = {
   "/kategorie/[slug]": { de: "/kategorie/[slug]", fr: "/categorie/[slug]", it: "/categoria/[slug]", en: "/category/[slug]" },
   "/p/[name]": "/p/[name]",
   "/p/[name]/anfrage": { de: "/p/[name]/anfrage", fr: "/p/[name]/demande", it: "/p/[name]/richiesta", en: "/p/[name]/request" },
+  "/p/[name]/bewertungen": { de: "/p/[name]/bewertungen", fr: "/p/[name]/avis", it: "/p/[name]/recensioni", en: "/p/[name]/reviews" },
   "/p/[name]/medien": { de: "/p/[name]/medien", fr: "/p/[name]/medias", it: "/p/[name]/media", en: "/p/[name]/media" },
   "/c/[slug]": "/c/[slug]",
   "/touren": { de: "/touren", fr: "/tournees", it: "/tour", en: "/tours" },

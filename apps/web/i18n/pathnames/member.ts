@@ -9,6 +9,7 @@ export const memberPathnames = {
   "/favoriten/[sammlung]": { de: "/favoriten/[sammlung]", fr: "/favoris/[sammlung]", it: "/preferiti/[sammlung]", en: "/favourites/[sammlung]" },
   "/suchen": { de: "/suchen", fr: "/recherches", it: "/ricerche", en: "/searches" },
   "/bewertungen": { de: "/bewertungen", fr: "/avis", it: "/recensioni", en: "/reviews" },
+  "/bewertungen/neu/[termin]": { de: "/bewertungen/neu/[termin]", fr: "/avis/nouveau/[termin]", it: "/recensioni/nuova/[termin]", en: "/reviews/new/[termin]" },
   "/benachrichtigungen": { de: "/benachrichtigungen", fr: "/notifications", it: "/notifiche", en: "/notifications" },
   "/einstellungen/profil": { de: "/einstellungen/profil", fr: "/parametres/profil", it: "/impostazioni/profilo", en: "/settings/profile" },
   "/einstellungen/sicherheit": { de: "/einstellungen/sicherheit", fr: "/parametres/securite", it: "/impostazioni/sicurezza", en: "/settings/security" },

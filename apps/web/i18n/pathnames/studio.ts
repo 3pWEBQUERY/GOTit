@@ -17,6 +17,7 @@ export const studioPathnames = {
   "/studio/nachrichten/[id]": { de: "/studio/nachrichten/[id]", fr: "/studio/messages/[id]", it: "/studio/messaggi/[id]", en: "/studio/messages/[id]" },
   "/studio/kalender": { de: "/studio/kalender", fr: "/studio/calendrier", it: "/studio/calendario", en: "/studio/calendar" },
   "/studio/anfragen": { de: "/studio/anfragen", fr: "/studio/demandes", it: "/studio/richieste", en: "/studio/requests" },
+  "/studio/bewertungen": { de: "/studio/bewertungen", fr: "/studio/avis", it: "/studio/recensioni", en: "/studio/reviews" },
   "/studio/anfragen/[id]": { de: "/studio/anfragen/[id]", fr: "/studio/demandes/[id]", it: "/studio/richieste/[id]", en: "/studio/requests/[id]" },
   "/studio/kalender/verfuegbarkeit": {
     de: "/studio/kalender/verfuegbarkeit",

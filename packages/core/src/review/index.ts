@@ -18,3 +18,4 @@ export {
   moderateReview,
   type ModerateResult,
 } from "./moderation";
+export { reportReview } from "./report";
