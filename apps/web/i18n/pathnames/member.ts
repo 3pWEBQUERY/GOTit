@@ -2,6 +2,7 @@
 export const memberPathnames = {
   "/ich": { de: "/ich", fr: "/moi", it: "/io", en: "/me" },
   "/nachrichten": { de: "/nachrichten", fr: "/messages", it: "/messaggi", en: "/messages" },
+  "/nachrichten/[id]": { de: "/nachrichten/[id]", fr: "/messages/[id]", it: "/messaggi/[id]", en: "/messages/[id]" },
   "/termine": { de: "/termine", fr: "/rendez-vous", it: "/appuntamenti", en: "/appointments" },
   "/favoriten": { de: "/favoriten", fr: "/favoris", it: "/preferiti", en: "/favourites" },
   "/favoriten/[sammlung]": { de: "/favoriten/[sammlung]", fr: "/favoris/[sammlung]", it: "/preferiti/[sammlung]", en: "/favourites/[sammlung]" },

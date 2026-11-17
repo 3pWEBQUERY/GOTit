@@ -23,6 +23,8 @@ export const routing = defineRouting({
     "/admin/verifizierungen/[id]": "/admin/verifizierungen/[id]",
     "/admin/medien": "/admin/medien",
     "/admin/medien/[id]": "/admin/medien/[id]",
+    "/admin/meldungen": "/admin/meldungen",
+    "/admin/meldungen/[id]": "/admin/meldungen/[id]",
     "/dev/ui": "/dev/ui",
     "/dev/ui/[gruppe]": "/dev/ui/[gruppe]",
     "/dev/verifizierung/[ref]": "/dev/verifizierung/[ref]",
