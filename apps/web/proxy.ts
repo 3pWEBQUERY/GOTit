@@ -1,9 +1,20 @@
 import { storageOrigins } from "@app/storage/origins";
 import createMiddleware from "next-intl/middleware";
-import type { NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
+import { canonicalRedirectUrl } from "./features/system/canonical-host";
 import { routing } from "./i18n/routing";
 
 const handleI18nRouting = createMiddleware(routing);
+
+/** Herkunft des Echtzeit-Dienstes (`wss://…`) für `connect-src`; ohne gültige URL keine (Entscheid 0014). */
+function realtimeOrigin(): string {
+  try {
+    const url = new URL(process.env.REALTIME_URL ?? "");
+    return url.protocol === "ws:" || url.protocol === "wss:" ? ` ${url.protocol}//${url.host}` : "";
+  } catch {
+    return "";
+  }
+}
 
 /** Strikte Content Security Policy mit Nonce pro Anfrage (PRD 16.2). */
 function buildCsp(nonce: string): string {
@@ -18,7 +29,7 @@ function buildCsp(nonce: string): string {
     "style-src-attr 'unsafe-inline'",
     `img-src 'self' blob: data:${storage}`,
     "font-src 'self'",
-    `connect-src 'self'${storage}${development ? " ws:" : ""}`,
+    `connect-src 'self'${storage}${realtimeOrigin()}${development ? " ws:" : ""}`,
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self'",
@@ -27,6 +38,8 @@ function buildCsp(nonce: string): string {
 }
 
 export default function proxy(request: NextRequest) {
+  const canonical = canonicalRedirectUrl({ host: request.headers.get("x-forwarded-host") ?? request.headers.get("host"), pathname: request.nextUrl.pathname, search: request.nextUrl.search });
+  if (canonical) return NextResponse.redirect(canonical, 308);
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
   const csp = buildCsp(nonce);
   request.headers.set("x-nonce", nonce);

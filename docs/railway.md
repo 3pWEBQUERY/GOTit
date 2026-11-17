@@ -37,9 +37,9 @@ Geteilt (Umgebung `production`): `BETTER_AUTH_SECRET`, `AGE_GATE_SECRET`, `APP_N
 | `REDIS_URL` | web, realtime, worker | `${{Redis.REDIS_URL}}` |
 | `BETTER_AUTH_SECRET` | web, realtime | `${{shared.BETTER_AUTH_SECRET}}` |
 | `AGE_GATE_SECRET` | web | `${{shared.AGE_GATE_SECRET}}` |
-| `APP_URL` | web | `https://${{RAILWAY_PUBLIC_DOMAIN}}` |
+| `APP_URL` | web | `https://thegnd.net` (staging `https://staging.thegnd.net`) |
 | `APP_ENV` | web, worker, cron-purge-expired | `${{shared.APP_ENV}}`; verbietet den E-Mail-Ausgang und fiktive Testkonten |
-| `REALTIME_URL` | web | `wss://${{realtime.RAILWAY_PUBLIC_DOMAIN}}` |
+| `REALTIME_URL` | web | `wss://realtime.thegnd.net` (staging `wss://realtime-staging.thegnd.net`) |
 | `STORAGE_DRIVER=s3`, `S3_*` | web, worker, cron-purge-expired | Referenzen auf die Buckets (`${{originals.BUCKET}}`, `${{originals.ACCESS_KEY_ID}}`, …); der Cron-Dienst löscht Chat-Bilder abgelaufener Konten (Entscheid 0014) |
 
 `NODE_ENV` wird bewusst nicht gesetzt: Mit `production` liesse `pnpm install` beim Build die Entwicklungsabhängigkeiten weg (Next.js-Build, Prisma-CLI, Turbo). `next start` setzt den Produktionsmodus selbst. Eine geteilte `NODE_ENV` liegt noch in der Umgebung, wird aber von keinem Dienst referenziert und wirkt daher nicht; sie lässt sich im Dashboard unter «Shared Variables» löschen.
@@ -56,9 +56,9 @@ Anbieter: **Resend**, angebunden über die HTTP-API, weil Railway ausgehendes SM
 | --- | --- | --- |
 | `MAIL_TRANSPORT` | web, worker | `resend` |
 | `MAIL_FROM` | web, worker | `${{shared.APP_NAME}} <noreply@thegnd.net>` |
-| `RESEND_API_KEY` | web, worker | versiegelt, im Dashboard gesetzt; Schlüssel nur mit Senderecht |
+| `RESEND_API_KEY` | web, worker | im Dashboard gesetzt (17.11.2026); Schlüssel nur mit Senderecht. Empfehlung: im Dashboard versiegeln («Seal»), damit niemand den Wert zurücklesen kann |
 
-Ohne `RESEND_API_KEY` gilt der Versand als nicht eingerichtet: Die Registrierung ist geschlossen und sagt das, der Worker lehnt E-Mail-Jobs sichtbar ab. In `staging` bleibt `MAIL_TRANSPORT=outbox`.
+Der Versand ist seit dem 17.11.2026 aktiv. Ohne `RESEND_API_KEY` gälte er als nicht eingerichtet: Die Registrierung ist geschlossen und sagt das, der Worker lehnt E-Mail-Jobs sichtbar ab. In `staging` bleibt `MAIL_TRANSPORT=outbox`.
 
 ## Domains
 
@@ -69,7 +69,7 @@ Ohne `RESEND_API_KEY` gilt der Versand als nicht eingerichtet: Die Registrierung
 | `staging.thegnd.net` | web | staging |
 | `realtime-staging.thegnd.net` | realtime | staging |
 
-Jede Domain braucht beim DNS-Anbieter einen CNAME auf das Ziel, das Railway nennt, und einen TXT-Eintrag `_railway-verify…` zur Bestätigung. Für `thegnd.net` selbst (Apex) muss der Anbieter CNAME-Flattening oder ALIAS unterstützen (zum Beispiel Cloudflare). Sobald die Zertifikate ausgestellt sind, werden `APP_URL` (`https://thegnd.net`, staging `https://staging.thegnd.net`) und `REALTIME_URL` (`wss://realtime.thegnd.net`, staging `wss://realtime-staging.thegnd.net`) umgestellt; vorher würden Links in E-Mails und Passkeys auf eine noch nicht erreichbare Adresse zeigen.
+Seit dem 17.11.2026 sind alle fünf Domains bestätigt, die Zertifikate gültig und `APP_URL` sowie `REALTIME_URL` umgestellt. Better Auth nimmt Anmeldungen nur vom Ursprung aus `APP_URL` an; `www.thegnd.net` und die Railway-Domains leiten deshalb auf `thegnd.net` um (kanonischer Host in `apps/web/proxy.ts`).
 
 ## Noch nicht eingerichtet
 
