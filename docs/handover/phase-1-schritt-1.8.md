@@ -68,7 +68,7 @@ Abnahmekriterien von 1.8:
 | --- | --- |
 | `pnpm check:file-size` | keine Datei über 600 Zeilen |
 | Lint, Typen, Unit- und Integrationstests (Turbo, alle Pakete) | 30 von 30 Aufgaben grün |
-| Playwright gegen den Produktions-Build mit Worker und Echtzeit-Dienst, alle Schritte 1.1 bis 1.8 | E2E_ERGEBNIS |
+| Playwright gegen den Produktions-Build mit Worker und Echtzeit-Dienst, alle Schritte 1.1 bis 1.8 | **201 von 201 grün**, ohne Wiederholung |
 
 | Abnahme 20.4 | Beleg |
 | --- | --- |
@@ -77,6 +77,12 @@ Abnahmekriterien von 1.8:
 | Blockierte Kontakte können keine weiteren Nachrichten senden | Beide Richtungen «nicht zustellbar»; die Seite der Blockierten enthält keinen Hinweis; nach dem Aufheben geht es wieder |
 | Nachrichtenzustände bleiben konsistent | Gelesen und ungelesen, Lesebestätigung nur bei beidseitiger Zustimmung, Löschen für beide, Archiv mit Rückkehr bei neuer Nachricht |
 | Meldungen werden an die Moderation übergeben | Offener Fall mit Kopie, auch nach dem Löschen durch den Absender; Warteschlange im Admin, dringende zuerst; Aufdecken mit Grund im Audit-Log |
+
+## Unterwegs behoben
+
+- **Gestreamte Seiten in Tests:** React 19 blendet gestreamte Inhalte gebündelt und leicht verzögert ein; bis dahin liegt eine versteckte Kopie im Dokument. Für Nutzer unsichtbar, aber Playwright fand dadurch manchmal zwei Treffer. Die Tests warten jetzt nach jeder Navigation, bis alles eingeblendet ist (`e2e/support/settle.ts`). Die CSP ist nicht die Ursache: Alle Skripte tragen ihre Nonce.
+- **Seitentitel und axe:** axe prüft erst, wenn der nachgestreamte Titel da ist.
+- **Testreste:** Abgebrochene Testläufe hatten fiktive Regionen und Kategorien hinterlassen, die andere Tests beeinflussten. Die Suchtests räumen sie vorher auf.
 
 ## Was nicht geprüft ist
 

@@ -66,7 +66,8 @@ test.describe("Registrierung (PRD 7.4, Abnahme 1–7)", () => {
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("E-Mail bestätigt");
     await expect(page.getByRole("link", { name: "Profil einrichten" })).toHaveAttribute("href", "/de/studio/start");
     await page.goto("/de/studio");
-    await expect(page).toHaveURL(/\/de\/studio\/start$/);
+    // /studio/start leitet weiter auf den ersten offenen Schritt des Onboardings.
+    await expect(page).toHaveURL(/\/de\/studio\/start(\/[a-z-]+)?$/);
   });
 
   test("eine vergebene Adresse sieht aus wie eine neue und erhält keine zweite E-Mail", async ({ page }) => {

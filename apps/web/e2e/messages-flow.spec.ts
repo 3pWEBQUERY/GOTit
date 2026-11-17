@@ -229,7 +229,8 @@ test.describe("Messenger: Grundablauf", () => {
       .getByRole("listitem")
       .filter({ hasText: "Antwort geht verloren" });
     const retry = second.getByRole("button", { name: "Erneut senden" });
-    if (await retry.isVisible()) await retry.click();
+    // Die Echtzeit kann die gespeicherte Nachricht schon eingesetzt haben; dann verschwindet der Button.
+    if (await retry.isVisible()) await retry.click({ timeout: 2000 }).catch(() => undefined);
     await expect(second).toHaveCount(1);
     await expect(second).toContainText("Gesendet");
     await page.reload();

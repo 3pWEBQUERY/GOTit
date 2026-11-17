@@ -208,9 +208,11 @@ test.describe("Suche: Leerzustand, Sichtbarkeit, Vorschläge", () => {
 
     await page.goto(`/de/suche?q=${word}&preis_max=99`);
     await expect(
-      page.getByText(
-        "Am stärksten schränkt «bis CHF 99» ein. Ohne diesen Filter gibt es 2 Profile.",
-      ),
+      page
+        .getByText(
+          "Am stärksten schränkt «bis CHF 99» ein. Ohne diesen Filter gibt es 2 Profile.",
+        )
+        .filter({ visible: true }),
     ).toBeVisible();
     await page
       .getByRole("link", { name: "Filter «bis CHF 99» entfernen" })

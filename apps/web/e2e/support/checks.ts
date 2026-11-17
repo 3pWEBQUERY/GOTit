@@ -3,6 +3,8 @@ import { expect, type Page } from "@playwright/test";
 
 /** Abnahme der Oberfläche, Punkt 4: keine axe-Befunde der Stufen «serious» und «critical». */
 export async function expectNoSeriousAxeFindings(page: Page): Promise<void> {
+  // Next.js streamt Metadaten nach dem Inhalt; erst mit Titel ist die Seite vollständig.
+  await expect(page).toHaveTitle(/\S/);
   const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"]).analyze();
   const severe = results.violations.filter((violation) => violation.impact === "serious" || violation.impact === "critical");
   expect(severe.map((violation) => `${violation.id}: ${violation.nodes.map((node) => node.target.join(" ")).join(" | ")}`)).toEqual([]);

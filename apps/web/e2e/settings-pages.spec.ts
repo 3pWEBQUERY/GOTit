@@ -170,7 +170,7 @@ test.describe("Privatsphäre und Benachrichtigungen (Abnahme 17, 18, 21)", () =>
     await expect(online).toHaveAttribute("aria-checked", "false");
     await expect(page.getByRole("switch", { name: "Lesebestätigungen senden" })).toHaveAttribute("aria-checked", "false");
     await expect(page.getByRole("heading", { level: 2, name: "Blockiert" })).toBeVisible();
-    await expect(page.getByText("Niemand blockiert")).toBeVisible();
+    await expect(page.getByText("Niemand blockiert").filter({ visible: true })).toBeVisible();
     await expect(page.getByRole("button", { name: /speichern/i })).toHaveCount(0);
     await online.click();
     await expect(saved(page)).toBeVisible();
