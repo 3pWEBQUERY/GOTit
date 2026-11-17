@@ -1,0 +1,195 @@
+{
+  "meta": {
+    "overview": "Admin · Panoramica",
+    "queue": "Admin · Verifiche",
+    "case": "Admin · Pratica di verifica"
+  },
+  "shell": {
+    "brand": "{appName} Admin",
+    "navLabel": "Sezioni dell’admin",
+    "overview": "Panoramica",
+    "verifications": "Verifiche",
+    "openCount": "{count, plural, one {# pratica aperta} other {# pratiche aperte}}",
+    "skipToContent": "Vai al contenuto",
+    "signedInAs": "Accesso come {name}",
+    "toMarketplace": "Vai al marketplace",
+    "signOut": "Esci",
+    "breadcrumbs": "Percorso"
+  },
+  "twoFactor": {
+    "title": "Configura il secondo fattore",
+    "description": "L’applicazione admin richiede un secondo fattore. Configuralo nelle impostazioni di sicurezza e poi riapri questa pagina.",
+    "action": "Apri le impostazioni di sicurezza"
+  },
+  "restricted": {
+    "title": "Questa sezione è riservata a verifica e moderazione",
+    "description": "Il tuo ruolo non ha accesso alla coda di verifica. Se devi verificare profili, chiedi il ruolo adatto a un Super Admin.",
+    "action": "Vai alla panoramica"
+  },
+  "notFound": {
+    "title": "Questa pratica non esiste",
+    "description": "Il link è scaduto o incompleto. Le pratiche aperte si trovano nella coda.",
+    "queue": "Apri la coda",
+    "overview": "Vai alla panoramica"
+  },
+  "state": {
+    "loading": "Caricamento del contenuto",
+    "slow": "Il caricamento richiede più tempo del solito.",
+    "retry": "Riprova",
+    "errorTitle": "Non è stato possibile caricare la pagina",
+    "errorDescription": "Si è verificato un errore sul server. Le decisioni salvate non sono interessate. Ricarica la pagina.",
+    "reload": "Ricarica la pagina"
+  },
+  "overview": {
+    "title": "Panoramica",
+    "openTitle": "Pratiche di verifica aperte",
+    "openUnit": "{count, plural, one {profilo attende la verifica} other {profili attendono la verifica}}",
+    "openQueue": "Apri la coda",
+    "reviewOnly": "La coda di verifica è riservata a verifica e moderazione.",
+    "upcoming": "Utenti, moderazione, contenuti, regioni e le sezioni di sistema arrivano con la fase 1.13. Fino ad allora l’admin contiene la verifica dei profili dei fornitori."
+  },
+  "queue": {
+    "title": "Verifiche",
+    "intro": "Profili dei fornitori inviati, prima i più vecchi. Un profilo diventa pubblico solo dopo la tua approvazione.",
+    "caption": "Pratiche di verifica aperte",
+    "count": "{count, plural, =0 {Nessuna pratica aperta} one {# pratica aperta} other {# pratiche aperte}}",
+    "next": "Apri la pratica successiva",
+    "shortcut": {
+      "before": "Il tasto",
+      "key": "N",
+      "after": "apre la pratica aperta più vecchia."
+    },
+    "unassigned": "Nessuno assegnato",
+    "columns": {
+      "displayName": "Nome visualizzato",
+      "submitted": "Inviato il",
+      "age": "Età",
+      "assignee": "Responsabile"
+    },
+    "empty": {
+      "title": "Nessuna pratica aperta",
+      "description": "Appena un fornitore invia il suo profilo, compare qui."
+    },
+    "age": {
+      "lessThanHour": "da meno di un’ora",
+      "hours": "{count, plural, one {da # ora} other {da # ore}}",
+      "days": "{count, plural, one {da # giorno} other {da # giorni}}"
+    }
+  },
+  "case": {
+    "title": "Pratica {name}",
+    "meta": "Inviato il {submitted} · {age} · Stato: {state}",
+    "decisionLabel": {
+      "open": "Aperta",
+      "APPROVED": "Approvata",
+      "CHANGES_REQUESTED": "Rinviata per correzione",
+      "REJECTED": "Respinta"
+    },
+    "facts": {
+      "title": "Dati",
+      "displayName": "Nome visualizzato",
+      "description": "Descrizione",
+      "none": "Nessun dato",
+      "languages": "Lingue",
+      "regions": "Regioni",
+      "rates": "Prezzi",
+      "rateDuration": "Durata",
+      "ratePrice": "Prezzo",
+      "rateNote": "Nota",
+      "minutes": "{count, plural, one {# minuto} other {# minuti}}",
+      "noRates": "Nessun prezzo indicato.",
+      "earlier": "Pratiche precedenti",
+      "noEarlier": "Questa è la prima pratica per questo profilo."
+    }
+  },
+  "identity": {
+    "title": "Dettagli della verifica d’identità",
+    "hidden": "I dettagli sono nascosti. Mostrarli crea una voce nel registro di audit, con il tuo motivo.",
+    "reason": "Motivo per mostrarli",
+    "reasonHint": "Almeno 10 caratteri, per esempio cosa vuoi verificare.",
+    "reveal": "Mostra i dettagli",
+    "noCheck": "Per questo account non esiste una verifica d’identità.",
+    "valid": "La verifica d’identità è valida.",
+    "invalid": "La verifica d’identità non è valida. Approvare non è possibile.",
+    "status": "Stato",
+    "statusLabel": {
+      "PENDING": "In sospeso",
+      "APPROVED": "Superata",
+      "REJECTED": "Non superata",
+      "EXPIRED": "Scaduta",
+      "CANCELLED": "Interrotta"
+    },
+    "adult": "Maggiore età",
+    "adultYes": "Maggiorenne",
+    "adultNo": "Minorenne",
+    "liveness": "Controllo di vitalità",
+    "passed": "Superato",
+    "notPassed": "Non superato",
+    "checkedAt": "Verificato il",
+    "expiresAt": "Valido fino al",
+    "provider": "Fornitore del servizio",
+    "failureReason": "Motivo del rifiuto",
+    "unknown": "Sconosciuto",
+    "audited": "La visualizzazione è registrata nel registro di audit con il tuo motivo. Alla prossima apertura i dettagli saranno di nuovo nascosti."
+  },
+  "decision": {
+    "title": "Decisione",
+    "decision": "Esito",
+    "option": {
+      "APPROVED": "Approva",
+      "CHANGES_REQUESTED": "Rinvia per correzione",
+      "REJECTED": "Respingi"
+    },
+    "optionHint": {
+      "APPROVED": "Il profilo diventa pubblico finché la verifica d’identità è valida.",
+      "CHANGES_REQUESTED": "Il fornitore modifica le sezioni indicate e invia di nuovo.",
+      "REJECTED": "Il profilo viene bloccato."
+    },
+    "reason": "Motivazione",
+    "reasonHint": "Almeno 10 caratteri. È registrata con la decisione nel registro di audit.",
+    "rule": "Regola",
+    "rulePlaceholder": "Scegli una regola",
+    "fieldNotes": "Motivi per sezione",
+    "fieldNotesHint": "Indica almeno una sezione che il fornitore deve modificare.",
+    "optional": "facoltativo",
+    "area": {
+      "regions": "Regioni",
+      "profile": "Profilo",
+      "offer": "Offerta e prezzi",
+      "media": "Media",
+      "availability": "Disponibilità"
+    },
+    "save": "Salva la decisione",
+    "saved": "Decisione salvata",
+    "summaryTitle": "Controlla i campi segnalati.",
+    "identityInvalidHelp": "La verifica manca, è scaduta o non è stata superata. I tuoi dati sono ancora qui. Rinvia il profilo per correzione o respingilo.",
+    "readOnlyTitle": "Decidere è possibile da 1024 px di larghezza",
+    "readOnlyDescription": "Su questo schermo l’admin è in sola lettura. Apri la pratica su uno schermo più largo per decidere.",
+    "alreadyDecidedHelp": "La tua decisione non è stata salvata. Qui trovi lo stato attuale.",
+    "result": "Esito",
+    "decidedAt": "Deciso il"
+  },
+  "rules": {
+    "complete": "Dati completi",
+    "descriptionUnclear": "Descrizione poco chiara",
+    "regionNotAllowed": "Regione non ammessa",
+    "pricesImplausible": "Prezzi non plausibili",
+    "policyViolation": "Violazione delle regole"
+  },
+  "errors": {
+    "generic": "Non ha funzionato. I tuoi dati sono ancora qui. Riprova.",
+    "signInRequired": "La tua sessione è scaduta. Accedi di nuovo.",
+    "forbidden": "Il tuo ruolo non può verificare profili. Non è stato salvato nulla.",
+    "notFound": "Questa pratica non esiste più.",
+    "decisionRequired": "Scegli una decisione.",
+    "reasonTooShort": "Motiva la decisione con almeno 10 caratteri.",
+    "reasonTooLong": "La motivazione può avere al massimo 2000 caratteri.",
+    "ruleRequired": "Scegli la regola su cui si basa la decisione.",
+    "fieldNotesRequired": "Per un rinvio per correzione indica almeno una sezione con un motivo.",
+    "fieldNoteInvalid": "Scrivi almeno 3 caratteri o lascia vuoto il campo.",
+    "identityInvalid": "La verifica d’identità non è valida. Approvare non è possibile.",
+    "alreadyDecided": "Questa pratica è già stata decisa",
+    "revealReasonTooShort": "Indica un motivo di almeno 10 caratteri.",
+    "revealReasonTooLong": "Il motivo può avere al massimo 500 caratteri."
+  }
+}

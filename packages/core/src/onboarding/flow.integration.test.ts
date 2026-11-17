@@ -30,13 +30,20 @@ async function visible(userId: string, now = new Date()) {
 const basics = { displayName: "Fiktiver Name", description: "Fiktive Beschreibung eines Testprofils mit ausreichend Zeichen für die Prüfung.", languages: ["de", "en"] };
 
 let regionId = "";
+const reviewer = `it_pruefer_${run}`;
+const outsider = `it_support_${run}`;
 beforeAll(async () => {
   process.env.IDENTITY_PROVIDER = "test";
   process.env.APP_ENV = "test";
   regionId = (await db.region.findFirstOrThrow({ where: { approved: true } })).id;
+  for (const [id, role] of [[reviewer, "TRUST_SAFETY"], [outsider, "SUPPORT"]] as const) {
+    ids.push(id);
+    await db.user.create({ data: { id, name: `Fiktiv ${role}`, email: `${id}@fiktiv.test`, emailVerified: true, twoFactorEnabled: true } });
+    await db.internalRoleAssignment.create({ data: { userId: id, role } });
+  }
 });
 afterAll(async () => {
-  await db.auditEvent.deleteMany({ where: { target: { in: ids.map((id) => `user:${id}`) } } });
+  await db.auditEvent.deleteMany({ where: { OR: [{ target: { in: ids.map((id) => `user:${id}`) } }, { actorId: { in: ids } }] } });
   await db.user.deleteMany({ where: { id: { in: ids } } });
 });
 
@@ -58,9 +65,9 @@ describe("Onboarding, Prüfung und Freigabe (Schritt 1.5)", () => {
     expect(await visible(userId)).toBe(false);
 
     const review = await db.profileReview.findFirstOrThrow({ where: { providerProfile: { userId } } });
-    expect(await decideReview("pruefer", review.id, { decision: "APPROVED", reason: "Angaben vollständig und plausibel", rule: "R-1" })).toEqual({ ok: true });
+    expect(await decideReview(reviewer, review.id, { decision: "APPROVED", reason: "Angaben vollständig und plausibel", rule: "R-1" })).toEqual({ ok: true });
     expect(await visible(userId)).toBe(true);
-    expect(await decideReview("pruefer", review.id, { decision: "REJECTED", reason: "Zweiter Entscheid zum selben Fall", rule: "R-1" })).toEqual({ ok: false, reason: "not-open" });
+    expect(await decideReview(reviewer, review.id, { decision: "REJECTED", reason: "Zweiter Entscheid zum selben Fall", rule: "R-1" })).toEqual({ ok: false, reason: "not-open" });
     expect(await db.auditEvent.count({ where: { target: `profile_review:${review.id}` } })).toBe(1);
   });
 
@@ -94,7 +101,7 @@ describe("Onboarding, Prüfung und Freigabe (Schritt 1.5)", () => {
     expect((await submitProfile(userId)).ok).toBe(true);
     await db.identityCheck.updateMany({ where: { userId }, data: { expiresAt: new Date(Date.now() - 1000) } });
     const review = await db.profileReview.findFirstOrThrow({ where: { providerProfile: { userId } } });
-    expect(await decideReview("pruefer", review.id, { decision: "APPROVED", reason: "Angaben vollständig und plausibel", rule: "R-1" })).toEqual({ ok: false, reason: "identity-invalid" });
+    expect(await decideReview(reviewer, review.id, { decision: "APPROVED", reason: "Angaben vollständig und plausibel", rule: "R-1" })).toEqual({ ok: false, reason: "identity-invalid" });
   });
 
   it("Rückgabe zur Korrektur verlangt Gründe pro Feld und öffnet das Profil wieder zum Bearbeiten", async () => {
@@ -106,11 +113,42 @@ describe("Onboarding, Prüfung und Freigabe (Schritt 1.5)", () => {
     await db.providerProfile.update({ where: { userId }, data: { onboardingSteps: { push: "preview" } } });
     await submitProfile(userId);
     const review = await db.profileReview.findFirstOrThrow({ where: { providerProfile: { userId } } });
-    await expect(decideReview("pruefer", review.id, { decision: "CHANGES_REQUESTED", reason: "Beschreibung unklar formuliert", rule: "R-2" })).rejects.toThrow();
-    expect(await decideReview("pruefer", review.id, { decision: "CHANGES_REQUESTED", reason: "Beschreibung unklar formuliert", rule: "R-2", fieldNotes: { profile: "Bitte die Beschreibung ergänzen" } })).toEqual({ ok: true });
+    await expect(decideReview(reviewer, review.id, { decision: "CHANGES_REQUESTED", reason: "Beschreibung unklar formuliert", rule: "R-2" })).rejects.toThrow();
+    expect(await decideReview(reviewer, review.id, { decision: "CHANGES_REQUESTED", reason: "Beschreibung unklar formuliert", rule: "R-2", fieldNotes: { profile: "Bitte die Beschreibung ergänzen" } })).toEqual({ ok: true });
     const state = await getOnboardingState(userId);
     expect(state.profile.status).toBe("CHANGES_REQUESTED");
     expect(state.latestReview?.fieldNotes).toEqual({ profile: "Bitte die Beschreibung ergänzen" });
     expect((await saveProfileBasics(userId, { ...basics, description: `${basics.description} Ergänzt.` })).ok).toBe(true);
+  });
+});
+
+describe("Entscheide sind abgesichert", () => {
+  async function openCase(label: string) {
+    const userId = await provider(label);
+    await startIdentityCheck(userId, "/de/studio/start");
+    await applyIdentityResult(await refOf(userId), { approved: true, ageOver18: true, livenessPassed: true });
+    await saveRegions(userId, { regionIds: [regionId] });
+    await saveProfileBasics(userId, basics);
+    await db.providerProfile.update({ where: { userId }, data: { onboardingSteps: { push: "preview" } } });
+    await submitProfile(userId);
+    return db.profileReview.findFirstOrThrow({ where: { providerProfile: { userId } } });
+  }
+  const approve = { decision: "APPROVED", reason: "Angaben vollständig und plausibel", rule: "R-1" } as const;
+
+  it("ohne Prüfrolle verweigert der Kern selbst, auch wenn der Aufrufer nicht prüft", async () => {
+    const review = await openCase("ohnerolle");
+    await expect(decideReview(outsider, review.id, approve)).rejects.toThrow("forbidden");
+    expect((await db.profileReview.findUniqueOrThrow({ where: { id: review.id } })).decision).toBeNull();
+  });
+
+  it("zwei gleichzeitige Entscheide: genau einer gewinnt, ein Audit-Eintrag", async () => {
+    const review = await openCase("wettlauf");
+    const results = await Promise.all([
+      decideReview(reviewer, review.id, approve),
+      decideReview(reviewer, review.id, { decision: "REJECTED", reason: "Gleichzeitiger zweiter Entscheid", rule: "R-5" }),
+    ]);
+    expect(results.filter((result) => result.ok)).toHaveLength(1);
+    expect(results.filter((result) => !result.ok)).toEqual([{ ok: false, reason: "not-open" }]);
+    expect(await db.auditEvent.count({ where: { target: `profile_review:${review.id}` } })).toBe(1);
   });
 });

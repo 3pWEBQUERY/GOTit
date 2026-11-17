@@ -1,0 +1,195 @@
+{
+  "meta": {
+    "overview": "Admin · Übersicht",
+    "queue": "Admin · Verifizierungen",
+    "case": "Admin · Prüffall"
+  },
+  "shell": {
+    "brand": "{appName} Admin",
+    "navLabel": "Bereiche des Admins",
+    "overview": "Übersicht",
+    "verifications": "Verifizierungen",
+    "openCount": "{count, plural, one {# offener Fall} other {# offene Fälle}}",
+    "skipToContent": "Zum Inhalt springen",
+    "signedInAs": "Angemeldet als {name}",
+    "toMarketplace": "Zum Marktplatz",
+    "signOut": "Abmelden",
+    "breadcrumbs": "Pfad"
+  },
+  "twoFactor": {
+    "title": "Zweiten Faktor einrichten",
+    "description": "Die Admin-Anwendung verlangt einen zweiten Faktor. Richte ihn in den Sicherheitseinstellungen ein und öffne danach diese Seite erneut.",
+    "action": "Sicherheitseinstellungen öffnen"
+  },
+  "restricted": {
+    "title": "Dieser Bereich ist für Prüfung und Moderation",
+    "description": "Deine Rolle hat keinen Zugriff auf die Prüfwarteschlange. Wenn du Profile prüfen sollst, bitte einen Super Admin um die passende Rolle.",
+    "action": "Zur Übersicht wechseln"
+  },
+  "notFound": {
+    "title": "Diesen Fall gibt es nicht",
+    "description": "Der Link ist veraltet oder unvollständig. Die offenen Fälle stehen in der Warteschlange.",
+    "queue": "Warteschlange öffnen",
+    "overview": "Zur Übersicht wechseln"
+  },
+  "state": {
+    "loading": "Inhalt wird geladen",
+    "slow": "Das Laden dauert länger als üblich.",
+    "retry": "Erneut versuchen",
+    "errorTitle": "Die Seite liess sich nicht laden",
+    "errorDescription": "Auf dem Server ist ein Fehler aufgetreten. Gespeicherte Entscheide sind nicht betroffen. Lade die Seite neu.",
+    "reload": "Seite neu laden"
+  },
+  "overview": {
+    "title": "Übersicht",
+    "openTitle": "Offene Prüffälle",
+    "openUnit": "{count, plural, one {Profil wartet auf die Prüfung} other {Profile warten auf die Prüfung}}",
+    "openQueue": "Warteschlange öffnen",
+    "reviewOnly": "Die Prüfwarteschlange ist für Prüfung und Moderation.",
+    "upcoming": "Benutzer, Moderation, Inhalte, Regionen und die Systembereiche folgen mit Schritt 1.13. Bis dahin enthält der Admin die Prüfung von Anbieterprofilen."
+  },
+  "queue": {
+    "title": "Verifizierungen",
+    "intro": "Eingereichte Anbieterprofile, älteste zuerst. Ein Profil wird erst nach deiner Freigabe öffentlich.",
+    "caption": "Offene Prüffälle",
+    "count": "{count, plural, =0 {Keine offenen Fälle} one {# offener Fall} other {# offene Fälle}}",
+    "next": "Nächsten Fall öffnen",
+    "shortcut": {
+      "before": "Taste",
+      "key": "N",
+      "after": "öffnet den ältesten offenen Fall."
+    },
+    "unassigned": "Niemand zugewiesen",
+    "columns": {
+      "displayName": "Anzeigename",
+      "submitted": "Eingereicht am",
+      "age": "Alter",
+      "assignee": "Zuständig"
+    },
+    "empty": {
+      "title": "Keine offenen Fälle",
+      "description": "Sobald ein Anbieter sein Profil einreicht, erscheint es hier."
+    },
+    "age": {
+      "lessThanHour": "seit weniger als einer Stunde",
+      "hours": "{count, plural, one {seit # Stunde} other {seit # Stunden}}",
+      "days": "{count, plural, one {seit # Tag} other {seit # Tagen}}"
+    }
+  },
+  "case": {
+    "title": "Prüffall {name}",
+    "meta": "Eingereicht am {submitted} · {age} · Stand: {state}",
+    "decisionLabel": {
+      "open": "Offen",
+      "APPROVED": "Freigegeben",
+      "CHANGES_REQUESTED": "Zur Korrektur zurückgegeben",
+      "REJECTED": "Abgelehnt"
+    },
+    "facts": {
+      "title": "Angaben",
+      "displayName": "Anzeigename",
+      "description": "Beschreibung",
+      "none": "Keine Angabe",
+      "languages": "Sprachen",
+      "regions": "Regionen",
+      "rates": "Preise",
+      "rateDuration": "Dauer",
+      "ratePrice": "Preis",
+      "rateNote": "Hinweis",
+      "minutes": "{count, plural, one {# Minute} other {# Minuten}}",
+      "noRates": "Keine Preise angegeben.",
+      "earlier": "Frühere Fälle",
+      "noEarlier": "Dies ist der erste Fall zu diesem Profil."
+    }
+  },
+  "identity": {
+    "title": "Prüfdetails der Identität",
+    "hidden": "Die Prüfdetails sind verdeckt. Aufdecken schreibt einen Eintrag ins Audit-Log, mit deinem Grund.",
+    "reason": "Grund für das Aufdecken",
+    "reasonHint": "Mindestens 10 Zeichen, zum Beispiel was du prüfen willst.",
+    "reveal": "Prüfdetails aufdecken",
+    "noCheck": "Zu diesem Konto gibt es keine Identitätsprüfung.",
+    "valid": "Die Identitätsprüfung ist gültig.",
+    "invalid": "Die Identitätsprüfung ist nicht gültig. Freigeben ist nicht möglich.",
+    "status": "Status",
+    "statusLabel": {
+      "PENDING": "Ausstehend",
+      "APPROVED": "Bestanden",
+      "REJECTED": "Nicht bestanden",
+      "EXPIRED": "Abgelaufen",
+      "CANCELLED": "Abgebrochen"
+    },
+    "adult": "Volljährigkeit",
+    "adultYes": "Volljährig",
+    "adultNo": "Nicht volljährig",
+    "liveness": "Lebendigkeitsprüfung",
+    "passed": "Bestanden",
+    "notPassed": "Nicht bestanden",
+    "checkedAt": "Geprüft am",
+    "expiresAt": "Gültig bis",
+    "provider": "Dienstleister",
+    "failureReason": "Grund der Ablehnung",
+    "unknown": "Unbekannt",
+    "audited": "Das Aufdecken steht mit deinem Grund im Audit-Log. Beim nächsten Öffnen sind die Details wieder verdeckt."
+  },
+  "decision": {
+    "title": "Entscheid",
+    "decision": "Ergebnis",
+    "option": {
+      "APPROVED": "Freigeben",
+      "CHANGES_REQUESTED": "Zur Korrektur",
+      "REJECTED": "Ablehnen"
+    },
+    "optionHint": {
+      "APPROVED": "Das Profil wird öffentlich, solange die Identitätsprüfung gilt.",
+      "CHANGES_REQUESTED": "Der Anbieter passt die genannten Bereiche an und reicht erneut ein.",
+      "REJECTED": "Das Profil wird gesperrt."
+    },
+    "reason": "Begründung",
+    "reasonHint": "Mindestens 10 Zeichen. Sie steht mit dem Entscheid im Audit-Log.",
+    "rule": "Regel",
+    "rulePlaceholder": "Regel auswählen",
+    "fieldNotes": "Gründe je Bereich",
+    "fieldNotesHint": "Nenne mindestens einen Bereich, den der Anbieter ändern soll.",
+    "optional": "optional",
+    "area": {
+      "regions": "Regionen",
+      "profile": "Profil",
+      "offer": "Angebot und Preise",
+      "media": "Medien",
+      "availability": "Verfügbarkeit"
+    },
+    "save": "Entscheid speichern",
+    "saved": "Entscheid gespeichert",
+    "summaryTitle": "Bitte prüfe die markierten Felder.",
+    "identityInvalidHelp": "Die Prüfung fehlt, ist abgelaufen oder nicht bestanden. Deine Eingaben sind noch da. Gib das Profil zur Korrektur zurück oder lehne es ab.",
+    "readOnlyTitle": "Entscheiden geht ab 1024 px Breite",
+    "readOnlyDescription": "Auf diesem Bildschirm ist der Admin nur lesend. Öffne den Fall auf einem breiteren Bildschirm, um zu entscheiden.",
+    "alreadyDecidedHelp": "Dein Entscheid wurde nicht gespeichert. Hier steht der aktuelle Stand.",
+    "result": "Ergebnis",
+    "decidedAt": "Entschieden am"
+  },
+  "rules": {
+    "complete": "Angaben vollständig",
+    "descriptionUnclear": "Beschreibung unklar",
+    "regionNotAllowed": "Region unzulässig",
+    "pricesImplausible": "Preise unplausibel",
+    "policyViolation": "Verstoss gegen Richtlinien"
+  },
+  "errors": {
+    "generic": "Das hat nicht geklappt. Deine Eingaben sind noch da. Versuche es erneut.",
+    "signInRequired": "Deine Sitzung ist abgelaufen. Melde dich erneut an.",
+    "forbidden": "Deine Rolle darf keine Profile prüfen. Es wurde nichts gespeichert.",
+    "notFound": "Diesen Fall gibt es nicht mehr.",
+    "decisionRequired": "Wähle einen Entscheid.",
+    "reasonTooShort": "Begründe den Entscheid mit mindestens 10 Zeichen.",
+    "reasonTooLong": "Die Begründung darf höchstens 2000 Zeichen lang sein.",
+    "ruleRequired": "Wähle die Regel, auf die sich der Entscheid stützt.",
+    "fieldNotesRequired": "Nenne bei «Zur Korrektur» mindestens einen Bereich mit Grund.",
+    "fieldNoteInvalid": "Schreib mindestens 3 Zeichen oder lass das Feld leer.",
+    "identityInvalid": "Die Identitätsprüfung ist nicht gültig. Freigeben ist nicht möglich.",
+    "alreadyDecided": "Dieser Fall wurde bereits entschieden",
+    "revealReasonTooShort": "Gib einen Grund mit mindestens 10 Zeichen an.",
+    "revealReasonTooLong": "Der Grund darf höchstens 500 Zeichen lang sein."
+  }
+}

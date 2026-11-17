@@ -17,8 +17,13 @@ export const routing = defineRouting({
     ...infoPathnames,
     ...memberPathnames,
     ...studioPathnames,
+    // Admin (PRD 7.8): intern, in allen Sprachen gleich.
+    "/admin": "/admin",
+    "/admin/verifizierungen": "/admin/verifizierungen",
+    "/admin/verifizierungen/[id]": "/admin/verifizierungen/[id]",
     "/dev/ui": "/dev/ui",
     "/dev/ui/[gruppe]": "/dev/ui/[gruppe]",
+    "/dev/verifizierung/[ref]": "/dev/verifizierung/[ref]",
   },
 });
 

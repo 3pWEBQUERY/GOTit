@@ -3,6 +3,7 @@ export { canApprove, canSubmit, isIdentityValid, isPubliclyVisible, type Identit
 export { IDENTITY_VALIDITY_DAYS, resolveIdentityProvider, type IdentityProvider } from "./provider";
 export {
   REVIEWER_ROLES,
+  REVIEW_QUEUE_LIMIT,
   decideReview,
   getReviewCase,
   listOpenReviews,

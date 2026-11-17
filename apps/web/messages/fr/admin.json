@@ -1,0 +1,195 @@
+{
+  "meta": {
+    "overview": "Admin · Vue d’ensemble",
+    "queue": "Admin · Vérifications",
+    "case": "Admin · Dossier de vérification"
+  },
+  "shell": {
+    "brand": "{appName} Admin",
+    "navLabel": "Sections de l’admin",
+    "overview": "Vue d’ensemble",
+    "verifications": "Vérifications",
+    "openCount": "{count, plural, one {# dossier ouvert} other {# dossiers ouverts}}",
+    "skipToContent": "Aller au contenu",
+    "signedInAs": "Connecté en tant que {name}",
+    "toMarketplace": "Aller à la place de marché",
+    "signOut": "Se déconnecter",
+    "breadcrumbs": "Chemin"
+  },
+  "twoFactor": {
+    "title": "Configurer le deuxième facteur",
+    "description": "L’application admin exige un deuxième facteur. Configure-le dans les paramètres de sécurité, puis rouvre cette page.",
+    "action": "Ouvrir les paramètres de sécurité"
+  },
+  "restricted": {
+    "title": "Cette section est réservée à la vérification et à la modération",
+    "description": "Ton rôle n’a pas accès à la file de vérification. Si tu dois vérifier des profils, demande le rôle adéquat à un Super Admin.",
+    "action": "Aller à la vue d’ensemble"
+  },
+  "notFound": {
+    "title": "Ce dossier n’existe pas",
+    "description": "Le lien est obsolète ou incomplet. Les dossiers ouverts se trouvent dans la file d’attente.",
+    "queue": "Ouvrir la file d’attente",
+    "overview": "Aller à la vue d’ensemble"
+  },
+  "state": {
+    "loading": "Chargement du contenu",
+    "slow": "Le chargement prend plus de temps que d’habitude.",
+    "retry": "Réessayer",
+    "errorTitle": "La page n’a pas pu être chargée",
+    "errorDescription": "Une erreur s’est produite sur le serveur. Les décisions enregistrées ne sont pas concernées. Recharge la page.",
+    "reload": "Recharger la page"
+  },
+  "overview": {
+    "title": "Vue d’ensemble",
+    "openTitle": "Dossiers de vérification ouverts",
+    "openUnit": "{count, plural, one {profil attend la vérification} other {profils attendent la vérification}}",
+    "openQueue": "Ouvrir la file d’attente",
+    "reviewOnly": "La file de vérification est réservée à la vérification et à la modération.",
+    "upcoming": "Utilisateurs, modération, contenus, régions et sections système arrivent avec l’étape 1.13. D’ici là, l’admin contient la vérification des profils de prestataires."
+  },
+  "queue": {
+    "title": "Vérifications",
+    "intro": "Profils de prestataires soumis, les plus anciens d’abord. Un profil ne devient public qu’après ta validation.",
+    "caption": "Dossiers de vérification ouverts",
+    "count": "{count, plural, =0 {Aucun dossier ouvert} one {# dossier ouvert} other {# dossiers ouverts}}",
+    "next": "Ouvrir le dossier suivant",
+    "shortcut": {
+      "before": "La touche",
+      "key": "N",
+      "after": "ouvre le plus ancien dossier ouvert."
+    },
+    "unassigned": "Personne n’est assigné",
+    "columns": {
+      "displayName": "Nom affiché",
+      "submitted": "Soumis le",
+      "age": "Ancienneté",
+      "assignee": "Responsable"
+    },
+    "empty": {
+      "title": "Aucun dossier ouvert",
+      "description": "Dès qu’un prestataire soumet son profil, il apparaît ici."
+    },
+    "age": {
+      "lessThanHour": "depuis moins d’une heure",
+      "hours": "{count, plural, one {depuis # heure} other {depuis # heures}}",
+      "days": "{count, plural, one {depuis # jour} other {depuis # jours}}"
+    }
+  },
+  "case": {
+    "title": "Dossier {name}",
+    "meta": "Soumis le {submitted} · {age} · État : {state}",
+    "decisionLabel": {
+      "open": "Ouvert",
+      "APPROVED": "Validé",
+      "CHANGES_REQUESTED": "Renvoyé pour correction",
+      "REJECTED": "Refusé"
+    },
+    "facts": {
+      "title": "Informations",
+      "displayName": "Nom affiché",
+      "description": "Description",
+      "none": "Non renseigné",
+      "languages": "Langues",
+      "regions": "Régions",
+      "rates": "Tarifs",
+      "rateDuration": "Durée",
+      "ratePrice": "Prix",
+      "rateNote": "Remarque",
+      "minutes": "{count, plural, one {# minute} other {# minutes}}",
+      "noRates": "Aucun tarif indiqué.",
+      "earlier": "Dossiers précédents",
+      "noEarlier": "C’est le premier dossier pour ce profil."
+    }
+  },
+  "identity": {
+    "title": "Détails de la vérification d’identité",
+    "hidden": "Les détails sont masqués. Les afficher crée une entrée dans le journal d’audit, avec ton motif.",
+    "reason": "Motif de l’affichage",
+    "reasonHint": "Au moins 10 caractères, par exemple ce que tu veux vérifier.",
+    "reveal": "Afficher les détails",
+    "noCheck": "Ce compte n’a aucune vérification d’identité.",
+    "valid": "La vérification d’identité est valable.",
+    "invalid": "La vérification d’identité n’est pas valable. La validation est impossible.",
+    "status": "Statut",
+    "statusLabel": {
+      "PENDING": "En attente",
+      "APPROVED": "Réussie",
+      "REJECTED": "Échouée",
+      "EXPIRED": "Expirée",
+      "CANCELLED": "Interrompue"
+    },
+    "adult": "Majorité",
+    "adultYes": "Majeur·e",
+    "adultNo": "Mineur·e",
+    "liveness": "Contrôle du vivant",
+    "passed": "Réussi",
+    "notPassed": "Échoué",
+    "checkedAt": "Vérifié le",
+    "expiresAt": "Valable jusqu’au",
+    "provider": "Prestataire de vérification",
+    "failureReason": "Motif du refus",
+    "unknown": "Inconnu",
+    "audited": "L’affichage figure dans le journal d’audit avec ton motif. À la prochaine ouverture, les détails seront de nouveau masqués."
+  },
+  "decision": {
+    "title": "Décision",
+    "decision": "Résultat",
+    "option": {
+      "APPROVED": "Valider",
+      "CHANGES_REQUESTED": "Renvoyer pour correction",
+      "REJECTED": "Refuser"
+    },
+    "optionHint": {
+      "APPROVED": "Le profil devient public tant que la vérification d’identité est valable.",
+      "CHANGES_REQUESTED": "Le prestataire adapte les sections indiquées et soumet de nouveau.",
+      "REJECTED": "Le profil est bloqué."
+    },
+    "reason": "Justification",
+    "reasonHint": "Au moins 10 caractères. Elle figure avec la décision dans le journal d’audit.",
+    "rule": "Règle",
+    "rulePlaceholder": "Choisir une règle",
+    "fieldNotes": "Motifs par section",
+    "fieldNotesHint": "Indique au moins une section que le prestataire doit modifier.",
+    "optional": "facultatif",
+    "area": {
+      "regions": "Régions",
+      "profile": "Profil",
+      "offer": "Offre et tarifs",
+      "media": "Médias",
+      "availability": "Disponibilités"
+    },
+    "save": "Enregistrer la décision",
+    "saved": "Décision enregistrée",
+    "summaryTitle": "Vérifie les champs signalés.",
+    "identityInvalidHelp": "La vérification manque, a expiré ou a échoué. Tes saisies sont conservées. Renvoie le profil pour correction ou refuse-le.",
+    "readOnlyTitle": "Décider n’est possible qu’à partir de 1024 px de largeur",
+    "readOnlyDescription": "Sur cet écran, l’admin est en lecture seule. Ouvre le dossier sur un écran plus large pour décider.",
+    "alreadyDecidedHelp": "Ta décision n’a pas été enregistrée. Voici l’état actuel.",
+    "result": "Résultat",
+    "decidedAt": "Décidé le"
+  },
+  "rules": {
+    "complete": "Informations complètes",
+    "descriptionUnclear": "Description peu claire",
+    "regionNotAllowed": "Région non admise",
+    "pricesImplausible": "Tarifs peu plausibles",
+    "policyViolation": "Violation des règles"
+  },
+  "errors": {
+    "generic": "Cela n’a pas fonctionné. Tes saisies sont conservées. Réessaie.",
+    "signInRequired": "Ta session a expiré. Reconnecte-toi.",
+    "forbidden": "Ton rôle ne permet pas de vérifier des profils. Rien n’a été enregistré.",
+    "notFound": "Ce dossier n’existe plus.",
+    "decisionRequired": "Choisis une décision.",
+    "reasonTooShort": "Justifie la décision en au moins 10 caractères.",
+    "reasonTooLong": "La justification peut comporter au plus 2000 caractères.",
+    "ruleRequired": "Choisis la règle sur laquelle repose la décision.",
+    "fieldNotesRequired": "Pour un renvoi en correction, indique au moins une section avec un motif.",
+    "fieldNoteInvalid": "Écris au moins 3 caractères ou laisse le champ vide.",
+    "identityInvalid": "La vérification d’identité n’est pas valable. La validation est impossible.",
+    "alreadyDecided": "Ce dossier a déjà été décidé",
+    "revealReasonTooShort": "Indique un motif d’au moins 10 caractères.",
+    "revealReasonTooLong": "Le motif peut comporter au plus 500 caractères."
+  }
+}

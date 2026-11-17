@@ -1,0 +1,195 @@
+{
+  "meta": {
+    "overview": "Admin · Overview",
+    "queue": "Admin · Verifications",
+    "case": "Admin · Review case"
+  },
+  "shell": {
+    "brand": "{appName} Admin",
+    "navLabel": "Admin sections",
+    "overview": "Overview",
+    "verifications": "Verifications",
+    "openCount": "{count, plural, one {# open case} other {# open cases}}",
+    "skipToContent": "Skip to content",
+    "signedInAs": "Signed in as {name}",
+    "toMarketplace": "Go to marketplace",
+    "signOut": "Sign out",
+    "breadcrumbs": "Path"
+  },
+  "twoFactor": {
+    "title": "Set up a second factor",
+    "description": "The admin application requires a second factor. Set it up in your security settings, then open this page again.",
+    "action": "Open security settings"
+  },
+  "restricted": {
+    "title": "This section is for review and moderation",
+    "description": "Your role has no access to the review queue. If you are meant to review profiles, ask a Super Admin for the matching role.",
+    "action": "Go to overview"
+  },
+  "notFound": {
+    "title": "This case does not exist",
+    "description": "The link is outdated or incomplete. Open cases are in the queue.",
+    "queue": "Open queue",
+    "overview": "Go to overview"
+  },
+  "state": {
+    "loading": "Loading content",
+    "slow": "Loading is taking longer than usual.",
+    "retry": "Try again",
+    "errorTitle": "The page could not be loaded",
+    "errorDescription": "An error occurred on the server. Saved decisions are not affected. Reload the page.",
+    "reload": "Reload page"
+  },
+  "overview": {
+    "title": "Overview",
+    "openTitle": "Open review cases",
+    "openUnit": "{count, plural, one {profile is waiting for review} other {profiles are waiting for review}}",
+    "openQueue": "Open queue",
+    "reviewOnly": "The review queue is for review and moderation.",
+    "upcoming": "Users, moderation, content, regions and the system sections follow with step 1.13. Until then, the admin contains the review of provider profiles."
+  },
+  "queue": {
+    "title": "Verifications",
+    "intro": "Submitted provider profiles, oldest first. A profile only becomes public after you approve it.",
+    "caption": "Open review cases",
+    "count": "{count, plural, =0 {No open cases} one {# open case} other {# open cases}}",
+    "next": "Open next case",
+    "shortcut": {
+      "before": "Press",
+      "key": "N",
+      "after": "to open the oldest open case."
+    },
+    "unassigned": "Not assigned",
+    "columns": {
+      "displayName": "Display name",
+      "submitted": "Submitted on",
+      "age": "Age",
+      "assignee": "Assignee"
+    },
+    "empty": {
+      "title": "No open cases",
+      "description": "As soon as a provider submits their profile, it appears here."
+    },
+    "age": {
+      "lessThanHour": "for less than an hour",
+      "hours": "{count, plural, one {for # hour} other {for # hours}}",
+      "days": "{count, plural, one {for # day} other {for # days}}"
+    }
+  },
+  "case": {
+    "title": "Review case {name}",
+    "meta": "Submitted on {submitted} · {age} · State: {state}",
+    "decisionLabel": {
+      "open": "Open",
+      "APPROVED": "Approved",
+      "CHANGES_REQUESTED": "Returned for changes",
+      "REJECTED": "Rejected"
+    },
+    "facts": {
+      "title": "Details",
+      "displayName": "Display name",
+      "description": "Description",
+      "none": "Not provided",
+      "languages": "Languages",
+      "regions": "Regions",
+      "rates": "Rates",
+      "rateDuration": "Duration",
+      "ratePrice": "Price",
+      "rateNote": "Note",
+      "minutes": "{count, plural, one {# minute} other {# minutes}}",
+      "noRates": "No rates provided.",
+      "earlier": "Earlier cases",
+      "noEarlier": "This is the first case for this profile."
+    }
+  },
+  "identity": {
+    "title": "Identity check details",
+    "hidden": "The details are hidden. Revealing them writes an entry to the audit log, with your reason.",
+    "reason": "Reason for revealing",
+    "reasonHint": "At least 10 characters, for example what you want to check.",
+    "reveal": "Reveal check details",
+    "noCheck": "This account has no identity check.",
+    "valid": "The identity check is valid.",
+    "invalid": "The identity check is not valid. Approving is not possible.",
+    "status": "Status",
+    "statusLabel": {
+      "PENDING": "Pending",
+      "APPROVED": "Passed",
+      "REJECTED": "Failed",
+      "EXPIRED": "Expired",
+      "CANCELLED": "Cancelled"
+    },
+    "adult": "Age of majority",
+    "adultYes": "Adult",
+    "adultNo": "Not an adult",
+    "liveness": "Liveness check",
+    "passed": "Passed",
+    "notPassed": "Not passed",
+    "checkedAt": "Checked on",
+    "expiresAt": "Valid until",
+    "provider": "Verification service",
+    "failureReason": "Reason for failure",
+    "unknown": "Unknown",
+    "audited": "Revealing is recorded in the audit log with your reason. The next time you open the case, the details are hidden again."
+  },
+  "decision": {
+    "title": "Decision",
+    "decision": "Outcome",
+    "option": {
+      "APPROVED": "Approve",
+      "CHANGES_REQUESTED": "Return for changes",
+      "REJECTED": "Reject"
+    },
+    "optionHint": {
+      "APPROVED": "The profile becomes public as long as the identity check is valid.",
+      "CHANGES_REQUESTED": "The provider updates the named sections and submits again.",
+      "REJECTED": "The profile is suspended."
+    },
+    "reason": "Reason",
+    "reasonHint": "At least 10 characters. It is stored with the decision in the audit log.",
+    "rule": "Rule",
+    "rulePlaceholder": "Choose a rule",
+    "fieldNotes": "Reasons per section",
+    "fieldNotesHint": "Name at least one section the provider should change.",
+    "optional": "optional",
+    "area": {
+      "regions": "Regions",
+      "profile": "Profile",
+      "offer": "Offer and rates",
+      "media": "Media",
+      "availability": "Availability"
+    },
+    "save": "Save decision",
+    "saved": "Decision saved",
+    "summaryTitle": "Check the marked fields.",
+    "identityInvalidHelp": "The check is missing, has expired or was not passed. Your input is still here. Return the profile for changes or reject it.",
+    "readOnlyTitle": "Deciding is possible from 1024 px width",
+    "readOnlyDescription": "On this screen the admin is read-only. Open the case on a wider screen to decide.",
+    "alreadyDecidedHelp": "Your decision was not saved. This is the current state.",
+    "result": "Result",
+    "decidedAt": "Decided on"
+  },
+  "rules": {
+    "complete": "Details complete",
+    "descriptionUnclear": "Description unclear",
+    "regionNotAllowed": "Region not allowed",
+    "pricesImplausible": "Rates implausible",
+    "policyViolation": "Policy violation"
+  },
+  "errors": {
+    "generic": "That did not work. Your input is still here. Try again.",
+    "signInRequired": "Your session has expired. Sign in again.",
+    "forbidden": "Your role may not review profiles. Nothing was saved.",
+    "notFound": "This case no longer exists.",
+    "decisionRequired": "Choose a decision.",
+    "reasonTooShort": "Give a reason of at least 10 characters.",
+    "reasonTooLong": "The reason may be at most 2000 characters long.",
+    "ruleRequired": "Choose the rule the decision is based on.",
+    "fieldNotesRequired": "When returning for changes, name at least one section with a reason.",
+    "fieldNoteInvalid": "Write at least 3 characters or leave the field empty.",
+    "identityInvalid": "The identity check is not valid. Approving is not possible.",
+    "alreadyDecided": "This case has already been decided",
+    "revealReasonTooShort": "Give a reason of at least 10 characters.",
+    "revealReasonTooLong": "The reason may be at most 500 characters long."
+  }
+}
