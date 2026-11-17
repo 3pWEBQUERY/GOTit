@@ -57,3 +57,44 @@ export async function resolveRegionFilter(
     .map((other) => other.id);
   return { regionId: region.id, ids: [...new Set([region.id, ...ids])] };
 }
+
+/**
+ * Nächste freigegebene Region mit Mittelpunkt zu einem Standort («In meiner
+ * Nähe», Entscheid 0013). Bei gleichem Mittelpunkt gewinnt die Stadt vor dem
+ * Kanton. Die Koordinaten werden nur verglichen, nie gespeichert.
+ */
+export async function nearestRegion(
+  latitude: number,
+  longitude: number,
+): Promise<{ slug: string; distanceKm: number } | null> {
+  if (
+    !Number.isFinite(latitude) ||
+    !Number.isFinite(longitude) ||
+    Math.abs(latitude) > 90 ||
+    Math.abs(longitude) > 180
+  )
+    return null;
+  const regions = await getDb().region.findMany({
+    where: {
+      approved: true,
+      latitude: { not: null },
+      longitude: { not: null },
+    },
+    select: { slug: true, kind: true, latitude: true, longitude: true },
+  });
+  let best: { slug: string; distanceKm: number; city: boolean } | null = null;
+  for (const region of regions) {
+    const distance = distanceKm(
+      { latitude, longitude },
+      { latitude: region.latitude ?? 0, longitude: region.longitude ?? 0 },
+    );
+    const city = region.kind === "CITY";
+    if (
+      !best ||
+      distance < best.distanceKm - 0.01 ||
+      (Math.abs(distance - best.distanceKm) <= 0.01 && city && !best.city)
+    )
+      best = { slug: region.slug, distanceKm: distance, city };
+  }
+  return best ? { slug: best.slug, distanceKm: best.distanceKm } : null;
+}

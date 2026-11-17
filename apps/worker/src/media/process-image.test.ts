@@ -28,7 +28,8 @@ async function jpegWithGps(): Promise<Uint8Array> {
   return new Uint8Array(buffer);
 }
 
-describe("Verarbeitung eines Bilds", () => {
+// Acht Varianten in AVIF und WebP kodieren braucht unter Last (Turbo, CI) mehr als die üblichen 5 Sekunden.
+describe("Verarbeitung eines Bilds", { timeout: 30_000 }, () => {
   it("entfernt EXIF und GPS nachweislich aus jeder Variante und dem Original", async () => {
     const input = await jpegWithGps();
     const before = await sharp(input).metadata();

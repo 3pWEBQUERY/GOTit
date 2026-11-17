@@ -11,6 +11,7 @@ vi.mock("@app/jobs", async (importOriginal) => ({
 const {
   EMPTY_QUERY,
   PAGE_SIZE,
+  nearestRegion,
   parseSearchQuery,
   rebuildSearchIndex,
   reindexProfile,
@@ -532,6 +533,19 @@ describe("Vorschläge", () => {
       ),
     ).toBe(true);
     expect(await searchPort.suggest("z", context())).toEqual([]);
+  });
+});
+
+describe("In meiner Nähe", () => {
+  it("findet die nächste freigegebene Region; Stadt vor Kanton mit gleichem Mittelpunkt; ungültige Koordinaten ergeben nichts", async () => {
+    expect((await nearestRegion(47.3769, 8.5417))?.slug).toBe("stadt-zuerich");
+    expect((await nearestRegion(47.0001, 8.0001))?.slug).toBe(city);
+    // Die Grenze von 150 km prüft die Aktion «In meiner Nähe»; hier zählt die Entfernung.
+    expect((await nearestRegion(52.52, 13.405))?.distanceKm).toBeGreaterThan(
+      150,
+    );
+    expect(await nearestRegion(Number.NaN, 8)).toBeNull();
+    expect(await nearestRegion(95, 8)).toBeNull();
   });
 });
 

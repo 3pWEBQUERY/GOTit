@@ -11,5 +11,35 @@
     "title": "Nessuna regione è ancora aperta",
     "description": "I profili compaiono quando una regione è aperta e i fornitori sono verificati.",
     "action": "Vedi verifica e sicurezza"
-  }
+  },
+  "metaDescription": "Scoprire profili con identità verificata nella tua regione.",
+  "region": {
+    "change": "Cambia regione",
+    "all": "Tutte le regioni",
+    "nearMe": "Vicino a me",
+    "nearMeLocating": "Rilevamento della posizione",
+    "nearMeDenied": "La posizione non è autorizzata. Scegli una regione dall’elenco.",
+    "nearMeUnavailable": "Non è stato possibile rilevare la posizione. Scegli una regione dall’elenco.",
+    "nearMeNone": "Vicino a te non c’è ancora una regione approvata. Scegline una dall’elenco.",
+    "unknown": "Questa regione non è disponibile. Scegline un’altra.",
+    "changed": "Regione: {region}"
+  },
+  "search": {
+    "legend": "Cerca profili",
+    "category": "Categoria",
+    "allCategories": "Tutte le categorie",
+    "submit": "Cerca"
+  },
+  "quick": {
+    "label": "Filtri rapidi",
+    "photos": "Foto verificate",
+    "newOnly": "Nuovo"
+  },
+  "rows": {
+    "inRegion": "A {region}",
+    "new": "Nuovi arrivi",
+    "allIn": "Tutti i profili a {region}",
+    "allNew": "Tutti i nuovi profili"
+  },
+  "regions": "Regioni"
 }

@@ -11,5 +11,35 @@
     "title": "Noch ist keine Region freigegeben",
     "description": "Profile erscheinen, sobald eine Region freigegeben ist und Anbieter geprüft sind.",
     "action": "Prüfung und Sicherheit ansehen"
-  }
+  },
+  "metaDescription": "Identitätsgeprüfte Profile in deiner Region entdecken.",
+  "region": {
+    "change": "Region ändern",
+    "all": "Alle Regionen",
+    "nearMe": "In meiner Nähe",
+    "nearMeLocating": "Standort wird bestimmt",
+    "nearMeDenied": "Der Standort ist nicht freigegeben. Wähle eine Region aus der Liste.",
+    "nearMeUnavailable": "Der Standort liess sich nicht bestimmen. Wähle eine Region aus der Liste.",
+    "nearMeNone": "In deiner Nähe ist noch keine Region freigegeben. Wähle eine aus der Liste.",
+    "unknown": "Diese Region ist nicht verfügbar. Wähle eine andere.",
+    "changed": "Region: {region}"
+  },
+  "search": {
+    "legend": "Profile suchen",
+    "category": "Kategorie",
+    "allCategories": "Alle Kategorien",
+    "submit": "Suchen"
+  },
+  "quick": {
+    "label": "Schnellfilter",
+    "photos": "Fotos geprüft",
+    "newOnly": "Neu"
+  },
+  "rows": {
+    "inRegion": "In {region}",
+    "new": "Neu dabei",
+    "allIn": "Alle Profile in {region}",
+    "allNew": "Alle neuen Profile"
+  },
+  "regions": "Regionen"
 }

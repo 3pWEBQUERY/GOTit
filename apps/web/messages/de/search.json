@@ -8,5 +8,139 @@
     "coverAlt": "Titelbild von {name}",
     "favoriteAdd": "{name} als Favorit speichern",
     "favoriteRemove": "{name} aus Favoriten entfernen"
+  },
+  "meta": {
+    "searchTitle": "Suche",
+    "searchDescription": "Identitätsgeprüfte Profile in der Schweiz suchen und nach Region, Sprache, Angebot und Preis filtern.",
+    "regionDescription": "Identitätsgeprüfte Profile in {region}, nach Sprache, Angebot und Preis filterbar.",
+    "categoryDescription": "Identitätsgeprüfte Profile mit dem Angebot {category} in der Schweiz.",
+    "profilesDescription": "Alle identitätsgeprüften Einzelprofile in der Schweiz.",
+    "overviewTitle": "Regionen der Schweiz",
+    "overviewDescription": "Freigegebene Kantone und Städte mit ihren Profilen."
+  },
+  "title": {
+    "count": "{count, plural, =0 {Keine Profile} one {# Profil} other {# Profile}}",
+    "countIn": "{count, plural, =0 {Keine Profile} one {# Profil} other {# Profile}} in {region}"
+  },
+  "breadcrumbs": "Brotkrumen",
+  "discover": "Entdecken",
+  "canton": "Kanton {name}",
+  "landing": {
+    "cantonTitle": "Profile im Kanton {name}",
+    "cityTitle": "Profile in {name}",
+    "categoryTitle": "{name} in der Schweiz",
+    "profilesTitle": "Profile in der Schweiz",
+    "profiles": "Profile",
+    "cities": "Städte im Kanton {name}"
+  },
+  "overview": {
+    "title": "Regionen der Schweiz",
+    "intro": "Kantone und Städte, die für Profile freigegeben sind. Weitere folgen, sobald sie freigegeben sind.",
+    "emptyTitle": "Noch ist keine Region freigegeben",
+    "emptyDescription": "Profile erscheinen, sobald eine Region freigegeben ist und Anbieter geprüft sind."
+  },
+  "filters": {
+    "title": "Filter",
+    "reset": "Alle zurücksetzen",
+    "sheetReset": "Zurücksetzen",
+    "open": "Filter",
+    "active": "aktiv",
+    "close": "Filter schliessen",
+    "handle": "Filter schliessen, ohne sie anzuwenden",
+    "apply": "{count, plural, =0 {Keine Profile gefunden} one {# Profil anzeigen} other {# Profile anzeigen}}",
+    "applyUnknown": "Profile anzeigen",
+    "location": "Standort",
+    "region": "Region",
+    "allRegions": "Ganze Schweiz",
+    "radius": "Umkreis",
+    "radiusNone": "Nur diese Region",
+    "radiusKm": "{km} km",
+    "radiusHint": "Gemessen ab dem Mittelpunkt der Region, nie ab einer Adresse.",
+    "profile": "Profil",
+    "languages": "Sprachen",
+    "offer": "Angebot",
+    "categories": "Kategorien",
+    "priceMin": "Preis ab (CHF)",
+    "priceMax": "Preis bis (CHF)",
+    "priceHint": "Es zählt der günstigste sichtbare Preis. Profile ohne Preise fallen dann weg.",
+    "content": "Inhalte",
+    "photos": "Fotos geprüft",
+    "photosHint": "Mindestens ein geprüftes Foto",
+    "newOnly": "Neu",
+    "newOnlyHint": "In den letzten 30 Tagen dazugekommen",
+    "moreLanguages": "Weitere Sprachen ({count})"
+  },
+  "chips": {
+    "label": "Aktive Filter",
+    "remove": "Filter «{label}» entfernen",
+    "reset": "Alle zurücksetzen",
+    "text": "«{text}»",
+    "radius": "Umkreis {km} km",
+    "priceRange": "CHF {min} bis {max}",
+    "priceFrom": "ab CHF {min}",
+    "priceTo": "bis CHF {max}",
+    "photos": "Fotos geprüft",
+    "newOnly": "Neu"
+  },
+  "toolbar": {
+    "sort": "Sortierung",
+    "view": "Ansicht",
+    "grid": "Raster",
+    "list": "Liste"
+  },
+  "sort": {
+    "relevanz": "Relevanz",
+    "aktualisiert": "Kürzlich aktualisiert",
+    "neu": "Neu",
+    "preis": "Preis"
+  },
+  "results": {
+    "heading": "Ergebnisse",
+    "more": "Weitere {count} laden",
+    "range": "{from}–{to} von {total}",
+    "limit": "Mehr als {count} Profile lassen sich nicht laden. Grenze die Suche mit Filtern ein."
+  },
+  "empty": {
+    "title": "Keine Profile gefunden",
+    "restrictive": "Am stärksten schränkt «{label}» ein. Ohne diesen Filter {count, plural, one {gibt es # Profil} other {gibt es # Profile}}.",
+    "remove": "Filter «{label}» entfernen",
+    "description": "Mit weniger Filtern findest du mehr Profile.",
+    "reset": "Alle Filter zurücksetzen",
+    "noFilterTitle": "Hier gibt es noch keine Profile",
+    "noFilterDescription": "Sobald Anbieter geprüft und freigegeben sind, erscheinen sie hier.",
+    "noFilterAction": "Andere Regionen ansehen"
+  },
+  "saved": {
+    "idle": "Suche speichern",
+    "saving": "Suche wird gespeichert",
+    "saved": "Suche gespeichert",
+    "fallbackName": "Meine Suche",
+    "added": "Suche gespeichert. Du findest sie unter «Gespeicherte Suchen».",
+    "removed": "Gespeicherte Suche entfernt",
+    "errors": {
+      "sign-in": "Melde dich an, um Suchen zu speichern.",
+      "empty": "Eine Suche ohne Filter lässt sich nicht speichern.",
+      "limit": "Du hast bereits 50 Suchen gespeichert. Entferne zuerst eine.",
+      "rate-limited": "Zu viele Änderungen in kurzer Zeit. Versuche es in einer Minute erneut.",
+      "generic": "Die Suche liess sich nicht speichern. Versuche es erneut."
+    }
+  },
+  "box": {
+    "label": "Ort oder Name",
+    "placeholder": "Ort oder Name",
+    "empty": "Keine Vorschläge",
+    "region": "{name} · Region",
+    "category": "{name} · Kategorie",
+    "profile": "{name} · Profil"
+  },
+  "state": {
+    "loading": "Profile werden geladen",
+    "slow": "Das Laden dauert länger als üblich.",
+    "retry": "Erneut versuchen",
+    "errorTitle": "Die Suche konnte nicht geladen werden",
+    "errorDescription": "Deine Filter sind in der Adresse erhalten. Lade die Seite neu, um es noch einmal zu versuchen.",
+    "reload": "Neu laden",
+    "rateLimitedTitle": "Zu viele Suchanfragen",
+    "rateLimitedDescription": "Warte {seconds, plural, one {# Sekunde} other {# Sekunden}} und lade die Seite dann neu. Deine Filter bleiben in der Adresse erhalten."
   }
 }

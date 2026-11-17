@@ -102,3 +102,44 @@ Pro Konto:
 | Änderungen an Favoriten und gespeicherten Suchen | 60 pro Minute |
 
 Darüber zeigt die Seite einen Fehlerzustand mit Wartezeit, die API antwortet mit 429.
+
+## Oberfläche (Agent Favoriten)
+
+- **`/favoriten`** zeigt die Standardsammlung «Favoriten», **`/favoriten/[sammlung]`** eine eigene Sammlung. Darüber stehen alle Sammlungen als Tabs mit Anzahl (v2 12.1). Die Tabs sind Links mit eigener URL und brechen auf schmalen Bildschirmen um, statt seitlich zu scrollen. Am Ende steht «Neue Sammlung».
+- **Liste statt Raster:** Die Einträge stehen als ProfileCard in der Listenansicht untereinander, neueste oben. «Nach oben» und «Nach unten» sind so eindeutig; in einem Raster wäre «oben» je nach Breite ein anderer Nachbar.
+- **Aktionen pro Eintrag** im Menü «Aktionen für Name»: «Nach oben», «Nach unten», die anderen Sammlungen mit Häkchen, «Neue Sammlung …», «Entfernen». Das Häkchen legt in eine andere Sammlung oder nimmt heraus; «Verschieben» ist damit Häkchen setzen und hier entfernen. Eine Mehrfachauswahl (v2 12.1) ist nicht gebaut: Bei höchstens 200 Einträgen und diesem Menü fehlt der Bedarf noch, sie kommt bei Rückmeldungen dazu.
+- **Sortieren** wirkt sofort, die neue Position wird angesagt, der Fokus bleibt am Menü des bewegten Eintrags.
+- **Entfernen** fragt nicht nach und bietet im Toast «Rückgängig» (PRD 13). Der Eintrag kommt dann oben wieder hinein. Nicht mehr verfügbare Einträge zeigen nur «Profil nicht mehr verfügbar» und einen Button «Entfernen», ohne «Rückgängig»: Das Profil lässt sich nicht mehr merken.
+- **Pausierte Profile** tragen unter der Karte den Satz «Zurzeit pausiert …» und bleiben verlinkt.
+- **Sammlung anlegen und umbenennen** geschieht in einem Dialog mit einem Feld und Speichern-Button. Leerer Name, zu langer Name, doppelter Name und das Limit von 20 stehen am Feld. Löschen fragt im Bestätigungsdialog nach und nennt die Zahl der Einträge; die Profile und «Favoriten» bleiben unberührt. «Favoriten» bietet weder Umbenennen noch Löschen an.
+- **404 vor dem Ladezustand:** Die Prüfung auf eine eigene Sammlung sitzt im Layout von `[sammlung]`; der Ladezustand von «Favoriten» liegt deshalb in der Routengruppe `(standard)`. Sonst begänne die Antwort schon mit Status 200.
+- **Profilseite:** Unter dem Kopf stehen der Umschalter «Favorit» (Herz, `aria-pressed`) und das Menü «Zu Sammlung hinzufügen» mit den eigenen Sammlungen, Häkchen, «Neue Sammlung …» und «Alle Sammlungen ansehen». Besucher führt das Herz zu `/anmelden?weiter=<Profil>`, das Menü sehen sie nicht. Der Inhaber sieht beides nicht, die Vorschau im Studio und im Onboarding ebenso wenig: `ProfileView` zeigt die Aktionen nur, wenn die Seite sie übergibt.
+- **`/suchen`:** Jede Suche zeigt ihren Namen, die Filter in Worten («Zürich, Umkreis 25 km · spricht Deutsch oder Englisch · ab CHF 100 · mit geprüften Fotos») und das Speicherdatum. Dazu kommen «Öffnen» (Link auf `/suche` mit genau diesen Parametern), «Umbenennen» (Dialog) und «Löschen» mit Rückfrage. Eine Region oder Kategorie, die nicht mehr freigegeben ist, steht als «nicht mehr verfügbar» da, statt still zu fehlen. Der Leerzustand erklärt «Suche speichern» und führt zur Suche.
+
+## Oberfläche (Agent Suche)
+
+Entscheide zur Oberfläche, die PRD v2 9.1 bis 9.3 offenlässt:
+
+- **Eine Suchansicht** (`features/search/components/search-view.tsx`) für `/suche`, `/profile` und die Landingpages. Eine Landingpage gibt nur ihre Voreinstellung (Region oder Kategorie), Überschrift und Breadcrumbs mit. Ein `ort` oder `kategorie` in der URL einer Landingpage zählt nicht; der Pfad gilt. Wer die Voreinstellung ändert (andere Region, Region entfernt, zweite Kategorie), landet auf `/suche` mit allen Parametern, mit Verlaufseintrag; alles andere ersetzt die URL ohne Verlaufseintrag und ohne zu scrollen.
+- **Breakpoint der Filter:** Die Seitenleiste erscheint ab 1024 px (bei 768 px bliebe neben 280 px Filtern zu wenig für das Raster). Darunter gibt es die haftende Leiste mit «Filter (n)» und den Chips sowie das Sheet. Die Zahl am Button zählt, was das Sheet einstellt, also ohne Freitext und ohne Voreinstellung. «Zurücksetzen» im Sheet lässt den Freitext stehen.
+- **Überschrift:** Auf `/suche` ist die Trefferzahl die H1 («48 Profile in Zürich»), in einer Live-Region. Landingpages haben eine feste H1 («Profile in Zürich», «Profile im Kanton Zürich», «Massage in der Schweiz»); die Trefferzahl steht darunter als Live-Region. Kantone heissen in Auswahl, Chips und Breadcrumbs «Kanton Zürich», weil Stadt und Kanton oft gleich heissen.
+- **Filterfelder:**
+  - Region als eine Auswahl: «Ganze Schweiz», dann jeder freigegebene Kanton mit seinen Städten.
+  - Umkreis als Auswahlknöpfe («Nur diese Region», 10, 25, 50 km), nur bei gewählter Region. Ein Regler wäre für drei feste Werte unnötig fummelig.
+  - Sprachen als Kästchen: Deutsch, Französisch, Italienisch und Englisch sichtbar, die übrigen zwölf hinter «Weitere Sprachen».
+  - Preis als zwei Zahlenfelder, wirksam beim Verlassen des Felds oder mit Enter.
+  - Die Kategoriengruppe entfällt, solange keine Kategorie freigegeben ist.
+- **Freitext mit Vorschlägen:** Die erste Option ist immer der getippte Text; Enter sucht danach. Eine Region setzt `ort`, eine Kategorie ersetzt `kategorie`, ein Profil öffnet die Profilseite. Das Feld zeigt den aktuellen Freitext. Vorschläge und Trefferzahl antworten nur nach bestätigter Altersprüfung (sonst 403), weil sie Profilnamen enthalten können.
+- **Chips:** Jeder aktive Filter ist ein Chip, auch der Freitext («anna») und auf Landingpages die Voreinstellung. Mehrere Sprachen oder Kategorien stehen in einem Chip («Deutsch oder Englisch»), passend zur Verknüpfung «oder».
+- **Suche speichern:** Erscheint nur mit mindestens einem Filter. Der Name entsteht aus den Chips in fester Reihenfolge («Zürich · Deutsch · Fotos geprüft», höchstens 60 Zeichen, sonst «Meine Suche»). Ein zweiter Klick auf «Suche gespeichert» entfernt die Suche wieder (Toggle, wie es `SavedSearchButton` vorsieht). Besucher sehen denselben Text als Link zur Anmeldung mit Rückweg.
+- **Leerzustand:** Gibt es einen einzelnen Filter, ohne den es Treffer gäbe, nennt der Text ihn samt Trefferzahl und bietet genau diese Entfernung als Link. Sonst gibt es «Alle Filter zurücksetzen». Ohne Filter gibt es einen Link auf `/ch`.
+- **Rate Limit:** `/suche`, `/profile` und die Landingpages verbrauchen das Limit «Suchseiten». Entdecken nicht: Die Seite hat feste Abfragen und ist die Startseite; ein Fehlerzustand dort wäre eine Sackgasse.
+- **Fehlerzustand bei Rate Limit:** Die Seite nennt die Wartezeit in Sekunden und bietet «Neu laden»; die Filter bleiben in der URL.
+- **404 vor dem Ladezustand:** Landingpages prüfen Region oder Kategorie in einem eigenen Layout, wie die Profilseite. Übersicht und Kantonsseite liegen in Routengruppen (`ch/(uebersicht)`, `ch/[kanton]/(kanton)`). Sonst würde ihr Ladezustand die Unterseiten umschliessen, und eine unbekannte Stadt antwortete mit 200.
+- **Entdecken:**
+  - **Reihen:** «In {Region}» (Relevanz, höchstens 10) und «Neu dabei» (Profile der letzten 30 Tage in der Region, neueste zuerst). «Alle ansehen» erscheint nur, wenn es mehr als 10 gibt.
+  - **Schnellfilter:** Links «Fotos geprüft» und «Neu» auf `/suche` mit der Region. Sie sind Links, keine Schalter, weil sie die Seite wechseln.
+  - **Region ändern:** Menü mit den hervorgehobenen Regionen, «In meiner Nähe» und «Alle Regionen» (`/ch`).
+  - **Region aus dem Cookie:** Jede freigegebene Region ist gültig, auch ein Kanton oder eine nicht hervorgehobene Stadt.
+  - **«In meiner Nähe»:** Gewählt wird nur eine Region, deren Mittelpunkt höchstens 150 km entfernt ist. Bei gleichem Mittelpunkt gewinnt die Stadt vor dem Kanton. Sonst sagt eine Meldung, dass in der Nähe noch keine Region freigegeben ist.
+  - **Suchformular:** Das Formular von Entdecken sendet Freitext und Kategorie an `/suche`. Wer eine Region aus den Vorschlägen wählt, landet direkt auf `/suche?ort=…`.

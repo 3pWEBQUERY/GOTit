@@ -15,7 +15,11 @@ export {
 } from "./indexer";
 export { requestSearchReindex, requestSearchReindexForUser } from "./reindex";
 export { completeness, type CompletenessFacts } from "./completeness";
-export { distanceKm, resolveRegionFilter } from "./region-filter";
+export {
+  distanceKm,
+  nearestRegion,
+  resolveRegionFilter,
+} from "./region-filter";
 export {
   getLandingCategory,
   getLandingRegion,

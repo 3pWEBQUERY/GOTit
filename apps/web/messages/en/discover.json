@@ -11,5 +11,35 @@
     "title": "No region has been approved yet",
     "description": "Profiles appear once a region is approved and providers are verified.",
     "action": "View verification and safety"
-  }
+  },
+  "metaDescription": "Discover identity-checked profiles in your region.",
+  "region": {
+    "change": "Change region",
+    "all": "All regions",
+    "nearMe": "Near me",
+    "nearMeLocating": "Finding your location",
+    "nearMeDenied": "Location access is not allowed. Choose a region from the list.",
+    "nearMeUnavailable": "Your location could not be determined. Choose a region from the list.",
+    "nearMeNone": "No region near you has been approved yet. Choose one from the list.",
+    "unknown": "This region is not available. Choose another one.",
+    "changed": "Region: {region}"
+  },
+  "search": {
+    "legend": "Search profiles",
+    "category": "Category",
+    "allCategories": "All categories",
+    "submit": "Search"
+  },
+  "quick": {
+    "label": "Quick filters",
+    "photos": "Photos checked",
+    "newOnly": "New"
+  },
+  "rows": {
+    "inRegion": "In {region}",
+    "new": "New here",
+    "allIn": "All profiles in {region}",
+    "allNew": "All new profiles"
+  },
+  "regions": "Regions"
 }

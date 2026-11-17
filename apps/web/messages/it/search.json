@@ -8,5 +8,139 @@
     "coverAlt": "Foto principale di {name}",
     "favoriteAdd": "Salva {name} nei preferiti",
     "favoriteRemove": "Rimuovi {name} dai preferiti"
+  },
+  "meta": {
+    "searchTitle": "Ricerca",
+    "searchDescription": "Cercare profili con identità verificata in Svizzera e filtrare per regione, lingua, offerta e prezzo.",
+    "regionDescription": "Profili con identità verificata a {region}, filtrabili per lingua, offerta e prezzo.",
+    "categoryDescription": "Profili con identità verificata che offrono {category} in Svizzera.",
+    "profilesDescription": "Tutti i profili individuali con identità verificata in Svizzera.",
+    "overviewTitle": "Regioni della Svizzera",
+    "overviewDescription": "Cantoni e città approvati con i loro profili."
+  },
+  "title": {
+    "count": "{count, plural, =0 {Nessun profilo} one {# profilo} other {# profili}}",
+    "countIn": "{count, plural, =0 {Nessun profilo} one {# profilo} other {# profili}} a {region}"
+  },
+  "breadcrumbs": "Percorso",
+  "discover": "Scopri",
+  "canton": "Cantone {name}",
+  "landing": {
+    "cantonTitle": "Profili nel Cantone {name}",
+    "cityTitle": "Profili a {name}",
+    "categoryTitle": "{name} in Svizzera",
+    "profilesTitle": "Profili in Svizzera",
+    "profiles": "Profili",
+    "cities": "Città del Cantone {name}"
+  },
+  "overview": {
+    "title": "Regioni della Svizzera",
+    "intro": "Cantoni e città approvati per i profili. Altri seguiranno non appena approvati.",
+    "emptyTitle": "Nessuna regione è ancora approvata",
+    "emptyDescription": "I profili compaiono non appena una regione è approvata e gli offerenti sono verificati."
+  },
+  "filters": {
+    "title": "Filtri",
+    "reset": "Reimposta tutto",
+    "sheetReset": "Reimposta",
+    "open": "Filtri",
+    "active": "attivi",
+    "close": "Chiudi i filtri",
+    "handle": "Chiudi i filtri senza applicarli",
+    "apply": "{count, plural, =0 {Nessun profilo trovato} one {Mostra # profilo} other {Mostra # profili}}",
+    "applyUnknown": "Mostra i profili",
+    "location": "Luogo",
+    "region": "Regione",
+    "allRegions": "Tutta la Svizzera",
+    "radius": "Raggio",
+    "radiusNone": "Solo questa regione",
+    "radiusKm": "{km} km",
+    "radiusHint": "Misurato dal centro della regione, mai da un indirizzo.",
+    "profile": "Profilo",
+    "languages": "Lingue",
+    "offer": "Offerta",
+    "categories": "Categorie",
+    "priceMin": "Prezzo da (CHF)",
+    "priceMax": "Prezzo fino a (CHF)",
+    "priceHint": "Conta il prezzo visibile più basso. I profili senza prezzi vengono esclusi.",
+    "content": "Contenuti",
+    "photos": "Foto verificate",
+    "photosHint": "Almeno una foto verificata",
+    "newOnly": "Nuovo",
+    "newOnlyHint": "Arrivato negli ultimi 30 giorni",
+    "moreLanguages": "Altre lingue ({count})"
+  },
+  "chips": {
+    "label": "Filtri attivi",
+    "remove": "Rimuovi il filtro «{label}»",
+    "reset": "Reimposta tutto",
+    "text": "«{text}»",
+    "radius": "Raggio {km} km",
+    "priceRange": "CHF da {min} a {max}",
+    "priceFrom": "da CHF {min}",
+    "priceTo": "fino a CHF {max}",
+    "photos": "Foto verificate",
+    "newOnly": "Nuovo"
+  },
+  "toolbar": {
+    "sort": "Ordine",
+    "view": "Vista",
+    "grid": "Griglia",
+    "list": "Elenco"
+  },
+  "sort": {
+    "relevanz": "Pertinenza",
+    "aktualisiert": "Aggiornati di recente",
+    "neu": "Nuovi",
+    "preis": "Prezzo"
+  },
+  "results": {
+    "heading": "Risultati",
+    "more": "Carica altri {count}",
+    "range": "{from}–{to} di {total}",
+    "limit": "Non è possibile caricare più di {count} profili. Restringi la ricerca con i filtri."
+  },
+  "empty": {
+    "title": "Nessun profilo trovato",
+    "restrictive": "Il filtro più restrittivo è «{label}». Senza di esso {count, plural, one {c’è # profilo} other {ci sono # profili}}.",
+    "remove": "Rimuovi il filtro «{label}»",
+    "description": "Con meno filtri trovi più profili.",
+    "reset": "Reimposta tutti i filtri",
+    "noFilterTitle": "Qui non ci sono ancora profili",
+    "noFilterDescription": "Gli offerenti compaiono qui non appena sono verificati e approvati.",
+    "noFilterAction": "Vedi altre regioni"
+  },
+  "saved": {
+    "idle": "Salva la ricerca",
+    "saving": "Salvataggio della ricerca",
+    "saved": "Ricerca salvata",
+    "fallbackName": "La mia ricerca",
+    "added": "Ricerca salvata. La trovi in «Ricerche salvate».",
+    "removed": "Ricerca salvata rimossa",
+    "errors": {
+      "sign-in": "Accedi per salvare le ricerche.",
+      "empty": "Una ricerca senza filtri non può essere salvata.",
+      "limit": "Hai già salvato 50 ricerche. Rimuovine prima una.",
+      "rate-limited": "Troppe modifiche in poco tempo. Riprova tra un minuto.",
+      "generic": "Non è stato possibile salvare la ricerca. Riprova."
+    }
+  },
+  "box": {
+    "label": "Luogo o nome",
+    "placeholder": "Luogo o nome",
+    "empty": "Nessun suggerimento",
+    "region": "{name} · Regione",
+    "category": "{name} · Categoria",
+    "profile": "{name} · Profilo"
+  },
+  "state": {
+    "loading": "Caricamento dei profili",
+    "slow": "Il caricamento richiede più tempo del solito.",
+    "retry": "Riprova",
+    "errorTitle": "Non è stato possibile caricare la ricerca",
+    "errorDescription": "I tuoi filtri restano nell’indirizzo. Ricarica la pagina per riprovare.",
+    "reload": "Ricarica",
+    "rateLimitedTitle": "Troppe ricerche",
+    "rateLimitedDescription": "Attendi {seconds, plural, one {# secondo} other {# secondi}} e poi ricarica la pagina. I tuoi filtri restano nell’indirizzo."
   }
 }

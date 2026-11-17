@@ -11,5 +11,35 @@
     "title": "Aucune région n’est encore ouverte",
     "description": "Les profils apparaissent dès qu’une région est ouverte et que des prestataires sont vérifiés.",
     "action": "Voir la vérification et la sécurité"
-  }
+  },
+  "metaDescription": "Découvrir des profils à l’identité vérifiée dans ta région.",
+  "region": {
+    "change": "Changer de région",
+    "all": "Toutes les régions",
+    "nearMe": "Près de chez moi",
+    "nearMeLocating": "Localisation en cours",
+    "nearMeDenied": "La localisation n’est pas autorisée. Choisis une région dans la liste.",
+    "nearMeUnavailable": "La localisation n’a pas pu être déterminée. Choisis une région dans la liste.",
+    "nearMeNone": "Aucune région n’est encore validée près de chez toi. Choisis-en une dans la liste.",
+    "unknown": "Cette région n’est pas disponible. Choisis-en une autre.",
+    "changed": "Région: {region}"
+  },
+  "search": {
+    "legend": "Rechercher des profils",
+    "category": "Catégorie",
+    "allCategories": "Toutes les catégories",
+    "submit": "Rechercher"
+  },
+  "quick": {
+    "label": "Filtres rapides",
+    "photos": "Photos vérifiées",
+    "newOnly": "Nouveau"
+  },
+  "rows": {
+    "inRegion": "À {region}",
+    "new": "Nouveaux",
+    "allIn": "Tous les profils à {region}",
+    "allNew": "Tous les nouveaux profils"
+  },
+  "regions": "Régions"
 }

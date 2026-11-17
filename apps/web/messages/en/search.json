@@ -8,5 +8,139 @@
     "coverAlt": "Cover photo of {name}",
     "favoriteAdd": "Save {name} as a favourite",
     "favoriteRemove": "Remove {name} from favourites"
+  },
+  "meta": {
+    "searchTitle": "Search",
+    "searchDescription": "Search identity-checked profiles in Switzerland and filter by region, language, offer and price.",
+    "regionDescription": "Identity-checked profiles in {region}, filterable by language, offer and price.",
+    "categoryDescription": "Identity-checked profiles offering {category} in Switzerland.",
+    "profilesDescription": "All identity-checked individual profiles in Switzerland.",
+    "overviewTitle": "Regions of Switzerland",
+    "overviewDescription": "Approved cantons and cities with their profiles."
+  },
+  "title": {
+    "count": "{count, plural, =0 {No profiles} one {# profile} other {# profiles}}",
+    "countIn": "{count, plural, =0 {No profiles} one {# profile} other {# profiles}} in {region}"
+  },
+  "breadcrumbs": "Breadcrumbs",
+  "discover": "Discover",
+  "canton": "Canton of {name}",
+  "landing": {
+    "cantonTitle": "Profiles in the canton of {name}",
+    "cityTitle": "Profiles in {name}",
+    "categoryTitle": "{name} in Switzerland",
+    "profilesTitle": "Profiles in Switzerland",
+    "profiles": "Profiles",
+    "cities": "Cities in the canton of {name}"
+  },
+  "overview": {
+    "title": "Regions of Switzerland",
+    "intro": "Cantons and cities approved for profiles. More will follow once they are approved.",
+    "emptyTitle": "No region has been approved yet",
+    "emptyDescription": "Profiles appear once a region is approved and providers are checked."
+  },
+  "filters": {
+    "title": "Filters",
+    "reset": "Reset all",
+    "sheetReset": "Reset",
+    "open": "Filters",
+    "active": "active",
+    "close": "Close filters",
+    "handle": "Close filters without applying them",
+    "apply": "{count, plural, =0 {No profiles found} one {Show # profile} other {Show # profiles}}",
+    "applyUnknown": "Show profiles",
+    "location": "Location",
+    "region": "Region",
+    "allRegions": "All of Switzerland",
+    "radius": "Radius",
+    "radiusNone": "This region only",
+    "radiusKm": "{km} km",
+    "radiusHint": "Measured from the centre of the region, never from an address.",
+    "profile": "Profile",
+    "languages": "Languages",
+    "offer": "Offer",
+    "categories": "Categories",
+    "priceMin": "Price from (CHF)",
+    "priceMax": "Price up to (CHF)",
+    "priceHint": "The lowest visible price counts. Profiles without prices are left out.",
+    "content": "Content",
+    "photos": "Photos checked",
+    "photosHint": "At least one checked photo",
+    "newOnly": "New",
+    "newOnlyHint": "Joined in the last 30 days",
+    "moreLanguages": "More languages ({count})"
+  },
+  "chips": {
+    "label": "Active filters",
+    "remove": "Remove filter «{label}»",
+    "reset": "Reset all",
+    "text": "«{text}»",
+    "radius": "Radius {km} km",
+    "priceRange": "CHF {min} to {max}",
+    "priceFrom": "from CHF {min}",
+    "priceTo": "up to CHF {max}",
+    "photos": "Photos checked",
+    "newOnly": "New"
+  },
+  "toolbar": {
+    "sort": "Sort",
+    "view": "View",
+    "grid": "Grid",
+    "list": "List"
+  },
+  "sort": {
+    "relevanz": "Relevance",
+    "aktualisiert": "Recently updated",
+    "neu": "New",
+    "preis": "Price"
+  },
+  "results": {
+    "heading": "Results",
+    "more": "Load {count} more",
+    "range": "{from}–{to} of {total}",
+    "limit": "More than {count} profiles cannot be loaded. Narrow the search with filters."
+  },
+  "empty": {
+    "title": "No profiles found",
+    "restrictive": "«{label}» narrows the search the most. Without this filter there {count, plural, one {is # profile} other {are # profiles}}.",
+    "remove": "Remove filter «{label}»",
+    "description": "With fewer filters you will find more profiles.",
+    "reset": "Reset all filters",
+    "noFilterTitle": "There are no profiles here yet",
+    "noFilterDescription": "Providers appear here once they are checked and approved.",
+    "noFilterAction": "See other regions"
+  },
+  "saved": {
+    "idle": "Save search",
+    "saving": "Saving search",
+    "saved": "Search saved",
+    "fallbackName": "My search",
+    "added": "Search saved. You will find it under «Saved searches».",
+    "removed": "Saved search removed",
+    "errors": {
+      "sign-in": "Sign in to save searches.",
+      "empty": "A search without filters cannot be saved.",
+      "limit": "You have already saved 50 searches. Remove one first.",
+      "rate-limited": "Too many changes in a short time. Try again in a minute.",
+      "generic": "The search could not be saved. Try again."
+    }
+  },
+  "box": {
+    "label": "Place or name",
+    "placeholder": "Place or name",
+    "empty": "No suggestions",
+    "region": "{name} · Region",
+    "category": "{name} · Category",
+    "profile": "{name} · Profile"
+  },
+  "state": {
+    "loading": "Loading profiles",
+    "slow": "Loading is taking longer than usual.",
+    "retry": "Try again",
+    "errorTitle": "The search could not be loaded",
+    "errorDescription": "Your filters are kept in the address. Reload the page to try again.",
+    "reload": "Reload",
+    "rateLimitedTitle": "Too many searches",
+    "rateLimitedDescription": "Wait {seconds, plural, one {# second} other {# seconds}}, then reload the page. Your filters stay in the address."
   }
 }
