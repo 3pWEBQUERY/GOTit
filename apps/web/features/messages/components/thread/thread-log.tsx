@@ -27,6 +27,8 @@ export interface ThreadLogProps {
   onRetry: (clientId: string) => void;
   /** Nach dem Löschen: neu laden und eine ältere Seite anpassen. */
   onDeleted: (messageId: string) => void;
+  /** Karte einer Terminanfrage (v2 11.4); fehlt, gibt es keine Karten. */
+  renderBooking?: (bookingId: string) => ReactNode;
 }
 
 /**
@@ -39,6 +41,7 @@ export function ThreadLog({
   now,
   onRetry,
   onDeleted,
+  renderBooking,
 }: ThreadLogProps) {
   const t = useTranslations("messages.thread");
   const tDelete = useTranslations("messages.delete");
@@ -97,6 +100,12 @@ export function ThreadLog({
       }),
     },
     ...group.items.map((item): ThreadEntry => {
+      if (item.kind === "booking")
+        return {
+          type: "card",
+          key: item.key,
+          content: renderBooking?.(item.bookingId) ?? null,
+        };
       if (item.kind === "outbox") {
         const { entry } = item;
         return {

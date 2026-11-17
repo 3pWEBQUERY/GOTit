@@ -1,1 +1,254 @@
-{}
+{
+  "memberFallback": "Membre",
+  "duration": {
+    "minutes": "{minutes} min",
+    "hours": "{hours} h",
+    "hoursMinutes": "{hours} h {minutes} min"
+  },
+  "status": {
+    "REQUESTED": "Demandé",
+    "NEGOTIATING": "En discussion",
+    "CONFIRMED": "Confirmé",
+    "DECLINED": "Refusé",
+    "CANCELLED": "Annulé",
+    "EXPIRED": "Expiré",
+    "COMPLETED": "A eu lieu",
+    "DISPUTED": "Litigieux"
+  },
+  "fields": {
+    "when": "Heure",
+    "duration": "Durée",
+    "region": "Région",
+    "proposal": "Proposition",
+    "expires": "Expire"
+  },
+  "proposal": {
+    "mine": "Ta proposition, réponse en attente",
+    "theirs": "Nouvelle proposition de {name}"
+  },
+  "card": {
+    "titleMember": "Demande de rendez-vous à {name}",
+    "titleProvider": "Demande de rendez-vous de {name}",
+    "view": "Voir la demande"
+  },
+  "panel": {
+    "title": "Demander un rendez-vous à {name}",
+    "voluntary": "Sans engagement. {name} décide librement s’il y aura un rendez-vous.",
+    "close": "Fermer la demande de rendez-vous",
+    "handle": "Changer la hauteur",
+    "emptyTitle": "Aucune plage libre saisie pour l’instant",
+    "emptyText": "{name} n’a aucune plage libre dans le calendrier pour les deux prochaines semaines.",
+    "closedTitle": "Pas de demandes de rendez-vous pour le moment",
+    "closedText": "Ce profil n’accepte pas de demandes de rendez-vous pour le moment.",
+    "back": "Retour au profil",
+    "unsavedTitle": "Abandonner la demande ?",
+    "unsavedText": "Tes saisies seront perdues.",
+    "discard": "Abandonner les saisies",
+    "keep": "Continuer"
+  },
+  "form": {
+    "day": "Jour",
+    "dayPlaceholder": "Choisir un jour",
+    "dayHint": "Seulement les jours avec des plages libres dans les deux prochaines semaines",
+    "time": "Heure",
+    "timePlaceholder": "Choisir une heure",
+    "timeNeedsDay": "Choisis d’abord un jour",
+    "timeHint": "Format 24 heures, par exemple 18:00",
+    "zoneHint": "Heure en {zone}",
+    "dateHint": "Format JJ.MM.AAAA",
+    "duration": "Durée",
+    "durationPlaceholder": "Choisir une durée",
+    "durationNeedsTime": "Choisis d’abord une heure",
+    "durationHint": "Libre jusqu’à {until} à partir de cette heure",
+    "region": "Région",
+    "regionHint": "Une région générale, jamais une adresse",
+    "noRegion": "Non précisée",
+    "optional": "facultatif",
+    "message": "Message",
+    "messageHint": "Ce que {name} devrait savoir",
+    "count": "{used} sur {max} caractères",
+    "signInNote": "Pour envoyer, tu te connectes. Tes saisies sont conservées.",
+    "submit": "Envoyer la demande",
+    "cancel": "Annuler",
+    "summary": "Vérifie ces indications :",
+    "lostTime": "L’heure de ton brouillon n’est plus libre. Choisis-en une autre.",
+    "errors": {
+      "dayMissing": "Choisis un jour.",
+      "timeMissing": "Choisis une heure.",
+      "durationMissing": "Choisis une durée.",
+      "network": "La demande n’a pas été envoyée, la connexion est interrompue. Tes saisies sont conservées ; réessaie.",
+      "not-found": "Ce profil n’est pas accessible pour le moment.",
+      "not-allowed": "Ce profil n’accepte pas de demandes de rendez-vous pour le moment.",
+      "own-profile": "Tu ne peux pas demander de rendez-vous sur ton propre profil.",
+      "undeliverable": "Une demande à ce profil n’est pas possible pour le moment.",
+      "invalid": "Les indications n’ont pas pu être vérifiées. Choisis à nouveau le jour, l’heure et la durée.",
+      "invalidRegion": "Cette région n’est plus validée. Choisis-en une autre ou «Non précisée».",
+      "unavailable": "Cette heure n’est plus libre. Le choix est mis à jour ; choisis-en une autre.",
+      "too-soon": "Cette heure est trop proche. Choisis-en une plus tardive.",
+      "too-far": "Une demande aussi lointaine n’est pas possible. Choisis une heure plus proche.",
+      "duplicate": "Une demande à ce profil est déjà ouverte. Tu la trouves sous «Rendez-vous».",
+      "rate-limited": "Tu as envoyé beaucoup de demandes en peu de temps. Réessaie dans une heure.",
+      "sign-in": "Ta session a expiré. Reconnecte-toi ; tes saisies sont conservées."
+    }
+  },
+  "sent": {
+    "title": "Demande envoyée",
+    "text": "{name} la voit maintenant dans la conversation et décide librement. Tu es averti dès que quelque chose change.",
+    "toRequest": "Voir la demande",
+    "toThread": "Ouvrir la conversation",
+    "close": "Fermer"
+  },
+  "counter": {
+    "title": "Proposer une autre heure",
+    "descriptionMember": "Choisis l’une des plages libres. {name} décide librement de la proposition.",
+    "descriptionProvider": "Propose une heure qui te convient. {name} peut l’accepter ou annuler.",
+    "current": "Jusqu’ici : {when}",
+    "noSlots": "Aucune plage libre n’est saisie pour le moment.",
+    "close": "Fermer la fenêtre",
+    "cancel": "Annuler",
+    "submit": "Envoyer la proposition",
+    "openCalendar": "Ouvrir le calendrier",
+    "previousMonth": "Mois précédent",
+    "nextMonth": "Mois suivant",
+    "invalidDate": "Saisis la date au format JJ.MM.AAAA.",
+    "outOfRange": "Choisis un jour dans les 90 prochains jours.",
+    "invalidTime": "Saisis l’heure au format HH:MM.",
+    "notOnStep": "Choisis une heure par pas de 15 minutes."
+  },
+  "act": {
+    "accept": "Accepter la demande",
+    "acceptProposal": "Accepter la proposition",
+    "counter": "Proposer une autre heure",
+    "decline": "Refuser la demande",
+    "cancel": "Annuler la demande",
+    "cancelConfirmed": "Annuler le rendez-vous",
+    "cancelSafety": "Annuler pour des raisons de sécurité",
+    "complete": "Confirmer qu’il a eu lieu",
+    "dispute": "Signaler comme litigieux",
+    "reportAfterSafety": "La demande est annulée. Signale {name} si tu ne te sens pas en sécurité : la modération reçoit une copie des dix derniers messages et ne sait pas qui a signalé.",
+    "done": {
+      "accept": "Rendez-vous confirmé",
+      "counter": "Proposition envoyée",
+      "decline": "Demande refusée",
+      "cancel": "Annulé",
+      "cancel-safety": "Annulé",
+      "complete": "Confirmé comme ayant eu lieu",
+      "dispute": "Signalé comme litigieux"
+    },
+    "errors": {
+      "not-found": "Cette demande n’existe plus.",
+      "invalid": "Ces indications ne conviennent pas. Vérifie la date, l’heure et la durée.",
+      "not-allowed": "Ce n’est plus possible dans le statut actuel. L’affichage montre maintenant l’état le plus récent.",
+      "conflict": "Un autre rendez-vous est déjà confirmé à cette heure. Propose une autre heure.",
+      "unavailable": "Cette heure n’est plus libre. Choisis-en une autre.",
+      "stale": "La demande vient d’être modifiée. Vérifie le nouvel état, puis décide.",
+      "sign-in": "Ta session a expiré. Reconnecte-toi.",
+      "rate-limited": "Tu as fait beaucoup de modifications en peu de temps. Réessaie dans une heure.",
+      "network": "La connexion est interrompue. Rien n’a été modifié ; réessaie."
+    }
+  },
+  "confirm": {
+    "reason": "Motif",
+    "optional": "facultatif",
+    "reasonHint": "Visible pour {name}.",
+    "count": "{used} sur {max} caractères",
+    "cancel": {
+      "title": "Annuler la demande ?",
+      "description": "L’annulation est définitive. {name} voit «Annulé» et ton motif si tu en indiques un. Un motif n’est pas nécessaire.",
+      "confirm": "Annuler la demande",
+      "keep": "Ne pas annuler"
+    },
+    "cancelConfirmed": {
+      "title": "Annuler le rendez-vous ?",
+      "description": "L’annulation est définitive. {name} voit «Annulé» et ton motif si tu en indiques un. Un motif n’est pas nécessaire.",
+      "confirm": "Annuler le rendez-vous",
+      "keep": "Garder le rendez-vous"
+    },
+    "decline": {
+      "title": "Refuser la demande ?",
+      "description": "Le refus est définitif. {name} voit «Refusé» et ton motif si tu en indiques un.",
+      "confirm": "Refuser la demande",
+      "keep": "Ne pas refuser"
+    },
+    "cancelSafety": {
+      "title": "Annuler pour des raisons de sécurité ?",
+      "description": "La demande est annulée immédiatement et définitivement. {name} voit seulement «Annulé», sans indication du motif. Ensuite, tu peux signaler {name} à la modération.",
+      "confirm": "Annuler maintenant",
+      "keep": "Ne pas annuler"
+    },
+    "dispute": {
+      "title": "Signaler comme litigieux ?",
+      "description": "«Litigieux» est définitif et visible pour {name}. Décris brièvement ce qui n’allait pas, si tu le souhaites.",
+      "confirm": "Signaler comme litigieux",
+      "keep": "Annuler"
+    }
+  },
+  "history": {
+    "title": "Historique",
+    "label": "Historique de la demande de rendez-vous",
+    "latest": "État actuel :",
+    "you": "Toi",
+    "system": "Automatique",
+    "reason": "Motif : {reason}",
+    "events": {
+      "created": "Demandé",
+      "counter": "Nouvelle proposition",
+      "accept": "Confirmé",
+      "decline": "Refusé",
+      "cancel": "Annulé",
+      "cancelSafety": "Annulé pour des raisons de sécurité",
+      "complete": "A eu lieu",
+      "dispute": "Litigieux",
+      "expired": "Expiré",
+      "other": "Modifié"
+    }
+  },
+  "list": {
+    "metaTitle": "Rendez-vous",
+    "title": "Rendez-vous",
+    "tabsLabel": "Rendez-vous par statut",
+    "tabs": {
+      "offen": "Ouverts",
+      "bestaetigt": "Confirmés",
+      "vergangen": "Passés"
+    },
+    "expires": "Expire :",
+    "discover": "Découvrir des profils",
+    "empty": {
+      "offen": {
+        "title": "Aucune demande ouverte",
+        "text": "Les demandes en attente de réponse apparaissent ici. Tu envoies une demande avec «Demander un rendez-vous» sur un profil."
+      },
+      "bestaetigt": {
+        "title": "Aucun rendez-vous confirmé",
+        "text": "Dès qu’une demande est confirmée, le rendez-vous apparaît ici, le prochain en premier."
+      },
+      "vergangen": {
+        "title": "Rien de passé pour l’instant",
+        "text": "Les demandes passées, annulées, refusées et expirées apparaissent ici."
+      }
+    }
+  },
+  "detail": {
+    "metaTitle": "Demande de rendez-vous",
+    "title": "Demande de rendez-vous à {name}",
+    "breadcrumbs": "Fil d’Ariane",
+    "proposal": "Proposition actuelle",
+    "appointment": "Rendez-vous",
+    "noRegion": "Non précisée",
+    "message": "Ton message",
+    "actions": "Ce que tu peux faire",
+    "voluntary": "Chaque demande de rendez-vous est volontaire. Tu peux toujours annuler, sans justification.",
+    "reviewsLater": "Les évaluations après un rendez-vous arrivent avec l’une des prochaines versions de la plateforme.",
+    "openThread": "Ouvrir la conversation",
+    "openProfile": "Voir le profil"
+  },
+  "state": {
+    "loading": "Chargement des rendez-vous",
+    "slow": "Cela prend plus de temps que d’habitude.",
+    "retry": "Réessayer",
+    "errorTitle": "Les rendez-vous n’ont pas pu être chargés.",
+    "errorDescription": "Tes demandes et rendez-vous sont inchangés.",
+    "reload": "Recharger la page"
+  }
+}

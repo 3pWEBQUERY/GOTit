@@ -72,7 +72,8 @@
   "contact": {
     "label": "Contact",
     "request": "Request appointment",
-    "soonBookings": "Appointment requests become available with the next version of the platform.",
+    "ownerBoth": "Members can message you here and send a non-binding appointment request.",
+    "ownerBookings": "Members can send you a non-binding appointment request here.",
     "ownerMessages": "Members can send you a message here.",
     "none": "This profile does not accept requests through the platform at the moment.",
     "paused": "This profile is paused at the moment",

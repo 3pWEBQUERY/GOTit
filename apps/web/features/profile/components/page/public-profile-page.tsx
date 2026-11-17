@@ -3,6 +3,8 @@ import { PROFILE_SECTIONS, type ProfileSection } from "@app/core/provider-profil
 import { Breadcrumbs, EmptyState, UiLink, buttonVariants } from "@app/ui";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { redirect } from "@/i18n/navigation";
+import { BookingRequestPanel } from "../../../booking/components/request/booking-request-panel";
 import { ProfileFavorite } from "../../../favorites/components/profile-favorite";
 import { loadProfileFavorite } from "../../../favorites/queries/load-profile-favorite";
 import { TopBarTitle } from "../../../shell/components/top-bar-title";
@@ -27,10 +29,12 @@ export interface PublicProfilePageProps {
   tab: ProfileTab;
   /** Wert von `?bearbeiten`: der Abschnitt im Seitenpanel, nur für den Inhaber. */
   edit?: string;
+  /** `/p/[name]/anfrage`: das Panel der Terminanfrage über dem Profil, mit den Parametern des Entwurfs (v2 10.2). */
+  request?: { search: Record<string, string | string[] | undefined> };
 }
 
 /** Anbieterprofil `/p/[name]` und seine Tabs (PRD v2 10). Server-gerendert; was öffentlich ist, entscheidet der Kern. */
-export async function PublicProfilePage({ locale, slug, tab, edit }: PublicProfilePageProps) {
+export async function PublicProfilePage({ locale, slug, tab, edit, request }: PublicProfilePageProps) {
   const result = await loadPublicProfile(slug, locale);
   if (!result) notFound();
   const href = createHref(locale);
@@ -41,6 +45,8 @@ export async function PublicProfilePage({ locale, slug, tab, edit }: PublicProfi
   }
 
   const { profile, owner } = result;
+  // Der Inhaber fragt bei sich selbst nicht an; das Panel gibt es für ihn nicht.
+  if (request && owner) redirect({ href: { pathname: "/p/[name]", params: { name: profile.slug } }, locale });
   const tabLinks = { overview: href({ pathname: "/p/[name]", params: { name: profile.slug } }), media: href({ pathname: "/p/[name]/medien", params: { name: profile.slug } }) };
   const here = tabLinks[tab];
   const model = toViewModel(profile, { paused: result.state === "paused", regionHref: (region) => regionHref(locale, region) });
@@ -53,6 +59,8 @@ export async function PublicProfilePage({ locale, slug, tab, edit }: PublicProfi
   // Herz und Sammlungen für alle ausser dem Inhaber (PRD v2 9.3); Besucher gehen zur Anmeldung und zurück.
   const favorite = owner ? null : { data: await loadProfileFavorite(viewer, profile.slug), signInHref: viewer.kind === "account" ? null : href({ pathname: "/anmelden", query: { weiter: here } }) };
   const region = model.regions[0];
+  const signInHref = viewer.kind === "account" ? null : href({ pathname: "/anmelden", query: { weiter: here } });
+  const requestHref = href({ pathname: "/p/[name]/anfrage", params: { name: profile.slug } });
 
   return (
     <div className="flex flex-col gap-6">
@@ -72,7 +80,8 @@ export async function PublicProfilePage({ locale, slug, tab, edit }: PublicProfi
         mediaHref={tabLinks.media}
         tabs={<ProfileTabs current={tab} links={tabLinks} />}
         editLinks={editLinks}
-        message={owner ? undefined : { slug: profile.slug, signInHref: viewer.kind === "account" ? null : href({ pathname: "/anmelden", query: { weiter: here } }) }}
+        message={owner ? undefined : { slug: profile.slug, signInHref }}
+        request={owner ? undefined : { href: requestHref }}
         actions={favorite ? <ProfileFavorite slug={profile.slug} data={favorite.data} signInHref={favorite.signInHref} favoritesHref={href("/favoriten")} /> : undefined}
       >
         {tab === "media" ? (
@@ -91,6 +100,19 @@ export async function PublicProfilePage({ locale, slug, tab, edit }: PublicProfi
           )
         ) : undefined}
       </ProfileView>
+      {request && !owner ? (
+        <BookingRequestPanel
+          slug={profile.slug}
+          name={profile.displayName}
+          accepts={model.contact.kind === "open" && model.contact.bookingRequests}
+          acceptsMessages={model.contact.kind === "open" && model.contact.messages}
+          regions={model.regions.map((entry) => ({ id: entry.id, name: entry.name }))}
+          signedIn={viewer.kind === "account"}
+          signInHref={signInHref}
+          search={request.search}
+          closeHref={here}
+        />
+      ) : null}
       {editor && editSection ? <EditPanel section={editSection} data={{ editor: editor.editor, regionGroups: editor.regionGroups, categories: editor.categories }} closeHref={here} /> : null}
     </div>
   );

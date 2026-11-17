@@ -7,7 +7,8 @@
     "requests": {
       "title": "Offene Anfragen",
       "emptyTitle": "Keine offenen Anfragen",
-      "emptyText": "Sobald du einem Profil eine Terminanfrage sendest, siehst du sie hier, bis sie beantwortet ist."
+      "emptyText": "Sobald du einem Profil eine Terminanfrage sendest, siehst du sie hier, bis sie beantwortet ist.",
+      "all": "Alle Anfragen ansehen"
     },
     "conversations": {
       "title": "Ungelesene Unterhaltungen",
@@ -21,7 +22,8 @@
     "appointments": {
       "title": "Nächste Termine",
       "emptyTitle": "Keine anstehenden Termine",
-      "emptyText": "Bestätigte Termine erscheinen hier, der nächste zuoberst."
+      "emptyText": "Bestätigte Termine erscheinen hier, der nächste zuoberst.",
+      "all": "Alle Termine ansehen"
     },
     "recentlyViewed": {
       "title": "Zuletzt angesehen",

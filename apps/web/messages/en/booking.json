@@ -1,1 +1,254 @@
-{}
+{
+  "memberFallback": "Member",
+  "duration": {
+    "minutes": "{minutes} min",
+    "hours": "{hours} h",
+    "hoursMinutes": "{hours} h {minutes} min"
+  },
+  "status": {
+    "REQUESTED": "Requested",
+    "NEGOTIATING": "Under discussion",
+    "CONFIRMED": "Confirmed",
+    "DECLINED": "Declined",
+    "CANCELLED": "Cancelled",
+    "EXPIRED": "Expired",
+    "COMPLETED": "Took place",
+    "DISPUTED": "Disputed"
+  },
+  "fields": {
+    "when": "Time",
+    "duration": "Duration",
+    "region": "Region",
+    "proposal": "Proposal",
+    "expires": "Expires"
+  },
+  "proposal": {
+    "mine": "Your proposal, awaiting a reply",
+    "theirs": "New proposal from {name}"
+  },
+  "card": {
+    "titleMember": "Appointment request to {name}",
+    "titleProvider": "Appointment request from {name}",
+    "view": "View request"
+  },
+  "panel": {
+    "title": "Request an appointment with {name}",
+    "voluntary": "Non-binding. {name} decides freely whether an appointment takes place.",
+    "close": "Close appointment request",
+    "handle": "Toggle height",
+    "emptyTitle": "No free times entered yet",
+    "emptyText": "{name} has no free times in the calendar for the next two weeks.",
+    "closedTitle": "No appointment requests at the moment",
+    "closedText": "This profile is not accepting appointment requests at the moment.",
+    "back": "Back to profile",
+    "unsavedTitle": "Discard request?",
+    "unsavedText": "Your entries will be lost.",
+    "discard": "Discard entries",
+    "keep": "Keep filling in"
+  },
+  "form": {
+    "day": "Day",
+    "dayPlaceholder": "Choose a day",
+    "dayHint": "Only days with free times in the next two weeks",
+    "time": "Time",
+    "timePlaceholder": "Choose a time",
+    "timeNeedsDay": "Choose a day first",
+    "timeHint": "24-hour clock, for example 18:00",
+    "zoneHint": "Time in {zone}",
+    "dateHint": "Format DD.MM.YYYY",
+    "duration": "Duration",
+    "durationPlaceholder": "Choose a duration",
+    "durationNeedsTime": "Choose a time first",
+    "durationHint": "Free for up to {until} from this time",
+    "region": "Region",
+    "regionHint": "A general region, never an address",
+    "noRegion": "Not specified",
+    "optional": "optional",
+    "message": "Message",
+    "messageHint": "What {name} should know",
+    "count": "{used} of {max} characters",
+    "signInNote": "You sign in to send. Your entries are kept.",
+    "submit": "Send request",
+    "cancel": "Cancel",
+    "summary": "Check these entries:",
+    "lostTime": "The time from your draft is no longer free. Choose another one.",
+    "errors": {
+      "dayMissing": "Choose a day.",
+      "timeMissing": "Choose a time.",
+      "durationMissing": "Choose a duration.",
+      "network": "The request was not sent because the connection is interrupted. Your entries are kept; try again.",
+      "not-found": "This profile cannot be reached at the moment.",
+      "not-allowed": "This profile is not accepting appointment requests at the moment.",
+      "own-profile": "You cannot request an appointment on your own profile.",
+      "undeliverable": "A request to this profile is not possible at the moment.",
+      "invalid": "The entries could not be checked. Choose day, time and duration again.",
+      "invalidRegion": "This region is no longer approved. Choose another one or «Not specified».",
+      "unavailable": "This time is no longer free. The choices are updated; choose another one.",
+      "too-soon": "This time is too close. Choose a later one.",
+      "too-far": "Requests this far ahead are not possible. Choose an earlier time.",
+      "duplicate": "A request to this profile is already open. You find it under «Appointments».",
+      "rate-limited": "You sent many requests in a short time. Try again in an hour.",
+      "sign-in": "Your session has expired. Sign in again; your entries are kept."
+    }
+  },
+  "sent": {
+    "title": "Request sent",
+    "text": "{name} now sees it in the conversation and decides freely. You will be notified as soon as something changes.",
+    "toRequest": "View request",
+    "toThread": "Open conversation",
+    "close": "Close"
+  },
+  "counter": {
+    "title": "Propose another time",
+    "descriptionMember": "Choose one of the free times. {name} decides freely about the proposal.",
+    "descriptionProvider": "Propose a time that suits you. {name} can accept or cancel it.",
+    "current": "So far: {when}",
+    "noSlots": "No free times are entered at the moment.",
+    "close": "Close dialog",
+    "cancel": "Cancel",
+    "submit": "Send proposal",
+    "openCalendar": "Open calendar",
+    "previousMonth": "Previous month",
+    "nextMonth": "Next month",
+    "invalidDate": "Enter the date as DD.MM.YYYY.",
+    "outOfRange": "Choose a day within the next 90 days.",
+    "invalidTime": "Enter the time as HH:MM.",
+    "notOnStep": "Choose a time in steps of 15 minutes."
+  },
+  "act": {
+    "accept": "Accept request",
+    "acceptProposal": "Accept proposal",
+    "counter": "Propose another time",
+    "decline": "Decline request",
+    "cancel": "Cancel request",
+    "cancelConfirmed": "Cancel appointment",
+    "cancelSafety": "Cancel for safety reasons",
+    "complete": "Confirm it took place",
+    "dispute": "Report as disputed",
+    "reportAfterSafety": "The request is cancelled. Report {name} if you feel unsafe: the moderation team receives a copy of the last ten messages and does not learn who reported.",
+    "done": {
+      "accept": "Appointment confirmed",
+      "counter": "Proposal sent",
+      "decline": "Request declined",
+      "cancel": "Cancelled",
+      "cancel-safety": "Cancelled",
+      "complete": "Confirmed as taken place",
+      "dispute": "Reported as disputed"
+    },
+    "errors": {
+      "not-found": "This request no longer exists.",
+      "invalid": "These entries do not work. Check date, time and duration.",
+      "not-allowed": "This is no longer possible in the current status. The view now shows the latest state.",
+      "conflict": "Another appointment is already confirmed at this time. Propose another time.",
+      "unavailable": "This time is no longer free. Choose another one.",
+      "stale": "The request was just changed. Check the new state, then decide.",
+      "sign-in": "Your session has expired. Sign in again.",
+      "rate-limited": "You made a lot of changes in a short time. Try again in an hour.",
+      "network": "The connection is interrupted. Nothing was changed; try again."
+    }
+  },
+  "confirm": {
+    "reason": "Reason",
+    "optional": "optional",
+    "reasonHint": "Visible to {name}.",
+    "count": "{used} of {max} characters",
+    "cancel": {
+      "title": "Cancel request?",
+      "description": "Cancelling is final. {name} sees «Cancelled» and your reason if you give one. A reason is not required.",
+      "confirm": "Cancel request",
+      "keep": "Keep request"
+    },
+    "cancelConfirmed": {
+      "title": "Cancel appointment?",
+      "description": "Cancelling is final. {name} sees «Cancelled» and your reason if you give one. A reason is not required.",
+      "confirm": "Cancel appointment",
+      "keep": "Keep appointment"
+    },
+    "decline": {
+      "title": "Decline request?",
+      "description": "Declining is final. {name} sees «Declined» and your reason if you give one.",
+      "confirm": "Decline request",
+      "keep": "Do not decline"
+    },
+    "cancelSafety": {
+      "title": "Cancel for safety reasons?",
+      "description": "The request is cancelled immediately and for good. {name} only sees «Cancelled», with no hint about the reason. Afterwards you can report {name} to the moderation team.",
+      "confirm": "Cancel now",
+      "keep": "Do not cancel"
+    },
+    "dispute": {
+      "title": "Report as disputed?",
+      "description": "«Disputed» is final and visible to {name}. Briefly describe what was not right, if you like.",
+      "confirm": "Report as disputed",
+      "keep": "Cancel"
+    }
+  },
+  "history": {
+    "title": "History",
+    "label": "History of the appointment request",
+    "latest": "Current state:",
+    "you": "You",
+    "system": "Automatic",
+    "reason": "Reason: {reason}",
+    "events": {
+      "created": "Requested",
+      "counter": "New proposal",
+      "accept": "Confirmed",
+      "decline": "Declined",
+      "cancel": "Cancelled",
+      "cancelSafety": "Cancelled for safety reasons",
+      "complete": "Took place",
+      "dispute": "Disputed",
+      "expired": "Expired",
+      "other": "Changed"
+    }
+  },
+  "list": {
+    "metaTitle": "Appointments",
+    "title": "Appointments",
+    "tabsLabel": "Appointments by status",
+    "tabs": {
+      "offen": "Open",
+      "bestaetigt": "Confirmed",
+      "vergangen": "Past"
+    },
+    "expires": "Expires:",
+    "discover": "Discover profiles",
+    "empty": {
+      "offen": {
+        "title": "No open requests",
+        "text": "Requests awaiting a reply appear here. You send a request with «Request appointment» on a profile."
+      },
+      "bestaetigt": {
+        "title": "No confirmed appointments",
+        "text": "As soon as a request is confirmed, the appointment appears here, the next one first."
+      },
+      "vergangen": {
+        "title": "Nothing past yet",
+        "text": "Past, cancelled, declined and expired requests appear here."
+      }
+    }
+  },
+  "detail": {
+    "metaTitle": "Appointment request",
+    "title": "Appointment request to {name}",
+    "breadcrumbs": "Breadcrumbs",
+    "proposal": "Current proposal",
+    "appointment": "Appointment",
+    "noRegion": "Not specified",
+    "message": "Your message",
+    "actions": "What you can do",
+    "voluntary": "Every appointment request is voluntary. You can always cancel, without giving a reason.",
+    "reviewsLater": "Reviews after an appointment come with one of the next versions of the platform.",
+    "openThread": "Open conversation",
+    "openProfile": "View profile"
+  },
+  "state": {
+    "loading": "Loading appointments",
+    "slow": "This is taking longer than usual.",
+    "retry": "Try again",
+    "errorTitle": "The appointments could not be loaded.",
+    "errorDescription": "Your requests and appointments are unchanged.",
+    "reload": "Reload page"
+  }
+}

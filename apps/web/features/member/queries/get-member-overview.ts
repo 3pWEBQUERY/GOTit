@@ -1,5 +1,7 @@
 import type { Locale } from "@app/core/locale";
 import { listInbox } from "@app/core/messaging";
+import { formatRange } from "../../booking/lib/format";
+import { loadMemberRequests } from "../../booking/queries/load-member-requests";
 import { getFormatter, getTranslations } from "next-intl/server";
 import { createHref } from "../../shell/nav/href";
 
@@ -50,11 +52,27 @@ async function unreadConversations(userId: string, locale: Locale, now: Date): P
   });
 }
 
+/** Höchstzahl offener Anfragen und nächster Termine auf `/ich`; alle weiteren stehen unter `/termine`. */
+export const OVERVIEW_BOOKING_LIMIT = 5;
+
 /**
- * Daten der Übersicht `/ich` (PRD 12.1). Anfragen und Termine gibt es erst
- * mit Schritt 1.9; bis dahin sind diese Listen ehrlich leer statt mit
- * Beispieldaten gefüllt.
+ * Offene Anfragen («Angefragt», «In Abstimmung») und bestätigte, noch nicht
+ * vergangene Termine, der nächste zuerst. Die Zeit steht in der Zone des
+ * Anbieters (v2 11.5); ihr Name fehlt hier, die Anfrage selbst nennt ihn.
  */
+async function bookings(userId: string, locale: Locale, tab: "offen" | "bestaetigt", now: Date): Promise<OverviewEntry[]> {
+  const [rows, t] = await Promise.all([loadMemberRequests(userId, tab, now), getTranslations({ locale, namespace: "booking" })]);
+  const href = createHref(locale);
+  return rows.slice(0, OVERVIEW_BOOKING_LIMIT).map((row) => ({
+    id: row.id,
+    title: row.counterpartName ?? t("memberFallback"),
+    detail: `${formatRange(row.startsAt.toISOString(), row.endsAt.toISOString(), row.timeZone, locale)} · ${t(`status.${row.status}`)}`,
+    href: href({ pathname: "/termine/[id]", params: { id: row.id } }),
+  }));
+}
+
+/** Daten der Übersicht `/ich` (PRD 12.1). */
 export async function getMemberOverview(userId: string, locale: Locale, now = new Date()): Promise<MemberOverview> {
-  return { openRequests: [], unreadConversations: await unreadConversations(userId, locale, now), upcomingAppointments: [], recentlyViewed: [] };
+  const [openRequests, unread, upcomingAppointments] = await Promise.all([bookings(userId, locale, "offen", now), unreadConversations(userId, locale, now), bookings(userId, locale, "bestaetigt", now)]);
+  return { openRequests, unreadConversations: unread, upcomingAppointments, recentlyViewed: [] };
 }

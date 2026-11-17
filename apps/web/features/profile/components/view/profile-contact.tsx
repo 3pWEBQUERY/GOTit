@@ -12,10 +12,14 @@ export interface ContactMessage {
   signInHref: string | null;
 }
 
+/** «Termin anfragen» für Betrachter, die nicht Inhaber sind: öffnet `/p/[name]/anfrage` (v2 10.1). */
+export interface ContactRequest {
+  href: string;
+}
+
 /**
- * Der Satz an Stelle der Kontaktaktionen. «Termin anfragen» kommt mit 1.9;
- * statt eines toten Knopfs sagt die Seite ehrlich, wann es möglich ist
- * (Entscheid 0012). Inhaber und Vorschauen sehen, was Mitglieder hier tun können.
+ * Der Satz an Stelle der Kontaktaktionen. Inhaber und Vorschauen sehen, was
+ * Mitglieder hier tun können, statt toter Knöpfe (Entscheid 0012).
  */
 export function useContactNotice(contact: ContactState): string {
   const t = useTranslations("profile.contact");
@@ -27,8 +31,8 @@ export function useContactNotice(contact: ContactState): string {
     case "none":
       return t("none");
     case "open":
-      if (!contact.messages) return t("soonBookings");
-      return contact.bookingRequests ? `${t("ownerMessages")} ${t("soonBookings")}` : t("ownerMessages");
+      if (!contact.messages) return t("ownerBookings");
+      return contact.bookingRequests ? t("ownerBoth") : t("ownerMessages");
   }
 }
 
@@ -48,23 +52,25 @@ export interface ProfileContactProps {
   reportHref?: string;
   /** Nur auf `/p/[name]` für andere als den Inhaber (Entscheid 0014). */
   message?: ContactMessage;
+  /** Nur auf `/p/[name]` für andere als den Inhaber (Entscheid 0016). */
+  request?: ContactRequest;
   className?: string;
   children?: ReactNode;
 }
 
 /** Kontakt der Profilseite in der ContactBar: Spalte ab 768 px, Leiste aus Glas darunter. */
-export function ProfileContact({ contact, variant, reportHref, message, className, children }: ProfileContactProps) {
+export function ProfileContact({ contact, variant, reportHref, message, request, className, children }: ProfileContactProps) {
   const t = useTranslations("profile.contact");
   const notice = useContactNotice(contact);
   const canMessage = contact.kind === "open" && contact.messages && message !== undefined;
+  const canRequest = contact.kind === "open" && contact.bookingRequests && request !== undefined;
   return (
     <ContactBar
       variant={variant}
       label={t("label")}
-      // «Termin anfragen» entsteht mit 1.9; bis dahin gibt es nur «Nachricht schreiben» oder den Satz.
-      message={canMessage ? <StartConversation slug={message.slug} signInHref={message.signInHref} variant="primary" /> : undefined}
-      note={canMessage && contact.bookingRequests ? t("soonBookings") : undefined}
-      paused={canMessage ? undefined : notice}
+      request={canRequest ? { label: t("request"), href: request.href } : undefined}
+      message={canMessage ? <StartConversation slug={message.slug} signInHref={message.signInHref} variant={canRequest ? "secondary" : "primary"} /> : undefined}
+      paused={canMessage || canRequest ? undefined : notice}
       report={reportHref ? <ReportLink href={reportHref} /> : undefined}
       className={className}
     >

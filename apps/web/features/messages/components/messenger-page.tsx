@@ -13,6 +13,7 @@ import { requireThread } from "../queries/load-thread";
 import { HideFooterOnMobile } from "./hide-footer";
 import { InboxColumn } from "./inbox/inbox-column";
 import { MessengerLive } from "./messenger-live";
+import { loadThreadBookings } from "../../booking/queries/load-thread-bookings";
 import { ThreadPanel } from "./thread/thread-panel";
 
 export interface MessengerPageProps {
@@ -43,14 +44,30 @@ export async function MessengerPage({
       ? requireThread(locale, conversationId)
       : Promise.resolve(null),
   ]);
-  const data = await loadInbox({
-    userId: viewer.userId,
-    locale,
-    area,
-    params,
-    currentId: conversationId ?? null,
-    href,
-  });
+  const [data, bookings] = await Promise.all([
+    loadInbox({
+      userId: viewer.userId,
+      locale,
+      area,
+      params,
+      currentId: conversationId ?? null,
+      href,
+    }),
+    conversationId
+      ? loadThreadBookings(viewer.userId, conversationId, locale)
+      : Promise.resolve({ bookings: [], slots: null }),
+  ]);
+  // Die Karte führt in den eigenen Bereich: Mitglieder zu `/termine`, Anbieter ins Studio.
+  const bookingHrefs = Object.fromEntries(
+    bookings.bookings.map((booking) => [
+      booking.id,
+      href(
+        booking.role === "PROVIDER"
+          ? { pathname: "/studio/anfragen/[id]", params: { id: booking.id } }
+          : { pathname: "/termine/[id]", params: { id: booking.id } },
+      ),
+    ]),
+  );
   const listPath = href(
     area === "studio" ? "/studio/nachrichten" : "/nachrichten",
   );
@@ -98,6 +115,8 @@ export async function MessengerPage({
             labels={data.labels}
             profileHref={profileHref}
             now={new Date().toISOString()}
+            bookings={bookings}
+            bookingHrefs={bookingHrefs}
           />
         ) : (
           <div className="hidden min-w-0 items-center justify-center rounded-card border border-border md:flex">

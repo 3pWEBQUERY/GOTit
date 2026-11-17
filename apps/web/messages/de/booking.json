@@ -1,1 +1,254 @@
-{}
+{
+  "memberFallback": "Mitglied",
+  "duration": {
+    "minutes": "{minutes} Min.",
+    "hours": "{hours} Std.",
+    "hoursMinutes": "{hours} Std. {minutes} Min."
+  },
+  "status": {
+    "REQUESTED": "Angefragt",
+    "NEGOTIATING": "In Abstimmung",
+    "CONFIRMED": "Bestätigt",
+    "DECLINED": "Abgelehnt",
+    "CANCELLED": "Abgesagt",
+    "EXPIRED": "Abgelaufen",
+    "COMPLETED": "Stattgefunden",
+    "DISPUTED": "Strittig"
+  },
+  "fields": {
+    "when": "Zeit",
+    "duration": "Dauer",
+    "region": "Region",
+    "proposal": "Vorschlag",
+    "expires": "Läuft ab"
+  },
+  "proposal": {
+    "mine": "Dein Vorschlag, die Antwort steht aus",
+    "theirs": "Neuer Vorschlag von {name}"
+  },
+  "card": {
+    "titleMember": "Terminanfrage an {name}",
+    "titleProvider": "Terminanfrage von {name}",
+    "view": "Anfrage ansehen"
+  },
+  "panel": {
+    "title": "Termin anfragen bei {name}",
+    "voluntary": "Unverbindlich. {name} entscheidet frei, ob es zu einem Termin kommt.",
+    "close": "Terminanfrage schliessen",
+    "handle": "Höhe umschalten",
+    "emptyTitle": "Noch keine freien Zeiten eingetragen",
+    "emptyText": "{name} hat für die nächsten zwei Wochen keine freien Zeiten im Kalender.",
+    "closedTitle": "Zurzeit keine Terminanfragen",
+    "closedText": "Dieses Profil nimmt zurzeit keine Terminanfragen an.",
+    "back": "Zurück zum Profil",
+    "unsavedTitle": "Anfrage verwerfen?",
+    "unsavedText": "Deine Eingaben gehen verloren.",
+    "discard": "Eingaben verwerfen",
+    "keep": "Weiter ausfüllen"
+  },
+  "form": {
+    "day": "Tag",
+    "dayPlaceholder": "Tag wählen",
+    "dayHint": "Nur Tage mit freien Zeiten in den nächsten zwei Wochen",
+    "time": "Uhrzeit",
+    "timePlaceholder": "Uhrzeit wählen",
+    "timeNeedsDay": "Zuerst einen Tag wählen",
+    "timeHint": "24 Stunden, zum Beispiel 18:00",
+    "zoneHint": "Zeit in {zone}",
+    "dateHint": "Format TT.MM.JJJJ",
+    "duration": "Dauer",
+    "durationPlaceholder": "Dauer wählen",
+    "durationNeedsTime": "Zuerst eine Uhrzeit wählen",
+    "durationHint": "Ab dieser Uhrzeit bis zu {until} frei",
+    "region": "Region",
+    "regionHint": "Eine allgemeine Region, nie eine Adresse",
+    "noRegion": "Keine Angabe",
+    "optional": "optional",
+    "message": "Nachricht",
+    "messageHint": "Was {name} wissen sollte",
+    "count": "{used} von {max} Zeichen",
+    "signInNote": "Zum Senden meldest du dich an. Deine Eingaben bleiben erhalten.",
+    "submit": "Anfrage senden",
+    "cancel": "Abbrechen",
+    "summary": "Prüf diese Angaben:",
+    "lostTime": "Die Zeit aus deinem Entwurf ist inzwischen nicht mehr frei. Wähl eine andere.",
+    "errors": {
+      "dayMissing": "Wähl einen Tag.",
+      "timeMissing": "Wähl eine Uhrzeit.",
+      "durationMissing": "Wähl eine Dauer.",
+      "network": "Die Anfrage wurde nicht gesendet, die Verbindung ist unterbrochen. Deine Eingaben sind erhalten; versuch es erneut.",
+      "not-found": "Dieses Profil ist zurzeit nicht erreichbar.",
+      "not-allowed": "Dieses Profil nimmt zurzeit keine Terminanfragen an.",
+      "own-profile": "Bei deinem eigenen Profil kannst du keinen Termin anfragen.",
+      "undeliverable": "Eine Anfrage an dieses Profil ist zurzeit nicht möglich.",
+      "invalid": "Die Angaben liessen sich nicht prüfen. Wähl Tag, Uhrzeit und Dauer erneut.",
+      "invalidRegion": "Diese Region ist nicht mehr freigegeben. Wähl eine andere oder «Keine Angabe».",
+      "unavailable": "Diese Zeit ist nicht mehr frei. Die Auswahl ist aktualisiert; wähl eine andere.",
+      "too-soon": "Diese Zeit liegt zu kurz vor dem Termin. Wähl eine spätere.",
+      "too-far": "So weit im Voraus ist keine Anfrage möglich. Wähl eine frühere Zeit.",
+      "duplicate": "Mit diesem Profil ist schon eine Anfrage offen. Du findest sie unter «Termine».",
+      "rate-limited": "Du hast in kurzer Zeit viele Anfragen gesendet. Versuch es in einer Stunde wieder.",
+      "sign-in": "Deine Anmeldung ist abgelaufen. Melde dich neu an; deine Eingaben bleiben erhalten."
+    }
+  },
+  "sent": {
+    "title": "Anfrage gesendet",
+    "text": "{name} sieht sie jetzt in der Unterhaltung und entscheidet frei. Du erhältst Bescheid, sobald sich etwas ändert.",
+    "toRequest": "Anfrage ansehen",
+    "toThread": "Unterhaltung öffnen",
+    "close": "Schliessen"
+  },
+  "counter": {
+    "title": "Andere Zeit vorschlagen",
+    "descriptionMember": "Wähl eine der freien Zeiten. {name} entscheidet frei über den Vorschlag.",
+    "descriptionProvider": "Schlag eine Zeit vor, die dir passt. {name} kann sie annehmen oder absagen.",
+    "current": "Bisher: {when}",
+    "noSlots": "Zurzeit sind keine freien Zeiten eingetragen.",
+    "close": "Dialog schliessen",
+    "cancel": "Abbrechen",
+    "submit": "Vorschlag senden",
+    "openCalendar": "Kalender öffnen",
+    "previousMonth": "Vorheriger Monat",
+    "nextMonth": "Nächster Monat",
+    "invalidDate": "Gib das Datum als TT.MM.JJJJ ein.",
+    "outOfRange": "Wähl einen Tag in den nächsten 90 Tagen.",
+    "invalidTime": "Gib die Uhrzeit als HH:MM ein.",
+    "notOnStep": "Wähl eine Uhrzeit in Schritten von 15 Minuten."
+  },
+  "act": {
+    "accept": "Anfrage annehmen",
+    "acceptProposal": "Vorschlag annehmen",
+    "counter": "Andere Zeit vorschlagen",
+    "decline": "Anfrage ablehnen",
+    "cancel": "Anfrage absagen",
+    "cancelConfirmed": "Termin absagen",
+    "cancelSafety": "Aus Sicherheitsgründen absagen",
+    "complete": "Als stattgefunden bestätigen",
+    "dispute": "Als strittig melden",
+    "reportAfterSafety": "Die Anfrage ist abgesagt. Melde {name}, wenn du dich unsicher fühlst: Die Moderation erhält eine Kopie der letzten zehn Nachrichten und erfährt nicht, wer gemeldet hat.",
+    "done": {
+      "accept": "Termin bestätigt",
+      "counter": "Vorschlag gesendet",
+      "decline": "Anfrage abgelehnt",
+      "cancel": "Abgesagt",
+      "cancel-safety": "Abgesagt",
+      "complete": "Als stattgefunden bestätigt",
+      "dispute": "Als strittig gemeldet"
+    },
+    "errors": {
+      "not-found": "Diese Anfrage gibt es nicht mehr.",
+      "invalid": "Diese Angaben gehen nicht. Prüf Datum, Uhrzeit und Dauer.",
+      "not-allowed": "Das geht im aktuellen Status nicht mehr. Die Anzeige zeigt jetzt den neuesten Stand.",
+      "conflict": "Zu dieser Zeit ist schon ein anderer Termin bestätigt. Schlag eine andere Zeit vor.",
+      "unavailable": "Diese Zeit ist nicht mehr frei. Wähl eine andere.",
+      "stale": "Die Anfrage wurde gerade geändert. Prüf den neuen Stand und entscheide dann.",
+      "sign-in": "Deine Anmeldung ist abgelaufen. Melde dich neu an.",
+      "rate-limited": "Du hast in kurzer Zeit sehr viele Änderungen gemacht. Versuch es in einer Stunde wieder.",
+      "network": "Die Verbindung ist unterbrochen. Nichts wurde geändert; versuch es erneut."
+    }
+  },
+  "confirm": {
+    "reason": "Grund",
+    "optional": "optional",
+    "reasonHint": "Sichtbar für {name}.",
+    "count": "{used} von {max} Zeichen",
+    "cancel": {
+      "title": "Anfrage absagen?",
+      "description": "Die Absage ist endgültig. {name} sieht «Abgesagt» und deinen Grund, falls du einen angibst. Ein Grund ist nicht nötig.",
+      "confirm": "Anfrage absagen",
+      "keep": "Nicht absagen"
+    },
+    "cancelConfirmed": {
+      "title": "Termin absagen?",
+      "description": "Die Absage ist endgültig. {name} sieht «Abgesagt» und deinen Grund, falls du einen angibst. Ein Grund ist nicht nötig.",
+      "confirm": "Termin absagen",
+      "keep": "Termin behalten"
+    },
+    "decline": {
+      "title": "Anfrage ablehnen?",
+      "description": "Die Ablehnung ist endgültig. {name} sieht «Abgelehnt» und deinen Grund, falls du einen angibst.",
+      "confirm": "Anfrage ablehnen",
+      "keep": "Nicht ablehnen"
+    },
+    "cancelSafety": {
+      "title": "Aus Sicherheitsgründen absagen?",
+      "description": "Die Anfrage wird sofort und endgültig abgesagt. {name} sieht nur «Abgesagt», ohne Hinweis auf den Grund. Danach kannst du {name} der Moderation melden.",
+      "confirm": "Jetzt absagen",
+      "keep": "Nicht absagen"
+    },
+    "dispute": {
+      "title": "Als strittig melden?",
+      "description": "«Strittig» ist endgültig und für {name} sichtbar. Beschreib kurz, was nicht gestimmt hat, wenn du magst.",
+      "confirm": "Als strittig melden",
+      "keep": "Abbrechen"
+    }
+  },
+  "history": {
+    "title": "Verlauf",
+    "label": "Verlauf der Terminanfrage",
+    "latest": "Aktueller Stand:",
+    "you": "Du",
+    "system": "Automatisch",
+    "reason": "Grund: {reason}",
+    "events": {
+      "created": "Angefragt",
+      "counter": "Neuer Vorschlag",
+      "accept": "Bestätigt",
+      "decline": "Abgelehnt",
+      "cancel": "Abgesagt",
+      "cancelSafety": "Aus Sicherheitsgründen abgesagt",
+      "complete": "Stattgefunden",
+      "dispute": "Strittig",
+      "expired": "Abgelaufen",
+      "other": "Geändert"
+    }
+  },
+  "list": {
+    "metaTitle": "Termine",
+    "title": "Termine",
+    "tabsLabel": "Termine nach Status",
+    "tabs": {
+      "offen": "Offen",
+      "bestaetigt": "Bestätigt",
+      "vergangen": "Vergangen"
+    },
+    "expires": "Läuft ab:",
+    "discover": "Profile entdecken",
+    "empty": {
+      "offen": {
+        "title": "Keine offenen Anfragen",
+        "text": "Anfragen, auf die eine Antwort aussteht, stehen hier. Eine Anfrage sendest du über «Termin anfragen» auf einem Profil."
+      },
+      "bestaetigt": {
+        "title": "Keine bestätigten Termine",
+        "text": "Sobald eine Anfrage bestätigt ist, steht der Termin hier, der nächste zuoberst."
+      },
+      "vergangen": {
+        "title": "Noch nichts Vergangenes",
+        "text": "Vergangene, abgesagte, abgelehnte und abgelaufene Anfragen findest du hier."
+      }
+    }
+  },
+  "detail": {
+    "metaTitle": "Terminanfrage",
+    "title": "Terminanfrage an {name}",
+    "breadcrumbs": "Brotkrumen",
+    "proposal": "Aktueller Vorschlag",
+    "appointment": "Termin",
+    "noRegion": "Keine Angabe",
+    "message": "Deine Nachricht",
+    "actions": "Was du tun kannst",
+    "voluntary": "Jede Terminanfrage ist freiwillig. Absagen geht immer, ohne Begründung.",
+    "reviewsLater": "Bewertungen nach einem Termin kommen mit einer der nächsten Versionen der Plattform.",
+    "openThread": "Unterhaltung öffnen",
+    "openProfile": "Profil ansehen"
+  },
+  "state": {
+    "loading": "Termine werden geladen",
+    "slow": "Das dauert länger als üblich.",
+    "retry": "Erneut versuchen",
+    "errorTitle": "Die Termine liessen sich nicht laden.",
+    "errorDescription": "Deine Anfragen und Termine sind unverändert.",
+    "reload": "Seite neu laden"
+  }
+}

@@ -14,6 +14,8 @@ import type {
   ClientThread,
   MessengerArea,
 } from "../../lib/types";
+import { ThreadBookingCard } from "../../../booking/components/thread/thread-booking-card";
+import type { ThreadBookings } from "../../../booking/queries/load-thread-bookings";
 import { ThreadContext } from "../context/thread-context";
 import { useThreadActions } from "../context/use-thread-actions";
 import { useReportDialog } from "./report-labels";
@@ -36,6 +38,10 @@ export interface ThreadPanelProps {
   profileHref: string | null;
   /** Jetzt als ISO-Text vom Server, für «Heute» und «Gestern» ohne Abweichung. */
   now: string;
+  /** Terminanfragen der Unterhaltung als Karten im Verlauf (v2 11.4). */
+  bookings: ThreadBookings;
+  /** Pfad jeder Anfrage im eigenen Bereich: `/termine/[id]` oder `/studio/anfragen/[id]`. */
+  bookingHrefs: Record<string, string>;
 }
 
 /**
@@ -51,6 +57,8 @@ export function ThreadPanel({
   labels,
   profileHref,
   now,
+  bookings,
+  bookingHrefs,
 }: ThreadPanelProps) {
   const t = useTranslations("messages.thread");
   const router = useRouter();
@@ -63,8 +71,8 @@ export function ThreadPanel({
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [reportOpen, setReportOpen] = useState(false);
   const timeline = useMemo(
-    () => buildTimeline(stored.messages, outbox.outbox),
-    [stored.messages, outbox.outbox],
+    () => buildTimeline(stored.messages, outbox.outbox, bookings.bookings),
+    [stored.messages, outbox.outbox, bookings.bookings],
   );
   const last = timeline.at(-1);
   const { endRef, scrollerRef, keepPosition } = useThreadScroll(
@@ -149,6 +157,19 @@ export function ThreadPanel({
               onDeleted={(id) => {
                 stored.markDeleted(id);
                 router.refresh();
+              }}
+              renderBooking={(id) => {
+                const booking = bookings.bookings.find(
+                  (entry) => entry.id === id,
+                );
+                const href = bookingHrefs[id];
+                return booking && href ? (
+                  <ThreadBookingCard
+                    booking={booking}
+                    slots={bookings.slots}
+                    href={href}
+                  />
+                ) : null;
               }}
             />
           )}

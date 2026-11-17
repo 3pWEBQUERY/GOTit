@@ -55,9 +55,9 @@ export default async function MemberOverviewPage({ params }: PageProps<"/[locale
         <h1 className="text-h1">{t("title")}</h1>
         <p className="text-body text-ink-muted">{t("greeting", { name: viewer.name })}</p>
       </header>
-      {list("offene-anfragen", "requests", overview.openRequests, <Inbox strokeWidth={1.5} />)}
+      {list("offene-anfragen", "requests", overview.openRequests, <Inbox strokeWidth={1.5} />, { label: t("requests.all"), href: href("/termine") })}
       {list("ungelesen", "conversations", overview.unreadConversations, <MessageCircle strokeWidth={1.5} />, { label: t("conversations.all"), href: href("/nachrichten") })}
-      {list("naechste-termine", "appointments", overview.upcomingAppointments, <CalendarClock strokeWidth={1.5} />)}
+      {list("naechste-termine", "appointments", overview.upcomingAppointments, <CalendarClock strokeWidth={1.5} />, { label: t("appointments.all"), href: href({ pathname: "/termine", query: { ansicht: "bestaetigt" } }) })}
       <LinkList id="kurzlinks" title={t("shortcuts.title")} links={shortcuts} />
       <LinkList id="einstellungen" title={t("settingsTitle")} links={settingsLinks(href, (section) => settings(`sections.${section}`))} />
       {list("zuletzt-angesehen", "recentlyViewed", overview.recentlyViewed, <Eye strokeWidth={1.5} />)}

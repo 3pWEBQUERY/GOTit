@@ -1,1 +1,254 @@
-{}
+{
+  "memberFallback": "Membro",
+  "duration": {
+    "minutes": "{minutes} min",
+    "hours": "{hours} h",
+    "hoursMinutes": "{hours} h {minutes} min"
+  },
+  "status": {
+    "REQUESTED": "Richiesto",
+    "NEGOTIATING": "In discussione",
+    "CONFIRMED": "Confermato",
+    "DECLINED": "Rifiutato",
+    "CANCELLED": "Annullato",
+    "EXPIRED": "Scaduto",
+    "COMPLETED": "Avvenuto",
+    "DISPUTED": "Contestato"
+  },
+  "fields": {
+    "when": "Orario",
+    "duration": "Durata",
+    "region": "Regione",
+    "proposal": "Proposta",
+    "expires": "Scade"
+  },
+  "proposal": {
+    "mine": "La tua proposta, in attesa di risposta",
+    "theirs": "Nuova proposta di {name}"
+  },
+  "card": {
+    "titleMember": "Richiesta di appuntamento a {name}",
+    "titleProvider": "Richiesta di appuntamento di {name}",
+    "view": "Vedi la richiesta"
+  },
+  "panel": {
+    "title": "Richiedi un appuntamento a {name}",
+    "voluntary": "Senza impegno. {name} decide liberamente se ci sarà un appuntamento.",
+    "close": "Chiudi la richiesta di appuntamento",
+    "handle": "Cambia altezza",
+    "emptyTitle": "Nessun orario libero inserito finora",
+    "emptyText": "{name} non ha orari liberi nel calendario per le prossime due settimane.",
+    "closedTitle": "Al momento nessuna richiesta di appuntamento",
+    "closedText": "Al momento questo profilo non accetta richieste di appuntamento.",
+    "back": "Torna al profilo",
+    "unsavedTitle": "Scartare la richiesta?",
+    "unsavedText": "I dati inseriti andranno persi.",
+    "discard": "Scarta i dati",
+    "keep": "Continua a compilare"
+  },
+  "form": {
+    "day": "Giorno",
+    "dayPlaceholder": "Scegli un giorno",
+    "dayHint": "Solo giorni con orari liberi nelle prossime due settimane",
+    "time": "Ora",
+    "timePlaceholder": "Scegli un’ora",
+    "timeNeedsDay": "Scegli prima un giorno",
+    "timeHint": "Formato 24 ore, per esempio 18:00",
+    "zoneHint": "Ora in {zone}",
+    "dateHint": "Formato GG.MM.AAAA",
+    "duration": "Durata",
+    "durationPlaceholder": "Scegli una durata",
+    "durationNeedsTime": "Scegli prima un’ora",
+    "durationHint": "Libero fino a {until} da quest’ora",
+    "region": "Regione",
+    "regionHint": "Una regione generale, mai un indirizzo",
+    "noRegion": "Nessuna indicazione",
+    "optional": "facoltativo",
+    "message": "Messaggio",
+    "messageHint": "Cosa dovrebbe sapere {name}",
+    "count": "{used} di {max} caratteri",
+    "signInNote": "Per inviare accedi al tuo conto. I dati inseriti restano.",
+    "submit": "Invia la richiesta",
+    "cancel": "Annulla",
+    "summary": "Controlla questi dati:",
+    "lostTime": "L’orario della tua bozza non è più libero. Scegline un altro.",
+    "errors": {
+      "dayMissing": "Scegli un giorno.",
+      "timeMissing": "Scegli un’ora.",
+      "durationMissing": "Scegli una durata.",
+      "network": "La richiesta non è stata inviata, la connessione è interrotta. I dati inseriti restano; riprova.",
+      "not-found": "Al momento questo profilo non è raggiungibile.",
+      "not-allowed": "Al momento questo profilo non accetta richieste di appuntamento.",
+      "own-profile": "Non puoi richiedere un appuntamento sul tuo profilo.",
+      "undeliverable": "Al momento non è possibile inviare una richiesta a questo profilo.",
+      "invalid": "Non è stato possibile verificare i dati. Scegli di nuovo giorno, ora e durata.",
+      "invalidRegion": "Questa regione non è più approvata. Scegline un’altra o «Nessuna indicazione».",
+      "unavailable": "Quest’ora non è più libera. La scelta è aggiornata; scegline un’altra.",
+      "too-soon": "Quest’ora è troppo vicina. Scegline una più tarda.",
+      "too-far": "Non è possibile una richiesta così lontana nel tempo. Scegli un’ora più vicina.",
+      "duplicate": "Una richiesta a questo profilo è già aperta. La trovi sotto «Appuntamenti».",
+      "rate-limited": "Hai inviato molte richieste in poco tempo. Riprova tra un’ora.",
+      "sign-in": "La tua sessione è scaduta. Accedi di nuovo; i dati inseriti restano."
+    }
+  },
+  "sent": {
+    "title": "Richiesta inviata",
+    "text": "{name} la vede ora nella conversazione e decide liberamente. Ricevi un avviso appena qualcosa cambia.",
+    "toRequest": "Vedi la richiesta",
+    "toThread": "Apri la conversazione",
+    "close": "Chiudi"
+  },
+  "counter": {
+    "title": "Proponi un altro orario",
+    "descriptionMember": "Scegli uno degli orari liberi. {name} decide liberamente sulla proposta.",
+    "descriptionProvider": "Proponi un orario che ti va bene. {name} può accettarlo o annullare.",
+    "current": "Finora: {when}",
+    "noSlots": "Al momento non ci sono orari liberi inseriti.",
+    "close": "Chiudi la finestra",
+    "cancel": "Annulla",
+    "submit": "Invia la proposta",
+    "openCalendar": "Apri il calendario",
+    "previousMonth": "Mese precedente",
+    "nextMonth": "Mese successivo",
+    "invalidDate": "Inserisci la data come GG.MM.AAAA.",
+    "outOfRange": "Scegli un giorno entro i prossimi 90 giorni.",
+    "invalidTime": "Inserisci l’ora come HH:MM.",
+    "notOnStep": "Scegli un’ora a intervalli di 15 minuti."
+  },
+  "act": {
+    "accept": "Accetta la richiesta",
+    "acceptProposal": "Accetta la proposta",
+    "counter": "Proponi un altro orario",
+    "decline": "Rifiuta la richiesta",
+    "cancel": "Annulla la richiesta",
+    "cancelConfirmed": "Annulla l’appuntamento",
+    "cancelSafety": "Annulla per motivi di sicurezza",
+    "complete": "Conferma che è avvenuto",
+    "dispute": "Segnala come contestato",
+    "reportAfterSafety": "La richiesta è annullata. Segnala {name} se non ti senti al sicuro: la moderazione riceve una copia degli ultimi dieci messaggi e non sa chi ha segnalato.",
+    "done": {
+      "accept": "Appuntamento confermato",
+      "counter": "Proposta inviata",
+      "decline": "Richiesta rifiutata",
+      "cancel": "Annullato",
+      "cancel-safety": "Annullato",
+      "complete": "Confermato come avvenuto",
+      "dispute": "Segnalato come contestato"
+    },
+    "errors": {
+      "not-found": "Questa richiesta non esiste più.",
+      "invalid": "Questi dati non vanno. Controlla data, ora e durata.",
+      "not-allowed": "Nello stato attuale non è più possibile. La vista mostra ora lo stato più recente.",
+      "conflict": "A quest’ora è già confermato un altro appuntamento. Proponi un altro orario.",
+      "unavailable": "Quest’ora non è più libera. Scegline un’altra.",
+      "stale": "La richiesta è appena stata modificata. Controlla il nuovo stato e poi decidi.",
+      "sign-in": "La tua sessione è scaduta. Accedi di nuovo.",
+      "rate-limited": "Hai fatto molte modifiche in poco tempo. Riprova tra un’ora.",
+      "network": "La connessione è interrotta. Non è stato modificato nulla; riprova."
+    }
+  },
+  "confirm": {
+    "reason": "Motivo",
+    "optional": "facoltativo",
+    "reasonHint": "Visibile per {name}.",
+    "count": "{used} di {max} caratteri",
+    "cancel": {
+      "title": "Annullare la richiesta?",
+      "description": "L’annullamento è definitivo. {name} vede «Annullato» e il tuo motivo, se ne indichi uno. Un motivo non è necessario.",
+      "confirm": "Annulla la richiesta",
+      "keep": "Non annullare"
+    },
+    "cancelConfirmed": {
+      "title": "Annullare l’appuntamento?",
+      "description": "L’annullamento è definitivo. {name} vede «Annullato» e il tuo motivo, se ne indichi uno. Un motivo non è necessario.",
+      "confirm": "Annulla l’appuntamento",
+      "keep": "Tieni l’appuntamento"
+    },
+    "decline": {
+      "title": "Rifiutare la richiesta?",
+      "description": "Il rifiuto è definitivo. {name} vede «Rifiutato» e il tuo motivo, se ne indichi uno.",
+      "confirm": "Rifiuta la richiesta",
+      "keep": "Non rifiutare"
+    },
+    "cancelSafety": {
+      "title": "Annullare per motivi di sicurezza?",
+      "description": "La richiesta viene annullata subito e in modo definitivo. {name} vede solo «Annullato», senza indicazione del motivo. Dopo puoi segnalare {name} alla moderazione.",
+      "confirm": "Annulla ora",
+      "keep": "Non annullare"
+    },
+    "dispute": {
+      "title": "Segnalare come contestato?",
+      "description": "«Contestato» è definitivo e visibile per {name}. Descrivi brevemente cosa non andava, se vuoi.",
+      "confirm": "Segnala come contestato",
+      "keep": "Annulla"
+    }
+  },
+  "history": {
+    "title": "Cronologia",
+    "label": "Cronologia della richiesta di appuntamento",
+    "latest": "Stato attuale:",
+    "you": "Tu",
+    "system": "Automatico",
+    "reason": "Motivo: {reason}",
+    "events": {
+      "created": "Richiesto",
+      "counter": "Nuova proposta",
+      "accept": "Confermato",
+      "decline": "Rifiutato",
+      "cancel": "Annullato",
+      "cancelSafety": "Annullato per motivi di sicurezza",
+      "complete": "Avvenuto",
+      "dispute": "Contestato",
+      "expired": "Scaduto",
+      "other": "Modificato"
+    }
+  },
+  "list": {
+    "metaTitle": "Appuntamenti",
+    "title": "Appuntamenti",
+    "tabsLabel": "Appuntamenti per stato",
+    "tabs": {
+      "offen": "Aperti",
+      "bestaetigt": "Confermati",
+      "vergangen": "Passati"
+    },
+    "expires": "Scade:",
+    "discover": "Scopri profili",
+    "empty": {
+      "offen": {
+        "title": "Nessuna richiesta aperta",
+        "text": "Qui compaiono le richieste in attesa di risposta. Invii una richiesta con «Richiedi un appuntamento» su un profilo."
+      },
+      "bestaetigt": {
+        "title": "Nessun appuntamento confermato",
+        "text": "Appena una richiesta è confermata, l’appuntamento compare qui, il prossimo per primo."
+      },
+      "vergangen": {
+        "title": "Ancora niente di passato",
+        "text": "Qui trovi le richieste passate, annullate, rifiutate e scadute."
+      }
+    }
+  },
+  "detail": {
+    "metaTitle": "Richiesta di appuntamento",
+    "title": "Richiesta di appuntamento a {name}",
+    "breadcrumbs": "Percorso",
+    "proposal": "Proposta attuale",
+    "appointment": "Appuntamento",
+    "noRegion": "Nessuna indicazione",
+    "message": "Il tuo messaggio",
+    "actions": "Cosa puoi fare",
+    "voluntary": "Ogni richiesta di appuntamento è volontaria. Puoi sempre annullare, senza motivazione.",
+    "reviewsLater": "Le valutazioni dopo un appuntamento arrivano con una delle prossime versioni della piattaforma.",
+    "openThread": "Apri la conversazione",
+    "openProfile": "Vedi il profilo"
+  },
+  "state": {
+    "loading": "Caricamento degli appuntamenti",
+    "slow": "Ci vuole più tempo del solito.",
+    "retry": "Riprova",
+    "errorTitle": "Non è stato possibile caricare gli appuntamenti.",
+    "errorDescription": "Le tue richieste e i tuoi appuntamenti sono invariati.",
+    "reload": "Ricarica la pagina"
+  }
+}

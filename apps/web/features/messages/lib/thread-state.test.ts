@@ -131,3 +131,26 @@ describe("Verlauf im Browser", () => {
     expect(latestIncoming(messages)?.id).toBe("c");
   });
 });
+
+describe("Terminanfragen im Verlauf", () => {
+  it("stehen an ihrem Zeitpunkt zwischen den Nachrichten; der Ausgang bleibt zuunterst", () => {
+    const timeline = buildTimeline(
+      [
+        message("a", "2026-11-17T09:00:00.000Z"),
+        message("b", "2026-11-17T11:00:00.000Z"),
+      ],
+      [outbox("x", { createdAt: "2026-11-17T08:00:00.000Z" })],
+      [
+        { id: "spaet", createdAt: "2026-11-17T12:00:00.000Z" },
+        { id: "mitte", createdAt: "2026-11-17T10:00:00.000Z" },
+      ],
+    );
+    expect(timeline.map((item) => item.key)).toEqual([
+      "m-a",
+      "b-mitte",
+      "m-b",
+      "b-spaet",
+      "c-x",
+    ]);
+  });
+});

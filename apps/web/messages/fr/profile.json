@@ -72,7 +72,8 @@
   "contact": {
     "label": "Contact",
     "request": "Demander un rendez-vous",
-    "soonBookings": "Les demandes de rendez-vous seront possibles avec la prochaine version de la plateforme.",
+    "ownerBoth": "Les membres peuvent t’écrire ici et demander un rendez-vous sans engagement.",
+    "ownerBookings": "Les membres peuvent te demander ici un rendez-vous sans engagement.",
     "ownerMessages": "Les membres peuvent t’écrire un message ici.",
     "none": "Ce profil n’accepte actuellement aucune demande via la plateforme.",
     "paused": "Ce profil est actuellement en pause",

@@ -7,7 +7,8 @@
     "requests": {
       "title": "Demandes en cours",
       "emptyTitle": "Aucune demande en cours",
-      "emptyText": "Dès que tu envoies une demande de rendez-vous à un profil, tu la vois ici jusqu’à ce qu’elle reçoive une réponse."
+      "emptyText": "Dès que tu envoies une demande de rendez-vous à un profil, tu la vois ici jusqu’à ce qu’elle reçoive une réponse.",
+      "all": "Voir toutes les demandes"
     },
     "conversations": {
       "title": "Conversations non lues",
@@ -21,7 +22,8 @@
     "appointments": {
       "title": "Prochains rendez-vous",
       "emptyTitle": "Aucun rendez-vous à venir",
-      "emptyText": "Les rendez-vous confirmés apparaissent ici, le prochain en haut."
+      "emptyText": "Les rendez-vous confirmés apparaissent ici, le prochain en haut.",
+      "all": "Voir tous les rendez-vous"
     },
     "recentlyViewed": {
       "title": "Consultés récemment",

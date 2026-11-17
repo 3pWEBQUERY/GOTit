@@ -72,7 +72,8 @@
   "contact": {
     "label": "Kontakt",
     "request": "Termin anfragen",
-    "soonBookings": "Terminanfragen sind mit der nächsten Version der Plattform möglich.",
+    "ownerBoth": "Mitglieder können dir hier eine Nachricht schreiben und unverbindlich einen Termin anfragen.",
+    "ownerBookings": "Mitglieder können hier unverbindlich einen Termin bei dir anfragen.",
     "ownerMessages": "Mitglieder können dir hier eine Nachricht schreiben.",
     "none": "Dieses Profil nimmt zurzeit keine Anfragen über die Plattform an.",
     "paused": "Dieses Profil ist zurzeit pausiert",

@@ -7,7 +7,8 @@
     "requests": {
       "title": "Richieste aperte",
       "emptyTitle": "Nessuna richiesta aperta",
-      "emptyText": "Appena invii una richiesta di appuntamento a un profilo, la vedi qui finché non riceve risposta."
+      "emptyText": "Appena invii una richiesta di appuntamento a un profilo, la vedi qui finché non riceve risposta.",
+      "all": "Vedi tutte le richieste"
     },
     "conversations": {
       "title": "Conversazioni non lette",
@@ -21,7 +22,8 @@
     "appointments": {
       "title": "Prossimi appuntamenti",
       "emptyTitle": "Nessun appuntamento in programma",
-      "emptyText": "Gli appuntamenti confermati compaiono qui, il prossimo in cima."
+      "emptyText": "Gli appuntamenti confermati compaiono qui, il prossimo in cima.",
+      "all": "Vedi tutti gli appuntamenti"
     },
     "recentlyViewed": {
       "title": "Visti di recente",

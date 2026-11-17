@@ -72,7 +72,8 @@
   "contact": {
     "label": "Contatto",
     "request": "Richiedi un appuntamento",
-    "soonBookings": "Le richieste di appuntamento saranno possibili con la prossima versione della piattaforma.",
+    "ownerBoth": "Qui i membri possono scriverti e chiederti un appuntamento senza impegno.",
+    "ownerBookings": "Qui i membri possono chiederti un appuntamento senza impegno.",
     "ownerMessages": "Qui i membri possono scriverti un messaggio.",
     "none": "Questo profilo al momento non accetta richieste tramite la piattaforma.",
     "paused": "Questo profilo è attualmente in pausa",

@@ -62,7 +62,14 @@ export function pendingOutbox(
 
 export type TimelineItem =
   | { kind: "message"; key: string; createdAt: string; message: ClientMessage }
-  | { kind: "outbox"; key: string; createdAt: string; entry: OutboxEntry };
+  | { kind: "outbox"; key: string; createdAt: string; entry: OutboxEntry }
+  | { kind: "booking"; key: string; createdAt: string; bookingId: string };
+
+/** Eine Terminanfrage der Unterhaltung, als Karte an ihrem Zeitpunkt (v2 11.4). */
+export interface TimelineBooking {
+  id: string;
+  createdAt: string;
+}
 
 /**
  * Gespeicherte Nachrichten und offener Ausgang in einer Reihe. Eigene
@@ -72,6 +79,7 @@ export type TimelineItem =
 export function buildTimeline(
   messages: readonly ClientMessage[],
   outbox: readonly OutboxEntry[],
+  bookings: readonly TimelineBooking[] = [],
 ): TimelineItem[] {
   const stored: TimelineItem[] = messages.map((message) => ({
     kind: "message",
@@ -79,6 +87,22 @@ export function buildTimeline(
     createdAt: message.createdAt,
     message,
   }));
+  // Karten stehen zwischen den gespeicherten Nachrichten an ihrem Zeitpunkt; der Ausgang bleibt zuunterst.
+  for (const booking of [...bookings].sort((a, b) =>
+    a.createdAt < b.createdAt ? -1 : 1,
+  )) {
+    const index = stored.findIndex(
+      (item) => item.createdAt > booking.createdAt,
+    );
+    const card: TimelineItem = {
+      kind: "booking",
+      key: `b-${booking.id}`,
+      createdAt: booking.createdAt,
+      bookingId: booking.id,
+    };
+    if (index === -1) stored.push(card);
+    else stored.splice(index, 0, card);
+  }
   const open: TimelineItem[] = pendingOutbox(outbox, messages)
     .slice()
     .sort((a, b) => (a.createdAt < b.createdAt ? -1 : 1))

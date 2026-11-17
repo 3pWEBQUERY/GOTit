@@ -7,7 +7,8 @@
     "requests": {
       "title": "Open requests",
       "emptyTitle": "No open requests",
-      "emptyText": "As soon as you send an appointment request to a profile, you see it here until it is answered."
+      "emptyText": "As soon as you send an appointment request to a profile, you see it here until it is answered.",
+      "all": "View all requests"
     },
     "conversations": {
       "title": "Unread conversations",
@@ -21,7 +22,8 @@
     "appointments": {
       "title": "Upcoming appointments",
       "emptyTitle": "No upcoming appointments",
-      "emptyText": "Confirmed appointments appear here, the next one at the top."
+      "emptyText": "Confirmed appointments appear here, the next one at the top.",
+      "all": "View all appointments"
     },
     "recentlyViewed": {
       "title": "Recently viewed",
