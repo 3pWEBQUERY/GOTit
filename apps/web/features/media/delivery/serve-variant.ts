@@ -1,4 +1,12 @@
 import type { MediaDelivery } from "@app/core/media";
+
+/**
+ * Öffentliche Varianten: 10 Minuten Cache statt eines Jahres. Löscht ein Anbieter
+ * ein Bild, zieht seine Einwilligung zurück oder sperrt die Moderation es, ist es
+ * spätestens nach dieser Zeit auch aus Browser- und CDN-Caches verschwunden; jede
+ * spätere Anfrage prüft Status und Sichtbarkeit erneut (Entscheid 0011).
+ */
+const PUBLIC_MEDIA_CACHE = "public, max-age=600, stale-while-revalidate=60";
 import { getStorage } from "@app/storage";
 
 /** Gültigkeit der Weiterleitung auf geschützte Varianten, in Sekunden. */
@@ -25,7 +33,7 @@ export async function serveVariant(delivery: MediaDelivery): Promise<Response> {
     const body = await storage.getObject(ref);
     if (!body) return mediaNotFound();
     return new Response(Buffer.from(body), {
-      headers: { "content-type": `image/${delivery.format}`, "cache-control": "public, max-age=31536000, immutable", "x-content-type-options": "nosniff" },
+      headers: { "content-type": `image/${delivery.format}`, "cache-control": PUBLIC_MEDIA_CACHE, "x-content-type-options": "nosniff" },
     });
   }
   const location = await storage.presignDownload({ ...ref, expiresIn: PRIVATE_URL_TTL_SECONDS });

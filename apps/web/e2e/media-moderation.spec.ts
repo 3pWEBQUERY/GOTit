@@ -119,13 +119,13 @@ test.describe("Moderation der Medien (PRD v2 12.4)", () => {
 });
 
 test.describe("Auslieferung unter /media/[id]/[variante] (PRD v2 14.3)", () => {
-  test("öffentlich und freigegeben: ohne Anmeldung, mit langem Cache", async ({ baseURL }) => {
+  test("öffentlich und freigegeben: ohne Anmeldung, mit kurzem öffentlichem Cache", async ({ baseURL }) => {
     const owner = await provider();
     const id = await seedMedium(owner, "PUBLISHED");
     const context = await anonymous(baseURL);
     const response = await context.get(`/media/${id}/w640.webp`);
     expect(response.status()).toBe(200);
-    expect(response.headers()["cache-control"]).toBe("public, max-age=31536000, immutable");
+    expect(response.headers()["cache-control"]).toBe("public, max-age=600, stale-while-revalidate=60");
     expect(response.headers()["content-type"]).toBe("image/webp");
     expect((await sharp(await response.body()).metadata()).format).toBe("webp");
     expect((await context.get(`/media/${id}/w641.webp`)).status()).toBe(404);

@@ -88,3 +88,7 @@ Das Paket `packages/storage` stellt die Schnittstelle `ObjectStorage` bereit, mi
 - **CORS der Buckets:** Für den direkten Upload muss der Bucket «originals» `PUT` von `APP_URL` mit der Kopfzeile `content-type` erlauben. Das ist auf Railway noch nicht geprüft.
 - **Verwaiste Uploads:** Nie bestätigte Uploads (UPLOADING, älter als eine Stunde) belegen kein Kontingent mehr. Ihre Objekte und Zeilen räumt später der `cron`-Dienst auf.
 - **Hängende Jobs:** Scheitert `media-process` nach allen fünf Versuchen, bleibt das Medium in PROCESSING. Der `cron`-Dienst sollte solche Medien auf FAILED setzen.
+
+## Nachtrag 17.11.2026: Cache öffentlicher Varianten
+
+Statt `max-age=31536000, immutable` gilt `public, max-age=600, stale-while-revalidate=60`. Grund: Ein gelöschtes, gesperrtes oder auf «Mitglieder» umgestelltes Bild wäre sonst bis zu einem Jahr aus Caches abrufbar. Das widerspricht dem Widerruf von Einwilligungen (PRD v1 FR-MEDIA-002, 10.3). Nach höchstens 10 Minuten prüft jede Anfrage Status und Sichtbarkeit erneut. Sobald ein CDN mit gezieltem Löschen angebunden ist, kann der Cache wieder verlängert werden.
