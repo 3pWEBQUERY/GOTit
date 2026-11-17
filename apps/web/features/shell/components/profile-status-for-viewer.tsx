@@ -21,6 +21,7 @@ export async function ProfileStatusForViewer({ locale, viewer }: { locale: Local
           CHANGES_REQUESTED: t("status.CHANGES_REQUESTED"),
           PUBLISHED: t("status.PUBLISHED"),
           PAUSED: t("status.PAUSED"),
+          RESTRICTED: t("status.RESTRICTED"),
           SUSPENDED: t("status.SUSPENDED"),
           ARCHIVED: t("status.ARCHIVED"),
         },
@@ -30,7 +31,7 @@ export async function ProfileStatusForViewer({ locale, viewer }: { locale: Local
         resumed: t("pause.resumed"),
         undo: t("pause.undo"),
         failed: t("pause.failed"),
-        blocked: { "not-published": t("pause.blockedNotPublished"), suspended: t("pause.blockedSuspended") },
+        blocked: { "not-published": t("pause.blockedNotPublished"), suspended: t("pause.blockedSuspended"), restricted: t("pause.blockedRestricted") },
       }}
     />
   );

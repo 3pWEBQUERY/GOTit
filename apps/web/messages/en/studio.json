@@ -10,7 +10,8 @@
     "PUBLISHED": "Online",
     "PAUSED": "Paused",
     "SUSPENDED": "Suspended",
-    "ARCHIVED": "Archived"
+    "ARCHIVED": "Archived",
+    "RESTRICTED": "Restricted"
   },
   "pause": {
     "pause": "Pause profile",
@@ -20,7 +21,8 @@
     "undo": "Undo",
     "failed": "The status could not be changed. Your profile is unchanged.",
     "blockedNotPublished": "You can pause once your profile is approved.",
-    "blockedSuspended": "Your profile is suspended. Support will help you."
+    "blockedSuspended": "Your profile is suspended. Support will help you.",
+    "blockedRestricted": "Your profile is restricted. The reason and how to appeal are in the moderation message."
   },
   "today": {
     "metaTitle": "Today",

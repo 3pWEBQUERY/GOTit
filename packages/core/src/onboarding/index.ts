@@ -6,6 +6,7 @@ export {
   profileBasicsSchema,
   rateSchema,
   regionsSchema,
+  submitSchema,
   type OnboardingStepKey,
 } from "./schemas";
 export { completeStep, getOnboardingState, saveOffer, saveProfileBasics, saveRegions, submitProfile, type SaveResult, type SubmitResult } from "./service";

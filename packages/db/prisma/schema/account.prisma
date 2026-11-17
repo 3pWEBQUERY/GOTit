@@ -74,3 +74,26 @@ model EmailOutbox {
   @@index([to, createdAt])
   @@map("email_outbox")
 }
+
+enum ConsentKind {
+  TERMS
+  PRIVACY
+  AGE_CONFIRMATION
+  PROFILE_PUBLICATION
+}
+
+// Einwilligungen und ihre Rechtsgrundlage (PRD v1 FR-AUTH-001, FR-VERIFY-002, Datenmodell
+// ConsentRecord). Version bezeichnet den Stand des Dokuments, dem zugestimmt wurde.
+model ConsentRecord {
+  id          String      @id @default(cuid(2))
+  userId      String
+  kind        ConsentKind
+  version     String
+  grantedAt   DateTime    @default(now())
+  withdrawnAt DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, kind])
+  @@map("consent_record")
+}

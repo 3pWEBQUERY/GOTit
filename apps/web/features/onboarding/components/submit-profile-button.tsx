@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, InlineAlert, UiLink } from "@app/ui";
+import { Button, Checkbox, InlineAlert, UiLink } from "@app/ui";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -20,16 +20,23 @@ export function SubmitProfileButton({ studioHref, links }: { studioHref: string;
   const t = useTranslations("onboarding");
   const router = useRouter();
   const [pending, setPending] = useState(false);
+  const [consent, setConsent] = useState(false);
+  const [consentError, setConsentError] = useState(false);
   const [error, setError] = useState<{
     key: string;
     missing: readonly MissingLink[];
   } | null>(null);
 
   async function submit() {
-    setPending(true);
     setError(null);
+    if (!consent) {
+      setConsentError(true);
+      document.getElementById("publication-consent")?.focus();
+      return;
+    }
+    setPending(true);
     try {
-      const result = await submitProfileAction();
+      const result = await submitProfileAction({ publicationConsent: true });
       if (result.ok) {
         router.push(studioHref);
         return;
@@ -62,6 +69,17 @@ export function SubmitProfileButton({ studioHref, links }: { studioHref: string;
           ) : null}
         </InlineAlert>
       ) : null}
+      <Checkbox
+        id="publication-consent"
+        label={t("submit.consent")}
+        description={t("submit.consentHint")}
+        checked={consent}
+        error={consentError && !consent ? t("errors.publicationConsentRequired") : undefined}
+        onCheckedChange={(value) => {
+          setConsent(value === true);
+          if (value === true) setConsentError(false);
+        }}
+      />
       <Button variant="primary" loading={pending} onClick={() => void submit()} className="self-start">
         {t("submit.button")}
       </Button>

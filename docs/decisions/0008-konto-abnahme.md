@@ -2,7 +2,7 @@
 
 **Stand:** 16.11.2026
 
-PRD v2.0 verweist für Schritt 1.4 auf «Abnahmekriterien 20.1 aus v1.0». Die v1.0 liegt nicht vor. Auf Anweisung von Alexander werden die Kriterien aus v2.0 abgeleitet (Abschnitte 7.4, 7.5, 8.2, 13, 14.1, 16.1, 16.2). Liegt v1.0 vor, wird diese Liste damit abgeglichen.
+PRD v2.0 verweist für Schritt 1.4 auf «Abnahmekriterien 20.1 aus v1.0». Die Kriterien wurden zunächst aus v2.0 abgeleitet; seit dem 17.11.2026 liegt v1.0 vor (`docs/prd/prd-v1.0.md`), der Abgleich steht in Entscheid 0010.
 
 ## Registrierung und Bestätigung
 

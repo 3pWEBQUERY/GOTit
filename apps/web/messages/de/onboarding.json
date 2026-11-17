@@ -75,7 +75,8 @@
     "noteTooLong": "Der Hinweis darf höchstens 120 Zeichen haben.",
     "ratesTooMany": "Du kannst höchstens 12 Preise angeben.",
     "providerNotConfigured": "Die Prüfung ist noch nicht verfügbar. Dein Profil bleibt als Entwurf gespeichert.",
-    "incomplete": "Dein Profil ist noch nicht vollständig. Ergänze die Schritte in der Liste."
+    "incomplete": "Dein Profil ist noch nicht vollständig. Ergänze die Schritte in der Liste.",
+    "publicationConsentRequired": "Bitte stimme der Veröffentlichung zu, damit wir das Profil prüfen können."
   },
   "review": {
     "title": "Dein Profil wurde zur Korrektur zurückgegeben",
@@ -208,6 +209,8 @@
     "missingTitle": "Das fehlt noch",
     "missingStep": "{step} ergänzen",
     "ready": "Alles bereit. Du kannst dein Profil einreichen.",
-    "button": "Profil einreichen"
+    "button": "Profil einreichen",
+    "consent": "Ich stimme der Veröffentlichung dieses Profils zu.",
+    "consentHint": "Das Profil wird erst nach unserer Prüfung sichtbar. Du kannst es jederzeit pausieren oder die Zustimmung widerrufen, indem du das Profil archivierst."
   }
 }

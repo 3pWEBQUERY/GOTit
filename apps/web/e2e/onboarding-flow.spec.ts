@@ -214,6 +214,7 @@ test.describe("Onboarding: Einreichen, Sperre und Korrektur (PRD 11.8, 16.1)", (
 
     await expect(page).toHaveURL(/\/de\/studio\/start\/einreichen$/);
     await expect(page.getByText("Alles bereit.")).toBeVisible();
+    await page.getByRole("checkbox", { name: "Ich stimme der Veröffentlichung dieses Profils zu." }).check();
     await page.getByRole("button", { name: "Profil einreichen" }).click();
     await expect(page).toHaveURL(/\/de\/studio$/);
     await expect(page.locator("[data-todo=status]")).toContainText("Dein Profil wird geprüft");
@@ -232,6 +233,12 @@ test.describe("Onboarding: Einreichen, Sperre und Korrektur (PRD 11.8, 16.1)", (
     await page.goto("/de/studio/start/einreichen");
     const missing = page.locator("[data-missing-steps]");
     await expect(missing.getByRole("link", { name: "Identität ergänzen" })).toBeVisible();
+    // Ohne Zustimmung zur Veröffentlichung geht nichts an den Server (PRD v1 FR-VERIFY-002).
+    await page.getByRole("button", { name: "Profil einreichen" }).click();
+    const consent = page.getByRole("checkbox", { name: "Ich stimme der Veröffentlichung dieses Profils zu." });
+    await expect(page.getByText("Bitte stimme der Veröffentlichung zu, damit wir das Profil prüfen können.")).toBeVisible();
+    await expect(consent).toBeFocused();
+    await consent.check();
     await page.getByRole("button", { name: "Profil einreichen" }).click();
     const alert = page.getByRole("alert").filter({ hasText: "noch nicht vollständig" });
     await expect(alert.getByRole("link", { name: "Identität ergänzen" })).toBeVisible();

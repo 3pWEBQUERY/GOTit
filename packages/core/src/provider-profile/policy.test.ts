@@ -14,6 +14,9 @@ describe("Profil pausieren (PRD 6.2)", () => {
       expect(pauseAvailability(status)).toEqual({ action: null, blockedBy: "not-published" });
     },
   );
+  it("ein eingeschränktes Profil lässt sich nicht selbst pausieren oder freischalten", () => {
+    expect(pauseAvailability("RESTRICTED")).toEqual({ action: null, blockedBy: "restricted" });
+  });
   it("ein gesperrtes Profil kommt über Pausieren nicht wieder online", () => {
     expect(pauseAvailability("SUSPENDED")).toEqual({ action: null, blockedBy: "suspended" });
   });

@@ -27,6 +27,7 @@ export async function exportOwnData(userId: string) {
       sessions: { select: { createdAt: true, expiresAt: true, userAgent: true } },
       passkeys: { select: { name: true, deviceType: true, createdAt: true } },
       securityEvents: { select: { type: true, device: true, createdAt: true }, orderBy: { createdAt: "desc" } },
+      consents: { select: { kind: true, version: true, grantedAt: true, withdrawnAt: true }, orderBy: { grantedAt: "desc" } },
     },
   });
   return { exportedAt: new Date().toISOString(), format: "gotit-account-export/1", account: user };

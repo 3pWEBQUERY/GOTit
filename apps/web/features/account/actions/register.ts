@@ -1,7 +1,7 @@
 "use server";
 
 import { getAuth } from "@app/auth";
-import { provisionAccountType, registrationSchema } from "@app/core/account";
+import { provisionAccountType, recordConsents, registrationSchema } from "@app/core/account";
 import type { Locale } from "@app/core/locale";
 import { isMailConfigured } from "@app/core/mail";
 import { clientIp, consumeRateLimit, rateLimitSubject } from "@app/core/rate-limit";
@@ -34,5 +34,7 @@ export async function register(locale: Locale, input: unknown): Promise<ActionRe
     headers: requestHeaders,
   });
   await provisionAccountType(result.user.id, data.accountType, { name: data.name, organizationName: data.organizationName, organizationKind: data.organizationKind });
+  // Zustimmungen mit Version festhalten (PRD v1 FR-AUTH-001, ConsentRecord).
+  await recordConsents(result.user.id, ["TERMS", "PRIVACY", "AGE_CONFIRMATION"]);
   return { ok: true };
 }

@@ -10,7 +10,8 @@
     "PUBLISHED": "En ligne",
     "PAUSED": "En pause",
     "SUSPENDED": "Bloqué",
-    "ARCHIVED": "Archivé"
+    "ARCHIVED": "Archivé",
+    "RESTRICTED": "Restreint"
   },
   "pause": {
     "pause": "Mettre le profil en pause",
@@ -20,7 +21,8 @@
     "undo": "Annuler",
     "failed": "Le statut n’a pas pu être modifié. Ton profil reste inchangé.",
     "blockedNotPublished": "La pause est possible dès que ton profil est validé.",
-    "blockedSuspended": "Ton profil est bloqué. Le support t’aide à avancer."
+    "blockedSuspended": "Ton profil est bloqué. Le support t’aide à avancer.",
+    "blockedRestricted": "Ton profil est restreint. La justification et la voie de recours figurent dans le message de la modération."
   },
   "today": {
     "metaTitle": "Aujourd’hui",

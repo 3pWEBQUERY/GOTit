@@ -1,6 +1,7 @@
 import { getDb } from "@app/db";
 import { canSubmit, isIdentityValid } from "../verification/policy";
-import { ONBOARDING_STEPS, offerSchema, profileBasicsSchema, regionsSchema, type OnboardingStepKey } from "./schemas";
+import { CONSENT_VERSIONS } from "../account/consent";
+import { ONBOARDING_STEPS, offerSchema, profileBasicsSchema, regionsSchema, submitSchema, type OnboardingStepKey } from "./schemas";
 
 async function ownProfile(userId: string) {
   return getDb().providerProfile.findUniqueOrThrow({
@@ -100,14 +101,19 @@ export async function completeStep(userId: string, step: "media" | "availability
 
 export type SubmitResult = { ok: true } | { ok: false; reason: "incomplete"; missing: OnboardingStepKey[] };
 
-/** Einreichen: legt einen Prüffall an. Öffentlich wird nichts ohne manuelle Freigabe (PRD 16.1). */
-export async function submitProfile(userId: string, now = new Date()): Promise<SubmitResult> {
+/**
+ * Einreichen: hält die Zustimmung zur Veröffentlichung fest und legt einen
+ * Prüffall an. Öffentlich wird nichts ohne manuelle Freigabe (PRD 16.1).
+ */
+export async function submitProfile(userId: string, input: unknown, now = new Date()): Promise<SubmitResult> {
+  submitSchema.parse(input);
   const state = await getOnboardingState(userId, now);
   if (!state.canSubmit) return { ok: false, reason: "incomplete", missing: state.missing };
   const db = getDb();
   await db.$transaction([
     db.providerProfile.update({ where: { id: state.profile.id }, data: { status: "SUBMITTED", submittedAt: now, onboardingSteps: { push: "submit" } } }),
     db.profileReview.create({ data: { providerProfileId: state.profile.id, submittedAt: now } }),
+    db.consentRecord.create({ data: { userId, kind: "PROFILE_PUBLICATION", version: CONSENT_VERSIONS.PROFILE_PUBLICATION, grantedAt: now } }),
   ]);
   return { ok: true };
 }

@@ -1,3 +1,4 @@
+export { CONSENT_VERSIONS, listOwnConsents, recordConsents } from "./consent";
 export { deviceLabel } from "./device-label";
 export { exportOwnData } from "./export";
 export { deactivateOwnAccount, provisionAccountType, reactivateOnSignIn, requestOwnDeletion } from "./lifecycle";

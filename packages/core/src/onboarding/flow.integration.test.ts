@@ -57,18 +57,28 @@ describe("Onboarding, Prüfung und Freigabe (Schritt 1.5)", () => {
     await saveProfileBasics(userId, basics);
     await saveOffer(userId, { rates: [{ durationMinutes: 60, priceChf: 300 }] });
     expect((await getOnboardingState(userId)).missing).toEqual(["identity", "preview"]);
-    expect((await submitProfile(userId)).ok).toBe(false);
+    expect((await submitProfile(userId, { publicationConsent: true })).ok).toBe(false);
 
     expect(await applyIdentityResult(await refOf(userId), { approved: true, ageOver18: true, livenessPassed: true })).toBe("applied");
     await db.providerProfile.update({ where: { userId }, data: { onboardingSteps: { push: "preview" } } });
-    expect((await submitProfile(userId)).ok).toBe(true);
+    expect((await submitProfile(userId, { publicationConsent: true })).ok).toBe(true);
     expect(await visible(userId)).toBe(false);
+    expect(await db.consentRecord.count({ where: { userId, kind: "PROFILE_PUBLICATION" } })).toBe(1);
+    const events = await db.providerStatusEvent.findMany({ where: { providerProfile: { userId } }, orderBy: { createdAt: "asc" } });
+    expect(events.map((event) => event.toStatus)).toEqual(["DRAFT", "SUBMITTED"]);
 
     const review = await db.profileReview.findFirstOrThrow({ where: { providerProfile: { userId } } });
     expect(await decideReview(reviewer, review.id, { decision: "APPROVED", reason: "Angaben vollständig und plausibel", rule: "R-1" })).toEqual({ ok: true });
     expect(await visible(userId)).toBe(true);
+    expect((await db.providerStatusEvent.findMany({ where: { providerProfile: { userId } }, orderBy: { createdAt: "asc" } })).map((event) => event.toStatus)).toEqual(["DRAFT", "SUBMITTED", "PUBLISHED"]);
     expect(await decideReview(reviewer, review.id, { decision: "REJECTED", reason: "Zweiter Entscheid zum selben Fall", rule: "R-1" })).toEqual({ ok: false, reason: "not-open" });
     expect(await db.auditEvent.count({ where: { target: `profile_review:${review.id}` } })).toBe(1);
+  });
+
+  it("Einreichen ohne Zustimmung zur Veröffentlichung ist nicht möglich", async () => {
+    const userId = await provider("ohnezustimmung");
+    await expect(submitProfile(userId, {})).rejects.toThrow();
+    await expect(submitProfile(userId, { publicationConsent: false })).rejects.toThrow();
   });
 
   it("eine Referenz wirkt nur einmal; unbekannte Referenzen ändern nichts", async () => {
@@ -98,7 +108,7 @@ describe("Onboarding, Prüfung und Freigabe (Schritt 1.5)", () => {
     await saveRegions(userId, { regionIds: [regionId] });
     await saveProfileBasics(userId, basics);
     await db.providerProfile.update({ where: { userId }, data: { onboardingSteps: { push: "preview" } } });
-    expect((await submitProfile(userId)).ok).toBe(true);
+    expect((await submitProfile(userId, { publicationConsent: true })).ok).toBe(true);
     await db.identityCheck.updateMany({ where: { userId }, data: { expiresAt: new Date(Date.now() - 1000) } });
     const review = await db.profileReview.findFirstOrThrow({ where: { providerProfile: { userId } } });
     expect(await decideReview(reviewer, review.id, { decision: "APPROVED", reason: "Angaben vollständig und plausibel", rule: "R-1" })).toEqual({ ok: false, reason: "identity-invalid" });
@@ -111,7 +121,7 @@ describe("Onboarding, Prüfung und Freigabe (Schritt 1.5)", () => {
     await saveRegions(userId, { regionIds: [regionId] });
     await saveProfileBasics(userId, basics);
     await db.providerProfile.update({ where: { userId }, data: { onboardingSteps: { push: "preview" } } });
-    await submitProfile(userId);
+    await submitProfile(userId, { publicationConsent: true });
     const review = await db.profileReview.findFirstOrThrow({ where: { providerProfile: { userId } } });
     await expect(decideReview(reviewer, review.id, { decision: "CHANGES_REQUESTED", reason: "Beschreibung unklar formuliert", rule: "R-2" })).rejects.toThrow();
     expect(await decideReview(reviewer, review.id, { decision: "CHANGES_REQUESTED", reason: "Beschreibung unklar formuliert", rule: "R-2", fieldNotes: { profile: "Bitte die Beschreibung ergänzen" } })).toEqual({ ok: true });
@@ -130,7 +140,7 @@ describe("Entscheide sind abgesichert", () => {
     await saveRegions(userId, { regionIds: [regionId] });
     await saveProfileBasics(userId, basics);
     await db.providerProfile.update({ where: { userId }, data: { onboardingSteps: { push: "preview" } } });
-    await submitProfile(userId);
+    await submitProfile(userId, { publicationConsent: true });
     return db.profileReview.findFirstOrThrow({ where: { providerProfile: { userId } } });
   }
   const approve = { decision: "APPROVED", reason: "Angaben vollständig und plausibel", rule: "R-1" } as const;

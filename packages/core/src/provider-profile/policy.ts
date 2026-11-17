@@ -1,6 +1,6 @@
 import type { ProviderStatus } from "@app/db";
 
-export type PauseBlockReason = "not-published" | "suspended";
+export type PauseBlockReason = "not-published" | "suspended" | "restricted";
 
 export interface PauseAvailability {
   /** Welche Aktion jetzt möglich ist; null, wenn keine. */
@@ -17,5 +17,7 @@ export interface PauseAvailability {
 export function pauseAvailability(status: ProviderStatus): PauseAvailability {
   if (status === "PUBLISHED") return { action: "pause", blockedBy: null };
   if (status === "PAUSED") return { action: "resume", blockedBy: null };
-  return { action: null, blockedBy: status === "SUSPENDED" ? "suspended" : "not-published" };
+  if (status === "SUSPENDED") return { action: null, blockedBy: "suspended" };
+  if (status === "RESTRICTED") return { action: null, blockedBy: "restricted" };
+  return { action: null, blockedBy: "not-published" };
 }

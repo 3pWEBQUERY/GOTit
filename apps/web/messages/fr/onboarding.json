@@ -75,7 +75,8 @@
     "noteTooLong": "La remarque peut comporter au plus 120 caractères.",
     "ratesTooMany": "Tu peux indiquer au plus 12 tarifs.",
     "providerNotConfigured": "La vérification n’est pas encore disponible. Ton profil reste enregistré comme brouillon.",
-    "incomplete": "Ton profil n’est pas encore complet. Complète les étapes de la liste."
+    "incomplete": "Ton profil n’est pas encore complet. Complète les étapes de la liste.",
+    "publicationConsentRequired": "Merci d’accepter la publication pour que nous puissions vérifier le profil."
   },
   "review": {
     "title": "Ton profil t’a été renvoyé pour correction",
@@ -208,6 +209,8 @@
     "missingTitle": "Ce qui manque encore",
     "missingStep": "Compléter {step}",
     "ready": "Tout est prêt. Tu peux envoyer ton profil.",
-    "button": "Envoyer le profil"
+    "button": "Envoyer le profil",
+    "consent": "J’accepte la publication de ce profil.",
+    "consentHint": "Le profil ne devient visible qu’après notre vérification. Tu peux le mettre en pause à tout moment ou retirer ton accord en archivant le profil."
   }
 }

@@ -6,6 +6,8 @@ enum ProviderStatus {
   CHANGES_REQUESTED
   PUBLISHED
   PAUSED
+  // Eingeschränkt durch die Moderation, zum Beispiel ohne Kontaktaktionen (PRD v1 FR-PROFILE-005).
+  RESTRICTED
   SUSPENDED
   ARCHIVED
 }
@@ -52,6 +54,7 @@ model ProviderProfile {
   services ProviderService[]
   rates    RateItem[]
   reviews  ProfileReview[]
+  statusEvents ProviderStatusEvent[]
 
   @@index([status])
   @@map("provider_profile")
@@ -84,4 +87,20 @@ model OrganizationMember {
   @@unique([organizationId, userId])
   @@index([userId])
   @@map("organization_member")
+}
+
+// Jeder Statuswechsel eines Anbieterprofils (PRD v1 FR-PROFILE-005). Geschrieben von
+// einem Datenbank-Trigger, damit kein Codepfad ihn vergessen kann. Wer und warum
+// steht bei Entscheiden im Audit-Log.
+model ProviderStatusEvent {
+  id                String          @id @default(cuid(2))
+  providerProfileId String
+  fromStatus        ProviderStatus?
+  toStatus          ProviderStatus
+  createdAt         DateTime        @default(now())
+
+  providerProfile ProviderProfile @relation(fields: [providerProfileId], references: [id], onDelete: Cascade)
+
+  @@index([providerProfileId, createdAt])
+  @@map("provider_status_event")
 }

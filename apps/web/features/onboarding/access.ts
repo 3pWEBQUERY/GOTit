@@ -11,7 +11,7 @@ export type OnboardingAccess = "edit" | "in-review" | "suspended" | "none";
  */
 export function onboardingAccess(status: ProviderStatus | null): OnboardingAccess {
   if (status === "DRAFT" || status === "CHANGES_REQUESTED") return "edit";
-  if (status === "SUBMITTED" || status === "PUBLISHED" || status === "PAUSED") return "in-review";
+  if (status === "SUBMITTED" || status === "PUBLISHED" || status === "PAUSED" || status === "RESTRICTED") return "in-review";
   if (status === "SUSPENDED") return "suspended";
   return "none";
 }

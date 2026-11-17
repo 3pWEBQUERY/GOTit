@@ -75,7 +75,8 @@
     "noteTooLong": "La nota può avere al massimo 120 caratteri.",
     "ratesTooMany": "Puoi indicare al massimo 12 prezzi.",
     "providerNotConfigured": "La verifica non è ancora disponibile. Il tuo profilo resta salvato come bozza.",
-    "incomplete": "Il tuo profilo non è ancora completo. Completa i passi dell’elenco."
+    "incomplete": "Il tuo profilo non è ancora completo. Completa i passi dell’elenco.",
+    "publicationConsentRequired": "Acconsenti alla pubblicazione affinché possiamo verificare il profilo."
   },
   "review": {
     "title": "Il tuo profilo è stato rinviato per correzioni",
@@ -208,6 +209,8 @@
     "missingTitle": "Cosa manca ancora",
     "missingStep": "Completa {step}",
     "ready": "Tutto pronto. Puoi inviare il tuo profilo.",
-    "button": "Invia il profilo"
+    "button": "Invia il profilo",
+    "consent": "Acconsento alla pubblicazione di questo profilo.",
+    "consentHint": "Il profilo diventa visibile solo dopo la nostra verifica. Puoi metterlo in pausa in qualsiasi momento o revocare il consenso archiviando il profilo."
   }
 }

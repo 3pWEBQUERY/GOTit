@@ -3,7 +3,7 @@
 import type { PauseAvailability } from "@app/core/provider-profile";
 import type { ProviderStatus } from "@app/db";
 import { Button, useToast } from "@app/ui";
-import { Ban, CircleAlert, CircleCheck, CircleDashed, CirclePause, Clock } from "lucide-react";
+import { Ban, CircleAlert, CircleCheck, CircleDashed, CirclePause, CircleMinus, Clock } from "lucide-react";
 import { useState, useTransition } from "react";
 import { setProfilePaused } from "../actions/set-profile-paused";
 
@@ -13,6 +13,7 @@ const icons = {
   CHANGES_REQUESTED: CircleAlert,
   PUBLISHED: CircleCheck,
   PAUSED: CirclePause,
+  RESTRICTED: CircleMinus,
   SUSPENDED: Ban,
   ARCHIVED: CircleDashed,
 } as const;
@@ -26,7 +27,7 @@ export interface ProfileStatusLabels {
   resumed: string;
   undo: string;
   failed: string;
-  blocked: { "not-published": string; suspended: string };
+  blocked: { "not-published": string; suspended: string; restricted: string };
 }
 
 /**

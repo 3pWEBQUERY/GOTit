@@ -35,3 +35,6 @@ export const rateSchema = z.object({
   note: z.string().trim().max(120, "noteTooLong").optional(),
 });
 export const offerSchema = z.object({ rates: z.array(rateSchema).max(12, "ratesTooMany") });
+
+/** Einreichen verlangt die ausdrückliche Zustimmung zur Veröffentlichung (PRD v1 FR-VERIFY-002). */
+export const submitSchema = z.object({ publicationConsent: z.literal(true, "publicationConsentRequired") });

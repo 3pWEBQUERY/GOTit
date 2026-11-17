@@ -25,6 +25,7 @@ model User {
   securityEvents      SecurityEvent[]
   identityChecks      IdentityCheck[]
   internalRoles       InternalRoleAssignment[]
+  consents            ConsentRecord[]
   providerProfile     ProviderProfile?
   organizationMembers OrganizationMember[]
 

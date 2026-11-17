@@ -75,7 +75,8 @@
     "noteTooLong": "The note can have no more than 120 characters.",
     "ratesTooMany": "You can enter no more than 12 rates.",
     "providerNotConfigured": "The check is not available yet. Your profile stays saved as a draft.",
-    "incomplete": "Your profile is not complete yet. Complete the steps in the list."
+    "incomplete": "Your profile is not complete yet. Complete the steps in the list.",
+    "publicationConsentRequired": "Please agree to publication so that we can review the profile."
   },
   "review": {
     "title": "Your profile was returned for corrections",
@@ -208,6 +209,8 @@
     "missingTitle": "Still missing",
     "missingStep": "Complete {step}",
     "ready": "Everything is ready. You can submit your profile.",
-    "button": "Submit profile"
+    "button": "Submit profile",
+    "consent": "I agree to this profile being published.",
+    "consentHint": "The profile only becomes visible after our review. You can pause it at any time or withdraw your consent by archiving the profile."
   }
 }
