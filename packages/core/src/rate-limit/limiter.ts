@@ -23,6 +23,9 @@ export const RATE_LIMITS = {
   conversationStart: { limit: 10, windowSeconds: 3600 },
   chatAttachment: { limit: 30, windowSeconds: 3600 },
   report: { limit: 10, windowSeconds: 3600 },
+  // Termine pro Konto (PRD v2 16.2 «Anfragen»).
+  bookingRequest: { limit: 10, windowSeconds: 3600 },
+  bookingAction: { limit: 60, windowSeconds: 3600 },
 } as const satisfies Record<string, RateLimitRule>;
 
 export type RateLimitName = keyof typeof RATE_LIMITS;
