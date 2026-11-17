@@ -11,5 +11,35 @@
     "intro": "Hai richiesto una nuova password.",
     "action": "Apri questo link per impostarla:",
     "expiry": "Il link è valido 1 ora."
+  },
+  "booking-new": {
+    "subject": "Nuova richiesta di appuntamento",
+    "intro": "Hai ricevuto una nuova richiesta di appuntamento.",
+    "action": "Per vederla e rispondere apri questo link:",
+    "expiry": "Per discrezione questa e-mail non contiene nomi né dettagli."
+  },
+  "booking-confirmed": {
+    "subject": "Appuntamento confermato",
+    "intro": "Un appuntamento è stato confermato.",
+    "action": "Vedi i dettagli nel tuo account:",
+    "expiry": "Per discrezione questa e-mail non contiene nomi né dettagli."
+  },
+  "booking-changed": {
+    "subject": "Nuova proposta di appuntamento",
+    "intro": "Per una richiesta di appuntamento c'è una nuova proposta.",
+    "action": "Per vederla e rispondere apri questo link:",
+    "expiry": "Per discrezione questa e-mail non contiene nomi né dettagli."
+  },
+  "booking-cancelled": {
+    "subject": "Appuntamento annullato",
+    "intro": "Un appuntamento o una richiesta è stato annullato.",
+    "action": "Vedi i dettagli nel tuo account:",
+    "expiry": "Per discrezione questa e-mail non contiene nomi né dettagli."
+  },
+  "booking-upcoming": {
+    "subject": "Promemoria appuntamento",
+    "intro": "Domani hai un appuntamento confermato.",
+    "action": "Vedi i dettagli nel tuo account:",
+    "expiry": "Per discrezione questa e-mail non contiene nomi né dettagli."
   }
 }

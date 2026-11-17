@@ -1,0 +1,122 @@
+// Modul booking: Verfügbarkeit, Kalender und Terminanfragen (PRD v1 5.8, v2 11.5, Schritt 1.9).
+// Zeiten sind UTC; angezeigt wird in der Zeitzone des Anbieters (`calendarTimeZone`).
+enum BookingStatus {
+  REQUESTED
+  NEGOTIATING
+  CONFIRMED
+  DECLINED
+  CANCELLED
+  EXPIRED
+  COMPLETED
+  DISPUTED
+}
+
+enum CalendarBlockKind {
+  // Abwesenheit, zum Beispiel Ferien.
+  ABSENCE
+  // Manuelle Blockierung, zum Beispiel ein privater Termin.
+  BLOCKER
+}
+
+// Kalendereinstellungen pro Anbieterprofil (v1 FR-BOOKING-001).
+model CalendarSettings {
+  providerProfileId String   @id
+  timeZone          String   @default("Europe/Zurich")
+  // Puffer zwischen Terminen in Minuten.
+  bufferMinutes     Int      @default(0)
+  // Verbindliche Exklusivbelegung: Bestätigte Termine dürfen sich nicht überschneiden (Abnahme 20.5).
+  exclusiveBooking  Boolean  @default(true)
+  // Wie lange eine offene Anfrage gilt, bevor sie abläuft.
+  requestTtlHours   Int      @default(48)
+  // Wie kurzfristig angefragt werden darf.
+  minNoticeHours    Int      @default(2)
+  updatedAt         DateTime @updatedAt
+
+  providerProfile ProviderProfile @relation(fields: [providerProfileId], references: [id], onDelete: Cascade)
+
+  @@map("calendar_settings")
+}
+
+// Wiederkehrendes Wochenfenster in der Zeitzone des Anbieters.
+model AvailabilityWindow {
+  id                String @id @default(cuid(2))
+  providerProfileId String
+  // 0 = Sonntag … 6 = Samstag.
+  weekday           Int
+  startMinute       Int
+  endMinute         Int
+
+  providerProfile ProviderProfile @relation(fields: [providerProfileId], references: [id], onDelete: Cascade)
+
+  @@index([providerProfileId, weekday])
+  @@map("availability_window")
+}
+
+// Abwesenheit oder Blocker mit privater Notiz.
+model CalendarBlock {
+  id                String            @id @default(cuid(2))
+  providerProfileId String
+  kind              CalendarBlockKind
+  startsAt          DateTime
+  endsAt            DateTime
+  note              String?
+  createdAt         DateTime          @default(now())
+
+  providerProfile ProviderProfile @relation(fields: [providerProfileId], references: [id], onDelete: Cascade)
+
+  @@index([providerProfileId, startsAt])
+  @@map("calendar_block")
+}
+
+// Unverbindliche Terminanfrage (v1 FR-BOOKING-002, FR-BOOKING-006). Thread und Anfrage sind zwei
+// Ansichten desselben Vorgangs (v2 11.4): Die Anfrage hängt an der Unterhaltung.
+model BookingRequest {
+  id                String        @id @default(cuid(2))
+  conversationId    String
+  providerProfileId String
+  memberUserId      String
+  status            BookingStatus @default(REQUESTED)
+  // Aktuell gültiger Vorschlag.
+  startsAt          DateTime
+  endsAt            DateTime
+  lastProposedBy    ParticipantRole
+  // Allgemeine Region, nie eine Adresse.
+  regionId          String?
+  message           String?
+  // Private Notiz des Anbieters; das Mitglied sieht sie nie.
+  providerNote      String?
+  expiresAt         DateTime
+  reminderSentAt    DateTime?
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+
+  conversation    Conversation    @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  providerProfile ProviderProfile @relation(fields: [providerProfileId], references: [id], onDelete: Cascade)
+  events          BookingEvent[]
+
+  @@index([providerProfileId, startsAt])
+  @@index([memberUserId, startsAt])
+  @@index([status, expiresAt])
+  @@index([conversationId])
+  @@map("booking_request")
+}
+
+// Verlauf (Abnahme 20.5 «Jede Statusänderung ist nachvollziehbar»): jede Aktion als Ereignis.
+model BookingEvent {
+  id         String         @id @default(cuid(2))
+  requestId  String
+  // Null bei Ereignissen des Systems (Ablauf).
+  actorRole  ParticipantRole?
+  action     String
+  fromStatus BookingStatus?
+  toStatus   BookingStatus
+  startsAt   DateTime?
+  endsAt     DateTime?
+  reason     String?
+  createdAt  DateTime       @default(now())
+
+  request BookingRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+
+  @@index([requestId, createdAt])
+  @@map("booking_event")
+}

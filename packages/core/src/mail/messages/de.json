@@ -11,5 +11,35 @@
     "intro": "Du hast ein neues Passwort angefordert.",
     "action": "Zum Festlegen diesen Link öffnen:",
     "expiry": "Der Link ist 1 Stunde gültig."
+  },
+  "booking-new": {
+    "subject": "Neue Terminanfrage",
+    "intro": "Du hast eine neue Terminanfrage erhalten.",
+    "action": "Zum Ansehen und Beantworten diesen Link öffnen:",
+    "expiry": "Aus Gründen der Diskretion enthält diese E-Mail keine Namen und keine Einzelheiten."
+  },
+  "booking-confirmed": {
+    "subject": "Termin bestätigt",
+    "intro": "Ein Termin wurde bestätigt.",
+    "action": "Details im Konto ansehen:",
+    "expiry": "Aus Gründen der Diskretion enthält diese E-Mail keine Namen und keine Einzelheiten."
+  },
+  "booking-changed": {
+    "subject": "Neuer Terminvorschlag",
+    "intro": "Zu einer Terminanfrage gibt es einen neuen Vorschlag.",
+    "action": "Zum Ansehen und Beantworten diesen Link öffnen:",
+    "expiry": "Aus Gründen der Diskretion enthält diese E-Mail keine Namen und keine Einzelheiten."
+  },
+  "booking-cancelled": {
+    "subject": "Termin abgesagt",
+    "intro": "Ein Termin oder eine Anfrage wurde abgesagt.",
+    "action": "Details im Konto ansehen:",
+    "expiry": "Aus Gründen der Diskretion enthält diese E-Mail keine Namen und keine Einzelheiten."
+  },
+  "booking-upcoming": {
+    "subject": "Erinnerung an einen Termin",
+    "intro": "Du hast morgen einen bestätigten Termin.",
+    "action": "Details im Konto ansehen:",
+    "expiry": "Aus Gründen der Diskretion enthält diese E-Mail keine Namen und keine Einzelheiten."
   }
 }

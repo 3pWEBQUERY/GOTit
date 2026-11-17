@@ -24,3 +24,18 @@ describe("E-Mail-Vorlagen", () => {
     },
   );
 });
+
+describe("Vorlagen und Job-Schema", () => {
+  it("jede Vorlage ist im Schema der Queue erlaubt und in allen Sprachen vorhanden", async () => {
+    const { emailJobSchema } = await import("@app/jobs");
+    const { MAIL_TEMPLATES } = await import("./types");
+    for (const template of MAIL_TEMPLATES) {
+      expect(emailJobSchema.safeParse({ to: "a@fiktiv.test", template, locale: "de", url: "https://thegnd.net/de" }).success).toBe(true);
+      for (const locale of ["de", "fr", "it", "en"] as const) {
+        const mail = renderMail({ to: "a@fiktiv.test", template, locale, url: "https://thegnd.net/de" });
+        expect(mail.subject.length).toBeGreaterThan(0);
+        expect(mail.text).toContain("https://thegnd.net/de");
+      }
+    }
+  });
+});

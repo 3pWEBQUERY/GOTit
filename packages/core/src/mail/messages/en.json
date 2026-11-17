@@ -11,5 +11,35 @@
     "intro": "You requested a new password.",
     "action": "Open this link to set it:",
     "expiry": "The link is valid for 1 hour."
+  },
+  "booking-new": {
+    "subject": "New appointment request",
+    "intro": "You have received a new appointment request.",
+    "action": "To view and reply, open this link:",
+    "expiry": "For discretion, this email contains no names and no details."
+  },
+  "booking-confirmed": {
+    "subject": "Appointment confirmed",
+    "intro": "An appointment has been confirmed.",
+    "action": "See the details in your account:",
+    "expiry": "For discretion, this email contains no names and no details."
+  },
+  "booking-changed": {
+    "subject": "New appointment proposal",
+    "intro": "There is a new proposal for an appointment request.",
+    "action": "To view and reply, open this link:",
+    "expiry": "For discretion, this email contains no names and no details."
+  },
+  "booking-cancelled": {
+    "subject": "Appointment cancelled",
+    "intro": "An appointment or request has been cancelled.",
+    "action": "See the details in your account:",
+    "expiry": "For discretion, this email contains no names and no details."
+  },
+  "booking-upcoming": {
+    "subject": "Appointment reminder",
+    "intro": "You have a confirmed appointment tomorrow.",
+    "action": "See the details in your account:",
+    "expiry": "For discretion, this email contains no names and no details."
   }
 }

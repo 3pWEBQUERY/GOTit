@@ -11,5 +11,35 @@
     "intro": "Tu as demandé un nouveau mot de passe.",
     "action": "Ouvre ce lien pour le définir :",
     "expiry": "Le lien est valable 1 heure."
+  },
+  "booking-new": {
+    "subject": "Nouvelle demande de rendez-vous",
+    "intro": "Tu as reçu une nouvelle demande de rendez-vous.",
+    "action": "Pour la consulter et y répondre, ouvre ce lien :",
+    "expiry": "Par discrétion, cet e-mail ne contient ni noms ni détails."
+  },
+  "booking-confirmed": {
+    "subject": "Rendez-vous confirmé",
+    "intro": "Un rendez-vous a été confirmé.",
+    "action": "Voir les détails dans ton compte :",
+    "expiry": "Par discrétion, cet e-mail ne contient ni noms ni détails."
+  },
+  "booking-changed": {
+    "subject": "Nouvelle proposition de rendez-vous",
+    "intro": "Une demande de rendez-vous a reçu une nouvelle proposition.",
+    "action": "Pour la consulter et y répondre, ouvre ce lien :",
+    "expiry": "Par discrétion, cet e-mail ne contient ni noms ni détails."
+  },
+  "booking-cancelled": {
+    "subject": "Rendez-vous annulé",
+    "intro": "Un rendez-vous ou une demande a été annulé.",
+    "action": "Voir les détails dans ton compte :",
+    "expiry": "Par discrétion, cet e-mail ne contient ni noms ni détails."
+  },
+  "booking-upcoming": {
+    "subject": "Rappel de rendez-vous",
+    "intro": "Tu as demain un rendez-vous confirmé.",
+    "action": "Voir les détails dans ton compte :",
+    "expiry": "Par discrétion, cet e-mail ne contient ni noms ni détails."
   }
 }
