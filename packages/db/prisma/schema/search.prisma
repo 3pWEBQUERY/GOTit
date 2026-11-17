@@ -22,6 +22,8 @@ model SearchProfile {
   priceFromChf       Int?
   // Mindestens ein öffentlich freigegebenes Bild («Fotos geprüft»).
   hasPhotos          Boolean
+  // Zahl veröffentlichter Bewertungen; Filter «Mit Bewertungen» (v1 FR-SEARCH-002), nie ein Durchschnitt.
+  reviewCount        Int             @default(0)
   coverMediaId       String?
   coverColor         String?
   coverAlt           String?

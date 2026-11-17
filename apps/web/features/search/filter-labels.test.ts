@@ -19,6 +19,7 @@ const source: FilterLabelSource = {
     priceTo: (max) => `bis CHF ${max}`,
     photos: "Fotos geprüft",
     newOnly: "Neu",
+    withReviews: "Mit Bewertungen",
   },
 };
 

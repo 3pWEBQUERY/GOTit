@@ -96,6 +96,7 @@ async function compile(
   if (query.priceMax !== null)
     parts.push(Prisma.sql`sp."priceFromChf" <= ${query.priceMax}`);
   if (query.photos) parts.push(Prisma.sql`sp."hasPhotos" = true`);
+  if (query.withReviews) parts.push(Prisma.sql`sp."reviewCount" > 0`);
   if (query.newOnly)
     parts.push(
       Prisma.sql`sp."publishedAt" > ${new Date(now.getTime() - NEW_PROFILE_DAYS * DAY_MS)}`,

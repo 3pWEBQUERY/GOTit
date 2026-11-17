@@ -68,7 +68,9 @@
     "photosHint": "Au moins une photo vérifiée",
     "newOnly": "Nouveau",
     "newOnlyHint": "Arrivé ces 30 derniers jours",
-    "moreLanguages": "Autres langues ({count})"
+    "moreLanguages": "Autres langues ({count})",
+    "withReviews": "Avec avis",
+    "withReviewsHint": "Au moins un avis publié après un rendez-vous confirmé"
   },
   "chips": {
     "label": "Filtres actifs",
@@ -80,7 +82,8 @@
     "priceFrom": "dès CHF {min}",
     "priceTo": "jusqu’à CHF {max}",
     "photos": "Photos vérifiées",
-    "newOnly": "Nouveau"
+    "newOnly": "Nouveau",
+    "withReviews": "Avec avis"
   },
   "toolbar": {
     "sort": "Tri",

@@ -68,7 +68,9 @@
     "photosHint": "Mindestens ein geprüftes Foto",
     "newOnly": "Neu",
     "newOnlyHint": "In den letzten 30 Tagen dazugekommen",
-    "moreLanguages": "Weitere Sprachen ({count})"
+    "moreLanguages": "Weitere Sprachen ({count})",
+    "withReviews": "Mit Bewertungen",
+    "withReviewsHint": "Mindestens eine veröffentlichte Bewertung nach einem bestätigten Termin"
   },
   "chips": {
     "label": "Aktive Filter",
@@ -80,7 +82,8 @@
     "priceFrom": "ab CHF {min}",
     "priceTo": "bis CHF {max}",
     "photos": "Fotos geprüft",
-    "newOnly": "Neu"
+    "newOnly": "Neu",
+    "withReviews": "Mit Bewertungen"
   },
   "toolbar": {
     "sort": "Sortierung",

@@ -93,6 +93,7 @@ model BookingRequest {
   conversation    Conversation    @relation(fields: [conversationId], references: [id], onDelete: Cascade)
   providerProfile ProviderProfile @relation(fields: [providerProfileId], references: [id], onDelete: Cascade)
   events          BookingEvent[]
+  review          Review?
 
   @@index([providerProfileId, startsAt])
   @@index([memberUserId, startsAt])

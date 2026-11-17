@@ -105,6 +105,7 @@ export async function filterLabelSource(
       priceTo: (max) => t("priceTo", { max: number.format(max) }),
       photos: t("photos"),
       newOnly: t("newOnly"),
+      withReviews: t("withReviews"),
     },
   };
 }

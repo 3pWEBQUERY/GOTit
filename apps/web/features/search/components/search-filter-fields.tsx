@@ -78,6 +78,7 @@ export function SearchFilterFields({
   const contentSummary = [
     value.photos ? t("photos") : null,
     value.newOnly ? t("newOnly") : null,
+    value.withReviews ? t("withReviews") : null,
   ]
     .filter(Boolean)
     .join(", ");
@@ -154,6 +155,12 @@ export function SearchFilterFields({
             description={t("newOnlyHint")}
             checked={value.newOnly}
             onCheckedChange={(checked) => change({ newOnly: checked === true })}
+          />
+          <Checkbox
+            label={t("withReviews")}
+            description={t("withReviewsHint")}
+            checked={value.withReviews}
+            onCheckedChange={(checked) => change({ withReviews: checked === true })}
           />
         </div>
       </FilterGroup>

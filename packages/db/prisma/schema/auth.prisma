@@ -37,6 +37,7 @@ model User {
   blocksReceived      Block[]      @relation("BlocksReceived")
   chatLabels          ChatLabel[]
   reports             Report[]
+  reviews             Review[]
 
   @@map("user")
 }

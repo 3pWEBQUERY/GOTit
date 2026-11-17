@@ -1,0 +1,67 @@
+// Modul review: Bewertungen nach einem stattgefundenen Termin (PRD v1 5.9, v2 10.1, 12.1, Schritt 1.10).
+// Eine Bewertung braucht eine Terminanfrage im Status COMPLETED, deren Mitglied die Bewertung
+// schreibt; das prüft zusätzlich ein Trigger in der Datenbank (Migration 20261118300000_bewertungen).
+enum ReviewStatus {
+  // Wartet auf die Moderation; öffentlich erst nach Freigabe.
+  PENDING
+  PUBLISHED
+  REJECTED
+  // Nach Einspruch oder Meldung durch die Moderation entfernt.
+  REMOVED
+}
+
+model Review {
+  id                String       @id @default(cuid(2))
+  // Genau eine Bewertung pro Termin.
+  bookingRequestId  String       @unique
+  providerProfileId String
+  authorUserId      String
+  // Kategorien 1 bis 5 (v2 12.1): Kommunikation, Zuverlässigkeit der Profilangaben, Organisation, Gesamteindruck.
+  communication     Int
+  accuracy          Int
+  organization      Int
+  overall           Int
+  text              String
+  status            ReviewStatus @default(PENDING)
+  // Grund der Moderation als Schlüssel und freier Text, nur intern.
+  moderationReason  String?
+  // Stellungnahme des Anbieters (v1 FR-REVIEW-003 «Recht auf Stellungnahme»).
+  response          String?
+  respondedAt       DateTime?
+  publishedAt       DateTime?
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+
+  bookingRequest  BookingRequest  @relation(fields: [bookingRequestId], references: [id], onDelete: Cascade)
+  providerProfile ProviderProfile @relation(fields: [providerProfileId], references: [id], onDelete: Cascade)
+  author          User            @relation(fields: [authorUserId], references: [id], onDelete: Cascade)
+  appeals         ReviewAppeal[]
+
+  @@index([providerProfileId, status, publishedAt])
+  @@index([authorUserId, createdAt])
+  @@index([status, createdAt])
+  @@map("review")
+}
+
+enum AppealStatus {
+  OPEN
+  UPHELD
+  DISMISSED
+}
+
+// Einspruch (v1 FR-REVIEW-003): Anbieter gegen eine veröffentlichte, Autor gegen eine abgelehnte Bewertung.
+model ReviewAppeal {
+  id          String          @id @default(cuid(2))
+  reviewId    String
+  byRole      ParticipantRole
+  reason      String
+  status      AppealStatus    @default(OPEN)
+  decidedAt   DateTime?
+  createdAt   DateTime        @default(now())
+
+  review Review @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+
+  @@index([status, createdAt])
+  @@index([reviewId])
+  @@map("review_appeal")
+}

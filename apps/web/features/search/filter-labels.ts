@@ -18,6 +18,7 @@ export interface FilterLabelSource {
     priceTo: (max: number) => string;
     photos: string;
     newOnly: string;
+    withReviews: string;
   };
 }
 
@@ -62,6 +63,8 @@ function labelFor(
       return t.photos;
     case "newOnly":
       return t.newOnly;
+    case "withReviews":
+      return t.withReviews;
   }
 }
 

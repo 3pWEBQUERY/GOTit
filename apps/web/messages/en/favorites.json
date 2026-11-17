@@ -151,7 +151,8 @@
       "priceMax": "up to {max}",
       "photos": "with verified photos",
       "newOnly": "new profiles",
-      "none": "No filters"
+      "none": "No filters",
+      "withReviews": "with reviews"
     }
   },
   "selection": {

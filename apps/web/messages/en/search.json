@@ -68,7 +68,9 @@
     "photosHint": "At least one checked photo",
     "newOnly": "New",
     "newOnlyHint": "Joined in the last 30 days",
-    "moreLanguages": "More languages ({count})"
+    "moreLanguages": "More languages ({count})",
+    "withReviews": "With reviews",
+    "withReviewsHint": "At least one published review after a confirmed appointment"
   },
   "chips": {
     "label": "Active filters",
@@ -80,7 +82,8 @@
     "priceFrom": "from CHF {min}",
     "priceTo": "up to CHF {max}",
     "photos": "Photos checked",
-    "newOnly": "New"
+    "newOnly": "New",
+    "withReviews": "With reviews"
   },
   "toolbar": {
     "sort": "Sort",

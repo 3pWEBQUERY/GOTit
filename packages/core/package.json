@@ -36,7 +36,9 @@
     "./booking": "./src/booking/index.ts",
     "./booking/schemas": "./src/booking/schemas.ts",
     "./booking/status": "./src/booking/status.ts",
-    "./booking/maintenance": "./src/booking/maintenance.ts"
+    "./booking/maintenance": "./src/booking/maintenance.ts",
+    "./review": "./src/review/index.ts",
+    "./review/schemas": "./src/review/schemas.ts"
   },
   "scripts": {
     "lint": "eslint .",

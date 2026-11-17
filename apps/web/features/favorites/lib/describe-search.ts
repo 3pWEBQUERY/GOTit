@@ -13,6 +13,7 @@ export type DescribeKey =
   | "priceMax"
   | "photos"
   | "newOnly"
+  | "withReviews"
   | "none";
 
 export interface DescribeContext {
@@ -75,5 +76,6 @@ export function describeSearch(
     parts.push(t("priceMax", { max: context.chf(query.priceMax) }));
   if (query.photos) parts.push(t("photos"));
   if (query.newOnly) parts.push(t("newOnly"));
+  if (query.withReviews) parts.push(t("withReviews"));
   return parts.length > 0 ? parts : [t("none")];
 }

@@ -151,7 +151,8 @@
       "priceMax": "jusqu’à {max}",
       "photos": "avec photos vérifiées",
       "newOnly": "nouveaux profils",
-      "none": "Sans filtre"
+      "none": "Sans filtre",
+      "withReviews": "avec avis"
     }
   },
   "selection": {

@@ -168,11 +168,23 @@ const slugs = async (
 
 beforeAll(async () => {
   // Reste abgebrochener Läufe: fiktive Konten dieses Tests und ihre Regionen, sonst stören sie «In meiner Nähe».
-  await db.user.deleteMany({ where: { id: { startsWith: "it_suche_" }, NOT: { id: { endsWith: `_${run}` } } } });
-  await db.category.deleteMany({ where: { slug: { startsWith: "fiktivkategorie-" }, providers: { none: {} } } });
+  await db.user.deleteMany({
+    where: {
+      id: { startsWith: "it_suche_" },
+      NOT: { id: { endsWith: `_${run}` } },
+    },
+  });
+  await db.category.deleteMany({
+    where: {
+      slug: { startsWith: "fiktivkategorie-" },
+      providers: { none: {} },
+    },
+  });
   await db.region.deleteMany({
     where: {
-      OR: ["fiktivstadt-", "fiktivnah-", "fiktivfern-", "fiktivseiten-"].map((prefix) => ({ slug: { startsWith: prefix } })),
+      OR: ["fiktivstadt-", "fiktivnah-", "fiktivfern-", "fiktivseiten-"].map(
+        (prefix) => ({ slug: { startsWith: prefix } }),
+      ),
       providers: { none: {} },
     },
   });

@@ -81,6 +81,7 @@ model ProviderProfile {
   availabilityWindows AvailabilityWindow[]
   calendarBlocks CalendarBlock[]
   bookingRequests BookingRequest[]
+  receivedReviews Review[]
 
   @@index([status])
   @@map("provider_profile")

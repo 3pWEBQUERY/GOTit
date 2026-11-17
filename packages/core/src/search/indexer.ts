@@ -168,6 +168,9 @@ export async function reindexProfile(
   const cover =
     profile.media.find((media) => media.isCover) ?? profile.media[0];
   const prices = profile.rates.map((rate) => rate.priceChf);
+  const reviewCount = await db.review.count({
+    where: { providerProfileId, status: "PUBLISHED" },
+  });
   const publishedAt = profile.publishedAt ?? profile.createdAt;
   const data = {
     slug: profile.slug,
@@ -182,6 +185,7 @@ export async function reindexProfile(
     categoryIds: categories.map((category) => category.id).sort(),
     priceFromChf: prices.length > 0 ? Math.min(...prices) : null,
     hasPhotos: profile.media.length > 0,
+    reviewCount,
     coverMediaId: cover?.id ?? null,
     coverColor: cover?.dominantColor ?? null,
     coverAlt: cover?.altText ?? null,

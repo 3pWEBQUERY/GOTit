@@ -48,6 +48,8 @@ export interface SearchQuery {
   photos: boolean;
   /** Nur Profile, die in den letzten 30 Tagen veröffentlicht wurden. */
   newOnly: boolean;
+  /** Nur Profile mit mindestens einer veröffentlichten Bewertung (v1 FR-SEARCH-002 «Mit verifizierten Bewertungen»). */
+  withReviews: boolean;
   sort: SearchSort;
   view: SearchView;
   page: number;
@@ -63,6 +65,7 @@ export const EMPTY_QUERY: SearchQuery = {
   priceMax: null,
   photos: false,
   newOnly: false,
+  withReviews: false,
   sort: "relevanz",
   view: "raster",
   page: 1,
@@ -139,6 +142,7 @@ export function parseSearchQuery(raw: RawParams): SearchQuery {
     priceMax,
     photos: first(raw, "fotos") === "1",
     newOnly: first(raw, "neu") === "1",
+    withReviews: first(raw, "bewertungen") === "1",
     sort: pick(SEARCH_SORTS, first(raw, "sortierung"), "relevanz"),
     view: pick(SEARCH_VIEWS, first(raw, "ansicht"), "raster"),
     page: Number.isInteger(page) && page >= 1 ? Math.min(page, MAX_PAGE) : 1,
@@ -159,6 +163,7 @@ export function toSearchParams(
   if (query.priceMax !== null) params.preis_max = String(query.priceMax);
   if (query.photos) params.fotos = "1";
   if (query.newOnly) params.neu = "1";
+  if (query.withReviews) params.bewertungen = "1";
   if (query.sort !== "relevanz") params.sortierung = query.sort;
   if (query.view !== "raster") params.ansicht = query.view;
   if (query.page > 1) params.seite = String(query.page);
@@ -187,7 +192,8 @@ export type FilterKey =
   | "categories"
   | "price"
   | "photos"
-  | "newOnly";
+  | "newOnly"
+  | "withReviews";
 
 /** Aktive Filter in fester Reihenfolge, für Chips und «Alle zurücksetzen». */
 export function activeFilters(query: SearchQuery): FilterKey[] {
@@ -200,6 +206,7 @@ export function activeFilters(query: SearchQuery): FilterKey[] {
   if (query.priceMin !== null || query.priceMax !== null) keys.push("price");
   if (query.photos) keys.push("photos");
   if (query.newOnly) keys.push("newOnly");
+  if (query.withReviews) keys.push("withReviews");
   return keys;
 }
 
@@ -232,6 +239,9 @@ export function withoutFilter(query: SearchQuery, key: FilterKey): SearchQuery {
       break;
     case "newOnly":
       next.newOnly = false;
+      break;
+    case "withReviews":
+      next.withReviews = false;
       break;
   }
   return next;

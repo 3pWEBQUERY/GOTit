@@ -5,6 +5,7 @@ enum ReportTarget {
   USER
   PROFILE
   MEDIA
+  REVIEW
 }
 
 enum ReportStatus {
