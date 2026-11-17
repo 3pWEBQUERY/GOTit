@@ -4,6 +4,7 @@ import { loadAdminActor } from "../admin/service";
 import { z } from "zod";
 import { decideChangeReview } from "../provider-profile/change-review";
 import { canApprove } from "./policy";
+import { requestSearchReindex } from "../search/reindex";
 
 /** Rollen, die Profile prüfen und freigeben dürfen (PRD 3, 7.8). */
 export const REVIEWER_ROLES = ["SUPER_ADMIN", "PLATFORM_ADMIN", "TRUST_SAFETY", "MODERATOR"] as const;
@@ -112,6 +113,7 @@ export async function decideReview(actorId: string, reviewId: string, input: unk
   if (review.kind === "CHANGE") {
     if (data.decision === "CHANGES_REQUESTED") return { ok: false, reason: "invalid-decision" };
     const decided = await decideChangeReview(actorId, reviewId, profile.id, { decision: data.decision, reason: data.reason, rule: data.rule }, now);
+    if (decided) await requestSearchReindex(profile.id);
     return decided ? { ok: true } : { ok: false, reason: "not-open" };
   }
   if (data.decision === "APPROVED") {
@@ -134,5 +136,6 @@ export async function decideReview(actorId: string, reviewId: string, input: unk
     await tx.auditEvent.create({ data: { actorId, action: `profile_review.${data.decision.toLowerCase()}`, target: `profile_review:${reviewId}`, reason: `${data.rule}: ${data.reason}` } });
     return true;
   });
+  if (decided) await requestSearchReindex(profile.id);
   return decided ? { ok: true } : { ok: false, reason: "not-open" };
 }

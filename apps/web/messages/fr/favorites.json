@@ -1,0 +1,13 @@
+{
+  "toggle": {
+    "added": "Enregistré dans les favoris",
+    "removed": "Retiré des favoris",
+    "errors": {
+      "unavailable": "Ce profil n’est pas disponible pour le moment.",
+      "limit": "La collection est pleine. Retire d’abord une entrée.",
+      "rate-limited": "Trop de modifications en peu de temps. Réessaie dans une minute.",
+      "generic": "Cela n’a pas fonctionné. Réessaie.",
+      "sign-in": "Connecte-toi pour enregistrer des favoris."
+    }
+  }
+}

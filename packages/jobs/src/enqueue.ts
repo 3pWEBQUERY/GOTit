@@ -14,7 +14,10 @@ function queueFor(name: string): Queue {
 }
 
 /** Legt einen Job an. Die Payload wird vorher gegen das Schema der Queue geprüft. */
-export async function enqueue<Payload>(definition: JobDefinition<Payload>, payload: Payload): Promise<void> {
+export async function enqueue<Payload>(
+  definition: JobDefinition<Payload>,
+  payload: Payload,
+): Promise<void> {
   const data = definition.schema.parse(payload);
   await queueFor(definition.queue).add(definition.queue, data, {
     attempts: 5,

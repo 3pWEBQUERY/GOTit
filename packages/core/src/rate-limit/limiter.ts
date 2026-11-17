@@ -13,6 +13,11 @@ export const RATE_LIMITS = {
   passwordReset: { limit: 3, windowSeconds: 3600 },
   verificationResend: { limit: 3, windowSeconds: 900 },
   dataExport: { limit: 3, windowSeconds: 3600 },
+  // Suche (PRD v2 16.2): Seitenaufrufe mit Ergebnissen, Trefferzahl im Filter-Sheet, Vorschläge.
+  search: { limit: 120, windowSeconds: 60 },
+  searchSuggest: { limit: 90, windowSeconds: 60 },
+  // Favoriten, Sammlungen und gespeicherte Suchen pro Konto.
+  favorites: { limit: 60, windowSeconds: 60 },
 } as const satisfies Record<string, RateLimitRule>;
 
 export type RateLimitName = keyof typeof RATE_LIMITS;

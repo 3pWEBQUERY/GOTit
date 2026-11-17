@@ -1,5 +1,6 @@
 import { getDb, type ProviderStatus } from "@app/db";
 import type { Viewer } from "../identity";
+import { requestSearchReindexForUser } from "../search/reindex";
 
 export type SetPausedResult = { ok: true; status: ProviderStatus } | { ok: false; reason: "forbidden" | "conflict" };
 
@@ -17,5 +18,6 @@ export async function setOwnProfilePaused(viewer: Viewer, paused: boolean): Prom
     where: { userId: viewer.userId, status: from },
     data: { status: to },
   });
+  if (count === 1) await requestSearchReindexForUser(viewer.userId);
   return count === 1 ? { ok: true, status: to } : { ok: false, reason: "conflict" };
 }

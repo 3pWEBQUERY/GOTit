@@ -11,4 +11,7 @@ export const emailJobSchema = z.object({
 
 export type EmailJob = z.infer<typeof emailJobSchema>;
 
-export const emailJob: JobDefinition<EmailJob> = { queue: "email", schema: emailJobSchema };
+export const emailJob: JobDefinition<EmailJob> = {
+  queue: "email",
+  schema: emailJobSchema,
+};

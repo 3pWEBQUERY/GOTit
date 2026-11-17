@@ -3,6 +3,7 @@ import { adminAccess } from "../admin/policy";
 import { loadAdminActor } from "../admin/service";
 import { REVIEWER_ROLES } from "../verification/review-service";
 import { mediaDecisionSchema, mediaIdSchema } from "./schemas";
+import { reindexMediaOwner } from "./search-sync";
 
 /** Höchstzahl Medien pro Abruf der Warteschlange. */
 export const MEDIA_QUEUE_LIMIT = 200;
@@ -92,5 +93,6 @@ export async function decideMedia(actorId: string, mediaId: string, input: unkno
     });
     return true;
   });
+  if (decided) await reindexMediaOwner(mediaId);
   return decided ? { ok: true } : { ok: false, reason: "not-open" };
 }

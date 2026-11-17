@@ -1,0 +1,70 @@
+// Modul search: denormalisierter Suchindex und gespeicherte Suchen (PRD v2 14.4, v1 FR-SEARCH).
+// `search_profile` enthält ausschliesslich öffentliche, freigegebene Daten. Der Worker
+// aktualisiert eine Zeile bei jeder Profil-, Medien- und Statusänderung (Queue `search-index`);
+// der Cron-Dienst baut den Index nachts vollständig neu auf.
+// Die Volltextspalte `search_vector` ist eine generierte Spalte (nur in der Migration).
+model SearchProfile {
+  providerProfileId  String          @id
+  slug               String
+  displayName        String
+  audience           ProfileAudience
+  // Bis wann die Identitätsprüfung gilt. Die Suche filtert zur Abfragezeit darauf.
+  identityValidUntil DateTime
+  shortDescription   String?
+  languages          String[]
+  // Regionen des Profils samt Kantonen der Städte, für Filter und Landingpages.
+  regionIds          String[]
+  // Region für die Karte: die erste Stadt, sonst der erste Kanton.
+  primaryRegionId    String?
+  locationLabel      String?
+  categoryIds        String[]
+  // Günstigster sichtbarer Preis in CHF; null = «Preise auf Anfrage».
+  priceFromChf       Int?
+  // Mindestens ein öffentlich freigegebenes Bild («Fotos geprüft»).
+  hasPhotos          Boolean
+  coverMediaId       String?
+  coverColor         String?
+  coverAlt           String?
+  // Profilvollständigkeit 0 bis 100, fliesst ins Ranking (PRD v1 FR-SEARCH-004).
+  completeness       Int
+  // Regionsnamen und Kategorien in allen Sprachen für den Volltext.
+  searchTerms        String
+  publishedAt        DateTime
+  contentUpdatedAt   DateTime
+  indexedAt          DateTime        @default(now())
+  // Generiert aus Name, Kurzbeschreibung und searchTerms (siehe Migration 20261118000000_suche).
+  // Prisma meldet für diese Spalte fälschlich «DROP DEFAULT»; die Zeile aus erzeugten Migrationen entfernen.
+  searchVector       Unsupported("tsvector")? @map("search_vector")
+
+  providerProfile ProviderProfile @relation(fields: [providerProfileId], references: [id], onDelete: Cascade)
+
+  @@index([searchVector], type: Gin, map: "search_profile_search_vector_idx")
+  @@index([regionIds], type: Gin)
+  @@index([categoryIds], type: Gin)
+  @@index([languages], type: Gin)
+  @@index([displayName(ops: raw("gin_trgm_ops"))], type: Gin, map: "search_profile_displayName_trgm_idx")
+  @@index([publishedAt])
+  @@index([contentUpdatedAt])
+  @@index([priceFromChf])
+  @@map("search_profile")
+}
+
+// Gespeicherte Filterkombination eines Mitglieds (PRD v1 FR-SEARCH-005, v2 7.5 `/suchen`).
+// `query` enthält nur die normalisierten Suchparameter, nie private Daten.
+model SavedSearch {
+  id           String   @id @default(cuid(2))
+  userId       String
+  name         String
+  query        Json
+  // Kanonische Form der Parameter; verhindert Duplikate.
+  queryKey     String
+  lastViewedAt DateTime @default(now())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, queryKey])
+  @@index([userId, createdAt])
+  @@map("saved_search")
+}

@@ -1,6 +1,7 @@
 import { getDb } from "@app/db";
 import { ownMediaWhere, ownProfile } from "./owner";
 import { altTextSchema, bulkSchema, moveSchema, reorderSchema, visibilitySchema } from "./schemas";
+import { requestSearchReindex, requestSearchReindexForUser } from "../search/reindex";
 
 export type ArrangeResult = { ok: true } | { ok: false; reason: "not-found" | "invalid" | "edge" };
 
@@ -31,6 +32,7 @@ export async function reorderOwnMedia(userId: string, input: unknown): Promise<A
   const next = parsed.data.order;
   if (next.length !== current.length || new Set(next).size !== next.length || next.some((id) => !current.includes(id))) return { ok: false, reason: "invalid" };
   await writeOrder(next);
+  await requestSearchReindex(profile.id);
   return { ok: true };
 }
 
@@ -47,6 +49,7 @@ export async function moveOwnMedia(userId: string, mediaId: string, input: unkno
   if (target < 0 || target >= order.length) return { ok: false, reason: "edge" };
   [order[index], order[target]] = [order[target] as string, order[index] as string];
   await writeOrder(order);
+  await requestSearchReindex(profile.id);
   return { ok: true };
 }
 
@@ -60,6 +63,7 @@ export async function setCoverMedia(userId: string, mediaId: string): Promise<Ar
     db.mediaAsset.updateMany({ where: { providerProfileId, isCover: true, id: { not: media.id } }, data: { isCover: false } }),
     db.mediaAsset.update({ where: { id: media.id }, data: { isCover: true } }),
   ]);
+  await requestSearchReindex(providerProfileId);
   return { ok: true };
 }
 
@@ -68,6 +72,7 @@ export async function setOwnMediaVisibility(userId: string, mediaIds: string | r
   const ids = bulkSchema.parse({ mediaIds: typeof mediaIds === "string" ? [mediaIds] : mediaIds }).mediaIds;
   const { visibility } = visibilitySchema.parse(input);
   const { count } = await getDb().mediaAsset.updateMany({ where: { id: { in: ids }, ownerUserId: userId, deletedAt: null }, data: { visibility } });
+  if (count > 0) await requestSearchReindexForUser(userId);
   return { updated: count };
 }
 
@@ -76,6 +81,7 @@ export async function setOwnMediaAltText(userId: string, mediaId: string, input:
   const parsed = altTextSchema.safeParse(input);
   if (!parsed.success) return { ok: false, reason: "invalid" };
   const { count } = await getDb().mediaAsset.updateMany({ where: ownMediaWhere(userId, mediaId), data: { altText: parsed.data.altText || null } });
+  if (count > 0) await requestSearchReindexForUser(userId);
   return count > 0 ? { ok: true } : { ok: false, reason: "not-found" };
 }
 

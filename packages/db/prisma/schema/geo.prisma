@@ -17,6 +17,10 @@ model Region {
   approved     Boolean    @default(false)
   // Reihenfolge im Mega-Menü; null = nicht hervorgehoben.
   featuredRank Int?
+  // Ortsmittelpunkt (Stadtzentrum oder Kantonshauptort) für den Umkreis der Suche.
+  // Nie eine Adresse (PRD v2 9.2, v1 FR-SEARCH-006).
+  latitude     Float?
+  longitude    Float?
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
 

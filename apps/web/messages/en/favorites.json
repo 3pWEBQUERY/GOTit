@@ -1,0 +1,13 @@
+{
+  "toggle": {
+    "added": "Saved to favourites",
+    "removed": "Removed from favourites",
+    "errors": {
+      "unavailable": "This profile is not available right now.",
+      "limit": "The collection is full. Remove an entry first.",
+      "rate-limited": "Too many changes in a short time. Try again in a minute.",
+      "generic": "That didn’t work. Please try again.",
+      "sign-in": "Sign in to save favourites."
+    }
+  }
+}

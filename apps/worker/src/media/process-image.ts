@@ -1,5 +1,15 @@
-import { MEDIA_CONTENT_TYPES, MEDIA_MAX_BYTES, type MediaContentType, type MediaFailureReason } from "@app/core/media/schemas";
-import { MEDIA_FORMATS, MEDIA_WIDTHS, variantName, type MediaFormat } from "@app/core/media/variants";
+import {
+  MEDIA_CONTENT_TYPES,
+  MEDIA_MAX_BYTES,
+  type MediaContentType,
+  type MediaFailureReason,
+} from "@app/core/media/schemas";
+import {
+  MEDIA_FORMATS,
+  MEDIA_WIDTHS,
+  variantName,
+  type MediaFormat,
+} from "@app/core/media/variants";
 import { fileTypeFromBuffer } from "file-type";
 import sharp, { type OutputInfo, type Sharp } from "sharp";
 
@@ -25,20 +35,37 @@ export interface ProcessedImage {
   variants: ImageVariant[];
 }
 
-export type ProcessImageResult = { ok: true; image: ProcessedImage } | { ok: false; reason: MediaFailureReason };
+export type ProcessImageResult =
+  | { ok: true; image: ProcessedImage }
+  | { ok: false; reason: MediaFailureReason };
 
 function hex(value: number): string {
-  return Math.max(0, Math.min(255, Math.round(value))).toString(16).padStart(2, "0");
+  return Math.max(0, Math.min(255, Math.round(value)))
+    .toString(16)
+    .padStart(2, "0");
 }
 
 function encode(pipeline: Sharp, format: MediaFormat): Sharp {
-  return format === "avif" ? pipeline.avif({ quality: 55, effort: 4 }) : pipeline.webp({ quality: 80 });
+  return format === "avif"
+    ? pipeline.avif({ quality: 55, effort: 4 })
+    : pipeline.webp({ quality: 80 });
 }
 
-function sanitize(pipeline: Sharp, type: MediaContentType): { pipeline: Sharp; contentType: string } {
-  if (type === "image/png") return { pipeline: pipeline.png(), contentType: "image/png" };
-  if (type === "image/webp") return { pipeline: pipeline.webp({ quality: 92 }), contentType: "image/webp" };
-  return { pipeline: pipeline.jpeg({ quality: 92, mozjpeg: true }), contentType: "image/jpeg" };
+function sanitize(
+  pipeline: Sharp,
+  type: MediaContentType,
+): { pipeline: Sharp; contentType: string } {
+  if (type === "image/png")
+    return { pipeline: pipeline.png(), contentType: "image/png" };
+  if (type === "image/webp")
+    return {
+      pipeline: pipeline.webp({ quality: 92 }),
+      contentType: "image/webp",
+    };
+  return {
+    pipeline: pipeline.jpeg({ quality: 92, mozjpeg: true }),
+    contentType: "image/jpeg",
+  };
 }
 
 /**
@@ -48,13 +75,20 @@ function sanitize(pipeline: Sharp, type: MediaContentType): { pipeline: Sharp; c
  * EXIF noch GPS noch eingebettete Profile; die Neukodierung entfernt auch
  * angehängte Daten (Entscheid 0011). Varianten werden nie hochskaliert.
  */
-export async function processImage(input: Uint8Array): Promise<ProcessImageResult> {
-  if (input.byteLength > MEDIA_MAX_BYTES) return { ok: false, reason: "too-large" };
+export async function processImage(
+  input: Uint8Array,
+): Promise<ProcessImageResult> {
+  if (input.byteLength > MEDIA_MAX_BYTES)
+    return { ok: false, reason: "too-large" };
   const detected = await fileTypeFromBuffer(input);
   const type = detected?.mime as MediaContentType | undefined;
-  if (!type || !(MEDIA_CONTENT_TYPES as readonly string[]).includes(type)) return { ok: false, reason: "unsupported-type" };
+  if (!type || !(MEDIA_CONTENT_TYPES as readonly string[]).includes(type))
+    return { ok: false, reason: "unsupported-type" };
 
-  const base = sharp(input, { limitInputPixels: MAX_INPUT_PIXELS, failOn: "error" }).rotate();
+  const base = sharp(input, {
+    limitInputPixels: MAX_INPUT_PIXELS,
+    failOn: "error",
+  }).rotate();
   let width: number;
   let height: number;
   let prepared: { data: Buffer; info: OutputInfo };
@@ -64,13 +98,29 @@ export async function processImage(input: Uint8Array): Promise<ProcessImageResul
     width = (swap ? metadata.height : metadata.width) ?? 0;
     height = (swap ? metadata.width : metadata.height) ?? 0;
     // Einmal dekodieren, drehen und auf die grösste Breite bringen; alle Varianten entstehen daraus.
-    prepared = await base.clone().resize({ width: MEDIA_WIDTHS[MEDIA_WIDTHS.length - 1], withoutEnlargement: true }).raw().toBuffer({ resolveWithObject: true });
+    prepared = await base
+      .clone()
+      .resize({
+        width: MEDIA_WIDTHS[MEDIA_WIDTHS.length - 1],
+        withoutEnlargement: true,
+      })
+      .raw()
+      .toBuffer({ resolveWithObject: true });
   } catch {
     // Die vorkompilierten sharp-Binärdateien dekodieren HEIC (HEVC) nicht, nur AVIF.
-    return { ok: false, reason: type === "image/heic" ? "heic-unsupported" : "unreadable" };
+    return {
+      ok: false,
+      reason: type === "image/heic" ? "heic-unsupported" : "unreadable",
+    };
   }
   if (width < 1 || height < 1) return { ok: false, reason: "unreadable" };
-  const raw = { raw: { width: prepared.info.width, height: prepared.info.height, channels: prepared.info.channels } };
+  const raw = {
+    raw: {
+      width: prepared.info.width,
+      height: prepared.info.height,
+      channels: prepared.info.channels,
+    },
+  };
 
   try {
     const { dominant } = await sharp(prepared.data, raw).stats();
@@ -78,14 +128,42 @@ export async function processImage(input: Uint8Array): Promise<ProcessImageResul
     const variants: ImageVariant[] = [];
     for (const targetWidth of MEDIA_WIDTHS) {
       for (const format of MEDIA_FORMATS) {
-        const { data, info } = await encode(sharp(prepared.data, raw).resize({ width: targetWidth, withoutEnlargement: true }), format).toBuffer({ resolveWithObject: true });
-        variants.push({ name: variantName(targetWidth, format), width: info.width, height: info.height, format, body: new Uint8Array(data) });
+        const { data, info } = await encode(
+          sharp(prepared.data, raw).resize({
+            width: targetWidth,
+            withoutEnlargement: true,
+          }),
+          format,
+        ).toBuffer({ resolveWithObject: true });
+        variants.push({
+          name: variantName(targetWidth, format),
+          width: info.width,
+          height: info.height,
+          format,
+          body: new Uint8Array(data),
+        });
       }
     }
     const clean = sanitize(base.clone(), type);
     const sanitizedBody = await clean.pipeline.toBuffer();
-    return { ok: true, image: { detectedType: type, width, height, dominantColor, sanitized: { body: new Uint8Array(sanitizedBody), contentType: clean.contentType }, variants } };
+    return {
+      ok: true,
+      image: {
+        detectedType: type,
+        width,
+        height,
+        dominantColor,
+        sanitized: {
+          body: new Uint8Array(sanitizedBody),
+          contentType: clean.contentType,
+        },
+        variants,
+      },
+    };
   } catch {
-    return { ok: false, reason: type === "image/heic" ? "heic-unsupported" : "unreadable" };
+    return {
+      ok: false,
+      reason: type === "image/heic" ? "heic-unsupported" : "unreadable",
+    };
   }
 }

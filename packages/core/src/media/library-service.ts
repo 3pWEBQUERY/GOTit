@@ -2,6 +2,7 @@ import { getDb, type MediaStatus, type MediaVisibility } from "@app/db";
 import { enqueue, mediaDeleteJob } from "@app/jobs";
 import { ownMediaWhere, ownProfile } from "./owner";
 import { MEDIA_QUOTA, bulkSchema, mediaIdSchema } from "./schemas";
+import { requestSearchReindex } from "../search/reindex";
 
 export interface OwnMedia {
   id: string;
@@ -95,6 +96,9 @@ export async function deleteOwnMedia(userId: string, mediaIds: string | readonly
   });
   for (const target of deleted) {
     await enqueue(mediaDeleteJob, { mediaId: target.id, originals: [target.originalKey], derivatives: target.variants.map((variant) => variant.key) });
+  }
+  for (const providerProfileId of new Set(deleted.flatMap((target) => (target.providerProfileId ? [target.providerProfileId] : [])))) {
+    await requestSearchReindex(providerProfileId);
   }
   return { deleted: deleted.length };
 }

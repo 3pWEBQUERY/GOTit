@@ -7,7 +7,10 @@ const key = z.string().min(1).max(512);
 /** Payload der Queue `media-process`: nur die ID; der Worker liest alles Weitere aus der Datenbank. */
 export const mediaProcessJobSchema = z.object({ mediaId: id });
 export type MediaProcessJob = z.infer<typeof mediaProcessJobSchema>;
-export const mediaProcessJob: JobDefinition<MediaProcessJob> = { queue: "media-process", schema: mediaProcessJobSchema };
+export const mediaProcessJob: JobDefinition<MediaProcessJob> = {
+  queue: "media-process",
+  schema: mediaProcessJobSchema,
+};
 
 /**
  * Payload der Queue `media-delete`: die Schlüssel stehen in der Payload, damit
@@ -19,4 +22,7 @@ export const mediaDeleteJobSchema = z.object({
   derivatives: z.array(key).max(32),
 });
 export type MediaDeleteJob = z.infer<typeof mediaDeleteJobSchema>;
-export const mediaDeleteJob: JobDefinition<MediaDeleteJob> = { queue: "media-delete", schema: mediaDeleteJobSchema };
+export const mediaDeleteJob: JobDefinition<MediaDeleteJob> = {
+  queue: "media-delete",
+  schema: mediaDeleteJobSchema,
+};

@@ -74,6 +74,8 @@ model ProviderProfile {
   reviews  ProfileReview[]
   statusEvents ProviderStatusEvent[]
   media        MediaAsset[]
+  searchEntry  SearchProfile?
+  favorites    Favorite[]
 
   @@index([status])
   @@map("provider_profile")

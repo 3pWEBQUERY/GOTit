@@ -29,6 +29,8 @@ model User {
   media               MediaAsset[]
   providerProfile     ProviderProfile?
   organizationMembers OrganizationMember[]
+  collections         Collection[]
+  savedSearches       SavedSearch[]
 
   @@map("user")
 }

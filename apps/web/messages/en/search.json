@@ -1,0 +1,12 @@
+{
+  "card": {
+    "identityChecked": "Identity checked",
+    "photosChecked": "Photos checked",
+    "languages": "Speaks {languages}",
+    "priceFrom": "from CHF {price}",
+    "priceOnRequest": "Prices on request",
+    "coverAlt": "Cover photo of {name}",
+    "favoriteAdd": "Save {name} as a favourite",
+    "favoriteRemove": "Remove {name} from favourites"
+  }
+}

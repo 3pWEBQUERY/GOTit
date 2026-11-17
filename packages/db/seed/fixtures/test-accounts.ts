@@ -18,9 +18,29 @@ interface TestAccount {
 
 export const testAccounts: TestAccount[] = [
   { key: "mitglied", name: "Testmitglied Fiktiv" },
-  { key: "anbieter", name: "Testanbieter Fiktiv", provider: { slug: "testprofil-fiktiv", displayName: "Testprofil Fiktiv", status: "PUBLISHED" } },
-  { key: "entwurf", name: "Testentwurf Fiktiv", provider: { slug: "testentwurf-fiktiv", displayName: "Testentwurf Fiktiv", status: "DRAFT" } },
-  { key: "club", name: "Testclub-Inhaber Fiktiv", organization: { slug: "testclub-fiktiv", name: "Testclub Fiktiv" } },
+  {
+    key: "anbieter",
+    name: "Testanbieter Fiktiv",
+    provider: {
+      slug: "testprofil-fiktiv",
+      displayName: "Testprofil Fiktiv",
+      status: "PUBLISHED",
+    },
+  },
+  {
+    key: "entwurf",
+    name: "Testentwurf Fiktiv",
+    provider: {
+      slug: "testentwurf-fiktiv",
+      displayName: "Testentwurf Fiktiv",
+      status: "DRAFT",
+    },
+  },
+  {
+    key: "club",
+    name: "Testclub-Inhaber Fiktiv",
+    organization: { slug: "testclub-fiktiv", name: "Testclub Fiktiv" },
+  },
   // Interne Rollen ohne 2FA: Die Admin-Anwendung verlangt den zweiten Faktor, Tests richten ihn selbst ein.
   { key: "admin", name: "Testadmin Fiktiv", internalRole: "SUPER_ADMIN" },
   { key: "support", name: "Testsupport Fiktiv", internalRole: "SUPPORT" },
@@ -33,12 +53,28 @@ export async function seedTestAccounts(db: PrismaClient): Promise<void> {
     const email = `${account.key}@fiktiv.test`;
     await db.user.upsert({
       where: { id },
-      create: { id, email, name: account.name, emailVerified: true, ageConfirmedAt: new Date() },
-      update: { name: account.name, deactivatedAt: null, deletionRequestedAt: null },
+      create: {
+        id,
+        email,
+        name: account.name,
+        emailVerified: true,
+        ageConfirmedAt: new Date(),
+      },
+      update: {
+        name: account.name,
+        deactivatedAt: null,
+        deletionRequestedAt: null,
+      },
     });
     await db.account.upsert({
       where: { id: `${id}_credential` },
-      create: { id: `${id}_credential`, accountId: id, providerId: "credential", userId: id, password },
+      create: {
+        id: `${id}_credential`,
+        accountId: id,
+        providerId: "credential",
+        userId: id,
+        password,
+      },
       update: { password },
     });
     if (account.internalRole) {
@@ -49,7 +85,11 @@ export async function seedTestAccounts(db: PrismaClient): Promise<void> {
       });
     }
     if (account.provider) {
-      await db.providerProfile.upsert({ where: { userId: id }, create: { userId: id, ...account.provider }, update: { status: account.provider.status } });
+      await db.providerProfile.upsert({
+        where: { userId: id },
+        create: { userId: id, ...account.provider },
+        update: { status: account.provider.status },
+      });
     }
     if (account.organization) {
       const organization = await db.organization.upsert({
@@ -58,7 +98,12 @@ export async function seedTestAccounts(db: PrismaClient): Promise<void> {
         update: {},
       });
       await db.organizationMember.upsert({
-        where: { organizationId_userId: { organizationId: organization.id, userId: id } },
+        where: {
+          organizationId_userId: {
+            organizationId: organization.id,
+            userId: id,
+          },
+        },
         create: { organizationId: organization.id, userId: id, role: "OWNER" },
         update: {},
       });

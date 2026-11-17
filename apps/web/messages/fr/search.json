@@ -1,0 +1,12 @@
+{
+  "card": {
+    "identityChecked": "Identité vérifiée",
+    "photosChecked": "Photos vérifiées",
+    "languages": "Parle {languages}",
+    "priceFrom": "dès CHF {price}",
+    "priceOnRequest": "Prix sur demande",
+    "coverAlt": "Photo principale de {name}",
+    "favoriteAdd": "Enregistrer {name} dans les favoris",
+    "favoriteRemove": "Retirer {name} des favoris"
+  }
+}

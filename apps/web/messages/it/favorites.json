@@ -1,0 +1,13 @@
+{
+  "toggle": {
+    "added": "Salvato nei preferiti",
+    "removed": "Rimosso dai preferiti",
+    "errors": {
+      "unavailable": "Questo profilo al momento non è disponibile.",
+      "limit": "La raccolta è piena. Rimuovi prima una voce.",
+      "rate-limited": "Troppe modifiche in poco tempo. Riprova tra un minuto.",
+      "generic": "Non ha funzionato. Riprova.",
+      "sign-in": "Accedi per salvare i preferiti."
+    }
+  }
+}

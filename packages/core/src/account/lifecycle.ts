@@ -2,6 +2,7 @@ import { randomBytes } from "node:crypto";
 import { getDb } from "@app/db";
 import { draftSlug } from "./policy";
 import type { AccountTypeInput, OrganizationKindInput } from "./schemas";
+import { requestSearchReindexForUser } from "../search/reindex";
 
 /**
  * Legt nach der Registrierung an, was der Kontotyp braucht: ein Anbieterprofil
@@ -39,6 +40,7 @@ export async function deactivateOwnAccount(userId: string): Promise<void> {
     db.user.update({ where: { id: userId }, data: { deactivatedAt: new Date() } }),
     db.providerProfile.updateMany({ where: { userId, status: "PUBLISHED" }, data: { status: "PAUSED" } }),
   ]);
+  await requestSearchReindexForUser(userId);
 }
 
 /** Löschung beantragen: wie Deaktivieren, dazu der Zeitpunkt, ab dem der `cron`-Dienst endgültig löscht. Sitzungen beendet der Aufrufer. */
@@ -49,6 +51,7 @@ export async function requestOwnDeletion(userId: string): Promise<Date> {
     db.user.update({ where: { id: userId }, data: { deactivatedAt: requestedAt, deletionRequestedAt: requestedAt } }),
     db.providerProfile.updateMany({ where: { userId, status: "PUBLISHED" }, data: { status: "PAUSED" } }),
   ]);
+  await requestSearchReindexForUser(userId);
   return requestedAt;
 }
 

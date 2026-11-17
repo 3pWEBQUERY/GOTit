@@ -1,0 +1,13 @@
+{
+  "toggle": {
+    "added": "In Favoriten gespeichert",
+    "removed": "Aus Favoriten entfernt",
+    "errors": {
+      "unavailable": "Dieses Profil ist zurzeit nicht verfügbar.",
+      "limit": "Die Sammlung ist voll. Entferne zuerst einen Eintrag.",
+      "rate-limited": "Zu viele Änderungen in kurzer Zeit. Versuche es in einer Minute erneut.",
+      "generic": "Das hat nicht geklappt. Versuche es erneut.",
+      "sign-in": "Melde dich an, um Favoriten zu speichern."
+    }
+  }
+}

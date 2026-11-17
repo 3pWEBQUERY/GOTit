@@ -160,7 +160,8 @@ describe("Bibliothek", () => {
     expect(await media.deleteOwnMedia(userId, a)).toEqual({ deleted: 1 });
     expect((await db.mediaAsset.findUniqueOrThrow({ where: { id: a } })).deletedAt).toBeInstanceOf(Date);
     expect((await db.mediaAsset.findUniqueOrThrow({ where: { id: b } })).isCover).toBe(true);
-    expect(queued).toHaveLength(1);
+    // Ein Löschjob für die Dateien und ein Job für den Suchindex (Titelbild, «Fotos geprüft»).
+    expect(queued.map((entry) => entry.queue)).toEqual(["media-delete", "search-index"]);
     const job = queued[0]?.payload as { mediaId: string; originals: string[]; derivatives: string[] };
     expect(job.mediaId).toBe(a);
     expect(job.originals).toHaveLength(1);

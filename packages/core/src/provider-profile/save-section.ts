@@ -11,6 +11,7 @@ import {
   type PendingChanges,
 } from "./change-policy";
 import { SECTION_SCHEMAS, type ProfileSection, type SectionValues } from "./editor-schemas";
+import { requestSearchReindexForUser } from "../search/reindex";
 
 type Tx = Prisma.TransactionClient;
 
@@ -135,7 +136,7 @@ async function saveFreeFields(tx: Tx, profileId: string, section: ProfileSection
  */
 export async function saveProfileSection(userId: string, section: ProfileSection, input: unknown, now = new Date()): Promise<SaveSectionResult> {
   const parsed = SECTION_SCHEMAS[section].parse(input);
-  return getDb().$transaction(async (tx) => {
+  const result = await getDb().$transaction(async (tx): Promise<SaveSectionResult> => {
     const profileId = await lockProfile(tx, { userId });
     if (!profileId) return { ok: false, reason: "not-found" };
     const profile = await tx.providerProfile.findUniqueOrThrow({
@@ -162,4 +163,6 @@ export async function saveProfileSection(userId: string, section: ProfileSection
     if (applied) await tx.providerProfile.update({ where: { id: profileId }, data: { contentUpdatedAt: now } });
     return { ok: true, applied, pending: Object.keys(split.pending) as CriticalField[] };
   });
+  if (result.ok && result.applied) await requestSearchReindexForUser(userId);
+  return result;
 }

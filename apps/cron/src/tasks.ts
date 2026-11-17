@@ -1,4 +1,5 @@
 import { purgeExpired } from "./tasks/purge-expired";
+import { rebuildSearch } from "./tasks/rebuild-search-index";
 
 /**
  * Geplante Aufgaben, eine pro Datei unter `tasks/` (PRD 15). Railway startet
@@ -9,4 +10,5 @@ export type CronTask = () => Promise<void>;
 
 export const tasks: Readonly<Record<string, CronTask>> = {
   "purge-expired": purgeExpired,
+  "rebuild-search-index": rebuildSearch,
 };

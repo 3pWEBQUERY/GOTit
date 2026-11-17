@@ -1,5 +1,6 @@
 import { getDb } from "@app/db";
 import { IDENTITY_VALIDITY_DAYS, newExternalRef, resolveIdentityProvider } from "./provider";
+import { requestSearchReindexForUser } from "../search/reindex";
 
 export type StartIdentityCheckResult = { ok: true; redirectUrl: string } | { ok: false; reason: "provider-not-configured" | "not-a-provider" };
 
@@ -65,5 +66,6 @@ export async function applyIdentityResult(externalRef: string, result: IdentityR
     await db.providerProfile.updateMany({ where: { userId: check.userId }, data: { status: "SUSPENDED" } });
     await db.auditEvent.create({ data: { action: "trust-safety.minor-suspected", target: `user:${check.userId}`, reason: "Identitätsprüfung: nicht volljährig" } });
   }
+  await requestSearchReindexForUser(check.userId);
   return "applied";
 }

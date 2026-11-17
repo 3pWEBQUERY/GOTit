@@ -1,5 +1,6 @@
 import { getStorage } from "@app/storage";
 import { createDeleteMediaJob } from "./jobs/delete-media";
+import { createIndexSearchJob } from "./jobs/index-search";
 import { createProcessMediaJob } from "./jobs/process-media";
 import { createSendEmailJob } from "./jobs/send-email";
 import { createMailSender } from "./mail/transport";
@@ -15,5 +16,6 @@ export function createHandlers(): Readonly<Record<string, JobHandler>> {
     email: createSendEmailJob(createMailSender()),
     "media-process": createProcessMediaJob(getStorage),
     "media-delete": createDeleteMediaJob(getStorage),
+    "search-index": createIndexSearchJob(),
   };
 }

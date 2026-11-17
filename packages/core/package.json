@@ -24,7 +24,11 @@
     "./admin": "./src/admin/index.ts",
     "./media": "./src/media/index.ts",
     "./media/variants": "./src/media/variants.ts",
-    "./media/schemas": "./src/media/schemas.ts"
+    "./media/schemas": "./src/media/schemas.ts",
+    "./search": "./src/search/index.ts",
+    "./search/query": "./src/search/query.ts",
+    "./favorites": "./src/favorites/index.ts",
+    "./search/indexer": "./src/search/indexer.ts"
   },
   "scripts": {
     "lint": "eslint .",
