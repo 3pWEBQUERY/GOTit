@@ -61,10 +61,7 @@
   },
   "entry": {
     "actions": "Actions for {name}",
-    "moveUp": "Move up",
-    "moveDown": "Move down",
     "remove": "Remove",
-    "inCollections": "In collections",
     "newCollection": "New collection …",
     "paused": "Paused right now. The profile stays reachable, contact is not possible.",
     "unavailable": "Profile no longer available",
@@ -83,7 +80,19 @@
       "rate-limited": "Too many changes in a short time. Try again in a minute.",
       "sign-in": "Your session has expired. Please sign in again.",
       "generic": "That didn’t work. Please try again."
-    }
+    },
+    "moveForward": "Move forward",
+    "moveBackward": "Move back",
+    "moveTo": "Move to collection …",
+    "alsoIn": "Also in collections",
+    "selectShort": "Select",
+    "select": "Select {name}",
+    "selectUnavailable": "Select the unavailable entry at position {position}",
+    "favoriteAdd": "Save {name} as a favourite",
+    "favoriteRemove": "Remove {name} from favourites",
+    "removedMany": "{count, plural, one {# entry} other {# entries}} removed from «{collection}»",
+    "movedTo": "{count, plural, one {# entry} other {# entries}} moved to «{collection}»",
+    "notRestored": "The profiles are no longer available and could not be put back."
   },
   "profile": {
     "label": "Save",
@@ -144,5 +153,24 @@
       "newOnly": "new profiles",
       "none": "No filters"
     }
+  },
+  "selection": {
+    "label": "Selection",
+    "none": "Nothing selected",
+    "count": "{count, plural, one {# entry selected} other {# entries selected}}",
+    "selectAll": "Select all",
+    "clear": "Clear selection",
+    "move": "Move to collection",
+    "remove": "Remove"
+  },
+  "moveDialog": {
+    "title": "Move to collection",
+    "description": "{count, plural, one {# entry will be} other {# entries will be}} moved to the chosen collection and removed here. A profile already there stays once.",
+    "label": "Target collection",
+    "required": "Choose a collection.",
+    "submit": "Move",
+    "cancel": "Cancel",
+    "close": "Close",
+    "limit": "The target collection does not have enough room (up to 200 profiles). Nothing was moved."
   }
 }

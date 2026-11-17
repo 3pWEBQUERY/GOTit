@@ -21,6 +21,13 @@ export {
   type FavoriteResult,
 } from "./items";
 export {
+  moveFavorites,
+  removeFavorites,
+  restoreFavorites,
+  type MoveFavoritesResult,
+  type RemovedFavorite,
+} from "./bulk";
+export {
   getCollectionView,
   type CollectionView,
   type FavoriteEntry,

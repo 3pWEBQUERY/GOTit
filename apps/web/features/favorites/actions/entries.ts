@@ -4,7 +4,6 @@ import {
   addToCollection,
   getOwnCollection,
   moveFavorite,
-  removeFavorite,
   removeFromCollection,
   setFavorite,
   type FavoriteResult,
@@ -40,16 +39,6 @@ export async function moveEntryAction(
   return fromCore(
     await moveFavorite(guard.viewer.userId, favoriteId, { direction }),
   );
-}
-
-/** Entfernt einen Eintrag, auch einen, dessen Profil nicht mehr verfügbar ist. */
-export async function removeEntryAction(
-  favoriteId: unknown,
-): Promise<EntryActionResult> {
-  if (typeof favoriteId !== "string") return { ok: false, reason: "generic" };
-  const guard = await mutatingAccount();
-  if (!guard.ok) return guard;
-  return fromCore(await removeFavorite(guard.viewer.userId, favoriteId));
 }
 
 /**

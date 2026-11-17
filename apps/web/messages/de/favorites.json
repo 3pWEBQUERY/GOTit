@@ -61,10 +61,7 @@
   },
   "entry": {
     "actions": "Aktionen für {name}",
-    "moveUp": "Nach oben",
-    "moveDown": "Nach unten",
     "remove": "Entfernen",
-    "inCollections": "In Sammlungen",
     "newCollection": "Neue Sammlung …",
     "paused": "Zurzeit pausiert. Das Profil bleibt erreichbar, Kontakt ist nicht möglich.",
     "unavailable": "Profil nicht mehr verfügbar",
@@ -83,7 +80,19 @@
       "rate-limited": "Zu viele Änderungen in kurzer Zeit. Versuche es in einer Minute erneut.",
       "sign-in": "Deine Sitzung ist abgelaufen. Melde dich erneut an.",
       "generic": "Das hat nicht geklappt. Versuche es erneut."
-    }
+    },
+    "moveForward": "Nach vorne",
+    "moveBackward": "Nach hinten",
+    "moveTo": "In Sammlung verschieben …",
+    "alsoIn": "Auch in Sammlungen",
+    "selectShort": "Auswählen",
+    "select": "{name} auswählen",
+    "selectUnavailable": "Nicht mehr verfügbaren Eintrag an Position {position} auswählen",
+    "favoriteAdd": "{name} als Favorit speichern",
+    "favoriteRemove": "{name} aus Favoriten entfernen",
+    "removedMany": "{count, plural, one {# Eintrag} other {# Einträge}} aus «{collection}» entfernt",
+    "movedTo": "{count, plural, one {# Eintrag} other {# Einträge}} nach «{collection}» verschoben",
+    "notRestored": "Die Profile sind nicht mehr verfügbar und liessen sich nicht zurücklegen."
   },
   "profile": {
     "label": "Merken",
@@ -144,5 +153,24 @@
       "newOnly": "neu dabei",
       "none": "Ohne Filter"
     }
+  },
+  "selection": {
+    "label": "Auswahl",
+    "none": "Nichts ausgewählt",
+    "count": "{count, plural, one {# Eintrag ausgewählt} other {# Einträge ausgewählt}}",
+    "selectAll": "Alle auswählen",
+    "clear": "Auswahl aufheben",
+    "move": "In Sammlung verschieben",
+    "remove": "Entfernen"
+  },
+  "moveDialog": {
+    "title": "In Sammlung verschieben",
+    "description": "{count, plural, one {# Eintrag wird} other {# Einträge werden}} in die gewählte Sammlung verschoben und hier entfernt. Liegt ein Profil dort schon, bleibt es einmal.",
+    "label": "Zielsammlung",
+    "required": "Wähle eine Sammlung.",
+    "submit": "Verschieben",
+    "cancel": "Abbrechen",
+    "close": "Schliessen",
+    "limit": "In der Zielsammlung ist nicht genug Platz (höchstens 200 Profile). Es wurde nichts verschoben."
   }
 }

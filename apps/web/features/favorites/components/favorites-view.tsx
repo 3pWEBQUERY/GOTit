@@ -17,7 +17,7 @@ import {
   RenameCollectionDialog,
 } from "./collection-dialogs";
 import { DeleteCollectionButton } from "./delete-collection-button";
-import { EntryList } from "./entry-list";
+import { EntryGrid } from "./entry-grid";
 
 /**
  * `/favoriten` (Standardsammlung, `collectionId` null) und
@@ -39,6 +39,9 @@ export async function FavoritesView({
   const nameOf = (collection: CollectionSummary) =>
     collection.isDefault ? t("page.defaultName") : collection.name;
   const { current } = data;
+  const defaultId =
+    data.collections.find((collection) => collection.isDefault)?.id ??
+    current.id;
   const title = nameOf(current);
   const tabs = data.collections.map((collection) => ({
     id: collection.id,
@@ -57,7 +60,7 @@ export async function FavoritesView({
     .map((collection) => ({ id: collection.id, name: nameOf(collection) }));
 
   return (
-    <div className="flex max-w-reading flex-col gap-6">
+    <div className="flex min-w-0 flex-col gap-6">
       <TopBarTitle title={title} />
       <header className="flex flex-col gap-2">
         <h1 className="text-h1 break-words">{title}</h1>
@@ -127,8 +130,9 @@ export async function FavoritesView({
           className="py-4"
         />
       ) : (
-        <EntryList
+        <EntryGrid
           collection={{ id: current.id, name: title }}
+          defaultId={defaultId}
           entries={data.entries}
           others={others}
           membership={data.membership}

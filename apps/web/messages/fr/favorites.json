@@ -61,10 +61,7 @@
   },
   "entry": {
     "actions": "Actions pour {name}",
-    "moveUp": "Monter",
-    "moveDown": "Descendre",
     "remove": "Retirer",
-    "inCollections": "Dans les collections",
     "newCollection": "Nouvelle collection …",
     "paused": "En pause pour le moment. Le profil reste accessible, le contact n’est pas possible.",
     "unavailable": "Profil plus disponible",
@@ -83,7 +80,19 @@
       "rate-limited": "Trop de modifications en peu de temps. Réessaie dans une minute.",
       "sign-in": "Ta session a expiré. Reconnecte-toi.",
       "generic": "Cela n’a pas fonctionné. Réessaie."
-    }
+    },
+    "moveForward": "Avancer",
+    "moveBackward": "Reculer",
+    "moveTo": "Déplacer vers une collection …",
+    "alsoIn": "Aussi dans les collections",
+    "selectShort": "Sélectionner",
+    "select": "Sélectionner {name}",
+    "selectUnavailable": "Sélectionner l’entrée plus disponible en position {position}",
+    "favoriteAdd": "Enregistrer {name} comme favori",
+    "favoriteRemove": "Retirer {name} des favoris",
+    "removedMany": "{count, plural, one {# entrée retirée} other {# entrées retirées}} de «{collection}»",
+    "movedTo": "{count, plural, one {# entrée déplacée} other {# entrées déplacées}} vers «{collection}»",
+    "notRestored": "Les profils ne sont plus disponibles et n’ont pas pu être remis."
   },
   "profile": {
     "label": "Enregistrer",
@@ -144,5 +153,24 @@
       "newOnly": "nouveaux profils",
       "none": "Sans filtre"
     }
+  },
+  "selection": {
+    "label": "Sélection",
+    "none": "Aucune sélection",
+    "count": "{count, plural, one {# entrée sélectionnée} other {# entrées sélectionnées}}",
+    "selectAll": "Tout sélectionner",
+    "clear": "Annuler la sélection",
+    "move": "Déplacer vers une collection",
+    "remove": "Retirer"
+  },
+  "moveDialog": {
+    "title": "Déplacer vers une collection",
+    "description": "Entrées choisies : {count}. Elles sont déplacées vers la collection choisie et retirées d’ici. Un profil déjà présent n’y figure qu’une fois.",
+    "label": "Collection cible",
+    "required": "Choisis une collection.",
+    "submit": "Déplacer",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "limit": "La collection cible n’a pas assez de place (200 profils au maximum). Rien n’a été déplacé."
   }
 }

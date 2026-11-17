@@ -47,8 +47,9 @@ Abnahmekriterien von 1.7:
   - Suchformular, Schnellfilter.
   - Die Reihen «In {Region}» und «Neu dabei»; leere Reihen fallen weg.
 - **Favoriten** `/favoriten` und `/favoriten/[sammlung]`:
-  - Sammlungen als Tabs.
-  - Sortieren, Entfernen mit «Rückgängig», Umbenennen, Löschen mit Bestätigung.
+  - Raster aus Profilkarten, Sammlungen als Tabs.
+  - Mehrfachauswahl: mehrere Einträge auf einmal in eine andere Sammlung verschieben oder entfernen. Das Verschieben ist atomar.
+  - Sortieren, Entfernen mit «Rückgängig» an der alten Stelle, Umbenennen, Löschen mit Bestätigung.
   - Nicht mehr verfügbare Profile ohne Name, Bild und Link.
   - Eine fremde Sammlungs-ID ergibt 404.
 - **Gespeicherte Suchen** `/suchen`:
@@ -74,7 +75,7 @@ Abnahmekriterien von 1.7:
 | --- | --- |
 | `pnpm check:file-size` | keine Datei über 600 Zeilen |
 | Lint, Typen, Unit- und Integrationstests (Turbo, alle Pakete) | 30 von 30 Aufgaben grün |
-| Playwright gegen den Produktions-Build, alle Schritte 1.1 bis 1.7 | E2E_ERGEBNIS |
+| Playwright gegen den Produktions-Build, alle Schritte 1.1 bis 1.7 | **179 von 179 grün**, ohne Wiederholung |
 
 | Abnahme 20.3 | Beleg |
 | --- | --- |
@@ -83,6 +84,12 @@ Abnahmekriterien von 1.7:
 | Gesponserte Resultate sind klar gekennzeichnet | Es gibt noch keine (Werbung kommt in Phase 2); die Karte trägt «Anzeige», sobald eine Platzierung existiert, und die Trefferzahl zählt sie nicht |
 | Private und gesperrte Profile erscheinen nicht versehentlich | Pausiert, gesperrt, eingeschränkt und archiviert verschwinden sofort, auch vor dem Job; «nur für Mitglieder» nur angemeldet; Vorschläge ebenso |
 | Pagination und Sortierung funktionieren | 30 Profile: Seite 1 und 2 ohne Dubletten in stabiler Reihenfolge; Preis, Neu und Kürzlich aktualisiert |
+
+## Unterwegs behoben
+
+- **Passkey-Test:** Er war seit 1.5 als wackelig vermerkt. Nach der Anmeldung leitet die Seite selbst weiter, und der Test navigierte gleichzeitig. Jetzt wartet er auf die Weiterleitung.
+- **Bildtests im Worker:** Das Kodieren von AVIF braucht unter voller Last mehr als 5 Sekunden; die Grenze liegt jetzt bei 30 Sekunden.
+- **Favoriten nach PRD v2 12.1:** Statt einer Liste gibt es jetzt das verlangte Raster mit Mehrfachauswahl.
 
 ## Was nicht geprüft ist
 
@@ -104,5 +111,4 @@ Abnahmekriterien von 1.7:
    - Videos (Phase 3),
    - Altersbereich, sobald das Profil ein freiwilliges Altersfeld hat.
 4. **Benachrichtigungen** zu Favoriten und gespeicherten Suchen kommen mit dem Benachrichtigungsmodul.
-5. **Mehrfachauswahl in Sammlungen** («In Sammlung verschieben» für mehrere Einträge, v2 12.1) ist nicht gebaut; das Verschieben geht pro Eintrag über das Menü.
-6. **Suchfeld in der Kopfzeile:** Es zeigt auf `/suche` die aktuelle Anfrage noch nicht; die Seite hat ein eigenes Feld.
+5. **Suchfeld in der Kopfzeile:** Es zeigt auf `/suche` die aktuelle Anfrage noch nicht; die Seite hat ein eigenes Feld.

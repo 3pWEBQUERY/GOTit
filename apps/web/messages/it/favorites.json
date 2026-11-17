@@ -61,10 +61,7 @@
   },
   "entry": {
     "actions": "Azioni per {name}",
-    "moveUp": "Sposta su",
-    "moveDown": "Sposta giù",
     "remove": "Rimuovi",
-    "inCollections": "Nelle raccolte",
     "newCollection": "Nuova raccolta …",
     "paused": "Al momento in pausa. Il profilo resta raggiungibile, il contatto non è possibile.",
     "unavailable": "Profilo non più disponibile",
@@ -83,7 +80,19 @@
       "rate-limited": "Troppe modifiche in poco tempo. Riprova tra un minuto.",
       "sign-in": "La tua sessione è scaduta. Accedi di nuovo.",
       "generic": "Non ha funzionato. Riprova."
-    }
+    },
+    "moveForward": "Sposta avanti",
+    "moveBackward": "Sposta indietro",
+    "moveTo": "Sposta in una raccolta …",
+    "alsoIn": "Anche nelle raccolte",
+    "selectShort": "Seleziona",
+    "select": "Seleziona {name}",
+    "selectUnavailable": "Seleziona la voce non più disponibile in posizione {position}",
+    "favoriteAdd": "Salva {name} come preferito",
+    "favoriteRemove": "Rimuovi {name} dai preferiti",
+    "removedMany": "{count, plural, one {# voce rimossa} other {# voci rimosse}} da «{collection}»",
+    "movedTo": "{count, plural, one {# voce spostata} other {# voci spostate}} in «{collection}»",
+    "notRestored": "I profili non sono più disponibili e non è stato possibile rimetterli."
   },
   "profile": {
     "label": "Salva",
@@ -144,5 +153,24 @@
       "newOnly": "nuovi profili",
       "none": "Senza filtri"
     }
+  },
+  "selection": {
+    "label": "Selezione",
+    "none": "Nessuna selezione",
+    "count": "{count, plural, one {# voce selezionata} other {# voci selezionate}}",
+    "selectAll": "Seleziona tutto",
+    "clear": "Annulla selezione",
+    "move": "Sposta in una raccolta",
+    "remove": "Rimuovi"
+  },
+  "moveDialog": {
+    "title": "Sposta in una raccolta",
+    "description": "Voci scelte: {count}. Vengono spostate nella raccolta scelta e rimosse da qui. Un profilo già presente resta una sola volta.",
+    "label": "Raccolta di destinazione",
+    "required": "Scegli una raccolta.",
+    "submit": "Sposta",
+    "cancel": "Annulla",
+    "close": "Chiudi",
+    "limit": "Nella raccolta di destinazione non c’è abbastanza spazio (al massimo 200 profili). Non è stato spostato nulla."
   }
 }

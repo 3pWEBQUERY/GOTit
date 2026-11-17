@@ -125,7 +125,7 @@ test.describe("Favoriten und Sammlungen", () => {
     ).toHaveCount(0);
   });
 
-  test("Standardsammlung: kein Umbenennen und Löschen; nach oben, nach unten, entfernen mit Rückgängig, in eine andere Sammlung legen", async ({
+  test("Standardsammlung: Raster, kein Umbenennen und Löschen; nach vorne, nach hinten, entfernen mit Rückgängig, in eine andere Sammlung legen", async ({
     page,
     baseURL,
   }) => {
@@ -146,6 +146,13 @@ test.describe("Favoriten und Sammlungen", () => {
       page.getByRole("button", { name: "Sammlung löschen" }),
     ).toHaveCount(0);
     expect(await entryNames(page)).toEqual([a.name, b.name, c.name]);
+    await expect(page.locator("#inhalt [data-entry-grid]")).toHaveClass(
+      /grid-cols-2/,
+    );
+    // Das Herz ist das einzige Element auf dem Foto; in «Favoriten» ist es gedrückt.
+    await expect(
+      page.getByRole("button", { name: `${a.name} aus Favoriten entfernen` }),
+    ).toHaveAttribute("aria-pressed", "true");
     await expect(page.getByRole("link", { name: a.name })).toHaveAttribute(
       "href",
       `/de/p/${a.slug}`,
@@ -153,10 +160,10 @@ test.describe("Favoriten und Sammlungen", () => {
 
     await page.getByRole("button", { name: `Aktionen für ${a.name}` }).click();
     await expect(
-      page.getByRole("menuitem", { name: "Nach oben" }),
+      page.getByRole("menuitem", { name: "Nach vorne" }),
     ).toBeDisabled();
     await untilSaved(page, () =>
-      page.getByRole("menuitem", { name: "Nach unten" }).click(),
+      page.getByRole("menuitem", { name: "Nach hinten" }).click(),
     );
     await expect.poll(() => entryNames(page)).toEqual([b.name, a.name, c.name]);
     await expect(
@@ -168,7 +175,7 @@ test.describe("Favoriten und Sammlungen", () => {
 
     await page.getByRole("button", { name: `Aktionen für ${c.name}` }).click();
     await untilSaved(page, () =>
-      page.getByRole("menuitem", { name: "Nach oben" }).click(),
+      page.getByRole("menuitem", { name: "Nach vorne" }).click(),
     );
     await expect.poll(() => entryNames(page)).toEqual([b.name, c.name, a.name]);
     await page.reload();
@@ -187,21 +194,113 @@ test.describe("Favoriten und Sammlungen", () => {
     ).toContainText("1");
 
     await page.getByRole("button", { name: `Aktionen für ${c.name}` }).click();
-    await page.getByRole("menuitem", { name: "Entfernen" }).click();
+    await untilSaved(page, () =>
+      page.getByRole("menuitem", { name: "Entfernen" }).click(),
+    );
     await expect.poll(() => entryNames(page)).toEqual([b.name, a.name]);
     await expect(
       page.getByText("Aus «Favoriten» entfernt", { exact: true }),
     ).toBeVisible();
-    await page.getByRole("button", { name: "Rückgängig" }).click();
+    await untilSaved(page, () =>
+      page.getByRole("button", { name: "Rückgängig" }).click(),
+    );
     await expect(
       page.getByText("Wieder hinzugefügt", { exact: true }),
     ).toBeVisible();
-    await expect.poll(() => entryNames(page)).toEqual([c.name, b.name, a.name]);
+    // «Rückgängig» legt den Eintrag an seinen Platz zurück.
+    await expect.poll(() => entryNames(page)).toEqual([b.name, c.name, a.name]);
 
     await page.goto(`/de/favoriten/${other}`);
     await expect.poll(() => entryNames(page)).toEqual([b.name]);
     await expectNoSeriousAxeFindings(page);
     await page.setViewportSize({ width: 375, height: 800 });
+    await expectNoHorizontalScroll(page);
+  });
+
+  test("einzeln und per Mehrfachauswahl in eine Sammlung verschieben; mehrere entfernen mit Rückgängig", async ({
+    page,
+    baseURL,
+  }) => {
+    const member = await signedInMember(page, created, baseURL);
+    const [a, b, c, d] = [
+      await createProvider(created),
+      await createProvider(created),
+      await createProvider(created),
+      await createProvider(created),
+    ];
+    await addEntries(await defaultCollection(member.id), [a, b, c, d]);
+    const target = await ownCollection(member.id, "Ziel Fiktiv");
+    await page.goto("/de/favoriten");
+    await page.waitForLoadState("networkidle");
+    const bar = page.getByRole("region", { name: "Auswahl" });
+    await expect(bar.getByRole("status")).toHaveText("Nichts ausgewählt");
+
+    // Einzeln über das Menü.
+    await page.getByRole("button", { name: `Aktionen für ${d.name}` }).click();
+    await page
+      .getByRole("menuitem", { name: "In Sammlung verschieben …" })
+      .click();
+    const dialog = page.getByRole("dialog", {
+      name: "In Sammlung verschieben",
+    });
+    await dialog.getByRole("button", { name: "Verschieben" }).click();
+    await expect(dialog.getByText("Wähle eine Sammlung.")).toBeVisible();
+    await dialog.getByRole("radio", { name: "Ziel Fiktiv" }).check();
+    await dialog.getByRole("button", { name: "Verschieben" }).click();
+    await expect(
+      page.getByText("1 Eintrag nach «Ziel Fiktiv» verschoben", {
+        exact: true,
+      }),
+    ).toBeVisible();
+    await expect.poll(() => entryNames(page)).toEqual([a.name, b.name, c.name]);
+
+    // Mehrfachauswahl per Tastatur: Kästchen mit der Leertaste.
+    await page.getByRole("checkbox", { name: `${a.name} auswählen` }).focus();
+    await page.keyboard.press("Space");
+    await page.getByRole("checkbox", { name: `${b.name} auswählen` }).check();
+    await expect(bar.getByRole("status")).toHaveText("2 Einträge ausgewählt");
+    await bar.getByRole("button", { name: "In Sammlung verschieben" }).click();
+    await dialog.getByRole("radio", { name: "Ziel Fiktiv" }).check();
+    await dialog.getByRole("button", { name: "Verschieben" }).click();
+    await expect(
+      page.getByText("2 Einträge nach «Ziel Fiktiv» verschoben", {
+        exact: true,
+      }),
+    ).toBeVisible();
+    await expect.poll(() => entryNames(page)).toEqual([c.name]);
+    await expect(bar.getByRole("status")).toHaveText("Nichts ausgewählt");
+
+    await page.goto(`/de/favoriten/${target}`);
+    await page.waitForLoadState("networkidle");
+    await expect.poll(() => entryNames(page)).toEqual([a.name, b.name, d.name]);
+    // Im Raster einer eigenen Sammlung zeigt das Herz, ob das Profil auch in «Favoriten» liegt.
+    await expect(
+      page.getByRole("button", { name: `${a.name} als Favorit speichern` }),
+    ).toHaveAttribute("aria-pressed", "false");
+
+    // Mehrere entfernen, dann rückgängig: alle wieder an ihrem Platz.
+    await bar.getByRole("button", { name: "Alle auswählen" }).click();
+    await page.getByRole("checkbox", { name: `${b.name} auswählen` }).uncheck();
+    await expect(bar.getByRole("status")).toHaveText("2 Einträge ausgewählt");
+    await bar.getByRole("button", { name: "Entfernen" }).click();
+    await expect(
+      page.getByText("2 Einträge aus «Ziel Fiktiv» entfernt", { exact: true }),
+    ).toBeVisible();
+    await expect.poll(() => entryNames(page)).toEqual([b.name]);
+    await untilSaved(page, () =>
+      page.getByRole("button", { name: "Rückgängig" }).click(),
+    );
+    await expect(
+      page.getByText("Wieder hinzugefügt", { exact: true }),
+    ).toBeVisible();
+    await expect.poll(() => entryNames(page)).toEqual([a.name, b.name, d.name]);
+    await page.reload();
+    await expect.poll(() => entryNames(page)).toEqual([a.name, b.name, d.name]);
+
+    await expectNoSeriousAxeFindings(page);
+    await page.setViewportSize({ width: 375, height: 800 });
+    await expectNoHorizontalScroll(page);
+    await bar.getByRole("button", { name: "Alle auswählen" }).click();
     await expectNoHorizontalScroll(page);
   });
 
@@ -240,6 +339,7 @@ test.describe("Favoriten und Sammlungen", () => {
     await expect(
       page.getByText("Aus «Favoriten» entfernt", { exact: true }),
     ).toBeVisible();
+    // Ein nicht mehr verfügbares Profil lässt sich nicht wieder merken, also kein «Rückgängig».
     await expect(page.getByRole("button", { name: "Rückgängig" })).toHaveCount(
       0,
     );

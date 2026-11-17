@@ -115,7 +115,7 @@ export async function addEntries(
 /** Namen der Einträge in der angezeigten Reihenfolge. */
 export async function entryNames(page: Page): Promise<string[]> {
   // Nur der Inhalt der Seite: Während des Streamens steht er kurz ein zweites Mal verborgen im Dokument.
-  return page.locator("#inhalt [data-entry-list] > li h2").allInnerTexts();
+  return page.locator("#inhalt [data-entry-grid] > li h2").allInnerTexts();
 }
 
 /** Wartet auf die Antwort der Server Action, die ein Klick auslöst; erst danach darf ein Test neu laden. */

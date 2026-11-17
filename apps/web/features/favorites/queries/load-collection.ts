@@ -60,7 +60,7 @@ export async function loadCollectionPage(
       region: entry.regionName,
       image: entry.cover
         ? {
-            src: mediaUrl(entry.cover.mediaId, 320, "webp"),
+            src: mediaUrl(entry.cover.mediaId, 640, "webp"),
             alt: entry.cover.alt,
             color: entry.cover.color,
           }
@@ -71,19 +71,18 @@ export async function loadCollectionPage(
     collections,
     current: view.collection,
     entries,
-    membership: await membershipOf(viewer, collections, entries),
+    membership: await membershipOf(viewer, entries),
   };
 }
 
 async function membershipOf(
   viewer: AccountViewer,
-  collections: CollectionSummary[],
   entries: EntryItem[],
 ): Promise<Record<string, string[]>> {
   const slugs = entries.flatMap((entry) =>
     entry.state === "unavailable" ? [] : [entry.slug],
   );
-  if (slugs.length === 0 || collections.length < 2) return {};
+  if (slugs.length === 0) return {};
   return Object.fromEntries(
     await collectionsContainingMany(viewer.userId, slugs),
   );
