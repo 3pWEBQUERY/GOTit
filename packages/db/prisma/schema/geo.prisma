@@ -27,6 +27,7 @@ model Region {
   parent   Region?  @relation("RegionTree", fields: [parentId], references: [id])
   children Region[] @relation("RegionTree")
   providers ProviderRegion[]
+  locations Location[]
 
   @@index([approved, kind])
   @@map("region")

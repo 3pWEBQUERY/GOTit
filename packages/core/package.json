@@ -38,7 +38,10 @@
     "./booking/status": "./src/booking/status.ts",
     "./booking/maintenance": "./src/booking/maintenance.ts",
     "./review": "./src/review/index.ts",
-    "./review/schemas": "./src/review/schemas.ts"
+    "./review/schemas": "./src/review/schemas.ts",
+    "./organization": "./src/organization/index.ts",
+    "./organization/schemas": "./src/organization/schemas.ts",
+    "./organization/permissions": "./src/organization/permissions.ts"
   },
   "scripts": {
     "lint": "eslint .",

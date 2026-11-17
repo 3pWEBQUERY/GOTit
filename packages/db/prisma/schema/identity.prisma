@@ -82,6 +82,7 @@ model ProviderProfile {
   calendarBlocks CalendarBlock[]
   bookingRequests BookingRequest[]
   receivedReviews Review[]
+  organizationLinks OrganizationLink[]
 
   @@index([status])
   @@map("provider_profile")
@@ -93,10 +94,21 @@ model Organization {
   name      String
   kind      OrganizationKind
   status    OrganizationStatus @default(DRAFT)
+  // Unternehmensprofil (v1 FR-BUSINESS-001).
+  description String?
+  website     String?
+  phone       String?
+  // Öffentlich als Kontaktweg; nie die Anmeldeadresse eines Kontos.
+  publicEmail String?
+  publishedAt DateTime?
   createdAt DateTime           @default(now())
   updatedAt DateTime           @updatedAt
 
-  members OrganizationMember[]
+  members       OrganizationMember[]
+  verifications OrganizationVerification[]
+  locations     Location[]
+  links         OrganizationLink[]
+  media         MediaAsset[]
 
   @@map("organization")
 }

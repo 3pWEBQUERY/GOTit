@@ -25,6 +25,10 @@ model MediaAsset {
   id                String          @id @default(cuid(2))
   ownerUserId       String
   providerProfileId String?
+  // Medien einer Organisation (Logo, Titelbild, Galerie); genau eins von Profil und Organisation ist gesetzt.
+  organizationId    String?
+  // Logo der Organisation; das Titelbild ist wie bei Profilen `isCover`.
+  isLogo            Boolean         @default(false)
   status            MediaStatus     @default(UPLOADING)
   visibility        MediaVisibility @default(PUBLIC)
   sortOrder         Int             @default(0)
@@ -50,9 +54,11 @@ model MediaAsset {
 
   owner           User             @relation(fields: [ownerUserId], references: [id], onDelete: Cascade)
   providerProfile ProviderProfile? @relation(fields: [providerProfileId], references: [id], onDelete: Cascade)
+  organization    Organization?    @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   variants        MediaVariant[]
 
   @@index([providerProfileId, status, sortOrder])
+  @@index([organizationId, status, sortOrder])
   @@index([status, createdAt])
   @@map("media_asset")
 }

@@ -1,0 +1,121 @@
+// Modul organization: Unternehmensprofil, Nachweise, Standorte und Verknüpfungen mit Anbietern
+// (PRD v1 5.10, FR-VERIFY-003; v2 7.7, 9.4, 12.2; Schritt 1.11). Eine Organisation sieht nie
+// Nachrichten, Ausweisdaten oder private Kalender eines Anbieters (FR-BUSINESS-005).
+enum OrganizationVerificationStatus {
+  SUBMITTED
+  APPROVED
+  CHANGES_REQUESTED
+  REJECTED
+}
+
+// Prüfung der Geschäftsidentität (v1 FR-VERIFY-003). Gespeichert werden Angaben und Entscheid,
+// keine Ausweiskopien. Die Moderation prüft die UID im öffentlichen Handelsregister.
+model OrganizationVerification {
+  id                 String                         @id @default(cuid(2))
+  organizationId     String
+  legalName          String
+  // Schweizer Unternehmens-Identifikationsnummer, Format CHE-123.456.789.
+  uid                String
+  // Die handelnde Person bestätigt ihre Berechtigung (FR-VERIFY-003 «Berechtigung der handelnden Person»).
+  authorityConfirmed Boolean
+  // Regionale Bewilligungen, soweit erforderlich: Angabe in Worten, ohne Dokument.
+  permitNote         String?
+  status             OrganizationVerificationStatus @default(SUBMITTED)
+  reason             String?
+  decidedById        String?
+  submittedAt        DateTime                       @default(now())
+  decidedAt          DateTime?
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId, submittedAt])
+  @@index([status, submittedAt])
+  @@map("organization_verification")
+}
+
+model Location {
+  id             String   @id @default(cuid(2))
+  organizationId String
+  name           String
+  description    String?
+  // Allgemeine, freigegebene Region; nie eine Adresse (v2 16.1).
+  regionId       String?
+  // Allgemeine Ortsangabe wie «Kreis 4».
+  areaLabel      String?
+  phone          String?
+  website        String?
+  sortOrder      Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization        @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  region       Region?             @relation(fields: [regionId], references: [id])
+  hours        OpeningHours[]
+  exceptions   OpeningException[]
+  links        OrganizationLink[]
+
+  @@index([organizationId, sortOrder])
+  @@map("location")
+}
+
+// Öffnungszeiten pro Wochentag; mehrere Fenster pro Tag möglich.
+model OpeningHours {
+  id          String @id @default(cuid(2))
+  locationId  String
+  weekday     Int
+  startMinute Int
+  endMinute   Int
+
+  location Location @relation(fields: [locationId], references: [id], onDelete: Cascade)
+
+  @@index([locationId, weekday])
+  @@map("opening_hours")
+}
+
+// Ausnahme an einem Tag: geschlossen oder andere Zeiten.
+model OpeningException {
+  id          String  @id @default(cuid(2))
+  locationId  String
+  // Kalendertag in der Zeitzone des Standorts (Europe/Zurich), YYYY-MM-DD.
+  day         String
+  closed      Boolean @default(true)
+  startMinute Int?
+  endMinute   Int?
+  note        String?
+
+  location Location @relation(fields: [locationId], references: [id], onDelete: Cascade)
+
+  @@unique([locationId, day])
+  @@map("opening_exception")
+}
+
+enum OrganizationLinkStatus {
+  INVITED
+  ACTIVE
+  DECLINED
+  ENDED
+}
+
+// Verknüpfung Organisation – Anbieterprofil (v1 FR-BUSINESS-003/005). Aktiv erst nach Zustimmung
+// des Anbieters; beide Seiten können sie lösen, das Anbieterkonto bleibt immer bestehen.
+model OrganizationLink {
+  id                String                 @id @default(cuid(2))
+  organizationId    String
+  providerProfileId String
+  locationId        String?
+  status            OrganizationLinkStatus @default(INVITED)
+  invitedById       String
+  message           String?
+  invitedAt         DateTime               @default(now())
+  respondedAt       DateTime?
+  endedAt           DateTime?
+  endedBy           String?
+
+  organization    Organization    @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  providerProfile ProviderProfile @relation(fields: [providerProfileId], references: [id], onDelete: Cascade)
+  location        Location?       @relation(fields: [locationId], references: [id], onDelete: SetNull)
+
+  @@index([organizationId, status])
+  @@index([providerProfileId, status])
+  @@map("organization_link")
+}
