@@ -29,6 +29,8 @@ model RateItem {
   priceChf          Int
   note              String?
   sortOrder         Int      @default(0)
+  // Einzelne Preise ein- und ausblenden (PRD v1 FR-PROFILE-003).
+  hidden            Boolean  @default(false)
   updatedAt         DateTime @updatedAt
 
   providerProfile ProviderProfile @relation(fields: [providerProfileId], references: [id], onDelete: Cascade)

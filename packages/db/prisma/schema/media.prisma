@@ -1,0 +1,75 @@
+// Modul media: Bilder der Anbieter (PRD v1 FR-MEDIA, v2 14.3). Originale liegen im
+// privaten Bucket «originals», Varianten in «derivatives»; ausgeliefert wird über
+// /media/[id]/[variante].
+enum MediaStatus {
+  // Upload-URL vergeben, Datei noch nicht bestätigt.
+  UPLOADING
+  // Datei liegt vor, der Worker prüft und erzeugt Varianten.
+  PROCESSING
+  // Varianten fertig, wartet auf die Moderation (PRD v2 14.3, Schritt 3).
+  IN_REVIEW
+  PUBLISHED
+  CHANGES_REQUESTED
+  BLOCKED
+  // Datei unlesbar oder unzulässig; Grund in failureReason.
+  FAILED
+}
+
+enum MediaVisibility {
+  PUBLIC
+  // Nur für angemeldete, altersbestätigte Mitglieder (PRD v1 FR-MEDIA-004).
+  MEMBERS
+}
+
+model MediaAsset {
+  id                String          @id @default(cuid(2))
+  ownerUserId       String
+  providerProfileId String?
+  status            MediaStatus     @default(UPLOADING)
+  visibility        MediaVisibility @default(PUBLIC)
+  sortOrder         Int             @default(0)
+  isCover           Boolean         @default(false)
+  // Vom Anbieter gepflegter Alternativtext; ohne ihn gilt ein neutraler Text (PRD v2 10.1).
+  altText           String?
+  mimeType          String?
+  sizeBytes         Int?
+  width             Int?
+  height            Int?
+  // Platzhalterfarbe während des Ladens (PRD v2 5.3), zum Beispiel «#7a6a5c».
+  dominantColor     String?
+  // Schlüssel im Bucket «originals»; nach der Verarbeitung bleibt das Original privat.
+  originalKey       String          @unique
+  // Grund als Schlüssel, ohne Dateiinhalt (zum Beispiel «unsupported-type»).
+  failureReason     String?
+  moderationNote    String?
+  // Bestätigung der Rechte und Einwilligungen aller abgebildeten Personen (PRD v1 FR-MEDIA-002).
+  rightsConfirmedAt DateTime
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+  deletedAt         DateTime?
+
+  owner           User             @relation(fields: [ownerUserId], references: [id], onDelete: Cascade)
+  providerProfile ProviderProfile? @relation(fields: [providerProfileId], references: [id], onDelete: Cascade)
+  variants        MediaVariant[]
+
+  @@index([providerProfileId, status, sortOrder])
+  @@index([status, createdAt])
+  @@map("media_asset")
+}
+
+model MediaVariant {
+  id      String @id @default(cuid(2))
+  mediaId String
+  // Formatname aus der festen Liste, zum Beispiel «w640.webp».
+  name    String
+  width   Int
+  height  Int
+  format  String
+  key     String @unique
+  bytes   Int
+
+  media MediaAsset @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+
+  @@unique([mediaId, name])
+  @@map("media_variant")
+}

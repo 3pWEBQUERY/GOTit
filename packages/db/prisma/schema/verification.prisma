@@ -31,6 +31,13 @@ model IdentityCheck {
   @@map("identity_check")
 }
 
+enum ReviewKind {
+  // Erste Einreichung eines Profils.
+  PROFILE
+  // Prüfpflichtige Änderung an einem veröffentlichten Profil (PRD v2 11.2, v1 FR-PROFILE-006).
+  CHANGE
+}
+
 enum ReviewDecision {
   APPROVED
   CHANGES_REQUESTED
@@ -41,6 +48,7 @@ enum ReviewDecision {
 model ProfileReview {
   id                String          @id @default(cuid(2))
   providerProfileId String
+  kind              ReviewKind      @default(PROFILE)
   submittedAt       DateTime        @default(now())
   assignedToId      String?
   decidedAt         DateTime?

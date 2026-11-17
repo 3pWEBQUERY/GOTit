@@ -20,7 +20,9 @@
     "./verification": "./src/verification/index.ts",
     "./onboarding": "./src/onboarding/index.ts",
     "./onboarding/schemas": "./src/onboarding/schemas.ts",
-    "./admin": "./src/admin/index.ts"
+    "./admin": "./src/admin/index.ts",
+    "./media": "./src/media/index.ts",
+    "./media/variants": "./src/media/variants.ts"
   },
   "scripts": {
     "lint": "eslint .",

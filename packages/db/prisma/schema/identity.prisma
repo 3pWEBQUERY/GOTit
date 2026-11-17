@@ -12,6 +12,11 @@ enum ProviderStatus {
   ARCHIVED
 }
 
+enum ProfileAudience {
+  PUBLIC
+  MEMBERS
+}
+
 enum OrganizationKind {
   CLUB
   AGENCY
@@ -40,8 +45,21 @@ model ProviderProfile {
   displayName String
   status      ProviderStatus @default(DRAFT)
   // Inhalte aus dem Onboarding (PRD 11.8) und dem Profil-Editor (PRD 11.2).
+  // Kurzbeschreibung für Karten und Vorschau (PRD v1 FR-PROFILE-001).
+  shortDescription String?
   description String?
   languages   String[]       @default([])
+  // Allgemeine Ortsangabe wie «Kreis 4», nie eine Adresse (PRD v2 9.3, 16.1).
+  locationLabel   String?
+  // Kontaktoptionen (PRD v1 FR-PROFILE-004).
+  allowMessages        Boolean @default(true)
+  allowBookingRequests Boolean @default(true)
+  // Sichtbarkeit: öffentlich oder nur für angemeldete Mitglieder.
+  visibility      ProfileAudience @default(PUBLIC)
+  // Prüfpflichtige Änderungen warten hier, das bisherige Profil bleibt online (PRD v2 11.2).
+  pendingChanges  Json?
+  // Letzte freiwillige Aktualisierung durch den Anbieter (PRD v1 FR-PROFILE-001).
+  contentUpdatedAt DateTime?
   // Erledigte Onboarding-Schritte, zum Beispiel ["identity", "regions"].
   onboardingSteps String[]   @default([])
   submittedAt DateTime?
@@ -55,6 +73,7 @@ model ProviderProfile {
   rates    RateItem[]
   reviews  ProfileReview[]
   statusEvents ProviderStatusEvent[]
+  media        MediaAsset[]
 
   @@index([status])
   @@map("provider_profile")

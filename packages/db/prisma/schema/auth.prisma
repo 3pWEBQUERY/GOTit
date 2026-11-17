@@ -26,6 +26,7 @@ model User {
   identityChecks      IdentityCheck[]
   internalRoles       InternalRoleAssignment[]
   consents            ConsentRecord[]
+  media               MediaAsset[]
   providerProfile     ProviderProfile?
   organizationMembers OrganizationMember[]
 
