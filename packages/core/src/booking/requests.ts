@@ -15,6 +15,7 @@ import {
   type BookingRole,
   type BookingStatus,
 } from "./status";
+import { recordStat } from "../stats/record";
 
 const HOUR = 3600_000;
 const DAY = 24 * HOUR;
@@ -161,6 +162,7 @@ export async function createBookingRequest(
     conversationId: conversation.conversationId,
   });
   await sendBookingMail(profile.userId, "PROVIDER", "booking-new", request.id);
+  await recordStat(profile.id, "BOOKING_REQUEST", {}, now);
   return {
     ok: true,
     requestId: request.id,
@@ -332,6 +334,7 @@ export async function actOnBookingRequest(
     return { ok: true, status: toStatus };
   });
   if (!outcome.ok) return outcome;
+  if (data.action === "accept") await recordStat(request.providerProfileId, "BOOKING_CONFIRMED", {}, now);
   await notifyUsers([viewer.userId, participation.counterpartId], {
     type: "conversation",
     conversationId: request.conversationId,

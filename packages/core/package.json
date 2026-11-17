@@ -41,7 +41,8 @@
     "./review/schemas": "./src/review/schemas.ts",
     "./organization": "./src/organization/index.ts",
     "./organization/schemas": "./src/organization/schemas.ts",
-    "./organization/permissions": "./src/organization/permissions.ts"
+    "./organization/permissions": "./src/organization/permissions.ts",
+    "./stats": "./src/stats/index.ts"
   },
   "scripts": {
     "lint": "eslint .",

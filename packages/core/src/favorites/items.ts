@@ -8,6 +8,7 @@ import {
   moveFavoriteSchema,
   slugSchema,
 } from "./schemas";
+import { recordStat } from "../stats/record";
 
 export type FavoriteResult =
   | { ok: true }
@@ -82,14 +83,23 @@ export async function setFavorite(
   if (!favorite) {
     if (!slugSchema.safeParse(slug).success)
       return { ok: false, reason: "not-found" };
-    await getDb().favorite.deleteMany({
+    const existing = await getDb().favorite.findFirst({
       where: { collectionId, providerProfile: { slug } },
+      select: { id: true, providerProfileId: true },
     });
+    if (existing) {
+      const { count } = await getDb().favorite.deleteMany({ where: { id: existing.id } });
+      // «Favoriten-Zuwachs» (v1 7.2) zählt das Herz, also die Standardsammlung.
+      if (count > 0) await recordStat(existing.providerProfileId, "FAVORITE_REMOVED");
+    }
     return { ok: true };
   }
   const providerProfileId = await reachableProfileId(slug, viewer);
   if (!providerProfileId) return { ok: false, reason: "unavailable" };
-  return addTo(collectionId, providerProfileId);
+  const already = await getDb().favorite.count({ where: { collectionId, providerProfileId } });
+  const result = await addTo(collectionId, providerProfileId);
+  if (result.ok && already === 0) await recordStat(providerProfileId, "FAVORITE_ADDED");
+  return result;
 }
 
 /** In eine eigene Sammlung legen. */

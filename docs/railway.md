@@ -17,6 +17,7 @@ Projekt **GOTit** im Workspace «3pwebquery's Projects», Umgebung `production`,
 | `cron-purge-expired` | GitHub `3pWEBQUERY/GOTit` | `pnpm turbo run build --filter=@app/cron` | `pnpm --filter @app/cron start purge-expired`, täglich 03:17 UTC | – | Nein |
 | `cron-rebuild-search-index` | GitHub `3pWEBQUERY/GOTit` | `pnpm turbo run build --filter=@app/cron` | `pnpm --filter @app/cron start rebuild-search-index`, täglich 02:47 UTC | – | Nein |
 | `cron-booking-maintenance` | GitHub `3pWEBQUERY/GOTit` | `pnpm turbo run build --filter=@app/cron` | `pnpm --filter @app/cron start booking-maintenance`, stündlich zur Minute 7 | – | Nein |
+| `cron-aggregate-stats` | GitHub `3pWEBQUERY/GOTit` | `pnpm turbo run build --filter=@app/cron` | `pnpm --filter @app/cron start aggregate-stats`, täglich 01:23 UTC | – | Nein |
 | `Postgres` | Vorlage (Postgres 18) | – | – | – | Nein |
 | `Redis` | Vorlage (Redis 8) | – | – | – | Nein |
 | Bucket `originals` | – | – | – | – | privat |

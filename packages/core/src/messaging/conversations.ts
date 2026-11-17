@@ -5,6 +5,7 @@ import { isBlockedBetween, participantOf } from "./access";
 import { removeAttachmentObjects } from "./attachment-storage";
 import { notifyUsers } from "./notify";
 import { idSchema, sendMessageSchema } from "./schemas";
+import { recordStat } from "../stats/record";
 
 /** Kann ein Konto dieses Profil gerade erreichen, und darf es eine Unterhaltung beginnen? */
 async function profileContact(providerProfileId: string, viewer: Viewer) {
@@ -114,6 +115,7 @@ export async function startConversation(
       },
       select: { id: true },
     });
+    await recordStat(target.id, "CONTACT_ACTION");
     return { ok: true, conversationId: conversation.id };
   } catch (error) {
     if (

@@ -83,6 +83,8 @@ model ProviderProfile {
   bookingRequests BookingRequest[]
   receivedReviews Review[]
   organizationLinks OrganizationLink[]
+  statEvents        StatEvent[]
+  statDaily         StatDaily[]
 
   @@index([status])
   @@map("provider_profile")
