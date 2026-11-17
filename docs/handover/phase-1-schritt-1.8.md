@@ -97,5 +97,4 @@ Abnahmekriterien von 1.8:
 3. **Online-Status:** Er wird nicht angezeigt; die Einstellung bleibt wirkungslos, bis eine Anzeige gebaut wird.
 4. **E-Mail bei neuen Nachrichten:** Sie kommt mit dem Benachrichtigungsmodul; die Kanalwahl in den Einstellungen gibt es schon.
 5. **Moderationsentscheide** zu Meldungen kommen mit Schritt 1.13.
-6. **Staging-Geheimnisse:** `BETTER_AUTH_SECRET` und `AGE_GATE_SECRET` in Staging sind noch die Werte aus der Produktion und bekommen eigene Werte (Alexander).
-7. **Nutzungsbedingungen von Resend (Gate 16.3):** Sie sind nicht schriftlich gegen diese Branche geprüft (Entscheid 0015).
+6. **Nutzungsbedingungen von Resend (Gate 16.3):** Sie sind nicht schriftlich gegen diese Branche geprüft (Entscheid 0015).

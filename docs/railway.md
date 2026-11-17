@@ -16,6 +16,7 @@ Projekt **GOTit** im Workspace «3pwebquery's Projects», Umgebung `production`,
 | `worker` | GitHub `3pWEBQUERY/GOTit` | `pnpm turbo run build --filter=@app/worker` | `pnpm --filter @app/worker start` | – | Nein |
 | `cron-purge-expired` | GitHub `3pWEBQUERY/GOTit` | `pnpm turbo run build --filter=@app/cron` | `pnpm --filter @app/cron start purge-expired`, täglich 03:17 UTC | – | Nein |
 | `cron-rebuild-search-index` | GitHub `3pWEBQUERY/GOTit` | `pnpm turbo run build --filter=@app/cron` | `pnpm --filter @app/cron start rebuild-search-index`, täglich 02:47 UTC | – | Nein |
+| `cron-booking-maintenance` | GitHub `3pWEBQUERY/GOTit` | `pnpm turbo run build --filter=@app/cron` | `pnpm --filter @app/cron start booking-maintenance`, stündlich zur Minute 7 | – | Nein |
 | `Postgres` | Vorlage (Postgres 18) | – | – | – | Nein |
 | `Redis` | Vorlage (Redis 8) | – | – | – | Nein |
 | Bucket `originals` | – | – | – | – | privat |
@@ -82,7 +83,7 @@ Seit dem 17.11.2026 sind alle fünf Domains bestätigt, die Zertifikate gültig 
     - `IDENTITY_PROVIDER=test` an `web`: Die Identitätsprüfung lässt sich mit `/dev/verifizierung/[ref]` durchspielen.
 
     Beides ist in `production` gesperrt.
-  - **Offen:** Die geteilten `BETTER_AUTH_SECRET` und `AGE_GATE_SECRET` stammen noch aus der Kopie von `production`. Sie bekommen in Staging neue Werte im Dashboard (Shared Variables), damit eine Sitzung aus Staging nie in der Produktion gilt.
+  - **Geheimnisse:** `BETTER_AUTH_SECRET` und `AGE_GATE_SECRET` haben in Staging eigene Werte (17.11.2026); eine Sitzung aus Staging gilt nie in der Produktion.
 - **PR-Umgebungen:** in den Projekteinstellungen einschalten, sobald Pull Requests genutzt werden.
 - Tägliche Backups von Postgres mit getestetem Restore und verschlüsseltem Dump in einen dritten Bucket (PRD 14.2): kommt mit dem `cron`-Dienst in Schritt 1.14.
 - Bucket-Zugangsdaten für `web` und `worker`: kommen mit der Medien-Pipeline in Schritt 1.6.

@@ -12,7 +12,7 @@ export const deepImportPatterns = [
   // Ausnahme: `<modul>/schemas` ist der browsertaugliche Einstieg (nur Zod, kein Servercode),
   // ebenso `search/query` (Suchparameter der URL, rein und ohne Datenbank) und
   // `search/indexer` (schmaler Einstieg für worker und cron, ohne Queue-Abhängigkeiten).
-  { group: ["@app/core/*/**", "!@app/core/*/schemas", "!@app/core/*/variants", "!@app/core/search/query", "!@app/core/search/indexer"], message: "Module von core nur über ihr index.ts importieren (oder `<modul>/schemas`)." },
+  { group: ["@app/core/*/**", "!@app/core/*/schemas", "!@app/core/*/variants", "!@app/core/search/query", "!@app/core/search/indexer", "!@app/core/booking/maintenance"], message: "Module von core nur über ihr index.ts importieren (oder `<modul>/schemas`)." },
   { group: ["@app/ui/*/**", "!@app/ui/tokens/*.css", "!@app/ui/glass/*.css"], message: "UI nur über @app/ui importieren." },
 ];
 

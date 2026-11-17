@@ -1,3 +1,4 @@
+import { bookingMaintenance } from "./tasks/booking-maintenance";
 import { purgeExpired } from "./tasks/purge-expired";
 import { rebuildSearch } from "./tasks/rebuild-search-index";
 
@@ -9,6 +10,7 @@ import { rebuildSearch } from "./tasks/rebuild-search-index";
 export type CronTask = () => Promise<void>;
 
 export const tasks: Readonly<Record<string, CronTask>> = {
+  "booking-maintenance": bookingMaintenance,
   "purge-expired": purgeExpired,
   "rebuild-search-index": rebuildSearch,
 };
