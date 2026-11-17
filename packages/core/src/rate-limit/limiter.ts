@@ -30,6 +30,9 @@ export const RATE_LIMITS = {
   review: { limit: 10, windowSeconds: 3600 },
   // Einladungen einer Organisation an Anbieter, pro Konto (v2 16.2, Schutz vor Massen-Einladungen).
   organizationInvite: { limit: 20, windowSeconds: 3600 },
+  // Öffentliche Formulare ohne Konto, pro Adresse (v2 16.2): Meldung über `/melden`, Anfrage über `/kontakt`.
+  publicReport: { limit: 5, windowSeconds: 3600 },
+  supportTicket: { limit: 5, windowSeconds: 3600 },
 } as const satisfies Record<string, RateLimitRule>;
 
 export type RateLimitName = keyof typeof RATE_LIMITS;

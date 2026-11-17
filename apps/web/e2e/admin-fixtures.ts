@@ -13,7 +13,7 @@ import { secretFromOtpauth, totp } from "./support/totp";
  */
 export const PASSWORD = "nur-fuer-tests-0000";
 
-export type InternalRole = "SUPER_ADMIN" | "PLATFORM_ADMIN" | "MODERATOR" | "TRUST_SAFETY" | "SUPPORT";
+export type InternalRole = "SUPER_ADMIN" | "PLATFORM_ADMIN" | "MODERATOR" | "TRUST_SAFETY" | "SUPPORT" | "FINANCE" | "CONTENT_EDITOR";
 
 export interface FreshAccount {
   id: string;

@@ -37,7 +37,8 @@ export function useOutbox(conversationId: string, onDelivered: () => void) {
           : { ok: false, failure: result.failure },
       ),
     );
-    if (result.ok) onDelivered();
+    // Eingeschränkt: neu laden, damit statt des Composers der Hinweis steht.
+    if (result.ok || result.failure === "restricted") onDelivered();
   }
 
   function send(body: string, images: OutboxImage[]) {

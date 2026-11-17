@@ -76,7 +76,9 @@ export async function loadInbox(options: {
           ? t("list.previewImage")
           : entry.lastKind === "deleted"
             ? t("list.previewDeleted")
-            : t("list.previewNone");
+            : entry.lastKind === "hidden"
+              ? t("list.previewHidden")
+              : t("list.previewNone");
     return entry.lastFromMe && entry.lastKind !== "none"
       ? t("list.previewOwn", { text })
       : text;

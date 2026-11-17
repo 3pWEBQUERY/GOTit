@@ -1,6 +1,7 @@
 import { config } from "dotenv";
 import { getDb } from "../src";
 import { seedTestAccounts } from "./fixtures/test-accounts";
+import { seedContent } from "./reference/content";
 import { seedReference } from "./reference/seed-reference";
 
 config({ path: ["../../.env", ".env"], quiet: true });
@@ -16,6 +17,7 @@ if (
 
 const db = getDb();
 await seedReference(db);
+await seedContent(db);
 if (withFixtures) await seedTestAccounts(db);
 await db.$disconnect();
 process.stdout.write(

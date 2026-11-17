@@ -11,6 +11,7 @@ export type SendFailure =
   | "attachments"
   | "rate-limited"
   | "invalid"
+  | "restricted"
   | "network";
 
 export interface OutboxImage {
@@ -143,7 +144,11 @@ export function newIncoming(
   messages: readonly ClientMessage[],
 ): ClientMessage[] {
   return messages.filter(
-    (message) => !message.fromMe && !message.deleted && !known.has(message.id),
+    (message) =>
+      !message.fromMe &&
+      !message.deleted &&
+      !message.hidden &&
+      !known.has(message.id),
   );
 }
 

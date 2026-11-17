@@ -3,10 +3,19 @@
 import { actOnBookingRequest, createBookingRequest, setProviderNote, type ActResult, type CreateRequestResult } from "@app/core/booking";
 import { consumeRateLimit, rateLimitSubject } from "@app/core/rate-limit";
 import { revalidatePath } from "next/cache";
+import { restrictionFor } from "../../moderation/queries";
 import { getViewer } from "../../shell/queries/get-viewer";
 
-export type BookingActionResult = ActResult | { ok: false; reason: "sign-in" | "rate-limited" };
-export type BookingCreateResult = CreateRequestResult | { ok: false; reason: "sign-in" | "rate-limited" };
+/** Eingeschränkt durch die Moderation: mit Ende als ISO-Text für den Hinweis (null ohne Ende). */
+type RestrictedResult = { ok: false; reason: "restricted"; until: string | null };
+type WithUntil<Result> = Result extends { ok: false } ? Result & { until?: string | null } : Result;
+export type BookingActionResult = WithUntil<ActResult> | { ok: false; reason: "sign-in" | "rate-limited" };
+export type BookingCreateResult = WithUntil<CreateRequestResult> | { ok: false; reason: "sign-in" | "rate-limited" };
+
+async function withUntil<Result extends { ok: boolean; reason?: string }>(userId: string, result: Result): Promise<Result | RestrictedResult> {
+  if (result.ok || result.reason !== "restricted") return result;
+  return { ok: false, reason: "restricted", until: (await restrictionFor(userId, "BOOKING"))?.until ?? null };
+}
 
 /**
  * Gemeinsame Server Actions für Terminanfragen (Schritt 1.9, Entscheid 0016).
@@ -21,7 +30,7 @@ export async function createBookingRequestAction(profileSlug: unknown, input: un
   if (!limit.allowed) return { ok: false, reason: "rate-limited" };
   const result = await createBookingRequest(viewer, profileSlug, input);
   if (result.ok) revalidatePath("/", "layout");
-  return result;
+  return withUntil(viewer.userId, result) as Promise<BookingCreateResult>;
 }
 
 export async function actOnBookingRequestAction(requestId: unknown, input: unknown): Promise<BookingActionResult> {
@@ -32,7 +41,7 @@ export async function actOnBookingRequestAction(requestId: unknown, input: unkno
   if (!limit.allowed) return { ok: false, reason: "rate-limited" };
   const result = await actOnBookingRequest(viewer, requestId, input);
   if (result.ok) revalidatePath("/", "layout");
-  return result;
+  return withUntil(viewer.userId, result) as Promise<BookingActionResult>;
 }
 
 export async function setProviderNoteAction(requestId: unknown, note: unknown): Promise<{ ok: boolean }> {

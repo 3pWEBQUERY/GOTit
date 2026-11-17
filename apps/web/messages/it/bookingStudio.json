@@ -174,7 +174,8 @@
       "notAllowed": "Nello stato attuale non è più possibile. Viene mostrato il nuovo stato.",
       "invalid": "I dati non sono validi. Controlla giorno, ora e durata.",
       "rateLimited": "Troppe azioni in poco tempo. Aspetta un momento e riprova.",
-      "failed": "Non ha funzionato. Non è stato modificato niente; riprova."
+      "failed": "Non ha funzionato. Non è stato modificato niente; riprova.",
+      "restricted": "Il tuo account è limitato per le richieste di appuntamento. Accettare e proporre un altro orario non è possibile; puoi sempre annullare."
     },
     "safetyTitle": "Annullato",
     "safetyText": "Se qualcosa ti ha minacciato o messo a disagio, segnala il membro. La moderazione riceve una copia degli ultimi messaggi.",

@@ -1,0 +1,119 @@
+{
+  "tabs": {
+    "label": "Bereiche des Systems",
+    "flags": "Feature Flags",
+    "roles": "Interne Rollen",
+    "audit": "Audit-Log",
+    "status": "Dienststatus"
+  },
+  "flags": {
+    "title": "Feature Flags",
+    "intro": "Schalten ganze Bereiche ein oder aus, auch nur in einzelnen Regionen. Jede Änderung braucht eine Begründung und steht im Audit-Log.",
+    "keys": {
+      "community": {
+        "name": "Community",
+        "gates": "Phase 3: Beiträge, Stories, Kommentare und der Bereich Community in Navigation und Profilen."
+      },
+      "business-suite": {
+        "name": "Business-Suite",
+        "gates": "Phase 2: Werbung, Abrechnung, Team und Detailstatistik im Studio."
+      }
+    },
+    "on": "Eingeschaltet",
+    "off": "Ausgeschaltet",
+    "allRegions": "In allen Regionen",
+    "disabledIn": "{count, plural, one {In einer Region abgeschaltet} other {In # Regionen abgeschaltet}}",
+    "updated": "geändert {date}",
+    "neverSet": "noch nie gesetzt",
+    "canton": "{name} (Kanton)",
+    "city": "{name} (Stadt)",
+    "enabled": "Eingeschaltet",
+    "enabledHint": "Ohne Häkchen ist der Bereich überall aus.",
+    "disabledRegions": "Abgeschaltet in",
+    "disabledRegionsHint": "Gilt nur, wenn das Flag eingeschaltet ist.",
+    "reason": "Begründung",
+    "reasonHint": "Mindestens 10 Zeichen. Steht im Audit-Log.",
+    "save": "Flag speichern",
+    "saved": "Das Flag ist gespeichert."
+  },
+  "roles": {
+    "title": "Interne Rollen",
+    "intro": "Wer Zugang zum Admin hat. Rollen vergibt nur ein Super Admin, mit Begründung.",
+    "caption": "Konten mit interner Rolle",
+    "twoFactor": "Zweiter Faktor",
+    "twoFactorOn": "Eingerichtet",
+    "twoFactorOff": "Fehlt, kein Zugang",
+    "granted": "Zuletzt vergeben",
+    "edit": "Bearbeiten",
+    "editLink": "Rollen bearbeiten",
+    "editTitle": "Rollen von {name}",
+    "editIntro": "Die Änderung gilt sofort. Ohne zweiten Faktor bleibt der Admin trotz Rolle gesperrt.",
+    "close": "Bearbeitung schliessen",
+    "unknownAccount": "Dieses Konto gibt es nicht.",
+    "emptyTitle": "Keine internen Rollen",
+    "emptyDescription": "Suche unten ein Konto, um ihm eine Rolle zu geben.",
+    "searchTitle": "Konto ohne Rolle suchen",
+    "searchIntro": "Für eine neue Rolle: Konto suchen und dann die Rollen bearbeiten.",
+    "search": "Suche",
+    "searchHint": "Benutzername, E-Mail oder exakte ID.",
+    "searchSubmit": "Konto suchen",
+    "noRole": "keine Rolle",
+    "noResults": "Kein Konto gefunden."
+  },
+  "audit": {
+    "title": "Audit-Log",
+    "intro": "Sicherheitsrelevante Aktionen, neueste zuerst. Das Log enthält keine Inhalte, nur Aktion, Ziel und Begründung.",
+    "filterLabel": "Audit-Log filtern",
+    "person": "Person",
+    "personHint": "Exakte Konto-ID.",
+    "action": "Aktion",
+    "actionHint": "Beginn, zum Beispiel user.roles",
+    "target": "Ziel",
+    "targetHint": "Beginn, zum Beispiel user:",
+    "from": "Von",
+    "to": "Bis",
+    "caption": "Einträge des Audit-Logs",
+    "count": "{count, plural, =0 {Keine Einträge} one {Ein Eintrag} other {# Einträge}}",
+    "columns": {
+      "time": "Zeit",
+      "actor": "Person",
+      "action": "Aktion",
+      "target": "Ziel",
+      "reason": "Begründung"
+    },
+    "system": "System",
+    "emptyTitle": "Noch keine Einträge",
+    "emptyDescription": "Hier stehen Rollenänderungen, Entscheide, Sperren und Zugriffe auf sensible Angaben.",
+    "noMatchTitle": "Keine Treffer",
+    "noMatchDescription": "Kein Eintrag passt zu den Filtern. Ändere sie oder setze sie zurück."
+  },
+  "status": {
+    "title": "Dienststatus",
+    "intro": "Zustand von Datenbank, Redis, Queues und Migrationen. Jede Prüfung wartet höchstens 2 Sekunden.",
+    "checkedAt": "Geprüft {date}",
+    "refresh": "Erneut prüfen",
+    "allOk": "Alle Dienste antworten.",
+    "failures": "{count, plural, one {Ein Dienst antwortet nicht} other {# Dienste antworten nicht}}",
+    "failuresText": "Details stehen in der Tabelle. Die Ursache steht in den Logs von Railway.",
+    "servicesCaption": "Dienste",
+    "queuesCaption": "Queues",
+    "columns": {
+      "service": "Dienst",
+      "state": "Zustand",
+      "detail": "Detail",
+      "queue": "Queue",
+      "waiting": "Wartend",
+      "active": "Aktiv",
+      "delayed": "Verzögert",
+      "failed": "Fehlgeschlagen"
+    },
+    "ok": "Antwortet",
+    "failed": "Fehler",
+    "latency": "{ms} ms",
+    "unreachable": "nicht erreichbar",
+    "migrations": "Migrationen",
+    "migrationsDetail": "{count} angewendet, zuletzt {last}",
+    "noQueues": "Keine Queues definiert.",
+    "logsNote": "Fehler einzelner Anfragen und Jobs stehen in den Logs von Railway; der Admin speichert sie nicht."
+  }
+}

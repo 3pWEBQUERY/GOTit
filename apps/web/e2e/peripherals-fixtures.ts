@@ -82,7 +82,7 @@ export async function blockCount(blockerId: string, blockedId: string): Promise<
 /** Offene Meldung zu einem Mitglied mit Kopie von Nachrichten, wie `reportCounterpart` sie anlegt. */
 export async function createReport(
   track: Tracked,
-  data: { reporterId: string; targetId: string; reason: string; urgent: boolean; minutesAgo: number; details?: string; messages?: string[] },
+  data: { reporterId: string; targetId: string; reason: string; urgent: boolean; minutesAgo: number; details?: string; messages?: string[]; priority?: "CRITICAL" | "HIGH" | "NORMAL" | "LOW" },
 ): Promise<string> {
   const id = `e2e_report_${randomUUID()}`;
   track.reports.push(id);
@@ -91,9 +91,9 @@ export async function createReport(
     messages: (data.messages ?? []).map((body, index) => ({ id: `${id}_m${index}`, body, sentAt: new Date(Date.now() - (index + 1) * 60_000).toISOString() })),
   };
   await query(
-    `insert into report (id, "reporterId", "targetType", "targetId", reason, details, urgent, evidence, "createdAt", "updatedAt")
-     values ($1, $2, 'USER', $3, $4, $5, $6, $7, $8, now())`,
-    [id, data.reporterId, data.targetId, data.reason, data.details ?? null, data.urgent, JSON.stringify(evidence), new Date(Date.now() - data.minutesAgo * 60_000)],
+    `insert into report (id, "reporterId", "targetType", "targetId", reason, details, urgent, priority, evidence, "createdAt", "updatedAt")
+     values ($1, $2, 'USER', $3, $4, $5, $6, $9, $7, $8, now())`,
+    [id, data.reporterId, data.targetId, data.reason, data.details ?? null, data.urgent, JSON.stringify(evidence), new Date(Date.now() - data.minutesAgo * 60_000), data.priority ?? (data.urgent ? "CRITICAL" : "NORMAL")],
   );
   return id;
 }

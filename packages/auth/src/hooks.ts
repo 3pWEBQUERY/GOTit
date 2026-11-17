@@ -1,6 +1,7 @@
 import { reactivateOnSignIn, recordSecurityEvent } from "@app/core/account";
 import type { SecurityEventType } from "@app/db";
-import { createAuthMiddleware } from "better-auth/api";
+import { isRestricted } from "@app/core/moderation";
+import { APIError, createAuthMiddleware } from "better-auth/api";
 
 /** Pfade, deren Erfolg ins Änderungsprotokoll gehört (PRD 7.5). */
 const PATH_EVENTS: Record<string, SecurityEventType> = {
@@ -24,6 +25,12 @@ export const afterHook = createAuthMiddleware(async (ctx) => {
 export const databaseHooks = {
   session: {
     create: {
+      /** Gesperrte Konten melden sich nicht an (v1 9.2); die Sperre beendet bestehende Sitzungen selbst. */
+      before: async (session: { userId: string }) => {
+        if (await isRestricted(session.userId, "SUSPENDED")) {
+          throw new APIError("FORBIDDEN", { message: "Account suspended", code: "ACCOUNT_SUSPENDED" });
+        }
+      },
       /** Jede Anmeldung: protokollieren und eine Deaktivierung oder einen Löschantrag aufheben. */
       after: async (session: { userId: string; userAgent?: string | null }) => {
         if (await reactivateOnSignIn(session.userId)) await recordSecurityEvent(session.userId, "ACCOUNT_REACTIVATED", session.userAgent);

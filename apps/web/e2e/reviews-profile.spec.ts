@@ -342,11 +342,11 @@ test.describe("Bewertungen: Melden", () => {
 
     const moderator = await signInAdmin(page, baseURL, "MODERATOR");
     created.push(moderator.id);
-    await page.goto(`/de/admin/meldungen/${report?.id}`);
+    await page.goto(`/de/admin/moderation/${report?.id}`);
     await expect(
       page.getByRole("heading", {
         level: 1,
-        name: "Meldung zu einer Bewertung",
+        name: /^Fall M-\d{4}-\d{5} · Bewertung · /,
       }),
     ).toBeVisible();
     await expect(

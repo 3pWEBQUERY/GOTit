@@ -22,6 +22,7 @@ function message(
     fromMe: false,
     body: id,
     deleted: false,
+    hidden: false,
     createdAt,
     status: null,
     attachments: [],

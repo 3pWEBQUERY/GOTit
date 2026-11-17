@@ -88,7 +88,8 @@
       "too-far": "Une demande aussi lointaine n’est pas possible. Choisis une heure plus proche.",
       "duplicate": "Une demande à ce profil est déjà ouverte. Tu la trouves sous «Rendez-vous».",
       "rate-limited": "Tu as envoyé beaucoup de demandes en peu de temps. Réessaie dans une heure.",
-      "sign-in": "Ta session a expiré. Reconnecte-toi ; tes saisies sont conservées."
+      "sign-in": "Ta session a expiré. Reconnecte-toi ; tes saisies sont conservées.",
+      "restricted": "Ton compte est restreint pour les demandes de rendez-vous."
     }
   },
   "sent": {
@@ -144,7 +145,8 @@
       "stale": "La demande vient d’être modifiée. Vérifie le nouvel état, puis décide.",
       "sign-in": "Ta session a expiré. Reconnecte-toi.",
       "rate-limited": "Tu as fait beaucoup de modifications en peu de temps. Réessaie dans une heure.",
-      "network": "La connexion est interrompue. Rien n’a été modifié ; réessaie."
+      "network": "La connexion est interrompue. Rien n’a été modifié ; réessaie.",
+      "restricted": "Ton compte est restreint pour les demandes de rendez-vous. Accepter et proposer un autre horaire ne sont pas possibles ; tu peux toujours annuler."
     }
   },
   "confirm": {

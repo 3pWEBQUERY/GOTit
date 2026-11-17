@@ -88,7 +88,8 @@
       "too-far": "Requests this far ahead are not possible. Choose an earlier time.",
       "duplicate": "A request to this profile is already open. You find it under «Appointments».",
       "rate-limited": "You sent many requests in a short time. Try again in an hour.",
-      "sign-in": "Your session has expired. Sign in again; your entries are kept."
+      "sign-in": "Your session has expired. Sign in again; your entries are kept.",
+      "restricted": "Your account is restricted from appointment requests."
     }
   },
   "sent": {
@@ -144,7 +145,8 @@
       "stale": "The request was just changed. Check the new state, then decide.",
       "sign-in": "Your session has expired. Sign in again.",
       "rate-limited": "You made a lot of changes in a short time. Try again in an hour.",
-      "network": "The connection is interrupted. Nothing was changed; try again."
+      "network": "The connection is interrupted. Nothing was changed; try again.",
+      "restricted": "Your account is restricted from appointment requests. You cannot accept or propose another time; you can still cancel."
     }
   },
   "confirm": {

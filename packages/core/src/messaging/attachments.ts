@@ -178,10 +178,10 @@ export async function attachmentDownloadUrl(
       ownerUserId: true,
       messageId: true,
       processedKey: true,
-      message: { select: { deletedAt: true } },
+      message: { select: { deletedAt: true, hiddenAt: true } },
     },
   });
-  if (!attachment?.processedKey || attachment.message?.deletedAt) return null;
+  if (!attachment?.processedKey || attachment.message?.deletedAt || attachment.message?.hiddenAt) return null;
   if (!attachment.messageId && attachment.ownerUserId !== userId) return null;
   if (!(await participantOf(userId, attachment.conversationId))) return null;
   return getStorage().presignDownload({

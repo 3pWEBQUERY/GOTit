@@ -17,6 +17,13 @@ model Region {
   approved     Boolean    @default(false)
   // Reihenfolge im Mega-Menü; null = nicht hervorgehoben.
   featuredRank Int?
+  // Freigaberegeln (v1 9.5): rechtliche Einordnung, nötige Bewilligungen, lokale Einschränkungen.
+  // Eine Region wird erst aktiviert, wenn jemand die Prüfung dokumentiert hat (legalCheckedAt).
+  legalNote           String?
+  requiredPermits     String?
+  contentRestrictions String?
+  legalCheckedAt      DateTime?
+  legalCheckedById    String?
   // Ortsmittelpunkt (Stadtzentrum oder Kantonshauptort) für den Umkreis der Suche.
   // Nie eine Adresse (PRD v2 9.2, v1 FR-SEARCH-006).
   latitude     Float?

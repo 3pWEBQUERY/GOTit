@@ -41,7 +41,9 @@ export async function sendMessageAction(
         ? "undeliverable"
         : result.reason === "attachments"
           ? "attachments"
-          : "invalid",
+          : result.reason === "restricted"
+            ? "restricted"
+            : "invalid",
   };
 }
 

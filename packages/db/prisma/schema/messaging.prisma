@@ -57,6 +57,9 @@ model Message {
   clientId       String
   createdAt      DateTime  @default(now())
   deletedAt      DateTime?
+  // Von der Moderation ausgeblendet (v2 12.4): für beide Seiten nicht mehr sichtbar, der Text bleibt für den Fall.
+  hiddenAt       DateTime?
+  hiddenById     String?
 
   conversation Conversation        @relation(fields: [conversationId], references: [id], onDelete: Cascade)
   sender       User                @relation(fields: [senderId], references: [id], onDelete: Cascade)

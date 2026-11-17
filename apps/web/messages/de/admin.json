@@ -5,8 +5,8 @@
     "case": "Admin · Prüffall",
     "mediaQueue": "Admin · Medien",
     "mediaCase": "Admin · Medium",
-    "reportQueue": "Admin · Meldungen",
-    "reportCase": "Admin · Meldung",
+    "reportQueue": "Admin · Moderation",
+    "reportCase": "Admin · Moderationsfall",
     "reviewQueue": "Admin · Bewertungen",
     "reviewCase": "Admin · Bewertung"
   },
@@ -23,8 +23,8 @@
     "breadcrumbs": "Pfad",
     "media": "Medien",
     "openMediaCount": "{count, plural, one {# Medium in Prüfung} other {# Medien in Prüfung}}",
-    "reports": "Meldungen",
-    "openReportCount": "{count, plural, one {# offene Meldung} other {# offene Meldungen}}",
+    "reports": "Moderation",
+    "openReportCount": "{count, plural, one {# offener Fall in der Moderation} other {# offene Fälle in der Moderation}}",
     "reviews": "Bewertungen",
     "openReviewCount": "{count, plural, one {# offener Fall} other {# offene Fälle}}",
     "organizations": "Organisationen",
@@ -313,28 +313,6 @@
     "organizationOwner": "{name} (Organisation)"
   },
   "reports": {
-    "title": "Meldungen",
-    "intro": "Gemeldete Nachrichten und Konten aus dem Messenger. Dringende Meldungen stehen zuoberst, darin die älteste zuerst.",
-    "restricted": "Meldungen enthalten private Nachrichten. Sie sind für Moderation und Trust & Safety; Support hat keinen Zugriff.",
-    "caption": "Offene Meldungen",
-    "count": "{count, plural, =0 {Keine offenen Meldungen} one {# offene Meldung} other {# offene Meldungen}}",
-    "urgentCount": "{count, plural, one {# dringend} other {# dringend}}",
-    "next": "Nächste Meldung öffnen",
-    "shortcutAfter": "öffnet die dringendste, älteste Meldung.",
-    "urgent": "Dringend",
-    "normal": "Normal",
-    "readOnly": "Bis Schritt 1.13 ist dieser Bereich nur lesend. Zuständigkeit, Entscheid und Einspruch kommen mit der Moderation.",
-    "columns": {
-      "priority": "Priorität",
-      "reason": "Grund",
-      "target": "Gemeldet",
-      "submitted": "Eingegangen am",
-      "age": "Alter"
-    },
-    "empty": {
-      "title": "Keine offenen Meldungen",
-      "description": "Meldet jemand eine Nachricht oder ein Gegenüber, erscheint die Meldung hier."
-    },
     "reasons": {
       "spam": "Spam",
       "harassment": "Belästigung",
@@ -344,37 +322,6 @@
       "exploitation": "Ausbeutung oder Zwang",
       "danger": "Akute Gefahr",
       "other": "Sonstiges"
-    },
-    "targetType": {
-      "MESSAGE": "Nachricht",
-      "USER": "Mitglied",
-      "PROFILE": "Anbieterprofil",
-      "MEDIA": "Medium",
-      "REVIEW": "Bewertung"
-    },
-    "caseTitle": {
-      "MESSAGE": "Meldung zu einer Nachricht",
-      "USER": "Meldung zu einem Mitglied",
-      "PROFILE": "Meldung zu einem Anbieterprofil",
-      "MEDIA": "Meldung zu einem Medium",
-      "REVIEW": "Meldung zu einer Bewertung"
-    },
-    "meta": "Eingegangen am {submitted} · {age} · Stand: {state}",
-    "status": {
-      "OPEN": "Offen",
-      "IN_REVIEW": "In Prüfung",
-      "RESOLVED": "Erledigt",
-      "DISMISSED": "Abgewiesen"
-    },
-    "memberFallback": "Mitglied",
-    "gone": "Nicht mehr vorhanden",
-    "facts": {
-      "title": "Angaben",
-      "reason": "Grund",
-      "details": "Text der Meldung",
-      "noDetails": "Kein Text angegeben",
-      "target": "Gemeldet",
-      "reporter": "Gemeldet von"
     },
     "evidence": {
       "title": "Gemeldete Nachrichten (Kopie)",
@@ -387,12 +334,6 @@
       "noText": "Kein Text (gelöscht oder nur ein Bild)",
       "audited": "Das Aufdecken ist im Audit-Log vermerkt.",
       "hide": "Wieder verdecken"
-    },
-    "decision": {
-      "title": "Entscheid",
-      "laterTitle": "Entscheide folgen mit Schritt 1.13",
-      "laterText": "Die Meldung bleibt offen. Freigeben, Entfernen und Einschränken kommen mit der Moderation, dann mit Begründung, Regel und Einspruch."
-    },
-    "openReview": "Bewertung öffnen"
+    }
   }
 }

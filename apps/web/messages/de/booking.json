@@ -88,7 +88,8 @@
       "too-far": "So weit im Voraus ist keine Anfrage möglich. Wähl eine frühere Zeit.",
       "duplicate": "Mit diesem Profil ist schon eine Anfrage offen. Du findest sie unter «Termine».",
       "rate-limited": "Du hast in kurzer Zeit viele Anfragen gesendet. Versuch es in einer Stunde wieder.",
-      "sign-in": "Deine Anmeldung ist abgelaufen. Melde dich neu an; deine Eingaben bleiben erhalten."
+      "sign-in": "Deine Anmeldung ist abgelaufen. Melde dich neu an; deine Eingaben bleiben erhalten.",
+      "restricted": "Dein Konto ist für Terminanfragen eingeschränkt."
     }
   },
   "sent": {
@@ -144,7 +145,8 @@
       "stale": "Die Anfrage wurde gerade geändert. Prüf den neuen Stand und entscheide dann.",
       "sign-in": "Deine Anmeldung ist abgelaufen. Melde dich neu an.",
       "rate-limited": "Du hast in kurzer Zeit sehr viele Änderungen gemacht. Versuch es in einer Stunde wieder.",
-      "network": "Die Verbindung ist unterbrochen. Nichts wurde geändert; versuch es erneut."
+      "network": "Die Verbindung ist unterbrochen. Nichts wurde geändert; versuch es erneut.",
+      "restricted": "Dein Konto ist für Terminanfragen eingeschränkt. Annehmen und Gegenvorschläge gehen nicht; absagen kannst du weiterhin."
     }
   },
   "confirm": {

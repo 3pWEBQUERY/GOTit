@@ -1,0 +1,224 @@
+{
+  "noUsername": "Sans nom d’utilisateur",
+  "list": {
+    "title": "Utilisateurs",
+    "intro": "Rechercher et consulter des comptes. Restreindre et bloquer se fait dans la vue détaillée.",
+    "filterLabel": "Filtrer les utilisateurs",
+    "search": "Recherche",
+    "searchHint": "Nom d’utilisateur, e-mail, nom affiché, slug ou ID exact.",
+    "filter": "Afficher",
+    "caption": "Comptes, les plus récents d’abord",
+    "count": "{count, plural, =0 {Aucun compte} one {Un compte} other {# comptes}}",
+    "countMore": "{count, plural, one {Un compte de plus} other {# comptes de plus}}",
+    "emptyTitle": "Pas encore de comptes",
+    "emptyDescription": "Les comptes apparaissent ici dès que quelqu’un s’inscrit.",
+    "noMatchTitle": "Aucun résultat",
+    "noMatchDescription": "Aucun compte ne correspond à la recherche et au filtre. Modifie la recherche ou réinitialise le filtre."
+  },
+  "filters": {
+    "all": "Tous les comptes",
+    "restricted": "Restreints",
+    "suspended": "Bloqués",
+    "internal": "Avec rôle interne",
+    "providers": "Prestataires"
+  },
+  "columns": {
+    "user": "Utilisateur",
+    "email": "E-mail",
+    "type": "Type de compte",
+    "roles": "Rôles internes",
+    "status": "Statut",
+    "created": "Créé"
+  },
+  "accountTypes": {
+    "MEMBER": "Membre",
+    "PROVIDER": "Prestataire",
+    "ORGANIZATION": "Organisation"
+  },
+  "status": {
+    "active": "Actif",
+    "deactivated": "Désactivé"
+  },
+  "kinds": {
+    "MESSAGING": "Messages restreints",
+    "BOOKING": "Rendez-vous restreints",
+    "SUSPENDED": "Bloqué"
+  },
+  "kindHints": {
+    "MESSAGING": "Pas de messages ni de nouvelles conversations.",
+    "BOOKING": "Pas de demandes de rendez-vous, pas d’acceptation ni de contre-proposition. Annuler reste possible."
+  },
+  "roles": {
+    "SUPER_ADMIN": "Super Admin",
+    "PLATFORM_ADMIN": "Administration de la plateforme",
+    "MODERATOR": "Modération",
+    "TRUST_SAFETY": "Trust & Safety",
+    "SUPPORT": "Support",
+    "FINANCE": "Finances",
+    "CONTENT_EDITOR": "Rédaction"
+  },
+  "providerStatus": {
+    "DRAFT": "Brouillon",
+    "SUBMITTED": "Soumis",
+    "CHANGES_REQUESTED": "À corriger",
+    "PUBLISHED": "Publié",
+    "PAUSED": "En pause",
+    "RESTRICTED": "Restreint",
+    "SUSPENDED": "Bloqué",
+    "ARCHIVED": "Archivé"
+  },
+  "orgRoles": {
+    "OWNER": "Titulaire",
+    "LOCATION_MANAGER": "Responsable de site",
+    "MARKETING": "Marketing",
+    "EDITOR": "Rédaction",
+    "SCHEDULING": "Rendez-vous"
+  },
+  "orgStatus": {
+    "DRAFT": "Brouillon",
+    "SUBMITTED": "Soumise",
+    "PUBLISHED": "Publiée",
+    "SUSPENDED": "Bloquée",
+    "ARCHIVED": "Archivée"
+  },
+  "identity": {
+    "PENDING": "En cours",
+    "APPROVED": "Réussie",
+    "REJECTED": "Refusée",
+    "EXPIRED": "Expirée",
+    "CANCELLED": "Interrompue"
+  },
+  "appeal": {
+    "OPEN": "Recours ouvert",
+    "UPHELD": "Admis",
+    "DISMISSED": "Rejeté"
+  },
+  "security": {
+    "SIGN_IN": "Connexion",
+    "SIGN_OUT": "Déconnexion",
+    "PASSWORD_CHANGED": "Mot de passe modifié",
+    "PASSWORD_RESET": "Mot de passe réinitialisé",
+    "EMAIL_VERIFIED": "Adresse e-mail confirmée",
+    "TWO_FACTOR_ENABLED": "Deuxième facteur configuré",
+    "TWO_FACTOR_DISABLED": "Deuxième facteur désactivé",
+    "PASSKEY_ADDED": "Passkey ajoutée",
+    "PASSKEY_REMOVED": "Passkey supprimée",
+    "SESSION_REVOKED": "Session terminée",
+    "PROFILE_CHANGED": "Compte modifié",
+    "DATA_EXPORTED": "Données exportées"
+  },
+  "detail": {
+    "account": "Compte",
+    "twoFactor": "Deuxième facteur",
+    "twoFactorOn": "Configuré",
+    "twoFactorOff": "Non configuré",
+    "deletionRequested": "Suppression demandée",
+    "reports": "Signalements",
+    "reportCount": "{count, plural, =0 {Aucun signalement contre le compte} one {Un signalement contre le compte ou son profil} other {# signalements contre le compte ou son profil}}",
+    "id": "ID du compte",
+    "suspendedTitle": "Ce compte est bloqué",
+    "suspendedText": "La connexion est bloquée et le profil de prestataire n’est pas public jusqu’à la fin du blocage ou sa levée.",
+    "identity": "Vérification d’identité",
+    "identityIntro": "Uniquement le statut et les dates de la dernière vérification ; la plateforme n’enregistre aucun document.",
+    "identityStatus": "Statut",
+    "identityChecked": "Vérifiée le",
+    "identityExpires": "Valable jusqu’au",
+    "identityNone": "Aucune vérification d’identité.",
+    "roles": "Rôles internes",
+    "noRoles": "Aucun rôle interne.",
+    "rolesOnlySuper": "Seul un Super Admin attribue les rôles.",
+    "profile": "Profil et organisations",
+    "openProfile": "Ouvrir le profil public",
+    "inProviders": "Afficher dans la liste des prestataires",
+    "noProfile": "Pas de profil de prestataire.",
+    "noOrganizations": "Dans aucune organisation.",
+    "restrictions": "Restrictions et blocages",
+    "restrictionsIntro": "Toutes les mesures contre le compte, les plus récentes d’abord, avec règle et motif.",
+    "noRestrictions": "Aucune mesure n’a encore été prise contre ce compte.",
+    "openAppeals": "{count, plural, one {Un recours ouvert} other {# recours ouverts}}",
+    "toAppeals": "Vers les recours",
+    "security": "Événements de sécurité",
+    "securityIntro": "Les dix derniers événements du compte, sans adresses ni appareils.",
+    "noSecurity": "Aucun événement."
+  },
+  "history": {
+    "kind": "Type",
+    "rule": "Règle",
+    "reason": "Motif",
+    "period": "Période",
+    "status": "État",
+    "appeal": "Recours",
+    "active": "En vigueur",
+    "lifted": "Levée le {date}",
+    "expired": "Expirée",
+    "fromUntil": "{from} au {until}",
+    "fromOpen": "Dès le {from}, sans fin"
+  },
+  "lift": {
+    "title": "Lever : {kind}",
+    "reason": "Motif",
+    "reasonHint": "Au moins 10 caractères. Figure dans le journal d’audit.",
+    "submit": "Lever la mesure",
+    "saved": "La mesure est levée."
+  },
+  "measures": {
+    "title": "Mesures",
+    "restrictTitle": "Restreindre",
+    "restrictIntro": "Le compte reste utilisable, mais perd les messages ou les rendez-vous.",
+    "kind": "Que faut-il restreindre ?",
+    "rule": "Règle",
+    "ruleHint": "Sur quelle règle repose la mesure ?",
+    "reason": "Motif",
+    "reasonHint": "Au moins 10 caractères. La personne concernée le voit dans ses paramètres.",
+    "until": "Fin",
+    "untilHint": "Sans fin, la mesure s’applique jusqu’à ce que quelqu’un la lève. Elle se termine à 23:59, heure de Zurich.",
+    "restrictSubmit": "Restreindre le compte",
+    "restricted": "Le compte est restreint.",
+    "suspendTitle": "Bloquer",
+    "suspendIntro": "Termine toutes les sessions, bloque la connexion et retire le profil de prestataire de la vue publique.",
+    "suspendSubmit": "Bloquer le compte",
+    "suspended": "Le compte est bloqué. Toutes les sessions sont terminées.",
+    "confirmTitle": "Bloquer {name} ?",
+    "confirmText": "Toutes les sessions se terminent immédiatement, la connexion est bloquée et le profil de prestataire n’est plus public. Un recours est possible via le formulaire de contact. La levée rétablit le profil.",
+    "confirmSubmit": "Bloquer le compte"
+  },
+  "rolesForm": {
+    "roles": "Rôles internes",
+    "rolesHint": "Sans coche, le compte n’a aucun rôle interne ni accès à l’admin.",
+    "reason": "Motif",
+    "reasonHint": "Au moins 10 caractères. Figure avec les rôles avant et après dans le journal d’audit.",
+    "submit": "Enregistrer les rôles",
+    "saved": "Les rôles sont enregistrés."
+  },
+  "providers": {
+    "title": "Prestataires",
+    "intro": "Tous les profils de prestataires avec statut, dernière vérification et régions. La vérification se fait dans Vérifications.",
+    "filterLabel": "Filtrer les prestataires",
+    "search": "Recherche",
+    "searchHint": "Nom affiché, slug, nom d’utilisateur ou ID exact.",
+    "status": "Statut",
+    "allStatuses": "Tous les statuts",
+    "caption": "Profils de prestataires, les plus récents d’abord",
+    "count": "{count, plural, =0 {Aucun profil} one {Un profil} other {# profils}}",
+    "columns": {
+      "name": "Nom affiché",
+      "status": "Statut",
+      "review": "Vérification",
+      "regions": "Régions",
+      "created": "Créé",
+      "profile": "Public"
+    },
+    "review": {
+      "none": "Jamais soumis",
+      "open": "Ouverte",
+      "APPROVED": "Validé",
+      "CHANGES_REQUESTED": "À corriger",
+      "REJECTED": "Refusé"
+    },
+    "openProfile": "Ouvrir le profil",
+    "emptyTitle": "Pas encore de profils de prestataires",
+    "emptyDescription": "Les profils apparaissent ici dès que des prestataires commencent l’onboarding.",
+    "noMatchTitle": "Aucun résultat",
+    "noMatchDescription": "Aucun profil ne correspond à la recherche et au statut. Modifie la recherche ou réinitialise le filtre."
+  }
+}

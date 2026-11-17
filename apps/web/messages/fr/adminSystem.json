@@ -1,0 +1,119 @@
+{
+  "tabs": {
+    "label": "Espaces du système",
+    "flags": "Feature flags",
+    "roles": "Rôles internes",
+    "audit": "Journal d’audit",
+    "status": "État des services"
+  },
+  "flags": {
+    "title": "Feature flags",
+    "intro": "Activent ou désactivent des espaces entiers, aussi dans certaines régions seulement. Chaque modification demande un motif et figure dans le journal d’audit.",
+    "keys": {
+      "community": {
+        "name": "Communauté",
+        "gates": "Phase 3 : publications, stories, commentaires et l’espace Communauté dans la navigation et les profils."
+      },
+      "business-suite": {
+        "name": "Business-Suite",
+        "gates": "Phase 2 : publicité, facturation, équipe et statistiques détaillées dans le studio."
+      }
+    },
+    "on": "Activé",
+    "off": "Désactivé",
+    "allRegions": "Dans toutes les régions",
+    "disabledIn": "{count, plural, one {Désactivé dans une région} other {Désactivé dans # régions}}",
+    "updated": "modifié le {date}",
+    "neverSet": "jamais défini",
+    "canton": "{name} (canton)",
+    "city": "{name} (ville)",
+    "enabled": "Activé",
+    "enabledHint": "Sans coche, l’espace est désactivé partout.",
+    "disabledRegions": "Désactivé dans",
+    "disabledRegionsHint": "S’applique seulement si le flag est activé.",
+    "reason": "Motif",
+    "reasonHint": "Au moins 10 caractères. Figure dans le journal d’audit.",
+    "save": "Enregistrer le flag",
+    "saved": "Le flag est enregistré."
+  },
+  "roles": {
+    "title": "Rôles internes",
+    "intro": "Qui a accès à l’admin. Seul un Super Admin attribue les rôles, avec un motif.",
+    "caption": "Comptes avec rôle interne",
+    "twoFactor": "Deuxième facteur",
+    "twoFactorOn": "Configuré",
+    "twoFactorOff": "Manque, pas d’accès",
+    "granted": "Dernière attribution",
+    "edit": "Modifier",
+    "editLink": "Modifier les rôles",
+    "editTitle": "Rôles de {name}",
+    "editIntro": "La modification s’applique immédiatement. Sans deuxième facteur, l’admin reste bloqué malgré le rôle.",
+    "close": "Fermer la modification",
+    "unknownAccount": "Ce compte n’existe pas.",
+    "emptyTitle": "Aucun rôle interne",
+    "emptyDescription": "Cherche un compte ci-dessous pour lui donner un rôle.",
+    "searchTitle": "Chercher un compte sans rôle",
+    "searchIntro": "Pour un nouveau rôle : chercher le compte, puis modifier les rôles.",
+    "search": "Recherche",
+    "searchHint": "Nom d’utilisateur, e-mail ou ID exact.",
+    "searchSubmit": "Chercher le compte",
+    "noRole": "aucun rôle",
+    "noResults": "Aucun compte trouvé."
+  },
+  "audit": {
+    "title": "Journal d’audit",
+    "intro": "Actions importantes pour la sécurité, les plus récentes d’abord. Le journal ne contient aucun contenu, seulement action, cible et motif.",
+    "filterLabel": "Filtrer le journal d’audit",
+    "person": "Personne",
+    "personHint": "ID de compte exact.",
+    "action": "Action",
+    "actionHint": "Début, par exemple user.roles",
+    "target": "Cible",
+    "targetHint": "Début, par exemple user:",
+    "from": "Du",
+    "to": "Au",
+    "caption": "Entrées du journal d’audit",
+    "count": "{count, plural, =0 {Aucune entrée} one {Une entrée} other {# entrées}}",
+    "columns": {
+      "time": "Heure",
+      "actor": "Personne",
+      "action": "Action",
+      "target": "Cible",
+      "reason": "Motif"
+    },
+    "system": "Système",
+    "emptyTitle": "Pas encore d’entrées",
+    "emptyDescription": "Ici figurent les changements de rôle, les décisions, les blocages et les accès à des données sensibles.",
+    "noMatchTitle": "Aucun résultat",
+    "noMatchDescription": "Aucune entrée ne correspond aux filtres. Modifie-les ou réinitialise-les."
+  },
+  "status": {
+    "title": "État des services",
+    "intro": "État de la base de données, de Redis, des files et des migrations. Chaque contrôle attend au plus 2 secondes.",
+    "checkedAt": "Contrôlé le {date}",
+    "refresh": "Contrôler à nouveau",
+    "allOk": "Tous les services répondent.",
+    "failures": "{count, plural, one {Un service ne répond pas} other {# services ne répondent pas}}",
+    "failuresText": "Les détails figurent dans le tableau. La cause est dans les logs de Railway.",
+    "servicesCaption": "Services",
+    "queuesCaption": "Files",
+    "columns": {
+      "service": "Service",
+      "state": "État",
+      "detail": "Détail",
+      "queue": "File",
+      "waiting": "En attente",
+      "active": "Actifs",
+      "delayed": "Différés",
+      "failed": "Échoués"
+    },
+    "ok": "Répond",
+    "failed": "Erreur",
+    "latency": "{ms} ms",
+    "unreachable": "injoignable",
+    "migrations": "Migrations",
+    "migrationsDetail": "{count} appliquées, dernière {last}",
+    "noQueues": "Aucune file définie.",
+    "logsNote": "Les erreurs de requêtes et de jobs individuels figurent dans les logs de Railway ; l’admin ne les enregistre pas."
+  }
+}

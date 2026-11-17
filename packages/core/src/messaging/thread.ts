@@ -15,6 +15,8 @@ export interface ThreadMessageView {
   clientId: string | null;
   body: string | null;
   deleted: boolean;
+  /** Von der Moderation ausgeblendet; ohne Text und Bilder. */
+  hidden: boolean;
   createdAt: Date;
   status: "sent" | "read" | null;
   attachments: { id: string; width: number | null; height: number | null }[];
@@ -97,6 +99,7 @@ export async function getThread(
         clientId: true,
         body: true,
         deletedAt: true,
+        hiddenAt: true,
         createdAt: true,
         attachments: {
           where: { status: "READY" },
@@ -142,15 +145,18 @@ export async function getThread(
         receipts &&
         other.lastReadAt !== null &&
         other.lastReadAt >= message.createdAt;
+      // Von der Moderation ausgeblendet: für beide Seiten ohne Text und Bilder (v1 20.6).
+      const gone = message.deletedAt !== null || message.hiddenAt !== null;
       return {
         id: message.id,
         fromMe,
         clientId: fromMe ? message.clientId : null,
-        body: message.deletedAt ? null : message.body,
+        body: gone ? null : message.body,
         deleted: message.deletedAt !== null,
+        hidden: message.deletedAt === null && message.hiddenAt !== null,
         createdAt: message.createdAt,
-        status: fromMe && !message.deletedAt ? (read ? "read" : "sent") : null,
-        attachments: message.deletedAt ? [] : message.attachments,
+        status: fromMe && !gone ? (read ? "read" : "sent") : null,
+        attachments: gone ? [] : message.attachments,
       };
     }),
     hasOlder: rows.length > THREAD_PAGE_SIZE,

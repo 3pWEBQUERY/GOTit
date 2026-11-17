@@ -46,6 +46,7 @@ export function useThreadMessages(thread: ClientThread) {
           ? {
               ...message,
               deleted: true,
+              hidden: false,
               body: null,
               attachments: [],
               status: null,

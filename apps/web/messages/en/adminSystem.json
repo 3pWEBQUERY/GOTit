@@ -1,0 +1,119 @@
+{
+  "tabs": {
+    "label": "System areas",
+    "flags": "Feature flags",
+    "roles": "Internal roles",
+    "audit": "Audit log",
+    "status": "Service status"
+  },
+  "flags": {
+    "title": "Feature flags",
+    "intro": "Switch whole areas on or off, also in single regions only. Every change needs a reason and goes into the audit log.",
+    "keys": {
+      "community": {
+        "name": "Community",
+        "gates": "Phase 3: posts, stories, comments and the Community area in navigation and profiles."
+      },
+      "business-suite": {
+        "name": "Business Suite",
+        "gates": "Phase 2: advertising, billing, team and detailed statistics in the studio."
+      }
+    },
+    "on": "On",
+    "off": "Off",
+    "allRegions": "In all regions",
+    "disabledIn": "{count, plural, one {Turned off in one region} other {Turned off in # regions}}",
+    "updated": "changed {date}",
+    "neverSet": "never set",
+    "canton": "{name} (canton)",
+    "city": "{name} (city)",
+    "enabled": "On",
+    "enabledHint": "Without a tick the area is off everywhere.",
+    "disabledRegions": "Turned off in",
+    "disabledRegionsHint": "Only applies while the flag is on.",
+    "reason": "Reason",
+    "reasonHint": "At least 10 characters. Goes into the audit log.",
+    "save": "Save flag",
+    "saved": "The flag is saved."
+  },
+  "roles": {
+    "title": "Internal roles",
+    "intro": "Who has access to the admin. Only a super admin assigns roles, with a reason.",
+    "caption": "Accounts with an internal role",
+    "twoFactor": "Second factor",
+    "twoFactorOn": "Set up",
+    "twoFactorOff": "Missing, no access",
+    "granted": "Last granted",
+    "edit": "Edit",
+    "editLink": "Edit roles",
+    "editTitle": "Roles of {name}",
+    "editIntro": "The change applies at once. Without a second factor the admin stays locked despite the role.",
+    "close": "Close editing",
+    "unknownAccount": "This account does not exist.",
+    "emptyTitle": "No internal roles",
+    "emptyDescription": "Search for an account below to give it a role.",
+    "searchTitle": "Find an account without a role",
+    "searchIntro": "For a new role: find the account, then edit its roles.",
+    "search": "Search",
+    "searchHint": "Username, email or exact ID.",
+    "searchSubmit": "Find account",
+    "noRole": "no role",
+    "noResults": "No account found."
+  },
+  "audit": {
+    "title": "Audit log",
+    "intro": "Security-relevant actions, newest first. The log contains no content, only action, target and reason.",
+    "filterLabel": "Filter audit log",
+    "person": "Person",
+    "personHint": "Exact account ID.",
+    "action": "Action",
+    "actionHint": "Beginning, for example user.roles",
+    "target": "Target",
+    "targetHint": "Beginning, for example user:",
+    "from": "From",
+    "to": "To",
+    "caption": "Audit log entries",
+    "count": "{count, plural, =0 {No entries} one {One entry} other {# entries}}",
+    "columns": {
+      "time": "Time",
+      "actor": "Person",
+      "action": "Action",
+      "target": "Target",
+      "reason": "Reason"
+    },
+    "system": "System",
+    "emptyTitle": "No entries yet",
+    "emptyDescription": "Role changes, decisions, suspensions and access to sensitive data appear here.",
+    "noMatchTitle": "No results",
+    "noMatchDescription": "No entry matches the filters. Change or reset them."
+  },
+  "status": {
+    "title": "Service status",
+    "intro": "State of database, Redis, queues and migrations. Each check waits at most 2 seconds.",
+    "checkedAt": "Checked {date}",
+    "refresh": "Check again",
+    "allOk": "All services respond.",
+    "failures": "{count, plural, one {One service does not respond} other {# services do not respond}}",
+    "failuresText": "Details are in the table. The cause is in the Railway logs.",
+    "servicesCaption": "Services",
+    "queuesCaption": "Queues",
+    "columns": {
+      "service": "Service",
+      "state": "State",
+      "detail": "Detail",
+      "queue": "Queue",
+      "waiting": "Waiting",
+      "active": "Active",
+      "delayed": "Delayed",
+      "failed": "Failed"
+    },
+    "ok": "Responds",
+    "failed": "Error",
+    "latency": "{ms} ms",
+    "unreachable": "unreachable",
+    "migrations": "Migrations",
+    "migrationsDetail": "{count} applied, latest {last}",
+    "noQueues": "No queues defined.",
+    "logsNote": "Errors of single requests and jobs are in the Railway logs; the admin does not store them."
+  }
+}

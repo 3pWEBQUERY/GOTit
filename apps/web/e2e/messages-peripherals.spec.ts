@@ -150,7 +150,7 @@ test.describe("Ungelesen auf /ich und als Zahl in der Shell", () => {
   });
 });
 
-test.describe("Meldungen im Admin (v1 20.4, v2 12.4)", () => {
+test.describe("Meldungen in der Moderation (v1 20.4, v2 12.4)", () => {
   test("Moderation sieht dringende zuerst, den Fall mit verdeckter Kopie und hinterlässt Audit-Einträge", async ({ page, baseURL }) => {
     const reporter = await createMember(track, `melder_${Date.now()}`.slice(0, 20));
     const reported = await createMember(track);
@@ -169,27 +169,26 @@ test.describe("Meldungen im Admin (v1 20.4, v2 12.4)", () => {
     const moderator = await signInAdmin(page, baseURL, "MODERATOR");
     track.users.push(moderator.id);
 
-    await page.goto("/de/admin/meldungen");
-    await expect(page.getByRole("heading", { level: 1, name: "Meldungen" })).toBeVisible();
+    await page.goto("/de/admin/moderation");
+    await expect(page.getByRole("heading", { level: 1, name: "Moderation" })).toBeVisible();
     const nav = page.getByRole("navigation", { name: "Bereiche des Admins" });
-    await expect(nav.getByRole("link", { name: /^Meldungen/ })).toHaveAttribute("aria-current", "page");
+    await expect(nav.getByRole("link", { name: /^Moderation/ })).toHaveAttribute("aria-current", "page");
     const ours = [newUrgent, oldNormal, newNormal];
     // Tabelle und Karten (unter 768 px) stehen beide im DOM; jede Meldung zählt einmal.
-    const links = await page.locator("[data-report-link]").evaluateAll((nodes) => nodes.map((node) => node.getAttribute("data-report-link")));
+    const links = await page.locator("[data-case-link]").evaluateAll((nodes) => nodes.map((node) => node.getAttribute("data-case-link")));
     const order = [...new Set(links)].filter((id) => ours.includes(id ?? ""));
     expect(order).toEqual([newUrgent, oldNormal, newNormal]);
-    const urgentRow = page.getByRole("table").getByRole("row").filter({ has: page.locator(`[data-report-link="${newUrgent}"]`) });
-    await expect(urgentRow).toContainText("Dringend");
+    const urgentRow = page.getByRole("table").getByRole("row").filter({ has: page.locator(`[data-case-link="${newUrgent}"]`) });
+    await expect(urgentRow).toContainText("Kritisch · Trust & Safety");
     await expect(urgentRow).toContainText("Verdacht auf Minderjährige");
     await expect(urgentRow).toContainText("seit weniger als einer Stunde");
-    await expect(page.getByText("Bis Schritt 1.13 ist dieser Bereich nur lesend.")).toBeVisible();
     await expectNoSeriousAxeFindings(page);
     expect(await reportAudits(newUrgent)).toEqual([]);
 
-    await page.getByRole("table").locator(`[data-report-link="${newUrgent}"]`).click();
-    await expect(page.getByRole("heading", { level: 1, name: "Meldung zu einem Mitglied" })).toBeVisible();
+    await page.getByRole("table").locator(`[data-case-link="${newUrgent}"]`).click();
+    await expect(page.getByRole("heading", { level: 1, name: /^Fall M-\d{4}-\d{5} · Mitglied · Kritisch$/ })).toBeVisible();
     await expect(page.getByText("Fiktiver Meldetext")).toBeVisible();
-    await expect(page.getByText("Entscheide folgen mit Schritt 1.13")).toBeVisible();
+    await expect(page.getByText("Entscheidet Trust & Safety")).toBeVisible();
     await expect(page.locator("[data-evidence=hidden]")).toContainText("Die Kopie von 2 Nachrichten ist verdeckt.");
     expect(await page.content()).not.toContain(secret);
     expect(await page.content()).not.toContain("Registrierter Name");
@@ -210,7 +209,7 @@ test.describe("Meldungen im Admin (v1 20.4, v2 12.4)", () => {
     await page.setViewportSize({ width: 375, height: 800 });
     await expectNoHorizontalScroll(page);
 
-    const unknown = await page.goto("/de/admin/meldungen/unbekannt");
+    const unknown = await page.goto("/de/admin/moderation/unbekannt");
     expect(unknown?.status()).toBe(404);
   });
 
@@ -219,9 +218,9 @@ test.describe("Meldungen im Admin (v1 20.4, v2 12.4)", () => {
     const reportId = await createReport(track, { reporterId: reporter.id, targetId: reporter.id, reason: "scam", urgent: false, minutesAgo: 20, messages: ["Geheim fiktiv"] });
     const support = await signInAdmin(page, baseURL, "SUPPORT");
     track.users.push(support.id);
-    for (const path of ["/de/admin/meldungen", `/de/admin/meldungen/${reportId}`]) {
+    for (const path of ["/de/admin/moderation", `/de/admin/moderation/${reportId}`]) {
       await page.goto(path);
-      await expect(page.getByText("Meldungen enthalten private Nachrichten.")).toBeVisible();
+      await expect(page.getByText("Fälle enthalten private Nachrichten.")).toBeVisible();
       await expect(page.getByRole("table")).toHaveCount(0);
       await expect(page.getByText("Geheim fiktiv")).toHaveCount(0);
     }
@@ -230,7 +229,7 @@ test.describe("Meldungen im Admin (v1 20.4, v2 12.4)", () => {
 
     const member = await createMember(track);
     await signInAs(page, member, baseURL);
-    const response = await page.goto("/de/admin/meldungen");
+    const response = await page.goto("/de/admin/moderation");
     expect(response?.status()).toBe(404);
   });
 
@@ -240,7 +239,7 @@ test.describe("Meldungen im Admin (v1 20.4, v2 12.4)", () => {
     const moderator = await signInAdmin(page, baseURL, "MODERATOR");
     const support = await createAccount("SUPPORT");
     track.users.push(moderator.id, support.id);
-    await page.goto(`/de/admin/meldungen/${reportId}`);
+    await page.goto(`/de/admin/moderation/${reportId}`);
     await page.getByLabel("Grund für das Aufdecken").fill("Fiktiver Grund für den Test");
 
     // Dieselbe geladene Seite, jetzt mit der Sitzung von Support: die Aktion prüft selbst.

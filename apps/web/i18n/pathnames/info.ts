@@ -5,6 +5,7 @@ export const infoPathnames = {
   "/preise": { de: "/preise", fr: "/tarifs", it: "/prezzi", en: "/pricing" },
   "/sicherheit": { de: "/sicherheit", fr: "/securite", it: "/sicurezza", en: "/safety" },
   "/hilfe": { de: "/hilfe", fr: "/aide", it: "/aiuto", en: "/help" },
+  "/hilfe/[slug]": { de: "/hilfe/[slug]", fr: "/aide/[slug]", it: "/aiuto/[slug]", en: "/help/[slug]" },
   "/kontakt": { de: "/kontakt", fr: "/contact", it: "/contatto", en: "/contact" },
   "/melden": { de: "/melden", fr: "/signaler", it: "/segnalare", en: "/report" },
   "/recht/agb": { de: "/recht/agb", fr: "/legal/cgu", it: "/legale/cg", en: "/legal/terms" },

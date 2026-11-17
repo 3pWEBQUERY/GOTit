@@ -1,4 +1,5 @@
 import { getDb, Prisma } from "@app/db";
+import { isRestricted } from "../moderation/restrictions";
 import type { Viewer } from "../identity/types";
 import { contactOptions, publicState } from "../provider-profile/public-policy";
 import { isBlockedBetween, participantOf } from "./access";
@@ -62,7 +63,7 @@ export type StartConversationResult =
   | { ok: true; conversationId: string }
   | {
       ok: false;
-      reason: "not-found" | "not-allowed" | "own-profile" | "undeliverable";
+      reason: "not-found" | "not-allowed" | "own-profile" | "undeliverable" | "restricted";
     };
 
 /**
@@ -77,6 +78,9 @@ export async function startConversation(
 ): Promise<StartConversationResult> {
   if (viewer.kind !== "account" || !viewer.ageConfirmed)
     return { ok: false, reason: "not-allowed" };
+  // Eingeschränkt durch die Moderation (v1 9.2): keine neuen Unterhaltungen.
+  if (await isRestricted(viewer.userId, "MESSAGING"))
+    return { ok: false, reason: "restricted" };
   const db = getDb();
   const target = await db.providerProfile.findUnique({
     where: { slug: providerProfileSlug },
@@ -141,7 +145,7 @@ export type SendMessageResult =
   | { ok: true; messageId: string; createdAt: Date; duplicate: boolean }
   | {
       ok: false;
-      reason: "not-found" | "invalid" | "undeliverable" | "attachments";
+      reason: "not-found" | "invalid" | "undeliverable" | "attachments" | "restricted";
     };
 
 /**
@@ -163,6 +167,8 @@ export async function sendMessage(
   if (!parsed.success) return { ok: false, reason: "invalid" };
   const participation = await participantOf(viewer.userId, conversationId);
   if (!participation) return { ok: false, reason: "not-found" };
+  if (await isRestricted(viewer.userId, "MESSAGING"))
+    return { ok: false, reason: "restricted" };
   const db = getDb();
   const { body, clientId, attachmentIds } = parsed.data;
   const duplicate = await db.message.findUnique({

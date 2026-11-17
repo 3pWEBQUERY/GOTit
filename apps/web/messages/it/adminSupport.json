@@ -1,0 +1,79 @@
+{
+  "queue": {
+    "title": "Supporto",
+    "intro": "Richieste dal modulo di contatto, prima quelle aperte e tra queste la più vecchia.",
+    "filterLabel": "Filtra richieste",
+    "status": "Stato",
+    "allStatuses": "Tutti gli stati",
+    "assigned": "Responsabile",
+    "caption": "Richieste di supporto",
+    "count": "{count, plural, =0 {Nessuna richiesta} one {Una richiesta} other {# richieste}}",
+    "emptyTitle": "Nessuna richiesta",
+    "emptyDescription": "Le richieste dal modulo di contatto compaiono qui appena qualcuno scrive.",
+    "noMatchTitle": "Nessun risultato",
+    "noMatchDescription": "Nessuna richiesta corrisponde ai filtri. Reimposta il filtro."
+  },
+  "status": {
+    "OPEN": "Aperta",
+    "ANSWERED": "Risposta",
+    "CLOSED": "Chiusa"
+  },
+  "assigned": {
+    "any": "Tutte",
+    "me": "Assegnate a me",
+    "none": "Assegnate a nessuno",
+    "you": "Tu",
+    "someone": "Qualcun altro",
+    "nobody": "Nessuno"
+  },
+  "categories": {
+    "account": "Account e accesso",
+    "verification": "Verifica",
+    "payment": "Pagamento",
+    "report": "Segnalazione o sicurezza",
+    "appeal": "Ricorso contro un blocco",
+    "privacy": "Protezione dei dati",
+    "other": "Altro"
+  },
+  "columns": {
+    "number": "Numero",
+    "subject": "Oggetto",
+    "category": "Categoria",
+    "status": "Stato",
+    "assigned": "Responsabile",
+    "created": "Ricevuta",
+    "replies": "Voci"
+  },
+  "ticket": {
+    "title": "{reference} · {subject}",
+    "request": "Richiesta",
+    "history": "Cronologia",
+    "noReplies": "Ancora nessuna risposta e nessuna nota.",
+    "unknownAuthor": "Sconosciuto",
+    "internalTag": "Nota interna",
+    "sentTag": "Inviata per e-mail",
+    "replyTitle": "Rispondere",
+    "replyIntro": "Una risposta va testualmente per e-mail a {email} e imposta lo stato su «Risposta». Una nota interna la vede solo il supporto.",
+    "body": "Testo",
+    "bodyHint": "Scrivi in modo che la persona sappia senza altre domande come si procede.",
+    "internal": "Salva come nota interna",
+    "internalHint": "Non viene inviata; lo stato resta.",
+    "send": "Salva risposta",
+    "sent": "Salvato. Una risposta è in viaggio per e-mail.",
+    "details": "Dati della richiesta",
+    "email": "E-mail",
+    "account": "Account",
+    "accountLink": "Apri account",
+    "withAccount": "Con account",
+    "withoutAccount": "Senza account",
+    "language": "Lingua",
+    "assignMe": "Assegna a me",
+    "assigned": "La richiesta è assegnata a te.",
+    "release": "Rimuovi assegnazione",
+    "released": "La richiesta non è più assegnata a nessuno.",
+    "statusLabel": "Stato",
+    "statusHint": "«Chiusa» quando non resta nulla da fare.",
+    "saveStatus": "Salva stato",
+    "statusSaved": "Lo stato è salvato."
+  }
+}

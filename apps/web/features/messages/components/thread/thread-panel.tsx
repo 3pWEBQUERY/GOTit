@@ -193,6 +193,7 @@ export function ThreadPanel({
           counterpartName={name}
           pending={pending}
           blockedByMe={thread.blockedByMe}
+          restriction={thread.messagingRestriction}
           onUnblock={actions.unblock}
           unblocking={actions.pending}
           onSend={outbox.send}

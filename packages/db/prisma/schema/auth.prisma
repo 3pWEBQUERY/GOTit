@@ -38,6 +38,7 @@ model User {
   chatLabels          ChatLabel[]
   reports             Report[]
   reviews             Review[]
+  restrictions        AccountRestriction[]
 
   @@map("user")
 }

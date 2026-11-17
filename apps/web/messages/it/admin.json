@@ -5,8 +5,8 @@
     "case": "Admin · Pratica di verifica",
     "mediaQueue": "Admin · Media",
     "mediaCase": "Admin · Media",
-    "reportQueue": "Admin · Segnalazioni",
-    "reportCase": "Admin · Segnalazione",
+    "reportQueue": "Admin · Moderazione",
+    "reportCase": "Admin · Caso di moderazione",
     "reviewQueue": "Admin · Valutazioni",
     "reviewCase": "Admin · Valutazione"
   },
@@ -23,8 +23,8 @@
     "breadcrumbs": "Percorso",
     "media": "Media",
     "openMediaCount": "{count, plural, one {# media in verifica} other {# media in verifica}}",
-    "reports": "Segnalazioni",
-    "openReportCount": "{count, plural, one {# segnalazione aperta} other {# segnalazioni aperte}}",
+    "reports": "Moderazione",
+    "openReportCount": "{count, plural, one {# caso di moderazione aperto} other {# casi di moderazione aperti}}",
     "reviews": "Valutazioni",
     "openReviewCount": "{count, plural, one {# caso aperto} other {# casi aperti}}",
     "organizations": "Organizzazioni",
@@ -313,28 +313,6 @@
     "organizationOwner": "{name} (organizzazione)"
   },
   "reports": {
-    "title": "Segnalazioni",
-    "intro": "Messaggi e account segnalati nella messaggistica. Le segnalazioni urgenti sono in cima, la più vecchia per prima.",
-    "restricted": "Le segnalazioni contengono messaggi privati. Sono riservate alla moderazione e a Trust & Safety; il supporto non vi ha accesso.",
-    "caption": "Segnalazioni aperte",
-    "count": "{count, plural, =0 {Nessuna segnalazione aperta} one {# segnalazione aperta} other {# segnalazioni aperte}}",
-    "urgentCount": "{count, plural, one {# urgente} other {# urgenti}}",
-    "next": "Apri la prossima segnalazione",
-    "shortcutAfter": "apre la segnalazione più urgente e più vecchia.",
-    "urgent": "Urgente",
-    "normal": "Normale",
-    "readOnly": "Fino alla fase 1.13 questa sezione è di sola lettura. Assegnazione, decisione e ricorso arrivano con la moderazione.",
-    "columns": {
-      "priority": "Priorità",
-      "reason": "Motivo",
-      "target": "Segnalato",
-      "submitted": "Ricevuta il",
-      "age": "Età"
-    },
-    "empty": {
-      "title": "Nessuna segnalazione aperta",
-      "description": "Quando qualcuno segnala un messaggio o un interlocutore, la segnalazione compare qui."
-    },
     "reasons": {
       "spam": "Spam",
       "harassment": "Molestie",
@@ -344,37 +322,6 @@
       "exploitation": "Sfruttamento o coercizione",
       "danger": "Pericolo immediato",
       "other": "Altro"
-    },
-    "targetType": {
-      "MESSAGE": "Messaggio",
-      "USER": "Membro",
-      "PROFILE": "Profilo di fornitore",
-      "MEDIA": "Media",
-      "REVIEW": "Valutazione"
-    },
-    "caseTitle": {
-      "MESSAGE": "Segnalazione di un messaggio",
-      "USER": "Segnalazione di un membro",
-      "PROFILE": "Segnalazione di un profilo di fornitore",
-      "MEDIA": "Segnalazione di un media",
-      "REVIEW": "Segnalazione di una valutazione"
-    },
-    "meta": "Ricevuta il {submitted} · {age} · Stato: {state}",
-    "status": {
-      "OPEN": "Aperta",
-      "IN_REVIEW": "In esame",
-      "RESOLVED": "Evasa",
-      "DISMISSED": "Respinta"
-    },
-    "memberFallback": "Membro",
-    "gone": "Non esiste più",
-    "facts": {
-      "title": "Dati",
-      "reason": "Motivo",
-      "details": "Testo della segnalazione",
-      "noDetails": "Nessun testo indicato",
-      "target": "Segnalato",
-      "reporter": "Segnalato da"
     },
     "evidence": {
       "title": "Messaggi segnalati (copia)",
@@ -387,12 +334,6 @@
       "noText": "Nessun testo (eliminato o solo immagine)",
       "audited": "La visualizzazione è registrata nel registro di audit.",
       "hide": "Nascondi di nuovo"
-    },
-    "decision": {
-      "title": "Decisione",
-      "laterTitle": "Le decisioni arrivano con la fase 1.13",
-      "laterText": "La segnalazione resta aperta. Approvare, rimuovere e limitare arrivano con la moderazione, con motivazione, regola e ricorso."
-    },
-    "openReview": "Apri la valutazione"
+    }
   }
 }

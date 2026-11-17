@@ -13,7 +13,7 @@ import { expect, test } from "./support/test";
 
 /**
  * Nachweise (v1 FR-VERIFY-003): Die Organisation reicht Firmenname, UID und
- * Berechtigung ein, die Moderation entscheidet in `/admin/organisationen`;
+ * Berechtigung ein, die Moderation entscheidet in `/admin/unternehmen`;
  * erst die Freigabe veröffentlicht die Organisation.
  */
 const organizations: string[] = [];
@@ -102,13 +102,13 @@ test.describe("Nachweise und Prüfung der Organisation", () => {
     const admin = await adminContext.newPage();
     const moderator = await signInAdmin(admin, baseURL, "MODERATOR");
     users.push(moderator.id);
-    await admin.goto("/de/admin/organisationen");
+    await admin.goto("/de/admin/unternehmen");
     const nav = admin.getByRole("navigation", { name: "Bereiche des Admins" });
     await expect(
-      nav.getByRole("link", { name: /Organisationen/ }),
+      nav.getByRole("link", { name: /Unternehmen/ }),
     ).toHaveAttribute("aria-current", "page");
     await expect(
-      nav.locator('a[href="/de/admin/organisationen"] .sr-only'),
+      nav.locator('a[href="/de/admin/unternehmen"] .sr-only'),
     ).toHaveText(/Organisation(en)? warte/);
     await admin
       .locator(`[data-organization-case-link="${submitted?.id}"]`)
@@ -186,7 +186,7 @@ test.describe("Nachweise und Prüfung der Organisation", () => {
     const supportContext = await browser.newContext({ baseURL });
     const support = await supportContext.newPage();
     users.push((await signInAdmin(support, baseURL, "SUPPORT")).id);
-    await support.goto(`/de/admin/organisationen/${verification?.id}`);
+    await support.goto(`/de/admin/unternehmen/${verification?.id}`);
     await expect(
       support.getByText(
         "Dieser Bereich ist für Moderation, Trust & Safety und Plattform-Administration.",
@@ -199,9 +199,9 @@ test.describe("Nachweise und Prüfung der Organisation", () => {
     const admin = await adminContext.newPage();
     users.push((await signInAdmin(admin, baseURL, "TRUST_SAFETY")).id);
     expect(
-      (await admin.goto("/de/admin/organisationen/unbekannt"))?.status(),
+      (await admin.goto("/de/admin/unternehmen/unbekannt"))?.status(),
     ).toBe(404);
-    await admin.goto(`/de/admin/organisationen/${verification?.id}`);
+    await admin.goto(`/de/admin/unternehmen/${verification?.id}`);
     await admin.waitForLoadState("networkidle");
     await admin.getByRole("radio", { name: /Zur Korrektur/ }).click();
     await admin

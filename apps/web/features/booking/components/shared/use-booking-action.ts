@@ -31,6 +31,7 @@ export function useBookingAction(requestId: string) {
   const { toast } = useToast();
   const [busy, setBusy] = useState<string | null>(null);
   const [failure, setFailure] = useState<ActionFailure | null>(null);
+  const [until, setUntil] = useState<string | null>(null);
 
   async function settle(
     key: string,
@@ -49,6 +50,7 @@ export function useBookingAction(requestId: string) {
       return true;
     }
     setFailure(result.reason);
+    setUntil(result.reason === "restricted" ? (result.until ?? null) : null);
     if (result.reason !== "network" && needsRefresh(result.reason))
       router.refresh();
     return false;
@@ -58,6 +60,8 @@ export function useBookingAction(requestId: string) {
     busy,
     failure,
     message: failure ? t(`errors.${failure}`) : null,
+    /** Eingeschränkt durch die Moderation: Ende für den Hinweis. */
+    restriction: failure === "restricted" ? { until } : null,
     clear: () => setFailure(null),
     run: (input: BookingActionInput) =>
       settle(input.action, () => actOnBookingRequestAction(requestId, input)),

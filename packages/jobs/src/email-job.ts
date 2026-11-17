@@ -5,9 +5,12 @@ import type { JobDefinition } from "./definitions";
 export const emailJobSchema = z.object({
   to: z.email(),
   // Muss MAIL_TEMPLATES in @app/core/mail entsprechen (Test in core/mail).
-  template: z.enum(["verify-email", "reset-password", "booking-new", "booking-confirmed", "booking-changed", "booking-cancelled", "booking-upcoming"]),
+  template: z.enum(["verify-email", "reset-password", "booking-new", "booking-confirmed", "booking-changed", "booking-cancelled", "booking-upcoming", "support-received", "support-reply"]),
   locale: z.enum(["de", "fr", "it", "en"]),
   url: z.url(),
+  // Supportanfragen: Nummer der Anfrage und, bei einer Antwort, ihr Text. Nie Inhalte aus dem Messenger.
+  reference: z.string().max(20).optional(),
+  text: z.string().max(5000).optional(),
 });
 
 export type EmailJob = z.infer<typeof emailJobSchema>;

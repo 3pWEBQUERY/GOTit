@@ -16,7 +16,8 @@
     "previewOwn": "Du: {text}",
     "unread": "{count, plural, one {# ungelesene Nachricht} other {# ungelesene Nachrichten}}",
     "starred": "Favorit",
-    "blocked": "Blockiert"
+    "blocked": "Blockiert",
+    "previewHidden": "Von der Moderation ausgeblendet"
   },
   "tabs": {
     "label": "Ansichten des Postfachs",
@@ -98,7 +99,8 @@
       "attachments": "Ein Bild ist nicht mehr verfügbar. Lade es erneut hoch.",
       "rate-limited": "Zu viele Nachrichten in kurzer Zeit. Warte eine Minute und sende erneut.",
       "invalid": "Die Nachricht liess sich nicht senden. Prüfe Länge und Inhalt.",
-      "network": "Keine Verbindung zum Server. Deine Nachricht ist nicht verloren."
+      "network": "Keine Verbindung zum Server. Deine Nachricht ist nicht verloren.",
+      "restricted": "Dein Konto ist für Nachrichten eingeschränkt. Die Nachricht wurde nicht gesendet."
     },
     "logLabel": "Verlauf mit {name}",
     "authorOwn": "Du",
@@ -125,7 +127,8 @@
     "announceImage": "Bild",
     "emptyTitle": "Noch keine Nachrichten",
     "emptyText": "Schreib {name} unten die erste Nachricht.",
-    "contextLabel": "Details zur Unterhaltung"
+    "contextLabel": "Details zur Unterhaltung",
+    "hidden": "Von der Moderation ausgeblendet"
   },
   "delete": {
     "title": "Nachricht löschen?",

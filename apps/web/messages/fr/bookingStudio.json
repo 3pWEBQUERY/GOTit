@@ -174,7 +174,8 @@
       "notAllowed": "Ce n’est plus possible dans le statut actuel. Le nouvel état est affiché.",
       "invalid": "Les données ne sont pas valables. Vérifie le jour, l’heure et la durée.",
       "rateLimited": "Trop d’actions en peu de temps. Attends un instant et réessaie.",
-      "failed": "Cela n’a pas fonctionné. Rien n’a été modifié ; réessaie."
+      "failed": "Cela n’a pas fonctionné. Rien n’a été modifié ; réessaie.",
+      "restricted": "Ton compte est restreint pour les demandes de rendez-vous. Accepter et proposer un autre horaire ne sont pas possibles ; tu peux toujours annuler."
     },
     "safetyTitle": "Annulé",
     "safetyText": "Si quelque chose t’a menacé·e ou inquiété·e, signale le membre. La modération reçoit une copie des derniers messages.",

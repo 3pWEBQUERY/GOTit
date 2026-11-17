@@ -1,5 +1,5 @@
 export { reorderOwnMedia, moveOwnMedia, setCoverMedia, setOwnMediaAltText, setOwnMediaVisibility, type ArrangeResult } from "./arrange-service";
-export { isMediaMember, resolveMediaDelivery, resolveReviewPreview, type MediaDelivery } from "./delivery-service";
+export { isMediaMember, resolveMediaDelivery, resolveReportPreview, resolveReviewPreview, type MediaDelivery } from "./delivery-service";
 export { deleteOwnMedia, getOwnMedia, listOwnMedia, ownMediaStatus, type OwnLibrary, type OwnMedia } from "./library-service";
 export { MEDIA_QUEUE_LIMIT, countMediaQueue, decideMedia, getMediaCase, listMediaQueue, nextMediaInReview, type DecideMediaResult, type MediaQueueEntry } from "./moderation-service";
 export { completeProcessing, confirmPurged, failProcessing, loadForProcessing, type ProcessedMedia, type ProcessedVariant } from "./processing-service";

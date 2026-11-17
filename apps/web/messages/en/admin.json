@@ -5,8 +5,8 @@
     "case": "Admin · Review case",
     "mediaQueue": "Admin · Media",
     "mediaCase": "Admin · Media item",
-    "reportQueue": "Admin · Reports",
-    "reportCase": "Admin · Report",
+    "reportQueue": "Admin · Moderation",
+    "reportCase": "Admin · Moderation case",
     "reviewQueue": "Admin · Reviews",
     "reviewCase": "Admin · Review"
   },
@@ -23,8 +23,8 @@
     "breadcrumbs": "Path",
     "media": "Media",
     "openMediaCount": "{count, plural, one {# media item in review} other {# media items in review}}",
-    "reports": "Reports",
-    "openReportCount": "{count, plural, one {# open report} other {# open reports}}",
+    "reports": "Moderation",
+    "openReportCount": "{count, plural, one {# open moderation case} other {# open moderation cases}}",
     "reviews": "Reviews",
     "openReviewCount": "{count, plural, one {# open case} other {# open cases}}",
     "organizations": "Organisations",
@@ -313,28 +313,6 @@
     "organizationOwner": "{name} (organisation)"
   },
   "reports": {
-    "title": "Reports",
-    "intro": "Messages and accounts reported in the messenger. Urgent reports come first, oldest first within each group.",
-    "restricted": "Reports contain private messages. They are for moderation and Trust & Safety; support has no access.",
-    "caption": "Open reports",
-    "count": "{count, plural, =0 {No open reports} one {# open report} other {# open reports}}",
-    "urgentCount": "{count, plural, other {# urgent}}",
-    "next": "Open next report",
-    "shortcutAfter": "opens the most urgent, oldest report.",
-    "urgent": "Urgent",
-    "normal": "Normal",
-    "readOnly": "Until step 1.13 this area is read-only. Assignment, decision and appeal come with moderation.",
-    "columns": {
-      "priority": "Priority",
-      "reason": "Reason",
-      "target": "Reported",
-      "submitted": "Received on",
-      "age": "Age"
-    },
-    "empty": {
-      "title": "No open reports",
-      "description": "When someone reports a message or a contact, the report appears here."
-    },
     "reasons": {
       "spam": "Spam",
       "harassment": "Harassment",
@@ -344,37 +322,6 @@
       "exploitation": "Exploitation or coercion",
       "danger": "Immediate danger",
       "other": "Other"
-    },
-    "targetType": {
-      "MESSAGE": "Message",
-      "USER": "Member",
-      "PROFILE": "Provider profile",
-      "MEDIA": "Media",
-      "REVIEW": "Review"
-    },
-    "caseTitle": {
-      "MESSAGE": "Report about a message",
-      "USER": "Report about a member",
-      "PROFILE": "Report about a provider profile",
-      "MEDIA": "Report about a media item",
-      "REVIEW": "Report about a review"
-    },
-    "meta": "Received on {submitted} · {age} · Status: {state}",
-    "status": {
-      "OPEN": "Open",
-      "IN_REVIEW": "In review",
-      "RESOLVED": "Resolved",
-      "DISMISSED": "Dismissed"
-    },
-    "memberFallback": "Member",
-    "gone": "No longer exists",
-    "facts": {
-      "title": "Details",
-      "reason": "Reason",
-      "details": "Report text",
-      "noDetails": "No text given",
-      "target": "Reported",
-      "reporter": "Reported by"
     },
     "evidence": {
       "title": "Reported messages (copy)",
@@ -387,12 +334,6 @@
       "noText": "No text (deleted or image only)",
       "audited": "Revealing is recorded in the audit log.",
       "hide": "Hide again"
-    },
-    "decision": {
-      "title": "Decision",
-      "laterTitle": "Decisions come with step 1.13",
-      "laterText": "The report stays open. Approve, remove and restrict come with moderation, with reasoning, rule and appeal."
-    },
-    "openReview": "Open review"
+    }
   }
 }

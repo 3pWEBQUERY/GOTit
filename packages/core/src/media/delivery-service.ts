@@ -1,4 +1,5 @@
 import { getDb } from "@app/db";
+import { hasPermission } from "../admin/permissions";
 import { adminAccess } from "../admin/policy";
 import { loadAdminActor } from "../admin/service";
 import { REVIEWER_ROLES } from "../verification/review-service";
@@ -72,5 +73,24 @@ export async function resolveReviewPreview(mediaId: string, variant: string, act
   if (!actorId || !adminAccess(await loadAdminActor(actorId), REVIEWER_ROLES).allowed) return null;
   const found = await loadVariant(mediaId, variant);
   if (!found || found.media.status !== "IN_REVIEW") return null;
+  return { access: "private", key: found.key, format: found.format };
+}
+
+/**
+ * Vorschau eines gemeldeten Mediums für die Moderation (v2 12.4 «Gemeldeter
+ * Inhalt, mit Schutz vor versehentlicher Anzeige»): nur zu einem Fall mit
+ * Ziel Medium, nur mit Zugang zum Fall, in jedem Status ausser
+ * fehlgeschlagen. Jeder Abruf schreibt `report.media_previewed`.
+ */
+export async function resolveReportPreview(reportId: string, variant: string, actorId: string | null): Promise<MediaDelivery> {
+  if (!actorId || reportId.length > 64) return null;
+  const actor = await loadAdminActor(actorId);
+  if (!hasPermission(actor, "moderation.cases")) return null;
+  const report = await getDb().report.findUnique({ where: { id: reportId }, select: { targetType: true, targetId: true, priority: true } });
+  if (!report || report.targetType !== "MEDIA") return null;
+  if (report.priority === "CRITICAL" && !hasPermission(actor, "moderation.critical")) return null;
+  const found = await loadVariant(report.targetId, variant);
+  if (!found || found.media.status === "FAILED") return null;
+  await getDb().auditEvent.create({ data: { actorId, action: "report.media_previewed", target: `report:${reportId}` } });
   return { access: "private", key: found.key, format: found.format };
 }

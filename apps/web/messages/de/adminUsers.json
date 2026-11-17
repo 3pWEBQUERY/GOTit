@@ -1,0 +1,224 @@
+{
+  "noUsername": "Ohne Benutzername",
+  "list": {
+    "title": "Benutzer",
+    "intro": "Konten suchen und ansehen. Einschränken und Sperren geht in der Detailansicht.",
+    "filterLabel": "Benutzer filtern",
+    "search": "Suche",
+    "searchHint": "Benutzername, E-Mail, Anzeigename, Slug oder exakte ID.",
+    "filter": "Anzeigen",
+    "caption": "Konten, neueste zuerst",
+    "count": "{count, plural, =0 {Keine Konten} one {Ein Konto} other {# Konten}}",
+    "countMore": "{count, plural, one {Ein weiteres Konto} other {# weitere Konten}}",
+    "emptyTitle": "Noch keine Konten",
+    "emptyDescription": "Hier stehen Konten, sobald sich jemand registriert.",
+    "noMatchTitle": "Keine Treffer",
+    "noMatchDescription": "Kein Konto passt zu Suche und Filter. Ändere die Suche oder setze den Filter zurück."
+  },
+  "filters": {
+    "all": "Alle Konten",
+    "restricted": "Eingeschränkt",
+    "suspended": "Gesperrt",
+    "internal": "Mit interner Rolle",
+    "providers": "Anbieter"
+  },
+  "columns": {
+    "user": "Benutzer",
+    "email": "E-Mail",
+    "type": "Kontotyp",
+    "roles": "Interne Rollen",
+    "status": "Status",
+    "created": "Angelegt"
+  },
+  "accountTypes": {
+    "MEMBER": "Mitglied",
+    "PROVIDER": "Anbieter",
+    "ORGANIZATION": "Organisation"
+  },
+  "status": {
+    "active": "Aktiv",
+    "deactivated": "Deaktiviert"
+  },
+  "kinds": {
+    "MESSAGING": "Nachrichten eingeschränkt",
+    "BOOKING": "Termine eingeschränkt",
+    "SUSPENDED": "Gesperrt"
+  },
+  "kindHints": {
+    "MESSAGING": "Keine Nachrichten und keine neuen Unterhaltungen.",
+    "BOOKING": "Keine Terminanfragen, kein Annehmen und kein Gegenvorschlag. Absagen bleibt möglich."
+  },
+  "roles": {
+    "SUPER_ADMIN": "Super Admin",
+    "PLATFORM_ADMIN": "Plattform-Administration",
+    "MODERATOR": "Moderation",
+    "TRUST_SAFETY": "Trust & Safety",
+    "SUPPORT": "Support",
+    "FINANCE": "Finanzen",
+    "CONTENT_EDITOR": "Redaktion"
+  },
+  "providerStatus": {
+    "DRAFT": "Entwurf",
+    "SUBMITTED": "Eingereicht",
+    "CHANGES_REQUESTED": "Zur Korrektur",
+    "PUBLISHED": "Veröffentlicht",
+    "PAUSED": "Pausiert",
+    "RESTRICTED": "Eingeschränkt",
+    "SUSPENDED": "Gesperrt",
+    "ARCHIVED": "Archiviert"
+  },
+  "orgRoles": {
+    "OWNER": "Inhaber",
+    "LOCATION_MANAGER": "Standortleitung",
+    "MARKETING": "Marketing",
+    "EDITOR": "Redaktion",
+    "SCHEDULING": "Termine"
+  },
+  "orgStatus": {
+    "DRAFT": "Entwurf",
+    "SUBMITTED": "Eingereicht",
+    "PUBLISHED": "Veröffentlicht",
+    "SUSPENDED": "Gesperrt",
+    "ARCHIVED": "Archiviert"
+  },
+  "identity": {
+    "PENDING": "Läuft",
+    "APPROVED": "Bestanden",
+    "REJECTED": "Abgelehnt",
+    "EXPIRED": "Abgelaufen",
+    "CANCELLED": "Abgebrochen"
+  },
+  "appeal": {
+    "OPEN": "Einspruch offen",
+    "UPHELD": "Stattgegeben",
+    "DISMISSED": "Abgewiesen"
+  },
+  "security": {
+    "SIGN_IN": "Angemeldet",
+    "SIGN_OUT": "Abgemeldet",
+    "PASSWORD_CHANGED": "Passwort geändert",
+    "PASSWORD_RESET": "Passwort zurückgesetzt",
+    "EMAIL_VERIFIED": "E-Mail-Adresse bestätigt",
+    "TWO_FACTOR_ENABLED": "Zweiter Faktor eingerichtet",
+    "TWO_FACTOR_DISABLED": "Zweiter Faktor abgeschaltet",
+    "PASSKEY_ADDED": "Passkey hinzugefügt",
+    "PASSKEY_REMOVED": "Passkey entfernt",
+    "SESSION_REVOKED": "Sitzung beendet",
+    "PROFILE_CHANGED": "Konto geändert",
+    "DATA_EXPORTED": "Daten exportiert"
+  },
+  "detail": {
+    "account": "Konto",
+    "twoFactor": "Zweiter Faktor",
+    "twoFactorOn": "Eingerichtet",
+    "twoFactorOff": "Nicht eingerichtet",
+    "deletionRequested": "Löschung beantragt",
+    "reports": "Meldungen",
+    "reportCount": "{count, plural, =0 {Keine Meldung gegen das Konto} one {Eine Meldung gegen das Konto oder sein Profil} other {# Meldungen gegen das Konto oder sein Profil}}",
+    "id": "Konto-ID",
+    "suspendedTitle": "Dieses Konto ist gesperrt",
+    "suspendedText": "Die Anmeldung ist gesperrt und das Anbieterprofil ist nicht öffentlich, bis die Sperre endet oder jemand sie aufhebt.",
+    "identity": "Identitätsprüfung",
+    "identityIntro": "Nur Status und Daten der letzten Prüfung; Dokumente speichert die Plattform nicht.",
+    "identityStatus": "Status",
+    "identityChecked": "Geprüft am",
+    "identityExpires": "Gültig bis",
+    "identityNone": "Keine Identitätsprüfung vorhanden.",
+    "roles": "Interne Rollen",
+    "noRoles": "Keine interne Rolle.",
+    "rolesOnlySuper": "Rollen vergibt nur ein Super Admin.",
+    "profile": "Profil und Organisationen",
+    "openProfile": "Öffentliches Profil öffnen",
+    "inProviders": "In der Anbieterliste zeigen",
+    "noProfile": "Kein Anbieterprofil.",
+    "noOrganizations": "In keiner Organisation.",
+    "restrictions": "Einschränkungen und Sperren",
+    "restrictionsIntro": "Alle Massnahmen gegen das Konto, neueste zuerst, mit Regel und Begründung.",
+    "noRestrictions": "Gegen dieses Konto gab es noch keine Massnahme.",
+    "openAppeals": "{count, plural, one {Ein offener Einspruch} other {# offene Einsprüche}}",
+    "toAppeals": "Zu den Einsprüchen",
+    "security": "Sicherheitsereignisse",
+    "securityIntro": "Die letzten zehn Ereignisse des Kontos, ohne Adressen und Geräte.",
+    "noSecurity": "Keine Ereignisse."
+  },
+  "history": {
+    "kind": "Art",
+    "rule": "Regel",
+    "reason": "Begründung",
+    "period": "Zeitraum",
+    "status": "Stand",
+    "appeal": "Einspruch",
+    "active": "Gilt",
+    "lifted": "Aufgehoben am {date}",
+    "expired": "Abgelaufen",
+    "fromUntil": "{from} bis {until}",
+    "fromOpen": "Ab {from}, ohne Ende"
+  },
+  "lift": {
+    "title": "{kind} aufheben",
+    "reason": "Begründung",
+    "reasonHint": "Mindestens 10 Zeichen. Steht im Audit-Log.",
+    "submit": "Massnahme aufheben",
+    "saved": "Die Massnahme ist aufgehoben."
+  },
+  "measures": {
+    "title": "Massnahmen",
+    "restrictTitle": "Einschränken",
+    "restrictIntro": "Das Konto bleibt nutzbar, verliert aber Nachrichten oder Termine.",
+    "kind": "Was wird eingeschränkt?",
+    "rule": "Regel",
+    "ruleHint": "Auf welche Regel stützt sich die Massnahme?",
+    "reason": "Begründung",
+    "reasonHint": "Mindestens 10 Zeichen. Die betroffene Person sieht sie in den Einstellungen.",
+    "until": "Ende",
+    "untilHint": "Ohne Ende gilt die Massnahme, bis jemand sie aufhebt. Sie endet um 23:59 Uhr Zürcher Zeit.",
+    "restrictSubmit": "Konto einschränken",
+    "restricted": "Das Konto ist eingeschränkt.",
+    "suspendTitle": "Sperren",
+    "suspendIntro": "Beendet alle Sitzungen, sperrt die Anmeldung und nimmt das Anbieterprofil aus der Öffentlichkeit.",
+    "suspendSubmit": "Konto sperren",
+    "suspended": "Das Konto ist gesperrt. Alle Sitzungen sind beendet.",
+    "confirmTitle": "{name} sperren?",
+    "confirmText": "Alle Sitzungen enden sofort, die Anmeldung ist gesperrt und das Anbieterprofil ist nicht mehr öffentlich. Einspruch ist über das Kontaktformular möglich. Aufheben stellt das Profil wieder her.",
+    "confirmSubmit": "Konto sperren"
+  },
+  "rolesForm": {
+    "roles": "Interne Rollen",
+    "rolesHint": "Ohne Häkchen hat das Konto keine interne Rolle und keinen Zugang zum Admin.",
+    "reason": "Begründung",
+    "reasonHint": "Mindestens 10 Zeichen. Steht mit den Rollen vorher und nachher im Audit-Log.",
+    "submit": "Rollen speichern",
+    "saved": "Die Rollen sind gespeichert."
+  },
+  "providers": {
+    "title": "Anbieter",
+    "intro": "Alle Anbieterprofile mit Status, letzter Prüfung und Regionen. Prüfen geht in den Verifizierungen.",
+    "filterLabel": "Anbieter filtern",
+    "search": "Suche",
+    "searchHint": "Anzeigename, Slug, Benutzername oder exakte ID.",
+    "status": "Status",
+    "allStatuses": "Alle Status",
+    "caption": "Anbieterprofile, neueste zuerst",
+    "count": "{count, plural, =0 {Keine Profile} one {Ein Profil} other {# Profile}}",
+    "columns": {
+      "name": "Anzeigename",
+      "status": "Status",
+      "review": "Prüfung",
+      "regions": "Regionen",
+      "created": "Angelegt",
+      "profile": "Öffentlich"
+    },
+    "review": {
+      "none": "Nie eingereicht",
+      "open": "Offen",
+      "APPROVED": "Freigegeben",
+      "CHANGES_REQUESTED": "Zur Korrektur",
+      "REJECTED": "Abgelehnt"
+    },
+    "openProfile": "Profil öffnen",
+    "emptyTitle": "Noch keine Anbieterprofile",
+    "emptyDescription": "Hier stehen Profile, sobald Anbieter das Onboarding beginnen.",
+    "noMatchTitle": "Keine Treffer",
+    "noMatchDescription": "Kein Profil passt zu Suche und Status. Ändere die Suche oder setze den Filter zurück."
+  }
+}

@@ -10,6 +10,7 @@ import type {
   ClientThread,
   MessengerArea,
 } from "../lib/types";
+import { restrictionFor } from "../../moderation/queries";
 import { toClientThread } from "./to-client";
 
 /**
@@ -26,15 +27,20 @@ export const requireThread = cache(
     pending: ClientPendingAttachment[];
   }> => {
     const viewer = await requireAccount(locale);
-    const [thread, pending, t] = await Promise.all([
+    const [thread, pending, t, restriction] = await Promise.all([
       getThread(viewer.userId, conversationId),
       pendingAttachments(viewer.userId, conversationId),
       getTranslations({ locale, namespace: "messages" }),
+      restrictionFor(viewer.userId, "MESSAGING"),
     ]);
     if (!thread) notFound();
     return {
       userId: viewer.userId,
-      thread: toClientThread(thread, (year) => t("memberFallback", { year })),
+      thread: toClientThread(
+        thread,
+        (year) => t("memberFallback", { year }),
+        restriction,
+      ),
       pending: pending.map((entry) => ({
         id: entry.id,
         status: entry.status,

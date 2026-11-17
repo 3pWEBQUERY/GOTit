@@ -9,6 +9,7 @@ import { useReportDialog } from "../../../messages/components/thread/report-labe
 import type { ClientBooking, ClientSlots } from "../../lib/types";
 import { CounterDialog } from "./counter-dialog";
 import { ReasonDialog, type ReasonKind } from "./reason-dialog";
+import { RestrictionNotice } from "../../../moderation/restriction-notice";
 import { useBookingAction } from "./use-booking-action";
 
 export interface BookingActionsProps {
@@ -91,7 +92,9 @@ export function BookingActions({
           </Button>
         ))}
       </div>
-      {action.message && !dialogOpen ? (
+      {action.restriction && !dialogOpen ? (
+        <RestrictionNotice kind="BOOKING" restriction={action.restriction} />
+      ) : action.message && !dialogOpen ? (
         <p role="alert" className="text-small text-error">
           {action.message}
         </p>

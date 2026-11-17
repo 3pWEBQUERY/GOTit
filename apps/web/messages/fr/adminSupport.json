@@ -1,0 +1,79 @@
+{
+  "queue": {
+    "title": "Support",
+    "intro": "Demandes via le formulaire de contact, ouvertes d’abord et, parmi elles, la plus ancienne d’abord.",
+    "filterLabel": "Filtrer les demandes",
+    "status": "Statut",
+    "allStatuses": "Tous les statuts",
+    "assigned": "Responsable",
+    "caption": "Demandes de support",
+    "count": "{count, plural, =0 {Aucune demande} one {Une demande} other {# demandes}}",
+    "emptyTitle": "Aucune demande",
+    "emptyDescription": "Les demandes du formulaire de contact apparaissent ici dès que quelqu’un écrit.",
+    "noMatchTitle": "Aucun résultat",
+    "noMatchDescription": "Aucune demande ne correspond aux filtres. Réinitialise le filtre."
+  },
+  "status": {
+    "OPEN": "Ouverte",
+    "ANSWERED": "Répondue",
+    "CLOSED": "Fermée"
+  },
+  "assigned": {
+    "any": "Toutes",
+    "me": "Attribuées à moi",
+    "none": "Attribuées à personne",
+    "you": "Toi",
+    "someone": "Quelqu’un d’autre",
+    "nobody": "Personne"
+  },
+  "categories": {
+    "account": "Compte et connexion",
+    "verification": "Vérification",
+    "payment": "Paiement",
+    "report": "Signalement ou sécurité",
+    "appeal": "Recours contre un blocage",
+    "privacy": "Protection des données",
+    "other": "Autre chose"
+  },
+  "columns": {
+    "number": "Numéro",
+    "subject": "Objet",
+    "category": "Catégorie",
+    "status": "Statut",
+    "assigned": "Responsable",
+    "created": "Réception",
+    "replies": "Entrées"
+  },
+  "ticket": {
+    "title": "{reference} · {subject}",
+    "request": "Demande",
+    "history": "Historique",
+    "noReplies": "Pas encore de réponse ni de note.",
+    "unknownAuthor": "Inconnu",
+    "internalTag": "Note interne",
+    "sentTag": "Envoyée par e-mail",
+    "replyTitle": "Répondre",
+    "replyIntro": "Une réponse part telle quelle par e-mail à {email} et met le statut sur «Répondue». Une note interne n’est visible que pour le support.",
+    "body": "Texte",
+    "bodyHint": "Écris de sorte que la personne sache sans autre question comment cela continue.",
+    "internal": "Enregistrer comme note interne",
+    "internalHint": "N’est pas envoyée ; le statut reste.",
+    "send": "Enregistrer la réponse",
+    "sent": "Enregistré. Une réponse part par e-mail.",
+    "details": "Informations sur la demande",
+    "email": "E-mail",
+    "account": "Compte",
+    "accountLink": "Ouvrir le compte",
+    "withAccount": "Avec compte",
+    "withoutAccount": "Sans compte",
+    "language": "Langue",
+    "assignMe": "M’attribuer",
+    "assigned": "La demande t’est attribuée.",
+    "release": "Libérer l’attribution",
+    "released": "La demande n’est plus attribuée à personne.",
+    "statusLabel": "Statut",
+    "statusHint": "«Fermée» quand il n’y a plus rien à faire.",
+    "saveStatus": "Enregistrer le statut",
+    "statusSaved": "Le statut est enregistré."
+  }
+}

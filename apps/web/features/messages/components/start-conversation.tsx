@@ -4,6 +4,7 @@ import { Button, UiLink } from "@app/ui";
 import { MessageSquare } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
+import { RestrictionNotice } from "../../moderation/restriction-notice";
 import { startConversationAction, type StartFailure } from "../actions/start";
 
 export interface StartConversationProps {
@@ -25,6 +26,7 @@ export function StartConversation({
 }: StartConversationProps) {
   const t = useTranslations("messages.start");
   const [failure, setFailure] = useState<StartFailure | "generic" | null>(null);
+  const [until, setUntil] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
   const icon = <MessageSquare aria-hidden strokeWidth={1.5} />;
 
@@ -54,13 +56,18 @@ export function StartConversation({
               ok: false as const,
               reason: "generic" as const,
             }));
-            if (result && !result.ok) setFailure(result.reason);
+            if (result && !result.ok) {
+              setFailure(result.reason);
+              setUntil("until" in result ? (result.until ?? null) : null);
+            }
           })
         }
       >
         {t("action")}
       </Button>
-      {failure ? (
+      {failure === "restricted" ? (
+        <RestrictionNotice kind="MESSAGING" restriction={{ until }} />
+      ) : failure ? (
         <p role="alert" className="text-small text-error">
           {t(`errors.${failure}`)}
         </p>

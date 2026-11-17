@@ -61,8 +61,15 @@ export function ThreadLog({
     images: ThreadImage[];
     own: boolean;
     deleted: boolean;
+    hidden?: boolean;
     failure?: string;
   }): ReactNode {
+    if (options.hidden)
+      return (
+        <span className="text-ink-muted italic" data-message-hidden>
+          {t("hidden")}
+        </span>
+      );
     if (options.deleted)
       return <span className="text-ink-muted italic">{t("deleted")}</span>;
     const alt = options.own
@@ -145,20 +152,22 @@ export function ThreadLog({
           })),
           own: message.fromMe,
           deleted: message.deleted,
+          hidden: message.hidden,
         }),
         time: formatTime(message.createdAt, locale),
         dateTime: message.createdAt,
         status: message.fromMe && message.status ? message.status : undefined,
-        menu: message.deleted ? undefined : (
-          <MessageMenu
-            own={message.fromMe}
-            onDelete={() => {
-              setDeleteFailed(false);
-              setDeleting(message.id);
-            }}
-            onReport={() => setReporting(message.id)}
-          />
-        ),
+        menu:
+          message.deleted || message.hidden ? undefined : (
+            <MessageMenu
+              own={message.fromMe}
+              onDelete={() => {
+                setDeleteFailed(false);
+                setDeleting(message.id);
+              }}
+              onReport={() => setReporting(message.id)}
+            />
+          ),
       };
     }),
   ]);

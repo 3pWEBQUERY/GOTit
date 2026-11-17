@@ -41,5 +41,17 @@
     "intro": "You have a confirmed appointment tomorrow.",
     "action": "See the details in your account:",
     "expiry": "For discretion, this email contains no names and no details."
+  },
+  "support-received": {
+    "subject": "Your request {reference}",
+    "intro": "We have received your request {reference} and will reply to this address.",
+    "action": "Help and answers to common questions:",
+    "expiry": "For discretion, this email contains no details of your request."
+  },
+  "support-reply": {
+    "subject": "Reply to your request {reference}",
+    "intro": "Support has replied to your request {reference}:",
+    "action": "For another question, use the contact form:",
+    "expiry": "Please do not reply to this email; the address is not monitored."
   }
 }

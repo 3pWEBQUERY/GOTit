@@ -1,0 +1,171 @@
+{
+  "areas": {
+    "overview": "Panoramica",
+    "users": "Utenti",
+    "providers": "Fornitori",
+    "companies": "Aziende",
+    "regions": "Regioni",
+    "categories": "Categorie",
+    "content": "Contenuti",
+    "seo": "SEO",
+    "support": "Supporto",
+    "system": "Sistema",
+    "flags": "Feature flag",
+    "roles": "Ruoli interni",
+    "audit": "Registro di audit",
+    "status": "Stato dei servizi"
+  },
+  "restrictedTitle": "Nessun accesso con il tuo ruolo",
+  "restricted": {
+    "users": "Gli utenti sono visibili per amministrazione della piattaforma, moderazione, Trust & Safety e supporto. Il tuo ruolo non ha accesso.",
+    "providers": "I profili dei fornitori sono visibili per amministrazione della piattaforma, moderazione, Trust & Safety e supporto. Il tuo ruolo non ha accesso.",
+    "regions": "Le regioni sono gestite dall’amministrazione della piattaforma. Il tuo ruolo non ha accesso.",
+    "categories": "Le categorie sono gestite dall’amministrazione della piattaforma. Il tuo ruolo non ha accesso.",
+    "content": "I contenuti sono gestiti da redazione e amministrazione della piattaforma. Il tuo ruolo non ha accesso.",
+    "seo": "I metadati sono gestiti da redazione e amministrazione della piattaforma. Il tuo ruolo non ha accesso.",
+    "support": "Le richieste di supporto sono gestite da supporto e amministrazione della piattaforma. Il tuo ruolo non ha accesso.",
+    "flags": "I feature flag sono gestiti dall’amministrazione della piattaforma. Il tuo ruolo non ha accesso.",
+    "roles": "Solo un Super Admin assegna i ruoli interni. Il tuo ruolo non ha accesso.",
+    "audit": "Il registro di audit è visibile per amministrazione della piattaforma e Trust & Safety. Il tuo ruolo non ha accesso.",
+    "status": "Lo stato dei servizi è visibile per l’amministrazione della piattaforma. Il tuo ruolo non ha accesso."
+  },
+  "meta": {
+    "users": "Admin · Utenti",
+    "user": "Admin · Account",
+    "providers": "Admin · Fornitori",
+    "regions": "Admin · Regioni",
+    "categories": "Admin · Categorie",
+    "content": "Admin · Contenuti",
+    "contentNew": "Admin · Nuova pagina",
+    "contentEdit": "Admin · Modifica pagina",
+    "seo": "Admin · SEO",
+    "support": "Admin · Supporto",
+    "ticket": "Admin · Richiesta di supporto",
+    "flags": "Admin · Feature flag",
+    "roles": "Admin · Ruoli interni",
+    "audit": "Admin · Registro di audit",
+    "status": "Admin · Stato dei servizi"
+  },
+  "breadcrumbs": "Percorso",
+  "wideOnly": {
+    "title": "Si può modificare da 1024 px di larghezza",
+    "description": "Su questo schermo l’admin è in sola lettura. Apri la pagina su uno schermo più largo per modificare."
+  },
+  "filters": {
+    "apply": "Applica filtri",
+    "reset": "Reimposta filtri"
+  },
+  "pager": {
+    "next": "Pagina successiva",
+    "first": "Prima pagina",
+    "older": "Voci più vecchie",
+    "newest": "Voci più recenti"
+  },
+  "form": {
+    "optional": "facoltativo",
+    "choose": "Scegli",
+    "cancel": "Annulla",
+    "count": "{used} di {max} caratteri",
+    "summaryTitle": "{count, plural, one {Un campo va corretto} other {# campi vanno corretti}}",
+    "calendar": {
+      "open": "Apri calendario",
+      "previous": "Mese precedente",
+      "next": "Mese successivo"
+    }
+  },
+  "errors": {
+    "required": "Manca questo campo.",
+    "tooShort": "Almeno {min} caratteri.",
+    "tooLong": "Al massimo {max} caratteri.",
+    "invalid": "I dati non sono validi. Non è stato salvato nulla.",
+    "generic": "Il salvataggio non è riuscito. I tuoi dati sono conservati. Riprova.",
+    "forbidden": "Il tuo ruolo non lo consente. Non è stato salvato nulla.",
+    "signInRequired": "La sessione è scaduta. Accedi di nuovo; non è stato salvato nulla.",
+    "notFound": "Questa voce non esiste più. Ricarica la pagina.",
+    "dateInvalid": "Data nel formato GG.MM.AAAA.",
+    "datePast": "La fine deve essere nel futuro.",
+    "restrictionSelf": "Non puoi limitare il tuo account.",
+    "restrictionProtected": "Solo un Super Admin limita account con un ruolo interno.",
+    "restrictionActive": "Questa limitazione è già attiva. Revocala prima di modificarla.",
+    "restrictionGone": "Questa limitazione è già revocata.",
+    "rolesSelf": "Non puoi toglierti da solo il ruolo Super Admin.",
+    "rolesLast": "Deve restare almeno un Super Admin.",
+    "regionNotChecked": "Prima la verifica legale: segna la regione come verificata prima di approvarla.",
+    "regionParentNotApproved": "Prima approva il cantone: una città ha bisogno di un cantone approvato.",
+    "rankInvalid": "Un numero intero da 1 a 999.",
+    "slugFormat": "Solo lettere minuscole, cifre e trattini.",
+    "slugTaken": "Un’altra categoria ha già questo slug.",
+    "orderInvalid": "Un numero intero da 0 a 9999.",
+    "contentSlugTaken": "Questo tipo, questo slug e questa lingua sono già usati.",
+    "seoPath": "Un percorso con lingua, per esempio /de/ch/zuerich, senza punto interrogativo né #.",
+    "assigneeNotSupport": "Questa persona non ha un ruolo di supporto.",
+    "unknownRegion": "Una delle regioni non esiste più. Ricarica la pagina."
+  },
+  "overview": {
+    "title": "Panoramica",
+    "intro": "Cifre della piattaforma, ognuna con il link alla coda che puoi gestire.",
+    "phase2": "Arriva con la fase 2",
+    "registrations": {
+      "title": "Nuovi account in 7 giorni",
+      "more": "{count, plural, one {Uno in più} other {# in più}} rispetto ai 7 giorni precedenti ({previous}).",
+      "fewer": "{count, plural, one {Uno in meno} other {# in meno}} rispetto ai 7 giorni precedenti ({previous}).",
+      "same": "Tanti quanti nei 7 giorni precedenti ({previous}).",
+      "link": "Vedi utenti"
+    },
+    "profiles": {
+      "title": "Profili di fornitori attivi",
+      "detail": "Pubblicati e nella ricerca.",
+      "link": "Vedi fornitori"
+    },
+    "verifications": {
+      "title": "Verifiche aperte",
+      "detail": "Profili e modifiche in attesa di verifica.",
+      "reviewOnly": "La coda di verifica è per verifica e moderazione.",
+      "link": "Apri la coda di verifica"
+    },
+    "moderation": {
+      "title": "Casi di moderazione aperti",
+      "detail": "{count, plural, =0 {Nessun caso critico.} one {Di cui un caso critico.} other {Di cui # casi critici.}}",
+      "link": "Apri moderazione"
+    },
+    "appeals": {
+      "title": "Ricorsi contro limitazioni",
+      "detail": "In attesa di una decisione secondo il principio dei quattro occhi.",
+      "link": "Apri ricorsi"
+    },
+    "reviews": {
+      "title": "Recensioni in verifica",
+      "detail": "Nuove recensioni prima della pubblicazione.",
+      "link": "Apri recensioni"
+    },
+    "media": {
+      "title": "Media in verifica",
+      "detail": "Immagini e video prima dell’approvazione.",
+      "link": "Apri media"
+    },
+    "companies": {
+      "title": "Aziende inviate",
+      "detail": "Documenti di club e agenzie.",
+      "link": "Apri aziende"
+    },
+    "complaints": {
+      "title": "Richieste di supporto aperte",
+      "detail": "Richieste e reclami dal modulo di contatto.",
+      "link": "Apri supporto"
+    },
+    "security": {
+      "title": "Avvisi di sicurezza in 24 ore",
+      "detail": "Secondo fattore disattivato: {twoFactor} · Password reimpostata: {password} · Passkey rimossa: {passkey}",
+      "link": "Apri registro di audit"
+    },
+    "billing": {
+      "title": "Abbonamenti e pagamenti",
+      "detail": "Tariffe, fatture e stato dei pagamenti arrivano con la Business-Suite."
+    },
+    "errors": {
+      "title": "Errori tecnici",
+      "detail": "Gli errori tecnici sono nei log di Railway; l’admin non li salva.",
+      "link": "Vedi stato dei servizi"
+    }
+  }
+}

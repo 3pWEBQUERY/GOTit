@@ -1,0 +1,79 @@
+{
+  "queue": {
+    "title": "Support",
+    "intro": "Requests from the contact form, open ones first and among them the oldest first.",
+    "filterLabel": "Filter requests",
+    "status": "Status",
+    "allStatuses": "All statuses",
+    "assigned": "Assigned",
+    "caption": "Support requests",
+    "count": "{count, plural, =0 {No requests} one {One request} other {# requests}}",
+    "emptyTitle": "No requests",
+    "emptyDescription": "Requests from the contact form appear here as soon as someone writes.",
+    "noMatchTitle": "No results",
+    "noMatchDescription": "No request matches the filters. Reset the filter."
+  },
+  "status": {
+    "OPEN": "Open",
+    "ANSWERED": "Answered",
+    "CLOSED": "Closed"
+  },
+  "assigned": {
+    "any": "All",
+    "me": "Assigned to me",
+    "none": "Assigned to nobody",
+    "you": "You",
+    "someone": "Someone else",
+    "nobody": "Nobody"
+  },
+  "categories": {
+    "account": "Account and sign-in",
+    "verification": "Verification",
+    "payment": "Payment",
+    "report": "Report or safety",
+    "appeal": "Appeal against a suspension",
+    "privacy": "Privacy",
+    "other": "Something else"
+  },
+  "columns": {
+    "number": "Number",
+    "subject": "Subject",
+    "category": "Category",
+    "status": "Status",
+    "assigned": "Assigned",
+    "created": "Received",
+    "replies": "Entries"
+  },
+  "ticket": {
+    "title": "{reference} · {subject}",
+    "request": "Request",
+    "history": "History",
+    "noReplies": "No reply and no note yet.",
+    "unknownAuthor": "Unknown",
+    "internalTag": "Internal note",
+    "sentTag": "Sent by email",
+    "replyTitle": "Reply",
+    "replyIntro": "A reply is emailed verbatim to {email} and sets the status to “Answered”. An internal note is only visible to support.",
+    "body": "Text",
+    "bodyHint": "Write so that the person knows how things continue without asking again.",
+    "internal": "Save as internal note",
+    "internalHint": "Is not sent; the status stays.",
+    "send": "Save reply",
+    "sent": "Saved. A reply is on its way by email.",
+    "details": "Request details",
+    "email": "Email",
+    "account": "Account",
+    "accountLink": "Open account",
+    "withAccount": "With account",
+    "withoutAccount": "Without account",
+    "language": "Language",
+    "assignMe": "Assign to me",
+    "assigned": "The request is assigned to you.",
+    "release": "Remove assignment",
+    "released": "The request is no longer assigned to anyone.",
+    "statusLabel": "Status",
+    "statusHint": "“Closed” when nothing is left to do.",
+    "saveStatus": "Save status",
+    "statusSaved": "The status is saved."
+  }
+}

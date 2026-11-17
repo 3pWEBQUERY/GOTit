@@ -174,7 +174,8 @@
       "notAllowed": "This is no longer possible in the current status. The new state is shown.",
       "invalid": "The details are not valid. Check the day, time and duration.",
       "rateLimited": "Too many actions in a short time. Wait a moment and try again.",
-      "failed": "That did not work. Nothing was changed; try again."
+      "failed": "That did not work. Nothing was changed; try again.",
+      "restricted": "Your account is restricted from appointment requests. You cannot accept or propose another time; you can still cancel."
     },
     "safetyTitle": "Cancelled",
     "safetyText": "If something threatened or unsettled you, report the member. Moderation receives a copy of the latest messages.",

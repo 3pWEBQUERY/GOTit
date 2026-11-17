@@ -8,6 +8,10 @@ import { Button, Composer, IconButton } from "@app/ui";
 import { ImagePlus } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
+import {
+  RestrictionNotice,
+  type RestrictionInfo,
+} from "../../../moderation/restriction-notice";
 import type { OutboxImage } from "../../lib/thread-state";
 import type { ClientPendingAttachment } from "../../lib/types";
 import { ComposerImages } from "./composer-images";
@@ -18,6 +22,8 @@ export interface ThreadComposerProps {
   counterpartName: string;
   pending: readonly ClientPendingAttachment[];
   blockedByMe: boolean;
+  /** Eingeschränkt durch die Moderation: statt des Composers steht der Hinweis (v1 9.2). */
+  restriction: RestrictionInfo | null;
   onUnblock: () => void;
   unblocking: boolean;
   onSend: (body: string, images: OutboxImage[]) => void;
@@ -33,6 +39,7 @@ export function ThreadComposer({
   counterpartName,
   pending,
   blockedByMe,
+  restriction,
   onUnblock,
   unblocking,
   onSend,
@@ -62,6 +69,16 @@ export function ThreadComposer({
           {t("unblock")}
         </Button>
       </div>
+    );
+  }
+
+  if (restriction) {
+    return (
+      <RestrictionNotice
+        kind="MESSAGING"
+        restriction={restriction}
+        className="max-md:fixed max-md:inset-x-3 max-md:bottom-[calc(0.75rem+env(safe-area-inset-bottom))] max-md:z-40"
+      />
     );
   }
 

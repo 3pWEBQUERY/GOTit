@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import type { FormEvent } from "react";
 import { SlotFields } from "../shared/slot-fields";
 import { FIELD_IDS, type useRequestForm } from "./use-request-form";
+import { RestrictionNotice } from "../../../moderation/restriction-notice";
 
 export interface RequestFormProps {
   form: ReturnType<typeof useRequestForm>;
@@ -66,6 +67,9 @@ export function RequestForm({
       ) : null}
       {form.errors.form ? (
         <InlineAlert tone="error" title={form.errors.form} />
+      ) : null}
+      {form.restricted ? (
+        <RestrictionNotice kind="BOOKING" restriction={form.restricted} />
       ) : null}
       {form.lostTime ? (
         <InlineAlert tone="warning" title={t("lostTime")} />

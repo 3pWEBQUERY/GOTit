@@ -1,5 +1,6 @@
 import { getDb, type Prisma } from "@app/db";
-import { URGENT_REPORT_REASONS, reportSchema } from "../messaging/schemas";
+import { reportSchema } from "../messaging/schemas";
+import { fileReport } from "../moderation/intake";
 
 /**
  * Bewertung melden (v2 10.1 «Melden ist auf jeder Bewertung erreichbar»,
@@ -23,20 +24,16 @@ export async function reportReview(
     select: { id: true, text: true, publishedAt: true },
   });
   if (!review) return { ok: false, reason: "not-found" };
-  const report = await db.report.create({
-    data: {
+  const report = await fileReport({
       reporterId: userId,
       targetType: "REVIEW",
       targetId: review.id,
       reason: parsed.data.reason,
       details: parsed.data.details || null,
-      urgent: URGENT_REPORT_REASONS.includes(parsed.data.reason),
       evidence: {
         text: review.text,
         publishedAt: review.publishedAt?.toISOString() ?? null,
       } as Prisma.InputJsonValue,
-    },
-    select: { id: true },
   });
-  return { ok: true, reportId: report.id };
+  return { ok: true, reportId: report.reportId };
 }

@@ -59,6 +59,7 @@ async function report(data: {
       reason: data.urgent ? "minor" : "spam",
       details: "Fiktiver Meldetext",
       urgent: data.urgent,
+      priority: data.urgent ? "CRITICAL" : "NORMAL",
       status: data.status ?? "OPEN",
       createdAt: new Date(Date.now() - data.minutesAgo * 60_000),
       evidence: data.evidence ?? {

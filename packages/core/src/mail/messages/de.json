@@ -41,5 +41,17 @@
     "intro": "Du hast morgen einen bestätigten Termin.",
     "action": "Details im Konto ansehen:",
     "expiry": "Aus Gründen der Diskretion enthält diese E-Mail keine Namen und keine Einzelheiten."
+  },
+  "support-received": {
+    "subject": "Deine Anfrage {reference}",
+    "intro": "Wir haben deine Anfrage {reference} erhalten und antworten an diese Adresse.",
+    "action": "Hilfe und Antworten auf häufige Fragen:",
+    "expiry": "Aus Gründen der Diskretion enthält diese E-Mail keine Einzelheiten deiner Anfrage."
+  },
+  "support-reply": {
+    "subject": "Antwort auf deine Anfrage {reference}",
+    "intro": "Der Support hat auf deine Anfrage {reference} geantwortet:",
+    "action": "Für eine weitere Frage das Kontaktformular verwenden:",
+    "expiry": "Bitte antworte nicht auf diese E-Mail; die Adresse wird nicht gelesen."
   }
 }

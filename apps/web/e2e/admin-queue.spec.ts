@@ -72,7 +72,7 @@ test.describe("Prüfwarteschlange", () => {
     await expect(page.getByRole("heading", { level: 2, name: "Offene Prüffälle" })).toBeVisible();
     await expect(page.locator("[data-open-count]")).toHaveText(/^[1-9]\d*$/);
     await expect(page.getByRole("navigation", { name: "Bereiche des Admins" }).getByRole("link", { name: /Verifizierungen/ })).toContainText(/\d/);
-    await page.getByRole("link", { name: "Warteschlange öffnen" }).click();
+    await page.getByRole("link", { name: "Prüfwarteschlange öffnen" }).click();
     await expect(page).toHaveURL(/\/de\/admin\/verifizierungen$/);
     await expect(page.getByRole("navigation", { name: "Bereiche des Admins" }).getByRole("link", { name: /Verifizierungen/ })).toHaveAttribute("aria-current", "page");
 

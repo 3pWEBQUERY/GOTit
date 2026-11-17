@@ -1,0 +1,79 @@
+{
+  "queue": {
+    "title": "Support",
+    "intro": "Anfragen über das Kontaktformular, offene zuerst und darin die älteste zuerst.",
+    "filterLabel": "Anfragen filtern",
+    "status": "Status",
+    "allStatuses": "Alle Status",
+    "assigned": "Zuständig",
+    "caption": "Supportanfragen",
+    "count": "{count, plural, =0 {Keine Anfragen} one {Eine Anfrage} other {# Anfragen}}",
+    "emptyTitle": "Keine Anfragen",
+    "emptyDescription": "Hier stehen Anfragen aus dem Kontaktformular, sobald jemand schreibt.",
+    "noMatchTitle": "Keine Treffer",
+    "noMatchDescription": "Keine Anfrage passt zu den Filtern. Setze den Filter zurück."
+  },
+  "status": {
+    "OPEN": "Offen",
+    "ANSWERED": "Beantwortet",
+    "CLOSED": "Geschlossen"
+  },
+  "assigned": {
+    "any": "Alle",
+    "me": "Mir zugewiesen",
+    "none": "Niemandem zugewiesen",
+    "you": "Du",
+    "someone": "Jemand anderes",
+    "nobody": "Niemand"
+  },
+  "categories": {
+    "account": "Konto und Anmeldung",
+    "verification": "Verifizierung",
+    "payment": "Zahlung",
+    "report": "Meldung oder Sicherheit",
+    "appeal": "Einspruch gegen eine Sperre",
+    "privacy": "Datenschutz",
+    "other": "Etwas anderes"
+  },
+  "columns": {
+    "number": "Nummer",
+    "subject": "Betreff",
+    "category": "Kategorie",
+    "status": "Status",
+    "assigned": "Zuständig",
+    "created": "Eingang",
+    "replies": "Einträge"
+  },
+  "ticket": {
+    "title": "{reference} · {subject}",
+    "request": "Anfrage",
+    "history": "Verlauf",
+    "noReplies": "Noch keine Antwort und keine Notiz.",
+    "unknownAuthor": "Unbekannt",
+    "internalTag": "Interne Notiz",
+    "sentTag": "Per E-Mail gesendet",
+    "replyTitle": "Antworten",
+    "replyIntro": "Eine Antwort geht im Wortlaut per E-Mail an {email} und setzt den Status auf «Beantwortet». Eine interne Notiz sieht nur der Support.",
+    "body": "Text",
+    "bodyHint": "Schreib so, dass die Person ohne Rückfrage weiss, wie es weitergeht.",
+    "internal": "Als interne Notiz speichern",
+    "internalHint": "Wird nicht gesendet; der Status bleibt.",
+    "send": "Antwort speichern",
+    "sent": "Gespeichert. Eine Antwort ist per E-Mail unterwegs.",
+    "details": "Angaben zur Anfrage",
+    "email": "E-Mail",
+    "account": "Konto",
+    "accountLink": "Konto öffnen",
+    "withAccount": "Mit Konto",
+    "withoutAccount": "Ohne Konto",
+    "language": "Sprache",
+    "assignMe": "Mir zuweisen",
+    "assigned": "Die Anfrage ist dir zugewiesen.",
+    "release": "Zuweisung lösen",
+    "released": "Die Anfrage ist niemandem mehr zugewiesen.",
+    "statusLabel": "Status",
+    "statusHint": "«Geschlossen», wenn nichts mehr zu tun ist.",
+    "saveStatus": "Status speichern",
+    "statusSaved": "Der Status ist gespeichert."
+  }
+}

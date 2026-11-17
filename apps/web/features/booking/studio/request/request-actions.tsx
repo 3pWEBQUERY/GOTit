@@ -19,6 +19,10 @@ import {
 } from "../../actions/act";
 import type { RequestView } from "../queries/request-view";
 import { CounterForm } from "./counter-form";
+import {
+  RestrictionNotice,
+  type RestrictionInfo,
+} from "../../../moderation/restriction-notice";
 
 type Confirmable = "decline" | "cancel" | "cancel-safety" | "dispute";
 type Mode =
@@ -51,8 +55,10 @@ export function useActionError() {
   const t = useTranslations("bookingStudio.request.errors");
   return (
     result: Exclude<BookingActionResult, { ok: true }>,
-  ): { title?: string; text: string } => {
+  ): { title?: string; text: string; restricted?: RestrictionInfo } => {
     switch (result.reason) {
+      case "restricted":
+        return { text: t("restricted"), restricted: { until: result.until ?? null } };
       case "conflict":
         return { title: t("conflictTitle"), text: t("conflict") };
       case "stale":
@@ -92,9 +98,11 @@ export function RequestActions({
   const describeError = useActionError();
   const [mode, setMode] = useState<Mode>({ kind: "idle" });
   const [pending, setPending] = useState<BookingAction | null>(null);
-  const [error, setError] = useState<{ title?: string; text: string } | null>(
-    null,
-  );
+  const [error, setError] = useState<{
+    title?: string;
+    text: string;
+    restricted?: RestrictionInfo;
+  } | null>(null);
   const [reason, setReason] = useState("");
   const [safetyDone, setSafetyDone] = useState(false);
   const stepHeading = useRef<HTMLHeadingElement>(null);
@@ -142,7 +150,9 @@ export function RequestActions({
         {t("actionsTitle")}
       </Heading>
       {safetyDone ? safetyOffer(true) : null}
-      {error ? (
+      {error?.restricted ? (
+        <RestrictionNotice kind="BOOKING" restriction={error.restricted} />
+      ) : error ? (
         <InlineAlert tone="error" title={error.title ?? error.text}>
           {error.title ? error.text : null}
         </InlineAlert>

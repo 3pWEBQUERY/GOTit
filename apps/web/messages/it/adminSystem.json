@@ -1,0 +1,119 @@
+{
+  "tabs": {
+    "label": "Aree del sistema",
+    "flags": "Feature flag",
+    "roles": "Ruoli interni",
+    "audit": "Registro di audit",
+    "status": "Stato dei servizi"
+  },
+  "flags": {
+    "title": "Feature flag",
+    "intro": "Attivano o disattivano intere aree, anche solo in singole regioni. Ogni modifica richiede una motivazione e figura nel registro di audit.",
+    "keys": {
+      "community": {
+        "name": "Community",
+        "gates": "Fase 3: post, storie, commenti e l’area Community in navigazione e profili."
+      },
+      "business-suite": {
+        "name": "Business-Suite",
+        "gates": "Fase 2: pubblicità, fatturazione, team e statistiche dettagliate nello studio."
+      }
+    },
+    "on": "Attivato",
+    "off": "Disattivato",
+    "allRegions": "In tutte le regioni",
+    "disabledIn": "{count, plural, one {Disattivato in una regione} other {Disattivato in # regioni}}",
+    "updated": "modificato il {date}",
+    "neverSet": "mai impostato",
+    "canton": "{name} (cantone)",
+    "city": "{name} (città)",
+    "enabled": "Attivato",
+    "enabledHint": "Senza spunta l’area è disattivata ovunque.",
+    "disabledRegions": "Disattivato in",
+    "disabledRegionsHint": "Vale solo se il flag è attivato.",
+    "reason": "Motivazione",
+    "reasonHint": "Almeno 10 caratteri. Figura nel registro di audit.",
+    "save": "Salva flag",
+    "saved": "Il flag è salvato."
+  },
+  "roles": {
+    "title": "Ruoli interni",
+    "intro": "Chi ha accesso all’admin. I ruoli li assegna solo un Super Admin, con motivazione.",
+    "caption": "Account con ruolo interno",
+    "twoFactor": "Secondo fattore",
+    "twoFactorOn": "Configurato",
+    "twoFactorOff": "Manca, nessun accesso",
+    "granted": "Ultima assegnazione",
+    "edit": "Modifica",
+    "editLink": "Modifica ruoli",
+    "editTitle": "Ruoli di {name}",
+    "editIntro": "La modifica vale subito. Senza secondo fattore l’admin resta bloccato nonostante il ruolo.",
+    "close": "Chiudi modifica",
+    "unknownAccount": "Questo account non esiste.",
+    "emptyTitle": "Nessun ruolo interno",
+    "emptyDescription": "Cerca sotto un account per assegnargli un ruolo.",
+    "searchTitle": "Cerca account senza ruolo",
+    "searchIntro": "Per un nuovo ruolo: cerca l’account e poi modifica i ruoli.",
+    "search": "Ricerca",
+    "searchHint": "Nome utente, e-mail o ID esatto.",
+    "searchSubmit": "Cerca account",
+    "noRole": "nessun ruolo",
+    "noResults": "Nessun account trovato."
+  },
+  "audit": {
+    "title": "Registro di audit",
+    "intro": "Azioni rilevanti per la sicurezza, dalle più recenti. Il registro non contiene contenuti, solo azione, destinazione e motivazione.",
+    "filterLabel": "Filtra registro di audit",
+    "person": "Persona",
+    "personHint": "ID account esatto.",
+    "action": "Azione",
+    "actionHint": "Inizio, per esempio user.roles",
+    "target": "Destinazione",
+    "targetHint": "Inizio, per esempio user:",
+    "from": "Dal",
+    "to": "Al",
+    "caption": "Voci del registro di audit",
+    "count": "{count, plural, =0 {Nessuna voce} one {Una voce} other {# voci}}",
+    "columns": {
+      "time": "Ora",
+      "actor": "Persona",
+      "action": "Azione",
+      "target": "Destinazione",
+      "reason": "Motivazione"
+    },
+    "system": "Sistema",
+    "emptyTitle": "Ancora nessuna voce",
+    "emptyDescription": "Qui compaiono modifiche dei ruoli, decisioni, blocchi e accessi a dati sensibili.",
+    "noMatchTitle": "Nessun risultato",
+    "noMatchDescription": "Nessuna voce corrisponde ai filtri. Modificali o reimpostali."
+  },
+  "status": {
+    "title": "Stato dei servizi",
+    "intro": "Stato di database, Redis, code e migrazioni. Ogni controllo attende al massimo 2 secondi.",
+    "checkedAt": "Controllato il {date}",
+    "refresh": "Controlla di nuovo",
+    "allOk": "Tutti i servizi rispondono.",
+    "failures": "{count, plural, one {Un servizio non risponde} other {# servizi non rispondono}}",
+    "failuresText": "I dettagli sono nella tabella. La causa è nei log di Railway.",
+    "servicesCaption": "Servizi",
+    "queuesCaption": "Code",
+    "columns": {
+      "service": "Servizio",
+      "state": "Stato",
+      "detail": "Dettaglio",
+      "queue": "Coda",
+      "waiting": "In attesa",
+      "active": "Attivi",
+      "delayed": "Ritardati",
+      "failed": "Falliti"
+    },
+    "ok": "Risponde",
+    "failed": "Errore",
+    "latency": "{ms} ms",
+    "unreachable": "non raggiungibile",
+    "migrations": "Migrazioni",
+    "migrationsDetail": "{count} applicate, ultima {last}",
+    "noQueues": "Nessuna coda definita.",
+    "logsNote": "Gli errori di singole richieste e job sono nei log di Railway; l’admin non li salva."
+  }
+}

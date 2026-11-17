@@ -16,7 +16,8 @@
     "previewOwn": "You: {text}",
     "unread": "{count, plural, one {# unread message} other {# unread messages}}",
     "starred": "Favourite",
-    "blocked": "Blocked"
+    "blocked": "Blocked",
+    "previewHidden": "Hidden by moderation"
   },
   "tabs": {
     "label": "Inbox views",
@@ -98,7 +99,8 @@
       "attachments": "An image is no longer available. Upload it again.",
       "rate-limited": "Too many messages in a short time. Wait a minute and send again.",
       "invalid": "The message could not be sent. Check its length and content.",
-      "network": "No connection to the server. Your message is not lost."
+      "network": "No connection to the server. Your message is not lost.",
+      "restricted": "Your account is restricted from messaging. The message was not sent."
     },
     "logLabel": "History with {name}",
     "authorOwn": "You",
@@ -125,7 +127,8 @@
     "announceImage": "Image",
     "emptyTitle": "No messages yet",
     "emptyText": "Write the first message to {name} below.",
-    "contextLabel": "Conversation details"
+    "contextLabel": "Conversation details",
+    "hidden": "Hidden by moderation"
   },
   "delete": {
     "title": "Delete message?",

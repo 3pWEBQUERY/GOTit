@@ -42,7 +42,14 @@
     "./organization": "./src/organization/index.ts",
     "./organization/schemas": "./src/organization/schemas.ts",
     "./organization/permissions": "./src/organization/permissions.ts",
-    "./stats": "./src/stats/index.ts"
+    "./stats": "./src/stats/index.ts",
+    "./admin/system": "./src/admin/system.ts",
+    "./geo/admin": "./src/geo/admin.ts",
+    "./catalog/admin": "./src/catalog/admin.ts",
+    "./content": "./src/content/index.ts",
+    "./content/schemas": "./src/content/schemas.ts",
+    "./support": "./src/support/index.ts",
+    "./support/schemas": "./src/support/schemas.ts"
   },
   "scripts": {
     "lint": "eslint .",

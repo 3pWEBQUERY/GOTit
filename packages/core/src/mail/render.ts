@@ -11,9 +11,11 @@ const catalogues: Record<Locale, typeof de> = { de, fr, it, en };
 export function renderMail(request: MailRequest): RenderedMail {
   const messages = catalogues[request.locale];
   const template = messages[request.template];
+  const reference = request.reference ?? "";
   const text = [
-    template.intro,
+    template.intro.replace("{reference}", reference),
     "",
+    ...(request.text ? [request.text, ""] : []),
     template.action,
     request.url,
     "",
@@ -21,5 +23,5 @@ export function renderMail(request: MailRequest): RenderedMail {
     "",
     messages.appSignature,
   ].join("\n");
-  return { to: request.to, subject: template.subject, text };
+  return { to: request.to, subject: template.subject.replace("{reference}", reference).trim(), text };
 }

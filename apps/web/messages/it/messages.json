@@ -16,7 +16,8 @@
     "previewOwn": "Tu: {text}",
     "unread": "{count, plural, one {# messaggio non letto} other {# messaggi non letti}}",
     "starred": "Preferito",
-    "blocked": "Bloccato"
+    "blocked": "Bloccato",
+    "previewHidden": "Nascosto dalla moderazione"
   },
   "tabs": {
     "label": "Viste della casella",
@@ -98,7 +99,8 @@
       "attachments": "Un’immagine non è più disponibile. Caricala di nuovo.",
       "rate-limited": "Troppi messaggi in poco tempo. Attendi un minuto e invia di nuovo.",
       "invalid": "Non è stato possibile inviare il messaggio. Controlla lunghezza e contenuto.",
-      "network": "Nessuna connessione al server. Il tuo messaggio non è perso."
+      "network": "Nessuna connessione al server. Il tuo messaggio non è perso.",
+      "restricted": "Il tuo account è limitato per i messaggi. Il messaggio non è stato inviato."
     },
     "logLabel": "Cronologia con {name}",
     "authorOwn": "Tu",
@@ -125,7 +127,8 @@
     "announceImage": "Immagine",
     "emptyTitle": "Ancora nessun messaggio",
     "emptyText": "Scrivi qui sotto il primo messaggio a {name}.",
-    "contextLabel": "Dettagli della conversazione"
+    "contextLabel": "Dettagli della conversazione",
+    "hidden": "Nascosto dalla moderazione"
   },
   "delete": {
     "title": "Eliminare il messaggio?",

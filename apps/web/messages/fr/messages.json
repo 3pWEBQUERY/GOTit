@@ -16,7 +16,8 @@
     "previewOwn": "Toi : {text}",
     "unread": "{count, plural, one {# message non lu} other {# messages non lus}}",
     "starred": "Favori",
-    "blocked": "Bloqué"
+    "blocked": "Bloqué",
+    "previewHidden": "Masqué par la modération"
   },
   "tabs": {
     "label": "Vues de la messagerie",
@@ -98,7 +99,8 @@
       "attachments": "Une image n’est plus disponible. Charge-la à nouveau.",
       "rate-limited": "Trop de messages en peu de temps. Attends une minute et renvoie.",
       "invalid": "Le message n’a pas pu être envoyé. Vérifie sa longueur et son contenu.",
-      "network": "Pas de connexion au serveur. Ton message n’est pas perdu."
+      "network": "Pas de connexion au serveur. Ton message n’est pas perdu.",
+      "restricted": "Ton compte est restreint pour les messages. Le message n’a pas été envoyé."
     },
     "logLabel": "Historique avec {name}",
     "authorOwn": "Toi",
@@ -125,7 +127,8 @@
     "announceImage": "Image",
     "emptyTitle": "Pas encore de messages",
     "emptyText": "Écris le premier message à {name} ci-dessous.",
-    "contextLabel": "Détails de la conversation"
+    "contextLabel": "Détails de la conversation",
+    "hidden": "Masqué par la modération"
   },
   "delete": {
     "title": "Supprimer le message ?",

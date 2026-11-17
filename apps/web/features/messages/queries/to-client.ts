@@ -21,6 +21,7 @@ export function toClientMessage(message: ThreadMessageView): ClientMessage {
     fromMe: message.fromMe,
     body: message.body,
     deleted: message.deleted,
+    hidden: message.hidden,
     createdAt: message.createdAt.toISOString(),
     status: message.status,
     attachments: message.attachments.map((attachment) => ({
@@ -34,6 +35,7 @@ export function toClientMessage(message: ThreadMessageView): ClientMessage {
 export function toClientThread(
   thread: ThreadView,
   fallback: (year: number) => string,
+  messagingRestriction: ClientThread["messagingRestriction"] = null,
 ): ClientThread {
   const since = thread.counterpart.memberSince;
   return {
@@ -54,5 +56,6 @@ export function toClientThread(
     archived: thread.archived,
     note: thread.note,
     labelIds: thread.labelIds,
+    messagingRestriction,
   };
 }

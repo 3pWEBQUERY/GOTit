@@ -1,0 +1,171 @@
+{
+  "areas": {
+    "overview": "Overview",
+    "users": "Users",
+    "providers": "Providers",
+    "companies": "Businesses",
+    "regions": "Regions",
+    "categories": "Categories",
+    "content": "Content",
+    "seo": "SEO",
+    "support": "Support",
+    "system": "System",
+    "flags": "Feature flags",
+    "roles": "Internal roles",
+    "audit": "Audit log",
+    "status": "Service status"
+  },
+  "restrictedTitle": "No access with your role",
+  "restricted": {
+    "users": "Users are visible to platform administration, moderation, trust & safety and support. Your role has no access.",
+    "providers": "Provider profiles are visible to platform administration, moderation, trust & safety and support. Your role has no access.",
+    "regions": "Regions are managed by platform administration. Your role has no access.",
+    "categories": "Categories are managed by platform administration. Your role has no access.",
+    "content": "Content is managed by the editorial team and platform administration. Your role has no access.",
+    "seo": "Metadata is managed by the editorial team and platform administration. Your role has no access.",
+    "support": "Support requests are handled by support and platform administration. Your role has no access.",
+    "flags": "Feature flags are switched by platform administration. Your role has no access.",
+    "roles": "Only a super admin assigns internal roles. Your role has no access.",
+    "audit": "The audit log is visible to platform administration and trust & safety. Your role has no access.",
+    "status": "Service status is visible to platform administration. Your role has no access."
+  },
+  "meta": {
+    "users": "Admin · Users",
+    "user": "Admin · Account",
+    "providers": "Admin · Providers",
+    "regions": "Admin · Regions",
+    "categories": "Admin · Categories",
+    "content": "Admin · Content",
+    "contentNew": "Admin · New page",
+    "contentEdit": "Admin · Edit page",
+    "seo": "Admin · SEO",
+    "support": "Admin · Support",
+    "ticket": "Admin · Support request",
+    "flags": "Admin · Feature flags",
+    "roles": "Admin · Internal roles",
+    "audit": "Admin · Audit log",
+    "status": "Admin · Service status"
+  },
+  "breadcrumbs": "Path",
+  "wideOnly": {
+    "title": "Editing works from 1024 px wide",
+    "description": "On this screen the admin is read-only. Open the page on a wider screen to make changes."
+  },
+  "filters": {
+    "apply": "Apply filters",
+    "reset": "Reset filters"
+  },
+  "pager": {
+    "next": "Next page",
+    "first": "First page",
+    "older": "Older entries",
+    "newest": "Newest entries"
+  },
+  "form": {
+    "optional": "optional",
+    "choose": "Choose",
+    "cancel": "Cancel",
+    "count": "{used} of {max} characters",
+    "summaryTitle": "{count, plural, one {One field needs a correction} other {# fields need a correction}}",
+    "calendar": {
+      "open": "Open calendar",
+      "previous": "Previous month",
+      "next": "Next month"
+    }
+  },
+  "errors": {
+    "required": "This field is missing.",
+    "tooShort": "At least {min} characters.",
+    "tooLong": "At most {max} characters.",
+    "invalid": "The input is not valid. Nothing was saved.",
+    "generic": "Saving failed. Your input is kept. Try again.",
+    "forbidden": "Your role is not allowed to do this. Nothing was saved.",
+    "signInRequired": "Your session has expired. Sign in again; nothing was saved.",
+    "notFound": "This entry no longer exists. Reload the page.",
+    "dateInvalid": "Date in the format DD.MM.YYYY.",
+    "datePast": "The end must be in the future.",
+    "restrictionSelf": "You cannot restrict your own account.",
+    "restrictionProtected": "Only a super admin restricts accounts with an internal role.",
+    "restrictionActive": "This restriction already applies. Lift it first to change it.",
+    "restrictionGone": "This restriction has already been lifted.",
+    "rolesSelf": "You cannot remove the super admin role from yourself.",
+    "rolesLast": "At least one super admin must remain.",
+    "regionNotChecked": "Check the legal basis first: mark the region as checked before approving it.",
+    "regionParentNotApproved": "Approve the canton first: a city needs an approved canton.",
+    "rankInvalid": "A whole number from 1 to 999.",
+    "slugFormat": "Only lowercase letters, digits and hyphens.",
+    "slugTaken": "Another category already uses this slug.",
+    "orderInvalid": "A whole number from 0 to 9999.",
+    "contentSlugTaken": "This kind, slug and language are already taken.",
+    "seoPath": "A path with language, for example /de/ch/zuerich, without a question mark or #.",
+    "assigneeNotSupport": "This person has no support role.",
+    "unknownRegion": "One of the regions no longer exists. Reload the page."
+  },
+  "overview": {
+    "title": "Overview",
+    "intro": "Platform figures, each with a link to the queue you may work on.",
+    "phase2": "Coming with phase 2",
+    "registrations": {
+      "title": "New accounts in 7 days",
+      "more": "{count, plural, one {One more} other {# more}} than in the 7 days before ({previous}).",
+      "fewer": "{count, plural, one {One fewer} other {# fewer}} than in the 7 days before ({previous}).",
+      "same": "As many as in the 7 days before ({previous}).",
+      "link": "View users"
+    },
+    "profiles": {
+      "title": "Active provider profiles",
+      "detail": "Published and in search.",
+      "link": "View providers"
+    },
+    "verifications": {
+      "title": "Open review cases",
+      "detail": "Profiles and changes waiting for review.",
+      "reviewOnly": "The review queue is for review and moderation.",
+      "link": "Open review queue"
+    },
+    "moderation": {
+      "title": "Open moderation cases",
+      "detail": "{count, plural, =0 {No critical case.} one {Including one critical case.} other {Including # critical cases.}}",
+      "link": "Open moderation"
+    },
+    "appeals": {
+      "title": "Appeals against restrictions",
+      "detail": "Waiting for a decision under the four-eyes principle.",
+      "link": "Open appeals"
+    },
+    "reviews": {
+      "title": "Reviews being checked",
+      "detail": "New reviews before publication.",
+      "link": "Open reviews"
+    },
+    "media": {
+      "title": "Media being checked",
+      "detail": "Images and videos before approval.",
+      "link": "Open media"
+    },
+    "companies": {
+      "title": "Submitted businesses",
+      "detail": "Credentials of clubs and agencies.",
+      "link": "Open businesses"
+    },
+    "complaints": {
+      "title": "Open support requests",
+      "detail": "Requests and complaints via the contact form.",
+      "link": "Open support"
+    },
+    "security": {
+      "title": "Security warnings in 24 hours",
+      "detail": "Second factor turned off: {twoFactor} · Password reset: {password} · Passkey removed: {passkey}",
+      "link": "Open audit log"
+    },
+    "billing": {
+      "title": "Subscriptions and payments",
+      "detail": "Plans, invoices and payment status come with the Business Suite."
+    },
+    "errors": {
+      "title": "Technical errors",
+      "detail": "Technical errors are in the Railway logs; the admin does not store them.",
+      "link": "View service status"
+    }
+  }
+}

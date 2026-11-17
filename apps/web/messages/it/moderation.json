@@ -1,0 +1,378 @@
+{
+  "title": "Moderazione",
+  "intro": "Messaggi, account, profili, media e recensioni segnalati. I casi critici sono in cima, in ogni priorità il più vecchio per primo.",
+  "restricted": "I casi contengono messaggi privati. Sono riservati alla moderazione e a Trust & Safety; il supporto non vi ha accesso.",
+  "memberFallback": "Membro",
+  "gone": "Non esiste più",
+  "category": "{target} · {reason}",
+  "caseTitle": "Caso {id} · {target} · {priority}",
+  "tabs": {
+    "label": "Vista della moderazione",
+    "cases": "Casi",
+    "restrictionAppeals": "Ricorsi contro limitazioni"
+  },
+  "priority": {
+    "CRITICAL": "Critica",
+    "HIGH": "Alta",
+    "NORMAL": "Normale",
+    "LOW": "Bassa"
+  },
+  "priorityLabel": {
+    "CRITICAL": "Critica · Trust & Safety",
+    "HIGH": "Alta",
+    "NORMAL": "Normale",
+    "LOW": "Bassa"
+  },
+  "status": {
+    "OPEN": "Aperto",
+    "IN_REVIEW": "In esame",
+    "RESOLVED": "Evaso",
+    "DISMISSED": "Respinto"
+  },
+  "targetType": {
+    "MESSAGE": "Messaggio",
+    "USER": "Membro",
+    "PROFILE": "Profilo inserzionista",
+    "MEDIA": "Media",
+    "REVIEW": "Recensione",
+    "ORGANIZATION": "Organizzazione",
+    "URL": "Indirizzo"
+  },
+  "decisionLabel": {
+    "NO_ACTION": "Nessuna violazione",
+    "CHANGES_REQUESTED": "Da correggere",
+    "CONTENT_REMOVED": "Rimuovere",
+    "ACCOUNT_RESTRICTED": "Limitare l’account",
+    "ACCOUNT_SUSPENDED": "Sospendere l’account"
+  },
+  "decisionHint": {
+    "NO_ACTION": {
+      "default": "Il caso viene respinto. Un contenuto bloccato subito torna visibile."
+    },
+    "CHANGES_REQUESTED": {
+      "default": "Il media torna all’inserzionista da correggere, con la tua motivazione."
+    },
+    "CONTENT_REMOVED": {
+      "default": "Il contenuto non è più visibile.",
+      "MESSAGE": "Entrambe le parti vedono il messaggio come «Nascosto dalla moderazione».",
+      "PROFILE": "Il profilo non è più pubblico.",
+      "MEDIA": "Il media è bloccato; l’inserzionista lo vede nello studio con la tua motivazione.",
+      "REVIEW": "La recensione scompare dal profilo.",
+      "ORGANIZATION": "L’organizzazione non è più pubblica."
+    },
+    "ACCOUNT_RESTRICTED": {
+      "default": "L’account dietro il contenuto non può più inviare messaggi o richieste di appuntamento."
+    },
+    "ACCOUNT_SUSPENDED": {
+      "default": "L’account non può più accedere, tutte le sessioni terminano, un profilo inserzionista non è più pubblico."
+    }
+  },
+  "restrictionKind": {
+    "MESSAGING": "Messaggi limitati",
+    "BOOKING": "Richieste di appuntamento limitate",
+    "SUSPENDED": "Account sospeso"
+  },
+  "rules": {
+    "R-MOD-0": "Nessuna violazione constatata",
+    "R-MOD-1": "Molestia, minaccia o insulto",
+    "R-MOD-2": "Frode, spam o inganno su prestazioni e prezzi",
+    "R-MOD-3": "Falsa identità o immagini altrui",
+    "R-MOD-4": "Sospetto di minore età",
+    "R-MOD-5": "Sospetto di coercizione, sfruttamento o tratta di esseri umani",
+    "R-MOD-6": "Violenza o pericolo immediato",
+    "R-MOD-7": "Contenuti o media non ammessi",
+    "R-MOD-8": "Pubblicazione di dati privati di terzi"
+  },
+  "readOnly": {
+    "title": "Decidere è possibile da 1024 px di larghezza",
+    "text": "Su questo schermo l’admin è in sola lettura. Apri il caso su uno schermo più largo per decidere."
+  },
+  "queue": {
+    "caption": "Casi della moderazione",
+    "count": "{count, plural, =0 {Nessun caso} one {# caso} other {# casi}}",
+    "limit": "Qui figurano solo i primi {count} casi. Restringi l’elenco con i filtri.",
+    "next": "Apri il caso successivo",
+    "shortcutAfter": "apre il caso più urgente e più vecchio, libero o assegnato a te.",
+    "noNext": "Nessun caso libero aperto.",
+    "me": "Io",
+    "unassigned": "Nessuno",
+    "unknownPerson": "Persona sconosciuta",
+    "appealOpen": "Ricorso aperto",
+    "columns": {
+      "caseId": "Caso",
+      "category": "Categoria",
+      "priority": "Priorità",
+      "status": "Stato",
+      "assignee": "Responsabile",
+      "age": "Età"
+    },
+    "filters": {
+      "title": "Filtri",
+      "statusLabel": "Stato",
+      "priorityLabel": "Priorità",
+      "targetLabel": "Segnalato",
+      "assignedLabel": "Assegnazione",
+      "all": "Tutti",
+      "reset": "Reimposta i filtri",
+      "status": {
+        "aktiv": "Attivi (aperti e in esame)",
+        "pruefung": "In esame",
+        "erledigt": "Evasi",
+        "abgewiesen": "Respinti",
+        "einspruch": "Ricorso aperto"
+      },
+      "prioritaet": {
+        "kritisch": "Critica",
+        "hoch": "Alta",
+        "normal": "Normale",
+        "niedrig": "Bassa"
+      },
+      "art": {
+        "nachricht": "Messaggio",
+        "mitglied": "Membro",
+        "profil": "Profilo inserzionista",
+        "medium": "Media",
+        "bewertung": "Recensione",
+        "organisation": "Organizzazione",
+        "adresse": "Indirizzo"
+      },
+      "zuweisung": {
+        "mir": "Assegnati a me",
+        "frei": "Non assegnati"
+      }
+    },
+    "empty": {
+      "title": "Nessun caso attivo",
+      "description": "Quando qualcuno segnala un messaggio, un account, un profilo, un media o una recensione, il caso appare qui."
+    },
+    "emptyFiltered": {
+      "title": "Nessun caso per questi filtri",
+      "description": "Modifica i filtri o reimpostali."
+    }
+  },
+  "meta": {
+    "status": "Stato: {status}",
+    "assignee": "Responsabile: {name}",
+    "submitted": "Ricevuto il {submitted} · {age}"
+  },
+  "assign": {
+    "assignMe": "Assegna a me",
+    "takeOver": "Prendi in carico",
+    "release": "Libera",
+    "assigned": "Caso assegnato a te",
+    "released": "Caso liberato"
+  },
+  "notes": {
+    "escalated": "Inoltrato a Trust & Safety il {date}",
+    "escalatedText": "Il motivo riguarda minori, coercizione o pericolo immediato. Può decidere solo Trust & Safety.",
+    "blocked": "Contenuto bloccato dal {date}",
+    "blockedText": "Per motivi critici il contenuto viene bloccato subito. «Nessuna violazione» lo rende di nuovo visibile.",
+    "alreadyDecidedHelp": "La tua decisione non è stata salvata. Questo è lo stato attuale."
+  },
+  "content": {
+    "title": "Contenuto segnalato",
+    "openReview": "Apri la recensione",
+    "note": {
+      "MESSAGE": "Per questa segnalazione non c’è una copia del messaggio.",
+      "USER": "È segnalato l’account stesso, senza copia di messaggi.",
+      "PROFILE": "È segnalato il profilo inserzionista. Si trova al suo indirizzo; se è bloccato non è pubblico.",
+      "MEDIA": "Il media non esiste più.",
+      "REVIEW": "Il testo della recensione si trova nel caso della recensione.",
+      "ORGANIZATION": "È segnalata l’organizzazione. Si trova al suo indirizzo; se è bloccata non è pubblica.",
+      "URL": "È segnalato un indirizzo che non è stato possibile associare a un profilo."
+    },
+    "mediaAlt": "Media segnalato"
+  },
+  "facts": {
+    "title": "Segnalazione",
+    "reason": "Motivo",
+    "details": "Testo della segnalazione",
+    "noDetails": "Nessun testo indicato",
+    "target": "Segnalato",
+    "reporter": "Segnalato da",
+    "anonymous": "Senza account o account eliminato",
+    "url": "Indirizzo segnalato",
+    "contactEmail": "Indirizzo di contatto",
+    "noContact": "Nessuno indicato"
+  },
+  "history": {
+    "title": "Cronologia dell’account",
+    "criticalOnly": "Solo Trust & Safety vede la cronologia dei casi critici.",
+    "noAccount": "Dietro questo contenuto non c’è un account.",
+    "cases": "Casi precedenti",
+    "noCases": "Nessun caso precedente.",
+    "undecided": "Ancora aperto",
+    "restrictions": "Limitazioni",
+    "noRestrictions": "Nessuna limitazione.",
+    "since": "dal {date}",
+    "until": "fino al {date}",
+    "noEnd": "senza fine",
+    "lifted": "revocata il {date}"
+  },
+  "decision": {
+    "title": "Decisione",
+    "criticalTitle": "Decide Trust & Safety",
+    "criticalText": "Solo Trust & Safety decide i casi critici. Vedi il caso affinché non resti in sospeso.",
+    "summaryTitle": "Controlla i campi evidenziati.",
+    "decision": "Esito",
+    "rule": "Regola",
+    "rulePlaceholder": "Scegli una regola",
+    "ruleHint": "«Nessuna violazione» va solo con R-MOD-0, ogni misura con una regola da R-MOD-1 a 8.",
+    "restrictionKind": "Cosa viene limitato",
+    "kind": {
+      "MESSAGING": "Messaggi",
+      "BOOKING": "Appuntamenti"
+    },
+    "kindHint": {
+      "MESSAGING": "Nessun messaggio e nessuna nuova conversazione.",
+      "BOOKING": "Nessuna richiesta di appuntamento; accettare e controproporre non è possibile, annullare sì."
+    },
+    "until": "Fine",
+    "optional": "facoltativo",
+    "untilHint": "Formato GG.MM.AAAA, vale fino alle 23:59. Senza fine la misura vale finché qualcuno la revoca.",
+    "calendar": {
+      "open": "Apri il calendario",
+      "previous": "Mese precedente",
+      "next": "Mese successivo"
+    },
+    "reason": "Motivazione",
+    "reasonHint": "Almeno 10 caratteri. È nel registro di audit; per una misura la vede anche la persona interessata.",
+    "save": "Salva la decisione",
+    "saved": "Decisione salvata"
+  },
+  "summary": {
+    "result": "Esito",
+    "rule": "Regola",
+    "reason": "Motivazione",
+    "decidedBy": "Deciso da",
+    "decidedAt": "Deciso il"
+  },
+  "appeal": {
+    "title": "Ricorso",
+    "filedAt": "presentato il {date}",
+    "status": {
+      "OPEN": "Aperto",
+      "UPHELD": "Accolto",
+      "DISMISSED": "Respinto"
+    },
+    "ownTitle": "Su questo ricorso decide un’altra persona",
+    "ownText": "Hai deciso il caso. Una seconda persona esamina il ricorso."
+  },
+  "appealDecision": {
+    "summaryTitle": "Controlla i campi evidenziati.",
+    "outcome": "Ricorso",
+    "option": {
+      "UPHELD": "Accogli il ricorso",
+      "DISMISSED": "Respingi il ricorso"
+    },
+    "optionHint": {
+      "case": {
+        "UPHELD": "Una misura viene annullata: contenuto di nuovo visibile, limitazioni del caso revocate. Contro «Nessuna violazione» il caso si riapre.",
+        "DISMISSED": "La decisione resta com’è."
+      },
+      "restriction": {
+        "UPHELD": "La limitazione viene revocata subito.",
+        "DISMISSED": "La limitazione resta fino alla sua fine."
+      }
+    },
+    "reason": "Motivazione",
+    "reasonHint": "Almeno 10 caratteri. È nel registro di audit.",
+    "save": "Salva la decisione sul ricorso",
+    "savedUpheld": "Ricorso accolto",
+    "savedDismissed": "Ricorso respinto"
+  },
+  "restrictionAppeals": {
+    "title": "Ricorsi contro limitazioni",
+    "restricted": "Sui ricorsi contro limitazioni decide chi può limitare account. Il tuo ruolo non ne fa parte.",
+    "count": "{count, plural, =0 {Nessun ricorso aperto} one {# ricorso aperto} other {# ricorsi aperti}}",
+    "listLabel": "Ricorsi aperti, il più vecchio per primo",
+    "itemTitle": "{name} · {kind}",
+    "rule": "Regola",
+    "until": "Fine",
+    "noEnd": "Senza fine",
+    "appealedAt": "Ricorso del",
+    "reason": "Motivazione della limitazione",
+    "appealText": "Testo del ricorso",
+    "ownTitle": "Hai imposto tu questa limitazione",
+    "ownText": "Sul ricorso decide una seconda persona.",
+    "suspendOnlyTitle": "Decide chi può sospendere account",
+    "suspendOnlyText": "Sui ricorsi contro una sospensione decidono l’amministrazione della piattaforma e Trust & Safety.",
+    "empty": {
+      "title": "Nessun ricorso aperto",
+      "description": "Quando qualcuno presenta ricorso contro una limitazione o una sospensione, appare qui."
+    }
+  },
+  "errors": {
+    "generic": "Non ha funzionato. I tuoi dati sono ancora lì. Riprova.",
+    "signInRequired": "La tua sessione è scaduta. Accedi di nuovo.",
+    "forbidden": "Il tuo ruolo non lo consente. Non è stato salvato nulla.",
+    "notFound": "Questo caso non esiste più.",
+    "alreadyDecided": "Questo caso è già stato deciso",
+    "notApplicable": "Questa decisione non si adatta a questo caso. Ricarica la pagina.",
+    "samePerson": "Su un ricorso contro la tua decisione decide una seconda persona.",
+    "samePersonRestriction": "Su un ricorso contro una limitazione che hai imposto decide una seconda persona.",
+    "noAccount": "Dietro questo contenuto non c’è un account da limitare. Scegli un’altra decisione.",
+    "protected": "L’account ha un ruolo interno. Solo la super-amministrazione può limitarlo o sospenderlo.",
+    "invalid": "I dati non concordano. Controlla esito, regola e motivazione.",
+    "decisionRequired": "Scegli un esito.",
+    "ruleRequired": "Scegli la regola su cui si basa la decisione.",
+    "ruleNoViolation": "«Nessuna violazione» va solo con R-MOD-0.",
+    "ruleViolation": "Una misura richiede una regola da R-MOD-1 a 8.",
+    "kindRequired": "Scegli se limitare i messaggi o gli appuntamenti.",
+    "untilInvalid": "Inserisci la fine come data GG.MM.AAAA o lascia vuoto il campo.",
+    "untilPast": "La fine deve essere oggi o più tardi.",
+    "reasonTooShort": "Motiva con almeno 10 caratteri.",
+    "reasonTooLong": "La motivazione può avere al massimo 2000 caratteri.",
+    "outcomeRequired": "Scegli se accogliere o respingere il ricorso.",
+    "appealClosed": "Su questo ricorso è già stato deciso. Ricarica la pagina."
+  },
+  "member": {
+    "restricted": {
+      "MESSAGING": "Il tuo account è limitato per i messaggi fino al {date}.",
+      "MESSAGINGNoEnd": "Il tuo account è limitato per i messaggi finché la moderazione non revoca la limitazione.",
+      "BOOKING": "Il tuo account è limitato per le richieste di appuntamento fino al {date}.",
+      "BOOKINGNoEnd": "Il tuo account è limitato per le richieste di appuntamento finché la moderazione non revoca la limitazione.",
+      "link": "Vedi motivo e ricorso"
+    },
+    "settings": {
+      "title": "Limitazioni",
+      "intro": "La moderazione ha limitato il tuo account. Contro ogni limitazione puoi presentare ricorso una volta; una seconda persona lo esamina.",
+      "listLabel": "Limitazioni attive",
+      "rule": "Regola",
+      "reason": "Motivazione",
+      "since": "Dal",
+      "until": "Fino al",
+      "noEnd": "Finché la moderazione non la revoca",
+      "appealStatus": {
+        "OPEN": "Il tuo ricorso è stato ricevuto ed è in esame.",
+        "UPHELD": "Il tuo ricorso è stato accolto.",
+        "DISMISSED": "Il tuo ricorso è stato respinto. La limitazione vale fino alla sua fine."
+      }
+    },
+    "appeal": {
+      "title": "Presentare ricorso",
+      "reason": "Perché la limitazione è sbagliata?",
+      "reasonHint": "Almeno 20 caratteri. Puoi presentare ricorso una sola volta.",
+      "submit": "Invia il ricorso",
+      "sent": "Ricorso inviato",
+      "errors": {
+        "tooShort": "Scrivi almeno 20 caratteri.",
+        "tooLong": "Il ricorso può avere al massimo 2000 caratteri.",
+        "already": "Hai già presentato ricorso.",
+        "rateLimited": "Nell’ultima ora hai inviato molte segnalazioni e ricorsi. Riprova più tardi.",
+        "notFound": "Questa limitazione non vale più. Ricarica la pagina.",
+        "generic": "Non ha funzionato. Il tuo testo è ancora lì. Riprova."
+      }
+    },
+    "media": {
+      "title": "Decisione della moderazione",
+      "caseLine": "Caso {id} · {rule} · deciso il {date}",
+      "appealStatus": {
+        "OPEN": "Il tuo ricorso è stato ricevuto ed è in esame.",
+        "UPHELD": "Il tuo ricorso è stato accolto.",
+        "DISMISSED": "Il tuo ricorso è stato respinto."
+      },
+      "reason": "Perché il media dovrebbe tornare visibile?"
+    }
+  }
+}

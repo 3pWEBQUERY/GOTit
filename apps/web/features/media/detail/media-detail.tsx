@@ -1,8 +1,10 @@
 import type { Locale } from "@app/core/locale";
 import { InlineAlert, UiLink } from "@app/ui";
+import type { AppealableCase } from "@app/core/moderation";
 import type { ReactNode } from "react";
 import { ArrowLeft } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import { MediaCaseNote } from "../../moderation/media-case-note";
 import { createHref } from "../../shell/nav/href";
 import { MediaStatusLabel, MediaVisibilityLabel } from "../library/media-status";
 import { PROFILE_SCOPE, WITH_VARIANTS, type LibraryItem, type MediaScope } from "../library/types";
@@ -28,7 +30,7 @@ function Section({ id, title, children }: { id: string; title: string; children:
  * Alternativtext, Sichtbarkeit, Titelbild, Löschen. Für eine Organisation
  * Logo statt Sichtbarkeit (Entscheid 0018).
  */
-export async function MediaDetail({ locale, item, scope = PROFILE_SCOPE }: { locale: Locale; item: LibraryItem; scope?: MediaScope }) {
+export async function MediaDetail({ locale, item, scope = PROFILE_SCOPE, moderationCase = null }: { locale: Locale; item: LibraryItem; scope?: MediaScope; moderationCase?: AppealableCase | null }) {
   const t = await getTranslations({ locale, namespace: "media.detail" });
   const href = createHref(locale);
   const organization = scope.kind === "organization";
@@ -70,12 +72,15 @@ export async function MediaDetail({ locale, item, scope = PROFILE_SCOPE }: { loc
         <div className="flex min-w-0 flex-col gap-6">
           {item.status === "CHANGES_REQUESTED" || item.status === "BLOCKED" ? (
             <InlineAlert tone={item.status === "BLOCKED" ? "error" : "warning"} title={t(item.status === "BLOCKED" ? "moderationBlocked" : "moderationChanges")}>
-              <p className="break-words whitespace-pre-line" data-moderation-note>
-                {item.moderationNote}
-              </p>
+              {item.moderationNote ? (
+                <p className="break-words whitespace-pre-line" data-moderation-note>
+                  {item.moderationNote}
+                </p>
+              ) : null}
               <p className="mt-2">{t("moderationHelp")}</p>
             </InlineAlert>
           ) : null}
+          {moderationCase ? <MediaCaseNote locale={locale} mediaId={item.id} found={moderationCase} /> : null}
           <AltTextForm mediaId={item.id} initial={item.altText ?? ""} scope={scope} />
           {organization ? (
             <Section id="medium-logo" title={t("logoTitle")}>

@@ -88,7 +88,8 @@
       "too-far": "Non è possibile una richiesta così lontana nel tempo. Scegli un’ora più vicina.",
       "duplicate": "Una richiesta a questo profilo è già aperta. La trovi sotto «Appuntamenti».",
       "rate-limited": "Hai inviato molte richieste in poco tempo. Riprova tra un’ora.",
-      "sign-in": "La tua sessione è scaduta. Accedi di nuovo; i dati inseriti restano."
+      "sign-in": "La tua sessione è scaduta. Accedi di nuovo; i dati inseriti restano.",
+      "restricted": "Il tuo account è limitato per le richieste di appuntamento."
     }
   },
   "sent": {
@@ -144,7 +145,8 @@
       "stale": "La richiesta è appena stata modificata. Controlla il nuovo stato e poi decidi.",
       "sign-in": "La tua sessione è scaduta. Accedi di nuovo.",
       "rate-limited": "Hai fatto molte modifiche in poco tempo. Riprova tra un’ora.",
-      "network": "La connessione è interrotta. Non è stato modificato nulla; riprova."
+      "network": "La connessione è interrotta. Non è stato modificato nulla; riprova.",
+      "restricted": "Il tuo account è limitato per le richieste di appuntamento. Accettare e proporre un altro orario non è possibile; puoi sempre annullare."
     }
   },
   "confirm": {

@@ -3,6 +3,7 @@ import { Button, SkipLink, UiLink } from "@app/ui";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 import { createHref } from "../../shell/nav/href";
+import { adminNavVisibility } from "../areas/nav";
 import { countMediaInReview } from "../media/queries";
 import { AdminNav, type AdminNavItem } from "./admin-nav";
 import { SignOutButton } from "./sign-out-button";
@@ -14,7 +15,7 @@ export interface AdminShellProps {
   name: string;
   /** Offene Prüffälle; nur für Personen mit Prüfrolle, sonst null. Dann zählt auch der Bereich Medien seine offenen Fälle. */
   openCases: number | null;
-  /** Offene Meldungen; nur für Personen mit Moderationsrolle, sonst null. */
+  /** Offene Fälle der Moderation samt offener Einsprüche; nur für Personen mit Moderationsrolle, sonst null. */
   openReports: number | null;
   /** Neue Bewertungen und offene Einsprüche; nur für Personen mit Moderationsrolle, sonst null. */
   openReviews: number | null;
@@ -28,10 +29,23 @@ export interface AdminShellProps {
  * darüber ein Kopf mit Konto, Weg zum Marktplatz und Abmelden. Kein Glas.
  */
 export async function AdminShell({ locale, name, openCases, openReports, openReviews, openOrganizations, children }: AdminShellProps) {
-  const [t, openMedia] = await Promise.all([getTranslations({ locale, namespace: "admin.shell" }), openCases !== null ? countMediaInReview() : Promise.resolve(null)]);
+  const [t, tArea, visibility, openMedia] = await Promise.all([
+    getTranslations({ locale, namespace: "admin.shell" }),
+    getTranslations({ locale, namespace: "adminCommon.areas" }),
+    adminNavVisibility(),
+    openCases !== null ? countMediaInReview() : Promise.resolve(null),
+  ]);
   const href = createHref(locale);
   const items: AdminNavItem[] = [
     { key: "overview", href: href("/admin"), label: t("overview") },
+    { key: "users", href: href("/admin/benutzer"), label: tArea("users") },
+    { key: "providers", href: href("/admin/anbieter"), label: tArea("providers") },
+    {
+      key: "organizations",
+      href: href("/admin/unternehmen"),
+      label: tArea("companies"),
+      ...(openOrganizations !== null && openOrganizations > 0 ? { count: { value: openOrganizations, label: t("openOrganizationCount", { count: openOrganizations }) } } : {}),
+    },
     {
       key: "verifications",
       href: href("/admin/verifizierungen"),
@@ -45,14 +59,8 @@ export async function AdminShell({ locale, name, openCases, openReports, openRev
       ...(openMedia !== null && openMedia > 0 ? { count: { value: openMedia, label: t("openMediaCount", { count: openMedia }) } } : {}),
     },
     {
-      key: "organizations",
-      href: href("/admin/organisationen"),
-      label: t("organizations"),
-      ...(openOrganizations !== null && openOrganizations > 0 ? { count: { value: openOrganizations, label: t("openOrganizationCount", { count: openOrganizations }) } } : {}),
-    },
-    {
-      key: "reports",
-      href: href("/admin/meldungen"),
+      key: "moderation",
+      href: href("/admin/moderation"),
       label: t("reports"),
       ...(openReports !== null && openReports > 0 ? { count: { value: openReports, label: t("openReportCount", { count: openReports }) } } : {}),
     },
@@ -62,7 +70,13 @@ export async function AdminShell({ locale, name, openCases, openReports, openRev
       label: t("reviews"),
       ...(openReviews !== null && openReviews > 0 ? { count: { value: openReviews, label: t("openReviewCount", { count: openReviews }) } } : {}),
     },
-  ];
+    { key: "regions", href: href("/admin/regionen"), label: tArea("regions") },
+    { key: "categories", href: href("/admin/kategorien"), label: tArea("categories") },
+    { key: "content", href: href("/admin/inhalte"), label: tArea("content") },
+    { key: "seo", href: href("/admin/seo"), label: tArea("seo") },
+    { key: "support", href: href("/admin/support"), label: tArea("support") },
+    { key: "system", href: href("/admin/system"), label: tArea("system") },
+  ].filter((item) => visibility[item.key] ?? true);
   return (
     <div className="min-h-dvh bg-bg text-ink lg:grid lg:grid-cols-[15rem_minmax(0,1fr)]">
       <SkipLink href="#inhalt">{t("skipToContent")}</SkipLink>

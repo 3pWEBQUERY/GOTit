@@ -5,8 +5,8 @@
     "case": "Admin · Dossier de vérification",
     "mediaQueue": "Admin · Médias",
     "mediaCase": "Admin · Média",
-    "reportQueue": "Admin · Signalements",
-    "reportCase": "Admin · Signalement",
+    "reportQueue": "Admin · Modération",
+    "reportCase": "Admin · Cas de modération",
     "reviewQueue": "Admin · Évaluations",
     "reviewCase": "Admin · Évaluation"
   },
@@ -23,8 +23,8 @@
     "breadcrumbs": "Chemin",
     "media": "Médias",
     "openMediaCount": "{count, plural, one {# média en vérification} other {# médias en vérification}}",
-    "reports": "Signalements",
-    "openReportCount": "{count, plural, one {# signalement ouvert} other {# signalements ouverts}}",
+    "reports": "Modération",
+    "openReportCount": "{count, plural, one {# cas de modération ouvert} other {# cas de modération ouverts}}",
     "reviews": "Évaluations",
     "openReviewCount": "{count, plural, one {# cas ouvert} other {# cas ouverts}}",
     "organizations": "Organisations",
@@ -313,28 +313,6 @@
     "organizationOwner": "{name} (organisation)"
   },
   "reports": {
-    "title": "Signalements",
-    "intro": "Messages et comptes signalés dans la messagerie. Les signalements urgents sont en tête, le plus ancien d’abord.",
-    "restricted": "Les signalements contiennent des messages privés. Ils sont réservés à la modération et à Trust & Safety ; le support n’y a pas accès.",
-    "caption": "Signalements ouverts",
-    "count": "{count, plural, =0 {Aucun signalement ouvert} one {# signalement ouvert} other {# signalements ouverts}}",
-    "urgentCount": "{count, plural, one {# urgent} other {# urgents}}",
-    "next": "Ouvrir le signalement suivant",
-    "shortcutAfter": "ouvre le signalement le plus urgent et le plus ancien.",
-    "urgent": "Urgent",
-    "normal": "Normal",
-    "readOnly": "Jusqu’à l’étape 1.13, cette section est en lecture seule. Attribution, décision et recours arrivent avec la modération.",
-    "columns": {
-      "priority": "Priorité",
-      "reason": "Motif",
-      "target": "Signalé",
-      "submitted": "Reçu le",
-      "age": "Âge"
-    },
-    "empty": {
-      "title": "Aucun signalement ouvert",
-      "description": "Quand quelqu’un signale un message ou un interlocuteur, le signalement apparaît ici."
-    },
     "reasons": {
       "spam": "Spam",
       "harassment": "Harcèlement",
@@ -344,37 +322,6 @@
       "exploitation": "Exploitation ou contrainte",
       "danger": "Danger immédiat",
       "other": "Autre"
-    },
-    "targetType": {
-      "MESSAGE": "Message",
-      "USER": "Membre",
-      "PROFILE": "Profil de prestataire",
-      "MEDIA": "Média",
-      "REVIEW": "Évaluation"
-    },
-    "caseTitle": {
-      "MESSAGE": "Signalement d’un message",
-      "USER": "Signalement d’un membre",
-      "PROFILE": "Signalement d’un profil de prestataire",
-      "MEDIA": "Signalement d’un média",
-      "REVIEW": "Signalement d’une évaluation"
-    },
-    "meta": "Reçu le {submitted} · {age} · État : {state}",
-    "status": {
-      "OPEN": "Ouvert",
-      "IN_REVIEW": "En examen",
-      "RESOLVED": "Traité",
-      "DISMISSED": "Rejeté"
-    },
-    "memberFallback": "Membre",
-    "gone": "N’existe plus",
-    "facts": {
-      "title": "Informations",
-      "reason": "Motif",
-      "details": "Texte du signalement",
-      "noDetails": "Aucun texte indiqué",
-      "target": "Signalé",
-      "reporter": "Signalé par"
     },
     "evidence": {
       "title": "Messages signalés (copie)",
@@ -387,12 +334,6 @@
       "noText": "Pas de texte (supprimé ou image seule)",
       "audited": "Le dévoilement est consigné dans le journal d’audit.",
       "hide": "Masquer à nouveau"
-    },
-    "decision": {
-      "title": "Décision",
-      "laterTitle": "Les décisions arrivent avec l’étape 1.13",
-      "laterText": "Le signalement reste ouvert. Valider, retirer et restreindre arrivent avec la modération, avec justification, règle et recours."
-    },
-    "openReview": "Ouvrir l’évaluation"
+    }
   }
 }

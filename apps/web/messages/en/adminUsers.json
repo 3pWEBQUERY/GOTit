@@ -1,0 +1,224 @@
+{
+  "noUsername": "No username",
+  "list": {
+    "title": "Users",
+    "intro": "Search and view accounts. Restricting and suspending happens in the detail view.",
+    "filterLabel": "Filter users",
+    "search": "Search",
+    "searchHint": "Username, email, display name, slug or exact ID.",
+    "filter": "Show",
+    "caption": "Accounts, newest first",
+    "count": "{count, plural, =0 {No accounts} one {One account} other {# accounts}}",
+    "countMore": "{count, plural, one {One more account} other {# more accounts}}",
+    "emptyTitle": "No accounts yet",
+    "emptyDescription": "Accounts appear here as soon as someone signs up.",
+    "noMatchTitle": "No results",
+    "noMatchDescription": "No account matches the search and filter. Change the search or reset the filter."
+  },
+  "filters": {
+    "all": "All accounts",
+    "restricted": "Restricted",
+    "suspended": "Suspended",
+    "internal": "With internal role",
+    "providers": "Providers"
+  },
+  "columns": {
+    "user": "User",
+    "email": "Email",
+    "type": "Account type",
+    "roles": "Internal roles",
+    "status": "Status",
+    "created": "Created"
+  },
+  "accountTypes": {
+    "MEMBER": "Member",
+    "PROVIDER": "Provider",
+    "ORGANIZATION": "Organisation"
+  },
+  "status": {
+    "active": "Active",
+    "deactivated": "Deactivated"
+  },
+  "kinds": {
+    "MESSAGING": "Messages restricted",
+    "BOOKING": "Appointments restricted",
+    "SUSPENDED": "Suspended"
+  },
+  "kindHints": {
+    "MESSAGING": "No messages and no new conversations.",
+    "BOOKING": "No appointment requests, no accepting and no counter-proposals. Cancelling remains possible."
+  },
+  "roles": {
+    "SUPER_ADMIN": "Super admin",
+    "PLATFORM_ADMIN": "Platform administration",
+    "MODERATOR": "Moderation",
+    "TRUST_SAFETY": "Trust & safety",
+    "SUPPORT": "Support",
+    "FINANCE": "Finance",
+    "CONTENT_EDITOR": "Editorial"
+  },
+  "providerStatus": {
+    "DRAFT": "Draft",
+    "SUBMITTED": "Submitted",
+    "CHANGES_REQUESTED": "Changes requested",
+    "PUBLISHED": "Published",
+    "PAUSED": "Paused",
+    "RESTRICTED": "Restricted",
+    "SUSPENDED": "Suspended",
+    "ARCHIVED": "Archived"
+  },
+  "orgRoles": {
+    "OWNER": "Owner",
+    "LOCATION_MANAGER": "Location manager",
+    "MARKETING": "Marketing",
+    "EDITOR": "Editor",
+    "SCHEDULING": "Scheduling"
+  },
+  "orgStatus": {
+    "DRAFT": "Draft",
+    "SUBMITTED": "Submitted",
+    "PUBLISHED": "Published",
+    "SUSPENDED": "Suspended",
+    "ARCHIVED": "Archived"
+  },
+  "identity": {
+    "PENDING": "In progress",
+    "APPROVED": "Passed",
+    "REJECTED": "Rejected",
+    "EXPIRED": "Expired",
+    "CANCELLED": "Cancelled"
+  },
+  "appeal": {
+    "OPEN": "Appeal open",
+    "UPHELD": "Upheld",
+    "DISMISSED": "Dismissed"
+  },
+  "security": {
+    "SIGN_IN": "Signed in",
+    "SIGN_OUT": "Signed out",
+    "PASSWORD_CHANGED": "Password changed",
+    "PASSWORD_RESET": "Password reset",
+    "EMAIL_VERIFIED": "Email address confirmed",
+    "TWO_FACTOR_ENABLED": "Second factor set up",
+    "TWO_FACTOR_DISABLED": "Second factor turned off",
+    "PASSKEY_ADDED": "Passkey added",
+    "PASSKEY_REMOVED": "Passkey removed",
+    "SESSION_REVOKED": "Session ended",
+    "PROFILE_CHANGED": "Account changed",
+    "DATA_EXPORTED": "Data exported"
+  },
+  "detail": {
+    "account": "Account",
+    "twoFactor": "Second factor",
+    "twoFactorOn": "Set up",
+    "twoFactorOff": "Not set up",
+    "deletionRequested": "Deletion requested",
+    "reports": "Reports",
+    "reportCount": "{count, plural, =0 {No report against the account} one {One report against the account or its profile} other {# reports against the account or its profile}}",
+    "id": "Account ID",
+    "suspendedTitle": "This account is suspended",
+    "suspendedText": "Sign-in is blocked and the provider profile is not public until the suspension ends or someone lifts it.",
+    "identity": "Identity check",
+    "identityIntro": "Only status and dates of the latest check; the platform stores no documents.",
+    "identityStatus": "Status",
+    "identityChecked": "Checked on",
+    "identityExpires": "Valid until",
+    "identityNone": "No identity check.",
+    "roles": "Internal roles",
+    "noRoles": "No internal role.",
+    "rolesOnlySuper": "Only a super admin assigns roles.",
+    "profile": "Profile and organisations",
+    "openProfile": "Open public profile",
+    "inProviders": "Show in provider list",
+    "noProfile": "No provider profile.",
+    "noOrganizations": "Not in any organisation.",
+    "restrictions": "Restrictions and suspensions",
+    "restrictionsIntro": "All measures against the account, newest first, with rule and reason.",
+    "noRestrictions": "No measure has been taken against this account yet.",
+    "openAppeals": "{count, plural, one {One open appeal} other {# open appeals}}",
+    "toAppeals": "Go to appeals",
+    "security": "Security events",
+    "securityIntro": "The account’s last ten events, without addresses or devices.",
+    "noSecurity": "No events."
+  },
+  "history": {
+    "kind": "Kind",
+    "rule": "Rule",
+    "reason": "Reason",
+    "period": "Period",
+    "status": "State",
+    "appeal": "Appeal",
+    "active": "In force",
+    "lifted": "Lifted on {date}",
+    "expired": "Expired",
+    "fromUntil": "{from} to {until}",
+    "fromOpen": "From {from}, no end"
+  },
+  "lift": {
+    "title": "Lift: {kind}",
+    "reason": "Reason",
+    "reasonHint": "At least 10 characters. Goes into the audit log.",
+    "submit": "Lift measure",
+    "saved": "The measure is lifted."
+  },
+  "measures": {
+    "title": "Measures",
+    "restrictTitle": "Restrict",
+    "restrictIntro": "The account stays usable but loses messages or appointments.",
+    "kind": "What is restricted?",
+    "rule": "Rule",
+    "ruleHint": "Which rule is the measure based on?",
+    "reason": "Reason",
+    "reasonHint": "At least 10 characters. The person concerned sees it in their settings.",
+    "until": "End",
+    "untilHint": "Without an end, the measure applies until someone lifts it. It ends at 23:59 Zurich time.",
+    "restrictSubmit": "Restrict account",
+    "restricted": "The account is restricted.",
+    "suspendTitle": "Suspend",
+    "suspendIntro": "Ends all sessions, blocks sign-in and takes the provider profile out of public view.",
+    "suspendSubmit": "Suspend account",
+    "suspended": "The account is suspended. All sessions have ended.",
+    "confirmTitle": "Suspend {name}?",
+    "confirmText": "All sessions end immediately, sign-in is blocked and the provider profile is no longer public. An appeal is possible via the contact form. Lifting restores the profile.",
+    "confirmSubmit": "Suspend account"
+  },
+  "rolesForm": {
+    "roles": "Internal roles",
+    "rolesHint": "Without ticks the account has no internal role and no admin access.",
+    "reason": "Reason",
+    "reasonHint": "At least 10 characters. Goes into the audit log with the roles before and after.",
+    "submit": "Save roles",
+    "saved": "The roles are saved."
+  },
+  "providers": {
+    "title": "Providers",
+    "intro": "All provider profiles with status, latest review and regions. Reviewing happens in Verifications.",
+    "filterLabel": "Filter providers",
+    "search": "Search",
+    "searchHint": "Display name, slug, username or exact ID.",
+    "status": "Status",
+    "allStatuses": "All statuses",
+    "caption": "Provider profiles, newest first",
+    "count": "{count, plural, =0 {No profiles} one {One profile} other {# profiles}}",
+    "columns": {
+      "name": "Display name",
+      "status": "Status",
+      "review": "Review",
+      "regions": "Regions",
+      "created": "Created",
+      "profile": "Public"
+    },
+    "review": {
+      "none": "Never submitted",
+      "open": "Open",
+      "APPROVED": "Approved",
+      "CHANGES_REQUESTED": "Changes requested",
+      "REJECTED": "Rejected"
+    },
+    "openProfile": "Open profile",
+    "emptyTitle": "No provider profiles yet",
+    "emptyDescription": "Profiles appear here as soon as providers start onboarding.",
+    "noMatchTitle": "No results",
+    "noMatchDescription": "No profile matches the search and status. Change the search or reset the filter."
+  }
+}

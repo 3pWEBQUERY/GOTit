@@ -1,0 +1,378 @@
+{
+  "title": "Moderation",
+  "intro": "Gemeldete Nachrichten, Konten, Profile, Medien und Bewertungen. Kritische Fälle stehen zuoberst, darin der älteste zuerst.",
+  "restricted": "Fälle enthalten private Nachrichten. Sie sind für Moderation und Trust & Safety; Support hat keinen Zugriff.",
+  "memberFallback": "Mitglied",
+  "gone": "Nicht mehr vorhanden",
+  "category": "{target} · {reason}",
+  "caseTitle": "Fall {id} · {target} · {priority}",
+  "tabs": {
+    "label": "Ansicht der Moderation",
+    "cases": "Fälle",
+    "restrictionAppeals": "Einsprüche gegen Sperren"
+  },
+  "priority": {
+    "CRITICAL": "Kritisch",
+    "HIGH": "Hoch",
+    "NORMAL": "Normal",
+    "LOW": "Niedrig"
+  },
+  "priorityLabel": {
+    "CRITICAL": "Kritisch · Trust & Safety",
+    "HIGH": "Hoch",
+    "NORMAL": "Normal",
+    "LOW": "Niedrig"
+  },
+  "status": {
+    "OPEN": "Offen",
+    "IN_REVIEW": "In Prüfung",
+    "RESOLVED": "Erledigt",
+    "DISMISSED": "Abgewiesen"
+  },
+  "targetType": {
+    "MESSAGE": "Nachricht",
+    "USER": "Mitglied",
+    "PROFILE": "Anbieterprofil",
+    "MEDIA": "Medium",
+    "REVIEW": "Bewertung",
+    "ORGANIZATION": "Organisation",
+    "URL": "Adresse"
+  },
+  "decisionLabel": {
+    "NO_ACTION": "Kein Verstoss",
+    "CHANGES_REQUESTED": "Zur Korrektur",
+    "CONTENT_REMOVED": "Entfernen",
+    "ACCOUNT_RESTRICTED": "Konto einschränken",
+    "ACCOUNT_SUSPENDED": "Konto sperren"
+  },
+  "decisionHint": {
+    "NO_ACTION": {
+      "default": "Der Fall wird abgewiesen. Ein sofort gesperrter Inhalt wird wieder sichtbar."
+    },
+    "CHANGES_REQUESTED": {
+      "default": "Das Medium geht mit deiner Begründung zur Korrektur an den Anbieter."
+    },
+    "CONTENT_REMOVED": {
+      "default": "Der Inhalt ist danach nicht mehr sichtbar.",
+      "MESSAGE": "Die Nachricht erscheint beiden Seiten als «Von der Moderation ausgeblendet».",
+      "PROFILE": "Das Profil ist danach nicht mehr öffentlich.",
+      "MEDIA": "Das Medium ist gesperrt; der Anbieter sieht es im Studio mit deiner Begründung.",
+      "REVIEW": "Die Bewertung verschwindet vom Profil.",
+      "ORGANIZATION": "Die Organisation ist danach nicht mehr öffentlich."
+    },
+    "ACCOUNT_RESTRICTED": {
+      "default": "Das Konto hinter dem Inhalt darf keine Nachrichten oder keine Terminanfragen mehr senden."
+    },
+    "ACCOUNT_SUSPENDED": {
+      "default": "Das Konto kann sich nicht mehr anmelden, alle Sitzungen enden, ein Anbieterprofil ist nicht mehr öffentlich."
+    }
+  },
+  "restrictionKind": {
+    "MESSAGING": "Nachrichten eingeschränkt",
+    "BOOKING": "Terminanfragen eingeschränkt",
+    "SUSPENDED": "Konto gesperrt"
+  },
+  "rules": {
+    "R-MOD-0": "Kein Verstoss festgestellt",
+    "R-MOD-1": "Belästigung, Drohung oder Beleidigung",
+    "R-MOD-2": "Betrug, Spam oder Täuschung über Leistungen und Preise",
+    "R-MOD-3": "Falsche Identität oder fremde Bilder",
+    "R-MOD-4": "Verdacht auf Minderjährigkeit",
+    "R-MOD-5": "Verdacht auf Zwang, Ausbeutung oder Menschenhandel",
+    "R-MOD-6": "Gewalt oder akute Gefahr",
+    "R-MOD-7": "Unzulässige Inhalte oder Medien",
+    "R-MOD-8": "Veröffentlichung privater Daten Dritter"
+  },
+  "readOnly": {
+    "title": "Entscheiden geht ab 1024 px Breite",
+    "text": "Auf diesem Bildschirm ist der Admin nur lesend. Öffne den Fall auf einem breiteren Bildschirm, um zu entscheiden."
+  },
+  "queue": {
+    "caption": "Fälle der Moderation",
+    "count": "{count, plural, =0 {Keine Fälle} one {# Fall} other {# Fälle}}",
+    "limit": "Es stehen nur die ersten {count} Fälle hier. Grenze die Liste mit den Filtern ein.",
+    "next": "Nächsten Fall öffnen",
+    "shortcutAfter": "öffnet den dringendsten, ältesten Fall, der frei oder dir zugewiesen ist.",
+    "noNext": "Kein freier Fall offen.",
+    "me": "Ich",
+    "unassigned": "Niemand",
+    "unknownPerson": "Unbekannte Person",
+    "appealOpen": "Einspruch offen",
+    "columns": {
+      "caseId": "Fall",
+      "category": "Kategorie",
+      "priority": "Priorität",
+      "status": "Status",
+      "assignee": "Zuständig",
+      "age": "Alter"
+    },
+    "filters": {
+      "title": "Filter",
+      "statusLabel": "Status",
+      "priorityLabel": "Priorität",
+      "targetLabel": "Gemeldet",
+      "assignedLabel": "Zuweisung",
+      "all": "Alle",
+      "reset": "Filter zurücksetzen",
+      "status": {
+        "aktiv": "Aktiv (offen und in Prüfung)",
+        "pruefung": "In Prüfung",
+        "erledigt": "Erledigt",
+        "abgewiesen": "Abgewiesen",
+        "einspruch": "Einspruch offen"
+      },
+      "prioritaet": {
+        "kritisch": "Kritisch",
+        "hoch": "Hoch",
+        "normal": "Normal",
+        "niedrig": "Niedrig"
+      },
+      "art": {
+        "nachricht": "Nachricht",
+        "mitglied": "Mitglied",
+        "profil": "Anbieterprofil",
+        "medium": "Medium",
+        "bewertung": "Bewertung",
+        "organisation": "Organisation",
+        "adresse": "Adresse"
+      },
+      "zuweisung": {
+        "mir": "Mir zugewiesen",
+        "frei": "Nicht zugewiesen"
+      }
+    },
+    "empty": {
+      "title": "Keine aktiven Fälle",
+      "description": "Meldet jemand eine Nachricht, ein Konto, ein Profil, ein Medium oder eine Bewertung, erscheint der Fall hier."
+    },
+    "emptyFiltered": {
+      "title": "Keine Fälle für diese Filter",
+      "description": "Ändere die Filter oder setze sie zurück."
+    }
+  },
+  "meta": {
+    "status": "Status: {status}",
+    "assignee": "Zuständig: {name}",
+    "submitted": "Eingegangen am {submitted} · {age}"
+  },
+  "assign": {
+    "assignMe": "Mir zuweisen",
+    "takeOver": "Selbst übernehmen",
+    "release": "Freigeben",
+    "assigned": "Fall dir zugewiesen",
+    "released": "Fall freigegeben"
+  },
+  "notes": {
+    "escalated": "An Trust & Safety eskaliert am {date}",
+    "escalatedText": "Der Grund betrifft Minderjährigkeit, Zwang oder akute Gefahr. Entscheiden kann nur Trust & Safety.",
+    "blocked": "Inhalt seit {date} gesperrt",
+    "blockedText": "Bei kritischen Gründen wird der Inhalt sofort gesperrt. «Kein Verstoss» macht ihn wieder sichtbar.",
+    "alreadyDecidedHelp": "Dein Entscheid wurde nicht gespeichert. Hier steht der aktuelle Stand."
+  },
+  "content": {
+    "title": "Gemeldeter Inhalt",
+    "openReview": "Bewertung öffnen",
+    "note": {
+      "MESSAGE": "Zu dieser Meldung gibt es keine Kopie der Nachricht.",
+      "USER": "Gemeldet ist das Konto selbst, ohne Kopie von Nachrichten.",
+      "PROFILE": "Gemeldet ist das Anbieterprofil. Es steht unter seiner Adresse; ist es gesperrt, ist es nicht öffentlich.",
+      "MEDIA": "Das Medium gibt es nicht mehr.",
+      "REVIEW": "Der Text der Bewertung steht im Fall der Bewertung.",
+      "ORGANIZATION": "Gemeldet ist die Organisation. Sie steht unter ihrer Adresse; ist sie gesperrt, ist sie nicht öffentlich.",
+      "URL": "Gemeldet ist eine Adresse, die keinem Profil zugeordnet werden konnte."
+    },
+    "mediaAlt": "Gemeldetes Medium"
+  },
+  "facts": {
+    "title": "Meldung",
+    "reason": "Grund",
+    "details": "Text der Meldung",
+    "noDetails": "Kein Text angegeben",
+    "target": "Gemeldet",
+    "reporter": "Gemeldet von",
+    "anonymous": "Ohne Konto oder Konto gelöscht",
+    "url": "Gemeldete Adresse",
+    "contactEmail": "Kontaktadresse",
+    "noContact": "Keine angegeben"
+  },
+  "history": {
+    "title": "Verlauf des Kontos",
+    "criticalOnly": "Den Verlauf zu kritischen Fällen sieht nur Trust & Safety.",
+    "noAccount": "Hinter diesem Inhalt steht kein Konto.",
+    "cases": "Frühere Fälle",
+    "noCases": "Keine früheren Fälle.",
+    "undecided": "Noch offen",
+    "restrictions": "Einschränkungen",
+    "noRestrictions": "Keine Einschränkungen.",
+    "since": "seit {date}",
+    "until": "bis {date}",
+    "noEnd": "ohne Ende",
+    "lifted": "aufgehoben am {date}"
+  },
+  "decision": {
+    "title": "Entscheid",
+    "criticalTitle": "Entscheidet Trust & Safety",
+    "criticalText": "Kritische Fälle entscheidet nur Trust & Safety. Du siehst den Fall, damit er nicht liegen bleibt.",
+    "summaryTitle": "Bitte prüfe die markierten Felder.",
+    "decision": "Ergebnis",
+    "rule": "Regel",
+    "rulePlaceholder": "Regel auswählen",
+    "ruleHint": "«Kein Verstoss» geht nur mit R-MOD-0, jede Massnahme mit einer Regel R-MOD-1 bis 8.",
+    "restrictionKind": "Was eingeschränkt wird",
+    "kind": {
+      "MESSAGING": "Nachrichten",
+      "BOOKING": "Termine"
+    },
+    "kindHint": {
+      "MESSAGING": "Keine Nachrichten und keine neuen Unterhaltungen.",
+      "BOOKING": "Keine Terminanfragen; Annehmen und Gegenvorschläge gehen nicht, Absagen schon."
+    },
+    "until": "Ende",
+    "optional": "optional",
+    "untilHint": "Format TT.MM.JJJJ, gilt bis 23:59 Uhr. Ohne Ende gilt die Massnahme, bis jemand sie aufhebt.",
+    "calendar": {
+      "open": "Kalender öffnen",
+      "previous": "Vorheriger Monat",
+      "next": "Nächster Monat"
+    },
+    "reason": "Begründung",
+    "reasonHint": "Mindestens 10 Zeichen. Sie steht im Audit-Log; bei einer Massnahme sieht die betroffene Person sie auch.",
+    "save": "Entscheid speichern",
+    "saved": "Entscheid gespeichert"
+  },
+  "summary": {
+    "result": "Ergebnis",
+    "rule": "Regel",
+    "reason": "Begründung",
+    "decidedBy": "Entschieden von",
+    "decidedAt": "Entschieden am"
+  },
+  "appeal": {
+    "title": "Einspruch",
+    "filedAt": "eingereicht am {date}",
+    "status": {
+      "OPEN": "Offen",
+      "UPHELD": "Stattgegeben",
+      "DISMISSED": "Abgewiesen"
+    },
+    "ownTitle": "Über diesen Einspruch entscheidet jemand anderes",
+    "ownText": "Du hast den Fall entschieden. Den Einspruch prüft eine zweite Person."
+  },
+  "appealDecision": {
+    "summaryTitle": "Bitte prüfe die markierten Felder.",
+    "outcome": "Einspruch",
+    "option": {
+      "UPHELD": "Einspruch stattgeben",
+      "DISMISSED": "Einspruch abweisen"
+    },
+    "optionHint": {
+      "case": {
+        "UPHELD": "Eine Massnahme wird rückgängig gemacht: Inhalt wieder sichtbar, Einschränkungen des Falls aufgehoben. Gegen «Kein Verstoss» öffnet sich der Fall erneut.",
+        "DISMISSED": "Der Entscheid bleibt, wie er ist."
+      },
+      "restriction": {
+        "UPHELD": "Die Einschränkung wird sofort aufgehoben.",
+        "DISMISSED": "Die Einschränkung bleibt bis zu ihrem Ende."
+      }
+    },
+    "reason": "Begründung",
+    "reasonHint": "Mindestens 10 Zeichen. Sie steht im Audit-Log.",
+    "save": "Entscheid zum Einspruch speichern",
+    "savedUpheld": "Einspruch stattgegeben",
+    "savedDismissed": "Einspruch abgewiesen"
+  },
+  "restrictionAppeals": {
+    "title": "Einsprüche gegen Sperren",
+    "restricted": "Einsprüche gegen Einschränkungen entscheidet, wer Konten einschränken darf. Deine Rolle gehört nicht dazu.",
+    "count": "{count, plural, =0 {Keine offenen Einsprüche} one {# offener Einspruch} other {# offene Einsprüche}}",
+    "listLabel": "Offene Einsprüche, älteste zuerst",
+    "itemTitle": "{name} · {kind}",
+    "rule": "Regel",
+    "until": "Ende",
+    "noEnd": "Ohne Ende",
+    "appealedAt": "Einspruch vom",
+    "reason": "Begründung der Einschränkung",
+    "appealText": "Text des Einspruchs",
+    "ownTitle": "Du hast diese Einschränkung verhängt",
+    "ownText": "Über den Einspruch entscheidet eine zweite Person.",
+    "suspendOnlyTitle": "Entscheidet, wer Konten sperren darf",
+    "suspendOnlyText": "Über Einsprüche gegen eine Sperre entscheiden Plattform-Administration und Trust & Safety.",
+    "empty": {
+      "title": "Keine offenen Einsprüche",
+      "description": "Erhebt jemand Einspruch gegen eine Einschränkung oder Sperre, erscheint er hier."
+    }
+  },
+  "errors": {
+    "generic": "Das hat nicht geklappt. Deine Eingaben sind noch da. Versuche es erneut.",
+    "signInRequired": "Deine Sitzung ist abgelaufen. Melde dich erneut an.",
+    "forbidden": "Deine Rolle darf das nicht. Es wurde nichts gespeichert.",
+    "notFound": "Diesen Fall gibt es nicht mehr.",
+    "alreadyDecided": "Dieser Fall wurde bereits entschieden",
+    "notApplicable": "Dieser Entscheid passt nicht zu diesem Fall. Lade die Seite neu.",
+    "samePerson": "Über einen Einspruch zu deinem eigenen Entscheid entscheidet eine zweite Person.",
+    "samePersonRestriction": "Über einen Einspruch gegen eine Einschränkung, die du verhängt hast, entscheidet eine zweite Person.",
+    "noAccount": "Hinter diesem Inhalt steht kein Konto, das sich einschränken liesse. Wähle einen anderen Entscheid.",
+    "protected": "Das Konto hat eine interne Rolle. Einschränken oder sperren kann es nur die Super-Administration.",
+    "invalid": "Die Angaben passen nicht zusammen. Prüfe Ergebnis, Regel und Begründung.",
+    "decisionRequired": "Wähle ein Ergebnis.",
+    "ruleRequired": "Wähle die Regel, auf die sich der Entscheid stützt.",
+    "ruleNoViolation": "«Kein Verstoss» geht nur mit R-MOD-0.",
+    "ruleViolation": "Eine Massnahme braucht eine Regel R-MOD-1 bis 8.",
+    "kindRequired": "Wähle, ob Nachrichten oder Termine eingeschränkt werden.",
+    "untilInvalid": "Gib das Ende als Datum TT.MM.JJJJ ein oder lass das Feld leer.",
+    "untilPast": "Das Ende muss heute oder später sein.",
+    "reasonTooShort": "Begründe mit mindestens 10 Zeichen.",
+    "reasonTooLong": "Die Begründung darf höchstens 2000 Zeichen lang sein.",
+    "outcomeRequired": "Wähle, ob du dem Einspruch stattgibst oder ihn abweist.",
+    "appealClosed": "Über diesen Einspruch wurde bereits entschieden. Lade die Seite neu."
+  },
+  "member": {
+    "restricted": {
+      "MESSAGING": "Dein Konto ist für Nachrichten eingeschränkt bis {date}.",
+      "MESSAGINGNoEnd": "Dein Konto ist für Nachrichten eingeschränkt, bis die Moderation die Einschränkung aufhebt.",
+      "BOOKING": "Dein Konto ist für Terminanfragen eingeschränkt bis {date}.",
+      "BOOKINGNoEnd": "Dein Konto ist für Terminanfragen eingeschränkt, bis die Moderation die Einschränkung aufhebt.",
+      "link": "Grund und Einspruch ansehen"
+    },
+    "settings": {
+      "title": "Einschränkungen",
+      "intro": "Die Moderation hat dein Konto eingeschränkt. Gegen jede Einschränkung kannst du einmal Einspruch erheben; eine zweite Person prüft ihn.",
+      "listLabel": "Aktive Einschränkungen",
+      "rule": "Regel",
+      "reason": "Begründung",
+      "since": "Seit",
+      "until": "Bis",
+      "noEnd": "Bis die Moderation sie aufhebt",
+      "appealStatus": {
+        "OPEN": "Dein Einspruch ist eingegangen und wird geprüft.",
+        "UPHELD": "Deinem Einspruch wurde stattgegeben.",
+        "DISMISSED": "Dein Einspruch wurde abgewiesen. Die Einschränkung gilt bis zu ihrem Ende."
+      }
+    },
+    "appeal": {
+      "title": "Einspruch erheben",
+      "reason": "Warum ist die Einschränkung falsch?",
+      "reasonHint": "Mindestens 20 Zeichen. Du kannst nur einmal Einspruch erheben.",
+      "submit": "Einspruch senden",
+      "sent": "Einspruch gesendet",
+      "errors": {
+        "tooShort": "Schreib mindestens 20 Zeichen.",
+        "tooLong": "Der Einspruch darf höchstens 2000 Zeichen lang sein.",
+        "already": "Du hast bereits Einspruch erhoben.",
+        "rateLimited": "Du hast in der letzten Stunde viele Meldungen und Einsprüche gesendet. Versuche es später erneut.",
+        "notFound": "Diese Einschränkung gilt nicht mehr. Lade die Seite neu.",
+        "generic": "Das hat nicht geklappt. Dein Text ist noch da. Versuche es erneut."
+      }
+    },
+    "media": {
+      "title": "Entscheid der Moderation",
+      "caseLine": "Fall {id} · {rule} · entschieden am {date}",
+      "appealStatus": {
+        "OPEN": "Dein Einspruch ist eingegangen und wird geprüft.",
+        "UPHELD": "Deinem Einspruch wurde stattgegeben.",
+        "DISMISSED": "Dein Einspruch wurde abgewiesen."
+      },
+      "reason": "Warum soll das Medium wieder sichtbar sein?"
+    }
+  }
+}

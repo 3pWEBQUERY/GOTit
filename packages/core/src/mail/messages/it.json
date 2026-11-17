@@ -41,5 +41,17 @@
     "intro": "Domani hai un appuntamento confermato.",
     "action": "Vedi i dettagli nel tuo account:",
     "expiry": "Per discrezione questa e-mail non contiene nomi né dettagli."
+  },
+  "support-received": {
+    "subject": "La tua richiesta {reference}",
+    "intro": "Abbiamo ricevuto la tua richiesta {reference} e risponderemo a questo indirizzo.",
+    "action": "Aiuto e risposte alle domande frequenti:",
+    "expiry": "Per discrezione questa e-mail non contiene dettagli della tua richiesta."
+  },
+  "support-reply": {
+    "subject": "Risposta alla tua richiesta {reference}",
+    "intro": "Il supporto ha risposto alla tua richiesta {reference}:",
+    "action": "Per un’altra domanda usa il modulo di contatto:",
+    "expiry": "Non rispondere a questa e-mail; l’indirizzo non viene letto."
   }
 }

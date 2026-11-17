@@ -1,11 +1,11 @@
-import { getDb, type ReportStatus, type ReportTarget } from "@app/db";
+import { getDb, type CaseAppealStatus, type ReportDecision, type ReportPriority, type ReportStatus, type ReportTarget } from "@app/db";
 import { z } from "zod";
 import { assertModerator } from "./access";
 import { evidenceSize, parseEvidence, type ParsedEvidence } from "./evidence";
 
 /**
- * Übergabe an die Moderation (v1 20.4, v2 12.4): offene Meldungen lesend.
- * Zuständigkeit, Entscheid und Einspruch folgen mit Schritt 1.13. Jede
+ * Übergabe an die Moderation (v1 20.4, v2 12.4): Fälle lesend. Zuweisen,
+ * Entscheiden und Einsprüche stehen in `cases.ts`. Jede
  * Funktion prüft die Rolle selbst; jedes Öffnen eines Falls und jedes
  * Aufdecken der Kopie schreibt einen Audit-Eintrag ohne Inhalt (v2 16.2).
  */
@@ -16,29 +16,62 @@ export const revealReasonSchema = z.string().trim().min(10).max(500);
 
 export interface ReportQueueEntry {
   id: string;
+  number: number;
   targetType: ReportTarget;
   reason: string;
   urgent: boolean;
+  priority: ReportPriority;
   status: ReportStatus;
+  assignedToId: string | null;
+  appealStatus: CaseAppealStatus;
   createdAt: Date;
 }
 
-/** Warteschlange: dringende zuerst, darin die älteste zuerst. */
+export interface ReportQueueFilter {
+  status?: ReportStatus | "ACTIVE" | "APPEALED";
+  priority?: ReportPriority;
+  /** `me`: mir zugewiesen, `none`: niemandem. */
+  assigned?: "me" | "none";
+  targetType?: ReportTarget;
+}
+
+/**
+ * Warteschlange (v2 12.4): nach Priorität, darin die älteste zuerst.
+ * `ACTIVE` sind offene und in Prüfung, `APPEALED` Fälle mit offenem Einspruch.
+ */
 export async function listReports(
   actorId: string,
-  options: { status?: ReportStatus } = {},
+  options: ReportQueueFilter = {},
 ): Promise<ReportQueueEntry[]> {
   await assertModerator(actorId);
+  const status = options.status ?? "ACTIVE";
   return getDb().report.findMany({
-    where: { status: options.status ?? "OPEN" },
-    orderBy: [{ urgent: "desc" }, { createdAt: "asc" }, { id: "asc" }],
+    where: {
+      ...(status === "ACTIVE"
+        ? { status: { in: ["OPEN", "IN_REVIEW"] } }
+        : status === "APPEALED"
+          ? { appealStatus: "OPEN" }
+          : { status }),
+      ...(options.priority ? { priority: options.priority } : {}),
+      ...(options.targetType ? { targetType: options.targetType } : {}),
+      ...(options.assigned === "me"
+        ? { assignedToId: actorId }
+        : options.assigned === "none"
+          ? { assignedToId: null }
+          : {}),
+    },
+    orderBy: [{ priority: "asc" }, { createdAt: "asc" }, { id: "asc" }],
     take: REPORT_QUEUE_LIMIT,
     select: {
       id: true,
+      number: true,
       targetType: true,
       reason: true,
       urgent: true,
+      priority: true,
       status: true,
+      assignedToId: true,
+      appealStatus: true,
       createdAt: true,
     },
   });
@@ -47,7 +80,7 @@ export async function listReports(
 /** Offene Meldungen, für die Seitenleiste des Admins. */
 export async function countOpenReports(actorId: string): Promise<number> {
   await assertModerator(actorId);
-  return getDb().report.count({ where: { status: "OPEN" } });
+  return getDb().report.count({ where: { OR: [{ status: { in: ["OPEN", "IN_REVIEW"] } }, { appealStatus: "OPEN" }] } });
 }
 
 /** Gibt es den Fall? Ohne Audit-Eintrag, für die echte 404 vor dem Ladezustand. */
@@ -112,6 +145,31 @@ async function targetLabel(
       : { exists: false, name: null };
   }
   if (targetType === "USER") return userLabel(targetId);
+  if (targetType === "ORGANIZATION") {
+    const organization = await getDb().organization.findUnique({
+      where: { id: targetId },
+      select: { name: true },
+    });
+    return organization
+      ? { exists: true, name: organization.name }
+      : { exists: false, name: null };
+  }
+  if (targetType === "MEDIA") {
+    const media = await getDb().mediaAsset.findUnique({
+      where: { id: targetId },
+      select: {
+        providerProfile: { select: { displayName: true } },
+        organization: { select: { name: true } },
+      },
+    });
+    if (!media) return { exists: false, name: null };
+    return {
+      exists: true,
+      name:
+        media.providerProfile?.displayName ?? media.organization?.name ?? null,
+    };
+  }
+  if (targetType === "URL") return { exists: true, name: targetId };
   if (targetType === "MESSAGE")
     return userLabel(evidence.kind === "message" ? evidence.senderId : null);
   return { exists: false, name: null };
@@ -119,6 +177,23 @@ async function targetLabel(
 
 export interface ReportView {
   id: string;
+  number: number;
+  priority: ReportPriority;
+  assignedTo: PartyLabel & { id: string | null };
+  decision: ReportDecision | null;
+  rule: string | null;
+  decisionReason: string | null;
+  decidedAt: Date | null;
+  decidedById: string | null;
+  escalatedAt: Date | null;
+  contentBlockedAt: Date | null;
+  appealStatus: CaseAppealStatus;
+  appealReason: string | null;
+  appealedAt: Date | null;
+  /** Bei Meldungen über `/melden`: gemeldete Adresse und freiwillige Kontaktadresse. */
+  targetUrl: string | null;
+  contactEmail: string | null;
+  targetId: string;
   targetType: ReportTarget;
   reason: string;
   details: string | null;
@@ -149,6 +224,21 @@ async function loadReport(reportId: string) {
       status: true,
       createdAt: true,
       evidence: true,
+      number: true,
+      priority: true,
+      assignedToId: true,
+      decision: true,
+      rule: true,
+      decisionReason: true,
+      decidedAt: true,
+      decidedById: true,
+      escalatedAt: true,
+      contentBlockedAt: true,
+      appealStatus: true,
+      appealReason: true,
+      appealedAt: true,
+      targetUrl: true,
+      contactEmail: true,
     },
   });
 }
@@ -162,15 +252,32 @@ export async function getReport(
   const report = await loadReport(reportId);
   if (!report) return null;
   const evidence = parseEvidence(report.evidence);
-  const [reporter, target] = await Promise.all([
+  const [reporter, target, assignee] = await Promise.all([
     userLabel(report.reporterId),
     targetLabel(report.targetType, report.targetId, evidence),
+    userLabel(report.assignedToId),
   ]);
   await getDb().auditEvent.create({
     data: { actorId, action: "report.viewed", target: `report:${report.id}` },
   });
   return {
     id: report.id,
+    number: report.number,
+    priority: report.priority,
+    assignedTo: { id: report.assignedToId, ...assignee },
+    decision: report.decision,
+    rule: report.rule,
+    decisionReason: report.decisionReason,
+    decidedAt: report.decidedAt,
+    decidedById: report.decidedById,
+    escalatedAt: report.escalatedAt,
+    contentBlockedAt: report.contentBlockedAt,
+    appealStatus: report.appealStatus,
+    appealReason: report.appealReason,
+    appealedAt: report.appealedAt,
+    targetUrl: report.targetUrl,
+    contactEmail: report.contactEmail,
+    targetId: report.targetId,
     targetType: report.targetType,
     reason: report.reason,
     details: report.details,

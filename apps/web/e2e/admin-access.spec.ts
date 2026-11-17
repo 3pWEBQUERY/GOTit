@@ -55,10 +55,10 @@ test.describe("Admin-Zugang", () => {
     await expect(page.getByRole("link", { name: "Zum Marktplatz" })).toHaveAttribute("href", "/de");
     await expect(page.getByRole("button", { name: "Abmelden" })).toBeVisible();
     const nav = page.getByRole("navigation", { name: "Bereiche des Admins" });
-    await expect(nav.getByRole("link")).toHaveText(["Übersicht", "Verifizierungen", "Medien", "Organisationen", "Meldungen", "Bewertungen"]);
+    await expect(nav.getByRole("link")).toHaveText(["Übersicht", "Benutzer", "Anbieter", "Support"]);
     await expect(nav.getByRole("link", { name: "Übersicht" })).toHaveAttribute("aria-current", "page");
     await expect(page.getByText("Die Prüfwarteschlange ist für Prüfung und Moderation.")).toBeVisible();
-    await expect(page.getByText("Schritt 1.13")).toBeVisible();
+    await expect(page.locator('[data-overview-tile="billing"]')).toContainText("Kommt mit Phase 2");
     await expectNoSeriousAxeFindings(page);
 
     for (const path of ["/de/admin/verifizierungen", `/de/admin/verifizierungen/${review.reviewId}`]) {

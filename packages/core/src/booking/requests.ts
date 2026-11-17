@@ -1,6 +1,7 @@
 import { getDb, type Prisma } from "@app/db";
 import type { Viewer } from "../identity/types";
 import { isBlockedBetween, participantOf } from "../messaging/access";
+import { isRestricted } from "../moderation/restrictions";
 import { startConversation } from "../messaging/conversations";
 import { notifyUsers } from "../messaging/notify";
 import { contactOptions } from "../provider-profile/public-policy";
@@ -33,7 +34,8 @@ export type CreateRequestResult =
         | "unavailable"
         | "too-soon"
         | "too-far"
-        | "duplicate";
+        | "duplicate"
+        | "restricted";
     };
 
 /**
@@ -52,6 +54,9 @@ export async function createBookingRequest(
   if (!parsed.success) return { ok: false, reason: "invalid" };
   if (viewer.kind !== "account" || !viewer.ageConfirmed)
     return { ok: false, reason: "not-allowed" };
+  // Eingeschränkt durch die Moderation (v1 9.2): keine Terminanfragen.
+  if (await isRestricted(viewer.userId, "BOOKING"))
+    return { ok: false, reason: "restricted" };
   const db = getDb();
   const profile = await db.providerProfile.findUnique({
     where: { slug: profileSlug },
@@ -180,7 +185,8 @@ export type ActResult =
         | "not-allowed"
         | "conflict"
         | "unavailable"
-        | "stale";
+        | "stale"
+        | "restricted";
     };
 
 const MAIL_FOR: Partial<Record<BookingAction, BookingMailTemplate>> = {
@@ -208,6 +214,12 @@ export async function actOnBookingRequest(
     return { ok: false, reason: "not-found" };
   const parsed = actionSchema.safeParse(input);
   if (!parsed.success) return { ok: false, reason: "invalid" };
+  // Absagen bleibt immer möglich, auch eingeschränkt (Entscheid 0016, Sicherheit).
+  if (
+    (parsed.data.action === "accept" || parsed.data.action === "counter") &&
+    (await isRestricted(viewer.userId, "BOOKING"))
+  )
+    return { ok: false, reason: "restricted" };
   const db = getDb();
   const request = await db.bookingRequest.findUnique({
     where: { id: requestId },

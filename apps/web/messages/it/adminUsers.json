@@ -1,0 +1,224 @@
+{
+  "noUsername": "Senza nome utente",
+  "list": {
+    "title": "Utenti",
+    "intro": "Cercare e consultare account. Limitare e bloccare si fa nella vista di dettaglio.",
+    "filterLabel": "Filtra utenti",
+    "search": "Ricerca",
+    "searchHint": "Nome utente, e-mail, nome visualizzato, slug o ID esatto.",
+    "filter": "Mostra",
+    "caption": "Account, dai più recenti",
+    "count": "{count, plural, =0 {Nessun account} one {Un account} other {# account}}",
+    "countMore": "{count, plural, one {Un altro account} other {Altri # account}}",
+    "emptyTitle": "Ancora nessun account",
+    "emptyDescription": "Gli account compaiono qui appena qualcuno si registra.",
+    "noMatchTitle": "Nessun risultato",
+    "noMatchDescription": "Nessun account corrisponde a ricerca e filtro. Modifica la ricerca o reimposta il filtro."
+  },
+  "filters": {
+    "all": "Tutti gli account",
+    "restricted": "Limitati",
+    "suspended": "Bloccati",
+    "internal": "Con ruolo interno",
+    "providers": "Fornitori"
+  },
+  "columns": {
+    "user": "Utente",
+    "email": "E-mail",
+    "type": "Tipo di account",
+    "roles": "Ruoli interni",
+    "status": "Stato",
+    "created": "Creato"
+  },
+  "accountTypes": {
+    "MEMBER": "Membro",
+    "PROVIDER": "Fornitore",
+    "ORGANIZATION": "Organizzazione"
+  },
+  "status": {
+    "active": "Attivo",
+    "deactivated": "Disattivato"
+  },
+  "kinds": {
+    "MESSAGING": "Messaggi limitati",
+    "BOOKING": "Appuntamenti limitati",
+    "SUSPENDED": "Bloccato"
+  },
+  "kindHints": {
+    "MESSAGING": "Nessun messaggio e nessuna nuova conversazione.",
+    "BOOKING": "Nessuna richiesta di appuntamento, nessuna accettazione né controproposta. Annullare resta possibile."
+  },
+  "roles": {
+    "SUPER_ADMIN": "Super Admin",
+    "PLATFORM_ADMIN": "Amministrazione della piattaforma",
+    "MODERATOR": "Moderazione",
+    "TRUST_SAFETY": "Trust & Safety",
+    "SUPPORT": "Supporto",
+    "FINANCE": "Finanze",
+    "CONTENT_EDITOR": "Redazione"
+  },
+  "providerStatus": {
+    "DRAFT": "Bozza",
+    "SUBMITTED": "Inviato",
+    "CHANGES_REQUESTED": "Da correggere",
+    "PUBLISHED": "Pubblicato",
+    "PAUSED": "In pausa",
+    "RESTRICTED": "Limitato",
+    "SUSPENDED": "Bloccato",
+    "ARCHIVED": "Archiviato"
+  },
+  "orgRoles": {
+    "OWNER": "Titolare",
+    "LOCATION_MANAGER": "Responsabile di sede",
+    "MARKETING": "Marketing",
+    "EDITOR": "Redazione",
+    "SCHEDULING": "Appuntamenti"
+  },
+  "orgStatus": {
+    "DRAFT": "Bozza",
+    "SUBMITTED": "Inviata",
+    "PUBLISHED": "Pubblicata",
+    "SUSPENDED": "Bloccata",
+    "ARCHIVED": "Archiviata"
+  },
+  "identity": {
+    "PENDING": "In corso",
+    "APPROVED": "Superata",
+    "REJECTED": "Respinta",
+    "EXPIRED": "Scaduta",
+    "CANCELLED": "Interrotta"
+  },
+  "appeal": {
+    "OPEN": "Ricorso aperto",
+    "UPHELD": "Accolto",
+    "DISMISSED": "Respinto"
+  },
+  "security": {
+    "SIGN_IN": "Accesso",
+    "SIGN_OUT": "Disconnessione",
+    "PASSWORD_CHANGED": "Password modificata",
+    "PASSWORD_RESET": "Password reimpostata",
+    "EMAIL_VERIFIED": "Indirizzo e-mail confermato",
+    "TWO_FACTOR_ENABLED": "Secondo fattore configurato",
+    "TWO_FACTOR_DISABLED": "Secondo fattore disattivato",
+    "PASSKEY_ADDED": "Passkey aggiunta",
+    "PASSKEY_REMOVED": "Passkey rimossa",
+    "SESSION_REVOKED": "Sessione terminata",
+    "PROFILE_CHANGED": "Account modificato",
+    "DATA_EXPORTED": "Dati esportati"
+  },
+  "detail": {
+    "account": "Account",
+    "twoFactor": "Secondo fattore",
+    "twoFactorOn": "Configurato",
+    "twoFactorOff": "Non configurato",
+    "deletionRequested": "Cancellazione richiesta",
+    "reports": "Segnalazioni",
+    "reportCount": "{count, plural, =0 {Nessuna segnalazione contro l’account} one {Una segnalazione contro l’account o il suo profilo} other {# segnalazioni contro l’account o il suo profilo}}",
+    "id": "ID dell’account",
+    "suspendedTitle": "Questo account è bloccato",
+    "suspendedText": "L’accesso è bloccato e il profilo del fornitore non è pubblico finché il blocco non termina o viene revocato.",
+    "identity": "Verifica dell’identità",
+    "identityIntro": "Solo stato e date dell’ultima verifica; la piattaforma non salva documenti.",
+    "identityStatus": "Stato",
+    "identityChecked": "Verificata il",
+    "identityExpires": "Valida fino al",
+    "identityNone": "Nessuna verifica dell’identità.",
+    "roles": "Ruoli interni",
+    "noRoles": "Nessun ruolo interno.",
+    "rolesOnlySuper": "I ruoli li assegna solo un Super Admin.",
+    "profile": "Profilo e organizzazioni",
+    "openProfile": "Apri profilo pubblico",
+    "inProviders": "Mostra nell’elenco dei fornitori",
+    "noProfile": "Nessun profilo di fornitore.",
+    "noOrganizations": "In nessuna organizzazione.",
+    "restrictions": "Limitazioni e blocchi",
+    "restrictionsIntro": "Tutte le misure contro l’account, dalle più recenti, con regola e motivazione.",
+    "noRestrictions": "Contro questo account non è ancora stata presa nessuna misura.",
+    "openAppeals": "{count, plural, one {Un ricorso aperto} other {# ricorsi aperti}}",
+    "toAppeals": "Vai ai ricorsi",
+    "security": "Eventi di sicurezza",
+    "securityIntro": "Gli ultimi dieci eventi dell’account, senza indirizzi né dispositivi.",
+    "noSecurity": "Nessun evento."
+  },
+  "history": {
+    "kind": "Tipo",
+    "rule": "Regola",
+    "reason": "Motivazione",
+    "period": "Periodo",
+    "status": "Stato",
+    "appeal": "Ricorso",
+    "active": "In vigore",
+    "lifted": "Revocata il {date}",
+    "expired": "Scaduta",
+    "fromUntil": "Dal {from} al {until}",
+    "fromOpen": "Dal {from}, senza fine"
+  },
+  "lift": {
+    "title": "Revoca: {kind}",
+    "reason": "Motivazione",
+    "reasonHint": "Almeno 10 caratteri. Figura nel registro di audit.",
+    "submit": "Revoca misura",
+    "saved": "La misura è revocata."
+  },
+  "measures": {
+    "title": "Misure",
+    "restrictTitle": "Limitare",
+    "restrictIntro": "L’account resta utilizzabile ma perde i messaggi o gli appuntamenti.",
+    "kind": "Che cosa va limitato?",
+    "rule": "Regola",
+    "ruleHint": "Su quale regola si basa la misura?",
+    "reason": "Motivazione",
+    "reasonHint": "Almeno 10 caratteri. La persona interessata la vede nelle impostazioni.",
+    "until": "Fine",
+    "untilHint": "Senza fine la misura vale finché qualcuno non la revoca. Termina alle 23:59 ora di Zurigo.",
+    "restrictSubmit": "Limita account",
+    "restricted": "L’account è limitato.",
+    "suspendTitle": "Bloccare",
+    "suspendIntro": "Termina tutte le sessioni, blocca l’accesso e toglie il profilo del fornitore dalla vista pubblica.",
+    "suspendSubmit": "Blocca account",
+    "suspended": "L’account è bloccato. Tutte le sessioni sono terminate.",
+    "confirmTitle": "Bloccare {name}?",
+    "confirmText": "Tutte le sessioni terminano subito, l’accesso è bloccato e il profilo del fornitore non è più pubblico. Un ricorso è possibile tramite il modulo di contatto. La revoca ripristina il profilo.",
+    "confirmSubmit": "Blocca account"
+  },
+  "rolesForm": {
+    "roles": "Ruoli interni",
+    "rolesHint": "Senza spunte l’account non ha ruoli interni né accesso all’admin.",
+    "reason": "Motivazione",
+    "reasonHint": "Almeno 10 caratteri. Figura con i ruoli prima e dopo nel registro di audit.",
+    "submit": "Salva ruoli",
+    "saved": "I ruoli sono salvati."
+  },
+  "providers": {
+    "title": "Fornitori",
+    "intro": "Tutti i profili dei fornitori con stato, ultima verifica e regioni. La verifica si fa in Verifiche.",
+    "filterLabel": "Filtra fornitori",
+    "search": "Ricerca",
+    "searchHint": "Nome visualizzato, slug, nome utente o ID esatto.",
+    "status": "Stato",
+    "allStatuses": "Tutti gli stati",
+    "caption": "Profili dei fornitori, dai più recenti",
+    "count": "{count, plural, =0 {Nessun profilo} one {Un profilo} other {# profili}}",
+    "columns": {
+      "name": "Nome visualizzato",
+      "status": "Stato",
+      "review": "Verifica",
+      "regions": "Regioni",
+      "created": "Creato",
+      "profile": "Pubblico"
+    },
+    "review": {
+      "none": "Mai inviato",
+      "open": "Aperta",
+      "APPROVED": "Approvato",
+      "CHANGES_REQUESTED": "Da correggere",
+      "REJECTED": "Respinto"
+    },
+    "openProfile": "Apri profilo",
+    "emptyTitle": "Ancora nessun profilo di fornitore",
+    "emptyDescription": "I profili compaiono qui appena i fornitori iniziano l’onboarding.",
+    "noMatchTitle": "Nessun risultato",
+    "noMatchDescription": "Nessun profilo corrisponde a ricerca e stato. Modifica la ricerca o reimposta il filtro."
+  }
+}

@@ -1,6 +1,7 @@
 import { getDb, type Prisma } from "@app/db";
+import { fileReport } from "../moderation/intake";
 import { participantOf } from "./access";
-import { URGENT_REPORT_REASONS, idSchema, reportSchema } from "./schemas";
+import { idSchema, reportSchema } from "./schemas";
 
 /**
  * Melden (v1 FR-CHAT-001, Abnahme 20.4 «Meldungen werden an die Moderation
@@ -36,24 +37,20 @@ export async function reportMessage(
     return { ok: false, reason: "not-found" };
   if (!(await participantOf(userId, message.conversationId)))
     return { ok: false, reason: "not-found" };
-  const report = await db.report.create({
-    data: {
+  const report = await fileReport({
       reporterId: userId,
       targetType: "MESSAGE",
       targetId: message.id,
       reason: parsed.data.reason,
       details: parsed.data.details || null,
-      urgent: URGENT_REPORT_REASONS.includes(parsed.data.reason),
       evidence: {
         conversationId: message.conversationId,
         senderId: message.senderId,
         sentAt: message.createdAt.toISOString(),
         body: message.deletedAt ? null : message.body,
       } as Prisma.InputJsonValue,
-    },
-    select: { id: true },
   });
-  return { ok: true, reportId: report.id };
+  return { ok: true, reportId: report.reportId };
 }
 
 /** Die Gegenseite einer Unterhaltung melden, mit den letzten zehn Nachrichten als Kopie. */
@@ -77,8 +74,7 @@ export async function reportCounterpart(
     take: 10,
     select: { id: true, body: true, createdAt: true },
   });
-  const report = await db.report.create({
-    data: {
+  const report = await fileReport({
       reporterId: userId,
       targetType: participation.role === "MEMBER" ? "PROFILE" : "USER",
       targetId:
@@ -87,7 +83,6 @@ export async function reportCounterpart(
           : participation.counterpartId,
       reason: parsed.data.reason,
       details: parsed.data.details || null,
-      urgent: URGENT_REPORT_REASONS.includes(parsed.data.reason),
       evidence: {
         conversationId,
         messages: recent.map((entry) => ({
@@ -96,8 +91,6 @@ export async function reportCounterpart(
           sentAt: entry.createdAt.toISOString(),
         })),
       } as Prisma.InputJsonValue,
-    },
-    select: { id: true },
   });
-  return { ok: true, reportId: report.id };
+  return { ok: true, reportId: report.reportId };
 }

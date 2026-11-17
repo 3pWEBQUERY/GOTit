@@ -15,6 +15,8 @@ export interface ClientMessage {
   fromMe: boolean;
   body: string | null;
   deleted: boolean;
+  /** Von der Moderation ausgeblendet: für beide Seiten ohne Text und Bilder. */
+  hidden: boolean;
   createdAt: string;
   status: "sent" | "read" | null;
   attachments: ClientAttachment[];
@@ -39,6 +41,8 @@ export interface ClientThread {
   archived: boolean;
   note: string | null;
   labelIds: string[];
+  /** Eingeschränkt durch die Moderation (v1 9.2): Ende als ISO-Text, `until: null` ohne Ende. */
+  messagingRestriction: { until: string | null } | null;
 }
 
 export interface ClientPendingAttachment {

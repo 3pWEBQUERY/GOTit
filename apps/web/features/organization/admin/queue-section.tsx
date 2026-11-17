@@ -11,7 +11,7 @@ import {
   type OrganizationQueueRow,
 } from "./queue-table";
 
-/** Warteschlange `/admin/organisationen`: eingereichte Nachweise, älteste zuerst, mit «Nächster Fall» und Taste N. */
+/** Warteschlange `/admin/unternehmen`: eingereichte Nachweise, älteste zuerst, mit «Nächster Fall» und Taste N. */
 export async function OrganizationQueueSection({
   locale,
   actorId,
@@ -29,7 +29,7 @@ export async function OrganizationQueueSection({
   ]);
   const href = createHref(locale);
   const caseHref = (id: string) =>
-    href({ pathname: "/admin/organisationen/[id]", params: { id } });
+    href({ pathname: "/admin/unternehmen/[id]", params: { id } });
   const rows: OrganizationQueueRow[] = entries.map((entry) => {
     const age = caseAge(entry.submittedAt, now);
     return {

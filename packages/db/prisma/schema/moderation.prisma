@@ -1,11 +1,14 @@
 // Modul moderation: Meldungen (PRD v2 14.5 `Report`, v1 9.3). Schritt 1.8 legt Meldungen zu
-// Nachrichten und Konten an; die allgemeine Moderation mit Zuständigkeit und Einspruch folgt in 1.13.
+// Nachrichten und Konten an; 1.13 ergänzt Fälle mit Priorität, Zuständigkeit, Entscheid und Einspruch.
 enum ReportTarget {
   MESSAGE
   USER
   PROFILE
   MEDIA
   REVIEW
+  ORGANIZATION
+  // Meldung über `/melden` mit einer Adresse, die keinem Profil zugeordnet werden kann; targetId ist der Pfad.
+  URL
 }
 
 enum ReportStatus {
@@ -15,8 +18,34 @@ enum ReportStatus {
   DISMISSED
 }
 
+enum ReportPriority {
+  // Minderjährigkeit, Zwang, Menschenhandel, akute Gefahr (v2 12.4): höchste Priorität, Inhalt sofort gesperrt.
+  CRITICAL
+  HIGH
+  NORMAL
+  LOW
+}
+
+enum ReportDecision {
+  NO_ACTION
+  // Profil oder Medium zur Korrektur an den Anbieter.
+  CHANGES_REQUESTED
+  CONTENT_REMOVED
+  ACCOUNT_RESTRICTED
+  ACCOUNT_SUSPENDED
+}
+
+enum CaseAppealStatus {
+  NONE
+  OPEN
+  UPHELD
+  DISMISSED
+}
+
 model Report {
   id          String       @id @default(cuid(2))
+  // Fall-ID für Menschen, zum Beispiel «M-2026-00412» (v1 9.3).
+  number      Int          @unique @default(autoincrement())
   // Null bei Meldungen ohne Konto (`/melden`, Schritt 1.13).
   reporterId  String?
   targetType  ReportTarget
@@ -29,12 +58,72 @@ model Report {
   // Gemeldete Nachricht als Kopie, damit Löschen durch den Absender den Fall nicht leert (v2 11.4).
   evidence    Json?
   status      ReportStatus @default(OPEN)
+  priority    ReportPriority @default(NORMAL)
+  // Zuständige Person der Moderation (v1 9.3 «Zuständigkeit»).
+  assignedToId String?
+  // Meldungen ohne Konto (`/melden`): betroffene Adresse und freiwillige Kontaktadresse.
+  targetUrl    String?
+  contactEmail String?
+  decision       ReportDecision?
+  rule           String?
+  decisionReason String?
+  decidedById    String?
+  decidedAt      DateTime?
+  // Inhalt bei kritischen Gründen sofort gesperrt; Zeitpunkt der Eskalation an Trust & Safety.
+  escalatedAt    DateTime?
+  // Sofortsperre bei kritischen Gründen: Zeitpunkt und vorheriger Status des Inhalts,
+  // damit «Kein Verstoss» ihn wiederherstellt.
+  contentBlockedAt     DateTime?
+  contentPreviousState String?
+  appealStatus   CaseAppealStatus @default(NONE)
+  appealReason   String?
+  appealedAt     DateTime?
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
 
   reporter User? @relation(fields: [reporterId], references: [id], onDelete: SetNull)
 
   @@index([status, urgent, createdAt])
+  @@index([status, priority, createdAt])
+  @@index([assignedToId, status])
   @@index([targetType, targetId])
   @@map("report")
+}
+
+enum RestrictionKind {
+  // Keine Nachrichten und keine neuen Unterhaltungen.
+  MESSAGING
+  // Keine Terminanfragen und keine Aktionen auf Anfragen.
+  BOOKING
+  // Konto gesperrt: keine Anmeldung, Sitzungen beendet, Profil nicht öffentlich.
+  SUSPENDED
+}
+
+// Einschränkung oder Sperre eines Kontos (v1 9.2): mit Grund, Regel, optionalem Ende und
+// Einspruch. Aufheben schreibt `liftedAt`; die Zeile bleibt als Verlauf.
+model AccountRestriction {
+  id           String          @id @default(cuid(2))
+  userId       String
+  kind         RestrictionKind
+  rule         String
+  reason       String
+  // Ohne Ende gilt sie, bis jemand sie aufhebt.
+  until        DateTime?
+  reportId     String?
+  createdById  String
+  createdAt    DateTime        @default(now())
+  liftedAt     DateTime?
+  liftedById   String?
+  liftReason   String?
+  // Status des Anbieterprofils vor der Sperre, damit das Aufheben ihn wiederherstellt.
+  previousProfileStatus ProviderStatus?
+  appealStatus CaseAppealStatus   @default(NONE)
+  appealReason String?
+  appealedAt   DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, liftedAt])
+  @@index([appealStatus])
+  @@map("account_restriction")
 }

@@ -13,6 +13,7 @@ import { signInSchema } from "../lib/schemas";
 import { ErrorSummary } from "./error-summary";
 import { FormProblemAlert, type FormProblem } from "./form-problem";
 import { ResendVerification } from "./resend-verification";
+import { SuspendedAlert } from "./suspended-alert";
 
 export interface SignInLinks {
   /** Ziel nach der Anmeldung, schon mit `safeReturnPath` geprüft. */
@@ -22,9 +23,11 @@ export interface SignInLinks {
   register: string;
   /** Ziel des Bestätigungslinks, falls die Adresse noch unbestätigt ist. */
   verifyCallback: string;
+  /** Kontaktformular, für gesperrte Konten (Einspruch gegen eine Sperre). */
+  contact: string;
 }
 
-type Rejection = "invalid" | "unverified" | "passkeyFailed" | null;
+type Rejection = "invalid" | "unverified" | "passkeyFailed" | "suspended" | null;
 
 const ORDER = ["email", "password"] as const;
 const idFor = (name: string) => `sign-in-${name}`;
@@ -45,7 +48,8 @@ export function SignInForm({ links }: { links: SignInLinks }) {
       window.location.assign(requiresTwoFactor(outcome.data) ? links.twoFactor : links.target);
       return;
     }
-    if (outcome.kind === "rejected") return setRejection(onRejected(outcome.status));
+    // Gesperrt durch die Moderation (v1 9.2): Better Auth meldet FORBIDDEN mit eigenem Code.
+    if (outcome.kind === "rejected") return setRejection(outcome.code === "ACCOUNT_SUSPENDED" ? "suspended" : onRejected(outcome.status));
     setProblem(outcome);
   }
 
@@ -81,6 +85,9 @@ export function SignInForm({ links }: { links: SignInLinks }) {
       <form noValidate onSubmit={onSubmit} className="flex flex-col gap-6">
         {form.submitted ? <ErrorSummary items={summaryItems(ORDER, form.errors, idFor, message)} /> : null}
         <FormProblemAlert problem={problem} />
+        {rejection === "suspended" ? (
+          <SuspendedAlert contactHref={links.contact} />
+        ) : null}
         {rejection === "invalid" || rejection === "passkeyFailed" ? (
           <InlineAlert tone="error" title={t(`${rejection}.title`)}>
             {t(`${rejection}.body`)}

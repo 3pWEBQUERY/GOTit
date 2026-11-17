@@ -174,7 +174,8 @@
       "notAllowed": "Das ist im aktuellen Status nicht mehr möglich. Der neue Stand wird angezeigt.",
       "invalid": "Die Angaben sind nicht gültig. Prüfe Tag, Uhrzeit und Dauer.",
       "rateLimited": "Zu viele Aktionen in kurzer Zeit. Warte einen Moment und versuche es erneut.",
-      "failed": "Das hat nicht geklappt. Es wurde nichts geändert; versuche es erneut."
+      "failed": "Das hat nicht geklappt. Es wurde nichts geändert; versuche es erneut.",
+      "restricted": "Dein Konto ist für Terminanfragen eingeschränkt. Annehmen und Gegenvorschläge gehen nicht; absagen kannst du weiterhin."
     },
     "safetyTitle": "Abgesagt",
     "safetyText": "Wenn dich etwas bedroht oder verunsichert hat, melde das Mitglied. Die Moderation erhält eine Kopie der letzten Nachrichten.",

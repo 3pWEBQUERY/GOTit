@@ -20,6 +20,16 @@ const config: NextConfig = {
   reactStrictMode: true,
   typedRoutes: false,
   headers: async () => [{ source: "/:path*", headers: securityHeaders }],
+  // Alte Adressen der Meldungen (Schritt 1.8) führen dauerhaft zur Moderation (v2 7.8, Entscheid 0021).
+  redirects: async () => [
+    { source: "/:locale(de|fr|it|en)/admin/meldungen", destination: "/:locale/admin/moderation", permanent: true },
+    { source: "/:locale(de|fr|it|en)/admin/meldungen/:id", destination: "/:locale/admin/moderation/:id", permanent: true },
+    { source: "/admin/meldungen", destination: "/admin/moderation", permanent: true },
+    { source: "/admin/meldungen/:id", destination: "/admin/moderation/:id", permanent: true },
+    // Die Prüfung der Organisationen (Schritt 1.11) heisst wie in der PRD «Unternehmen» (v2 7.8, Entscheid 0022).
+    { source: "/:locale(de|fr|it|en)/admin/organisationen", destination: "/:locale/admin/unternehmen", permanent: true },
+    { source: "/:locale(de|fr|it|en)/admin/organisationen/:id", destination: "/:locale/admin/unternehmen/:id", permanent: true },
+  ],
 };
 
 export default withNextIntl(config);

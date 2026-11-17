@@ -4,6 +4,7 @@ import type { Locale } from "@app/core/locale";
 import { startConversation } from "@app/core/messaging";
 import { getLocale } from "next-intl/server";
 import { redirect } from "@/i18n/navigation";
+import { restrictionFor } from "../../moderation/queries";
 import { messagingAccount } from "./guard";
 
 export type StartFailure =
@@ -12,7 +13,8 @@ export type StartFailure =
   | "not-found"
   | "not-allowed"
   | "own-profile"
-  | "undeliverable";
+  | "undeliverable"
+  | "restricted";
 
 /**
  * «Nachricht schreiben» auf dem Profil (v1 FR-CHAT-001): öffnet die
@@ -21,10 +23,14 @@ export type StartFailure =
  */
 export async function startConversationAction(
   slug: string,
-): Promise<{ ok: false; reason: StartFailure }> {
+): Promise<{ ok: false; reason: StartFailure; until?: string | null }> {
   const guard = await messagingAccount("conversationStart");
   if (!guard.ok) return { ok: false, reason: guard.reason };
   const result = await startConversation(guard.viewer, String(slug));
+  if (!result.ok && result.reason === "restricted") {
+    const restriction = await restrictionFor(guard.viewer.userId, "MESSAGING");
+    return { ok: false, reason: "restricted", until: restriction?.until ?? null };
+  }
   if (!result.ok) return { ok: false, reason: result.reason };
   const locale = (await getLocale()) as Locale;
   return redirect({

@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, Checkbox, InlineAlert, TextField, UiLink } from "@app/ui";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useState, useTransition, type FormEvent } from "react";
 import { useAuthClient } from "../hooks/use-auth-client";
 import { useErrorMessage } from "../hooks/use-error-message";
@@ -11,6 +11,9 @@ import { focusFirstError, summaryItems } from "../lib/first-error";
 import { backupCodeSchema, totpCodeSchema } from "../lib/schemas";
 import { ErrorSummary } from "./error-summary";
 import { FormProblemAlert, type FormProblem } from "./form-problem";
+import { SuspendedAlert } from "./suspended-alert";
+import { getPathname } from "@/i18n/navigation";
+import type { Locale } from "@app/core/locale";
 
 type Mode = "totp" | "backup";
 
@@ -42,6 +45,8 @@ function CodeForm({ mode, target, signInHref }: { mode: Mode; target: string; si
   const [problem, setProblem] = useState<FormProblem | null>(null);
   const [expired, setExpired] = useState(false);
   const [locked, setLocked] = useState(false);
+  const [suspended, setSuspended] = useState(false);
+  const locale = useLocale() as Locale;
   const [pending, startTransition] = useTransition();
   const idFor = () => `two-factor-${mode}`;
 
@@ -59,6 +64,7 @@ function CodeForm({ mode, target, signInHref }: { mode: Mode; target: string; si
       );
       if (outcome.kind === "ok") return window.location.assign(target);
       if (outcome.kind !== "rejected") return setProblem(outcome);
+      if (outcome.code === "ACCOUNT_SUSPENDED") return setSuspended(true);
       if (outcome.code === "INVALID_TWO_FACTOR_COOKIE") return setExpired(true);
       if (outcome.code && LOCK_CODES.has(outcome.code)) return setLocked(true);
       const errors = { code: mode === "totp" ? "codeWrong" : "backupCodeWrong" };
@@ -66,6 +72,8 @@ function CodeForm({ mode, target, signInHref }: { mode: Mode; target: string; si
       focusFirstError(ORDER, errors, idFor);
     });
   }
+
+  if (suspended) return <SuspendedAlert contactHref={getPathname({ href: "/kontakt", locale })} />;
 
   if (expired) {
     return (

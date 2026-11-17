@@ -6,6 +6,8 @@ import { MediaDetail } from "@/features/media/detail/media-detail";
 import { toLibraryItem } from "@/features/media/queries/load-library";
 import { TopBarTitle } from "@/features/shell/components/top-bar-title";
 import { getViewerMedia } from "@/features/media/queries/get-own-media";
+import { mediaCase } from "@/features/moderation/queries";
+import { getViewer } from "@/features/shell/queries/get-viewer";
 
 type Props = { params: Promise<{ locale: string; id: string }> };
 
@@ -20,11 +22,17 @@ export default async function MediaDetailPage({ params }: Props) {
   const locale = rawLocale as Locale;
   const media = await getViewerMedia(id);
   if (!media || media.status === "FAILED") notFound();
-  const t = await getTranslations({ locale, namespace: "media.detail" });
+  const viewer = await getViewer();
+  // Gesperrt oder zur Korrektur durch einen Fall der Moderation: Entscheid und Einspruch (v2 12.4).
+  const moderated = media.status === "BLOCKED" || media.status === "CHANGES_REQUESTED";
+  const [t, found] = await Promise.all([
+    getTranslations({ locale, namespace: "media.detail" }),
+    moderated && viewer.kind === "account" ? mediaCase(viewer.userId, media.id) : Promise.resolve(null),
+  ]);
   return (
     <>
       <TopBarTitle title={t("title")} />
-      <MediaDetail locale={locale} item={toLibraryItem(media, null)} />
+      <MediaDetail locale={locale} item={toLibraryItem(media, null)} moderationCase={found} />
     </>
   );
 }

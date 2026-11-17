@@ -1,0 +1,378 @@
+{
+  "title": "Moderation",
+  "intro": "Reported messages, accounts, profiles, media and reviews. Critical cases are at the top, oldest first within each priority.",
+  "restricted": "Cases contain private messages. They are for moderation and Trust & Safety; support has no access.",
+  "memberFallback": "Member",
+  "gone": "No longer exists",
+  "category": "{target} · {reason}",
+  "caseTitle": "Case {id} · {target} · {priority}",
+  "tabs": {
+    "label": "Moderation view",
+    "cases": "Cases",
+    "restrictionAppeals": "Appeals against restrictions"
+  },
+  "priority": {
+    "CRITICAL": "Critical",
+    "HIGH": "High",
+    "NORMAL": "Normal",
+    "LOW": "Low"
+  },
+  "priorityLabel": {
+    "CRITICAL": "Critical · Trust & Safety",
+    "HIGH": "High",
+    "NORMAL": "Normal",
+    "LOW": "Low"
+  },
+  "status": {
+    "OPEN": "Open",
+    "IN_REVIEW": "In review",
+    "RESOLVED": "Resolved",
+    "DISMISSED": "Dismissed"
+  },
+  "targetType": {
+    "MESSAGE": "Message",
+    "USER": "Member",
+    "PROFILE": "Provider profile",
+    "MEDIA": "Media",
+    "REVIEW": "Review",
+    "ORGANIZATION": "Organisation",
+    "URL": "Address"
+  },
+  "decisionLabel": {
+    "NO_ACTION": "No violation",
+    "CHANGES_REQUESTED": "Request changes",
+    "CONTENT_REMOVED": "Remove",
+    "ACCOUNT_RESTRICTED": "Restrict account",
+    "ACCOUNT_SUSPENDED": "Suspend account"
+  },
+  "decisionHint": {
+    "NO_ACTION": {
+      "default": "The case is dismissed. Content blocked immediately becomes visible again."
+    },
+    "CHANGES_REQUESTED": {
+      "default": "The media goes back to the provider for changes, with your reason."
+    },
+    "CONTENT_REMOVED": {
+      "default": "The content is no longer visible afterwards.",
+      "MESSAGE": "Both sides see the message as “Hidden by moderation”.",
+      "PROFILE": "The profile is no longer public afterwards.",
+      "MEDIA": "The media is blocked; the provider sees it in the studio with your reason.",
+      "REVIEW": "The review disappears from the profile.",
+      "ORGANIZATION": "The organisation is no longer public afterwards."
+    },
+    "ACCOUNT_RESTRICTED": {
+      "default": "The account behind the content can no longer send messages or appointment requests."
+    },
+    "ACCOUNT_SUSPENDED": {
+      "default": "The account can no longer sign in, all sessions end, a provider profile is no longer public."
+    }
+  },
+  "restrictionKind": {
+    "MESSAGING": "Messaging restricted",
+    "BOOKING": "Appointment requests restricted",
+    "SUSPENDED": "Account suspended"
+  },
+  "rules": {
+    "R-MOD-0": "No violation found",
+    "R-MOD-1": "Harassment, threats or insults",
+    "R-MOD-2": "Fraud, spam or deception about services and prices",
+    "R-MOD-3": "False identity or someone else’s pictures",
+    "R-MOD-4": "Suspected minor",
+    "R-MOD-5": "Suspected coercion, exploitation or human trafficking",
+    "R-MOD-6": "Violence or acute danger",
+    "R-MOD-7": "Prohibited content or media",
+    "R-MOD-8": "Publishing private data of others"
+  },
+  "readOnly": {
+    "title": "Deciding needs a width of 1024 px",
+    "text": "On this screen the admin is read-only. Open the case on a wider screen to decide."
+  },
+  "queue": {
+    "caption": "Moderation cases",
+    "count": "{count, plural, =0 {No cases} one {# case} other {# cases}}",
+    "limit": "Only the first {count} cases are listed. Narrow the list with the filters.",
+    "next": "Open next case",
+    "shortcutAfter": "opens the most urgent, oldest case that is unassigned or assigned to you.",
+    "noNext": "No unassigned case open.",
+    "me": "Me",
+    "unassigned": "Nobody",
+    "unknownPerson": "Unknown person",
+    "appealOpen": "Appeal open",
+    "columns": {
+      "caseId": "Case",
+      "category": "Category",
+      "priority": "Priority",
+      "status": "Status",
+      "assignee": "Assigned to",
+      "age": "Age"
+    },
+    "filters": {
+      "title": "Filters",
+      "statusLabel": "Status",
+      "priorityLabel": "Priority",
+      "targetLabel": "Reported",
+      "assignedLabel": "Assignment",
+      "all": "All",
+      "reset": "Reset filters",
+      "status": {
+        "aktiv": "Active (open and in review)",
+        "pruefung": "In review",
+        "erledigt": "Resolved",
+        "abgewiesen": "Dismissed",
+        "einspruch": "Appeal open"
+      },
+      "prioritaet": {
+        "kritisch": "Critical",
+        "hoch": "High",
+        "normal": "Normal",
+        "niedrig": "Low"
+      },
+      "art": {
+        "nachricht": "Message",
+        "mitglied": "Member",
+        "profil": "Provider profile",
+        "medium": "Media",
+        "bewertung": "Review",
+        "organisation": "Organisation",
+        "adresse": "Address"
+      },
+      "zuweisung": {
+        "mir": "Assigned to me",
+        "frei": "Unassigned"
+      }
+    },
+    "empty": {
+      "title": "No active cases",
+      "description": "When someone reports a message, an account, a profile, media or a review, the case appears here."
+    },
+    "emptyFiltered": {
+      "title": "No cases for these filters",
+      "description": "Change the filters or reset them."
+    }
+  },
+  "meta": {
+    "status": "Status: {status}",
+    "assignee": "Assigned to: {name}",
+    "submitted": "Received on {submitted} · {age}"
+  },
+  "assign": {
+    "assignMe": "Assign to me",
+    "takeOver": "Take over",
+    "release": "Release",
+    "assigned": "Case assigned to you",
+    "released": "Case released"
+  },
+  "notes": {
+    "escalated": "Escalated to Trust & Safety on {date}",
+    "escalatedText": "The reason concerns minors, coercion or acute danger. Only Trust & Safety can decide.",
+    "blocked": "Content blocked since {date}",
+    "blockedText": "For critical reasons the content is blocked immediately. “No violation” makes it visible again.",
+    "alreadyDecidedHelp": "Your decision was not saved. This is the current state."
+  },
+  "content": {
+    "title": "Reported content",
+    "openReview": "Open review",
+    "note": {
+      "MESSAGE": "There is no copy of the message for this report.",
+      "USER": "The account itself is reported, without a copy of messages.",
+      "PROFILE": "The provider profile is reported. It is at its address; if it is blocked, it is not public.",
+      "MEDIA": "This media no longer exists.",
+      "REVIEW": "The text of the review is in the review case.",
+      "ORGANIZATION": "The organisation is reported. It is at its address; if it is blocked, it is not public.",
+      "URL": "An address is reported that could not be matched to a profile."
+    },
+    "mediaAlt": "Reported media"
+  },
+  "facts": {
+    "title": "Report",
+    "reason": "Reason",
+    "details": "Report text",
+    "noDetails": "No text given",
+    "target": "Reported",
+    "reporter": "Reported by",
+    "anonymous": "Without an account or account deleted",
+    "url": "Reported address",
+    "contactEmail": "Contact address",
+    "noContact": "None given"
+  },
+  "history": {
+    "title": "Account history",
+    "criticalOnly": "Only Trust & Safety sees the history for critical cases.",
+    "noAccount": "There is no account behind this content.",
+    "cases": "Earlier cases",
+    "noCases": "No earlier cases.",
+    "undecided": "Still open",
+    "restrictions": "Restrictions",
+    "noRestrictions": "No restrictions.",
+    "since": "since {date}",
+    "until": "until {date}",
+    "noEnd": "no end",
+    "lifted": "lifted on {date}"
+  },
+  "decision": {
+    "title": "Decision",
+    "criticalTitle": "Trust & Safety decides",
+    "criticalText": "Only Trust & Safety decides critical cases. You see the case so it does not get stuck.",
+    "summaryTitle": "Please check the marked fields.",
+    "decision": "Outcome",
+    "rule": "Rule",
+    "rulePlaceholder": "Choose a rule",
+    "ruleHint": "“No violation” only goes with R-MOD-0, every measure with a rule R-MOD-1 to 8.",
+    "restrictionKind": "What is restricted",
+    "kind": {
+      "MESSAGING": "Messages",
+      "BOOKING": "Appointments"
+    },
+    "kindHint": {
+      "MESSAGING": "No messages and no new conversations.",
+      "BOOKING": "No appointment requests; accepting and counter-proposals are blocked, cancelling is not."
+    },
+    "until": "End",
+    "optional": "optional",
+    "untilHint": "Format DD.MM.YYYY, valid until 23:59. Without an end the measure applies until someone lifts it.",
+    "calendar": {
+      "open": "Open calendar",
+      "previous": "Previous month",
+      "next": "Next month"
+    },
+    "reason": "Reason",
+    "reasonHint": "At least 10 characters. It is in the audit log; for a measure the affected person sees it too.",
+    "save": "Save decision",
+    "saved": "Decision saved"
+  },
+  "summary": {
+    "result": "Outcome",
+    "rule": "Rule",
+    "reason": "Reason",
+    "decidedBy": "Decided by",
+    "decidedAt": "Decided on"
+  },
+  "appeal": {
+    "title": "Appeal",
+    "filedAt": "filed on {date}",
+    "status": {
+      "OPEN": "Open",
+      "UPHELD": "Upheld",
+      "DISMISSED": "Dismissed"
+    },
+    "ownTitle": "Someone else decides on this appeal",
+    "ownText": "You decided the case. A second person reviews the appeal."
+  },
+  "appealDecision": {
+    "summaryTitle": "Please check the marked fields.",
+    "outcome": "Appeal",
+    "option": {
+      "UPHELD": "Uphold appeal",
+      "DISMISSED": "Dismiss appeal"
+    },
+    "optionHint": {
+      "case": {
+        "UPHELD": "A measure is reversed: content visible again, restrictions of the case lifted. Against “No violation” the case opens again.",
+        "DISMISSED": "The decision stays as it is."
+      },
+      "restriction": {
+        "UPHELD": "The restriction is lifted immediately.",
+        "DISMISSED": "The restriction stays until its end."
+      }
+    },
+    "reason": "Reason",
+    "reasonHint": "At least 10 characters. It is in the audit log.",
+    "save": "Save decision on the appeal",
+    "savedUpheld": "Appeal upheld",
+    "savedDismissed": "Appeal dismissed"
+  },
+  "restrictionAppeals": {
+    "title": "Appeals against restrictions",
+    "restricted": "Appeals against restrictions are decided by people who may restrict accounts. Your role is not one of them.",
+    "count": "{count, plural, =0 {No open appeals} one {# open appeal} other {# open appeals}}",
+    "listLabel": "Open appeals, oldest first",
+    "itemTitle": "{name} · {kind}",
+    "rule": "Rule",
+    "until": "End",
+    "noEnd": "No end",
+    "appealedAt": "Appeal from",
+    "reason": "Reason for the restriction",
+    "appealText": "Appeal text",
+    "ownTitle": "You imposed this restriction",
+    "ownText": "A second person decides on the appeal.",
+    "suspendOnlyTitle": "Decided by people who may suspend accounts",
+    "suspendOnlyText": "Platform administration and Trust & Safety decide on appeals against a suspension.",
+    "empty": {
+      "title": "No open appeals",
+      "description": "When someone appeals against a restriction or suspension, it appears here."
+    }
+  },
+  "errors": {
+    "generic": "That did not work. Your entries are still there. Try again.",
+    "signInRequired": "Your session has expired. Sign in again.",
+    "forbidden": "Your role is not allowed to do this. Nothing was saved.",
+    "notFound": "This case no longer exists.",
+    "alreadyDecided": "This case has already been decided",
+    "notApplicable": "This decision does not fit this case. Reload the page.",
+    "samePerson": "A second person decides on an appeal against your own decision.",
+    "samePersonRestriction": "A second person decides on an appeal against a restriction you imposed.",
+    "noAccount": "There is no account behind this content that could be restricted. Choose another decision.",
+    "protected": "The account has an internal role. Only super administration can restrict or suspend it.",
+    "invalid": "The entries do not fit together. Check outcome, rule and reason.",
+    "decisionRequired": "Choose an outcome.",
+    "ruleRequired": "Choose the rule the decision is based on.",
+    "ruleNoViolation": "“No violation” only goes with R-MOD-0.",
+    "ruleViolation": "A measure needs a rule R-MOD-1 to 8.",
+    "kindRequired": "Choose whether messages or appointments are restricted.",
+    "untilInvalid": "Enter the end as a date DD.MM.YYYY or leave the field empty.",
+    "untilPast": "The end must be today or later.",
+    "reasonTooShort": "Give a reason of at least 10 characters.",
+    "reasonTooLong": "The reason may be at most 2000 characters long.",
+    "outcomeRequired": "Choose whether you uphold or dismiss the appeal.",
+    "appealClosed": "This appeal has already been decided. Reload the page."
+  },
+  "member": {
+    "restricted": {
+      "MESSAGING": "Your account is restricted from messaging until {date}.",
+      "MESSAGINGNoEnd": "Your account is restricted from messaging until moderation lifts the restriction.",
+      "BOOKING": "Your account is restricted from appointment requests until {date}.",
+      "BOOKINGNoEnd": "Your account is restricted from appointment requests until moderation lifts the restriction.",
+      "link": "See reason and appeal"
+    },
+    "settings": {
+      "title": "Restrictions",
+      "intro": "Moderation has restricted your account. You can appeal once against each restriction; a second person reviews it.",
+      "listLabel": "Active restrictions",
+      "rule": "Rule",
+      "reason": "Reason",
+      "since": "Since",
+      "until": "Until",
+      "noEnd": "Until moderation lifts it",
+      "appealStatus": {
+        "OPEN": "Your appeal has been received and is being reviewed.",
+        "UPHELD": "Your appeal was upheld.",
+        "DISMISSED": "Your appeal was dismissed. The restriction applies until its end."
+      }
+    },
+    "appeal": {
+      "title": "Appeal",
+      "reason": "Why is the restriction wrong?",
+      "reasonHint": "At least 20 characters. You can only appeal once.",
+      "submit": "Send appeal",
+      "sent": "Appeal sent",
+      "errors": {
+        "tooShort": "Write at least 20 characters.",
+        "tooLong": "The appeal may be at most 2000 characters long.",
+        "already": "You have already appealed.",
+        "rateLimited": "You have sent many reports and appeals in the last hour. Try again later.",
+        "notFound": "This restriction no longer applies. Reload the page.",
+        "generic": "That did not work. Your text is still there. Try again."
+      }
+    },
+    "media": {
+      "title": "Moderation decision",
+      "caseLine": "Case {id} · {rule} · decided on {date}",
+      "appealStatus": {
+        "OPEN": "Your appeal has been received and is being reviewed.",
+        "UPHELD": "Your appeal was upheld.",
+        "DISMISSED": "Your appeal was dismissed."
+      },
+      "reason": "Why should the media be visible again?"
+    }
+  }
+}

@@ -22,7 +22,7 @@ function Fact({ label, children }: { label: string; children: ReactNode }) {
 const UID_REGISTER = "https://www.uid.admin.ch";
 
 /**
- * Einzelfall `/admin/organisationen/[id]` (v1 FR-VERIFY-003, v2 12.4): Angaben
+ * Einzelfall `/admin/unternehmen/[id]` (v1 FR-VERIFY-003, v2 12.4): Angaben
  * der Organisation und der Einreichung, Entscheid mit Begründung. Die
  * Moderation prüft die UID im öffentlichen UID-Register; Dokumente gibt es nicht.
  */
@@ -66,7 +66,7 @@ export async function OrganizationCaseView({
         crumbsLabel={tAdmin("shell.breadcrumbs")}
         crumbs={[
           { label: tAdmin("shell.overview"), href: href("/admin") },
-          { label: t("title"), href: href("/admin/organisationen") },
+          { label: t("title"), href: href("/admin/unternehmen") },
           { label: organization.name },
         ]}
       />
@@ -152,7 +152,7 @@ export async function OrganizationCaseView({
               <div className="hidden lg:block">
                 <OrganizationDecisionForm
                   id={verification.id}
-                  queueHref={href("/admin/organisationen")}
+                  queueHref={href("/admin/unternehmen")}
                 />
               </div>
               <div className="lg:hidden">

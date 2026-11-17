@@ -76,6 +76,10 @@ export function useRequestForm({
   );
   const [pending, setPending] = useState(false);
   const [sent, setSent] = useState<SentRequest | null>(null);
+  // Eingeschränkt durch die Moderation (v1 9.2): Hinweis mit Ende statt eines Fehlers am Feld.
+  const [restricted, setRestricted] = useState<{ until: string | null } | null>(
+    null,
+  );
   // Eine Zeit aus dem Entwurf, die inzwischen vergeben ist, wird genannt statt still verworfen.
   const lostTime = Boolean(initial.day && initial.time && !initialStart);
 
@@ -170,6 +174,10 @@ export function useRequestForm({
       router.push(signInHref());
       return;
     }
+    if (result.reason === "restricted") {
+      setRestricted({ until: result.until ?? null });
+      return;
+    }
     fail(result.reason);
   }
 
@@ -195,6 +203,7 @@ export function useRequestForm({
     sent,
     dirty,
     lostTime,
+    restricted,
     submit,
     discard: () => clearMessage(slug),
   };
