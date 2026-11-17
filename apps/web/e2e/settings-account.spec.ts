@@ -113,6 +113,8 @@ test.describe("Sicherheit (Abnahme 16)", () => {
     if ((await passkeyButton.count()) > 0) {
       await passkeyButton.first().click();
       await expect.poll(async () => hasSession(page.request)).toBe(true);
+      // Die Anmeldung leitet selbst weiter; erst danach navigieren, sonst bricht eine die andere ab.
+      await expect(page).not.toHaveURL(/\/anmelden/);
     } else {
       await signInWith(page.request, account);
       const listed = (await (await page.request.get("/api/auth/passkey/list-user-passkeys")).json()) as unknown[];
