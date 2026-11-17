@@ -18,6 +18,8 @@ export interface UploadPanelProps {
   canUpload: boolean;
   /** Nach jedem fertigen Upload, damit die Bibliothek neu lädt. */
   onFinished: () => void;
+  /** Organisation statt eigenem Profil: ohne Wahl der Sichtbarkeit, Medien sind öffentlich. */
+  org?: string;
 }
 
 /**
@@ -25,7 +27,7 @@ export interface UploadPanelProps {
  * für neue Fotos und Fortschritt pro Datei (PRD v2 11.3). Ohne Bestätigung
  * beginnt kein Upload; das Feld erklärt, was fehlt.
  */
-export function UploadPanel({ free, max, hasUploadedBefore, canUpload, onFinished }: UploadPanelProps) {
+export function UploadPanel({ free, max, hasUploadedBefore, canUpload, onFinished, org }: UploadPanelProps) {
   const t = useTranslations("media.upload");
   const format = useFormatter();
   const entries = useUploads(onFinished);
@@ -74,16 +76,20 @@ export function UploadPanel({ free, max, hasUploadedBefore, canUpload, onFinishe
         }}
         className="max-w-reading"
       />
-      <RadioGroup
-        label={t("visibility")}
-        name="sichtbarkeit-neu"
-        value={visibility}
-        onValueChange={(value) => setVisibility(value === "MEMBERS" ? "MEMBERS" : "PUBLIC")}
-        options={[
-          { value: "PUBLIC", label: t("visibilityPublic"), description: t("visibilityPublicHint") },
-          { value: "MEMBERS", label: t("visibilityMembers"), description: t("visibilityMembersHint") },
-        ]}
-      />
+      {org ? (
+        <p className="max-w-reading text-small text-ink-muted">{t("organizationPublic")}</p>
+      ) : (
+        <RadioGroup
+          label={t("visibility")}
+          name="sichtbarkeit-neu"
+          value={visibility}
+          onValueChange={(value) => setVisibility(value === "MEMBERS" ? "MEMBERS" : "PUBLIC")}
+          options={[
+            { value: "PUBLIC", label: t("visibilityPublic"), description: t("visibilityPublicHint") },
+            { value: "MEMBERS", label: t("visibilityMembers"), description: t("visibilityMembersHint") },
+          ]}
+        />
+      )}
       {free <= 0 ? <InlineAlert tone="warning" title={t("quotaFull", { max })} /> : null}
       <FileDrop
         label={t("label")}
@@ -102,10 +108,10 @@ export function UploadPanel({ free, max, hasUploadedBefore, canUpload, onFinishe
           remove: (name) => t("remove", { name }),
         }}
         onFilesSelected={(files) => {
-          if (requireRights()) uploadStore.add(files, visibility);
+          if (requireRights()) uploadStore.add(files, org ? "PUBLIC" : visibility, org);
         }}
         onReject={(file, reason: FileRejectReason) => {
-          if (requireRights()) uploadStore.reject(file, reason, visibility);
+          if (requireRights()) uploadStore.reject(file, reason, org ? "PUBLIC" : visibility, org);
         }}
         onRetry={(id) => uploadStore.retry(id)}
         onRemove={(id) => uploadStore.dismiss(id)}

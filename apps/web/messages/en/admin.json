@@ -26,7 +26,9 @@
     "reports": "Reports",
     "openReportCount": "{count, plural, one {# open report} other {# open reports}}",
     "reviews": "Reviews",
-    "openReviewCount": "{count, plural, one {# open case} other {# open cases}}"
+    "openReviewCount": "{count, plural, one {# open case} other {# open cases}}",
+    "organizations": "Organisations",
+    "openOrganizationCount": "{count, plural, one {# organisation awaiting review} other {# organisations awaiting review}}"
   },
   "twoFactor": {
     "title": "Set up a second factor",
@@ -275,7 +277,8 @@
       "altText": "Alternative text",
       "size": "Size",
       "dimensions": "{width} × {height} pixels",
-      "none": "Not provided"
+      "none": "Not provided",
+      "organization": "Organisation"
     },
     "decision": {
       "title": "Decision",
@@ -306,7 +309,8 @@
       "identifying": "Shows an address or identifying details",
       "consent": "Consent of people shown is doubtful",
       "policyViolation": "Violation of the guidelines"
-    }
+    },
+    "organizationOwner": "{name} (organisation)"
   },
   "reports": {
     "title": "Reports",

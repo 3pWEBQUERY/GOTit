@@ -28,7 +28,16 @@ export function MediaLibrary({ data }: { data: LibraryData }) {
 
   return (
     <div className="flex min-w-0 flex-col gap-8">
-      <UploadPanel free={data.quota.max - data.quota.used} max={data.quota.max} hasUploadedBefore={data.hasUploadedBefore} canUpload={data.canUpload} onFinished={refresh} />
+      {data.canEdit ? (
+        <UploadPanel
+          free={data.quota.max - data.quota.used}
+          max={data.quota.max}
+          hasUploadedBefore={data.hasUploadedBefore}
+          canUpload={data.canUpload}
+          onFinished={refresh}
+          org={data.scope.kind === "organization" ? data.scope.org : undefined}
+        />
+      ) : null}
       <section aria-labelledby="medien-raster-titel" className="flex min-w-0 flex-col gap-3">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <h2 id="medien-raster-titel" className="text-h3">
@@ -38,7 +47,7 @@ export function MediaLibrary({ data }: { data: LibraryData }) {
             {t("quota", { used: data.quota.used, max: data.quota.max })}
           </p>
         </div>
-        <MediaGrid items={data.items} />
+        <MediaGrid items={data.items} scope={data.scope} readOnly={!data.canEdit} />
       </section>
     </div>
   );

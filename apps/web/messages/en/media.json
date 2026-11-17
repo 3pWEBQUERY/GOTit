@@ -26,7 +26,9 @@
     "dragHint": "Drag a photo to another place or choose «Move forward» and «Move back» in the menu.",
     "saveError": "The order was not saved. The previous order still applies.",
     "actionError": "That did not work. Please try again.",
-    "deleted": "{count, plural, one {# media item deleted} other {# media items deleted}}"
+    "deleted": "{count, plural, one {# media item deleted} other {# media items deleted}}",
+    "logo": "Logo",
+    "makeLogo": "Set as logo"
   },
   "status": {
     "UPLOADING": "Uploading",
@@ -102,7 +104,8 @@
       "notAllowed": "Your profile does not accept new media at the moment.",
       "noProfile": "You need a provider profile for media.",
       "generic": "The upload did not work. The file was not saved."
-    }
+    },
+    "organizationPublic": "Once reviewed, the organisation’s photos are publicly visible on its page."
   },
   "detail": {
     "title": "Edit media item",
@@ -137,7 +140,13 @@
     "deleteTitle": "Delete",
     "deleteHint": "Permanently removes the original and all image sizes.",
     "delete": "Delete media item",
-    "deleted": "Media item deleted"
+    "deleted": "Media item deleted",
+    "isLogo": "This image is the organisation’s logo.",
+    "makeLogo": "Set as logo",
+    "logoSaved": "Logo set",
+    "logoTitle": "Logo",
+    "logoHint": "The logo appears next to the organisation’s name. There is at most one, and an image is never both logo and cover photo.",
+    "coverHintOrganization": "The cover photo appears at the top of the organisation’s page. There is at most one."
   },
   "state": {
     "loading": "Loading media",

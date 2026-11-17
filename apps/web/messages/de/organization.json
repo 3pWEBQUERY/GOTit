@@ -1,1 +1,424 @@
-{}
+{
+  "meta": {
+    "today": "Heute",
+    "profile": "Unternehmensprofil",
+    "credentials": "Nachweise",
+    "locations": "Standorte",
+    "location": "Standort",
+    "providers": "Anbieter",
+    "media": "Medien",
+    "settings": "Einstellungen"
+  },
+  "state": {
+    "loading": "Wird geladen",
+    "slow": "Das dauert länger als üblich.",
+    "retry": "Erneut versuchen",
+    "errorTitle": "Die Seite liess sich nicht laden",
+    "errorDescription": "Es ging nichts verloren. Lade die Seite neu; bleibt der Fehler, versuche es später noch einmal.",
+    "reload": "Seite neu laden"
+  },
+  "form": {
+    "summaryTitle": "{count, plural, one {Ein Feld braucht eine Korrektur} other {# Felder brauchen eine Korrektur}}",
+    "optional": "optional",
+    "count": "{used} von {max} Zeichen",
+    "nothingLost": "Deine Eingaben sind noch da. Versuche es noch einmal.",
+    "errors": {
+      "required": "Bitte ausfüllen, mindestens 2 Zeichen.",
+      "too-long": "Das ist zu lang.",
+      "url": "Gib eine vollständige Adresse mit https:// ein, zum Beispiel https://example.ch.",
+      "phone": "Gib eine Telefonnummer mit 6 bis 30 Ziffern ein, zum Beispiel +41 44 123 45 67.",
+      "email": "Gib eine E-Mail-Adresse wie kontakt@example.ch ein.",
+      "uid": "Gib die UID im Format CHE-123.456.789 ein.",
+      "authority": "Bestätige, dass du für die Organisation handeln darfst.",
+      "region": "Wähle eine Region aus der Liste.",
+      "invalid": "Diese Angabe passt nicht. Prüfe sie bitte.",
+      "generic": "Das hat nicht geklappt.",
+      "signInRequired": "Melde dich bitte erneut an.",
+      "notFound": "Das gibt es nicht mehr. Lade die Seite neu.",
+      "forbidden": "Deine Rolle erlaubt das nicht.",
+      "alreadySubmitted": "Es gibt schon eine offene Einreichung. Warte bitte auf den Entscheid.",
+      "rateLimited": "Zu viele Einladungen in kurzer Zeit. Versuche es in einer Stunde erneut."
+    }
+  },
+  "status": {
+    "organization": {
+      "DRAFT": "Entwurf, nicht öffentlich",
+      "SUBMITTED": "Eingereicht, nicht öffentlich",
+      "PUBLISHED": "Veröffentlicht",
+      "SUSPENDED": "Gesperrt, nicht öffentlich",
+      "ARCHIVED": "Archiviert"
+    },
+    "verification": {
+      "NONE": "Noch nicht eingereicht",
+      "SUBMITTED": "Eingereicht",
+      "APPROVED": "Freigegeben",
+      "CHANGES_REQUESTED": "Korrektur verlangt",
+      "REJECTED": "Abgelehnt"
+    }
+  },
+  "today": {
+    "submitCredentials": "Nachweise einreichen",
+    "submitCredentialsHint": "Ohne geprüfte Geschäftsidentität ist die Organisation nicht öffentlich.",
+    "openCredentials": "Zu den Nachweisen",
+    "changesRequested": "Korrektur verlangt",
+    "reviewCorrections": "Nachweise korrigieren",
+    "inReview": "Die Nachweise werden geprüft. Du musst nichts tun.",
+    "inReviewHint": "Wir prüfen die UID im öffentlichen Register von Hand.",
+    "rejected": "Die Nachweise wurden abgelehnt. Die Organisation ist nicht öffentlich.",
+    "noLocation": "Noch kein Standort",
+    "noLocationHint": "Standorte zeigen Öffnungszeiten und die Anbieter vor Ort.",
+    "addLocation": "Standort hinzufügen",
+    "openInvitations": "Einladungen offen: {count}",
+    "openInvitationsHint": "Aktiv wird eine Verknüpfung erst, wenn der Anbieter zustimmt.",
+    "viewProviders": "Anbieter ansehen",
+    "published": "Die Organisation ist veröffentlicht.",
+    "notPublished": "Die Organisation ist noch nicht öffentlich."
+  },
+  "profile": {
+    "title": "Unternehmensprofil",
+    "intro": "Diese Angaben stehen auf der öffentlichen Seite der Organisation, sobald die Nachweise freigegeben sind.",
+    "stateTitle": "Stand",
+    "publication": "Veröffentlichung",
+    "verification": "Nachweise",
+    "publishedHint": "Änderungen am Profil erscheinen sofort auf der öffentlichen Seite.",
+    "notPublishedHint": "Öffentlich wird die Organisation, wenn die Plattform die Nachweise freigibt.",
+    "viewPublic": "Öffentliche Seite ansehen",
+    "noPermission": "Deine Rolle kann das Profil nur ansehen. Bearbeiten können Inhaber, Marketing und Redaktion.",
+    "name": "Name",
+    "nameHint": "So heisst die Organisation auf der Plattform, 2 bis 80 Zeichen.",
+    "description": "Über uns",
+    "descriptionHint": "Was die Organisation ausmacht. Keine Adressen.",
+    "website": "Website",
+    "websiteHint": "Vollständige Adresse mit https://.",
+    "phone": "Telefon",
+    "phoneHint": "Öffentlich sichtbar, zum Beispiel +41 44 123 45 67.",
+    "publicEmail": "Öffentliche E-Mail",
+    "publicEmailHint": "Öffentlich sichtbar. Nimm nicht deine Anmeldeadresse.",
+    "save": "Profil speichern",
+    "saved": "Profil gespeichert"
+  },
+  "credentials": {
+    "title": "Nachweise",
+    "intro": "Die Plattform prüft die Geschäftsidentität, bevor die Organisation öffentlich wird.",
+    "stateTitle": "Stand der Prüfung",
+    "submittedOn": "Eingereicht am {date}.",
+    "decidedOn": "Eingereicht am {submitted}, entschieden am {decided}.",
+    "reason": "Begründung: {reason}",
+    "openHint": "Während der Prüfung kannst du die Angaben nicht ändern.",
+    "none": "Noch nichts eingereicht.",
+    "howTitle": "So prüfen wir",
+    "howRegister": "Wir vergleichen Firmenname und UID mit dem öffentlichen Handelsregister.",
+    "howNoDocuments": "Wir speichern keine Ausweise und keine Dokumente, nur die Angaben in diesem Formular und unseren Entscheid.",
+    "howChanges": "Ändern sich Firmenname, UID oder Bewilligungen, reichst du die Angaben neu ein. Bis zum Entscheid bleibt eine freigegebene Organisation sichtbar.",
+    "noPermission": "Nachweise reicht der Inhaber der Organisation ein.",
+    "formTitle": "Angaben einreichen",
+    "formTitleAgain": "Angaben neu einreichen",
+    "submit": "Nachweise einreichen",
+    "submitAgain": "Nachweise neu einreichen",
+    "submitted": "Nachweise eingereicht",
+    "legalName": "Firmenname laut Handelsregister",
+    "legalNameHint": "Genau wie im Handelsregister, mit Rechtsform, zum Beispiel «Nachtwerk Zürich GmbH».",
+    "uid": "UID",
+    "uidHint": "Unternehmens-Identifikationsnummer im Format CHE-123.456.789.",
+    "authorityConfirmed": "Ich bin berechtigt, für diese Organisation zu handeln.",
+    "authorityConfirmedHint": "Zum Beispiel als Inhaberin, Geschäftsführer oder mit Vollmacht.",
+    "permitNote": "Bewilligungen",
+    "permitNoteHint": "Falls dein Kanton oder deine Gemeinde eine Bewilligung verlangt: welche und von wem, in Worten. Lade keine Dokumente hoch."
+  },
+  "locations": {
+    "title": "Standorte",
+    "intro": "Jeder Standort hat eigene Öffnungszeiten, Kontaktangaben und Anbieter. Angegeben wird nur eine allgemeine Ortsangabe, nie eine Adresse.",
+    "add": "Standort hinzufügen",
+    "addTitle": "Standort hinzufügen",
+    "addDescription": "Öffnungszeiten und Ausnahmen legst du danach auf der Seite des Standorts fest.",
+    "close": "Schliessen",
+    "cancel": "Abbrechen",
+    "create": "Standort anlegen",
+    "created": "Standort angelegt",
+    "saved": "Standort gespeichert",
+    "save": "Angaben speichern",
+    "noPermission": "Deine Rolle kann Standorte nur ansehen. Bearbeiten können Inhaber und Standortmanager.",
+    "emptyTitle": "Noch kein Standort",
+    "emptyDescription": "Lege den ersten Standort an, damit Öffnungszeiten auf der Seite der Organisation stehen.",
+    "emptyReadOnly": "Standorte legen Inhaber und Standortmanager an.",
+    "listLabel": "Standorte der Organisation",
+    "noPlace": "Ohne Ortsangabe",
+    "openDays": "{count, plural, one {An # Tag geöffnet} other {An # Tagen geöffnet}}",
+    "noHours": "Keine Öffnungszeiten",
+    "providerCount": "{count, plural, =0 {Keine Anbieter} one {# Anbieter} other {# Anbieter}}",
+    "fields": {
+      "name": "Name des Standorts",
+      "nameHint": "2 bis 80 Zeichen, zum Beispiel «Club Langstrasse».",
+      "description": "Beschreibung",
+      "descriptionHint": "Was Gäste über diesen Standort wissen sollten. Keine Adresse.",
+      "regionId": "Region",
+      "regionIdHint": "Nur freigegebene Regionen.",
+      "regionNone": "Noch keine Region freigegeben. Du kannst sie später ergänzen.",
+      "noRegion": "Ohne Region",
+      "areaLabel": "Allgemeine Ortsangabe",
+      "areaLabelHint": "Zum Beispiel «Kreis 4». Nie eine Strasse oder Hausnummer.",
+      "phone": "Telefon des Standorts",
+      "phoneHint": "Zum Beispiel +41 44 123 45 67.",
+      "website": "Website des Standorts",
+      "websiteHint": "Vollständige Adresse mit https://."
+    },
+    "back": "Zu den Standorten",
+    "detailIntro": "Angaben, Öffnungszeiten und Ausnahmen dieses Standorts. Jeder Abschnitt hat seinen eigenen Speichern-Button.",
+    "detailsTitle": "Angaben",
+    "hoursTitle": "Öffnungszeiten",
+    "hoursHint": "Mehrere Zeitfenster pro Tag sind möglich. Über Mitternacht teilst du die Zeit auf: Freitag bis 23:59, Samstag ab 00:00.",
+    "exceptionsTitle": "Ausnahmen",
+    "exceptionsHint": "Feiertage, Ferien oder besondere Abende: geschlossen oder andere Zeiten an einem bestimmten Tag.",
+    "providersTitle": "Zugeordnete Anbieter",
+    "providersHint": "Anbieter, die diesem Standort zugeordnet sind. Du siehst nur ihre öffentlichen Profilangaben.",
+    "providersEmpty": "Diesem Standort ist noch kein Anbieter zugeordnet.",
+    "deleteSection": "Standort löschen",
+    "deleteHint": "Löscht den Standort mit allen Öffnungszeiten und Ausnahmen.",
+    "delete": "Standort löschen",
+    "deleteTitle": "«{name}» endgültig löschen?",
+    "deleteDescription": "Öffnungszeiten und Ausnahmen gehen verloren und lassen sich nicht wiederherstellen. Verknüpfte Anbieter bleiben verknüpft, nur ohne Standort.",
+    "deleteConfirm": "Standort löschen",
+    "deleted": "«{name}» gelöscht",
+    "deleteFailed": "Der Standort wurde nicht gelöscht. Versuche es noch einmal.",
+    "closedAllDay": "Geschlossen"
+  },
+  "hours": {
+    "open": "{day} geöffnet",
+    "closed": "Geschlossen",
+    "from": "Von",
+    "to": "Bis",
+    "window": "{day}, Zeitfenster {position}",
+    "addWindow": "Zeitfenster hinzufügen",
+    "removeWindow": "Zeitfenster entfernen",
+    "endBeforeStart": "«Bis» muss später sein als «Von».",
+    "overlap": "Dieses Zeitfenster überschneidet sich mit einem anderen am selben Tag.",
+    "incomplete": "Gib beide Zeiten als HH:MM ein.",
+    "save": "Öffnungszeiten speichern",
+    "saved": "Öffnungszeiten gespeichert",
+    "invalid": "Prüfe die markierten Zeiten.",
+    "failed": "Die Öffnungszeiten wurden nicht gespeichert. Deine Eingaben sind noch da."
+  },
+  "exceptions": {
+    "empty": "Keine Ausnahmen eingetragen.",
+    "listLabel": "Ausnahmen",
+    "remove": "Ausnahme am {day} entfernen",
+    "removeTitle": "Ausnahme am {day} entfernen?",
+    "removeDescription": "An diesem Tag gelten danach wieder die normalen Öffnungszeiten.",
+    "removeConfirm": "Ausnahme entfernen",
+    "cancel": "Abbrechen",
+    "removeFailed": "Die Ausnahme wurde nicht entfernt. Versuche es noch einmal.",
+    "removed": "Ausnahme entfernt",
+    "addTitle": "Ausnahme eintragen",
+    "day": "Tag",
+    "dayHint": "Als TT.MM.JJJJ. Für denselben Tag ersetzt eine neue Ausnahme die alte.",
+    "kind": "An diesem Tag",
+    "closed": "Geschlossen",
+    "otherHours": "Andere Öffnungszeiten",
+    "from": "Von",
+    "to": "Bis",
+    "note": "Notiz",
+    "noteHint": "Öffentlich sichtbar, zum Beispiel «Weihnachten».",
+    "failed": "Die Ausnahme wurde nicht gespeichert.",
+    "save": "Ausnahme speichern",
+    "saved": "Ausnahme gespeichert",
+    "errors": {
+      "dayRequired": "Wähle einen Tag.",
+      "timeRequired": "Gib die Zeit als HH:MM ein.",
+      "endBeforeStart": "«Bis» muss später sein als «Von».",
+      "noteTooLong": "Höchstens 200 Zeichen."
+    }
+  },
+  "linkStatus": {
+    "INVITED": "Eingeladen",
+    "ACTIVE": "Aktiv",
+    "DECLINED": "Abgelehnt",
+    "ENDED": "Gelöst"
+  },
+  "invite": {
+    "open": "Einladen",
+    "title": "Anbieter einladen",
+    "description": "Der Anbieter sieht die Einladung in seinem Studio. Verknüpft seid ihr erst, wenn er zustimmt.",
+    "close": "Schliessen",
+    "provider": "Profilname oder Profil-URL",
+    "providerHint": "Zum Beispiel «lena-zh» oder die kopierte Adresse seines Profils.",
+    "location": "Standort",
+    "noLocation": "Ohne Standort",
+    "message": "Nachricht",
+    "messageHint": "Kurz, worum es geht. Der Anbieter sieht sie mit der Einladung.",
+    "cancel": "Abbrechen",
+    "send": "Einladung senden",
+    "sent": "Einladung gesendet",
+    "errors": {
+      "slug": "Gib einen Profilnamen wie «lena-zh» oder eine Profil-URL mit /p/ ein.",
+      "providerUnavailable": "Zu diesem Namen gibt es kein öffentliches Anbieterprofil.",
+      "alreadyLinked": "Dieser Anbieter ist schon eingeladen oder verknüpft.",
+      "too-long": "Höchstens 500 Zeichen."
+    }
+  },
+  "providers": {
+    "title": "Anbieter",
+    "intro": "Anbieter, die mit der Organisation verknüpft sind oder eine Einladung erhalten haben.",
+    "privacy": "Du siehst nur öffentliche Profilangaben. Nachrichten, Ausweisdaten und private Kalender der Anbieter sind für Organisationen nie zugänglich. Lösen können beide Seiten; das Konto des Anbieters bleibt bestehen.",
+    "noPermission": "Deine Rolle kann Anbieter nicht einladen. Das können Inhaber und Standortmanager.",
+    "emptyTitle": "Noch keine Anbieter",
+    "emptyDescription": "Lade einen Anbieter über seinen Profilnamen ein.",
+    "emptyReadOnly": "Einladungen senden Inhaber und Standortmanager.",
+    "caption": "Verknüpfte und eingeladene Anbieter",
+    "none": "Keine Angabe",
+    "columns": {
+      "name": "Name",
+      "region": "Region",
+      "location": "Standort",
+      "status": "Status",
+      "invited": "Eingeladen am",
+      "actions": "Aktionen"
+    },
+    "withdraw": "Einladung zurückziehen",
+    "end": "Verknüpfung lösen",
+    "withdrawTitle": "Einladung an {name} zurückziehen?",
+    "endTitle": "Verknüpfung mit {name} lösen?",
+    "endDescription": "Der Anbieter erscheint danach nicht mehr auf der Seite der Organisation. Sein Konto und sein Profil bleiben bestehen. Für eine neue Verknüpfung braucht es eine neue Einladung und seine Zustimmung.",
+    "withdrawConfirm": "Einladung zurückziehen",
+    "endConfirm": "Verknüpfung lösen",
+    "cancel": "Abbrechen",
+    "ended": "Verknüpfung mit {name} gelöst",
+    "endFailed": "Das hat nicht geklappt. Die Verknüpfung besteht weiter."
+  },
+  "media": {
+    "title": "Medien",
+    "intro": "Logo, Titelbild und Galerie der Organisation. Jedes Bild wird geprüft, bevor es öffentlich erscheint.",
+    "noPermission": "Deine Rolle kann Medien nur ansehen. Bearbeiten können Inhaber, Marketing und Redaktion."
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "intro": "Organisation, Kontakt und Benachrichtigungen.",
+    "organizationTitle": "Organisation",
+    "kind": "Art",
+    "kinds": {
+      "CLUB": "Club",
+      "AGENCY": "Agentur"
+    },
+    "address": "Adresse der öffentlichen Seite",
+    "role": "Deine Rolle",
+    "kindHint": "Art und Adresse ändert der Support auf Anfrage.",
+    "rightsTitle": "Was deine Rolle darf",
+    "allowed": "erlaubt",
+    "notAllowed": "nicht erlaubt",
+    "teamLater": "Mitarbeitende einladen und Rollen vergeben kommt mit dem Bereich Team in Phase 2.",
+    "contactTitle": "Kontakt",
+    "contactSet": "Öffentlich: {values}",
+    "contactEmpty": "Noch keine öffentlichen Kontaktangaben.",
+    "contactHint": "Kontaktangaben gelten für die ganze Organisation. Ein Standort kann eigene Telefonnummer und Website haben.",
+    "contactEdit": "Im Unternehmensprofil bearbeiten",
+    "notificationsTitle": "Benachrichtigungen",
+    "notificationsLater": "Einstellungen für Benachrichtigungen kommen mit dem Modul Benachrichtigungen. Bis dahin verschickt die Plattform keine E-Mails zu Einladungen oder Prüfungen der Organisation."
+  },
+  "permissions": {
+    "roles": {
+      "OWNER": "Inhaber",
+      "LOCATION_MANAGER": "Standortmanager",
+      "MARKETING": "Marketing",
+      "EDITOR": "Redaktion",
+      "SCHEDULING": "Terminorganisation"
+    },
+    "names": {
+      "profile": {
+        "edit": "Unternehmensprofil bearbeiten"
+      },
+      "media": {
+        "edit": "Medien bearbeiten"
+      },
+      "locations": {
+        "edit": "Standorte bearbeiten"
+      },
+      "providers": {
+        "invite": "Anbieter einladen",
+        "end": "Verknüpfungen lösen"
+      },
+      "verification": {
+        "submit": "Nachweise einreichen"
+      },
+      "settings": {
+        "edit": "Einstellungen ändern"
+      }
+    }
+  },
+  "admin": {
+    "meta": {
+      "queue": "Organisationen",
+      "case": "Prüfung einer Organisation"
+    },
+    "title": "Organisationen",
+    "intro": "Eingereichte Nachweise von Clubs und Agenturen, älteste zuerst. Eine Organisation wird erst mit deiner Freigabe öffentlich.",
+    "restricted": "Dieser Bereich ist für Moderation, Trust & Safety und Plattform-Administration.",
+    "next": "Nächste Organisation öffnen",
+    "shortcutAfter": "öffnet die älteste offene Prüfung.",
+    "count": "{count, plural, =0 {Keine offenen Prüfungen} one {# offene Prüfung} other {# offene Prüfungen}}",
+    "caption": "Eingereichte Nachweise",
+    "columns": {
+      "name": "Organisation",
+      "kind": "Art",
+      "legalName": "Firmenname",
+      "uid": "UID",
+      "submitted": "Eingereicht am",
+      "age": "Alter"
+    },
+    "empty": {
+      "title": "Keine offenen Prüfungen",
+      "description": "Sobald eine Organisation ihre Nachweise einreicht, erscheint sie hier."
+    },
+    "kinds": {
+      "CLUB": "Club",
+      "AGENCY": "Agentur"
+    },
+    "caseTitle": "Prüfung von {name}",
+    "caseMeta": "Eingereicht am {submitted} · {age} · Stand: {state}",
+    "submissionTitle": "Eingereichte Angaben",
+    "profileTitle": "Unternehmensprofil",
+    "facts": {
+      "legalName": "Firmenname laut Handelsregister",
+      "uid": "UID",
+      "authority": "Berechtigung bestätigt",
+      "authorityYes": "Ja, die handelnde Person hat sie bestätigt",
+      "authorityNo": "Nein",
+      "permitNote": "Bewilligungen",
+      "none": "Keine Angabe",
+      "name": "Name auf der Plattform",
+      "kind": "Art",
+      "status": "Status",
+      "website": "Website",
+      "description": "Über uns"
+    },
+    "registerHint": "Vergleiche Firmenname und UID im öffentlichen UID-Register des Bundes. Dokumente gibt es nicht.",
+    "registerLink": "UID-Register öffnen",
+    "decision": {
+      "title": "Entscheid",
+      "decision": "Ergebnis",
+      "option": {
+        "APPROVED": "Freigeben",
+        "CHANGES_REQUESTED": "Zur Korrektur",
+        "REJECTED": "Ablehnen"
+      },
+      "optionHint": {
+        "APPROVED": "Die Organisation wird veröffentlicht.",
+        "CHANGES_REQUESTED": "Die Organisation sieht deine Begründung und reicht neu ein.",
+        "REJECTED": "Die Organisation wird gesperrt und ist nicht öffentlich. Sie sieht deine Begründung."
+      },
+      "reason": "Begründung",
+      "reasonHint": "Mindestens 10 Zeichen. Bei «Zur Korrektur» und «Ablehnen» sieht die Organisation sie; sie steht im Audit-Log.",
+      "save": "Entscheid speichern",
+      "saved": "Entscheid gespeichert",
+      "result": "Ergebnis",
+      "decidedAt": "Entschieden am",
+      "errors": {
+        "decisionRequired": "Wähle ein Ergebnis.",
+        "reasonTooShort": "Die Begründung braucht mindestens 10 Zeichen.",
+        "reasonTooLong": "Höchstens 1000 Zeichen.",
+        "alreadyDecided": "Diese Prüfung ist schon entschieden.",
+        "generic": "Das hat nicht geklappt. Versuche es noch einmal.",
+        "signInRequired": "Melde dich bitte erneut an.",
+        "forbidden": "Deine Rolle darf hier nicht entscheiden."
+      }
+    }
+  }
+}

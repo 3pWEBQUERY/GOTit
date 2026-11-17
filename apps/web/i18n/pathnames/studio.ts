@@ -59,6 +59,12 @@ export const studioPathnames = {
   },
   "/studio/o/[org]/team": "/studio/o/[org]/team",
   "/studio/o/[org]/medien": { de: "/studio/o/[org]/medien", fr: "/studio/o/[org]/medias", it: "/studio/o/[org]/media", en: "/studio/o/[org]/media" },
+  "/studio/o/[org]/medien/[id]": {
+    de: "/studio/o/[org]/medien/[id]",
+    fr: "/studio/o/[org]/medias/[id]",
+    it: "/studio/o/[org]/media/[id]",
+    en: "/studio/o/[org]/media/[id]",
+  },
   "/studio/o/[org]/kalender": {
     de: "/studio/o/[org]/kalender",
     fr: "/studio/o/[org]/calendrier",

@@ -6,9 +6,10 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { DeleteMediaDialog } from "../library/delete-media-dialog";
+import { PROFILE_SCOPE, type MediaScope } from "../library/types";
 
 /** Löschen mit Dialog «Medium löschen» (PRD 13); danach zurück zur Bibliothek. */
-export function DeleteSection({ mediaId, libraryHref }: { mediaId: string; libraryHref: string }) {
+export function DeleteSection({ mediaId, libraryHref, scope = PROFILE_SCOPE }: { mediaId: string; libraryHref: string; scope?: MediaScope }) {
   const t = useTranslations("media.detail");
   const router = useRouter();
   const { toast } = useToast();
@@ -20,6 +21,7 @@ export function DeleteSection({ mediaId, libraryHref }: { mediaId: string; libra
       </Button>
       <DeleteMediaDialog
         mediaIds={[mediaId]}
+        scope={scope}
         open={open}
         onOpenChange={setOpen}
         onDeleted={() => {

@@ -4,6 +4,7 @@ import { Breadcrumbs, EmptyState, UiLink, buttonVariants } from "@app/ui";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { redirect } from "@/i18n/navigation";
+import { ProfileLinkedClubs } from "../../../clubs/components/profile-linked";
 import { BookingRequestPanel } from "../../../booking/components/request/booking-request-panel";
 import { ProfileFavorite } from "../../../favorites/components/profile-favorite";
 import { OVERVIEW_LIMIT, ProfileReviews } from "../../../reviews/components/public/profile-reviews";
@@ -99,7 +100,14 @@ export async function PublicProfilePage({ locale, slug, tab, edit, request }: Pu
         reportHref={href("/melden")}
         mediaHref={tabLinks.media}
         tabs={<ProfileTabs current={tab} links={tabLinks} reviewCount={reviewCount} />}
-        after={tab === "overview" ? reviews("section") : undefined}
+        after={
+          tab === "overview" ? (
+            <>
+              <ProfileLinkedClubs locale={locale} slug={profile.slug} />
+              {reviews("section")}
+            </>
+          ) : undefined
+        }
         editLinks={editLinks}
         message={owner ? undefined : { slug: profile.slug, signInHref }}
         request={owner ? undefined : { href: requestHref }}

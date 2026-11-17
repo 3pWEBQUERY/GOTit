@@ -5,9 +5,10 @@ import { Globe, Lock, Trash2, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { changeVisibility } from "../actions/arrange";
+import type { MediaScope } from "./types";
 
 /** Sammelaktionen für die Auswahl (PRD 13: Mehrfachauswahl mit Sammelaktionen). */
-export function SelectionBar({ selected, onClear, onDelete, onChanged }: { selected: readonly string[]; onClear: () => void; onDelete: () => void; onChanged: () => void }) {
+export function SelectionBar({ selected, scope, onClear, onDelete, onChanged }: { selected: readonly string[]; scope: MediaScope; onClear: () => void; onDelete: () => void; onChanged: () => void }) {
   const t = useTranslations("media.selection");
   const { toast } = useToast();
   const [pending, setPending] = useState<"PUBLIC" | "MEMBERS" | null>(null);
@@ -26,12 +27,16 @@ export function SelectionBar({ selected, onClear, onDelete, onChanged }: { selec
       <p className="tabular mr-auto text-small text-ink" aria-live="polite">
         {t("count", { count: selected.length })}
       </p>
-      <Button variant="secondary" icon={<Lock aria-hidden strokeWidth={1.5} />} loading={pending === "MEMBERS"} onClick={() => void visibility("MEMBERS")}>
-        {t("makeMembers")}
-      </Button>
-      <Button variant="secondary" icon={<Globe aria-hidden strokeWidth={1.5} />} loading={pending === "PUBLIC"} onClick={() => void visibility("PUBLIC")}>
-        {t("makePublic")}
-      </Button>
+      {scope.kind === "profile" ? (
+        <>
+          <Button variant="secondary" icon={<Lock aria-hidden strokeWidth={1.5} />} loading={pending === "MEMBERS"} onClick={() => void visibility("MEMBERS")}>
+            {t("makeMembers")}
+          </Button>
+          <Button variant="secondary" icon={<Globe aria-hidden strokeWidth={1.5} />} loading={pending === "PUBLIC"} onClick={() => void visibility("PUBLIC")}>
+            {t("makePublic")}
+          </Button>
+        </>
+      ) : null}
       <Button variant="secondary" icon={<Trash2 aria-hidden strokeWidth={1.5} />} onClick={onDelete}>
         {t("delete")}
       </Button>

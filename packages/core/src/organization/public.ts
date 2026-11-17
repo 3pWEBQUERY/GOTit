@@ -18,6 +18,8 @@ export interface PublicOrganization {
   phone: string | null;
   publicEmail: string | null;
   verified: true;
+  /** Wann die Geschäftsidentität zuletzt freigegeben wurde (v1 FR-VERIFY-004). */
+  verifiedAt: Date | null;
   locations: {
     id: string;
     name: string;
@@ -39,9 +41,13 @@ export interface PublicOrganization {
     slug: string;
     displayName: string;
     regionName: string | null;
+    locationLabel: string | null;
     coverMediaId: string | null;
     coverColor: string | null;
+    coverAlt: string | null;
     photosChecked: boolean;
+    /** Standorte, an denen die Verknüpfung gilt; leer heisst «ohne bestimmten Standort». */
+    locationIds: string[];
   }[];
   media: {
     id: string;
@@ -80,6 +86,13 @@ export async function getPublicOrganization(
       website: true,
       phone: true,
       publicEmail: true,
+      publishedAt: true,
+      verifications: {
+        where: { status: "APPROVED" },
+        orderBy: { decidedAt: "desc" },
+        take: 1,
+        select: { decidedAt: true },
+      },
       locations: {
         orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }],
         select: {
@@ -132,7 +145,7 @@ export async function getPublicOrganization(
   if (!organization) return null;
   const links = await db.organizationLink.findMany({
     where: { organizationId: organization.id, status: "ACTIVE" },
-    select: { providerProfileId: true },
+    select: { providerProfileId: true, locationId: true },
   });
   const providers =
     links.length === 0
@@ -150,9 +163,12 @@ export async function getPublicOrganization(
           select: {
             slug: true,
             displayName: true,
+            providerProfileId: true,
             primaryRegionId: true,
+            locationLabel: true,
             coverMediaId: true,
             coverColor: true,
+            coverAlt: true,
             hasPhotos: true,
           },
         });
@@ -179,6 +195,8 @@ export async function getPublicOrganization(
     phone: organization.phone,
     publicEmail: organization.publicEmail,
     verified: true,
+    verifiedAt:
+      organization.verifications[0]?.decidedAt ?? organization.publishedAt,
     locations: organization.locations.map((location) => ({
       id: location.id,
       name: location.name,
@@ -198,9 +216,21 @@ export async function getPublicOrganization(
         slug: entry.slug,
         displayName: entry.displayName,
         regionName: region ? pickLocalizedName(region, locale) : null,
+        locationLabel: entry.locationLabel,
         coverMediaId: entry.coverMediaId,
         coverColor: entry.coverColor,
+        coverAlt: entry.coverAlt,
         photosChecked: entry.hasPhotos,
+        locationIds: [
+          ...new Set(
+            links.flatMap((link) =>
+              link.providerProfileId === entry.providerProfileId &&
+              link.locationId
+                ? [link.locationId]
+                : [],
+            ),
+          ),
+        ],
       };
     }),
     media: organization.media.map((media) => ({
@@ -211,10 +241,11 @@ export async function getPublicOrganization(
   };
 }
 
-/** Veröffentlichte Organisationen für `/clubs`, optional nach Region und Art. */
+/** Veröffentlichte Organisationen für `/clubs` und Entdecken, optional nach Region und Art. */
 export async function listPublicOrganizations(
   locale: Locale,
   options: { kind?: OrganizationKind; regionSlug?: string } = {},
+  now = new Date(),
 ) {
   const rows = await getDb().organization.findMany({
     where: {
@@ -222,8 +253,17 @@ export async function listPublicOrganizations(
       ...(options.kind ? { kind: options.kind } : {}),
       ...(options.regionSlug
         ? {
+            // Ein Kanton umfasst die Standorte in seinen Städten.
             locations: {
-              some: { region: { slug: options.regionSlug, approved: true } },
+              some: {
+                region: {
+                  approved: true,
+                  OR: [
+                    { slug: options.regionSlug },
+                    { parent: { slug: options.regionSlug } },
+                  ],
+                },
+              },
             },
           }
         : {}),
@@ -238,7 +278,22 @@ export async function listPublicOrganizations(
       locations: {
         select: { region: { select: { approved: true, ...names } } },
       },
-      _count: { select: { links: { where: { status: "ACTIVE" } } } },
+      // Nur Anbieter, die auch auf der Seite erscheinen: aktiv, öffentlich, mit gültiger Prüfung.
+      _count: {
+        select: {
+          links: {
+            where: {
+              status: "ACTIVE",
+              providerProfile: {
+                status: "PUBLISHED",
+                searchEntry: {
+                  is: { audience: "PUBLIC", identityValidUntil: { gt: now } },
+                },
+              },
+            },
+          },
+        },
+      },
     },
   });
   return rows.map((row) => ({
@@ -256,5 +311,50 @@ export async function listPublicOrganizations(
       ),
     ],
     providerCount: row._count.links,
+  }));
+}
+
+/**
+ * Querverweis «Verknüpft mit» auf `/p/[name]` (v2 8.2, 10): veröffentlichte
+ * Organisationen mit aktiver Verknüpfung zu diesem Profil. Nur Name, Art,
+ * Slug und freigegebene Regionen der Standorte.
+ */
+export async function listPublicOrganizationsOfProvider(
+  providerSlug: string,
+  locale: Locale,
+) {
+  if (!/^[a-z0-9-]{1,80}$/.test(providerSlug)) return [];
+  const rows = await getDb().organization.findMany({
+    where: {
+      status: "PUBLISHED",
+      links: {
+        some: { status: "ACTIVE", providerProfile: { slug: providerSlug } },
+      },
+    },
+    orderBy: { name: "asc" },
+    take: 20,
+    select: {
+      slug: true,
+      name: true,
+      kind: true,
+      locations: {
+        orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }],
+        select: { region: { select: { approved: true, ...names } } },
+      },
+    },
+  });
+  return rows.map((row) => ({
+    slug: row.slug,
+    name: row.name,
+    kind: row.kind,
+    regionNames: [
+      ...new Set(
+        row.locations.flatMap((location) =>
+          location.region?.approved
+            ? [pickLocalizedName(location.region, locale)]
+            : [],
+        ),
+      ),
+    ],
   }));
 }

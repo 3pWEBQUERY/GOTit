@@ -1,9 +1,9 @@
-import { getDb } from "@app/db";
+import { getDb, type Prisma } from "@app/db";
 import { enqueue, mediaProcessJob } from "@app/jobs";
 import { getStorage } from "@app/storage";
 import { newOriginalKey } from "./keys";
 import { ownMediaWhere, ownProfile } from "./owner";
-import { MEDIA_MAX_BYTES, MEDIA_QUOTA, STALE_UPLOAD_MS, UPLOAD_URL_TTL_SECONDS, requestUploadSchema } from "./schemas";
+import { MEDIA_MAX_BYTES, MEDIA_QUOTA, STALE_UPLOAD_MS, UPLOAD_URL_TTL_SECONDS, requestUploadSchema, type MediaContentType } from "./schemas";
 
 export type RequestUploadResult =
   | { ok: true; mediaId: string; upload: { url: string; method: "PUT"; headers: Record<string, string> } }
@@ -11,9 +11,16 @@ export type RequestUploadResult =
 
 /** Medien, die das Kontingent belegen: nicht gelöscht, nicht fehlgeschlagen, keine verwaisten Uploads. */
 export async function countQuotaMedia(providerProfileId: string, now = new Date()): Promise<number> {
+  return countQuota({ providerProfileId }, now);
+}
+
+/** Wem ein neues Medium gehört: genau einem Anbieterprofil oder genau einer Organisation (Entscheid 0018). */
+export type MediaOwnerRef = { providerProfileId: string } | { organizationId: string };
+
+export async function countQuota(owner: MediaOwnerRef, now = new Date()): Promise<number> {
   return getDb().mediaAsset.count({
     where: {
-      providerProfileId,
+      ...owner,
       deletedAt: null,
       status: { not: "FAILED" },
       OR: [{ status: { not: "UPLOADING" } }, { createdAt: { gt: new Date(now.getTime() - STALE_UPLOAD_MS) } }],
@@ -39,14 +46,29 @@ export async function requestUpload(userId: string, input: unknown, now = new Da
   const profile = await ownProfile(userId);
   if (!profile) return { ok: false, reason: "no-profile" };
   if (!profile.canUpload) return { ok: false, reason: "not-allowed" };
+  return createUpload(userId, { providerProfileId: profile.id }, parsed.data, now);
+}
+
+export function parseUploadInput(input: unknown) {
+  const parsed = requestUploadSchema.safeParse(input);
+  return parsed.success ? ({ ok: true, data: parsed.data } as const) : ({ ok: false, reason: inputReason(parsed.error.issues) } as const);
+}
+
+/** Legt das Medium im Status UPLOADING für den Eigentümer an und gibt die Upload-URL; prüft das Kontingent. */
+export async function createUpload(
+  userId: string,
+  owner: MediaOwnerRef,
+  data: { contentType: MediaContentType; sizeBytes: number; visibility: "PUBLIC" | "MEMBERS" },
+  now: Date,
+): Promise<RequestUploadResult> {
   const db = getDb();
-  if ((await countQuotaMedia(profile.id, now)) >= MEDIA_QUOTA) return { ok: false, reason: "quota" };
-  const { contentType, sizeBytes, visibility } = parsed.data;
-  const last = await db.mediaAsset.findFirst({ where: { providerProfileId: profile.id, deletedAt: null }, orderBy: { sortOrder: "desc" }, select: { sortOrder: true } });
+  if ((await countQuota(owner, now)) >= MEDIA_QUOTA) return { ok: false, reason: "quota" };
+  const { contentType, sizeBytes, visibility } = data;
+  const last = await db.mediaAsset.findFirst({ where: { ...owner, deletedAt: null }, orderBy: { sortOrder: "desc" }, select: { sortOrder: true } });
   const media = await db.mediaAsset.create({
     data: {
       ownerUserId: userId,
-      providerProfileId: profile.id,
+      ...owner,
       status: "UPLOADING",
       visibility,
       sortOrder: (last?.sortOrder ?? -1) + 1,
@@ -76,8 +98,13 @@ export type ConfirmUploadResult = { ok: true } | { ok: false; reason: "not-found
  * Aufruf gewinnt (Bedingung auf UPLOADING).
  */
 export async function confirmUpload(userId: string, mediaId: string): Promise<ConfirmUploadResult> {
+  return confirmUploadWhere(ownMediaWhere(userId, mediaId));
+}
+
+/** Bestätigung für ein Medium, das der Filter als eigenes ausweist (Profil oder Organisation). */
+export async function confirmUploadWhere(where: Prisma.MediaAssetWhereInput): Promise<ConfirmUploadResult> {
   const db = getDb();
-  const media = await db.mediaAsset.findFirst({ where: { ...ownMediaWhere(userId, mediaId), status: "UPLOADING" }, select: { id: true, originalKey: true } });
+  const media = await db.mediaAsset.findFirst({ where: { ...where, status: "UPLOADING" }, select: { id: true, originalKey: true } });
   if (!media) return { ok: false, reason: "not-found" };
   const object = await getStorage().headObject({ bucket: "originals", key: media.originalKey });
   if (!object || object.size === 0) return { ok: false, reason: "missing" };

@@ -6,6 +6,8 @@ export interface LibraryItem {
   status: MediaStatus;
   visibility: MediaVisibility;
   isCover: boolean;
+  /** Logo einer Organisation; bei Profilen immer false. */
+  isLogo: boolean;
   altText: string | null;
   width: number | null;
   height: number | null;
@@ -18,7 +20,23 @@ export interface LibraryItem {
   detailHref: string | null;
 }
 
+/**
+ * Wem die Bibliothek gehört: dem eigenen Anbieterprofil oder einer
+ * Organisation (Entscheid 0018). Organisationen haben Logo statt Sichtbarkeit.
+ */
+export type MediaScope = { kind: "profile" } | { kind: "organization"; org: string };
+
+export const PROFILE_SCOPE: MediaScope = { kind: "profile" };
+
+/** Feld `org` der Server Actions; fehlt es, gilt das eigene Profil. */
+export function scopeInput(scope: MediaScope): { org?: string } {
+  return scope.kind === "organization" ? { org: scope.org } : {};
+}
+
 export interface LibraryData {
+  scope: MediaScope;
+  /** Ohne das Recht «media.edit» sieht ein Mitglied der Organisation die Medien nur. */
+  canEdit: boolean;
   items: LibraryItem[];
   quota: { used: number; max: number };
   hasUploadedBefore: boolean;

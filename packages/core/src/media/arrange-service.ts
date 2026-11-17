@@ -1,4 +1,4 @@
-import { getDb } from "@app/db";
+import { getDb, type Prisma } from "@app/db";
 import { ownMediaWhere, ownProfile } from "./owner";
 import { altTextSchema, bulkSchema, moveSchema, reorderSchema, visibilitySchema } from "./schemas";
 import { requestSearchReindex, requestSearchReindexForUser } from "../search/reindex";
@@ -7,16 +7,37 @@ export type ArrangeResult = { ok: true } | { ok: false; reason: "not-found" | "i
 
 /** Eigene Medien in der Reihenfolge der Bibliothek (ohne gelöschte und nie bestätigte). */
 async function ownOrder(userId: string, providerProfileId: string): Promise<string[]> {
+  return orderOf({ ownerUserId: userId, providerProfileId });
+}
+
+/** Medien eines Eigentümers (Profil oder Organisation) in ihrer Reihenfolge. */
+export async function orderOf(owner: Prisma.MediaAssetWhereInput): Promise<string[]> {
   const rows = await getDb().mediaAsset.findMany({
-    where: { ownerUserId: userId, providerProfileId, deletedAt: null, status: { not: "UPLOADING" } },
+    where: { ...owner, deletedAt: null, status: { not: "UPLOADING" } },
     orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }],
     select: { id: true },
   });
   return rows.map((row) => row.id);
 }
 
-async function writeOrder(order: readonly string[]): Promise<void> {
+export async function writeOrder(order: readonly string[]): Promise<void> {
   await getDb().$transaction(order.map((id, index) => getDb().mediaAsset.update({ where: { id }, data: { sortOrder: index } })));
+}
+
+/** Prüft eine neue Reihenfolge gegen die gespeicherte: dieselben IDs, jede genau einmal. */
+export function sameMembers(current: readonly string[], next: readonly string[]): boolean {
+  return next.length === current.length && new Set(next).size === next.length && next.every((id) => current.includes(id));
+}
+
+/** Tauscht ein Medium mit dem Nachbarn; null, wenn es fehlt, «edge» am Rand. */
+export function swapped(order: readonly string[], mediaId: string, direction: "forward" | "backward"): string[] | null | "edge" {
+  const index = order.indexOf(mediaId);
+  if (index < 0) return null;
+  const target = direction === "forward" ? index - 1 : index + 1;
+  if (target < 0 || target >= order.length) return "edge";
+  const next = [...order];
+  [next[index], next[target]] = [next[target] as string, next[index] as string];
+  return next;
 }
 
 /**
@@ -30,7 +51,7 @@ export async function reorderOwnMedia(userId: string, input: unknown): Promise<A
   if (!profile) return { ok: false, reason: "not-found" };
   const current = await ownOrder(userId, profile.id);
   const next = parsed.data.order;
-  if (next.length !== current.length || new Set(next).size !== next.length || next.some((id) => !current.includes(id))) return { ok: false, reason: "invalid" };
+  if (!sameMembers(current, next)) return { ok: false, reason: "invalid" };
   await writeOrder(next);
   await requestSearchReindex(profile.id);
   return { ok: true };
@@ -42,12 +63,9 @@ export async function moveOwnMedia(userId: string, mediaId: string, input: unkno
   if (!parsed.success) return { ok: false, reason: "invalid" };
   const profile = await ownProfile(userId);
   if (!profile) return { ok: false, reason: "not-found" };
-  const order = await ownOrder(userId, profile.id);
-  const index = order.indexOf(mediaId);
-  if (index < 0) return { ok: false, reason: "not-found" };
-  const target = parsed.data.direction === "forward" ? index - 1 : index + 1;
-  if (target < 0 || target >= order.length) return { ok: false, reason: "edge" };
-  [order[index], order[target]] = [order[target] as string, order[index] as string];
+  const order = swapped(await ownOrder(userId, profile.id), mediaId, parsed.data.direction);
+  if (order === null) return { ok: false, reason: "not-found" };
+  if (order === "edge") return { ok: false, reason: "edge" };
   await writeOrder(order);
   await requestSearchReindex(profile.id);
   return { ok: true };

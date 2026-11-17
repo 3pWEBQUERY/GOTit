@@ -1,1 +1,167 @@
-{}
+{
+  "kind": {
+    "CLUB": "Club",
+    "AGENCY": "Agence"
+  },
+  "page": {
+    "breadcrumbs": "Fil d’Ariane",
+    "discover": "Découvrir",
+    "clubs": "Clubs et agences"
+  },
+  "header": {
+    "logoAlt": "Logo de {name}"
+  },
+  "trust": {
+    "listLabel": "Signaux de confiance",
+    "label": "Identité commerciale vérifiée",
+    "info": "Afficher l’explication de «Identité commerciale vérifiée»",
+    "checked": "Raison sociale, IDE du registre du commerce et pouvoir d’agir pour l’entreprise. La plateforme a vérifié les justificatifs manuellement.",
+    "checkedAtUnknown": "Avant la publication",
+    "notImplied": "Le signal ne dit rien des prestataires liés; chacun a sa propre vérification d’identité. Ce n’est pas une garantie pour les offres, les prix ou les autorisations.",
+    "explanation": {
+      "checked": "Ce qui a été vérifié",
+      "checkedAt": "Quand",
+      "notImplied": "Ce que le signal ne dit pas"
+    },
+    "close": "Fermer l’explication"
+  },
+  "tabs": {
+    "label": "Parties de la page",
+    "overview": "Aperçu",
+    "team": "Prestataires"
+  },
+  "sections": {
+    "about": "À propos",
+    "noDescription": "Pas encore de description.",
+    "locations": "Sites",
+    "providers": "Prestataires liés",
+    "gallery": "Galerie"
+  },
+  "locations": {
+    "empty": "Aucun site indiqué pour l’instant.",
+    "hoursOf": "Horaires de {name}",
+    "open": "Voir le site {name}"
+  },
+  "hours": {
+    "title": "Horaires",
+    "none": "Aucun horaire indiqué.",
+    "day": "Jour",
+    "time": "Heure",
+    "closed": "Fermé",
+    "exceptions": "Jours avec d’autres horaires",
+    "timeZone": "Toutes les heures en heure locale suisse.",
+    "today": {
+      "open": "Ouvert aujourd’hui jusqu’à {until}",
+      "later": "Ouvert aujourd’hui de {from} à {until}",
+      "over": "Plus ouvert aujourd’hui",
+      "closed": "Fermé aujourd’hui"
+    }
+  },
+  "providers": {
+    "empty": "Les prestataires apparaissent ici dès qu’ils ont accepté un lien.",
+    "emptyHint": "En attendant, tu trouves des profils dans la recherche.",
+    "toSearch": "Chercher des profils",
+    "all": "Les {count} prestataires"
+  },
+  "team": {
+    "title": "Prestataires chez {name}",
+    "intro": "Ces prestataires ont accepté le lien. Chaque profil appartient au prestataire lui-même."
+  },
+  "location": {
+    "of": "Site de {name} ({kind})",
+    "back": "Retour à {name}",
+    "about": "À propos du site",
+    "providers": "Prestataires sur ce site",
+    "noProviders": "Aucun prestataire n’est encore lié à ce site.",
+    "allProviders": "Tous les prestataires de {name}"
+  },
+  "contact": {
+    "title": "Contact",
+    "none": "Aucune coordonnée publique.",
+    "newWindow": "(s’ouvre dans une nouvelle fenêtre)",
+    "report": "Signaler la page"
+  },
+  "profile": {
+    "title": "Lié à"
+  },
+  "discover": {
+    "title": "Clubs à proximité",
+    "all": "Tous les clubs et agences à {region}"
+  },
+  "list": {
+    "title": "Clubs et agences",
+    "titleIn": "Clubs et agences à {region}",
+    "intro": "Seuls les clubs et agences dont l’identité commerciale est vérifiée sont publiés.",
+    "kindLabel": "Type",
+    "kinds": {
+      "all": "Tous",
+      "CLUB": "Clubs",
+      "AGENCY": "Agences"
+    },
+    "region": "Région",
+    "allRegions": "Toutes les régions",
+    "apply": "Afficher la région",
+    "reset": "Réinitialiser les filtres",
+    "count": "{count, plural, =0 {Aucune entrée} one {# entrée} other {# entrées}}",
+    "noMatches": "Aucun club ni aucune agence pour ces filtres.",
+    "noMatchesHint": "Choisis une autre région ou réinitialise les filtres.",
+    "empty": "Les clubs et agences apparaissent ici dès que leur identité commerciale est vérifiée.",
+    "emptyHint": "En attendant, tu trouves des prestataires indépendants dans la recherche.",
+    "toSearch": "Chercher des profils",
+    "providerCount": "{count, plural, =0 {Pas encore de prestataire lié} one {# prestataire lié} other {# prestataires liés}}",
+    "canton": "Canton de {name}"
+  },
+  "meta": {
+    "notFound": "Page introuvable",
+    "description": "{name} ({kind}) à {regions}: sites, horaires et prestataires liés.",
+    "descriptionNoRegion": "{name} ({kind}): sites, horaires et prestataires liés.",
+    "teamTitle": "Prestataires chez {name}",
+    "locationTitle": "{location} – {name}",
+    "locationDescription": "{location} de {name}: horaires et prestataires sur ce site.",
+    "listTitle": "Clubs et agences",
+    "listDescription": "Clubs et agences à l’identité commerciale vérifiée, par type et région."
+  },
+  "state": {
+    "loading": "Chargement de la page",
+    "slow": "Cela prend plus de temps que d’habitude.",
+    "retry": "Réessayer",
+    "errorTitle": "La page n’a pas pu être chargée.",
+    "errorDescription": "Rien n’a été perdu. Recharge la page ou réessaie plus tard.",
+    "reload": "Recharger la page"
+  },
+  "studio": {
+    "title": "Liens",
+    "intro": "Des clubs et agences t’invitent à apparaître sur leur page. Tu décides si tu acceptes et tu peux défaire chaque lien à tout moment.",
+    "visibleTitle": "Ce que l’organisation voit",
+    "visible": "Uniquement les données publiques de ton profil: nom affiché, lien du profil, région et état du lien. Jamais tes messages, tes données d’identité, tes demandes ni ton calendrier.",
+    "invitations": "Invitations ouvertes",
+    "noInvitations": "Aucune invitation ouverte.",
+    "invitedAt": "Invité le {date}",
+    "location": "Site {name}",
+    "notPublished": "Page pas encore publiée",
+    "active": "Liens actifs",
+    "since": "Lié depuis le {date}",
+    "noActive": "Tu n’es lié à aucun club ni aucune agence.",
+    "noActiveHint": "Un lien commence par une invitation de l’organisation.",
+    "toClubs": "Voir les clubs et agences",
+    "accept": "Accepter",
+    "acceptNamed": "Accepter l’invitation de {name}",
+    "decline": "Refuser",
+    "declineNamed": "Refuser l’invitation de {name}",
+    "accepted": "Tu es maintenant lié à {name}.",
+    "declined": "Invitation de {name} refusée.",
+    "end": "Défaire le lien",
+    "endNamed": "Défaire le lien avec {name}",
+    "endTitle": "Défaire le lien avec {name}?",
+    "endDescription": "{name} n’affichera plus ton profil. Ton compte et ton profil restent. Un nouveau lien demande une nouvelle invitation.",
+    "cancel": "Annuler",
+    "ended": "Lien avec {name} défait.",
+    "openInvitations": "{count, plural, one {# invitation ouverte} other {# invitations ouvertes}}",
+    "errors": {
+      "signInRequired": "Connecte-toi en tant que prestataire pour gérer les liens.",
+      "notFound": "Ce lien n’existe pas.",
+      "notOpen": "Cette invitation ou ce lien n’est plus ouvert. Recharge la page.",
+      "generic": "Cela n’a pas fonctionné. Réessaie."
+    }
+  }
+}

@@ -6,9 +6,10 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
 import { saveAltText } from "../actions/arrange";
+import { PROFILE_SCOPE, scopeInput, type MediaScope } from "../library/types";
 
 /** Alternativtext mit Speichern-Button (PRD 13: Formulare speichern mit Button). */
-export function AltTextForm({ mediaId, initial }: { mediaId: string; initial: string }) {
+export function AltTextForm({ mediaId, initial, scope = PROFILE_SCOPE }: { mediaId: string; initial: string; scope?: MediaScope }) {
   const t = useTranslations("media.detail");
   const router = useRouter();
   const { toast } = useToast();
@@ -24,7 +25,7 @@ export function AltTextForm({ mediaId, initial }: { mediaId: string; initial: st
       return;
     }
     setPending(true);
-    const result = await saveAltText({ mediaId, altText: value }).catch(() => ({ ok: false as const, fieldErrors: undefined }));
+    const result = await saveAltText({ mediaId, altText: value, ...scopeInput(scope) }).catch(() => ({ ok: false as const, fieldErrors: undefined }));
     setPending(false);
     if (result.ok) {
       setError(null);

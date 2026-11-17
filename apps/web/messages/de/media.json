@@ -26,7 +26,9 @@
     "dragHint": "Zieh ein Foto an eine andere Stelle oder wähle im Menü «Nach vorne» und «Nach hinten».",
     "saveError": "Die Reihenfolge wurde nicht gespeichert. Die bisherige Reihenfolge gilt weiter.",
     "actionError": "Das hat nicht geklappt. Versuche es noch einmal.",
-    "deleted": "{count, plural, one {# Medium gelöscht} other {# Medien gelöscht}}"
+    "deleted": "{count, plural, one {# Medium gelöscht} other {# Medien gelöscht}}",
+    "logo": "Logo",
+    "makeLogo": "Als Logo festlegen"
   },
   "status": {
     "UPLOADING": "Wird hochgeladen",
@@ -102,7 +104,8 @@
       "notAllowed": "Dein Profil nimmt zurzeit keine neuen Medien an.",
       "noProfile": "Für Medien brauchst du ein Anbieterprofil.",
       "generic": "Das Hochladen hat nicht geklappt. Die Datei ist nicht gespeichert."
-    }
+    },
+    "organizationPublic": "Fotos der Organisation sind nach der Prüfung öffentlich auf ihrer Seite sichtbar."
   },
   "detail": {
     "title": "Medium bearbeiten",
@@ -137,7 +140,13 @@
     "deleteTitle": "Löschen",
     "deleteHint": "Entfernt das Original und alle Bildgrössen endgültig.",
     "delete": "Medium löschen",
-    "deleted": "Medium gelöscht"
+    "deleted": "Medium gelöscht",
+    "isLogo": "Dieses Bild ist das Logo der Organisation.",
+    "makeLogo": "Als Logo festlegen",
+    "logoSaved": "Logo festgelegt",
+    "logoTitle": "Logo",
+    "logoHint": "Das Logo erscheint neben dem Namen der Organisation. Es gibt höchstens eines, und ein Bild ist nie Logo und Titelbild zugleich.",
+    "coverHintOrganization": "Das Titelbild erscheint oben auf der Seite der Organisation. Es gibt höchstens eines."
   },
   "state": {
     "loading": "Medien werden geladen",

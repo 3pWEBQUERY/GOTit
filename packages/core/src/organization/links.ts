@@ -87,6 +87,7 @@ export interface LinkedProviderRow {
   displayName: string;
   slug: string;
   regionName: string | null;
+  locationId: string | null;
   locationName: string | null;
   invitedAt: Date;
   respondedAt: Date | null;
@@ -108,7 +109,7 @@ export async function listOrganizationProviders(
       status: true,
       invitedAt: true,
       respondedAt: true,
-      location: { select: { name: true } },
+      location: { select: { id: true, name: true } },
       providerProfile: {
         select: {
           displayName: true,
@@ -139,6 +140,7 @@ export async function listOrganizationProviders(
     regionName: row.providerProfile.regions[0]
       ? pickLocalizedName(row.providerProfile.regions[0].region, locale)
       : null,
+    locationId: row.location?.id ?? null,
     locationName: row.location?.name ?? null,
     invitedAt: row.invitedAt,
     respondedAt: row.respondedAt,
@@ -164,6 +166,13 @@ export async function listOwnOrganizationLinks(userId: string) {
         select: { slug: true, name: true, kind: true, status: true },
       },
     },
+  });
+}
+
+/** Offene Einladungen für die Zahl an «Verknüpfungen» in der Studio-Seitenleiste. */
+export async function countOpenInvitations(userId: string): Promise<number> {
+  return getDb().organizationLink.count({
+    where: { providerProfile: { userId }, status: "INVITED" },
   });
 }
 

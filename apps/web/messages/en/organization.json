@@ -1,1 +1,424 @@
-{}
+{
+  "meta": {
+    "today": "Today",
+    "profile": "Business profile",
+    "credentials": "Credentials",
+    "locations": "Locations",
+    "location": "Location",
+    "providers": "Providers",
+    "media": "Media",
+    "settings": "Settings"
+  },
+  "state": {
+    "loading": "Loading",
+    "slow": "This is taking longer than usual.",
+    "retry": "Try again",
+    "errorTitle": "The page could not be loaded",
+    "errorDescription": "Nothing was lost. Reload the page; if the error persists, try again later.",
+    "reload": "Reload page"
+  },
+  "form": {
+    "summaryTitle": "{count, plural, one {One field needs a correction} other {# fields need a correction}}",
+    "optional": "optional",
+    "count": "{used} of {max} characters",
+    "nothingLost": "Your entries are still here. Please try again.",
+    "errors": {
+      "required": "Please fill in, at least 2 characters.",
+      "too-long": "This is too long.",
+      "url": "Enter a full address with https://, for example https://example.ch.",
+      "phone": "Enter a phone number with 6 to 30 digits, for example +41 44 123 45 67.",
+      "email": "Enter an email address such as contact@example.ch.",
+      "uid": "Enter the UID in the format CHE-123.456.789.",
+      "authority": "Confirm that you may act on behalf of the organisation.",
+      "region": "Choose a region from the list.",
+      "invalid": "This entry does not fit. Please check it.",
+      "generic": "That did not work.",
+      "signInRequired": "Please sign in again.",
+      "notFound": "This no longer exists. Reload the page.",
+      "forbidden": "Your role does not allow this.",
+      "alreadySubmitted": "There is already an open submission. Please wait for the decision.",
+      "rateLimited": "Too many invitations in a short time. Try again in an hour."
+    }
+  },
+  "status": {
+    "organization": {
+      "DRAFT": "Draft, not public",
+      "SUBMITTED": "Submitted, not public",
+      "PUBLISHED": "Published",
+      "SUSPENDED": "Suspended, not public",
+      "ARCHIVED": "Archived"
+    },
+    "verification": {
+      "NONE": "Not submitted yet",
+      "SUBMITTED": "Submitted",
+      "APPROVED": "Approved",
+      "CHANGES_REQUESTED": "Correction requested",
+      "REJECTED": "Rejected"
+    }
+  },
+  "today": {
+    "submitCredentials": "Submit credentials",
+    "submitCredentialsHint": "Without a verified business identity, the organisation is not public.",
+    "openCredentials": "Go to credentials",
+    "changesRequested": "Correction requested",
+    "reviewCorrections": "Correct credentials",
+    "inReview": "Your credentials are being reviewed. You do not need to do anything.",
+    "inReviewHint": "We check the UID in the public register by hand.",
+    "rejected": "The credentials were rejected. The organisation is not public.",
+    "noLocation": "No location yet",
+    "noLocationHint": "Locations show opening hours and the providers on site.",
+    "addLocation": "Add location",
+    "openInvitations": "Open invitations: {count}",
+    "openInvitationsHint": "A link only becomes active once the provider agrees.",
+    "viewProviders": "View providers",
+    "published": "The organisation is published.",
+    "notPublished": "The organisation is not public yet."
+  },
+  "profile": {
+    "title": "Business profile",
+    "intro": "These details appear on the organisation’s public page once the credentials are approved.",
+    "stateTitle": "Status",
+    "publication": "Publication",
+    "verification": "Credentials",
+    "publishedHint": "Changes to the profile appear on the public page right away.",
+    "notPublishedHint": "The organisation becomes public when the platform approves the credentials.",
+    "viewPublic": "View public page",
+    "noPermission": "Your role can only view the profile. Owners, marketing and editors can edit it.",
+    "name": "Name",
+    "nameHint": "The organisation’s name on the platform, 2 to 80 characters.",
+    "description": "About us",
+    "descriptionHint": "What makes the organisation special. No addresses.",
+    "website": "Website",
+    "websiteHint": "Full address with https://.",
+    "phone": "Phone",
+    "phoneHint": "Publicly visible, for example +41 44 123 45 67.",
+    "publicEmail": "Public email",
+    "publicEmailHint": "Publicly visible. Do not use your sign-in address.",
+    "save": "Save profile",
+    "saved": "Profile saved"
+  },
+  "credentials": {
+    "title": "Credentials",
+    "intro": "The platform verifies the business identity before the organisation becomes public.",
+    "stateTitle": "Review status",
+    "submittedOn": "Submitted on {date}.",
+    "decidedOn": "Submitted on {submitted}, decided on {decided}.",
+    "reason": "Reason: {reason}",
+    "openHint": "You cannot change the details during the review.",
+    "none": "Nothing submitted yet.",
+    "howTitle": "How we check",
+    "howRegister": "We compare the company name and UID with the public commercial register.",
+    "howNoDocuments": "We do not store ID documents or any documents, only the details in this form and our decision.",
+    "howChanges": "If the company name, UID or permits change, submit the details again. An approved organisation stays visible until the decision.",
+    "noPermission": "The owner of the organisation submits the credentials.",
+    "formTitle": "Submit details",
+    "formTitleAgain": "Submit details again",
+    "submit": "Submit credentials",
+    "submitAgain": "Submit credentials again",
+    "submitted": "Credentials submitted",
+    "legalName": "Company name as in the commercial register",
+    "legalNameHint": "Exactly as in the commercial register, with legal form, for example «Nachtwerk Zürich GmbH».",
+    "uid": "UID",
+    "uidHint": "Business identification number in the format CHE-123.456.789.",
+    "authorityConfirmed": "I am authorised to act on behalf of this organisation.",
+    "authorityConfirmedHint": "For example as owner, managing director or with a power of attorney.",
+    "permitNote": "Permits",
+    "permitNoteHint": "If your canton or municipality requires a permit: which one and issued by whom, in words. Do not upload documents."
+  },
+  "locations": {
+    "title": "Locations",
+    "intro": "Each location has its own opening hours, contact details and providers. Only a general place is given, never an address.",
+    "add": "Add location",
+    "addTitle": "Add location",
+    "addDescription": "You set opening hours and exceptions afterwards on the location’s page.",
+    "close": "Close",
+    "cancel": "Cancel",
+    "create": "Create location",
+    "created": "Location created",
+    "saved": "Location saved",
+    "save": "Save details",
+    "noPermission": "Your role can only view locations. Owners and location managers can edit them.",
+    "emptyTitle": "No location yet",
+    "emptyDescription": "Create the first location so that opening hours appear on the organisation’s page.",
+    "emptyReadOnly": "Owners and location managers create locations.",
+    "listLabel": "Locations of the organisation",
+    "noPlace": "No place given",
+    "openDays": "{count, plural, one {Open on # day} other {Open on # days}}",
+    "noHours": "No opening hours",
+    "providerCount": "{count, plural, =0 {No providers} one {# provider} other {# providers}}",
+    "fields": {
+      "name": "Location name",
+      "nameHint": "2 to 80 characters, for example «Club Langstrasse».",
+      "description": "Description",
+      "descriptionHint": "What guests should know about this location. No address.",
+      "regionId": "Region",
+      "regionIdHint": "Approved regions only.",
+      "regionNone": "No region approved yet. You can add it later.",
+      "noRegion": "No region",
+      "areaLabel": "General place",
+      "areaLabelHint": "For example «District 4». Never a street or house number.",
+      "phone": "Location phone",
+      "phoneHint": "For example +41 44 123 45 67.",
+      "website": "Location website",
+      "websiteHint": "Full address with https://."
+    },
+    "back": "Back to locations",
+    "detailIntro": "Details, opening hours and exceptions of this location. Each section has its own save button.",
+    "detailsTitle": "Details",
+    "hoursTitle": "Opening hours",
+    "hoursHint": "Several time slots per day are possible. Across midnight, split the time: Friday until 23:59, Saturday from 00:00.",
+    "exceptionsTitle": "Exceptions",
+    "exceptionsHint": "Public holidays, holidays or special nights: closed or different hours on a specific day.",
+    "providersTitle": "Assigned providers",
+    "providersHint": "Providers assigned to this location. You only see their public profile details.",
+    "providersEmpty": "No provider is assigned to this location yet.",
+    "deleteSection": "Delete location",
+    "deleteHint": "Deletes the location with all opening hours and exceptions.",
+    "delete": "Delete location",
+    "deleteTitle": "Permanently delete «{name}»?",
+    "deleteDescription": "Opening hours and exceptions are lost and cannot be restored. Linked providers stay linked, just without a location.",
+    "deleteConfirm": "Delete location",
+    "deleted": "«{name}» deleted",
+    "deleteFailed": "The location was not deleted. Please try again.",
+    "closedAllDay": "Closed"
+  },
+  "hours": {
+    "open": "{day} open",
+    "closed": "Closed",
+    "from": "From",
+    "to": "To",
+    "window": "{day}, time slot {position}",
+    "addWindow": "Add time slot",
+    "removeWindow": "Remove time slot",
+    "endBeforeStart": "«To» must be later than «From».",
+    "overlap": "This time slot overlaps another one on the same day.",
+    "incomplete": "Enter both times as HH:MM.",
+    "save": "Save opening hours",
+    "saved": "Opening hours saved",
+    "invalid": "Check the marked times.",
+    "failed": "The opening hours were not saved. Your entries are still here."
+  },
+  "exceptions": {
+    "empty": "No exceptions entered.",
+    "listLabel": "Exceptions",
+    "remove": "Remove exception on {day}",
+    "removeTitle": "Remove exception on {day}?",
+    "removeDescription": "The normal opening hours then apply again on this day.",
+    "removeConfirm": "Remove exception",
+    "cancel": "Cancel",
+    "removeFailed": "The exception was not removed. Please try again.",
+    "removed": "Exception removed",
+    "addTitle": "Enter exception",
+    "day": "Day",
+    "dayHint": "As DD.MM.YYYY. A new exception for the same day replaces the old one.",
+    "kind": "On this day",
+    "closed": "Closed",
+    "otherHours": "Different opening hours",
+    "from": "From",
+    "to": "To",
+    "note": "Note",
+    "noteHint": "Publicly visible, for example «Christmas».",
+    "failed": "The exception was not saved.",
+    "save": "Save exception",
+    "saved": "Exception saved",
+    "errors": {
+      "dayRequired": "Choose a day.",
+      "timeRequired": "Enter the time as HH:MM.",
+      "endBeforeStart": "«To» must be later than «From».",
+      "noteTooLong": "At most 200 characters."
+    }
+  },
+  "linkStatus": {
+    "INVITED": "Invited",
+    "ACTIVE": "Active",
+    "DECLINED": "Declined",
+    "ENDED": "Ended"
+  },
+  "invite": {
+    "open": "Invite",
+    "title": "Invite provider",
+    "description": "The provider sees the invitation in their studio. You are only linked once they agree.",
+    "close": "Close",
+    "provider": "Profile name or profile URL",
+    "providerHint": "For example «lena-zh» or the copied address of their profile.",
+    "location": "Location",
+    "noLocation": "No location",
+    "message": "Message",
+    "messageHint": "Briefly, what it is about. The provider sees it with the invitation.",
+    "cancel": "Cancel",
+    "send": "Send invitation",
+    "sent": "Invitation sent",
+    "errors": {
+      "slug": "Enter a profile name such as «lena-zh» or a profile URL with /p/.",
+      "providerUnavailable": "There is no public provider profile with this name.",
+      "alreadyLinked": "This provider is already invited or linked.",
+      "too-long": "At most 500 characters."
+    }
+  },
+  "providers": {
+    "title": "Providers",
+    "intro": "Providers linked to the organisation or who have received an invitation.",
+    "privacy": "You only see public profile details. Messages, ID data and private calendars of providers are never accessible to organisations. Either side can end a link; the provider’s account remains.",
+    "noPermission": "Your role cannot invite providers. Owners and location managers can.",
+    "emptyTitle": "No providers yet",
+    "emptyDescription": "Invite a provider using their profile name.",
+    "emptyReadOnly": "Owners and location managers send invitations.",
+    "caption": "Linked and invited providers",
+    "none": "Not given",
+    "columns": {
+      "name": "Name",
+      "region": "Region",
+      "location": "Location",
+      "status": "Status",
+      "invited": "Invited on",
+      "actions": "Actions"
+    },
+    "withdraw": "Withdraw invitation",
+    "end": "End link",
+    "withdrawTitle": "Withdraw the invitation to {name}?",
+    "endTitle": "End the link with {name}?",
+    "endDescription": "The provider will no longer appear on the organisation’s page. Their account and profile remain. A new link needs a new invitation and their consent.",
+    "withdrawConfirm": "Withdraw invitation",
+    "endConfirm": "End link",
+    "cancel": "Cancel",
+    "ended": "Link with {name} ended",
+    "endFailed": "That did not work. The link still exists."
+  },
+  "media": {
+    "title": "Media",
+    "intro": "Logo, cover photo and gallery of the organisation. Every image is reviewed before it appears publicly.",
+    "noPermission": "Your role can only view media. Owners, marketing and editors can edit them."
+  },
+  "settings": {
+    "title": "Settings",
+    "intro": "Organisation, contact and notifications.",
+    "organizationTitle": "Organisation",
+    "kind": "Type",
+    "kinds": {
+      "CLUB": "Club",
+      "AGENCY": "Agency"
+    },
+    "address": "Address of the public page",
+    "role": "Your role",
+    "kindHint": "Support changes the type and address on request.",
+    "rightsTitle": "What your role may do",
+    "allowed": "allowed",
+    "notAllowed": "not allowed",
+    "teamLater": "Inviting staff and assigning roles comes with the Team area in phase 2.",
+    "contactTitle": "Contact",
+    "contactSet": "Public: {values}",
+    "contactEmpty": "No public contact details yet.",
+    "contactHint": "Contact details apply to the whole organisation. A location can have its own phone number and website.",
+    "contactEdit": "Edit in the business profile",
+    "notificationsTitle": "Notifications",
+    "notificationsLater": "Notification settings come with the notifications module. Until then, the platform sends no emails about invitations or reviews of the organisation."
+  },
+  "permissions": {
+    "roles": {
+      "OWNER": "Owner",
+      "LOCATION_MANAGER": "Location manager",
+      "MARKETING": "Marketing",
+      "EDITOR": "Editor",
+      "SCHEDULING": "Scheduling"
+    },
+    "names": {
+      "profile": {
+        "edit": "Edit business profile"
+      },
+      "media": {
+        "edit": "Edit media"
+      },
+      "locations": {
+        "edit": "Edit locations"
+      },
+      "providers": {
+        "invite": "Invite providers",
+        "end": "End links"
+      },
+      "verification": {
+        "submit": "Submit credentials"
+      },
+      "settings": {
+        "edit": "Change settings"
+      }
+    }
+  },
+  "admin": {
+    "meta": {
+      "queue": "Organisations",
+      "case": "Organisation review"
+    },
+    "title": "Organisations",
+    "intro": "Submitted credentials of clubs and agencies, oldest first. An organisation only becomes public with your approval.",
+    "restricted": "This area is for moderation, trust & safety and platform administration.",
+    "next": "Open next organisation",
+    "shortcutAfter": "opens the oldest open review.",
+    "count": "{count, plural, =0 {No open reviews} one {# open review} other {# open reviews}}",
+    "caption": "Submitted credentials",
+    "columns": {
+      "name": "Organisation",
+      "kind": "Type",
+      "legalName": "Company name",
+      "uid": "UID",
+      "submitted": "Submitted on",
+      "age": "Age"
+    },
+    "empty": {
+      "title": "No open reviews",
+      "description": "As soon as an organisation submits its credentials, it appears here."
+    },
+    "kinds": {
+      "CLUB": "Club",
+      "AGENCY": "Agency"
+    },
+    "caseTitle": "Review of {name}",
+    "caseMeta": "Submitted on {submitted} · {age} · Status: {state}",
+    "submissionTitle": "Submitted details",
+    "profileTitle": "Business profile",
+    "facts": {
+      "legalName": "Company name as in the commercial register",
+      "uid": "UID",
+      "authority": "Authority confirmed",
+      "authorityYes": "Yes, the acting person confirmed it",
+      "authorityNo": "No",
+      "permitNote": "Permits",
+      "none": "Not given",
+      "name": "Name on the platform",
+      "kind": "Type",
+      "status": "Status",
+      "website": "Website",
+      "description": "About us"
+    },
+    "registerHint": "Compare the company name and UID in the federal public UID register. There are no documents.",
+    "registerLink": "Open UID register",
+    "decision": {
+      "title": "Decision",
+      "decision": "Outcome",
+      "option": {
+        "APPROVED": "Approve",
+        "CHANGES_REQUESTED": "Request correction",
+        "REJECTED": "Reject"
+      },
+      "optionHint": {
+        "APPROVED": "The organisation is published.",
+        "CHANGES_REQUESTED": "The organisation sees your reason and submits again.",
+        "REJECTED": "The organisation is suspended and not public. It sees your reason."
+      },
+      "reason": "Reason",
+      "reasonHint": "At least 10 characters. For «Request correction» and «Reject» the organisation sees it; it is recorded in the audit log.",
+      "save": "Save decision",
+      "saved": "Decision saved",
+      "result": "Outcome",
+      "decidedAt": "Decided on",
+      "errors": {
+        "decisionRequired": "Choose an outcome.",
+        "reasonTooShort": "The reason needs at least 10 characters.",
+        "reasonTooLong": "At most 1000 characters.",
+        "alreadyDecided": "This review has already been decided.",
+        "generic": "That did not work. Please try again.",
+        "signInRequired": "Please sign in again.",
+        "forbidden": "Your role may not decide here."
+      }
+    }
+  }
+}

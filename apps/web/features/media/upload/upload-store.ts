@@ -18,6 +18,8 @@ interface Job {
   entry: UploadEntry;
   file: File;
   visibility: "PUBLIC" | "MEMBERS";
+  /** Organisation, für die hochgeladen wird; fehlt sie, gilt das eigene Profil (Entscheid 0018). */
+  org?: string;
 }
 
 const PARALLEL = 3;
@@ -45,20 +47,21 @@ function update(id: string, patch: Partial<UploadEntry>) {
 
 async function run(job: Job): Promise<void> {
   const { id } = job.entry;
+  const owner = job.org ? { org: job.org } : {};
   const fail = (error: string) => update(id, { state: "error", error });
   const contentType = uploadContentType(job.file);
   if (!contentType) return fail("type");
   update(id, { state: "uploading", progress: 0, error: undefined });
   try {
-    const ticket = await requestMediaUpload({ contentType, sizeBytes: job.file.size, rightsConfirmed: true, visibility: job.visibility });
+    const ticket = await requestMediaUpload({ contentType, sizeBytes: job.file.size, rightsConfirmed: true, visibility: job.visibility, ...owner });
     if (!ticket.ok || !ticket.data) return fail(ticket.ok ? "generic" : (ticket.formError ?? "generic"));
     const { mediaId, ...target } = ticket.data;
     const put = await putFile(job.file, target, (progress) => update(id, { progress }));
     if (put !== "ok") {
-      void abandonMediaUpload({ mediaId }).catch(() => undefined);
+      void abandonMediaUpload({ mediaId, ...owner }).catch(() => undefined);
       return fail(put === "network" ? "network" : "generic");
     }
-    const confirmed = await confirmMediaUpload({ mediaId });
+    const confirmed = await confirmMediaUpload({ mediaId, ...owner });
     if (!confirmed.ok) return fail(confirmed.formError ?? "generic");
     update(id, { state: "done", progress: 100 });
     for (const listener of finishedListeners) listener();
@@ -89,18 +92,18 @@ export const uploadStore = {
     finishedListeners.add(listener);
     return () => finishedListeners.delete(listener);
   },
-  add(files: readonly File[], visibility: "PUBLIC" | "MEMBERS"): void {
+  add(files: readonly File[], visibility: "PUBLIC" | "MEMBERS", org?: string): void {
     for (const file of files) {
       counter += 1;
-      jobs = [...jobs, { entry: { id: `upload-${counter}`, name: file.name, size: file.size, state: "queued", progress: 0 }, file, visibility }];
+      jobs = [...jobs, { entry: { id: `upload-${counter}`, name: file.name, size: file.size, state: "queued", progress: 0 }, file, visibility, org }];
     }
     emit();
     pump();
   },
   /** Eine abgelehnte Datei (Typ, Grösse) erscheint mit Grund in der Liste; «Erneut versuchen» prüft sie noch einmal. */
-  reject(file: File, error: string, visibility: "PUBLIC" | "MEMBERS"): void {
+  reject(file: File, error: string, visibility: "PUBLIC" | "MEMBERS", org?: string): void {
     counter += 1;
-    jobs = [...jobs, { entry: { id: `upload-${counter}`, name: file.name, size: file.size, state: "error", progress: 0, error }, file, visibility }];
+    jobs = [...jobs, { entry: { id: `upload-${counter}`, name: file.name, size: file.size, state: "error", progress: 0, error }, file, visibility, org }];
     emit();
   },
   retry(id: string): void {

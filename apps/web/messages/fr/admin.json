@@ -26,7 +26,9 @@
     "reports": "Signalements",
     "openReportCount": "{count, plural, one {# signalement ouvert} other {# signalements ouverts}}",
     "reviews": "Évaluations",
-    "openReviewCount": "{count, plural, one {# cas ouvert} other {# cas ouverts}}"
+    "openReviewCount": "{count, plural, one {# cas ouvert} other {# cas ouverts}}",
+    "organizations": "Organisations",
+    "openOrganizationCount": "{count, plural, one {# organisation attend la vérification} other {# organisations attendent la vérification}}"
   },
   "twoFactor": {
     "title": "Configurer le deuxième facteur",
@@ -275,7 +277,8 @@
       "altText": "Texte alternatif",
       "size": "Taille",
       "dimensions": "{width} × {height} pixels",
-      "none": "Non renseigné"
+      "none": "Non renseigné",
+      "organization": "Organisation"
     },
     "decision": {
       "title": "Décision",
@@ -306,7 +309,8 @@
       "identifying": "Montre une adresse ou des détails identifiants",
       "consent": "Consentement des personnes représentées douteux",
       "policyViolation": "Violation des directives"
-    }
+    },
+    "organizationOwner": "{name} (organisation)"
   },
   "reports": {
     "title": "Signalements",

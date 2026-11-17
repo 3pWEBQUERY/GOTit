@@ -5,23 +5,25 @@ import { ImageIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { makeCover, moveMedia, reorderMedia } from "../actions/arrange";
+import { makeCover, makeLogo, moveMedia, reorderMedia } from "../actions/arrange";
 import { DeleteMediaDialog } from "./delete-media-dialog";
 import { MediaTile } from "./media-tile";
 import { moveStep, moveTo } from "./reorder";
 import { SelectionBar } from "./selection-bar";
-import type { LibraryItem } from "./types";
+import { scopeInput, type LibraryItem, type MediaScope } from "./types";
 
 function signature(items: readonly LibraryItem[]): string {
-  return items.map((item) => `${item.id}:${item.status}:${item.visibility}:${item.isCover}`).join("|");
+  return items.map((item) => `${item.id}:${item.status}:${item.visibility}:${item.isCover}:${item.isLogo}`).join("|");
 }
 
 /**
  * Raster der eigenen Medien mit Drag-and-drop, Mehrfachauswahl und Menü pro
  * Medium (PRD v2 11.3). Änderungen der Reihenfolge erscheinen sofort und
  * werden gespeichert; schlägt das fehl, gilt wieder die gespeicherte.
+ * `readOnly` zeigt die Medien einer Organisation ohne Recht «media.edit»: kein
+ * Ziehen, keine Auswahl, kein Menü.
  */
-export function MediaGrid({ items }: { items: readonly LibraryItem[] }) {
+export function MediaGrid({ items, scope, readOnly = false }: { items: readonly LibraryItem[]; scope: MediaScope; readOnly?: boolean }) {
   const t = useTranslations("media.library");
   const router = useRouter();
   const { toast } = useToast();
@@ -63,11 +65,11 @@ export function MediaGrid({ items }: { items: readonly LibraryItem[] }) {
     setOverId(null);
     if (!id || id === targetId) return;
     const next = moveTo(order, id, targetId);
-    void save(next, () => reorderMedia({ order: next }), id);
+    void save(next, () => reorderMedia({ order: next, ...scopeInput(scope) }), id);
   }
 
-  async function cover(id: string) {
-    const result = await makeCover({ mediaId: id }).catch(() => ({ ok: false }));
+  async function cover(id: string, kind: "cover" | "logo" = "cover") {
+    const result = await (kind === "logo" ? makeLogo : makeCover)({ mediaId: id, ...scopeInput(scope) }).catch(() => ({ ok: false }));
     if (!result.ok) toast({ title: t("actionError"), tone: "error" });
     else router.refresh();
   }
@@ -78,13 +80,18 @@ export function MediaGrid({ items }: { items: readonly LibraryItem[] }) {
 
   return (
     <div className="flex min-w-0 flex-col gap-4">
-      <p className="text-small text-ink-muted">{t("dragHint")}</p>
-      <SelectionBar
-        selected={[...selected]}
-        onClear={() => setSelected(new Set())}
-        onDelete={() => setToDelete([...selected])}
-        onChanged={() => router.refresh()}
-      />
+      {readOnly ? null : (
+        <>
+          <p className="text-small text-ink-muted">{t("dragHint")}</p>
+          <SelectionBar
+            selected={[...selected]}
+            scope={scope}
+            onClear={() => setSelected(new Set())}
+            onDelete={() => setToDelete([...selected])}
+            onChanged={() => router.refresh()}
+          />
+        </>
+      )}
       <ul aria-label={t("gridLabel")} className="grid grid-cols-2 gap-3 xs:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5" data-media-grid>
         {ordered.map((item, index) => (
           <MediaTile
@@ -95,6 +102,8 @@ export function MediaGrid({ items }: { items: readonly LibraryItem[] }) {
             selected={selected.has(item.id)}
             dragging={dragId === item.id}
             dropTarget={overId === item.id && dragId !== item.id}
+            readOnly={readOnly}
+            organization={scope.kind === "organization"}
             onSelect={(value) =>
               setSelected((current) => {
                 const next = new Set(current);
@@ -105,9 +114,10 @@ export function MediaGrid({ items }: { items: readonly LibraryItem[] }) {
             }
             onMove={(direction) => {
               const next = moveStep(order, item.id, direction);
-              void save(next, () => moveMedia({ mediaId: item.id, direction }), item.id);
+              void save(next, () => moveMedia({ mediaId: item.id, direction, ...scopeInput(scope) }), item.id);
             }}
             onCover={() => void cover(item.id)}
+            onLogo={() => void cover(item.id, "logo")}
             onDelete={() => setToDelete([item.id])}
             onDragStart={() => setDragId(item.id)}
             onDragOver={(event) => {
@@ -128,6 +138,7 @@ export function MediaGrid({ items }: { items: readonly LibraryItem[] }) {
       </p>
       <DeleteMediaDialog
         mediaIds={toDelete}
+        scope={scope}
         open={toDelete.length > 0}
         onOpenChange={(open) => {
           if (!open) setToDelete([]);

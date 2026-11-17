@@ -1,1 +1,167 @@
-{}
+{
+  "kind": {
+    "CLUB": "Club",
+    "AGENCY": "Agentur"
+  },
+  "page": {
+    "breadcrumbs": "Brotkrumen",
+    "discover": "Entdecken",
+    "clubs": "Clubs und Agenturen"
+  },
+  "header": {
+    "logoAlt": "Logo von {name}"
+  },
+  "trust": {
+    "listLabel": "Vertrauenssignale",
+    "label": "Geschäftsidentität geprüft",
+    "info": "Erklärung zu «Geschäftsidentität geprüft» anzeigen",
+    "checked": "Firmenname, UID aus dem Handelsregister und die Berechtigung, für das Unternehmen zu handeln. Die Plattform hat die Nachweise von Hand geprüft.",
+    "checkedAtUnknown": "Vor der Veröffentlichung",
+    "notImplied": "Das Signal sagt nichts über die verknüpften Anbieter aus; jeder hat eine eigene Identitätsprüfung. Es ist keine Garantie für Angebote, Preise oder Bewilligungen.",
+    "explanation": {
+      "checked": "Was geprüft wurde",
+      "checkedAt": "Wann",
+      "notImplied": "Was das Signal nicht aussagt"
+    },
+    "close": "Erklärung schliessen"
+  },
+  "tabs": {
+    "label": "Bereiche der Seite",
+    "overview": "Übersicht",
+    "team": "Anbieter"
+  },
+  "sections": {
+    "about": "Über uns",
+    "noDescription": "Noch keine Beschreibung.",
+    "locations": "Standorte",
+    "providers": "Verknüpfte Anbieter",
+    "gallery": "Galerie"
+  },
+  "locations": {
+    "empty": "Noch keine Standorte angegeben.",
+    "hoursOf": "Öffnungszeiten von {name}",
+    "open": "Standort {name} ansehen"
+  },
+  "hours": {
+    "title": "Öffnungszeiten",
+    "none": "Keine Öffnungszeiten angegeben.",
+    "day": "Tag",
+    "time": "Zeit",
+    "closed": "Geschlossen",
+    "exceptions": "Abweichende Tage",
+    "timeZone": "Alle Zeiten in Schweizer Ortszeit.",
+    "today": {
+      "open": "Heute geöffnet bis {until}",
+      "later": "Heute geöffnet von {from} bis {until}",
+      "over": "Heute nicht mehr geöffnet",
+      "closed": "Heute geschlossen"
+    }
+  },
+  "providers": {
+    "empty": "Hier erscheinen Anbieter, sobald sie eine Verknüpfung angenommen haben.",
+    "emptyHint": "Bis dahin findest du Profile in der Suche.",
+    "toSearch": "Profile suchen",
+    "all": "Alle {count} Anbieter"
+  },
+  "team": {
+    "title": "Anbieter bei {name}",
+    "intro": "Diese Anbieter haben der Verknüpfung zugestimmt. Jedes Profil gehört dem Anbieter selbst."
+  },
+  "location": {
+    "of": "Standort von {name} ({kind})",
+    "back": "Zurück zu {name}",
+    "about": "Über den Standort",
+    "providers": "Anbieter an diesem Standort",
+    "noProviders": "Für diesen Standort sind noch keine Anbieter verknüpft.",
+    "allProviders": "Alle Anbieter von {name}"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "none": "Keine öffentlichen Kontaktangaben.",
+    "newWindow": "(öffnet in einem neuen Fenster)",
+    "report": "Seite melden"
+  },
+  "profile": {
+    "title": "Verknüpft mit"
+  },
+  "discover": {
+    "title": "Clubs in der Nähe",
+    "all": "Alle Clubs und Agenturen in {region}"
+  },
+  "list": {
+    "title": "Clubs und Agenturen",
+    "titleIn": "Clubs und Agenturen in {region}",
+    "intro": "Veröffentlicht werden nur Clubs und Agenturen mit geprüfter Geschäftsidentität.",
+    "kindLabel": "Art",
+    "kinds": {
+      "all": "Alle",
+      "CLUB": "Clubs",
+      "AGENCY": "Agenturen"
+    },
+    "region": "Region",
+    "allRegions": "Alle Regionen",
+    "apply": "Region anzeigen",
+    "reset": "Filter zurücksetzen",
+    "count": "{count, plural, =0 {Keine Einträge} one {# Eintrag} other {# Einträge}}",
+    "noMatches": "Für diese Filter gibt es keine Clubs oder Agenturen.",
+    "noMatchesHint": "Wähle eine andere Region oder setze die Filter zurück.",
+    "empty": "Hier erscheinen Clubs und Agenturen, sobald ihre Geschäftsidentität geprüft ist.",
+    "emptyHint": "Bis dahin findest du Einzelanbieter in der Suche.",
+    "toSearch": "Profile suchen",
+    "providerCount": "{count, plural, =0 {Noch keine verknüpften Anbieter} one {# verknüpfter Anbieter} other {# verknüpfte Anbieter}}",
+    "canton": "Kanton {name}"
+  },
+  "meta": {
+    "notFound": "Seite nicht gefunden",
+    "description": "{name} ({kind}) in {regions}: Standorte, Öffnungszeiten und verknüpfte Anbieter.",
+    "descriptionNoRegion": "{name} ({kind}): Standorte, Öffnungszeiten und verknüpfte Anbieter.",
+    "teamTitle": "Anbieter bei {name}",
+    "locationTitle": "{location} – {name}",
+    "locationDescription": "{location} von {name}: Öffnungszeiten und Anbieter an diesem Standort.",
+    "listTitle": "Clubs und Agenturen",
+    "listDescription": "Clubs und Agenturen mit geprüfter Geschäftsidentität, nach Art und Region."
+  },
+  "state": {
+    "loading": "Seite wird geladen",
+    "slow": "Das dauert länger als üblich.",
+    "retry": "Erneut versuchen",
+    "errorTitle": "Die Seite liess sich nicht laden.",
+    "errorDescription": "Es ist nichts verloren gegangen. Lade die Seite neu oder versuche es später noch einmal.",
+    "reload": "Seite neu laden"
+  },
+  "studio": {
+    "title": "Verknüpfungen",
+    "intro": "Clubs und Agenturen laden dich ein, auf ihrer Seite zu erscheinen. Du entscheidest, ob du annimmst, und kannst jede Verknüpfung jederzeit lösen.",
+    "visibleTitle": "Was die Organisation sieht",
+    "visible": "Nur deine öffentlichen Profilangaben: Anzeigename, Profil-Link, Region und den Stand der Verknüpfung. Nie deine Nachrichten, Ausweisdaten, Anfragen oder deinen Kalender.",
+    "invitations": "Offene Einladungen",
+    "noInvitations": "Keine offenen Einladungen.",
+    "invitedAt": "Eingeladen am {date}",
+    "location": "Standort {name}",
+    "notPublished": "Seite noch nicht veröffentlicht",
+    "active": "Aktive Verknüpfungen",
+    "since": "Verknüpft seit {date}",
+    "noActive": "Du bist mit keinem Club und keiner Agentur verknüpft.",
+    "noActiveHint": "Eine Verknüpfung beginnt mit einer Einladung der Organisation.",
+    "toClubs": "Clubs und Agenturen ansehen",
+    "accept": "Annehmen",
+    "acceptNamed": "Einladung von {name} annehmen",
+    "decline": "Ablehnen",
+    "declineNamed": "Einladung von {name} ablehnen",
+    "accepted": "Du bist jetzt mit {name} verknüpft.",
+    "declined": "Einladung von {name} abgelehnt.",
+    "end": "Verknüpfung lösen",
+    "endNamed": "Verknüpfung mit {name} lösen",
+    "endTitle": "Verknüpfung mit {name} lösen?",
+    "endDescription": "{name} zeigt dein Profil danach nicht mehr. Dein Konto und dein Profil bleiben bestehen. Für eine neue Verknüpfung braucht es eine neue Einladung.",
+    "cancel": "Abbrechen",
+    "ended": "Verknüpfung mit {name} gelöst.",
+    "openInvitations": "{count, plural, one {# offene Einladung} other {# offene Einladungen}}",
+    "errors": {
+      "signInRequired": "Melde dich als Anbieter an, um Verknüpfungen zu verwalten.",
+      "notFound": "Diese Verknüpfung gibt es nicht.",
+      "notOpen": "Diese Einladung oder Verknüpfung ist nicht mehr offen. Lade die Seite neu.",
+      "generic": "Das hat nicht geklappt. Versuche es noch einmal."
+    }
+  }
+}

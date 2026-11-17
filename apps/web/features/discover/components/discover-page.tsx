@@ -4,6 +4,7 @@ import type { Locale } from "@app/core/locale";
 import { searchPort } from "@app/core/search";
 import { EMPTY_QUERY, type SearchQuery } from "@app/core/search/query";
 import { getTranslations } from "next-intl/server";
+import { DiscoverClubs } from "../../clubs/components/discover-clubs";
 import { loadFilterOptions } from "../../search/queries/filter-options";
 import { searchUrl, type SearchPaths } from "../../search/url";
 import { TopBarTitle } from "../../shell/components/top-bar-title";
@@ -72,7 +73,7 @@ async function loadRows(
 /**
  * Entdecken (PRD v2 9.1): Suchfeld, Region und echte Profile, keine
  * Marketingfläche. Eine Reihe ohne Einträge entfällt; Reihen für Verfügbarkeit,
- * Touren, Clubs und Community kommen mit ihren Schritten.
+ * Touren und Community kommen mit ihren Schritten.
  */
 export async function DiscoverPage({ locale }: { locale: Locale }) {
   const [t, { region, featured }, viewer, options] = await Promise.all([
@@ -176,6 +177,7 @@ export async function DiscoverPage({ locale }: { locale: Locale }) {
           />
         ))
       )}
+      <DiscoverClubs locale={locale} region={region} />
       {rows.length > 0 ? (
         <DiscoverRegionLinks
           title={t("regions")}

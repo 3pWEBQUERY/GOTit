@@ -22,6 +22,10 @@ export async function isMediaMember(userId: string | null): Promise<boolean> {
   return Boolean(user?.ageConfirmedAt && !user.deactivatedAt);
 }
 
+async function isOrganizationMember(userId: string, organizationId: string): Promise<boolean> {
+  return (await getDb().organizationMember.count({ where: { userId, organizationId, organization: { status: { not: "ARCHIVED" } } } })) > 0;
+}
+
 async function loadVariant(mediaId: string, variant: string) {
   const parsed = parseVariantName(variant);
   if (!parsed || !mediaIdSchema.safeParse(mediaId).success) return null;
@@ -32,7 +36,9 @@ async function loadVariant(mediaId: string, variant: string) {
       visibility: true,
       deletedAt: true,
       ownerUserId: true,
+      organizationId: true,
       providerProfile: { select: { status: true } },
+      organization: { select: { status: true } },
       variants: { where: { name: variant }, select: { key: true } },
     },
   });
@@ -46,13 +52,18 @@ export async function resolveMediaDelivery(mediaId: string, variant: string, vie
   const found = await loadVariant(mediaId, variant);
   if (!found) return null;
   const { media, key, format } = found;
-  const profileVisible = (VISIBLE_PROFILE as readonly string[]).includes(media.providerProfile?.status ?? "");
+  // Medien einer Organisation sind nur öffentlich, solange sie veröffentlicht ist (Entscheid 0018).
+  const profileVisible = media.organization
+    ? media.organization.status === "PUBLISHED"
+    : (VISIBLE_PROFILE as readonly string[]).includes(media.providerProfile?.status ?? "");
   if (media.status === "PUBLISHED" && profileVisible) {
     if (media.visibility === "PUBLIC") return { access: "public", key, format };
     if (viewerUserId && (viewerUserId === media.ownerUserId || (await isMediaMember(viewerUserId)))) return { access: "private", key, format };
   }
   // Der Eigentümer sieht seine Medien in der Bibliothek in jedem Status ausser fehlgeschlagen und gelöscht.
   if (viewerUserId && viewerUserId === media.ownerUserId && media.status !== "FAILED") return { access: "private", key, format };
+  // Medien einer Organisation sieht jedes ihrer Mitglieder in der Bibliothek, gleich wer sie hochgeladen hat.
+  if (viewerUserId && media.organizationId && media.status !== "FAILED" && (await isOrganizationMember(viewerUserId, media.organizationId))) return { access: "private", key, format };
   return null;
 }
 

@@ -22,6 +22,7 @@ export {
   type LocationResult,
 } from "./locations";
 export {
+  countOpenInvitations,
   endLink,
   inviteProvider,
   listOrganizationProviders,
@@ -33,5 +34,6 @@ export {
 export {
   getPublicOrganization,
   listPublicOrganizations,
+  listPublicOrganizationsOfProvider,
   type PublicOrganization,
 } from "./public";

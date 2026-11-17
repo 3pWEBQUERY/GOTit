@@ -1,1 +1,167 @@
-{}
+{
+  "kind": {
+    "CLUB": "Club",
+    "AGENCY": "Agenzia"
+  },
+  "page": {
+    "breadcrumbs": "Percorso",
+    "discover": "Scopri",
+    "clubs": "Club e agenzie"
+  },
+  "header": {
+    "logoAlt": "Logo di {name}"
+  },
+  "trust": {
+    "listLabel": "Segnali di fiducia",
+    "label": "Identità aziendale verificata",
+    "info": "Mostra la spiegazione di «Identità aziendale verificata»",
+    "checked": "Ragione sociale, IDI del registro di commercio e facoltà di agire per l’azienda. La piattaforma ha verificato i documenti manualmente.",
+    "checkedAtUnknown": "Prima della pubblicazione",
+    "notImplied": "Il segnale non dice nulla sui fornitori collegati; ognuno ha la propria verifica dell’identità. Non è una garanzia per offerte, prezzi o autorizzazioni.",
+    "explanation": {
+      "checked": "Cosa è stato verificato",
+      "checkedAt": "Quando",
+      "notImplied": "Cosa il segnale non dice"
+    },
+    "close": "Chiudi la spiegazione"
+  },
+  "tabs": {
+    "label": "Parti della pagina",
+    "overview": "Panoramica",
+    "team": "Fornitori"
+  },
+  "sections": {
+    "about": "Chi siamo",
+    "noDescription": "Ancora nessuna descrizione.",
+    "locations": "Sedi",
+    "providers": "Fornitori collegati",
+    "gallery": "Galleria"
+  },
+  "locations": {
+    "empty": "Ancora nessuna sede indicata.",
+    "hoursOf": "Orari di {name}",
+    "open": "Vedi la sede {name}"
+  },
+  "hours": {
+    "title": "Orari di apertura",
+    "none": "Nessun orario indicato.",
+    "day": "Giorno",
+    "time": "Orario",
+    "closed": "Chiuso",
+    "exceptions": "Giorni con orari diversi",
+    "timeZone": "Tutti gli orari in ora locale svizzera.",
+    "today": {
+      "open": "Oggi aperto fino alle {until}",
+      "later": "Oggi aperto dalle {from} alle {until}",
+      "over": "Oggi non più aperto",
+      "closed": "Oggi chiuso"
+    }
+  },
+  "providers": {
+    "empty": "Qui compaiono i fornitori non appena hanno accettato un collegamento.",
+    "emptyHint": "Nel frattempo trovi profili nella ricerca.",
+    "toSearch": "Cerca profili",
+    "all": "Tutti i {count} fornitori"
+  },
+  "team": {
+    "title": "Fornitori presso {name}",
+    "intro": "Questi fornitori hanno accettato il collegamento. Ogni profilo appartiene al fornitore stesso."
+  },
+  "location": {
+    "of": "Sede di {name} ({kind})",
+    "back": "Torna a {name}",
+    "about": "Informazioni sulla sede",
+    "providers": "Fornitori in questa sede",
+    "noProviders": "Per questa sede non ci sono ancora fornitori collegati.",
+    "allProviders": "Tutti i fornitori di {name}"
+  },
+  "contact": {
+    "title": "Contatto",
+    "none": "Nessun recapito pubblico.",
+    "newWindow": "(si apre in una nuova finestra)",
+    "report": "Segnala la pagina"
+  },
+  "profile": {
+    "title": "Collegato con"
+  },
+  "discover": {
+    "title": "Club nelle vicinanze",
+    "all": "Tutti i club e le agenzie a {region}"
+  },
+  "list": {
+    "title": "Club e agenzie",
+    "titleIn": "Club e agenzie a {region}",
+    "intro": "Vengono pubblicati solo club e agenzie con identità aziendale verificata.",
+    "kindLabel": "Tipo",
+    "kinds": {
+      "all": "Tutti",
+      "CLUB": "Club",
+      "AGENCY": "Agenzie"
+    },
+    "region": "Regione",
+    "allRegions": "Tutte le regioni",
+    "apply": "Mostra la regione",
+    "reset": "Reimposta i filtri",
+    "count": "{count, plural, =0 {Nessuna voce} one {# voce} other {# voci}}",
+    "noMatches": "Per questi filtri non ci sono club né agenzie.",
+    "noMatchesHint": "Scegli un’altra regione o reimposta i filtri.",
+    "empty": "Qui compaiono club e agenzie non appena la loro identità aziendale è verificata.",
+    "emptyHint": "Nel frattempo trovi fornitori indipendenti nella ricerca.",
+    "toSearch": "Cerca profili",
+    "providerCount": "{count, plural, =0 {Ancora nessun fornitore collegato} one {# fornitore collegato} other {# fornitori collegati}}",
+    "canton": "Canton {name}"
+  },
+  "meta": {
+    "notFound": "Pagina non trovata",
+    "description": "{name} ({kind}) a {regions}: sedi, orari e fornitori collegati.",
+    "descriptionNoRegion": "{name} ({kind}): sedi, orari e fornitori collegati.",
+    "teamTitle": "Fornitori presso {name}",
+    "locationTitle": "{location} – {name}",
+    "locationDescription": "{location} di {name}: orari e fornitori in questa sede.",
+    "listTitle": "Club e agenzie",
+    "listDescription": "Club e agenzie con identità aziendale verificata, per tipo e regione."
+  },
+  "state": {
+    "loading": "Caricamento della pagina",
+    "slow": "Ci vuole più tempo del solito.",
+    "retry": "Riprova",
+    "errorTitle": "Non è stato possibile caricare la pagina.",
+    "errorDescription": "Non è andato perso nulla. Ricarica la pagina o riprova più tardi.",
+    "reload": "Ricarica la pagina"
+  },
+  "studio": {
+    "title": "Collegamenti",
+    "intro": "Club e agenzie ti invitano ad apparire sulla loro pagina. Decidi tu se accettare e puoi sciogliere ogni collegamento in qualsiasi momento.",
+    "visibleTitle": "Cosa vede l’organizzazione",
+    "visible": "Solo i dati pubblici del tuo profilo: nome visualizzato, link del profilo, regione e stato del collegamento. Mai i tuoi messaggi, i dati d’identità, le richieste o il calendario.",
+    "invitations": "Inviti aperti",
+    "noInvitations": "Nessun invito aperto.",
+    "invitedAt": "Invitato il {date}",
+    "location": "Sede {name}",
+    "notPublished": "Pagina non ancora pubblicata",
+    "active": "Collegamenti attivi",
+    "since": "Collegato dal {date}",
+    "noActive": "Non sei collegato a nessun club e a nessuna agenzia.",
+    "noActiveHint": "Un collegamento inizia con un invito dell’organizzazione.",
+    "toClubs": "Vedi club e agenzie",
+    "accept": "Accetta",
+    "acceptNamed": "Accetta l’invito di {name}",
+    "decline": "Rifiuta",
+    "declineNamed": "Rifiuta l’invito di {name}",
+    "accepted": "Ora sei collegato con {name}.",
+    "declined": "Invito di {name} rifiutato.",
+    "end": "Sciogli il collegamento",
+    "endNamed": "Sciogli il collegamento con {name}",
+    "endTitle": "Sciogliere il collegamento con {name}?",
+    "endDescription": "{name} non mostrerà più il tuo profilo. Il tuo account e il tuo profilo restano. Per un nuovo collegamento serve un nuovo invito.",
+    "cancel": "Annulla",
+    "ended": "Collegamento con {name} sciolto.",
+    "openInvitations": "{count, plural, one {# invito aperto} other {# inviti aperti}}",
+    "errors": {
+      "signInRequired": "Accedi come fornitore per gestire i collegamenti.",
+      "notFound": "Questo collegamento non esiste.",
+      "notOpen": "Questo invito o collegamento non è più aperto. Ricarica la pagina.",
+      "generic": "Non ha funzionato. Riprova."
+    }
+  }
+}

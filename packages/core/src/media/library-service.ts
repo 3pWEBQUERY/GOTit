@@ -1,4 +1,4 @@
-import { getDb, type MediaStatus, type MediaVisibility } from "@app/db";
+import { getDb, type MediaStatus, type MediaVisibility, type Prisma } from "@app/db";
 import { enqueue, mediaDeleteJob } from "@app/jobs";
 import { ownMediaWhere, ownProfile } from "./owner";
 import { MEDIA_QUOTA, bulkSchema, mediaIdSchema } from "./schemas";
@@ -10,6 +10,8 @@ export interface OwnMedia {
   visibility: MediaVisibility;
   sortOrder: number;
   isCover: boolean;
+  /** Logo einer Organisation; bei Profilen immer false. */
+  isLogo: boolean;
   altText: string | null;
   width: number | null;
   height: number | null;
@@ -19,12 +21,13 @@ export interface OwnMedia {
   createdAt: Date;
 }
 
-const OWN_SELECT = {
+export const OWN_SELECT = {
   id: true,
   status: true,
   visibility: true,
   sortOrder: true,
   isCover: true,
+  isLogo: true,
   altText: true,
   width: true,
   height: true,
@@ -78,16 +81,21 @@ export async function ownMediaStatus(userId: string, mediaIds: readonly string[]
  */
 export async function deleteOwnMedia(userId: string, mediaIds: string | readonly string[], now = new Date()): Promise<{ deleted: number }> {
   const ids = bulkSchema.parse({ mediaIds: typeof mediaIds === "string" ? [mediaIds] : mediaIds }).mediaIds;
+  return deleteMediaWhere({ id: { in: ids }, ownerUserId: userId, deletedAt: null }, now);
+}
+
+/** Löscht die Medien, die der Filter trifft (eigene eines Profils oder einer Organisation). */
+export async function deleteMediaWhere(where: Prisma.MediaAssetWhereInput, now = new Date()): Promise<{ deleted: number }> {
   const db = getDb();
   const targets = await db.mediaAsset.findMany({
-    where: { id: { in: ids }, ownerUserId: userId, deletedAt: null },
+    where,
     select: { id: true, providerProfileId: true, originalKey: true, isCover: true, variants: { select: { key: true } } },
   });
   if (targets.length === 0) return { deleted: 0 };
   const deleted = await db.$transaction(async (tx) => {
     const done: typeof targets = [];
     for (const target of targets) {
-      const { count } = await tx.mediaAsset.updateMany({ where: { id: target.id, deletedAt: null }, data: { deletedAt: now, isCover: false } });
+      const { count } = await tx.mediaAsset.updateMany({ where: { id: target.id, deletedAt: null }, data: { deletedAt: now, isCover: false, isLogo: false } });
       if (count > 0) done.push(target);
     }
     const profileIds = [...new Set(done.filter((entry) => entry.isCover && entry.providerProfileId).map((entry) => entry.providerProfileId as string))];

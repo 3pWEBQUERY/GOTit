@@ -1,1 +1,424 @@
-{}
+{
+  "meta": {
+    "today": "Aujourd’hui",
+    "profile": "Profil d’entreprise",
+    "credentials": "Justificatifs",
+    "locations": "Sites",
+    "location": "Site",
+    "providers": "Prestataires",
+    "media": "Médias",
+    "settings": "Paramètres"
+  },
+  "state": {
+    "loading": "Chargement",
+    "slow": "Cela prend plus de temps que d’habitude.",
+    "retry": "Réessayer",
+    "errorTitle": "La page n’a pas pu être chargée",
+    "errorDescription": "Rien n’a été perdu. Recharge la page; si l’erreur persiste, réessaie plus tard.",
+    "reload": "Recharger la page"
+  },
+  "form": {
+    "summaryTitle": "{count, plural, one {Un champ doit être corrigé} other {# champs doivent être corrigés}}",
+    "optional": "facultatif",
+    "count": "{used} sur {max} caractères",
+    "nothingLost": "Tes saisies sont toujours là. Réessaie.",
+    "errors": {
+      "required": "Merci de remplir, au moins 2 caractères.",
+      "too-long": "C’est trop long.",
+      "url": "Saisis une adresse complète avec https://, par exemple https://example.ch.",
+      "phone": "Saisis un numéro de téléphone de 6 à 30 chiffres, par exemple +41 44 123 45 67.",
+      "email": "Saisis une adresse e-mail comme contact@example.ch.",
+      "uid": "Saisis l’IDE au format CHE-123.456.789.",
+      "authority": "Confirme que tu peux agir pour l’organisation.",
+      "region": "Choisis une région dans la liste.",
+      "invalid": "Cette indication ne convient pas. Vérifie-la.",
+      "generic": "Cela n’a pas fonctionné.",
+      "signInRequired": "Connecte-toi à nouveau.",
+      "notFound": "Cela n’existe plus. Recharge la page.",
+      "forbidden": "Ton rôle ne le permet pas.",
+      "alreadySubmitted": "Une soumission est déjà en cours. Attends la décision.",
+      "rateLimited": "Trop d’invitations en peu de temps. Réessaie dans une heure."
+    }
+  },
+  "status": {
+    "organization": {
+      "DRAFT": "Brouillon, non public",
+      "SUBMITTED": "Soumis, non public",
+      "PUBLISHED": "Publié",
+      "SUSPENDED": "Bloqué, non public",
+      "ARCHIVED": "Archivé"
+    },
+    "verification": {
+      "NONE": "Pas encore soumis",
+      "SUBMITTED": "Soumis",
+      "APPROVED": "Validé",
+      "CHANGES_REQUESTED": "Correction demandée",
+      "REJECTED": "Refusé"
+    }
+  },
+  "today": {
+    "submitCredentials": "Soumettre les justificatifs",
+    "submitCredentialsHint": "Sans identité commerciale vérifiée, l’organisation n’est pas publique.",
+    "openCredentials": "Vers les justificatifs",
+    "changesRequested": "Correction demandée",
+    "reviewCorrections": "Corriger les justificatifs",
+    "inReview": "Les justificatifs sont en cours de vérification. Tu n’as rien à faire.",
+    "inReviewHint": "Nous vérifions l’IDE à la main dans le registre public.",
+    "rejected": "Les justificatifs ont été refusés. L’organisation n’est pas publique.",
+    "noLocation": "Pas encore de site",
+    "noLocationHint": "Les sites indiquent les horaires d’ouverture et les prestataires sur place.",
+    "addLocation": "Ajouter un site",
+    "openInvitations": "Invitations en attente: {count}",
+    "openInvitationsHint": "Un lien ne devient actif qu’une fois que le prestataire accepte.",
+    "viewProviders": "Voir les prestataires",
+    "published": "L’organisation est publiée.",
+    "notPublished": "L’organisation n’est pas encore publique."
+  },
+  "profile": {
+    "title": "Profil d’entreprise",
+    "intro": "Ces indications figurent sur la page publique de l’organisation dès que les justificatifs sont validés.",
+    "stateTitle": "État",
+    "publication": "Publication",
+    "verification": "Justificatifs",
+    "publishedHint": "Les modifications du profil apparaissent aussitôt sur la page publique.",
+    "notPublishedHint": "L’organisation devient publique lorsque la plateforme valide les justificatifs.",
+    "viewPublic": "Voir la page publique",
+    "noPermission": "Ton rôle permet seulement de voir le profil. Le propriétaire, le marketing et la rédaction peuvent le modifier.",
+    "name": "Nom",
+    "nameHint": "Le nom de l’organisation sur la plateforme, 2 à 80 caractères.",
+    "description": "À propos",
+    "descriptionHint": "Ce qui caractérise l’organisation. Pas d’adresses.",
+    "website": "Site web",
+    "websiteHint": "Adresse complète avec https://.",
+    "phone": "Téléphone",
+    "phoneHint": "Visible publiquement, par exemple +41 44 123 45 67.",
+    "publicEmail": "E-mail public",
+    "publicEmailHint": "Visible publiquement. N’utilise pas ton adresse de connexion.",
+    "save": "Enregistrer le profil",
+    "saved": "Profil enregistré"
+  },
+  "credentials": {
+    "title": "Justificatifs",
+    "intro": "La plateforme vérifie l’identité commerciale avant que l’organisation ne devienne publique.",
+    "stateTitle": "État de la vérification",
+    "submittedOn": "Soumis le {date}.",
+    "decidedOn": "Soumis le {submitted}, décidé le {decided}.",
+    "reason": "Motif: {reason}",
+    "openHint": "Pendant la vérification, tu ne peux pas modifier les indications.",
+    "none": "Rien n’a encore été soumis.",
+    "howTitle": "Comment nous vérifions",
+    "howRegister": "Nous comparons la raison sociale et l’IDE avec le registre du commerce public.",
+    "howNoDocuments": "Nous n’enregistrons ni pièces d’identité ni documents, seulement les indications de ce formulaire et notre décision.",
+    "howChanges": "Si la raison sociale, l’IDE ou les autorisations changent, soumets à nouveau les indications. Une organisation validée reste visible jusqu’à la décision.",
+    "noPermission": "Le propriétaire de l’organisation soumet les justificatifs.",
+    "formTitle": "Soumettre les indications",
+    "formTitleAgain": "Soumettre à nouveau les indications",
+    "submit": "Soumettre les justificatifs",
+    "submitAgain": "Soumettre à nouveau les justificatifs",
+    "submitted": "Justificatifs soumis",
+    "legalName": "Raison sociale selon le registre du commerce",
+    "legalNameHint": "Exactement comme au registre du commerce, avec la forme juridique, par exemple «Nachtwerk Zürich GmbH».",
+    "uid": "IDE",
+    "uidHint": "Numéro d’identification des entreprises au format CHE-123.456.789.",
+    "authorityConfirmed": "Je suis autorisé·e à agir pour cette organisation.",
+    "authorityConfirmedHint": "Par exemple comme propriétaire, gérant·e ou avec une procuration.",
+    "permitNote": "Autorisations",
+    "permitNoteHint": "Si ton canton ou ta commune exige une autorisation: laquelle et délivrée par qui, en mots. Ne télécharge pas de documents."
+  },
+  "locations": {
+    "title": "Sites",
+    "intro": "Chaque site a ses propres horaires, coordonnées et prestataires. Seule une indication de lieu générale est donnée, jamais une adresse.",
+    "add": "Ajouter un site",
+    "addTitle": "Ajouter un site",
+    "addDescription": "Tu définis ensuite les horaires et les exceptions sur la page du site.",
+    "close": "Fermer",
+    "cancel": "Annuler",
+    "create": "Créer le site",
+    "created": "Site créé",
+    "saved": "Site enregistré",
+    "save": "Enregistrer les indications",
+    "noPermission": "Ton rôle permet seulement de voir les sites. Le propriétaire et la gestion des sites peuvent les modifier.",
+    "emptyTitle": "Pas encore de site",
+    "emptyDescription": "Crée le premier site pour que les horaires figurent sur la page de l’organisation.",
+    "emptyReadOnly": "Le propriétaire et la gestion des sites créent les sites.",
+    "listLabel": "Sites de l’organisation",
+    "noPlace": "Sans indication de lieu",
+    "openDays": "{count, plural, one {Ouvert # jour} other {Ouvert # jours}}",
+    "noHours": "Pas d’horaires",
+    "providerCount": "{count, plural, =0 {Aucun prestataire} one {# prestataire} other {# prestataires}}",
+    "fields": {
+      "name": "Nom du site",
+      "nameHint": "2 à 80 caractères, par exemple «Club Langstrasse».",
+      "description": "Description",
+      "descriptionHint": "Ce que les clients doivent savoir sur ce site. Pas d’adresse.",
+      "regionId": "Région",
+      "regionIdHint": "Seulement des régions validées.",
+      "regionNone": "Aucune région validée pour l’instant. Tu peux la compléter plus tard.",
+      "noRegion": "Sans région",
+      "areaLabel": "Indication de lieu générale",
+      "areaLabelHint": "Par exemple «Arrondissement 4». Jamais une rue ni un numéro.",
+      "phone": "Téléphone du site",
+      "phoneHint": "Par exemple +41 44 123 45 67.",
+      "website": "Site web du site",
+      "websiteHint": "Adresse complète avec https://."
+    },
+    "back": "Vers les sites",
+    "detailIntro": "Indications, horaires et exceptions de ce site. Chaque section a son propre bouton d’enregistrement.",
+    "detailsTitle": "Indications",
+    "hoursTitle": "Horaires d’ouverture",
+    "hoursHint": "Plusieurs plages par jour sont possibles. Au-delà de minuit, divise le temps: vendredi jusqu’à 23:59, samedi dès 00:00.",
+    "exceptionsTitle": "Exceptions",
+    "exceptionsHint": "Jours fériés, vacances ou soirées spéciales: fermé ou d’autres horaires un jour donné.",
+    "providersTitle": "Prestataires rattachés",
+    "providersHint": "Prestataires rattachés à ce site. Tu ne vois que leurs indications de profil publiques.",
+    "providersEmpty": "Aucun prestataire n’est encore rattaché à ce site.",
+    "deleteSection": "Supprimer le site",
+    "deleteHint": "Supprime le site avec tous les horaires et exceptions.",
+    "delete": "Supprimer le site",
+    "deleteTitle": "Supprimer définitivement «{name}»?",
+    "deleteDescription": "Les horaires et exceptions sont perdus et ne peuvent pas être restaurés. Les prestataires liés restent liés, simplement sans site.",
+    "deleteConfirm": "Supprimer le site",
+    "deleted": "«{name}» supprimé",
+    "deleteFailed": "Le site n’a pas été supprimé. Réessaie.",
+    "closedAllDay": "Fermé"
+  },
+  "hours": {
+    "open": "{day} ouvert",
+    "closed": "Fermé",
+    "from": "De",
+    "to": "À",
+    "window": "{day}, plage {position}",
+    "addWindow": "Ajouter une plage",
+    "removeWindow": "Retirer la plage",
+    "endBeforeStart": "«À» doit être plus tard que «De».",
+    "overlap": "Cette plage chevauche une autre le même jour.",
+    "incomplete": "Saisis les deux heures au format HH:MM.",
+    "save": "Enregistrer les horaires",
+    "saved": "Horaires enregistrés",
+    "invalid": "Vérifie les heures signalées.",
+    "failed": "Les horaires n’ont pas été enregistrés. Tes saisies sont toujours là."
+  },
+  "exceptions": {
+    "empty": "Aucune exception saisie.",
+    "listLabel": "Exceptions",
+    "remove": "Retirer l’exception du {day}",
+    "removeTitle": "Retirer l’exception du {day}?",
+    "removeDescription": "Ce jour-là, les horaires habituels s’appliquent à nouveau.",
+    "removeConfirm": "Retirer l’exception",
+    "cancel": "Annuler",
+    "removeFailed": "L’exception n’a pas été retirée. Réessaie.",
+    "removed": "Exception retirée",
+    "addTitle": "Saisir une exception",
+    "day": "Jour",
+    "dayHint": "Au format JJ.MM.AAAA. Une nouvelle exception pour le même jour remplace l’ancienne.",
+    "kind": "Ce jour-là",
+    "closed": "Fermé",
+    "otherHours": "Autres horaires",
+    "from": "De",
+    "to": "À",
+    "note": "Note",
+    "noteHint": "Visible publiquement, par exemple «Noël».",
+    "failed": "L’exception n’a pas été enregistrée.",
+    "save": "Enregistrer l’exception",
+    "saved": "Exception enregistrée",
+    "errors": {
+      "dayRequired": "Choisis un jour.",
+      "timeRequired": "Saisis l’heure au format HH:MM.",
+      "endBeforeStart": "«À» doit être plus tard que «De».",
+      "noteTooLong": "200 caractères au maximum."
+    }
+  },
+  "linkStatus": {
+    "INVITED": "Invité",
+    "ACTIVE": "Actif",
+    "DECLINED": "Refusé",
+    "ENDED": "Rompu"
+  },
+  "invite": {
+    "open": "Inviter",
+    "title": "Inviter un prestataire",
+    "description": "Le prestataire voit l’invitation dans son studio. Vous êtes liés seulement lorsqu’il accepte.",
+    "close": "Fermer",
+    "provider": "Nom de profil ou URL du profil",
+    "providerHint": "Par exemple «lena-zh» ou l’adresse copiée de son profil.",
+    "location": "Site",
+    "noLocation": "Sans site",
+    "message": "Message",
+    "messageHint": "En bref, de quoi il s’agit. Le prestataire le voit avec l’invitation.",
+    "cancel": "Annuler",
+    "send": "Envoyer l’invitation",
+    "sent": "Invitation envoyée",
+    "errors": {
+      "slug": "Saisis un nom de profil comme «lena-zh» ou une URL de profil avec /p/.",
+      "providerUnavailable": "Il n’existe pas de profil public de prestataire avec ce nom.",
+      "alreadyLinked": "Ce prestataire est déjà invité ou lié.",
+      "too-long": "500 caractères au maximum."
+    }
+  },
+  "providers": {
+    "title": "Prestataires",
+    "intro": "Prestataires liés à l’organisation ou ayant reçu une invitation.",
+    "privacy": "Tu ne vois que les indications de profil publiques. Les messages, données d’identité et calendriers privés des prestataires ne sont jamais accessibles aux organisations. Chaque côté peut rompre le lien; le compte du prestataire est conservé.",
+    "noPermission": "Ton rôle ne permet pas d’inviter des prestataires. Le propriétaire et la gestion des sites le peuvent.",
+    "emptyTitle": "Pas encore de prestataires",
+    "emptyDescription": "Invite un prestataire avec son nom de profil.",
+    "emptyReadOnly": "Le propriétaire et la gestion des sites envoient les invitations.",
+    "caption": "Prestataires liés et invités",
+    "none": "Non indiqué",
+    "columns": {
+      "name": "Nom",
+      "region": "Région",
+      "location": "Site",
+      "status": "Statut",
+      "invited": "Invité le",
+      "actions": "Actions"
+    },
+    "withdraw": "Retirer l’invitation",
+    "end": "Rompre le lien",
+    "withdrawTitle": "Retirer l’invitation à {name}?",
+    "endTitle": "Rompre le lien avec {name}?",
+    "endDescription": "Le prestataire n’apparaît plus sur la page de l’organisation. Son compte et son profil sont conservés. Un nouveau lien exige une nouvelle invitation et son accord.",
+    "withdrawConfirm": "Retirer l’invitation",
+    "endConfirm": "Rompre le lien",
+    "cancel": "Annuler",
+    "ended": "Lien avec {name} rompu",
+    "endFailed": "Cela n’a pas fonctionné. Le lien existe toujours."
+  },
+  "media": {
+    "title": "Médias",
+    "intro": "Logo, photo de couverture et galerie de l’organisation. Chaque image est vérifiée avant d’apparaître publiquement.",
+    "noPermission": "Ton rôle permet seulement de voir les médias. Le propriétaire, le marketing et la rédaction peuvent les modifier."
+  },
+  "settings": {
+    "title": "Paramètres",
+    "intro": "Organisation, contact et notifications.",
+    "organizationTitle": "Organisation",
+    "kind": "Type",
+    "kinds": {
+      "CLUB": "Club",
+      "AGENCY": "Agence"
+    },
+    "address": "Adresse de la page publique",
+    "role": "Ton rôle",
+    "kindHint": "Le support modifie le type et l’adresse sur demande.",
+    "rightsTitle": "Ce que ton rôle peut faire",
+    "allowed": "autorisé",
+    "notAllowed": "non autorisé",
+    "teamLater": "Inviter des collaborateurs et attribuer des rôles arrive avec l’espace Équipe en phase 2.",
+    "contactTitle": "Contact",
+    "contactSet": "Public: {values}",
+    "contactEmpty": "Pas encore de coordonnées publiques.",
+    "contactHint": "Les coordonnées valent pour toute l’organisation. Un site peut avoir son propre téléphone et site web.",
+    "contactEdit": "Modifier dans le profil d’entreprise",
+    "notificationsTitle": "Notifications",
+    "notificationsLater": "Les réglages des notifications arrivent avec le module de notifications. D’ici là, la plateforme n’envoie pas d’e-mails sur les invitations ou les vérifications de l’organisation."
+  },
+  "permissions": {
+    "roles": {
+      "OWNER": "Propriétaire",
+      "LOCATION_MANAGER": "Gestion des sites",
+      "MARKETING": "Marketing",
+      "EDITOR": "Rédaction",
+      "SCHEDULING": "Organisation des rendez-vous"
+    },
+    "names": {
+      "profile": {
+        "edit": "Modifier le profil d’entreprise"
+      },
+      "media": {
+        "edit": "Modifier les médias"
+      },
+      "locations": {
+        "edit": "Modifier les sites"
+      },
+      "providers": {
+        "invite": "Inviter des prestataires",
+        "end": "Rompre des liens"
+      },
+      "verification": {
+        "submit": "Soumettre les justificatifs"
+      },
+      "settings": {
+        "edit": "Modifier les paramètres"
+      }
+    }
+  },
+  "admin": {
+    "meta": {
+      "queue": "Organisations",
+      "case": "Vérification d’une organisation"
+    },
+    "title": "Organisations",
+    "intro": "Justificatifs soumis par des clubs et agences, les plus anciens d’abord. Une organisation devient publique seulement avec ta validation.",
+    "restricted": "Cet espace est réservé à la modération, Trust & Safety et l’administration de la plateforme.",
+    "next": "Ouvrir l’organisation suivante",
+    "shortcutAfter": "ouvre la plus ancienne vérification ouverte.",
+    "count": "{count, plural, =0 {Aucune vérification ouverte} one {# vérification ouverte} other {# vérifications ouvertes}}",
+    "caption": "Justificatifs soumis",
+    "columns": {
+      "name": "Organisation",
+      "kind": "Type",
+      "legalName": "Raison sociale",
+      "uid": "IDE",
+      "submitted": "Soumis le",
+      "age": "Âge"
+    },
+    "empty": {
+      "title": "Aucune vérification ouverte",
+      "description": "Dès qu’une organisation soumet ses justificatifs, elle apparaît ici."
+    },
+    "kinds": {
+      "CLUB": "Club",
+      "AGENCY": "Agence"
+    },
+    "caseTitle": "Vérification de {name}",
+    "caseMeta": "Soumis le {submitted} · {age} · État: {state}",
+    "submissionTitle": "Indications soumises",
+    "profileTitle": "Profil d’entreprise",
+    "facts": {
+      "legalName": "Raison sociale selon le registre du commerce",
+      "uid": "IDE",
+      "authority": "Autorisation confirmée",
+      "authorityYes": "Oui, la personne agissante l’a confirmée",
+      "authorityNo": "Non",
+      "permitNote": "Autorisations",
+      "none": "Non indiqué",
+      "name": "Nom sur la plateforme",
+      "kind": "Type",
+      "status": "Statut",
+      "website": "Site web",
+      "description": "À propos"
+    },
+    "registerHint": "Compare la raison sociale et l’IDE dans le registre IDE public de la Confédération. Il n’y a pas de documents.",
+    "registerLink": "Ouvrir le registre IDE",
+    "decision": {
+      "title": "Décision",
+      "decision": "Résultat",
+      "option": {
+        "APPROVED": "Valider",
+        "CHANGES_REQUESTED": "Demander une correction",
+        "REJECTED": "Refuser"
+      },
+      "optionHint": {
+        "APPROVED": "L’organisation est publiée.",
+        "CHANGES_REQUESTED": "L’organisation voit ton motif et soumet à nouveau.",
+        "REJECTED": "L’organisation est bloquée et n’est pas publique. Elle voit ton motif."
+      },
+      "reason": "Motif",
+      "reasonHint": "Au moins 10 caractères. Pour «Demander une correction» et «Refuser», l’organisation le voit; il figure dans le journal d’audit.",
+      "save": "Enregistrer la décision",
+      "saved": "Décision enregistrée",
+      "result": "Résultat",
+      "decidedAt": "Décidé le",
+      "errors": {
+        "decisionRequired": "Choisis un résultat.",
+        "reasonTooShort": "Le motif doit compter au moins 10 caractères.",
+        "reasonTooLong": "1000 caractères au maximum.",
+        "alreadyDecided": "Cette vérification est déjà décidée.",
+        "generic": "Cela n’a pas fonctionné. Réessaie.",
+        "signInRequired": "Connecte-toi à nouveau.",
+        "forbidden": "Ton rôle ne permet pas de décider ici."
+      }
+    }
+  }
+}

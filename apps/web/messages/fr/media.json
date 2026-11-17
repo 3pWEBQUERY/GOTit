@@ -26,7 +26,9 @@
     "dragHint": "Fais glisser une photo à un autre endroit ou choisis «Avancer» et «Reculer» dans le menu.",
     "saveError": "L’ordre n’a pas été enregistré. L’ordre précédent reste valable.",
     "actionError": "Cela n’a pas fonctionné. Réessaie.",
-    "deleted": "{count, plural, one {# média supprimé} other {# médias supprimés}}"
+    "deleted": "{count, plural, one {# média supprimé} other {# médias supprimés}}",
+    "logo": "Logo",
+    "makeLogo": "Définir comme logo"
   },
   "status": {
     "UPLOADING": "Téléchargement en cours",
@@ -102,7 +104,8 @@
       "notAllowed": "Ton profil n’accepte pas de nouveaux médias pour l’instant.",
       "noProfile": "Il te faut un profil de prestataire pour les médias.",
       "generic": "Le téléchargement n’a pas fonctionné. Le fichier n’est pas enregistré."
-    }
+    },
+    "organizationPublic": "Après vérification, les photos de l’organisation sont visibles publiquement sur sa page."
   },
   "detail": {
     "title": "Modifier le média",
@@ -137,7 +140,13 @@
     "deleteTitle": "Supprimer",
     "deleteHint": "Supprime définitivement l’original et toutes les tailles d’image.",
     "delete": "Supprimer le média",
-    "deleted": "Média supprimé"
+    "deleted": "Média supprimé",
+    "isLogo": "Cette image est le logo de l’organisation.",
+    "makeLogo": "Définir comme logo",
+    "logoSaved": "Logo défini",
+    "logoTitle": "Logo",
+    "logoHint": "Le logo apparaît à côté du nom de l’organisation. Il y en a au plus un, et une image n’est jamais à la fois logo et photo de couverture.",
+    "coverHintOrganization": "La photo de couverture apparaît en haut de la page de l’organisation. Il y en a au plus une."
   },
   "state": {
     "loading": "Chargement des médias",

@@ -26,7 +26,9 @@
     "dragHint": "Trascina una foto in un altro punto o scegli «Sposta avanti» e «Sposta indietro» nel menu.",
     "saveError": "L’ordine non è stato salvato. Resta valido l’ordine precedente.",
     "actionError": "Non ha funzionato. Riprova.",
-    "deleted": "{count, plural, one {# media eliminato} other {# media eliminati}}"
+    "deleted": "{count, plural, one {# media eliminato} other {# media eliminati}}",
+    "logo": "Logo",
+    "makeLogo": "Imposta come logo"
   },
   "status": {
     "UPLOADING": "Caricamento in corso",
@@ -102,7 +104,8 @@
       "notAllowed": "Al momento il tuo profilo non accetta nuovi media.",
       "noProfile": "Per i media ti serve un profilo da fornitore.",
       "generic": "Il caricamento non ha funzionato. Il file non è stato salvato."
-    }
+    },
+    "organizationPublic": "Dopo la verifica, le foto dell’organizzazione sono visibili pubblicamente sulla sua pagina."
   },
   "detail": {
     "title": "Modifica media",
@@ -137,7 +140,13 @@
     "deleteTitle": "Elimina",
     "deleteHint": "Rimuove definitivamente l’originale e tutte le dimensioni dell’immagine.",
     "delete": "Elimina media",
-    "deleted": "Media eliminato"
+    "deleted": "Media eliminato",
+    "isLogo": "Questa immagine è il logo dell’organizzazione.",
+    "makeLogo": "Imposta come logo",
+    "logoSaved": "Logo impostato",
+    "logoTitle": "Logo",
+    "logoHint": "Il logo appare accanto al nome dell’organizzazione. Ce n’è al massimo uno, e un’immagine non è mai logo e foto di copertina insieme.",
+    "coverHintOrganization": "La foto di copertina appare in cima alla pagina dell’organizzazione. Ce n’è al massimo una."
   },
   "state": {
     "loading": "Caricamento dei media",

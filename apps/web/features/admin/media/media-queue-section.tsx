@@ -24,7 +24,7 @@ export async function MediaQueueSection({ locale, actorId, sort, now }: { locale
     return {
       id: entry.id,
       href: caseHref(entry.id),
-      label: entry.displayName ?? t("noProfile"),
+      label: entry.displayName ? (entry.owner === "organization" ? t("organizationOwner", { name: entry.displayName }) : entry.displayName) : t("noProfile"),
       submittedIso: entry.submittedAt.toISOString(),
       submittedLabel: format.dateTime(entry.submittedAt, { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" }),
       ageLabel: age.unit === "lessThanHour" ? tQueue("age.lessThanHour") : tQueue(`age.${age.unit}`, { count: age.count }),

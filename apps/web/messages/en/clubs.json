@@ -1,1 +1,167 @@
-{}
+{
+  "kind": {
+    "CLUB": "Club",
+    "AGENCY": "Agency"
+  },
+  "page": {
+    "breadcrumbs": "Breadcrumbs",
+    "discover": "Discover",
+    "clubs": "Clubs and agencies"
+  },
+  "header": {
+    "logoAlt": "Logo of {name}"
+  },
+  "trust": {
+    "listLabel": "Trust signals",
+    "label": "Business identity verified",
+    "info": "Show explanation of «Business identity verified»",
+    "checked": "Company name, UID from the commercial register and the authority to act for the company. The platform checked the documents by hand.",
+    "checkedAtUnknown": "Before publication",
+    "notImplied": "The signal says nothing about the linked providers; each has their own identity check. It is not a guarantee for offers, prices or permits.",
+    "explanation": {
+      "checked": "What was checked",
+      "checkedAt": "When",
+      "notImplied": "What the signal does not say"
+    },
+    "close": "Close explanation"
+  },
+  "tabs": {
+    "label": "Parts of the page",
+    "overview": "Overview",
+    "team": "Providers"
+  },
+  "sections": {
+    "about": "About us",
+    "noDescription": "No description yet.",
+    "locations": "Locations",
+    "providers": "Linked providers",
+    "gallery": "Gallery"
+  },
+  "locations": {
+    "empty": "No locations listed yet.",
+    "hoursOf": "Opening hours of {name}",
+    "open": "View location {name}"
+  },
+  "hours": {
+    "title": "Opening hours",
+    "none": "No opening hours listed.",
+    "day": "Day",
+    "time": "Time",
+    "closed": "Closed",
+    "exceptions": "Days with different hours",
+    "timeZone": "All times in Swiss local time.",
+    "today": {
+      "open": "Open today until {until}",
+      "later": "Open today from {from} to {until}",
+      "over": "No longer open today",
+      "closed": "Closed today"
+    }
+  },
+  "providers": {
+    "empty": "Providers appear here once they have accepted a link.",
+    "emptyHint": "Until then, you can find profiles in search.",
+    "toSearch": "Search profiles",
+    "all": "All {count} providers"
+  },
+  "team": {
+    "title": "Providers at {name}",
+    "intro": "These providers have agreed to the link. Each profile belongs to the provider."
+  },
+  "location": {
+    "of": "Location of {name} ({kind})",
+    "back": "Back to {name}",
+    "about": "About this location",
+    "providers": "Providers at this location",
+    "noProviders": "No providers are linked to this location yet.",
+    "allProviders": "All providers of {name}"
+  },
+  "contact": {
+    "title": "Contact",
+    "none": "No public contact details.",
+    "newWindow": "(opens in a new window)",
+    "report": "Report page"
+  },
+  "profile": {
+    "title": "Linked with"
+  },
+  "discover": {
+    "title": "Clubs nearby",
+    "all": "All clubs and agencies in {region}"
+  },
+  "list": {
+    "title": "Clubs and agencies",
+    "titleIn": "Clubs and agencies in {region}",
+    "intro": "Only clubs and agencies with a verified business identity are published.",
+    "kindLabel": "Type",
+    "kinds": {
+      "all": "All",
+      "CLUB": "Clubs",
+      "AGENCY": "Agencies"
+    },
+    "region": "Region",
+    "allRegions": "All regions",
+    "apply": "Show region",
+    "reset": "Reset filters",
+    "count": "{count, plural, =0 {No entries} one {# entry} other {# entries}}",
+    "noMatches": "No clubs or agencies match these filters.",
+    "noMatchesHint": "Choose another region or reset the filters.",
+    "empty": "Clubs and agencies appear here once their business identity is verified.",
+    "emptyHint": "Until then, you can find independent providers in search.",
+    "toSearch": "Search profiles",
+    "providerCount": "{count, plural, =0 {No linked providers yet} one {# linked provider} other {# linked providers}}",
+    "canton": "Canton of {name}"
+  },
+  "meta": {
+    "notFound": "Page not found",
+    "description": "{name} ({kind}) in {regions}: locations, opening hours and linked providers.",
+    "descriptionNoRegion": "{name} ({kind}): locations, opening hours and linked providers.",
+    "teamTitle": "Providers at {name}",
+    "locationTitle": "{location} – {name}",
+    "locationDescription": "{location} of {name}: opening hours and providers at this location.",
+    "listTitle": "Clubs and agencies",
+    "listDescription": "Clubs and agencies with a verified business identity, by type and region."
+  },
+  "state": {
+    "loading": "Loading page",
+    "slow": "This is taking longer than usual.",
+    "retry": "Try again",
+    "errorTitle": "The page could not be loaded.",
+    "errorDescription": "Nothing was lost. Reload the page or try again later.",
+    "reload": "Reload page"
+  },
+  "studio": {
+    "title": "Links",
+    "intro": "Clubs and agencies invite you to appear on their page. You decide whether to accept, and you can end any link at any time.",
+    "visibleTitle": "What the organisation sees",
+    "visible": "Only your public profile details: display name, profile link, region and the status of the link. Never your messages, ID data, requests or calendar.",
+    "invitations": "Open invitations",
+    "noInvitations": "No open invitations.",
+    "invitedAt": "Invited on {date}",
+    "location": "Location {name}",
+    "notPublished": "Page not published yet",
+    "active": "Active links",
+    "since": "Linked since {date}",
+    "noActive": "You are not linked with any club or agency.",
+    "noActiveHint": "A link starts with an invitation from the organisation.",
+    "toClubs": "View clubs and agencies",
+    "accept": "Accept",
+    "acceptNamed": "Accept invitation from {name}",
+    "decline": "Decline",
+    "declineNamed": "Decline invitation from {name}",
+    "accepted": "You are now linked with {name}.",
+    "declined": "Invitation from {name} declined.",
+    "end": "End link",
+    "endNamed": "End link with {name}",
+    "endTitle": "End link with {name}?",
+    "endDescription": "{name} will no longer show your profile. Your account and your profile remain. A new link needs a new invitation.",
+    "cancel": "Cancel",
+    "ended": "Link with {name} ended.",
+    "openInvitations": "{count, plural, one {# open invitation} other {# open invitations}}",
+    "errors": {
+      "signInRequired": "Sign in as a provider to manage links.",
+      "notFound": "This link does not exist.",
+      "notOpen": "This invitation or link is no longer open. Reload the page.",
+      "generic": "That did not work. Please try again."
+    }
+  }
+}

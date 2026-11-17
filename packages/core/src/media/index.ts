@@ -4,6 +4,19 @@ export { deleteOwnMedia, getOwnMedia, listOwnMedia, ownMediaStatus, type OwnLibr
 export { MEDIA_QUEUE_LIMIT, countMediaQueue, decideMedia, getMediaCase, listMediaQueue, nextMediaInReview, type DecideMediaResult, type MediaQueueEntry } from "./moderation-service";
 export { completeProcessing, confirmPurged, failProcessing, loadForProcessing, type ProcessedMedia, type ProcessedVariant } from "./processing-service";
 export { listProfileMedia } from "./public-media";
+export {
+  confirmOrganizationUpload,
+  deleteOrganizationMedia,
+  getOrganizationMedia,
+  listOrganizationMedia,
+  moveOrganizationMedia,
+  reorderOrganizationMedia,
+  requestOrganizationUpload,
+  setOrganizationCover,
+  setOrganizationLogo,
+  setOrganizationMediaAltText,
+  type OrganizationLibrary,
+} from "./organization-media";
 export * from "./schemas";
 export { newVariantPrefix } from "./keys";
 export type { PublicMedia } from "./types";

@@ -228,6 +228,7 @@ describe("Keine Rolle sieht Nachrichten oder Ausweisdaten eines Anbieters (Abnah
         "displayName",
         "invitedAt",
         "linkId",
+        "locationId",
         "locationName",
         "regionName",
         "respondedAt",

@@ -1,5 +1,6 @@
 import { isFeatureEnabled } from "@app/core/flags";
 import { hasProviderRole } from "@app/core/identity";
+import { countOpenInvitations } from "@app/core/organization";
 import type { Locale } from "@app/core/locale";
 import { cookies } from "next/headers";
 import { getTranslations } from "next-intl/server";
@@ -21,14 +22,17 @@ export async function StudioFrame({ locale, children }: { locale: Locale; childr
     const weiter = await getReturnPath();
     return redirect({ href: { pathname: "/anmelden", query: weiter ? { weiter } : {} }, locale });
   }
-  const [data, businessSuiteEnabled, tNav, tStudio, tShell, cookieStore, unread] = await Promise.all([
+  const provider = hasProviderRole(viewer);
+  const [data, businessSuiteEnabled, tNav, tStudio, tShell, tClubs, cookieStore, unread, invitations] = await Promise.all([
     getShellData(locale),
     isFeatureEnabled("business-suite"),
     getTranslations({ locale, namespace: "nav" }),
     getTranslations({ locale, namespace: "studio" }),
     getTranslations({ locale, namespace: "shell" }),
+    getTranslations({ locale, namespace: "clubs" }),
     cookies(),
     getUnreadCounts(),
+    provider ? countOpenInvitations(viewer.userId) : Promise.resolve(0),
   ]);
   const href = createHref(locale);
   const flags = { communityEnabled: data.communityEnabled, businessSuiteEnabled };
@@ -39,8 +43,14 @@ export async function StudioFrame({ locale, children }: { locale: Locale; childr
       <StudioSidebarNav
         label={tStudio("sidebarLabel")}
         provider={
-          hasProviderRole(viewer)
-            ? buildProviderSidebar(tNav, href, flags, { value: unread.studio, label: tShell("unreadConversations", { count: unread.studio }) })
+          provider
+            ? buildProviderSidebar(
+                tNav,
+                href,
+                flags,
+                { value: unread.studio, label: tShell("unreadConversations", { count: unread.studio }) },
+                { value: invitations, label: tClubs("studio.openInvitations", { count: invitations }) },
+              )
             : null
         }
         organizations={Object.fromEntries(

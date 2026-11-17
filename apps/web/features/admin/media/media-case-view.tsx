@@ -23,7 +23,7 @@ function Fact({ label, children }: { label: string; children: ReactNode }) {
 export async function MediaCaseView({ locale, media, alreadyDecided, now }: { locale: Locale; media: MediaCase; alreadyDecided: boolean; now: Date }) {
   const [t, tAdmin, format] = await Promise.all([getTranslations({ locale, namespace: "admin.media" }), getTranslations({ locale, namespace: "admin" }), getFormatter({ locale })]);
   const href = createHref(locale);
-  const name = media.providerProfile?.displayName ?? t("noProfile");
+  const name = media.providerProfile?.displayName ?? media.organization?.name ?? t("noProfile");
   const age = caseAge(media.updatedAt, now);
   const submitted = format.dateTime(media.updatedAt, { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" });
   const ageLabel = age.unit === "lessThanHour" ? tAdmin("queue.age.lessThanHour") : tAdmin(`queue.age.${age.unit}`, { count: age.count });
@@ -50,7 +50,7 @@ export async function MediaCaseView({ locale, media, alreadyDecided, now }: { lo
             {t("facts.title")}
           </h2>
           <dl>
-            <Fact label={t("facts.profile")}>{name}</Fact>
+            <Fact label={media.organization ? t("facts.organization") : t("facts.profile")}>{name}</Fact>
             <Fact label={t("facts.visibility")}>{t(`visibility.${media.visibility}`)}</Fact>
             <Fact label={t("facts.altText")}>{media.altText ?? t("facts.none")}</Fact>
             <Fact label={t("facts.size")}>{media.width && media.height ? t("facts.dimensions", { width: media.width, height: media.height }) : t("facts.none")}</Fact>

@@ -19,6 +19,8 @@ export interface MediaQueueEntry {
   submittedAt: Date;
   visibility: "PUBLIC" | "MEMBERS";
   displayName: string | null;
+  /** Medium eines Anbieterprofils oder einer Organisation (Entscheid 0018). */
+  owner: "profile" | "organization";
 }
 
 /** Medien in Prüfung, älteste zuerst (PRD v2 14.3, Schritt 3). */
@@ -28,9 +30,15 @@ export async function listMediaQueue(actorId: string): Promise<MediaQueueEntry[]
     where: { status: "IN_REVIEW", deletedAt: null },
     orderBy: { updatedAt: "asc" },
     take: MEDIA_QUEUE_LIMIT,
-    select: { id: true, updatedAt: true, visibility: true, providerProfile: { select: { displayName: true } } },
+    select: { id: true, updatedAt: true, visibility: true, providerProfile: { select: { displayName: true } }, organization: { select: { name: true } } },
   });
-  return rows.map((row) => ({ id: row.id, submittedAt: row.updatedAt, visibility: row.visibility, displayName: row.providerProfile?.displayName ?? null }));
+  return rows.map((row) => ({
+    id: row.id,
+    submittedAt: row.updatedAt,
+    visibility: row.visibility,
+    displayName: row.providerProfile?.displayName ?? row.organization?.name ?? null,
+    owner: row.organization ? ("organization" as const) : ("profile" as const),
+  }));
 }
 
 export async function countMediaQueue(actorId: string): Promise<number> {
@@ -56,6 +64,7 @@ export async function getMediaCase(actorId: string, mediaId: string) {
       updatedAt: true,
       createdAt: true,
       providerProfile: { select: { id: true, displayName: true, slug: true, status: true } },
+      organization: { select: { id: true, name: true, slug: true, status: true } },
     },
   });
 }

@@ -4,13 +4,26 @@ import { ConfirmDialog, InlineAlert } from "@app/ui";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { deleteMedia } from "../actions/arrange";
+import { PROFILE_SCOPE, scopeInput, type MediaScope } from "./types";
 
 /**
  * Rückfrage vor dem endgültigen Löschen (PRD 13): benennt die Folge, Button
  * «Medium löschen». Bei einem Fehler bleibt der Dialog offen und sagt, dass
  * nichts verloren ging.
  */
-export function DeleteMediaDialog({ mediaIds, open, onOpenChange, onDeleted }: { mediaIds: readonly string[]; open: boolean; onOpenChange: (open: boolean) => void; onDeleted: (count: number) => void }) {
+export function DeleteMediaDialog({
+  mediaIds,
+  scope = PROFILE_SCOPE,
+  open,
+  onOpenChange,
+  onDeleted,
+}: {
+  mediaIds: readonly string[];
+  scope?: MediaScope;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  onDeleted: (count: number) => void;
+}) {
   const t = useTranslations("media.deleteDialog");
   const [failed, setFailed] = useState(false);
   const many = mediaIds.length > 1;
@@ -26,7 +39,7 @@ export function DeleteMediaDialog({ mediaIds, open, onOpenChange, onDeleted }: {
       confirmLabel={many ? t("confirmMany") : t("confirm")}
       cancelLabel={t("cancel")}
       onConfirm={async () => {
-        const result = await deleteMedia({ mediaIds }).catch(() => null);
+        const result = await deleteMedia({ mediaIds, ...scopeInput(scope) }).catch(() => null);
         if (!result?.ok) {
           setFailed(true);
           throw new Error("delete-failed");

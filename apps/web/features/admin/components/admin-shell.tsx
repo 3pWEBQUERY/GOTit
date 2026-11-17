@@ -18,6 +18,8 @@ export interface AdminShellProps {
   openReports: number | null;
   /** Neue Bewertungen und offene Einsprüche; nur für Personen mit Moderationsrolle, sonst null. */
   openReviews: number | null;
+  /** Eingereichte Nachweise von Organisationen; nur für Personen mit Moderationsrolle, sonst null. */
+  openOrganizations: number | null;
   children: ReactNode;
 }
 
@@ -25,7 +27,7 @@ export interface AdminShellProps {
  * Eigene, dichte Shell des Admins (PRD 12.4): feste Seitenleiste ab 1024 px,
  * darüber ein Kopf mit Konto, Weg zum Marktplatz und Abmelden. Kein Glas.
  */
-export async function AdminShell({ locale, name, openCases, openReports, openReviews, children }: AdminShellProps) {
+export async function AdminShell({ locale, name, openCases, openReports, openReviews, openOrganizations, children }: AdminShellProps) {
   const [t, openMedia] = await Promise.all([getTranslations({ locale, namespace: "admin.shell" }), openCases !== null ? countMediaInReview() : Promise.resolve(null)]);
   const href = createHref(locale);
   const items: AdminNavItem[] = [
@@ -41,6 +43,12 @@ export async function AdminShell({ locale, name, openCases, openReports, openRev
       href: href("/admin/medien"),
       label: t("media"),
       ...(openMedia !== null && openMedia > 0 ? { count: { value: openMedia, label: t("openMediaCount", { count: openMedia }) } } : {}),
+    },
+    {
+      key: "organizations",
+      href: href("/admin/organisationen"),
+      label: t("organizations"),
+      ...(openOrganizations !== null && openOrganizations > 0 ? { count: { value: openOrganizations, label: t("openOrganizationCount", { count: openOrganizations }) } } : {}),
     },
     {
       key: "reports",

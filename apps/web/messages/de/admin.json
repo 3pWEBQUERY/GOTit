@@ -26,7 +26,9 @@
     "reports": "Meldungen",
     "openReportCount": "{count, plural, one {# offene Meldung} other {# offene Meldungen}}",
     "reviews": "Bewertungen",
-    "openReviewCount": "{count, plural, one {# offener Fall} other {# offene Fälle}}"
+    "openReviewCount": "{count, plural, one {# offener Fall} other {# offene Fälle}}",
+    "organizations": "Organisationen",
+    "openOrganizationCount": "{count, plural, one {# Organisation wartet auf Prüfung} other {# Organisationen warten auf Prüfung}}"
   },
   "twoFactor": {
     "title": "Zweiten Faktor einrichten",
@@ -275,7 +277,8 @@
       "altText": "Alternativtext",
       "size": "Grösse",
       "dimensions": "{width} × {height} Pixel",
-      "none": "Keine Angabe"
+      "none": "Keine Angabe",
+      "organization": "Organisation"
     },
     "decision": {
       "title": "Entscheid",
@@ -306,7 +309,8 @@
       "identifying": "Zeigt Adresse oder identifizierende Details",
       "consent": "Einwilligung abgebildeter Personen zweifelhaft",
       "policyViolation": "Verstoss gegen Richtlinien"
-    }
+    },
+    "organizationOwner": "{name} (Organisation)"
   },
   "reports": {
     "title": "Meldungen",

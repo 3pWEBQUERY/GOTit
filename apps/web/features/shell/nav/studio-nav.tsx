@@ -8,6 +8,7 @@ import {
   CreditCard,
   Images,
   Inbox,
+  Link2,
   MapPin,
   Megaphone,
   MessageSquare,
@@ -41,14 +42,21 @@ export interface SidebarBadge {
   label: string;
 }
 
-/** Seitenleiste des Einzelanbieter-Studios in der Reihenfolge der PRD (6.2); «Nachrichten» zählt ungelesene Unterhaltungen. */
-export function buildProviderSidebar(t: Translate, href: HrefBuilder, flags: StudioFlags, unread?: SidebarBadge) {
+function withBadge(entry: SidebarItem, badge?: SidebarBadge): SidebarItem {
+  return badge && badge.value > 0 ? { ...entry, badge: badge.value, badgeLabel: badge.label } : entry;
+}
+
+/**
+ * Seitenleiste des Einzelanbieter-Studios in der Reihenfolge der PRD (6.2, 7.6);
+ * «Nachrichten» zählt ungelesene Unterhaltungen, «Verknüpfungen» offene Einladungen.
+ */
+export function buildProviderSidebar(t: Translate, href: HrefBuilder, flags: StudioFlags, unread?: SidebarBadge, invitations?: SidebarBadge) {
   const messages = item(t("studio.messages"), href("/studio/nachrichten"), MessageSquare);
   const items = [
     item(t("studio.today"), href("/studio"), Sun),
     item(t("studio.profile"), href("/studio/profil"), UserRound),
     item(t("studio.media"), href("/studio/medien"), Images),
-    unread && unread.value > 0 ? { ...messages, badge: unread.value, badgeLabel: unread.label } : messages,
+    withBadge(messages, unread),
     item(t("studio.calendar"), href("/studio/kalender"), CalendarDays),
     item(t("studio.requests"), href("/studio/anfragen"), Inbox),
     item(t("studio.reviews"), href("/studio/bewertungen"), MessageSquareText),
@@ -57,6 +65,7 @@ export function buildProviderSidebar(t: Translate, href: HrefBuilder, flags: Stu
     ...(flags.businessSuiteEnabled
       ? [item(t("studio.advertising"), href("/studio/werbung"), Megaphone), item(t("studio.billing"), href("/studio/abrechnung"), CreditCard)]
       : []),
+    withBadge(item(t("studio.links"), href("/studio/verknuepfungen"), Link2), invitations),
   ];
   return { items, secondaryItems: [item(t("studio.settings"), href("/studio/einstellungen"), Settings)] };
 }
