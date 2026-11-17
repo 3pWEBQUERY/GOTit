@@ -39,7 +39,11 @@ Der Status «Verifizierung ausstehend» aus v1.0 ist kein eigener Profilstatus: 
 | v1.0, 9.3 Moderationsfall mit Kategorie, Priorität, Zuständigkeit, Einspruchsstatus | Schritt 1.13. Der Prüffall aus 1.5 wird dort Teil der allgemeinen Moderation |
 | 13.2 und 20.7 Backups und Restore-Test | Schritt 1.14 |
 
-## Entscheidung nötig: Altersprüfung für Besucher (FR-VERIFY-001)
+## Entschieden: Altersprüfung für Besucher (FR-VERIFY-001)
+
+**Entscheid vom 17.11.2026 (Alexander):** Für den Start bleibt die Selbstauskunft mit signiertem Cookie die Altersprüfung für Besucher. Die zweite Stufe unten bleibt ein Vorschlag für später, zum Beispiel wenn die rechtliche Einordnung einer Region sie verlangt.
+
+Ursprüngliche Ausgangslage und Vorschlag:
 
 v1.0 sagt: «Eine einfache ‹Ich bin 18›-Schaltfläche wird nicht als alleinige Schutzmassnahme vorausgesetzt.» Für Besucher ist heute genau das gebaut: Selbstauskunft mit signiertem Cookie (Entscheid 0002). Die Anbieter sind davon nicht betroffen; ihre Prüfung läuft beim Dienstleister.
 
@@ -49,4 +53,8 @@ Das ist eine rechtliche Frage. Nach der Regel der PRD (v2.0, Abschnitt 1, Punkt 
 2. **Zweite Stufe vorbereiten:** dieselbe Schnittstelle zum Dienstleister, aber nur als Altersnachweis ohne Identität, zum Beispiel per Schätzung oder digitalem Ausweis. Sie wird pro Region einschaltbar, sobald die rechtliche Einordnung sie verlangt.
 3. **Festlegen,** was ohne zweite Stufe zugänglich bleibt, etwa Übersichtsseiten ohne Fotos. Auch das hängt von der rechtlichen Einordnung ab.
 
-Bis zur Entscheidung bleibt die Selbstauskunft aktiv. Die zweite Stufe wird nicht gebaut, weil ohne Entscheid offen ist, was sie leisten muss.
+Die Selbstauskunft bleibt aktiv. Die zweite Stufe wird nicht gebaut.
+
+## Prüfdienstleister (Gate 16.3)
+
+Die Wahl folgt gegen Ende von Phase 1 (Entscheid vom 17.11.2026). Bis dahin läuft der Test-Dienstleister nur ausserhalb der Produktion; in der Produktion kann deshalb noch kein Profil öffentlich werden.

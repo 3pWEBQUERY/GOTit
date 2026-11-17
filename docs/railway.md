@@ -49,10 +49,26 @@ Die PRD verlangt `railway.json` pro Dienst. Railway nimmt für neu angelegte Die
 
 ## E-Mail-Versand
 
-Anbieter: **Resend** (Entscheid vom 17.11.2026), angebunden über die HTTP-API (`MAIL_TRANSPORT=resend`), weil Railway ausgehendes SMTP je nach Tarif sperrt. Noch nicht aktiv. Solange es fehlt, ist die Registrierung geschlossen und sagt das; der Worker lehnt E-Mail-Jobs sichtbar ab. Zum Einschalten:
-1. Gate 16.3: bestätigen, dass die Nutzungsbedingungen von Resend den Versand für diese Plattform zulassen (die E-Mails selbst sind neutral: Bestätigung, Passwort, Sicherheitshinweise).
-2. Bei Resend eine Absender-Domain verifizieren (DNS-Einträge SPF und DKIM) und einen API-Schlüssel nur mit Senderecht anlegen.
-3. An `web` und `worker` setzen: `MAIL_TRANSPORT=resend`, `MAIL_FROM` (zum Beispiel `Name <hallo@domain>`), `RESEND_API_KEY` als versiegelte Variable im Dashboard, nie im Repo oder Chat.
+Anbieter: **Resend**, angebunden über die HTTP-API, weil Railway ausgehendes SMTP je nach Tarif sperrt. Die Absender-Domain `thegnd.net` ist bei Resend verifiziert (17.11.2026).
+
+| Variable | Dienste (`production`) | Wert |
+| --- | --- | --- |
+| `MAIL_TRANSPORT` | web, worker | `resend` |
+| `MAIL_FROM` | web, worker | `${{shared.APP_NAME}} <noreply@thegnd.net>` |
+| `RESEND_API_KEY` | web, worker | versiegelt, im Dashboard gesetzt; Schlüssel nur mit Senderecht |
+
+Ohne `RESEND_API_KEY` gilt der Versand als nicht eingerichtet: Die Registrierung ist geschlossen und sagt das, der Worker lehnt E-Mail-Jobs sichtbar ab. In `staging` bleibt `MAIL_TRANSPORT=outbox`.
+
+## Domains
+
+| Domain | Dienst | Umgebung |
+| --- | --- | --- |
+| `thegnd.net`, `www.thegnd.net` | web | production |
+| `realtime.thegnd.net` | realtime | production |
+| `staging.thegnd.net` | web | staging |
+| `realtime-staging.thegnd.net` | realtime | staging |
+
+Jede Domain braucht beim DNS-Anbieter einen CNAME auf das Ziel, das Railway nennt, und einen TXT-Eintrag `_railway-verify…` zur Bestätigung. Für `thegnd.net` selbst (Apex) muss der Anbieter CNAME-Flattening oder ALIAS unterstützen (zum Beispiel Cloudflare). Sobald die Zertifikate ausgestellt sind, werden `APP_URL` (`https://thegnd.net`, staging `https://staging.thegnd.net`) und `REALTIME_URL` (`wss://realtime.thegnd.net`, staging `wss://realtime-staging.thegnd.net`) umgestellt; vorher würden Links in E-Mails und Passkeys auf eine noch nicht erreichbare Adresse zeigen.
 
 ## Noch nicht eingerichtet
 
