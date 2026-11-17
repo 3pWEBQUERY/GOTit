@@ -34,13 +34,20 @@ function item(label: string, href: string, IconComponent: Icon): SidebarItem {
   return { label, href, icon: <IconComponent strokeWidth={1.5} /> };
 }
 
-/** Seitenleiste des Einzelanbieter-Studios in der Reihenfolge der PRD (6.2). */
-export function buildProviderSidebar(t: Translate, href: HrefBuilder, flags: StudioFlags) {
+/** Zahl an einem Eintrag, mit ihrer Bedeutung für Screenreader. */
+export interface SidebarBadge {
+  value: number;
+  label: string;
+}
+
+/** Seitenleiste des Einzelanbieter-Studios in der Reihenfolge der PRD (6.2); «Nachrichten» zählt ungelesene Unterhaltungen. */
+export function buildProviderSidebar(t: Translate, href: HrefBuilder, flags: StudioFlags, unread?: SidebarBadge) {
+  const messages = item(t("studio.messages"), href("/studio/nachrichten"), MessageSquare);
   const items = [
     item(t("studio.today"), href("/studio"), Sun),
     item(t("studio.profile"), href("/studio/profil"), UserRound),
     item(t("studio.media"), href("/studio/medien"), Images),
-    item(t("studio.messages"), href("/studio/nachrichten"), MessageSquare),
+    unread && unread.value > 0 ? { ...messages, badge: unread.value, badgeLabel: unread.label } : messages,
     item(t("studio.calendar"), href("/studio/kalender"), CalendarDays),
     item(t("studio.requests"), href("/studio/anfragen"), Inbox),
     ...(flags.communityEnabled ? [item(t("studio.posts"), href("/studio/beitraege"), PenSquare)] : []),

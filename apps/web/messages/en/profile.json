@@ -72,9 +72,8 @@
   "contact": {
     "label": "Contact",
     "request": "Request appointment",
-    "soonBoth": "Appointment requests and messages become available with the next version of the platform.",
-    "soonMessages": "Messages become available with the next version of the platform.",
     "soonBookings": "Appointment requests become available with the next version of the platform.",
+    "ownerMessages": "Members can send you a message here.",
     "none": "This profile does not accept requests through the platform at the moment.",
     "paused": "This profile is paused at the moment",
     "restricted": "Contact through the platform is not possible for this profile at the moment.",

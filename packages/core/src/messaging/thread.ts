@@ -11,6 +11,8 @@ import { THREAD_PAGE_SIZE, idSchema } from "./schemas";
 export interface ThreadMessageView {
   id: string;
   fromMe: boolean;
+  /** Kennung des Browsers, nur für eigene Nachrichten: So ersetzt die gespeicherte Nachricht die optimistische Anzeige. */
+  clientId: string | null;
   body: string | null;
   deleted: boolean;
   createdAt: Date;
@@ -92,6 +94,7 @@ export async function getThread(
       select: {
         id: true,
         senderId: true,
+        clientId: true,
         body: true,
         deletedAt: true,
         createdAt: true,
@@ -142,6 +145,7 @@ export async function getThread(
       return {
         id: message.id,
         fromMe,
+        clientId: fromMe ? message.clientId : null,
         body: message.deletedAt ? null : message.body,
         deleted: message.deletedAt !== null,
         createdAt: message.createdAt,

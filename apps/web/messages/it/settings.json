@@ -47,7 +47,8 @@
     "notificationLocked": "Questa notifica non si può disattivare.",
     "passkeyCancelled": "Hai interrotto l’aggiunta. Non è stato salvato nulla.",
     "passkeyExists": "Questa passkey è già salvata.",
-    "passkeyUnsupported": "Questo browser non supporta le passkey."
+    "passkeyUnsupported": "Questo browser non supporta le passkey.",
+    "blockNotFound": "Questo blocco non esiste più. L’elenco è ora aggiornato."
   },
   "profile": {
     "metaTitle": "Profilo",
@@ -181,8 +182,21 @@
     "onlineStatusHint": "Gli altri vedono quando sei attivo.",
     "readReceipts": "Invia conferme di lettura",
     "readReceiptsHint": "Gli altri vedono quando hai letto il loro messaggio.",
-    "blockedTitle": "Persone bloccate",
-    "blockedText": "Il blocco arriva insieme ai messaggi. Allora qui gestirai chi non può più contattarti."
+    "blocked": {
+      "title": "Bloccati",
+      "intro": "Le persone bloccate non possono più scriverti né iniziare una nuova conversazione. Non ne vengono informate.",
+      "loading": "Caricamento delle persone bloccate",
+      "listLabel": "Persone bloccate",
+      "memberFallback": "Membro",
+      "blockedAt": "Bloccato il",
+      "unblock": "Sblocca",
+      "unblockNamed": "Sblocca {name}",
+      "unblocked": "{name} è stato sbloccato",
+      "undo": "Annulla",
+      "reblocked": "{name} è di nuovo bloccato",
+      "emptyTitle": "Nessuno bloccato",
+      "emptyText": "Se blocchi qualcuno in una conversazione, la persona compare qui finché non la sblocchi."
+    }
   },
   "notifications": {
     "metaTitle": "Notifiche",

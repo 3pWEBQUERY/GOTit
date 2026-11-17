@@ -93,8 +93,10 @@ test.describe("Profilseite: öffentlich (PRD v2 10)", () => {
     await expect(page.getByRole("table")).toContainText("CHF 300");
     await expect(page.getByText(/^Stand: \d{2}\.\d{2}\.\d{4}$/)).toBeVisible();
     await expect(page.locator("[data-media-placeholder]")).toBeVisible();
-    await expect(page.locator("[data-contact-bar=panel]")).toContainText("mit der nächsten Version");
+    await expect(page.locator("[data-contact-bar=panel]")).toContainText("Terminanfragen sind mit der nächsten Version");
     await expect(page.locator("[data-contact-bar=panel]").getByRole("button")).toHaveCount(0);
+    // «Nachricht schreiben» führt Besucher zur Anmeldung und zurück (Entscheid 0014).
+    await expect(page.locator("[data-contact-bar=panel]").getByRole("link", { name: "Nachricht schreiben" })).toHaveAttribute("href", /\/de\/anmelden\?weiter=/);
     await expect(page.locator("[data-contact-bar=panel]").getByRole("link", { name: "Profil melden" })).toHaveAttribute("href", "/de/melden");
     await expect(page.locator("link[rel=canonical]")).toHaveAttribute("href", new RegExp(`/de/p/${slug}$`));
     await expect(page.locator('meta[name="robots"]')).toHaveCount(0);

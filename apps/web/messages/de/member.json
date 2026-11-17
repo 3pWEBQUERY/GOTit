@@ -12,7 +12,11 @@
     "conversations": {
       "title": "Ungelesene Unterhaltungen",
       "emptyTitle": "Keine ungelesenen Unterhaltungen",
-      "emptyText": "Neue Nachrichten von Anbietern erscheinen hier, bis du sie gelesen hast."
+      "emptyText": "Neue Nachrichten von Anbietern erscheinen hier, bis du sie gelesen hast.",
+      "memberFallback": "Mitglied",
+      "newMessages": "{count, plural, one {# neue Nachricht} other {# neue Nachrichten}}",
+      "newMessagesStudio": "{count, plural, one {# neue Nachricht im Studio} other {# neue Nachrichten im Studio}}",
+      "all": "Alle Nachrichten öffnen"
     },
     "appointments": {
       "title": "Nächste Termine",

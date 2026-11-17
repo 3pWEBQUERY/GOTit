@@ -77,6 +77,10 @@ model ProviderProfile {
   searchEntry  SearchProfile?
   favorites    Favorite[]
   conversations Conversation[]
+  calendarSettings CalendarSettings?
+  availabilityWindows AvailabilityWindow[]
+  calendarBlocks CalendarBlock[]
+  bookingRequests BookingRequest[]
 
   @@index([status])
   @@map("provider_profile")

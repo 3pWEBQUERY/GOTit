@@ -12,7 +12,11 @@
     "conversations": {
       "title": "Conversazioni non lette",
       "emptyTitle": "Nessuna conversazione non letta",
-      "emptyText": "I nuovi messaggi dei fornitori compaiono qui finché non li leggi."
+      "emptyText": "I nuovi messaggi dei fornitori compaiono qui finché non li leggi.",
+      "memberFallback": "Membro",
+      "newMessages": "{count, plural, one {# nuovo messaggio} other {# nuovi messaggi}}",
+      "newMessagesStudio": "{count, plural, one {# nuovo messaggio nello Studio} other {# nuovi messaggi nello Studio}}",
+      "all": "Apri tutti i messaggi"
     },
     "appointments": {
       "title": "Prossimi appuntamenti",

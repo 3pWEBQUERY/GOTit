@@ -1,1 +1,256 @@
-{}
+{
+  "title": "Nachrichten",
+  "threadMetaTitle": "Unterhaltung",
+  "memberFallback": "Mitglied seit {year}",
+  "noThreadTitle": "Keine Unterhaltung geöffnet",
+  "noThreadText": "Wähle links eine Unterhaltung, um sie hier zu lesen.",
+  "time": {
+    "yesterday": "Gestern"
+  },
+  "list": {
+    "title": "Unterhaltungen",
+    "label": "Unterhaltungen",
+    "previewImage": "Bild",
+    "previewDeleted": "Nachricht gelöscht",
+    "previewNone": "Noch keine Nachrichten",
+    "previewOwn": "Du: {text}",
+    "unread": "{count, plural, one {# ungelesene Nachricht} other {# ungelesene Nachrichten}}",
+    "starred": "Favorit",
+    "blocked": "Blockiert"
+  },
+  "tabs": {
+    "label": "Ansichten des Postfachs",
+    "alle": "Alle",
+    "ungelesen": "Ungelesen",
+    "favoriten": "Favoriten",
+    "archiviert": "Archiviert"
+  },
+  "search": {
+    "label": "In Unterhaltungen suchen",
+    "clear": "Suche leeren",
+    "hint": "Name oder Text einer Nachricht, dann Enter."
+  },
+  "empty": {
+    "noMatchTitle": "Keine Treffer",
+    "noMatchText": "Keine Unterhaltung passt zu «{query}».",
+    "noMatchLabel": "Keine Unterhaltung trägt dieses Label.",
+    "reset": "Suche und Filter zurücksetzen",
+    "alleTitle": "Noch keine Nachrichten",
+    "alleMember": "Auf einem Profil beginnst du mit «Nachricht schreiben» eine Unterhaltung. Sie steht dann hier.",
+    "alleStudio": "Mitglieder schreiben dir über dein Profil. Ihre Nachrichten stehen dann hier.",
+    "discover": "Profile entdecken",
+    "ungelesenTitle": "Alles gelesen",
+    "ungelesenText": "Neue Nachrichten, die du noch nicht geöffnet hast, stehen hier.",
+    "favoritenTitle": "Keine Favoriten",
+    "favoritenText": "Markiere eine Unterhaltung mit dem Stern, dann steht sie hier.",
+    "archiviertTitle": "Archiv ist leer",
+    "archiviertText": "Archivierte Unterhaltungen stehen hier. Eine neue Nachricht holt sie zurück.",
+    "toAll": "Alle Unterhaltungen zeigen"
+  },
+  "labels": {
+    "defaults": {
+      "newRequest": "Neue Anfrage",
+      "appointmentOpen": "Termin offen",
+      "confirmed": "Bestätigt",
+      "needsReply": "Rückmeldung nötig"
+    },
+    "filter": "Label",
+    "filterAll": "Alle Labels",
+    "manage": "Labels verwalten",
+    "manageTitle": "Labels",
+    "manageDescription": "Labels sind privat. Nur du siehst sie, die Mitglieder nicht.",
+    "close": "Labels schliessen",
+    "listLabel": "Deine Labels",
+    "full": "Du hast die höchste Zahl von {max} Labels erreicht. Lösche eines, um ein neues anzulegen.",
+    "newLabel": "Neues Label",
+    "newHint": "Höchstens {max} Zeichen.",
+    "create": "Label anlegen",
+    "nameLabel": "Name des Labels",
+    "saveName": "Namen speichern",
+    "cancel": "Abbrechen",
+    "rename": "Umbenennen",
+    "renameNamed": "{name} umbenennen",
+    "delete": "Löschen",
+    "deleteNamed": "{name} löschen",
+    "deleteTitle": "Label «{name}» löschen?",
+    "deleteText": "Das Label verschwindet aus allen Unterhaltungen. Die Unterhaltungen selbst bleiben. Das lässt sich nicht rückgängig machen.",
+    "deleteConfirm": "Label löschen",
+    "errors": {
+      "invalid": "Gib einen Namen mit höchstens 30 Zeichen ein.",
+      "duplicate": "Ein Label mit diesem Namen gibt es schon.",
+      "limit": "Du hast die höchste Zahl von Labels erreicht.",
+      "not-found": "Dieses Label gibt es nicht mehr. Lade die Seite neu.",
+      "generic": "Das hat nicht geklappt. Versuche es erneut."
+    }
+  },
+  "live": {
+    "offline": "Keine Verbindung. Ungesendete Nachrichten bleiben stehen und lassen sich erneut senden."
+  },
+  "thread": {
+    "today": "Heute",
+    "yesterday": "Gestern",
+    "deleted": "Nachricht gelöscht",
+    "imageAltOwn": "Von dir gesendetes Bild",
+    "imageAlt": "Bild von {name}",
+    "openImage": "Bild gross anzeigen",
+    "failure": {
+      "undeliverable": "Die Nachricht konnte nicht zugestellt werden.",
+      "attachments": "Ein Bild ist nicht mehr verfügbar. Lade es erneut hoch.",
+      "rate-limited": "Zu viele Nachrichten in kurzer Zeit. Warte eine Minute und sende erneut.",
+      "invalid": "Die Nachricht liess sich nicht senden. Prüfe Länge und Inhalt.",
+      "network": "Keine Verbindung zum Server. Deine Nachricht ist nicht verloren."
+    },
+    "logLabel": "Verlauf mit {name}",
+    "authorOwn": "Du",
+    "status": {
+      "sending": "Wird gesendet",
+      "sent": "Gesendet",
+      "read": "Gelesen",
+      "failed": "Fehlgeschlagen"
+    },
+    "retry": "Erneut senden",
+    "lightboxTitle": "Bilder in der Unterhaltung mit {name}",
+    "lightboxClose": "Bildansicht schliessen",
+    "lightboxPrevious": "Vorheriges Bild",
+    "lightboxNext": "Nächstes Bild",
+    "lightboxCounter": "{current} von {total}",
+    "olderFailed": "Ältere Nachrichten liessen sich nicht laden.",
+    "loadOlder": "Ältere Nachrichten laden",
+    "archivedNote": "Archiviert",
+    "star": "Als Favorit markieren",
+    "archive": "Unterhaltung archivieren",
+    "unarchive": "Aus dem Archiv holen",
+    "details": "Details zur Unterhaltung",
+    "announce": "Neue Nachricht von {name}: {text}",
+    "announceImage": "Bild",
+    "emptyTitle": "Noch keine Nachrichten",
+    "emptyText": "Schreib {name} unten die erste Nachricht.",
+    "contextLabel": "Details zur Unterhaltung"
+  },
+  "delete": {
+    "title": "Nachricht löschen?",
+    "description": "Text und Bilder verschwinden für dich und für {name}. An ihrer Stelle steht «Nachricht gelöscht». Das lässt sich nicht rückgängig machen.",
+    "confirm": "Nachricht löschen",
+    "cancel": "Abbrechen",
+    "failed": "Die Nachricht liess sich nicht löschen. Versuche es erneut."
+  },
+  "menu": {
+    "label": "Aktionen zur Nachricht",
+    "delete": "Nachricht löschen",
+    "report": "Nachricht melden"
+  },
+  "report": {
+    "reasons": {
+      "spam": "Spam oder Werbung",
+      "harassment": "Belästigung oder Beleidigung",
+      "scam": "Betrug oder Forderung nach Geld",
+      "impersonation": "Falsche Identität",
+      "minor": "Minderjährige Person",
+      "exploitation": "Ausbeutung oder Zwang",
+      "danger": "Akute Gefahr",
+      "other": "Etwas anderes"
+    },
+    "titleMessage": "Nachricht melden",
+    "titleCounterpart": "Kontakt melden",
+    "descriptionMessage": "Die Moderation erhält eine Kopie dieser Nachricht. Die Gegenseite erfährt nicht, wer gemeldet hat.",
+    "descriptionCounterpart": "Die Moderation erhält eine Kopie der letzten zehn Nachrichten der Gegenseite. Sie erfährt nicht, wer gemeldet hat.",
+    "close": "Meldung schliessen",
+    "reasonLegend": "Was trifft zu?",
+    "reasonMissing": "Wähle einen Grund.",
+    "urgentTitle": "Bei akuter Gefahr ruf sofort die Polizei an: 117.",
+    "urgentText": "Die Moderation bearbeitet diese Meldung zuerst, ersetzt aber keinen Notruf.",
+    "next": "Beschreibung ergänzen",
+    "back": "Grund ändern",
+    "detailsLabel": "Was ist passiert?",
+    "detailsHint": "Höchstens 1000 Zeichen.",
+    "optional": "optional",
+    "submit": "Meldung senden",
+    "sentTitle": "Meldung gesendet",
+    "sentText": "Die Moderation prüft sie. Du kannst den Kontakt zusätzlich blockieren.",
+    "done": "Fertig",
+    "errorTitle": "Die Meldung liess sich nicht senden.",
+    "errorText": "Deine Angaben sind erhalten. Versuche es erneut.",
+    "step": "Schritt {current} von {total}"
+  },
+  "composer": {
+    "blockedTitle": "Du hast diesen Kontakt blockiert.",
+    "blockedText": "{name} kann dir nicht schreiben und erfährt nichts davon. Du kannst ebenfalls nicht schreiben.",
+    "unblock": "Blockierung aufheben",
+    "tooLong": "Die Nachricht ist zu lang. Höchstens {max} Zeichen.",
+    "imagesBusy": "Warte, bis alle Bilder bereit sind.",
+    "imagesFailed": "Entferne zuerst die Bilder, die nicht geladen werden konnten.",
+    "label": "Nachricht an {name}",
+    "placeholder": "Nachricht schreiben",
+    "send": "Nachricht senden",
+    "hint": "Enter sendet, Umschalt und Enter fügt eine Zeile ein.",
+    "attach": "Bild anhängen"
+  },
+  "images": {
+    "listLabel": "Angehängte Bilder",
+    "uploading": "Lädt hoch, {percent} %",
+    "processing": "Wird vorbereitet",
+    "ready": "Bereit",
+    "failure": {
+      "type": "Nur JPEG, PNG oder WebP.",
+      "size": "Grösser als 10 MB.",
+      "limit": "Höchstens 4 Bilder pro Nachricht.",
+      "network": "Upload unterbrochen.",
+      "processing": "Bild nicht lesbar.",
+      "rate-limited": "Zu viele Bilder in kurzer Zeit.",
+      "undeliverable": "Kann nicht gesendet werden."
+    },
+    "previewAlt": "Vorschau von Bild {number}",
+    "remove": "Bild {number} entfernen"
+  },
+  "context": {
+    "title": "Details",
+    "close": "Details schliessen",
+    "handle": "Höhe umschalten",
+    "memberSince": "Mitglied seit {year}",
+    "viewProfile": "Profil ansehen",
+    "unblock": "Blockierung aufheben",
+    "block": "Kontakt blockieren",
+    "blockedHint": "Keine Seite kann der anderen schreiben, solange du blockierst.",
+    "blockHint": "Wirkt sofort. Die Gegenseite erfährt nichts davon.",
+    "reportProfile": "Profil melden",
+    "reportMember": "Mitglied melden",
+    "labels": "Labels",
+    "noLabels": "Du hast noch keine Labels. Lege sie über «Labels verwalten» in der Liste an.",
+    "labelsSaved": "Labels gespeichert",
+    "labelsFailed": "Die Labels liessen sich nicht speichern.",
+    "note": "Private Notiz",
+    "noteHint": "Nur du siehst diese Notiz.",
+    "saveNote": "Notiz speichern",
+    "noteSaved": "Notiz gespeichert",
+    "noteFailed": "Die Notiz liess sich nicht speichern. Dein Text ist erhalten."
+  },
+  "actions": {
+    "failed": "Das hat nicht geklappt. Versuche es erneut.",
+    "undo": "Rückgängig",
+    "archived": "Unterhaltung archiviert",
+    "unarchived": "Unterhaltung aus dem Archiv geholt",
+    "blocked": "Kontakt blockiert",
+    "blockedText": "{name} kann dir nicht mehr schreiben und erfährt nichts davon.",
+    "unblocked": "Blockierung aufgehoben"
+  },
+  "start": {
+    "action": "Nachricht schreiben",
+    "errors": {
+      "sign-in": "Melde dich an, um eine Nachricht zu schreiben.",
+      "rate-limited": "Zu viele neue Unterhaltungen in kurzer Zeit. Versuche es später erneut.",
+      "not-found": "Dieses Profil ist zurzeit nicht erreichbar.",
+      "not-allowed": "Dieses Profil nimmt zurzeit keine Nachrichten an.",
+      "own-profile": "Das ist dein eigenes Profil.",
+      "undeliverable": "Eine Unterhaltung mit diesem Profil ist zurzeit nicht möglich.",
+      "generic": "Das hat nicht geklappt. Versuche es erneut."
+    }
+  },
+  "state": {
+    "loading": "Nachrichten werden geladen",
+    "slow": "Das Laden dauert länger als üblich.",
+    "retry": "Erneut versuchen",
+    "errorTitle": "Die Nachrichten liessen sich nicht laden.",
+    "errorDescription": "Deine Unterhaltungen und Nachrichten sind unverändert.",
+    "reload": "Seite neu laden"
+  }
+}

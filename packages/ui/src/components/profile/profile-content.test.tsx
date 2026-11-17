@@ -48,6 +48,13 @@ describe("ContactBar", () => {
     expect(screen.queryByRole("button")).toBeNull();
   });
 
+  it("zeigt ohne Terminanfrage nur die eigene Nachrichten-Aktion und den Hinweis darunter", () => {
+    render(<ContactBar variant="sticky-panel" label="Kontakt" message={<button type="button">Nachricht schreiben</button>} note="Terminanfragen kommen später." />);
+    expect(screen.getAllByRole("button").map((button) => button.textContent)).toEqual(["Nachricht schreiben"]);
+    expect(screen.getByText("Terminanfragen kommen später.")).toBeTruthy();
+    expect(screen.queryByRole("link")).toBeNull();
+  });
+
   it("ist als mobile Leiste Glas und ab 768 px ausgeblendet", () => {
     render(<ContactBar variant="mobile-bar" label="Kontakt" request={request} message={message} />);
     const bar = screen.getByRole("region", { name: "Kontakt" });

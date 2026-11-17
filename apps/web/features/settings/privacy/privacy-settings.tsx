@@ -1,6 +1,6 @@
 "use client";
 
-import { InlineAlert, RadioGroup, Switch } from "@app/ui";
+import { RadioGroup, Switch } from "@app/ui";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { SaveStatus } from "../components/save-status";
@@ -14,7 +14,7 @@ export interface PrivacySettingsProps {
   readReceipts: boolean;
 }
 
-/** Sichtbarkeit, Online-Status und Lesebestätigung. Alles speichert sofort und bestätigt am Ort. */
+/** Sichtbarkeit, Online-Status und Lesebestätigung. Alles speichert sofort und bestätigt am Ort; «Blockiert» steht als eigener Teil darunter. */
 export function PrivacySettings(initial: PrivacySettingsProps) {
   const t = useTranslations("settings.privacy");
   const [visibility, setVisibility] = useState<Visibility>(initial.profileVisibility);
@@ -47,7 +47,6 @@ export function PrivacySettings(initial: PrivacySettingsProps) {
         <Switch label={t("onlineStatus")} description={t("onlineStatusHint")} {...online} />
         <Switch label={t("readReceipts")} description={t("readReceiptsHint")} {...receipts} />
       </div>
-      <InlineAlert title={t("blockedTitle")}>{t("blockedText")}</InlineAlert>
     </div>
   );
 }

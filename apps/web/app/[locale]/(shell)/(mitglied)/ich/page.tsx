@@ -23,7 +23,7 @@ export default async function MemberOverviewPage({ params }: PageProps<"/[locale
   const [t, settings, overview] = await Promise.all([
     getTranslations({ locale, namespace: "member.overview" }),
     getTranslations({ locale, namespace: "settings" }),
-    getMemberOverview(viewer.userId),
+    getMemberOverview(viewer.userId, locale),
   ]);
   const href = createHref(locale);
   const discover = { label: t("discover"), href: href("/") };
@@ -32,8 +32,20 @@ export default async function MemberOverviewPage({ params }: PageProps<"/[locale
     { key: "savedSearches", href: href("/suchen"), label: t("shortcuts.savedSearches") },
     { key: "reviews", href: href("/bewertungen"), label: t("shortcuts.reviews") },
   ];
-  const list = (id: string, key: "requests" | "conversations" | "appointments" | "recentlyViewed", entries: typeof overview.openRequests, icon: ReactNode) => (
-    <OverviewList id={id} title={t(`${key}.title`)} entries={entries} empty={{ title: t(`${key}.emptyTitle`), text: t(`${key}.emptyText`), icon, action: discover }} />
+  const list = (
+    id: string,
+    key: "requests" | "conversations" | "appointments" | "recentlyViewed",
+    entries: typeof overview.openRequests,
+    icon: ReactNode,
+    more?: { label: string; href: string },
+  ) => (
+    <OverviewList
+      id={id}
+      title={t(`${key}.title`)}
+      entries={entries}
+      empty={{ title: t(`${key}.emptyTitle`), text: t(`${key}.emptyText`), icon, action: discover }}
+      more={more}
+    />
   );
 
   return (
@@ -44,7 +56,7 @@ export default async function MemberOverviewPage({ params }: PageProps<"/[locale
         <p className="text-body text-ink-muted">{t("greeting", { name: viewer.name })}</p>
       </header>
       {list("offene-anfragen", "requests", overview.openRequests, <Inbox strokeWidth={1.5} />)}
-      {list("ungelesen", "conversations", overview.unreadConversations, <MessageCircle strokeWidth={1.5} />)}
+      {list("ungelesen", "conversations", overview.unreadConversations, <MessageCircle strokeWidth={1.5} />, { label: t("conversations.all"), href: href("/nachrichten") })}
       {list("naechste-termine", "appointments", overview.upcomingAppointments, <CalendarClock strokeWidth={1.5} />)}
       <LinkList id="kurzlinks" title={t("shortcuts.title")} links={shortcuts} />
       <LinkList id="einstellungen" title={t("settingsTitle")} links={settingsLinks(href, (section) => settings(`sections.${section}`))} />

@@ -4,6 +4,7 @@ import { AppHeader, Button, IconLink, MegaMenu, SearchField, UiLink, type MegaMe
 import { Bell, Heart, MessageSquare, Search } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import type { HrefBuilder } from "../nav/href";
+import { getUnreadCounts } from "../queries/get-unread-counts";
 import { AccountMenu } from "./account-menu";
 import { ModeSwitchNav } from "./mode-switch-nav";
 import { MoreMenu } from "./more-menu";
@@ -112,10 +113,17 @@ async function HeaderActions({ locale, viewer, href }: Pick<Props, "locale" | "v
       </>
     );
   }
+  const unread = (await getUnreadCounts()).member;
   return (
     <>
       <IconLink href={href("/benachrichtigungen")} label={t("notifications")} icon={<Bell strokeWidth={1.5} />} />
-      <IconLink href={href("/nachrichten")} label={t("messages")} icon={<MessageSquare strokeWidth={1.5} />} />
+      <IconLink
+        href={href("/nachrichten")}
+        label={t("messages")}
+        badge={unread}
+        badgeLabel={t("unreadConversations", { count: unread })}
+        icon={<MessageSquare strokeWidth={1.5} />}
+      />
       <IconLink href={href("/favoriten")} label={t("favourites")} icon={<Heart strokeWidth={1.5} />} />
       <AccountMenu
         name={viewer.name}

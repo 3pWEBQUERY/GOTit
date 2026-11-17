@@ -9,10 +9,12 @@ export interface IconLinkProps extends Omit<UiLinkProps, "children" | "aria-labe
   icon: ReactNode;
   /** Kleine Zahl am Icon, zum Beispiel ungelesene Nachrichten. Steht auch im Namen. */
   badge?: number;
+  /** Bedeutung der Zahl für Screenreader, zum Beispiel «3 ungelesen». */
+  badgeLabel?: string;
 }
 
 /** Link, der nur ein Icon zeigt; Gegenstück zum IconButton für Navigation. Tippfläche 44 × 44 px. */
-export function IconLink({ label, icon, badge, className, ...props }: IconLinkProps) {
+export function IconLink({ label, icon, badge, badgeLabel, className, ...props }: IconLinkProps) {
   return (
     <UiLink
       title={label}
@@ -25,7 +27,7 @@ export function IconLink({ label, icon, badge, className, ...props }: IconLinkPr
       <span aria-hidden className="contents">
         {icon}
       </span>
-      <BadgeName label={label} badge={badge} />
+      <BadgeName label={label} badge={badge} badgeLabel={badgeLabel} />
     </UiLink>
   );
 }

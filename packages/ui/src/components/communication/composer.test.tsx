@@ -108,3 +108,24 @@ describe("TemplatePicker", () => {
     expect(screen.queryByRole("menuitem")).toBeNull();
   });
 });
+
+describe("Composer mit Bildern", () => {
+  it("sendet mit `allowEmpty` auch ohne Text und zeigt Anhänge über dem Feld", async () => {
+    const user = userEvent.setup();
+    const onSend = vi.fn();
+    render(
+      <Composer
+        value=""
+        onValueChange={() => undefined}
+        onSend={onSend}
+        allowEmpty
+        attachments={<p>Bild 1 bereit</p>}
+        label="Nachricht an Beispielname"
+        sendLabel="Nachricht senden"
+      />,
+    );
+    expect(screen.getByText("Bild 1 bereit")).toBeTruthy();
+    await user.click(screen.getByRole("button", { name: "Nachricht senden" }));
+    expect(onSend).toHaveBeenCalledTimes(1);
+  });
+});

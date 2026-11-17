@@ -31,7 +31,12 @@
     "./favorites/schemas": "./src/favorites/schemas.ts",
     "./search/indexer": "./src/search/indexer.ts",
     "./messaging": "./src/messaging/index.ts",
-    "./messaging/schemas": "./src/messaging/schemas.ts"
+    "./messaging/schemas": "./src/messaging/schemas.ts",
+    "./moderation": "./src/moderation/index.ts",
+    "./booking": "./src/booking/index.ts",
+    "./booking/schemas": "./src/booking/schemas.ts",
+    "./booking/status": "./src/booking/status.ts",
+    "./booking/maintenance": "./src/booking/maintenance.ts"
   },
   "scripts": {
     "lint": "eslint .",

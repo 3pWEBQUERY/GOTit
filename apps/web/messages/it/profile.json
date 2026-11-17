@@ -72,9 +72,8 @@
   "contact": {
     "label": "Contatto",
     "request": "Richiedi un appuntamento",
-    "soonBoth": "Le richieste di appuntamento e i messaggi saranno possibili con la prossima versione della piattaforma.",
-    "soonMessages": "I messaggi saranno possibili con la prossima versione della piattaforma.",
     "soonBookings": "Le richieste di appuntamento saranno possibili con la prossima versione della piattaforma.",
+    "ownerMessages": "Qui i membri possono scriverti un messaggio.",
     "none": "Questo profilo al momento non accetta richieste tramite la piattaforma.",
     "paused": "Questo profilo è attualmente in pausa",
     "restricted": "Il contatto tramite la piattaforma al momento non è possibile per questo profilo.",

@@ -11,6 +11,7 @@
   "startAsProvider": "Start as a provider",
   "notifications": "Notifications",
   "messages": "Messages",
+  "unreadConversations": "{count, plural, other {# unread}}",
   "favourites": "Favourites",
   "search": {
     "label": "Search",

@@ -11,6 +11,7 @@
   "startAsProvider": "Als Anbieter starten",
   "notifications": "Benachrichtigungen",
   "messages": "Nachrichten",
+  "unreadConversations": "{count, plural, other {# ungelesen}}",
   "favourites": "Favoriten",
   "search": {
     "label": "Suche",

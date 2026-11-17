@@ -12,7 +12,11 @@
     "conversations": {
       "title": "Unread conversations",
       "emptyTitle": "No unread conversations",
-      "emptyText": "New messages from providers appear here until you have read them."
+      "emptyText": "New messages from providers appear here until you have read them.",
+      "memberFallback": "Member",
+      "newMessages": "{count, plural, one {# new message} other {# new messages}}",
+      "newMessagesStudio": "{count, plural, one {# new message in Studio} other {# new messages in Studio}}",
+      "all": "Open all messages"
     },
     "appointments": {
       "title": "Upcoming appointments",

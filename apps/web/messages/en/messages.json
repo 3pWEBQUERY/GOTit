@@ -1,1 +1,256 @@
-{}
+{
+  "title": "Messages",
+  "threadMetaTitle": "Conversation",
+  "memberFallback": "Member since {year}",
+  "noThreadTitle": "No conversation open",
+  "noThreadText": "Choose a conversation on the left to read it here.",
+  "time": {
+    "yesterday": "Yesterday"
+  },
+  "list": {
+    "title": "Conversations",
+    "label": "Conversations",
+    "previewImage": "Image",
+    "previewDeleted": "Message deleted",
+    "previewNone": "No messages yet",
+    "previewOwn": "You: {text}",
+    "unread": "{count, plural, one {# unread message} other {# unread messages}}",
+    "starred": "Favourite",
+    "blocked": "Blocked"
+  },
+  "tabs": {
+    "label": "Inbox views",
+    "alle": "All",
+    "ungelesen": "Unread",
+    "favoriten": "Favourites",
+    "archiviert": "Archived"
+  },
+  "search": {
+    "label": "Search conversations",
+    "clear": "Clear search",
+    "hint": "A name or text from a message, then Enter."
+  },
+  "empty": {
+    "noMatchTitle": "No results",
+    "noMatchText": "No conversation matches «{query}».",
+    "noMatchLabel": "No conversation has this label.",
+    "reset": "Reset search and filter",
+    "alleTitle": "No messages yet",
+    "alleMember": "On a profile, «Write a message» starts a conversation. It then appears here.",
+    "alleStudio": "Members write to you through your profile. Their messages then appear here.",
+    "discover": "Discover profiles",
+    "ungelesenTitle": "All read",
+    "ungelesenText": "New messages you have not opened yet appear here.",
+    "favoritenTitle": "No favourites",
+    "favoritenText": "Mark a conversation with the star and it appears here.",
+    "archiviertTitle": "Archive is empty",
+    "archiviertText": "Archived conversations appear here. A new message brings them back.",
+    "toAll": "Show all conversations"
+  },
+  "labels": {
+    "defaults": {
+      "newRequest": "New request",
+      "appointmentOpen": "Appointment open",
+      "confirmed": "Confirmed",
+      "needsReply": "Reply needed"
+    },
+    "filter": "Label",
+    "filterAll": "All labels",
+    "manage": "Manage labels",
+    "manageTitle": "Labels",
+    "manageDescription": "Labels are private. Only you see them, members do not.",
+    "close": "Close labels",
+    "listLabel": "Your labels",
+    "full": "You have reached the maximum of {max} labels. Delete one to create a new one.",
+    "newLabel": "New label",
+    "newHint": "At most {max} characters.",
+    "create": "Create label",
+    "nameLabel": "Label name",
+    "saveName": "Save name",
+    "cancel": "Cancel",
+    "rename": "Rename",
+    "renameNamed": "Rename {name}",
+    "delete": "Delete",
+    "deleteNamed": "Delete {name}",
+    "deleteTitle": "Delete the label «{name}»?",
+    "deleteText": "The label disappears from all conversations. The conversations themselves stay. This cannot be undone.",
+    "deleteConfirm": "Delete label",
+    "errors": {
+      "invalid": "Enter a name with at most 30 characters.",
+      "duplicate": "A label with this name already exists.",
+      "limit": "You have reached the maximum number of labels.",
+      "not-found": "This label no longer exists. Reload the page.",
+      "generic": "That did not work. Try again."
+    }
+  },
+  "live": {
+    "offline": "No connection. Unsent messages stay and can be sent again."
+  },
+  "thread": {
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "deleted": "Message deleted",
+    "imageAltOwn": "Image you sent",
+    "imageAlt": "Image from {name}",
+    "openImage": "Show image large",
+    "failure": {
+      "undeliverable": "The message could not be delivered.",
+      "attachments": "An image is no longer available. Upload it again.",
+      "rate-limited": "Too many messages in a short time. Wait a minute and send again.",
+      "invalid": "The message could not be sent. Check its length and content.",
+      "network": "No connection to the server. Your message is not lost."
+    },
+    "logLabel": "History with {name}",
+    "authorOwn": "You",
+    "status": {
+      "sending": "Sending",
+      "sent": "Sent",
+      "read": "Read",
+      "failed": "Failed"
+    },
+    "retry": "Send again",
+    "lightboxTitle": "Images in the conversation with {name}",
+    "lightboxClose": "Close image view",
+    "lightboxPrevious": "Previous image",
+    "lightboxNext": "Next image",
+    "lightboxCounter": "{current} of {total}",
+    "olderFailed": "Older messages could not be loaded.",
+    "loadOlder": "Load older messages",
+    "archivedNote": "Archived",
+    "star": "Mark as favourite",
+    "archive": "Archive conversation",
+    "unarchive": "Move out of the archive",
+    "details": "Conversation details",
+    "announce": "New message from {name}: {text}",
+    "announceImage": "Image",
+    "emptyTitle": "No messages yet",
+    "emptyText": "Write the first message to {name} below.",
+    "contextLabel": "Conversation details"
+  },
+  "delete": {
+    "title": "Delete message?",
+    "description": "Text and images disappear for you and for {name}. In their place it says «Message deleted». This cannot be undone.",
+    "confirm": "Delete message",
+    "cancel": "Cancel",
+    "failed": "The message could not be deleted. Try again."
+  },
+  "menu": {
+    "label": "Message actions",
+    "delete": "Delete message",
+    "report": "Report message"
+  },
+  "report": {
+    "reasons": {
+      "spam": "Spam or advertising",
+      "harassment": "Harassment or insults",
+      "scam": "Fraud or demands for money",
+      "impersonation": "False identity",
+      "minor": "Minor",
+      "exploitation": "Exploitation or coercion",
+      "danger": "Immediate danger",
+      "other": "Something else"
+    },
+    "titleMessage": "Report message",
+    "titleCounterpart": "Report contact",
+    "descriptionMessage": "Moderation receives a copy of this message. The other side does not learn who reported it.",
+    "descriptionCounterpart": "Moderation receives a copy of the other side’s last ten messages. They do not learn who reported them.",
+    "close": "Close report",
+    "reasonLegend": "What applies?",
+    "reasonMissing": "Choose a reason.",
+    "urgentTitle": "In immediate danger, call the police now: 117.",
+    "urgentText": "Moderation handles this report first, but it does not replace an emergency call.",
+    "next": "Add a description",
+    "back": "Change reason",
+    "detailsLabel": "What happened?",
+    "detailsHint": "At most 1000 characters.",
+    "optional": "optional",
+    "submit": "Send report",
+    "sentTitle": "Report sent",
+    "sentText": "Moderation will review it. You can also block the contact.",
+    "done": "Done",
+    "errorTitle": "The report could not be sent.",
+    "errorText": "Your entries are kept. Try again.",
+    "step": "Step {current} of {total}"
+  },
+  "composer": {
+    "blockedTitle": "You have blocked this contact.",
+    "blockedText": "{name} cannot write to you and is not told. You cannot write either.",
+    "unblock": "Unblock",
+    "tooLong": "The message is too long. At most {max} characters.",
+    "imagesBusy": "Wait until all images are ready.",
+    "imagesFailed": "First remove the images that could not be loaded.",
+    "label": "Message to {name}",
+    "placeholder": "Write a message",
+    "send": "Send message",
+    "hint": "Enter sends, Shift and Enter adds a line.",
+    "attach": "Attach image"
+  },
+  "images": {
+    "listLabel": "Attached images",
+    "uploading": "Uploading, {percent} %",
+    "processing": "Being prepared",
+    "ready": "Ready",
+    "failure": {
+      "type": "Only JPEG, PNG or WebP.",
+      "size": "Larger than 10 MB.",
+      "limit": "At most 4 images per message.",
+      "network": "Upload interrupted.",
+      "processing": "Image not readable.",
+      "rate-limited": "Too many images in a short time.",
+      "undeliverable": "Cannot be sent."
+    },
+    "previewAlt": "Preview of image {number}",
+    "remove": "Remove image {number}"
+  },
+  "context": {
+    "title": "Details",
+    "close": "Close details",
+    "handle": "Toggle height",
+    "memberSince": "Member since {year}",
+    "viewProfile": "View profile",
+    "unblock": "Unblock",
+    "block": "Block contact",
+    "blockedHint": "Neither side can write to the other while you block.",
+    "blockHint": "Takes effect immediately. The other side is not told.",
+    "reportProfile": "Report profile",
+    "reportMember": "Report member",
+    "labels": "Labels",
+    "noLabels": "You have no labels yet. Create them with «Manage labels» in the list.",
+    "labelsSaved": "Labels saved",
+    "labelsFailed": "The labels could not be saved.",
+    "note": "Private note",
+    "noteHint": "Only you see this note.",
+    "saveNote": "Save note",
+    "noteSaved": "Note saved",
+    "noteFailed": "The note could not be saved. Your text is kept."
+  },
+  "actions": {
+    "failed": "That did not work. Try again.",
+    "undo": "Undo",
+    "archived": "Conversation archived",
+    "unarchived": "Conversation moved out of the archive",
+    "blocked": "Contact blocked",
+    "blockedText": "{name} can no longer write to you and is not told.",
+    "unblocked": "Contact unblocked"
+  },
+  "start": {
+    "action": "Write a message",
+    "errors": {
+      "sign-in": "Sign in to write a message.",
+      "rate-limited": "Too many new conversations in a short time. Try again later.",
+      "not-found": "This profile is currently not reachable.",
+      "not-allowed": "This profile does not accept messages at the moment.",
+      "own-profile": "This is your own profile.",
+      "undeliverable": "A conversation with this profile is not possible at the moment.",
+      "generic": "That did not work. Try again."
+    }
+  },
+  "state": {
+    "loading": "Loading messages",
+    "slow": "Loading is taking longer than usual.",
+    "retry": "Try again",
+    "errorTitle": "The messages could not be loaded.",
+    "errorDescription": "Your conversations and messages are unchanged.",
+    "reload": "Reload page"
+  }
+}

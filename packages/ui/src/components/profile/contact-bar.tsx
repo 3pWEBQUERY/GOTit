@@ -1,5 +1,5 @@
 import { CirclePause } from "lucide-react";
-import type { ReactNode } from "react";
+import { isValidElement, type ReactElement, type ReactNode } from "react";
 import { cn } from "../../cn";
 import { UiLink } from "../../link/ui-link";
 import { Button } from "../actions/button";
@@ -17,10 +17,12 @@ export interface ContactBarProps {
   variant: "sticky-panel" | "mobile-bar";
   /** Zugänglicher Name des Bereichs. */
   label: string;
-  /** Primäre Aktion: «Termin anfragen». */
-  request: ContactAction;
-  /** Sekundäre Aktion: «Nachricht schreiben». */
-  message?: ContactAction;
+  /** Primäre Aktion: «Termin anfragen». Fehlt sie, steht nur `message` da. */
+  request?: ContactAction;
+  /** Sekundäre Aktion: «Nachricht schreiben». Als Element, wenn die Ansicht sie selbst rendert (zum Beispiel ein Formular). */
+  message?: ContactAction | ReactElement;
+  /** Kurzer Hinweis unter den Aktionen, zum Beispiel was noch nicht möglich ist. */
+  note?: string;
   /** Nur `sticky-panel`: Inhalt über den Aktionen, zum Beispiel Name, Vertrauenssignale, Verfügbarkeit. */
   children?: ReactNode;
   /** Nur `sticky-panel`: Speichern, zum Beispiel ein stiller Button. */
@@ -51,6 +53,10 @@ function Action({ action, variant }: { action: ContactAction; variant: "primary"
   );
 }
 
+function MessageAction({ message, variant }: { message: ContactAction | ReactElement; variant: "primary" | "secondary" }) {
+  return isValidElement(message) ? message : <Action action={message as ContactAction} variant={variant} />;
+}
+
 function PausedHint({ text }: { text: string }) {
   return (
     <p className="flex items-start gap-2 text-small text-ink">
@@ -65,7 +71,7 @@ function PausedHint({ text }: { text: string }) {
  * Die mobile Leiste gehört zur Navigationsebene und ist Glas; sie ersetzt die
  * Tab-Leiste und steht über der Safe Area. Die Spalte ab 768 px ist deckend.
  */
-export function ContactBar({ variant, label, request, message, children, save, share, report, paused, className }: ContactBarProps) {
+export function ContactBar({ variant, label, request, message, note, children, save, share, report, paused, className }: ContactBarProps) {
   if (variant === "mobile-bar") {
     return (
       <section
@@ -82,8 +88,8 @@ export function ContactBar({ variant, label, request, message, children, save, s
           </div>
         ) : (
           <div className="flex items-stretch gap-2">
-            {message ? <Action action={message} variant="secondary" /> : null}
-            <Action action={request} variant="primary" />
+            {message ? <MessageAction message={message} variant={request ? "secondary" : "primary"} /> : null}
+            {request ? <Action action={request} variant="primary" /> : null}
           </div>
         )}
       </section>
@@ -102,8 +108,9 @@ export function ContactBar({ variant, label, request, message, children, save, s
         <PausedHint text={paused} />
       ) : (
         <div className="flex flex-col gap-2">
-          <Action action={request} variant="primary" />
-          {message ? <Action action={message} variant="secondary" /> : null}
+          {request ? <Action action={request} variant="primary" /> : null}
+          {message ? <MessageAction message={message} variant={request ? "secondary" : "primary"} /> : null}
+          {note ? <p className="text-small text-ink-muted">{note}</p> : null}
         </div>
       )}
       {secondary ? (

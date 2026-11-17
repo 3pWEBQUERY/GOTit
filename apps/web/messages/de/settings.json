@@ -47,7 +47,8 @@
     "notificationLocked": "Diese Benachrichtigung lässt sich nicht abschalten.",
     "passkeyCancelled": "Du hast das Hinzufügen abgebrochen. Es wurde nichts gespeichert.",
     "passkeyExists": "Dieser Passkey ist schon gespeichert.",
-    "passkeyUnsupported": "Dieser Browser unterstützt keine Passkeys."
+    "passkeyUnsupported": "Dieser Browser unterstützt keine Passkeys.",
+    "blockNotFound": "Diese Blockierung gibt es nicht mehr. Die Liste ist jetzt aktuell."
   },
   "profile": {
     "metaTitle": "Profil",
@@ -181,8 +182,21 @@
     "onlineStatusHint": "Andere sehen, wenn du gerade aktiv bist.",
     "readReceipts": "Lesebestätigungen senden",
     "readReceiptsHint": "Andere sehen, wann du ihre Nachricht gelesen hast.",
-    "blockedTitle": "Blockierte Personen",
-    "blockedText": "Blockieren kommt zusammen mit den Nachrichten. Dann verwaltest du hier, wer dich nicht mehr kontaktieren kann."
+    "blocked": {
+      "title": "Blockiert",
+      "intro": "Blockierte Personen können dir nicht mehr schreiben und keine neue Unterhaltung beginnen. Sie erfahren nichts davon.",
+      "loading": "Blockierte Personen werden geladen",
+      "listLabel": "Blockierte Personen",
+      "memberFallback": "Mitglied",
+      "blockedAt": "Blockiert am",
+      "unblock": "Blockierung aufheben",
+      "unblockNamed": "Blockierung aufheben für {name}",
+      "unblocked": "Blockierung für {name} aufgehoben",
+      "undo": "Rückgängig",
+      "reblocked": "{name} ist wieder blockiert",
+      "emptyTitle": "Niemand blockiert",
+      "emptyText": "Blockierst du jemanden in einer Unterhaltung, steht die Person hier, bis du die Blockierung aufhebst."
+    }
   },
   "notifications": {
     "metaTitle": "Benachrichtigungen",

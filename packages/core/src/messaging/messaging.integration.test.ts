@@ -150,6 +150,19 @@ describe("Zustellung (20.4)", () => {
     expect(thread?.counterpart.name).toBe(
       `fiktiv_mitglied_${run}`.slice(0, 30),
     );
+    // Die Kennung des Browsers sieht nur die sendende Seite.
+    expect(thread?.messages[0]?.clientId).toBeNull();
+    const own = await messaging.getThread(member, conversationId);
+    expect(own?.messages[0]?.clientId).toMatch(/^c\d+x\d+$/);
+    const [entry] = await messaging.listInbox(anbieter.userId);
+    expect(entry?.counterpart.memberSince).toBeInstanceOf(Date);
+    const [memberEntry] = await messaging.listInbox(member);
+    expect(memberEntry?.counterpart.memberSince).toBeNull();
+    // Nach Seite getrennt: Marktplatz und Studio zeigen je ihre Unterhaltungen.
+    expect(await messaging.listInbox(member, { role: "PROVIDER" })).toEqual([]);
+    expect(
+      (await messaging.listInbox(anbieter.userId, { role: "PROVIDER" })).length,
+    ).toBeGreaterThan(0);
     const events = published.filter((entry) =>
       entry.payload.includes(conversationId),
     );

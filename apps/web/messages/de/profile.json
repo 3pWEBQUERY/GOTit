@@ -72,9 +72,8 @@
   "contact": {
     "label": "Kontakt",
     "request": "Termin anfragen",
-    "soonBoth": "Terminanfragen und Nachrichten sind mit der nächsten Version der Plattform möglich.",
-    "soonMessages": "Nachrichten sind mit der nächsten Version der Plattform möglich.",
     "soonBookings": "Terminanfragen sind mit der nächsten Version der Plattform möglich.",
+    "ownerMessages": "Mitglieder können dir hier eine Nachricht schreiben.",
     "none": "Dieses Profil nimmt zurzeit keine Anfragen über die Plattform an.",
     "paused": "Dieses Profil ist zurzeit pausiert",
     "restricted": "Kontakt über die Plattform ist für dieses Profil zurzeit nicht möglich.",

@@ -72,6 +72,7 @@ export async function PublicProfilePage({ locale, slug, tab, edit }: PublicProfi
         mediaHref={tabLinks.media}
         tabs={<ProfileTabs current={tab} links={tabLinks} />}
         editLinks={editLinks}
+        message={owner ? undefined : { slug: profile.slug, signInHref: viewer.kind === "account" ? null : href({ pathname: "/anmelden", query: { weiter: here } }) }}
         actions={favorite ? <ProfileFavorite slug={profile.slug} data={favorite.data} signInHref={favorite.signInHref} favoritesHref={href("/favoriten")} /> : undefined}
       >
         {tab === "media" ? (

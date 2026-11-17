@@ -47,7 +47,8 @@
     "notificationLocked": "This notification cannot be turned off.",
     "passkeyCancelled": "You cancelled adding it. Nothing was saved.",
     "passkeyExists": "This passkey is already saved.",
-    "passkeyUnsupported": "This browser does not support passkeys."
+    "passkeyUnsupported": "This browser does not support passkeys.",
+    "blockNotFound": "This block no longer exists. The list is now up to date."
   },
   "profile": {
     "metaTitle": "Profile",
@@ -181,8 +182,21 @@
     "onlineStatusHint": "Others see when you are active.",
     "readReceipts": "Send read receipts",
     "readReceiptsHint": "Others see when you have read their message.",
-    "blockedTitle": "Blocked people",
-    "blockedText": "Blocking comes together with messages. You will then manage here who can no longer contact you."
+    "blocked": {
+      "title": "Blocked",
+      "intro": "People you block can no longer write to you or start a new conversation. They are not told.",
+      "loading": "Loading blocked people",
+      "listLabel": "Blocked people",
+      "memberFallback": "Member",
+      "blockedAt": "Blocked on",
+      "unblock": "Unblock",
+      "unblockNamed": "Unblock {name}",
+      "unblocked": "{name} is unblocked",
+      "undo": "Undo",
+      "reblocked": "{name} is blocked again",
+      "emptyTitle": "Nobody blocked",
+      "emptyText": "When you block someone in a conversation, they appear here until you unblock them."
+    }
   },
   "notifications": {
     "metaTitle": "Notifications",

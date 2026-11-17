@@ -12,6 +12,8 @@ export interface InboxCounterpart {
   name: string | null;
   profileSlug: string | null;
   role: ParticipantRole;
+  /** Nur für Mitglieder: Beitrittsdatum, für «Mitglied» mit Jahr, wenn ein Benutzername fehlt. */
+  memberSince: Date | null;
 }
 
 export interface InboxEntry {
@@ -32,6 +34,8 @@ export interface InboxEntry {
 
 export interface InboxQuery {
   view?: InboxView;
+  /** Nur Unterhaltungen, in denen das Konto diese Seite ist: `MEMBER` im Marktplatz, `PROVIDER` im Studio. */
+  role?: ParticipantRole | null;
   labelId?: string | null;
   q?: string | null;
 }
@@ -44,6 +48,7 @@ interface Row {
   lastMessageAt: Date;
   counterpartId: string;
   counterpartUsername: string | null;
+  counterpartSince: Date;
   profileName: string;
   profileSlug: string;
   unread: bigint;
@@ -68,6 +73,8 @@ export async function listInbox(
   const db = getDb();
   const view = query.view ?? "alle";
   const filters: Prisma.Sql[] = [Prisma.sql`me."userId" = ${userId}`];
+  if (query.role)
+    filters.push(Prisma.sql`me.role = ${query.role}::"ParticipantRole"`);
   if (view === "archiviert")
     filters.push(Prisma.sql`me."archivedAt" IS NOT NULL`);
   else filters.push(Prisma.sql`me."archivedAt" IS NULL`);
@@ -90,7 +97,7 @@ export async function listInbox(
 
   const rows = await db.$queryRaw<Row[]>`
     SELECT c.id AS "conversationId", me.role, me.starred, me."archivedAt", c."lastMessageAt",
-           other."userId" AS "counterpartId", u.username AS "counterpartUsername",
+           other."userId" AS "counterpartId", u.username AS "counterpartUsername", u."createdAt" AS "counterpartSince",
            pp."displayName" AS "profileName", pp.slug AS "profileSlug",
            ${unreadExpr} AS unread,
            last.body AS "lastBody", last."senderId" AS "lastSender", last."deletedAt" AS "lastDeleted",
@@ -129,8 +136,14 @@ export async function listInbox(
             name: row.profileName,
             profileSlug: row.profileSlug,
             role: "PROVIDER",
+            memberSince: null,
           }
-        : { name: row.counterpartUsername, profileSlug: null, role: "MEMBER" },
+        : {
+            name: row.counterpartUsername,
+            profileSlug: null,
+            role: "MEMBER",
+            memberSince: row.counterpartSince,
+          },
     preview:
       row.lastDeleted || !row.lastBody
         ? null
@@ -157,13 +170,21 @@ export async function listInbox(
   }));
 }
 
-/** Ungelesene Unterhaltungen insgesamt, für Kopfzeile, Tab-Leiste und `/ich`. */
+/**
+ * Ungelesene Unterhaltungen, für Kopfzeile, Tab-Leiste und Studio-Seitenleiste.
+ * Mit `role` nur die Unterhaltungen, in denen das Konto diese Seite ist:
+ * `MEMBER` für den Marktplatz, `PROVIDER` für das Studio.
+ */
 export async function countUnreadConversations(
   userId: string,
+  role?: ParticipantRole,
 ): Promise<number> {
+  const roleFilter = role
+    ? Prisma.sql`AND me.role = ${role}::"ParticipantRole"`
+    : Prisma.empty;
   const [row] = await getDb().$queryRaw<{ total: bigint }[]>`
     SELECT count(*) AS total FROM conversation_participant me
-    WHERE me."userId" = ${userId} AND me."archivedAt" IS NULL AND EXISTS (
+    WHERE me."userId" = ${userId} AND me."archivedAt" IS NULL ${roleFilter} AND EXISTS (
       SELECT 1 FROM message m WHERE m."conversationId" = me."conversationId" AND m."senderId" <> ${userId} AND m."deletedAt" IS NULL
         AND (me."lastReadAt" IS NULL OR m."createdAt" > me."lastReadAt"))`;
   return Number(row?.total ?? 0);

@@ -47,7 +47,8 @@
     "notificationLocked": "Cette notification ne peut pas être désactivée.",
     "passkeyCancelled": "Tu as interrompu l’ajout. Rien n’a été enregistré.",
     "passkeyExists": "Cette clé d’accès est déjà enregistrée.",
-    "passkeyUnsupported": "Ce navigateur ne prend pas en charge les clés d’accès."
+    "passkeyUnsupported": "Ce navigateur ne prend pas en charge les clés d’accès.",
+    "blockNotFound": "Ce blocage n’existe plus. La liste est maintenant à jour."
   },
   "profile": {
     "metaTitle": "Profil",
@@ -181,8 +182,21 @@
     "onlineStatusHint": "Les autres voient quand tu es actif.",
     "readReceipts": "Envoyer des confirmations de lecture",
     "readReceiptsHint": "Les autres voient quand tu as lu leur message.",
-    "blockedTitle": "Personnes bloquées",
-    "blockedText": "Le blocage arrive avec les messages. Tu géreras alors ici qui ne peut plus te contacter."
+    "blocked": {
+      "title": "Bloqués",
+      "intro": "Les personnes bloquées ne peuvent plus t’écrire ni commencer une nouvelle conversation. Elles n’en sont pas informées.",
+      "loading": "Chargement des personnes bloquées",
+      "listLabel": "Personnes bloquées",
+      "memberFallback": "Membre",
+      "blockedAt": "Bloqué le",
+      "unblock": "Débloquer",
+      "unblockNamed": "Débloquer {name}",
+      "unblocked": "{name} est débloqué",
+      "undo": "Annuler",
+      "reblocked": "{name} est de nouveau bloqué",
+      "emptyTitle": "Personne n’est bloqué",
+      "emptyText": "Si tu bloques quelqu’un dans une conversation, la personne apparaît ici jusqu’à ce que tu la débloques."
+    }
   },
   "notifications": {
     "metaTitle": "Notifications",

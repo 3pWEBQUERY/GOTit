@@ -2,12 +2,20 @@ import { ContactBar, UiLink, cn } from "@app/ui";
 import { Flag } from "lucide-react";
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
+import { StartConversation } from "../../../messages/components/start-conversation";
 import type { ContactState } from "../../model";
 
+/** «Nachricht schreiben» für Betrachter, die nicht Inhaber sind; fehlt für den Inhaber und in Vorschauen. */
+export interface ContactMessage {
+  slug: string;
+  /** Besucher: Weg zur Anmeldung mit Rückkehr zum Profil. */
+  signInHref: string | null;
+}
+
 /**
- * Der Satz an Stelle der Kontaktaktionen. «Termin anfragen» (1.9) und
- * «Nachricht schreiben» (1.8) gibt es noch nicht; statt toter Knöpfe sagt die
- * Seite ehrlich, wann Kontakt möglich ist (Entscheid 0012).
+ * Der Satz an Stelle der Kontaktaktionen. «Termin anfragen» kommt mit 1.9;
+ * statt eines toten Knopfs sagt die Seite ehrlich, wann es möglich ist
+ * (Entscheid 0012). Inhaber und Vorschauen sehen, was Mitglieder hier tun können.
  */
 export function useContactNotice(contact: ContactState): string {
   const t = useTranslations("profile.contact");
@@ -19,8 +27,8 @@ export function useContactNotice(contact: ContactState): string {
     case "none":
       return t("none");
     case "open":
-      if (contact.messages && contact.bookingRequests) return t("soonBoth");
-      return contact.messages ? t("soonMessages") : t("soonBookings");
+      if (!contact.messages) return t("soonBookings");
+      return contact.bookingRequests ? `${t("ownerMessages")} ${t("soonBookings")}` : t("ownerMessages");
   }
 }
 
@@ -38,21 +46,25 @@ export interface ProfileContactProps {
   contact: ContactState;
   variant: "sticky-panel" | "mobile-bar";
   reportHref?: string;
+  /** Nur auf `/p/[name]` für andere als den Inhaber (Entscheid 0014). */
+  message?: ContactMessage;
   className?: string;
   children?: ReactNode;
 }
 
 /** Kontakt der Profilseite in der ContactBar: Spalte ab 768 px, Leiste aus Glas darunter. */
-export function ProfileContact({ contact, variant, reportHref, className, children }: ProfileContactProps) {
+export function ProfileContact({ contact, variant, reportHref, message, className, children }: ProfileContactProps) {
   const t = useTranslations("profile.contact");
   const notice = useContactNotice(contact);
+  const canMessage = contact.kind === "open" && contact.messages && message !== undefined;
   return (
     <ContactBar
       variant={variant}
       label={t("label")}
-      // Wird nicht gezeigt: Mit `paused` steht nur der Satz da. Die Aktion entsteht mit 1.9.
-      request={{ label: t("request") }}
-      paused={notice}
+      // «Termin anfragen» entsteht mit 1.9; bis dahin gibt es nur «Nachricht schreiben» oder den Satz.
+      message={canMessage ? <StartConversation slug={message.slug} signInHref={message.signInHref} variant="primary" /> : undefined}
+      note={canMessage && contact.bookingRequests ? t("soonBookings") : undefined}
+      paused={canMessage ? undefined : notice}
       report={reportHref ? <ReportLink href={reportHref} /> : undefined}
       className={className}
     >

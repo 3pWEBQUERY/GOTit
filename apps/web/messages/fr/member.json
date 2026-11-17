@@ -12,7 +12,11 @@
     "conversations": {
       "title": "Conversations non lues",
       "emptyTitle": "Aucune conversation non lue",
-      "emptyText": "Les nouveaux messages des prestataires apparaissent ici jusqu’à ce que tu les lises."
+      "emptyText": "Les nouveaux messages des prestataires apparaissent ici jusqu’à ce que tu les lises.",
+      "memberFallback": "Membre",
+      "newMessages": "{count, plural, one {# nouveau message} other {# nouveaux messages}}",
+      "newMessagesStudio": "{count, plural, one {# nouveau message dans le Studio} other {# nouveaux messages dans le Studio}}",
+      "all": "Ouvrir tous les messages"
     },
     "appointments": {
       "title": "Prochains rendez-vous",

@@ -14,6 +14,8 @@ export interface TabBarItem {
   onSelect?: () => void;
   current?: boolean;
   badge?: number;
+  /** Bedeutung der Zahl für Screenreader, zum Beispiel «3 ungelesen». */
+  badgeLabel?: string;
 }
 
 export interface GlassTabBarProps {
@@ -59,10 +61,23 @@ export function GlassTabBar({ label, items, mode }: GlassTabBarProps) {
               <span aria-hidden className="contents">
                 {item.icon}
               </span>
-              <span className={cn("text-[0.8125rem]/4 font-[550]", compact && "sr-only")}>{item.label}</span>
+              <span className={cn("text-[0.8125rem]/4 font-[550]", compact && "sr-only")}>
+                {/* Mit Bedeutung der Zahl: ein Textknoten für den Namen («Nachrichten, 3 ungelesen»), sonst fügt der Browser vor dem Komma eine Lücke ein. */}
+                {item.badge && item.badgeLabel ? (
+                  <>
+                    <span aria-hidden>{item.label}</span>
+                    <span className="sr-only">{`${item.label}, ${item.badgeLabel}`}</span>
+                  </>
+                ) : (
+                  item.label
+                )}
+              </span>
               {item.badge ? (
-                <span className="tabular absolute top-1 left-1/2 ml-2 min-w-4 rounded-full bg-ink px-1 text-center text-[0.8125rem]/4 text-bg">
-                  <span className="sr-only">, </span>
+                <span
+                  aria-hidden={item.badgeLabel ? true : undefined}
+                  className="tabular absolute top-1 left-1/2 ml-2 min-w-4 rounded-full bg-ink px-1 text-center text-[0.8125rem]/4 text-bg"
+                >
+                  {item.badgeLabel ? null : <span className="sr-only">, </span>}
                   {item.badge > 99 ? "99+" : item.badge}
                 </span>
               ) : null}

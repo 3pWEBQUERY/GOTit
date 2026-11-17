@@ -4,7 +4,9 @@
     "queue": "Admin · Verifizierungen",
     "case": "Admin · Prüffall",
     "mediaQueue": "Admin · Medien",
-    "mediaCase": "Admin · Medium"
+    "mediaCase": "Admin · Medium",
+    "reportQueue": "Admin · Meldungen",
+    "reportCase": "Admin · Meldung"
   },
   "shell": {
     "brand": "{appName} Admin",
@@ -18,7 +20,9 @@
     "signOut": "Abmelden",
     "breadcrumbs": "Pfad",
     "media": "Medien",
-    "openMediaCount": "{count, plural, one {# Medium in Prüfung} other {# Medien in Prüfung}}"
+    "openMediaCount": "{count, plural, one {# Medium in Prüfung} other {# Medien in Prüfung}}",
+    "reports": "Meldungen",
+    "openReportCount": "{count, plural, one {# offene Meldung} other {# offene Meldungen}}"
   },
   "twoFactor": {
     "title": "Zweiten Faktor einrichten",
@@ -219,7 +223,8 @@
     "revealReasonTooShort": "Gib einen Grund mit mindestens 10 Zeichen an.",
     "revealReasonTooLong": "Der Grund darf höchstens 500 Zeichen lang sein.",
     "mediaAlreadyDecided": "Über dieses Medium wurde bereits entschieden",
-    "decisionNotAllowed": "Über eine Änderung entscheidest du mit Freigeben oder Ablehnen."
+    "decisionNotAllowed": "Über eine Änderung entscheidest du mit Freigeben oder Ablehnen.",
+    "reportForbidden": "Deine Rolle darf keine Meldungen einsehen. Es wurde nichts aufgedeckt."
   },
   "media": {
     "title": "Medien",
@@ -297,6 +302,86 @@
       "identifying": "Zeigt Adresse oder identifizierende Details",
       "consent": "Einwilligung abgebildeter Personen zweifelhaft",
       "policyViolation": "Verstoss gegen Richtlinien"
+    }
+  },
+  "reports": {
+    "title": "Meldungen",
+    "intro": "Gemeldete Nachrichten und Konten aus dem Messenger. Dringende Meldungen stehen zuoberst, darin die älteste zuerst.",
+    "restricted": "Meldungen enthalten private Nachrichten. Sie sind für Moderation und Trust & Safety; Support hat keinen Zugriff.",
+    "caption": "Offene Meldungen",
+    "count": "{count, plural, =0 {Keine offenen Meldungen} one {# offene Meldung} other {# offene Meldungen}}",
+    "urgentCount": "{count, plural, one {# dringend} other {# dringend}}",
+    "next": "Nächste Meldung öffnen",
+    "shortcutAfter": "öffnet die dringendste, älteste Meldung.",
+    "urgent": "Dringend",
+    "normal": "Normal",
+    "readOnly": "Bis Schritt 1.13 ist dieser Bereich nur lesend. Zuständigkeit, Entscheid und Einspruch kommen mit der Moderation.",
+    "columns": {
+      "priority": "Priorität",
+      "reason": "Grund",
+      "target": "Gemeldet",
+      "submitted": "Eingegangen am",
+      "age": "Alter"
+    },
+    "empty": {
+      "title": "Keine offenen Meldungen",
+      "description": "Meldet jemand eine Nachricht oder ein Gegenüber, erscheint die Meldung hier."
+    },
+    "reasons": {
+      "spam": "Spam",
+      "harassment": "Belästigung",
+      "scam": "Betrug",
+      "impersonation": "Falsche Identität",
+      "minor": "Verdacht auf Minderjährige",
+      "exploitation": "Ausbeutung oder Zwang",
+      "danger": "Akute Gefahr",
+      "other": "Sonstiges"
+    },
+    "targetType": {
+      "MESSAGE": "Nachricht",
+      "USER": "Mitglied",
+      "PROFILE": "Anbieterprofil",
+      "MEDIA": "Medium"
+    },
+    "caseTitle": {
+      "MESSAGE": "Meldung zu einer Nachricht",
+      "USER": "Meldung zu einem Mitglied",
+      "PROFILE": "Meldung zu einem Anbieterprofil",
+      "MEDIA": "Meldung zu einem Medium"
+    },
+    "meta": "Eingegangen am {submitted} · {age} · Stand: {state}",
+    "status": {
+      "OPEN": "Offen",
+      "IN_REVIEW": "In Prüfung",
+      "RESOLVED": "Erledigt",
+      "DISMISSED": "Abgewiesen"
+    },
+    "memberFallback": "Mitglied",
+    "gone": "Nicht mehr vorhanden",
+    "facts": {
+      "title": "Angaben",
+      "reason": "Grund",
+      "details": "Text der Meldung",
+      "noDetails": "Kein Text angegeben",
+      "target": "Gemeldet",
+      "reporter": "Gemeldet von"
+    },
+    "evidence": {
+      "title": "Gemeldete Nachrichten (Kopie)",
+      "none": "Zu dieser Meldung gibt es keine Kopie von Nachrichten.",
+      "hidden": "{count, plural, one {Die Kopie einer Nachricht ist verdeckt.} other {Die Kopie von # Nachrichten ist verdeckt.}} Aufdecken schreibt einen Eintrag ins Audit-Log, mit deinem Grund.",
+      "reason": "Grund für das Aufdecken",
+      "reasonHint": "Mindestens 10 Zeichen, zum Beispiel was du prüfen willst.",
+      "reveal": "Nachrichten aufdecken",
+      "listLabel": "Kopie der Nachrichten, älteste zuerst",
+      "noText": "Kein Text (gelöscht oder nur ein Bild)",
+      "audited": "Das Aufdecken ist im Audit-Log vermerkt.",
+      "hide": "Wieder verdecken"
+    },
+    "decision": {
+      "title": "Entscheid",
+      "laterTitle": "Entscheide folgen mit Schritt 1.13",
+      "laterText": "Die Meldung bleibt offen. Freigeben, Entfernen und Einschränken kommen mit der Moderation, dann mit Begründung, Regel und Einspruch."
     }
   }
 }

@@ -1,1 +1,256 @@
-{}
+{
+  "title": "Messages",
+  "threadMetaTitle": "Conversation",
+  "memberFallback": "Membre depuis {year}",
+  "noThreadTitle": "Aucune conversation ouverte",
+  "noThreadText": "Choisis une conversation à gauche pour la lire ici.",
+  "time": {
+    "yesterday": "Hier"
+  },
+  "list": {
+    "title": "Conversations",
+    "label": "Conversations",
+    "previewImage": "Image",
+    "previewDeleted": "Message supprimé",
+    "previewNone": "Pas encore de messages",
+    "previewOwn": "Toi : {text}",
+    "unread": "{count, plural, one {# message non lu} other {# messages non lus}}",
+    "starred": "Favori",
+    "blocked": "Bloqué"
+  },
+  "tabs": {
+    "label": "Vues de la messagerie",
+    "alle": "Tous",
+    "ungelesen": "Non lus",
+    "favoriten": "Favoris",
+    "archiviert": "Archivés"
+  },
+  "search": {
+    "label": "Rechercher dans les conversations",
+    "clear": "Effacer la recherche",
+    "hint": "Un nom ou le texte d’un message, puis Entrée."
+  },
+  "empty": {
+    "noMatchTitle": "Aucun résultat",
+    "noMatchText": "Aucune conversation ne correspond à «{query}».",
+    "noMatchLabel": "Aucune conversation ne porte ce libellé.",
+    "reset": "Réinitialiser la recherche et le filtre",
+    "alleTitle": "Pas encore de messages",
+    "alleMember": "Sur un profil, «Écrire un message» commence une conversation. Elle apparaît ensuite ici.",
+    "alleStudio": "Les membres t’écrivent via ton profil. Leurs messages apparaissent ensuite ici.",
+    "discover": "Découvrir des profils",
+    "ungelesenTitle": "Tout est lu",
+    "ungelesenText": "Les nouveaux messages que tu n’as pas encore ouverts apparaissent ici.",
+    "favoritenTitle": "Aucun favori",
+    "favoritenText": "Marque une conversation avec l’étoile pour la retrouver ici.",
+    "archiviertTitle": "L’archive est vide",
+    "archiviertText": "Les conversations archivées apparaissent ici. Un nouveau message les fait revenir.",
+    "toAll": "Afficher toutes les conversations"
+  },
+  "labels": {
+    "defaults": {
+      "newRequest": "Nouvelle demande",
+      "appointmentOpen": "Rendez-vous ouvert",
+      "confirmed": "Confirmé",
+      "needsReply": "Réponse nécessaire"
+    },
+    "filter": "Libellé",
+    "filterAll": "Tous les libellés",
+    "manage": "Gérer les libellés",
+    "manageTitle": "Libellés",
+    "manageDescription": "Les libellés sont privés. Toi seul les vois, pas les membres.",
+    "close": "Fermer les libellés",
+    "listLabel": "Tes libellés",
+    "full": "Tu as atteint le maximum de {max} libellés. Supprimes-en un pour en créer un nouveau.",
+    "newLabel": "Nouveau libellé",
+    "newHint": "{max} caractères au maximum.",
+    "create": "Créer le libellé",
+    "nameLabel": "Nom du libellé",
+    "saveName": "Enregistrer le nom",
+    "cancel": "Annuler",
+    "rename": "Renommer",
+    "renameNamed": "Renommer {name}",
+    "delete": "Supprimer",
+    "deleteNamed": "Supprimer {name}",
+    "deleteTitle": "Supprimer le libellé «{name}» ?",
+    "deleteText": "Le libellé disparaît de toutes les conversations. Les conversations restent. Cette action est irréversible.",
+    "deleteConfirm": "Supprimer le libellé",
+    "errors": {
+      "invalid": "Saisis un nom de 30 caractères au maximum.",
+      "duplicate": "Un libellé de ce nom existe déjà.",
+      "limit": "Tu as atteint le nombre maximal de libellés.",
+      "not-found": "Ce libellé n’existe plus. Recharge la page.",
+      "generic": "Cela n’a pas fonctionné. Réessaie."
+    }
+  },
+  "live": {
+    "offline": "Pas de connexion. Les messages non envoyés restent et peuvent être renvoyés."
+  },
+  "thread": {
+    "today": "Aujourd’hui",
+    "yesterday": "Hier",
+    "deleted": "Message supprimé",
+    "imageAltOwn": "Image envoyée par toi",
+    "imageAlt": "Image de {name}",
+    "openImage": "Afficher l’image en grand",
+    "failure": {
+      "undeliverable": "Le message n’a pas pu être distribué.",
+      "attachments": "Une image n’est plus disponible. Charge-la à nouveau.",
+      "rate-limited": "Trop de messages en peu de temps. Attends une minute et renvoie.",
+      "invalid": "Le message n’a pas pu être envoyé. Vérifie sa longueur et son contenu.",
+      "network": "Pas de connexion au serveur. Ton message n’est pas perdu."
+    },
+    "logLabel": "Historique avec {name}",
+    "authorOwn": "Toi",
+    "status": {
+      "sending": "Envoi en cours",
+      "sent": "Envoyé",
+      "read": "Lu",
+      "failed": "Échec"
+    },
+    "retry": "Renvoyer",
+    "lightboxTitle": "Images de la conversation avec {name}",
+    "lightboxClose": "Fermer l’affichage de l’image",
+    "lightboxPrevious": "Image précédente",
+    "lightboxNext": "Image suivante",
+    "lightboxCounter": "{current} sur {total}",
+    "olderFailed": "Les anciens messages n’ont pas pu être chargés.",
+    "loadOlder": "Charger les anciens messages",
+    "archivedNote": "Archivée",
+    "star": "Marquer comme favori",
+    "archive": "Archiver la conversation",
+    "unarchive": "Sortir de l’archive",
+    "details": "Détails de la conversation",
+    "announce": "Nouveau message de {name} : {text}",
+    "announceImage": "Image",
+    "emptyTitle": "Pas encore de messages",
+    "emptyText": "Écris le premier message à {name} ci-dessous.",
+    "contextLabel": "Détails de la conversation"
+  },
+  "delete": {
+    "title": "Supprimer le message ?",
+    "description": "Le texte et les images disparaissent pour toi et pour {name}. À leur place figure «Message supprimé». Cette action est irréversible.",
+    "confirm": "Supprimer le message",
+    "cancel": "Annuler",
+    "failed": "Le message n’a pas pu être supprimé. Réessaie."
+  },
+  "menu": {
+    "label": "Actions sur le message",
+    "delete": "Supprimer le message",
+    "report": "Signaler le message"
+  },
+  "report": {
+    "reasons": {
+      "spam": "Spam ou publicité",
+      "harassment": "Harcèlement ou insulte",
+      "scam": "Fraude ou demande d’argent",
+      "impersonation": "Fausse identité",
+      "minor": "Personne mineure",
+      "exploitation": "Exploitation ou contrainte",
+      "danger": "Danger immédiat",
+      "other": "Autre chose"
+    },
+    "titleMessage": "Signaler le message",
+    "titleCounterpart": "Signaler le contact",
+    "descriptionMessage": "La modération reçoit une copie de ce message. L’autre partie ne sait pas qui a signalé.",
+    "descriptionCounterpart": "La modération reçoit une copie des dix derniers messages de l’autre partie. Elle ne sait pas qui a signalé.",
+    "close": "Fermer le signalement",
+    "reasonLegend": "Qu’est-ce qui s’applique ?",
+    "reasonMissing": "Choisis un motif.",
+    "urgentTitle": "En cas de danger immédiat, appelle tout de suite la police : 117.",
+    "urgentText": "La modération traite ce signalement en premier, mais il ne remplace pas un appel d’urgence.",
+    "next": "Ajouter une description",
+    "back": "Changer de motif",
+    "detailsLabel": "Que s’est-il passé ?",
+    "detailsHint": "1000 caractères au maximum.",
+    "optional": "facultatif",
+    "submit": "Envoyer le signalement",
+    "sentTitle": "Signalement envoyé",
+    "sentText": "La modération va l’examiner. Tu peux aussi bloquer le contact.",
+    "done": "Terminé",
+    "errorTitle": "Le signalement n’a pas pu être envoyé.",
+    "errorText": "Tes indications sont conservées. Réessaie.",
+    "step": "Étape {current} sur {total}"
+  },
+  "composer": {
+    "blockedTitle": "Tu as bloqué ce contact.",
+    "blockedText": "{name} ne peut pas t’écrire et n’en est pas informé. Tu ne peux pas écrire non plus.",
+    "unblock": "Débloquer",
+    "tooLong": "Le message est trop long. {max} caractères au maximum.",
+    "imagesBusy": "Attends que toutes les images soient prêtes.",
+    "imagesFailed": "Retire d’abord les images qui n’ont pas pu être chargées.",
+    "label": "Message à {name}",
+    "placeholder": "Écrire un message",
+    "send": "Envoyer le message",
+    "hint": "Entrée envoie, Maj et Entrée ajoute une ligne.",
+    "attach": "Joindre une image"
+  },
+  "images": {
+    "listLabel": "Images jointes",
+    "uploading": "Chargement, {percent} %",
+    "processing": "En préparation",
+    "ready": "Prête",
+    "failure": {
+      "type": "Uniquement JPEG, PNG ou WebP.",
+      "size": "Plus de 10 Mo.",
+      "limit": "4 images au maximum par message.",
+      "network": "Chargement interrompu.",
+      "processing": "Image illisible.",
+      "rate-limited": "Trop d’images en peu de temps.",
+      "undeliverable": "Ne peut pas être envoyée."
+    },
+    "previewAlt": "Aperçu de l’image {number}",
+    "remove": "Retirer l’image {number}"
+  },
+  "context": {
+    "title": "Détails",
+    "close": "Fermer les détails",
+    "handle": "Changer la hauteur",
+    "memberSince": "Membre depuis {year}",
+    "viewProfile": "Voir le profil",
+    "unblock": "Débloquer",
+    "block": "Bloquer le contact",
+    "blockedHint": "Aucune des deux parties ne peut écrire à l’autre tant que tu bloques.",
+    "blockHint": "Effet immédiat. L’autre partie n’en est pas informée.",
+    "reportProfile": "Signaler le profil",
+    "reportMember": "Signaler le membre",
+    "labels": "Libellés",
+    "noLabels": "Tu n’as pas encore de libellés. Crée-les avec «Gérer les libellés» dans la liste.",
+    "labelsSaved": "Libellés enregistrés",
+    "labelsFailed": "Les libellés n’ont pas pu être enregistrés.",
+    "note": "Note privée",
+    "noteHint": "Toi seul vois cette note.",
+    "saveNote": "Enregistrer la note",
+    "noteSaved": "Note enregistrée",
+    "noteFailed": "La note n’a pas pu être enregistrée. Ton texte est conservé."
+  },
+  "actions": {
+    "failed": "Cela n’a pas fonctionné. Réessaie.",
+    "undo": "Annuler",
+    "archived": "Conversation archivée",
+    "unarchived": "Conversation sortie de l’archive",
+    "blocked": "Contact bloqué",
+    "blockedText": "{name} ne peut plus t’écrire et n’en est pas informé.",
+    "unblocked": "Contact débloqué"
+  },
+  "start": {
+    "action": "Écrire un message",
+    "errors": {
+      "sign-in": "Connecte-toi pour écrire un message.",
+      "rate-limited": "Trop de nouvelles conversations en peu de temps. Réessaie plus tard.",
+      "not-found": "Ce profil n’est pas joignable pour le moment.",
+      "not-allowed": "Ce profil n’accepte pas de messages pour le moment.",
+      "own-profile": "C’est ton propre profil.",
+      "undeliverable": "Une conversation avec ce profil n’est pas possible pour le moment.",
+      "generic": "Cela n’a pas fonctionné. Réessaie."
+    }
+  },
+  "state": {
+    "loading": "Chargement des messages",
+    "slow": "Le chargement prend plus de temps que d’habitude.",
+    "retry": "Réessayer",
+    "errorTitle": "Les messages n’ont pas pu être chargés.",
+    "errorDescription": "Tes conversations et tes messages sont inchangés.",
+    "reload": "Recharger la page"
+  }
+}

@@ -11,6 +11,8 @@ export interface SidebarItem {
   label: string;
   icon: ReactNode;
   badge?: number;
+  /** Bedeutung der Zahl für Screenreader, zum Beispiel «3 ungelesen». */
+  badgeLabel?: string;
   current?: boolean;
 }
 
@@ -90,9 +92,21 @@ function SidebarLink({ item, collapsed }: { item: SidebarItem; collapsed: boolea
             <span aria-hidden className="contents">
               {item.icon}
             </span>
-            <span className={labelClass}>{item.label}</span>
+            <span className={labelClass}>
+              {/* Mit Bedeutung der Zahl: ein Textknoten für den Namen («Nachrichten, 3 ungelesen»); die Zahl daneben ist nur zu sehen. */}
+              {item.badge && item.badgeLabel ? (
+                <>
+                  <span aria-hidden>{item.label}</span>
+                  <span className="sr-only">{`${item.label}, ${item.badgeLabel}`}</span>
+                </>
+              ) : (
+                item.label
+              )}
+            </span>
             {item.badge ? (
-              <span className={cn("tabular rounded-full bg-ink px-2 text-[0.8125rem]/5 text-bg", labelClass, "flex-none")}>{item.badge}</span>
+              <span aria-hidden={item.badgeLabel ? true : undefined} className={cn("tabular rounded-full bg-ink px-2 text-[0.8125rem]/5 text-bg", labelClass, "flex-none")}>
+                {item.badgeLabel && item.badge > 99 ? "99+" : item.badge}
+              </span>
             ) : null}
           </UiLink>
         </TooltipPrimitive.Trigger>

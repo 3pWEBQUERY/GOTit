@@ -21,6 +21,10 @@ export interface ComposerProps {
   hint?: ReactNode;
   /** Platz links vom Feld, zum Beispiel für den `TemplatePicker`. */
   leading?: ReactNode;
+  /** Inhalt über dem Feld, zum Beispiel angehängte Bilder mit Fortschritt. */
+  attachments?: ReactNode;
+  /** Erlaubt Senden ohne Text, zum Beispiel wenn Bilder angehängt sind. */
+  allowEmpty?: boolean;
   /** Sperrt Eingabe und Senden; der Text bleibt stehen. */
   disabled?: boolean;
   /** Begründung der Sperre, zum Beispiel «Du hast diese Person blockiert». */
@@ -34,10 +38,10 @@ export interface ComposerProps {
  * Eingabe des Messengers. Das Feld wächst mit dem Inhalt; Enter sendet,
  * Umschalt + Enter fügt eine Zeile ein. Nichts wird ohne Zutun gesendet.
  */
-export function Composer({ value, onValueChange, onSend, label, placeholder, sendLabel, hint, leading, disabled, disabledReason, glass, className }: ComposerProps) {
+export function Composer({ value, onValueChange, onSend, label, placeholder, sendLabel, hint, leading, attachments, allowEmpty, disabled, disabledReason, glass, className }: ComposerProps) {
   const fieldRef = useRef<HTMLTextAreaElement>(null);
   const noteId = useId();
-  const empty = value.trim() === "";
+  const empty = value.trim() === "" && !allowEmpty;
   const note = disabled ? disabledReason : hint;
 
   useLayoutEffect(() => {
@@ -74,6 +78,7 @@ export function Composer({ value, onValueChange, onSend, label, placeholder, sen
       )}
     >
       {glass ? <div aria-hidden className="glass absolute inset-0 md:hidden" /> : null}
+      {attachments ? <div className="relative">{attachments}</div> : null}
       <div className="relative flex items-end gap-2">
         {leading}
         <textarea

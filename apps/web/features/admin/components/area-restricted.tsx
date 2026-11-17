@@ -5,7 +5,7 @@ import { createHref } from "../../shell/nav/href";
 import { AdminPageHeader } from "./page-header";
 
 /** Bereich ohne passende Rolle: sichtbar erklärt, kein Klick, der mit 403 endet (PRD 13). */
-export async function AreaRestricted({ locale, title }: { locale: Locale; title?: string }) {
+export async function AreaRestricted({ locale, title, description }: { locale: Locale; title?: string; description?: string }) {
   const t = await getTranslations({ locale, namespace: "admin" });
   return (
     <>
@@ -18,7 +18,7 @@ export async function AreaRestricted({ locale, title }: { locale: Locale; title?
           </Button>
         }
       >
-        {t("restricted.description")}
+        {description ?? t("restricted.description")}
       </InlineAlert>
     </>
   );

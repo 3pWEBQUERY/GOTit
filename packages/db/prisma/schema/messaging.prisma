@@ -19,6 +19,7 @@ model Conversation {
   providerProfile ProviderProfile           @relation(fields: [providerProfileId], references: [id], onDelete: Cascade)
   participants    ConversationParticipant[]
   messages        Message[]
+  bookingRequests BookingRequest[]
 
   @@unique([memberUserId, providerProfileId])
   @@index([providerProfileId, lastMessageAt])

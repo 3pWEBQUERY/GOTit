@@ -10,6 +10,7 @@ import { buildCommunityColumns, buildDiscoverColumns, buildMoreLinks } from "../
 import { buildProviderSidebar } from "../nav/studio-nav";
 import { buildTabBarSets } from "../nav/tab-bar";
 import { getShellData } from "../queries/get-shell-data";
+import { getUnreadCounts } from "../queries/get-unread-counts";
 import { getViewer } from "../queries/get-viewer";
 import { CommandPalette, type CommandItem } from "./command-palette";
 import { MobileTabBar } from "./mobile-tab-bar";
@@ -26,12 +27,13 @@ const APP_NAME = process.env.APP_NAME ?? "GOTit";
  * Wechsel zwischen den Bereichen stehen.
  */
 export async function AppShell({ locale, children }: { locale: Locale; children: ReactNode }) {
-  const [viewer, data, businessSuiteEnabled, t, tNav] = await Promise.all([
+  const [viewer, data, businessSuiteEnabled, t, tNav, unread] = await Promise.all([
     getViewer(),
     getShellData(locale),
     isFeatureEnabled("business-suite"),
     getTranslations({ locale, namespace: "shell" }),
     getTranslations({ locale, namespace: "nav" }),
+    getUnreadCounts(),
   ]);
   const href = createHref(locale);
   const navigation: ShellNavigation = {
@@ -44,7 +46,10 @@ export async function AppShell({ locale, children }: { locale: Locale; children:
     ],
   };
   const sections = [...navigation.discover, ...(navigation.community ?? []), { heading: tNav("more.label"), links: navigation.more }];
-  const tabSets = buildTabBarSets(tNav, href, data.communityEnabled);
+  const tabSets = buildTabBarSets(tNav, href, data.communityEnabled, {
+    member: { value: unread.member, label: t("unreadConversations", { count: unread.member }) },
+    studio: { value: unread.studio, label: t("unreadConversations", { count: unread.studio }) },
+  });
   const provider = hasProviderRole(viewer) ? buildProviderSidebar(tNav, href, { communityEnabled: data.communityEnabled, businessSuiteEnabled }) : null;
   const studioTabRoots = new Set(tabSets.studio.map((tab) => tab.href));
   const moreLinks = provider ? [...provider.items, ...provider.secondaryItems].filter((item) => !studioTabRoots.has(item.href)) : [];

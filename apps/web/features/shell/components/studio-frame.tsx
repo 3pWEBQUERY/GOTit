@@ -9,6 +9,7 @@ import { createHref } from "../nav/href";
 import { buildOrganizationSidebar, buildProviderSidebar } from "../nav/studio-nav";
 import { getReturnPath } from "../queries/get-return-path";
 import { getShellData } from "../queries/get-shell-data";
+import { getUnreadCounts } from "../queries/get-unread-counts";
 import { getViewer } from "../queries/get-viewer";
 import { ProfileStatusForViewer } from "./profile-status-for-viewer";
 import { SIDEBAR_COOKIE, StudioSidebarNav } from "./studio-sidebar-nav";
@@ -20,12 +21,14 @@ export async function StudioFrame({ locale, children }: { locale: Locale; childr
     const weiter = await getReturnPath();
     return redirect({ href: { pathname: "/anmelden", query: weiter ? { weiter } : {} }, locale });
   }
-  const [data, businessSuiteEnabled, tNav, tStudio, cookieStore] = await Promise.all([
+  const [data, businessSuiteEnabled, tNav, tStudio, tShell, cookieStore, unread] = await Promise.all([
     getShellData(locale),
     isFeatureEnabled("business-suite"),
     getTranslations({ locale, namespace: "nav" }),
     getTranslations({ locale, namespace: "studio" }),
+    getTranslations({ locale, namespace: "shell" }),
     cookies(),
+    getUnreadCounts(),
   ]);
   const href = createHref(locale);
   const flags = { communityEnabled: data.communityEnabled, businessSuiteEnabled };
@@ -35,7 +38,11 @@ export async function StudioFrame({ locale, children }: { locale: Locale; childr
     <div className="mx-auto flex w-full max-w-content flex-1">
       <StudioSidebarNav
         label={tStudio("sidebarLabel")}
-        provider={hasProviderRole(viewer) ? buildProviderSidebar(tNav, href, flags) : null}
+        provider={
+          hasProviderRole(viewer)
+            ? buildProviderSidebar(tNav, href, flags, { value: unread.studio, label: tShell("unreadConversations", { count: unread.studio }) })
+            : null
+        }
         organizations={Object.fromEntries(
           viewer.organizations.map((organization) => [organization.slug, buildOrganizationSidebar(tNav, href, organization, flags)]),
         )}

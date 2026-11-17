@@ -14,6 +14,8 @@ export interface AdminShellProps {
   name: string;
   /** Offene Prüffälle; nur für Personen mit Prüfrolle, sonst null. Dann zählt auch der Bereich Medien seine offenen Fälle. */
   openCases: number | null;
+  /** Offene Meldungen; nur für Personen mit Moderationsrolle, sonst null. */
+  openReports: number | null;
   children: ReactNode;
 }
 
@@ -21,7 +23,7 @@ export interface AdminShellProps {
  * Eigene, dichte Shell des Admins (PRD 12.4): feste Seitenleiste ab 1024 px,
  * darüber ein Kopf mit Konto, Weg zum Marktplatz und Abmelden. Kein Glas.
  */
-export async function AdminShell({ locale, name, openCases, children }: AdminShellProps) {
+export async function AdminShell({ locale, name, openCases, openReports, children }: AdminShellProps) {
   const [t, openMedia] = await Promise.all([getTranslations({ locale, namespace: "admin.shell" }), openCases !== null ? countMediaInReview() : Promise.resolve(null)]);
   const href = createHref(locale);
   const items: AdminNavItem[] = [
@@ -37,6 +39,12 @@ export async function AdminShell({ locale, name, openCases, children }: AdminShe
       href: href("/admin/medien"),
       label: t("media"),
       ...(openMedia !== null && openMedia > 0 ? { count: { value: openMedia, label: t("openMediaCount", { count: openMedia }) } } : {}),
+    },
+    {
+      key: "reports",
+      href: href("/admin/meldungen"),
+      label: t("reports"),
+      ...(openReports !== null && openReports > 0 ? { count: { value: openReports, label: t("openReportCount", { count: openReports }) } } : {}),
     },
   ];
   return (

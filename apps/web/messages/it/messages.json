@@ -1,1 +1,256 @@
-{}
+{
+  "title": "Messaggi",
+  "threadMetaTitle": "Conversazione",
+  "memberFallback": "Membro dal {year}",
+  "noThreadTitle": "Nessuna conversazione aperta",
+  "noThreadText": "Scegli una conversazione a sinistra per leggerla qui.",
+  "time": {
+    "yesterday": "Ieri"
+  },
+  "list": {
+    "title": "Conversazioni",
+    "label": "Conversazioni",
+    "previewImage": "Immagine",
+    "previewDeleted": "Messaggio eliminato",
+    "previewNone": "Ancora nessun messaggio",
+    "previewOwn": "Tu: {text}",
+    "unread": "{count, plural, one {# messaggio non letto} other {# messaggi non letti}}",
+    "starred": "Preferito",
+    "blocked": "Bloccato"
+  },
+  "tabs": {
+    "label": "Viste della casella",
+    "alle": "Tutti",
+    "ungelesen": "Non letti",
+    "favoriten": "Preferiti",
+    "archiviert": "Archiviati"
+  },
+  "search": {
+    "label": "Cerca nelle conversazioni",
+    "clear": "Cancella la ricerca",
+    "hint": "Un nome o il testo di un messaggio, poi Invio."
+  },
+  "empty": {
+    "noMatchTitle": "Nessun risultato",
+    "noMatchText": "Nessuna conversazione corrisponde a «{query}».",
+    "noMatchLabel": "Nessuna conversazione ha questa etichetta.",
+    "reset": "Reimposta ricerca e filtro",
+    "alleTitle": "Ancora nessun messaggio",
+    "alleMember": "Su un profilo, «Scrivi un messaggio» avvia una conversazione. Poi compare qui.",
+    "alleStudio": "I membri ti scrivono tramite il tuo profilo. I loro messaggi compaiono poi qui.",
+    "discover": "Scopri profili",
+    "ungelesenTitle": "Tutto letto",
+    "ungelesenText": "Qui compaiono i nuovi messaggi che non hai ancora aperto.",
+    "favoritenTitle": "Nessun preferito",
+    "favoritenText": "Segna una conversazione con la stella e comparirà qui.",
+    "archiviertTitle": "L’archivio è vuoto",
+    "archiviertText": "Qui compaiono le conversazioni archiviate. Un nuovo messaggio le riporta indietro.",
+    "toAll": "Mostra tutte le conversazioni"
+  },
+  "labels": {
+    "defaults": {
+      "newRequest": "Nuova richiesta",
+      "appointmentOpen": "Appuntamento aperto",
+      "confirmed": "Confermato",
+      "needsReply": "Risposta necessaria"
+    },
+    "filter": "Etichetta",
+    "filterAll": "Tutte le etichette",
+    "manage": "Gestisci etichette",
+    "manageTitle": "Etichette",
+    "manageDescription": "Le etichette sono private. Le vedi solo tu, i membri no.",
+    "close": "Chiudi etichette",
+    "listLabel": "Le tue etichette",
+    "full": "Hai raggiunto il massimo di {max} etichette. Eliminane una per crearne una nuova.",
+    "newLabel": "Nuova etichetta",
+    "newHint": "Al massimo {max} caratteri.",
+    "create": "Crea etichetta",
+    "nameLabel": "Nome dell’etichetta",
+    "saveName": "Salva il nome",
+    "cancel": "Annulla",
+    "rename": "Rinomina",
+    "renameNamed": "Rinomina {name}",
+    "delete": "Elimina",
+    "deleteNamed": "Elimina {name}",
+    "deleteTitle": "Eliminare l’etichetta «{name}»?",
+    "deleteText": "L’etichetta scompare da tutte le conversazioni. Le conversazioni restano. Non si può annullare.",
+    "deleteConfirm": "Elimina etichetta",
+    "errors": {
+      "invalid": "Inserisci un nome di al massimo 30 caratteri.",
+      "duplicate": "Esiste già un’etichetta con questo nome.",
+      "limit": "Hai raggiunto il numero massimo di etichette.",
+      "not-found": "Questa etichetta non esiste più. Ricarica la pagina.",
+      "generic": "Non ha funzionato. Riprova."
+    }
+  },
+  "live": {
+    "offline": "Nessuna connessione. I messaggi non inviati restano e si possono inviare di nuovo."
+  },
+  "thread": {
+    "today": "Oggi",
+    "yesterday": "Ieri",
+    "deleted": "Messaggio eliminato",
+    "imageAltOwn": "Immagine inviata da te",
+    "imageAlt": "Immagine di {name}",
+    "openImage": "Mostra l’immagine in grande",
+    "failure": {
+      "undeliverable": "Non è stato possibile recapitare il messaggio.",
+      "attachments": "Un’immagine non è più disponibile. Caricala di nuovo.",
+      "rate-limited": "Troppi messaggi in poco tempo. Attendi un minuto e invia di nuovo.",
+      "invalid": "Non è stato possibile inviare il messaggio. Controlla lunghezza e contenuto.",
+      "network": "Nessuna connessione al server. Il tuo messaggio non è perso."
+    },
+    "logLabel": "Cronologia con {name}",
+    "authorOwn": "Tu",
+    "status": {
+      "sending": "Invio in corso",
+      "sent": "Inviato",
+      "read": "Letto",
+      "failed": "Non riuscito"
+    },
+    "retry": "Invia di nuovo",
+    "lightboxTitle": "Immagini nella conversazione con {name}",
+    "lightboxClose": "Chiudi la vista immagine",
+    "lightboxPrevious": "Immagine precedente",
+    "lightboxNext": "Immagine successiva",
+    "lightboxCounter": "{current} di {total}",
+    "olderFailed": "Non è stato possibile caricare i messaggi precedenti.",
+    "loadOlder": "Carica messaggi precedenti",
+    "archivedNote": "Archiviata",
+    "star": "Segna come preferito",
+    "archive": "Archivia la conversazione",
+    "unarchive": "Togli dall’archivio",
+    "details": "Dettagli della conversazione",
+    "announce": "Nuovo messaggio da {name}: {text}",
+    "announceImage": "Immagine",
+    "emptyTitle": "Ancora nessun messaggio",
+    "emptyText": "Scrivi qui sotto il primo messaggio a {name}.",
+    "contextLabel": "Dettagli della conversazione"
+  },
+  "delete": {
+    "title": "Eliminare il messaggio?",
+    "description": "Testo e immagini scompaiono per te e per {name}. Al loro posto compare «Messaggio eliminato». Non si può annullare.",
+    "confirm": "Elimina messaggio",
+    "cancel": "Annulla",
+    "failed": "Non è stato possibile eliminare il messaggio. Riprova."
+  },
+  "menu": {
+    "label": "Azioni sul messaggio",
+    "delete": "Elimina messaggio",
+    "report": "Segnala messaggio"
+  },
+  "report": {
+    "reasons": {
+      "spam": "Spam o pubblicità",
+      "harassment": "Molestie o insulti",
+      "scam": "Truffa o richiesta di denaro",
+      "impersonation": "Falsa identità",
+      "minor": "Persona minorenne",
+      "exploitation": "Sfruttamento o costrizione",
+      "danger": "Pericolo immediato",
+      "other": "Altro"
+    },
+    "titleMessage": "Segnala messaggio",
+    "titleCounterpart": "Segnala contatto",
+    "descriptionMessage": "La moderazione riceve una copia di questo messaggio. L’altra parte non sa chi ha segnalato.",
+    "descriptionCounterpart": "La moderazione riceve una copia degli ultimi dieci messaggi dell’altra parte. Non sa chi ha segnalato.",
+    "close": "Chiudi segnalazione",
+    "reasonLegend": "Cosa si applica?",
+    "reasonMissing": "Scegli un motivo.",
+    "urgentTitle": "In caso di pericolo immediato chiama subito la polizia: 117.",
+    "urgentText": "La moderazione tratta questa segnalazione per prima, ma non sostituisce una chiamata d’emergenza.",
+    "next": "Aggiungi una descrizione",
+    "back": "Cambia motivo",
+    "detailsLabel": "Cosa è successo?",
+    "detailsHint": "Al massimo 1000 caratteri.",
+    "optional": "facoltativo",
+    "submit": "Invia segnalazione",
+    "sentTitle": "Segnalazione inviata",
+    "sentText": "La moderazione la esaminerà. Puoi anche bloccare il contatto.",
+    "done": "Fatto",
+    "errorTitle": "Non è stato possibile inviare la segnalazione.",
+    "errorText": "I tuoi dati sono conservati. Riprova.",
+    "step": "Passo {current} di {total}"
+  },
+  "composer": {
+    "blockedTitle": "Hai bloccato questo contatto.",
+    "blockedText": "{name} non può scriverti e non ne viene informato. Nemmeno tu puoi scrivere.",
+    "unblock": "Sblocca",
+    "tooLong": "Il messaggio è troppo lungo. Al massimo {max} caratteri.",
+    "imagesBusy": "Attendi che tutte le immagini siano pronte.",
+    "imagesFailed": "Rimuovi prima le immagini che non è stato possibile caricare.",
+    "label": "Messaggio a {name}",
+    "placeholder": "Scrivi un messaggio",
+    "send": "Invia messaggio",
+    "hint": "Invio invia, Maiusc e Invio aggiunge una riga.",
+    "attach": "Allega immagine"
+  },
+  "images": {
+    "listLabel": "Immagini allegate",
+    "uploading": "Caricamento, {percent} %",
+    "processing": "In preparazione",
+    "ready": "Pronta",
+    "failure": {
+      "type": "Solo JPEG, PNG o WebP.",
+      "size": "Più di 10 MB.",
+      "limit": "Al massimo 4 immagini per messaggio.",
+      "network": "Caricamento interrotto.",
+      "processing": "Immagine non leggibile.",
+      "rate-limited": "Troppe immagini in poco tempo.",
+      "undeliverable": "Non può essere inviata."
+    },
+    "previewAlt": "Anteprima dell’immagine {number}",
+    "remove": "Rimuovi immagine {number}"
+  },
+  "context": {
+    "title": "Dettagli",
+    "close": "Chiudi dettagli",
+    "handle": "Cambia altezza",
+    "memberSince": "Membro dal {year}",
+    "viewProfile": "Vedi profilo",
+    "unblock": "Sblocca",
+    "block": "Blocca contatto",
+    "blockedHint": "Nessuna delle due parti può scrivere all’altra finché blocchi.",
+    "blockHint": "Effetto immediato. L’altra parte non ne viene informata.",
+    "reportProfile": "Segnala profilo",
+    "reportMember": "Segnala membro",
+    "labels": "Etichette",
+    "noLabels": "Non hai ancora etichette. Creale con «Gestisci etichette» nell’elenco.",
+    "labelsSaved": "Etichette salvate",
+    "labelsFailed": "Non è stato possibile salvare le etichette.",
+    "note": "Nota privata",
+    "noteHint": "Solo tu vedi questa nota.",
+    "saveNote": "Salva nota",
+    "noteSaved": "Nota salvata",
+    "noteFailed": "Non è stato possibile salvare la nota. Il tuo testo è conservato."
+  },
+  "actions": {
+    "failed": "Non ha funzionato. Riprova.",
+    "undo": "Annulla",
+    "archived": "Conversazione archiviata",
+    "unarchived": "Conversazione tolta dall’archivio",
+    "blocked": "Contatto bloccato",
+    "blockedText": "{name} non può più scriverti e non ne viene informato.",
+    "unblocked": "Contatto sbloccato"
+  },
+  "start": {
+    "action": "Scrivi un messaggio",
+    "errors": {
+      "sign-in": "Accedi per scrivere un messaggio.",
+      "rate-limited": "Troppe nuove conversazioni in poco tempo. Riprova più tardi.",
+      "not-found": "Questo profilo al momento non è raggiungibile.",
+      "not-allowed": "Questo profilo al momento non accetta messaggi.",
+      "own-profile": "Questo è il tuo profilo.",
+      "undeliverable": "Al momento non è possibile una conversazione con questo profilo.",
+      "generic": "Non ha funzionato. Riprova."
+    }
+  },
+  "state": {
+    "loading": "Caricamento dei messaggi",
+    "slow": "Il caricamento richiede più tempo del solito.",
+    "retry": "Riprova",
+    "errorTitle": "Non è stato possibile caricare i messaggi.",
+    "errorDescription": "Le tue conversazioni e i tuoi messaggi sono invariati.",
+    "reload": "Ricarica la pagina"
+  }
+}

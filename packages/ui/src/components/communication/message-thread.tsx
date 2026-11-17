@@ -53,6 +53,12 @@ export interface MessageThreadProps {
   /** Beschriftung des Buttons an fehlgeschlagenen Nachrichten, zum Beispiel «Nachricht erneut senden». */
   retryLabel: string;
   onRetry?: (key: string) => void;
+  /**
+   * `false` schaltet die automatische Ansage des Logs ab, etwa wenn die Ansicht
+   * neue Nachrichten der Gegenseite selbst ansagt und nachgeladene ältere
+   * Nachrichten nicht vorgelesen werden sollen.
+   */
+  announce?: boolean;
   className?: string;
 }
 
@@ -73,9 +79,9 @@ function Delivery({ status, label }: { status: DeliveryStatus; label: string }) 
  * vorgelesen. Eigene Nachrichten tragen ihren Zustellstatus als Icon und Wort;
  * fehlgeschlagene bieten «Erneut senden».
  */
-export function MessageThread({ label, entries, authorLabels, statusLabels, retryLabel, onRetry, className }: MessageThreadProps) {
+export function MessageThread({ label, entries, authorLabels, statusLabels, retryLabel, onRetry, announce = true, className }: MessageThreadProps) {
   return (
-    <div role="log" aria-live="polite" aria-label={label} className={cn("text-ink", className)}>
+    <div role="log" aria-live={announce ? "polite" : "off"} aria-label={label} className={cn("text-ink", className)}>
       <ol className="flex flex-col gap-3">
         {entries.map((entry) => {
           if (entry.type === "date") {

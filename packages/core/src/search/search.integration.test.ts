@@ -167,6 +167,14 @@ const slugs = async (
     .sort();
 
 beforeAll(async () => {
+  // Reste abgebrochener Läufe: fiktive Konten dieses Tests und ihre Regionen, sonst stören sie «In meiner Nähe».
+  await db.user.deleteMany({ where: { id: { startsWith: "it_suche_" }, NOT: { id: { endsWith: `_${run}` } } } });
+  await db.region.deleteMany({
+    where: {
+      OR: ["fiktivstadt-", "fiktivnah-", "fiktivfern-", "fiktivseiten-"].map((prefix) => ({ slug: { startsWith: prefix } })),
+      providers: { none: {} },
+    },
+  });
   const canton = await db.region.findUniqueOrThrow({
     where: { slug: "zuerich" },
   });

@@ -11,6 +11,7 @@
   "startAsProvider": "Inizia come fornitore",
   "notifications": "Notifiche",
   "messages": "Messaggi",
+  "unreadConversations": "{count, plural, one {# non letta} other {# non lette}}",
   "favourites": "Preferiti",
   "search": {
     "label": "Ricerca",

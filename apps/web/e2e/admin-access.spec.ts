@@ -55,7 +55,7 @@ test.describe("Admin-Zugang", () => {
     await expect(page.getByRole("link", { name: "Zum Marktplatz" })).toHaveAttribute("href", "/de");
     await expect(page.getByRole("button", { name: "Abmelden" })).toBeVisible();
     const nav = page.getByRole("navigation", { name: "Bereiche des Admins" });
-    await expect(nav.getByRole("link")).toHaveText(["Übersicht", "Verifizierungen", "Medien"]);
+    await expect(nav.getByRole("link")).toHaveText(["Übersicht", "Verifizierungen", "Medien", "Meldungen"]);
     await expect(nav.getByRole("link", { name: "Übersicht" })).toHaveAttribute("aria-current", "page");
     await expect(page.getByText("Die Prüfwarteschlange ist für Prüfung und Moderation.")).toBeVisible();
     await expect(page.getByText("Schritt 1.13")).toBeVisible();
