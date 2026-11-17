@@ -1,0 +1,213 @@
+{
+  "metaTitle": "Créer ton profil",
+  "progress": {
+    "label": "Progression de la création du profil",
+    "summary": "Étape {current} sur {total} : {name}, {duration}",
+    "position": "Étape {current} sur {total}, {duration}",
+    "stepLabel": "{name}, {duration}",
+    "duration": "{minutes, plural, one {environ # minute} other {environ # minutes}}",
+    "done": "terminée",
+    "current": "étape actuelle",
+    "upcoming": "à faire"
+  },
+  "steps": {
+    "identity": {
+      "name": "Identité",
+      "title": "Vérifier ton identité"
+    },
+    "regions": {
+      "name": "Régions",
+      "title": "Choisir les régions"
+    },
+    "profile": {
+      "name": "Profil",
+      "title": "Décrire ton profil"
+    },
+    "media": {
+      "name": "Médias",
+      "title": "Médias"
+    },
+    "offer": {
+      "name": "Offre et tarifs",
+      "title": "Offre et tarifs"
+    },
+    "availability": {
+      "name": "Disponibilité",
+      "title": "Disponibilité"
+    },
+    "preview": {
+      "name": "Aperçu",
+      "title": "Voir l’aperçu"
+    },
+    "submit": {
+      "name": "Envoi",
+      "title": "Envoyer le profil"
+    }
+  },
+  "nav": {
+    "back": "Retour à {step}",
+    "saveAndContinue": "Enregistrer et continuer",
+    "skip": "Passer l’étape",
+    "continueTo": "Continuer vers {step}"
+  },
+  "form": {
+    "summaryTitle": "Vérifie ces indications",
+    "optional": "facultatif"
+  },
+  "errors": {
+    "generic": "Cela n’a pas fonctionné. Tes saisies sont conservées ; réessaie.",
+    "notAllowed": "Seule la personne titulaire de ce profil peut le modifier.",
+    "notEditable": "Ton profil est envoyé ou bloqué et ne peut pas être modifié pour le moment.",
+    "regionsRequired": "Choisis au moins une région.",
+    "regionsTooMany": "Choisis au plus dix régions.",
+    "invalidRegion": "Une région choisie n’est plus validée. Choisis à nouveau tes régions.",
+    "displayNameTooShort": "Le nom affiché doit comporter au moins 2 caractères.",
+    "displayNameTooLong": "Le nom affiché peut comporter au plus 60 caractères.",
+    "descriptionTooShort": "La description doit comporter au moins 50 caractères.",
+    "descriptionTooLong": "La description peut comporter au plus 4000 caractères.",
+    "languagesRequired": "Choisis au moins une langue.",
+    "languagesTooMany": "Choisis au plus huit langues.",
+    "durationTooShort": "La durée doit être d’au moins 15 minutes.",
+    "durationTooLong": "La durée peut être de 24 heures au plus.",
+    "priceTooLow": "Indique un prix d’au moins 1 franc.",
+    "priceTooHigh": "Le prix peut être de 100 000 francs au plus.",
+    "priceInvalid": "Indique le prix en francs, sans décimales.",
+    "noteTooLong": "La remarque peut comporter au plus 120 caractères.",
+    "ratesTooMany": "Tu peux indiquer au plus 12 tarifs.",
+    "providerNotConfigured": "La vérification n’est pas encore disponible. Ton profil reste enregistré comme brouillon.",
+    "incomplete": "Ton profil n’est pas encore complet. Complète les étapes de la liste."
+  },
+  "review": {
+    "title": "Ton profil t’a été renvoyé pour correction",
+    "intro": "L’équipe de vérification te demande des modifications dans ces étapes. Ensuite, envoie à nouveau ton profil.",
+    "noteTitle": "Remarque de la vérification",
+    "goTo": "Modifier {step}"
+  },
+  "access": {
+    "suspendedTitle": "Ton profil est bloqué",
+    "suspendedText": "Tu ne peux pour le moment ni le modifier ni l’envoyer. Le support t’aide à avancer.",
+    "underAge": "La vérification d’identité a montré que tu n’es pas majeur ou majeure. Les profils de personnes mineures ne sont pas autorisés sur la plateforme ; ton profil est donc bloqué.",
+    "toStudio": "Aller au Studio"
+  },
+  "state": {
+    "loading": "Chargement de l’étape",
+    "slow": "Le chargement prend plus de temps que d’habitude.",
+    "retry": "Réessayer",
+    "errorTitle": "Cette étape n’a pas pu être chargée",
+    "errorDescription": "Ce que tu as déjà enregistré est conservé.",
+    "reload": "Recharger l’étape"
+  },
+  "identity": {
+    "explainer": "La vérification se fait chez le prestataire de vérification : pièce d’identité, majorité et un court test de présence avec la caméra. La plateforme n’enregistre que le résultat, la date et l’échéance, jamais une copie de ta pièce d’identité.",
+    "statusLabel": "Statut",
+    "none": "Pas encore commencée",
+    "noneText": "Prépare ta pièce d’identité. Ensuite, tu reviens ici.",
+    "pending": "Vérification en cours",
+    "pendingText": "Termine la vérification chez le prestataire. Si tu bloques, recommence-la.",
+    "valid": "Réussie",
+    "validText": "Valable jusqu’au {date}. Vérifie à nouveau avant l’échéance.",
+    "expired": "Expirée",
+    "expiredText": "La vérification a expiré le {date}. Sans vérification valable, ton profil n’est pas public.",
+    "expiredTextNoDate": "La vérification n’est plus valable. Sans vérification valable, ton profil n’est pas public.",
+    "rejected": "Refusée",
+    "reasons": {
+      "under-age": "La vérification a montré que tu n’es pas majeur ou majeure.",
+      "not-verified": "Le prestataire n’a pas pu confirmer ton identité.",
+      "document-unreadable": "La pièce d’identité n’était pas lisible. Veille à ce qu’elle soit bien éclairée et entièrement visible.",
+      "liveness-failed": "Le test de présence n’a pas abouti. Veille à une bonne lumière et regarde droit dans la caméra.",
+      "other": "Le prestataire a refusé la vérification."
+    },
+    "start": "Commencer la vérification",
+    "restart": "Recommencer la vérification",
+    "retry": "Vérifier à nouveau",
+    "unavailableTitle": "La vérification n’est pas encore disponible",
+    "unavailableText": "Le prestataire de vérification n’est pas encore raccordé. Tu peux remplir toutes les autres étapes ; tu pourras envoyer ton profil seulement après une vérification réussie.",
+    "viewStatus": "Voir la vérification"
+  },
+  "verification": {
+    "metaTitle": "Vérification",
+    "title": "Vérification",
+    "intro": "Une vérification réussie est valable douze mois. À son échéance, ton profil n’est plus public jusqu’à une nouvelle vérification.",
+    "toOnboarding": "Aller à la création du profil",
+    "toToday": "Aller à Aujourd’hui"
+  },
+  "regions": {
+    "intro": "Choisis où les visiteurs doivent te trouver : au moins une région, au plus dix.",
+    "privacy": "Ton adresse exacte n’est jamais publiée. Ton profil indique la région aussi largement que tu la choisis, donc un canton ou une ville.",
+    "wholeCanton": "Tout le canton de {name}",
+    "otherCities": "Autres villes",
+    "count": "{count, plural, =0 {Aucune région choisie} one {# région choisie} other {# régions choisies}}, 10 au plus",
+    "empty": "Aucune région n’est encore validée. Dès qu’il y en aura, tu les choisiras ici.",
+    "toStudio": "Aller au Studio"
+  },
+  "profile": {
+    "intro": "Ton nom affiché et ta description apparaissent sur la place de marché.",
+    "displayName": "Nom affiché",
+    "displayNameHint": "C’est ainsi que tu apparais sur la place de marché, 2 à 60 caractères.",
+    "description": "Description",
+    "descriptionHint": "Au moins 50 caractères. Décris ce que les visiteurs peuvent attendre de toi.",
+    "count": "{used} sur {max} caractères",
+    "languages": "Langues",
+    "languagesHint": "Les langues dans lesquelles tu fixes des rendez-vous, huit au plus."
+  },
+  "media": {
+    "text": "Tu pourras bientôt télécharger des photos dans la médiathèque du Studio. Tu peux passer cette étape maintenant et ajouter des photos plus tard.",
+    "neutral": "Sans photos, ton profil affiche une surface neutre avec tes initiales."
+  },
+  "offer": {
+    "intro": "Indique tes tarifs selon la durée. Les visiteurs les voient sous forme de tableau dans ton profil.",
+    "ratesTitle": "Tarifs",
+    "row": "Tarif {index}",
+    "duration": "Durée",
+    "price": "Prix en CHF",
+    "priceHint": "Francs entiers",
+    "note": "Remarque",
+    "noteHint": "120 caractères au plus",
+    "add": "Ajouter un tarif",
+    "remove": "Supprimer le tarif {index}",
+    "empty": "Pas encore de tarifs. Sans tarifs, ton profil affiche « Tarifs sur demande ».",
+    "max": "Tu as atteint le maximum de 12 tarifs.",
+    "servicesTitle": "Prestations",
+    "servicesText": "Tu choisiras les prestations dès que les catégories seront gérées. D’ici là, ton offre se compose de tarifs."
+  },
+  "availability": {
+    "text": "Tu pourras bientôt gérer tes horaires et tes absences dans le calendrier du Studio. Tu peux passer cette étape maintenant.",
+    "neutral": "Sans disponibilité gérée, ton profil n’affiche pas de section à ce sujet."
+  },
+  "preview": {
+    "intro": "Voici comment les visiteurs verraient ton profil.",
+    "note": "La page de profil complète suivra et utilisera les mêmes éléments que cet aperçu.",
+    "heading": "Ton profil vu par les visiteurs",
+    "description": "Description",
+    "noDescription": "Pas encore de description.",
+    "languages": "Langues",
+    "rates": "Tarifs",
+    "ratesEmpty": "Tarifs sur demande",
+    "columns": {
+      "duration": "Durée",
+      "price": "Prix",
+      "note": "Remarque"
+    },
+    "trust": "Signaux de confiance",
+    "trustEmpty": "Pas encore de signaux de confiance. « Identité vérifiée » apparaît dès que ta vérification est réussie.",
+    "identitySignal": "Identité vérifiée",
+    "identityInfo": "Afficher l’explication de « Identité vérifiée »",
+    "explanation": {
+      "checked": "Ce qui a été vérifié",
+      "checkedAt": "Quand",
+      "notImplied": "Ce que cela ne dit pas"
+    },
+    "identityChecked": "Majorité et identité avec pièce d’identité et test de présence, chez le prestataire de vérification.",
+    "identityNotImplied": "Ce signal ne dit rien sur les prestations, la qualité ou la sécurité.",
+    "close": "Fermer l’explication",
+    "noRegion": "Aucune région choisie",
+    "confirm": "Confirmer l’aperçu"
+  },
+  "submit": {
+    "intro": "Nous vérifions les profils envoyés à la main. Ton profil ne devient public qu’après validation.",
+    "missingTitle": "Ce qui manque encore",
+    "missingStep": "Compléter {step}",
+    "ready": "Tout est prêt. Tu peux envoyer ton profil.",
+    "button": "Envoyer le profil"
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "metaTitle": "Set up profile",
+  "progress": {
+    "label": "Progress of your profile setup",
+    "summary": "Step {current} of {total}: {name}, {duration}",
+    "position": "Step {current} of {total}, {duration}",
+    "stepLabel": "{name}, {duration}",
+    "duration": "{minutes, plural, one {about # minute} other {about # minutes}}",
+    "done": "done",
+    "current": "current step",
+    "upcoming": "open"
+  },
+  "steps": {
+    "identity": {
+      "name": "Identity",
+      "title": "Verify your identity"
+    },
+    "regions": {
+      "name": "Regions",
+      "title": "Choose regions"
+    },
+    "profile": {
+      "name": "Profile",
+      "title": "Describe your profile"
+    },
+    "media": {
+      "name": "Media",
+      "title": "Media"
+    },
+    "offer": {
+      "name": "Offer and rates",
+      "title": "Offer and rates"
+    },
+    "availability": {
+      "name": "Availability",
+      "title": "Availability"
+    },
+    "preview": {
+      "name": "Preview",
+      "title": "View preview"
+    },
+    "submit": {
+      "name": "Submit",
+      "title": "Submit profile"
+    }
+  },
+  "nav": {
+    "back": "Back to {step}",
+    "saveAndContinue": "Save and continue",
+    "skip": "Skip step",
+    "continueTo": "Continue to {step}"
+  },
+  "form": {
+    "summaryTitle": "Please check these details",
+    "optional": "optional"
+  },
+  "errors": {
+    "generic": "That did not work. Your entries are still here; try again.",
+    "notAllowed": "Only the person with this provider profile can edit it.",
+    "notEditable": "Your profile is submitted or suspended and cannot be edited right now.",
+    "regionsRequired": "Choose at least one region.",
+    "regionsTooMany": "Choose no more than ten regions.",
+    "invalidRegion": "A region you chose is no longer approved. Choose your regions again.",
+    "displayNameTooShort": "The display name needs at least 2 characters.",
+    "displayNameTooLong": "The display name can have no more than 60 characters.",
+    "descriptionTooShort": "The description needs at least 50 characters.",
+    "descriptionTooLong": "The description can have no more than 4000 characters.",
+    "languagesRequired": "Choose at least one language.",
+    "languagesTooMany": "Choose no more than eight languages.",
+    "durationTooShort": "The duration must be at least 15 minutes.",
+    "durationTooLong": "The duration can be no more than 24 hours.",
+    "priceTooLow": "Enter a price of at least 1 franc.",
+    "priceTooHigh": "The price can be no more than 100,000 francs.",
+    "priceInvalid": "Enter the price as a whole number in francs.",
+    "noteTooLong": "The note can have no more than 120 characters.",
+    "ratesTooMany": "You can enter no more than 12 rates.",
+    "providerNotConfigured": "The check is not available yet. Your profile stays saved as a draft.",
+    "incomplete": "Your profile is not complete yet. Complete the steps in the list."
+  },
+  "review": {
+    "title": "Your profile was returned for corrections",
+    "intro": "The review team asks you to make changes in these steps. Then submit the profile again.",
+    "noteTitle": "Note from the review",
+    "goTo": "Edit {step}"
+  },
+  "access": {
+    "suspendedTitle": "Your profile is suspended",
+    "suspendedText": "You cannot edit or submit it at the moment. Support can help you.",
+    "underAge": "The identity check showed that you are not of legal age. Profiles of minors are not allowed on the platform, so your profile is suspended.",
+    "toStudio": "Go to Studio"
+  },
+  "state": {
+    "loading": "Loading step",
+    "slow": "Loading is taking longer than usual.",
+    "retry": "Try again",
+    "errorTitle": "This step could not be loaded",
+    "errorDescription": "Everything you already saved is kept.",
+    "reload": "Reload step"
+  },
+  "identity": {
+    "explainer": "The check runs at the verification provider: ID document, legal age and a short liveness test with the camera. The platform only stores the result, the time and the expiry date, never a copy of your ID.",
+    "statusLabel": "Status",
+    "none": "Not started yet",
+    "noneText": "Have your ID document ready. Afterwards you come back here.",
+    "pending": "Check in progress",
+    "pendingText": "Finish the check at the provider. If you get stuck there, start it again.",
+    "valid": "Passed",
+    "validText": "Valid until {date}. Verify again before it expires.",
+    "expired": "Expired",
+    "expiredText": "The check expired on {date}. Without a valid check your profile is not public.",
+    "expiredTextNoDate": "The check is no longer valid. Without a valid check your profile is not public.",
+    "rejected": "Declined",
+    "reasons": {
+      "under-age": "The check showed that you are not of legal age.",
+      "not-verified": "The provider could not confirm your identity.",
+      "document-unreadable": "The ID document could not be read. Make sure it is well lit and fully in the picture.",
+      "liveness-failed": "The liveness test did not succeed. Use good light and look straight into the camera.",
+      "other": "The provider declined the check."
+    },
+    "start": "Start check",
+    "restart": "Restart check",
+    "retry": "Check again",
+    "unavailableTitle": "The check is not available yet",
+    "unavailableText": "The verification provider is not connected yet. You can fill in all other steps; you can only submit your profile after a passed check.",
+    "viewStatus": "View verification"
+  },
+  "verification": {
+    "metaTitle": "Verification",
+    "title": "Verification",
+    "intro": "A passed check is valid for twelve months. When it expires, your profile is no longer public until you verify again.",
+    "toOnboarding": "Go to profile setup",
+    "toToday": "Go to Today"
+  },
+  "regions": {
+    "intro": "Choose where visitors should find you: at least one, no more than ten regions.",
+    "privacy": "Your exact address is never published. Your profile names the region as broadly as you choose it, so a canton or a city.",
+    "wholeCanton": "Whole canton of {name}",
+    "otherCities": "Other cities",
+    "count": "{count, plural, =0 {No region chosen} one {# region chosen} other {# regions chosen}}, up to 10",
+    "empty": "No regions are approved yet. As soon as there are some, you choose them here.",
+    "toStudio": "Go to Studio"
+  },
+  "profile": {
+    "intro": "Your display name and your description appear in the marketplace.",
+    "displayName": "Display name",
+    "displayNameHint": "This is how you appear in the marketplace, 2 to 60 characters.",
+    "description": "Description",
+    "descriptionHint": "At least 50 characters. Describe what visitors can expect from you.",
+    "count": "{used} of {max} characters",
+    "languages": "Languages",
+    "languagesHint": "The languages in which you arrange appointments, up to eight."
+  },
+  "media": {
+    "text": "You will soon upload photos in the media library in Studio. You can skip this step now and add photos later.",
+    "neutral": "Without photos your profile shows a neutral area with your initials."
+  },
+  "offer": {
+    "intro": "Name your rates by duration. Visitors see them as a table in your profile.",
+    "ratesTitle": "Rates",
+    "row": "Rate {index}",
+    "duration": "Duration",
+    "price": "Price in CHF",
+    "priceHint": "Whole francs",
+    "note": "Note",
+    "noteHint": "Up to 120 characters",
+    "add": "Add rate",
+    "remove": "Remove rate {index}",
+    "empty": "No rates yet. Without rates your profile shows «Rates on request».",
+    "max": "You have reached the maximum of 12 rates.",
+    "servicesTitle": "Services",
+    "servicesText": "You choose services as soon as the categories are maintained. Until then your offer consists of rates."
+  },
+  "availability": {
+    "text": "You will soon maintain working hours and absences in the Studio calendar. You can skip this step now.",
+    "neutral": "Without maintained availability your profile shows no section about it."
+  },
+  "preview": {
+    "intro": "This is how visitors would see your profile.",
+    "note": "The full profile page follows later and uses the same building blocks as this preview.",
+    "heading": "How visitors see your profile",
+    "description": "Description",
+    "noDescription": "No description yet.",
+    "languages": "Languages",
+    "rates": "Rates",
+    "ratesEmpty": "Rates on request",
+    "columns": {
+      "duration": "Duration",
+      "price": "Price",
+      "note": "Note"
+    },
+    "trust": "Trust signals",
+    "trustEmpty": "No trust signals yet. «Identity verified» appears as soon as your check has passed.",
+    "identitySignal": "Identity verified",
+    "identityInfo": "Show explanation of «Identity verified»",
+    "explanation": {
+      "checked": "What was checked",
+      "checkedAt": "When",
+      "notImplied": "What it does not say"
+    },
+    "identityChecked": "Legal age and identity with ID document and liveness test, at the verification provider.",
+    "identityNotImplied": "The signal says nothing about services, quality or safety.",
+    "close": "Close explanation",
+    "noRegion": "No region chosen",
+    "confirm": "Confirm preview"
+  },
+  "submit": {
+    "intro": "We review submitted profiles by hand. Your profile only becomes public after approval.",
+    "missingTitle": "Still missing",
+    "missingStep": "Complete {step}",
+    "ready": "Everything is ready. You can submit your profile.",
+    "button": "Submit profile"
+  }
+}

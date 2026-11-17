@@ -1,0 +1,213 @@
+{
+  "metaTitle": "Creare il profilo",
+  "progress": {
+    "label": "Avanzamento della creazione del profilo",
+    "summary": "Passo {current} di {total}: {name}, {duration}",
+    "position": "Passo {current} di {total}, {duration}",
+    "stepLabel": "{name}, {duration}",
+    "duration": "{minutes, plural, one {circa # minuto} other {circa # minuti}}",
+    "done": "completato",
+    "current": "passo attuale",
+    "upcoming": "da fare"
+  },
+  "steps": {
+    "identity": {
+      "name": "Identità",
+      "title": "Verificare l’identità"
+    },
+    "regions": {
+      "name": "Regioni",
+      "title": "Scegliere le regioni"
+    },
+    "profile": {
+      "name": "Profilo",
+      "title": "Descrivere il profilo"
+    },
+    "media": {
+      "name": "Media",
+      "title": "Media"
+    },
+    "offer": {
+      "name": "Offerta e prezzi",
+      "title": "Offerta e prezzi"
+    },
+    "availability": {
+      "name": "Disponibilità",
+      "title": "Disponibilità"
+    },
+    "preview": {
+      "name": "Anteprima",
+      "title": "Vedere l’anteprima"
+    },
+    "submit": {
+      "name": "Invio",
+      "title": "Inviare il profilo"
+    }
+  },
+  "nav": {
+    "back": "Torna a {step}",
+    "saveAndContinue": "Salva e continua",
+    "skip": "Salta il passo",
+    "continueTo": "Continua con {step}"
+  },
+  "form": {
+    "summaryTitle": "Controlla queste indicazioni",
+    "optional": "facoltativo"
+  },
+  "errors": {
+    "generic": "Non ha funzionato. I tuoi dati sono ancora qui; riprova.",
+    "notAllowed": "Solo la persona titolare di questo profilo può modificarlo.",
+    "notEditable": "Il tuo profilo è stato inviato o è bloccato e al momento non si può modificare.",
+    "regionsRequired": "Scegli almeno una regione.",
+    "regionsTooMany": "Scegli al massimo dieci regioni.",
+    "invalidRegion": "Una regione scelta non è più approvata. Scegli di nuovo le tue regioni.",
+    "displayNameTooShort": "Il nome visualizzato deve avere almeno 2 caratteri.",
+    "displayNameTooLong": "Il nome visualizzato può avere al massimo 60 caratteri.",
+    "descriptionTooShort": "La descrizione deve avere almeno 50 caratteri.",
+    "descriptionTooLong": "La descrizione può avere al massimo 4000 caratteri.",
+    "languagesRequired": "Scegli almeno una lingua.",
+    "languagesTooMany": "Scegli al massimo otto lingue.",
+    "durationTooShort": "La durata deve essere di almeno 15 minuti.",
+    "durationTooLong": "La durata può essere al massimo di 24 ore.",
+    "priceTooLow": "Inserisci un prezzo di almeno 1 franco.",
+    "priceTooHigh": "Il prezzo può essere al massimo di 100 000 franchi.",
+    "priceInvalid": "Inserisci il prezzo in franchi interi.",
+    "noteTooLong": "La nota può avere al massimo 120 caratteri.",
+    "ratesTooMany": "Puoi indicare al massimo 12 prezzi.",
+    "providerNotConfigured": "La verifica non è ancora disponibile. Il tuo profilo resta salvato come bozza.",
+    "incomplete": "Il tuo profilo non è ancora completo. Completa i passi dell’elenco."
+  },
+  "review": {
+    "title": "Il tuo profilo è stato rinviato per correzioni",
+    "intro": "Il team di verifica ti chiede modifiche in questi passi. Poi invii di nuovo il profilo.",
+    "noteTitle": "Nota della verifica",
+    "goTo": "Modifica {step}"
+  },
+  "access": {
+    "suspendedTitle": "Il tuo profilo è bloccato",
+    "suspendedText": "Al momento non puoi né modificarlo né inviarlo. Il supporto ti aiuta.",
+    "underAge": "La verifica dell’identità ha mostrato che non sei maggiorenne. I profili di minorenni non sono ammessi sulla piattaforma; per questo il tuo profilo è bloccato.",
+    "toStudio": "Vai allo Studio"
+  },
+  "state": {
+    "loading": "Caricamento del passo",
+    "slow": "Il caricamento richiede più tempo del solito.",
+    "retry": "Riprova",
+    "errorTitle": "Non è stato possibile caricare questo passo",
+    "errorDescription": "Quello che hai già salvato è conservato.",
+    "reload": "Ricarica il passo"
+  },
+  "identity": {
+    "explainer": "La verifica avviene presso il fornitore di verifica: documento d’identità, maggiore età e un breve test di presenza con la fotocamera. La piattaforma salva solo il risultato, il momento e la scadenza, mai una copia del documento.",
+    "statusLabel": "Stato",
+    "none": "Non ancora avviata",
+    "noneText": "Tieni pronto il documento d’identità. Dopo torni qui.",
+    "pending": "Verifica in corso",
+    "pendingText": "Completa la verifica presso il fornitore. Se non riesci ad andare avanti, avviala di nuovo.",
+    "valid": "Superata",
+    "validText": "Valida fino al {date}. Prima della scadenza verifichi di nuovo.",
+    "expired": "Scaduta",
+    "expiredText": "La verifica è scaduta il {date}. Senza una verifica valida il tuo profilo non è pubblico.",
+    "expiredTextNoDate": "La verifica non è più valida. Senza una verifica valida il tuo profilo non è pubblico.",
+    "rejected": "Respinta",
+    "reasons": {
+      "under-age": "La verifica ha mostrato che non sei maggiorenne.",
+      "not-verified": "Il fornitore non ha potuto confermare la tua identità.",
+      "document-unreadable": "Il documento non era leggibile. Fai in modo che sia ben illuminato e interamente visibile.",
+      "liveness-failed": "Il test di presenza non è riuscito. Cerca una buona luce e guarda dritto nella fotocamera.",
+      "other": "Il fornitore ha respinto la verifica."
+    },
+    "start": "Avvia la verifica",
+    "restart": "Riavvia la verifica",
+    "retry": "Verifica di nuovo",
+    "unavailableTitle": "La verifica non è ancora disponibile",
+    "unavailableText": "Il fornitore di verifica non è ancora collegato. Puoi compilare tutti gli altri passi; potrai inviare il profilo solo dopo una verifica superata.",
+    "viewStatus": "Vedi la verifica"
+  },
+  "verification": {
+    "metaTitle": "Verifica",
+    "title": "Verifica",
+    "intro": "Una verifica superata vale dodici mesi. Alla scadenza il tuo profilo non è più pubblico finché non verifichi di nuovo.",
+    "toOnboarding": "Vai alla creazione del profilo",
+    "toToday": "Vai a Oggi"
+  },
+  "regions": {
+    "intro": "Scegli dove i visitatori devono trovarti: almeno una regione, al massimo dieci.",
+    "privacy": "Il tuo indirizzo esatto non viene mai pubblicato. Il tuo profilo indica la regione in modo generico come la scegli tu, cioè un cantone o una città.",
+    "wholeCanton": "Tutto il cantone {name}",
+    "otherCities": "Altre città",
+    "count": "{count, plural, =0 {Nessuna regione scelta} one {# regione scelta} other {# regioni scelte}}, al massimo 10",
+    "empty": "Non ci sono ancora regioni approvate. Appena ce ne saranno, le sceglierai qui.",
+    "toStudio": "Vai allo Studio"
+  },
+  "profile": {
+    "intro": "Il tuo nome visualizzato e la tua descrizione appaiono nel marketplace.",
+    "displayName": "Nome visualizzato",
+    "displayNameHint": "Così appari nel marketplace, da 2 a 60 caratteri.",
+    "description": "Descrizione",
+    "descriptionHint": "Almeno 50 caratteri. Descrivi cosa possono aspettarsi i visitatori da te.",
+    "count": "{used} di {max} caratteri",
+    "languages": "Lingue",
+    "languagesHint": "Le lingue in cui fissi gli appuntamenti, al massimo otto."
+  },
+  "media": {
+    "text": "Presto caricherai le foto nella mediateca dello Studio. Puoi saltare questo passo ora e aggiungere le foto più tardi.",
+    "neutral": "Senza foto il tuo profilo mostra una superficie neutra con le tue iniziali."
+  },
+  "offer": {
+    "intro": "Indica i tuoi prezzi in base alla durata. I visitatori li vedono come tabella nel tuo profilo.",
+    "ratesTitle": "Prezzi",
+    "row": "Prezzo {index}",
+    "duration": "Durata",
+    "price": "Prezzo in CHF",
+    "priceHint": "Franchi interi",
+    "note": "Nota",
+    "noteHint": "Al massimo 120 caratteri",
+    "add": "Aggiungi un prezzo",
+    "remove": "Rimuovi il prezzo {index}",
+    "empty": "Ancora nessun prezzo. Senza prezzi il tuo profilo mostra «Prezzi su richiesta».",
+    "max": "Hai raggiunto il massimo di 12 prezzi.",
+    "servicesTitle": "Prestazioni",
+    "servicesText": "Sceglierai le prestazioni appena le categorie saranno gestite. Fino ad allora la tua offerta è composta dai prezzi."
+  },
+  "availability": {
+    "text": "Presto gestirai orari di lavoro e assenze nel calendario dello Studio. Puoi saltare questo passo ora.",
+    "neutral": "Senza disponibilità gestita il tuo profilo non mostra una sezione al riguardo."
+  },
+  "preview": {
+    "intro": "Così i visitatori vedrebbero il tuo profilo.",
+    "note": "La pagina completa del profilo seguirà più tardi e userà gli stessi elementi di questa anteprima.",
+    "heading": "Il tuo profilo visto dai visitatori",
+    "description": "Descrizione",
+    "noDescription": "Ancora nessuna descrizione.",
+    "languages": "Lingue",
+    "rates": "Prezzi",
+    "ratesEmpty": "Prezzi su richiesta",
+    "columns": {
+      "duration": "Durata",
+      "price": "Prezzo",
+      "note": "Nota"
+    },
+    "trust": "Segnali di fiducia",
+    "trustEmpty": "Ancora nessun segnale di fiducia. «Identità verificata» appare appena la tua verifica è superata.",
+    "identitySignal": "Identità verificata",
+    "identityInfo": "Mostra la spiegazione di «Identità verificata»",
+    "explanation": {
+      "checked": "Cosa è stato verificato",
+      "checkedAt": "Quando",
+      "notImplied": "Cosa non dice"
+    },
+    "identityChecked": "Maggiore età e identità con documento e test di presenza, presso il fornitore di verifica.",
+    "identityNotImplied": "Il segnale non dice nulla su prestazioni, qualità o sicurezza.",
+    "close": "Chiudi la spiegazione",
+    "noRegion": "Nessuna regione scelta",
+    "confirm": "Conferma l’anteprima"
+  },
+  "submit": {
+    "intro": "Controlliamo a mano i profili inviati. Il tuo profilo diventa pubblico solo dopo l’approvazione.",
+    "missingTitle": "Cosa manca ancora",
+    "missingStep": "Completa {step}",
+    "ready": "Tutto pronto. Puoi inviare il tuo profilo.",
+    "button": "Invia il profilo"
+  }
+}

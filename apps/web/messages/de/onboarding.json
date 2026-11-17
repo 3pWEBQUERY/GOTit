@@ -1,0 +1,213 @@
+{
+  "metaTitle": "Profil einrichten",
+  "progress": {
+    "label": "Fortschritt der Profilerstellung",
+    "summary": "Schritt {current} von {total}: {name}, {duration}",
+    "position": "Schritt {current} von {total}, {duration}",
+    "stepLabel": "{name}, {duration}",
+    "duration": "{minutes, plural, one {etwa # Minute} other {etwa # Minuten}}",
+    "done": "erledigt",
+    "current": "aktueller Schritt",
+    "upcoming": "offen"
+  },
+  "steps": {
+    "identity": {
+      "name": "Identität",
+      "title": "Identität prüfen"
+    },
+    "regions": {
+      "name": "Regionen",
+      "title": "Regionen wählen"
+    },
+    "profile": {
+      "name": "Profil",
+      "title": "Profil beschreiben"
+    },
+    "media": {
+      "name": "Medien",
+      "title": "Medien"
+    },
+    "offer": {
+      "name": "Angebot und Preise",
+      "title": "Angebot und Preise"
+    },
+    "availability": {
+      "name": "Verfügbarkeit",
+      "title": "Verfügbarkeit"
+    },
+    "preview": {
+      "name": "Vorschau",
+      "title": "Vorschau ansehen"
+    },
+    "submit": {
+      "name": "Einreichen",
+      "title": "Profil einreichen"
+    }
+  },
+  "nav": {
+    "back": "Zurück zu {step}",
+    "saveAndContinue": "Speichern und weiter",
+    "skip": "Schritt überspringen",
+    "continueTo": "Weiter zu {step}"
+  },
+  "form": {
+    "summaryTitle": "Bitte prüfe diese Angaben",
+    "optional": "optional"
+  },
+  "errors": {
+    "generic": "Das hat nicht geklappt. Deine Eingaben sind noch da; versuche es erneut.",
+    "notAllowed": "Nur die Person mit diesem Anbieterprofil kann es bearbeiten.",
+    "notEditable": "Dein Profil ist eingereicht oder gesperrt und lässt sich gerade nicht bearbeiten.",
+    "regionsRequired": "Wähle mindestens eine Region.",
+    "regionsTooMany": "Wähle höchstens zehn Regionen.",
+    "invalidRegion": "Eine gewählte Region ist nicht mehr freigegeben. Wähle deine Regionen erneut.",
+    "displayNameTooShort": "Der Anzeigename braucht mindestens 2 Zeichen.",
+    "displayNameTooLong": "Der Anzeigename darf höchstens 60 Zeichen haben.",
+    "descriptionTooShort": "Die Beschreibung braucht mindestens 50 Zeichen.",
+    "descriptionTooLong": "Die Beschreibung darf höchstens 4000 Zeichen haben.",
+    "languagesRequired": "Wähle mindestens eine Sprache.",
+    "languagesTooMany": "Wähle höchstens acht Sprachen.",
+    "durationTooShort": "Die Dauer muss mindestens 15 Minuten betragen.",
+    "durationTooLong": "Die Dauer darf höchstens 24 Stunden betragen.",
+    "priceTooLow": "Gib einen Preis ab 1 Franken ein.",
+    "priceTooHigh": "Der Preis darf höchstens 100 000 Franken betragen.",
+    "priceInvalid": "Gib den Preis als ganze Zahl in Franken ein.",
+    "noteTooLong": "Der Hinweis darf höchstens 120 Zeichen haben.",
+    "ratesTooMany": "Du kannst höchstens 12 Preise angeben.",
+    "providerNotConfigured": "Die Prüfung ist noch nicht verfügbar. Dein Profil bleibt als Entwurf gespeichert.",
+    "incomplete": "Dein Profil ist noch nicht vollständig. Ergänze die Schritte in der Liste."
+  },
+  "review": {
+    "title": "Dein Profil wurde zur Korrektur zurückgegeben",
+    "intro": "Das Prüfteam bittet dich um Änderungen in diesen Schritten. Danach reichst du das Profil erneut ein.",
+    "noteTitle": "Hinweis aus der Prüfung",
+    "goTo": "{step} bearbeiten"
+  },
+  "access": {
+    "suspendedTitle": "Dein Profil ist gesperrt",
+    "suspendedText": "Du kannst es im Moment weder bearbeiten noch einreichen. Der Support hilft dir weiter.",
+    "underAge": "Die Identitätsprüfung hat ergeben, dass du nicht volljährig bist. Profile Minderjähriger sind auf der Plattform nicht erlaubt; deshalb ist dein Profil gesperrt.",
+    "toStudio": "Zum Studio"
+  },
+  "state": {
+    "loading": "Schritt wird geladen",
+    "slow": "Das Laden dauert länger als üblich.",
+    "retry": "Erneut versuchen",
+    "errorTitle": "Dieser Schritt liess sich nicht laden",
+    "errorDescription": "Was du bereits gespeichert hast, ist erhalten.",
+    "reload": "Schritt neu laden"
+  },
+  "identity": {
+    "explainer": "Die Prüfung läuft beim Prüfdienstleister: Ausweis, Volljährigkeit und ein kurzer Lebendigkeitstest mit der Kamera. Die Plattform speichert nur das Ergebnis, den Zeitpunkt und das Ablaufdatum, keine Ausweiskopie.",
+    "statusLabel": "Status",
+    "none": "Noch nicht gestartet",
+    "noneText": "Halte deinen Ausweis bereit. Danach kommst du hierher zurück.",
+    "pending": "Prüfung läuft",
+    "pendingText": "Schliesse die Prüfung beim Dienstleister ab. Kommst du dort nicht weiter, starte sie neu.",
+    "valid": "Bestanden",
+    "validText": "Gültig bis {date}. Vor dem Ablauf prüfst du erneut.",
+    "expired": "Abgelaufen",
+    "expiredText": "Die Prüfung ist am {date} abgelaufen. Ohne gültige Prüfung ist dein Profil nicht öffentlich.",
+    "expiredTextNoDate": "Die Prüfung gilt nicht mehr. Ohne gültige Prüfung ist dein Profil nicht öffentlich.",
+    "rejected": "Abgelehnt",
+    "reasons": {
+      "under-age": "Die Prüfung hat ergeben, dass du nicht volljährig bist.",
+      "not-verified": "Der Dienstleister konnte deine Identität nicht bestätigen.",
+      "document-unreadable": "Der Ausweis war nicht lesbar. Achte darauf, dass er gut beleuchtet und vollständig im Bild ist.",
+      "liveness-failed": "Der Lebendigkeitstest ist nicht gelungen. Achte auf gutes Licht und schau direkt in die Kamera.",
+      "other": "Der Dienstleister hat die Prüfung abgelehnt."
+    },
+    "start": "Prüfung starten",
+    "restart": "Prüfung neu starten",
+    "retry": "Erneut prüfen",
+    "unavailableTitle": "Die Prüfung ist noch nicht verfügbar",
+    "unavailableText": "Der Prüfdienstleister ist noch nicht angebunden. Du kannst alle anderen Schritte ausfüllen; einreichen kannst du dein Profil erst nach bestandener Prüfung.",
+    "viewStatus": "Verifizierung ansehen"
+  },
+  "verification": {
+    "metaTitle": "Verifizierung",
+    "title": "Verifizierung",
+    "intro": "Eine bestandene Prüfung gilt zwölf Monate. Läuft sie ab, ist dein Profil nicht mehr öffentlich, bis du erneut prüfst.",
+    "toOnboarding": "Zur Profilerstellung",
+    "toToday": "Zu Heute"
+  },
+  "regions": {
+    "intro": "Wähle, wo Besucher dich finden sollen: mindestens eine, höchstens zehn Regionen.",
+    "privacy": "Deine genaue Adresse wird nie veröffentlicht. Dein Profil nennt die Region so allgemein, wie du sie wählst, also einen Kanton oder eine Stadt.",
+    "wholeCanton": "Ganzer Kanton {name}",
+    "otherCities": "Weitere Städte",
+    "count": "{count, plural, =0 {Keine Region gewählt} one {# Region gewählt} other {# Regionen gewählt}}, höchstens 10",
+    "empty": "Es sind noch keine Regionen freigegeben. Sobald es welche gibt, wählst du sie hier.",
+    "toStudio": "Zum Studio"
+  },
+  "profile": {
+    "intro": "Dein Anzeigename und deine Beschreibung erscheinen im Marktplatz.",
+    "displayName": "Anzeigename",
+    "displayNameHint": "So erscheinst du im Marktplatz, 2 bis 60 Zeichen.",
+    "description": "Beschreibung",
+    "descriptionHint": "Mindestens 50 Zeichen. Beschreibe, was Besucher bei dir erwartet.",
+    "count": "{used} von {max} Zeichen",
+    "languages": "Sprachen",
+    "languagesHint": "Die Sprachen, in denen du Termine vereinbarst, höchstens acht."
+  },
+  "media": {
+    "text": "Fotos lädst du bald in der Medienbibliothek im Studio hoch. Du kannst diesen Schritt jetzt überspringen und Fotos später ergänzen.",
+    "neutral": "Ohne Fotos zeigt dein Profil eine neutrale Fläche mit deinen Initialen."
+  },
+  "offer": {
+    "intro": "Nenne deine Preise nach Dauer. Besucher sehen sie als Tabelle in deinem Profil.",
+    "ratesTitle": "Preise",
+    "row": "Preis {index}",
+    "duration": "Dauer",
+    "price": "Preis in CHF",
+    "priceHint": "Ganze Franken",
+    "note": "Hinweis",
+    "noteHint": "Höchstens 120 Zeichen",
+    "add": "Preis hinzufügen",
+    "remove": "Preis {index} entfernen",
+    "empty": "Noch keine Preise. Ohne Preise zeigt dein Profil «Preise auf Anfrage».",
+    "max": "Du hast die höchste Zahl von 12 Preisen erreicht.",
+    "servicesTitle": "Leistungen",
+    "servicesText": "Leistungen wählst du, sobald die Kategorien gepflegt sind. Bis dahin besteht dein Angebot aus Preisen."
+  },
+  "availability": {
+    "text": "Arbeitszeiten und Abwesenheiten pflegst du bald im Kalender des Studios. Du kannst diesen Schritt jetzt überspringen.",
+    "neutral": "Ohne gepflegte Verfügbarkeit zeigt dein Profil keinen Abschnitt dazu."
+  },
+  "preview": {
+    "intro": "So würden Besucher dein Profil sehen.",
+    "note": "Die vollständige Profilseite folgt später und verwendet dieselben Bausteine wie diese Vorschau.",
+    "heading": "So sehen Besucher dein Profil",
+    "description": "Beschreibung",
+    "noDescription": "Noch keine Beschreibung.",
+    "languages": "Sprachen",
+    "rates": "Preise",
+    "ratesEmpty": "Preise auf Anfrage",
+    "columns": {
+      "duration": "Dauer",
+      "price": "Preis",
+      "note": "Hinweis"
+    },
+    "trust": "Vertrauenssignale",
+    "trustEmpty": "Noch keine Vertrauenssignale. «Identität geprüft» erscheint, sobald deine Prüfung bestanden ist.",
+    "identitySignal": "Identität geprüft",
+    "identityInfo": "Erklärung zu «Identität geprüft» anzeigen",
+    "explanation": {
+      "checked": "Was geprüft wurde",
+      "checkedAt": "Wann",
+      "notImplied": "Was es nicht aussagt"
+    },
+    "identityChecked": "Volljährigkeit und Identität mit Ausweis und Lebendigkeitstest, beim Prüfdienstleister.",
+    "identityNotImplied": "Das Signal sagt nichts über Leistungen, Qualität oder Sicherheit aus.",
+    "close": "Erklärung schliessen",
+    "noRegion": "Keine Region gewählt",
+    "confirm": "Vorschau bestätigen"
+  },
+  "submit": {
+    "intro": "Wir prüfen eingereichte Profile von Hand. Öffentlich wird dein Profil erst nach der Freigabe.",
+    "missingTitle": "Das fehlt noch",
+    "missingStep": "{step} ergänzen",
+    "ready": "Alles bereit. Du kannst dein Profil einreichen.",
+    "button": "Profil einreichen"
+  }
+}
