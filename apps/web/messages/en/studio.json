@@ -31,6 +31,12 @@
     "inReview": "Your profile is being reviewed. There is nothing you need to do.",
     "changesRequested": "Your profile was returned for changes.",
     "suspended": "Your profile is suspended. Support will help you.",
-    "viewInMarketplace": "View in marketplace"
+    "viewInMarketplace": "View in marketplace",
+    "inReviewHint": "We review submitted profiles by hand. Your profile is not public until it is approved.",
+    "reviewCorrections": "View corrections",
+    "verificationExpires": "{days, plural, one {Verification expires in # day} other {Verification expires in # days}}",
+    "verificationExpired": "Your verification has expired. Your profile is not public until you verify again.",
+    "renew": "Renew verification",
+    "verificationLink": "View verification"
   }
 }

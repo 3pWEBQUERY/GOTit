@@ -31,6 +31,12 @@
     "inReview": "Dein Profil wird geprüft. Du musst nichts tun.",
     "changesRequested": "Dein Profil wurde zur Korrektur zurückgegeben.",
     "suspended": "Dein Profil ist gesperrt. Der Support hilft dir weiter.",
-    "viewInMarketplace": "Im Marktplatz ansehen"
+    "viewInMarketplace": "Im Marktplatz ansehen",
+    "inReviewHint": "Wir prüfen eingereichte Profile von Hand. Bis zur Freigabe ist dein Profil nicht öffentlich.",
+    "reviewCorrections": "Korrekturen ansehen",
+    "verificationExpires": "{days, plural, one {Verifizierung läuft in # Tag ab} other {Verifizierung läuft in # Tagen ab}}",
+    "verificationExpired": "Deine Verifizierung ist abgelaufen. Bis zur erneuten Prüfung ist dein Profil nicht öffentlich.",
+    "renew": "Verifizierung erneuern",
+    "verificationLink": "Verifizierung ansehen"
   }
 }

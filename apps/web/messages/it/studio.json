@@ -31,6 +31,12 @@
     "inReview": "Il tuo profilo è in verifica. Non devi fare nulla.",
     "changesRequested": "Il tuo profilo è stato rimandato per correzioni.",
     "suspended": "Il tuo profilo è bloccato. Il supporto ti aiuta.",
-    "viewInMarketplace": "Vedi nel marketplace"
+    "viewInMarketplace": "Vedi nel marketplace",
+    "inReviewHint": "Controlliamo a mano i profili inviati. Fino all’approvazione il tuo profilo non è pubblico.",
+    "reviewCorrections": "Vedere le correzioni",
+    "verificationExpires": "{days, plural, one {La verifica scade tra # giorno} other {La verifica scade tra # giorni}}",
+    "verificationExpired": "La tua verifica è scaduta. Fino a una nuova verifica il tuo profilo non è pubblico.",
+    "renew": "Rinnovare la verifica",
+    "verificationLink": "Vedere la verifica"
   }
 }

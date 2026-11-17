@@ -3,6 +3,8 @@ import type { ReactNode } from "react";
 export interface TodoEntry {
   id: string;
   text: string;
+  /** Ein erklärender Satz unter dem Text. */
+  hint?: string;
   action?: ReactNode;
 }
 
@@ -18,8 +20,15 @@ export function TodoList({ heading, entries, emptyText }: { heading: string; ent
       ) : (
         <ul className="flex flex-col divide-y divide-border">
           {entries.map((entry) => (
-            <li key={entry.id} className="flex min-h-11 flex-wrap items-center justify-between gap-3 py-2 text-body">
-              {entry.text}
+            <li key={entry.id} data-todo={entry.id} className="flex min-h-11 flex-wrap items-center justify-between gap-3 py-2 text-body">
+              {entry.hint ? (
+                <span className="flex min-w-0 flex-col gap-1">
+                  <span>{entry.text}</span>
+                  <span className="text-small text-ink-muted">{entry.hint}</span>
+                </span>
+              ) : (
+                entry.text
+              )}
               {entry.action}
             </li>
           ))}

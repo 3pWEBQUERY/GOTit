@@ -31,6 +31,12 @@
     "inReview": "Ton profil est en cours de vérification. Tu n’as rien à faire.",
     "changesRequested": "Ton profil t’a été renvoyé pour correction.",
     "suspended": "Ton profil est bloqué. Le support t’aide à avancer.",
-    "viewInMarketplace": "Voir dans la place de marché"
+    "viewInMarketplace": "Voir dans la place de marché",
+    "inReviewHint": "Nous vérifions les profils envoyés à la main. Jusqu’à la validation, ton profil n’est pas public.",
+    "reviewCorrections": "Voir les corrections",
+    "verificationExpires": "{days, plural, one {La vérification expire dans # jour} other {La vérification expire dans # jours}}",
+    "verificationExpired": "Ta vérification a expiré. Ton profil n’est pas public jusqu’à une nouvelle vérification.",
+    "renew": "Renouveler la vérification",
+    "verificationLink": "Voir la vérification"
   }
 }

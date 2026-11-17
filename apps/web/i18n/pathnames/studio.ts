@@ -2,6 +2,8 @@
 export const studioPathnames = {
   "/studio": "/studio",
   "/studio/start": { de: "/studio/start", fr: "/studio/demarrage", it: "/studio/avvio", en: "/studio/start" },
+  "/studio/start/[schritt]": { de: "/studio/start/[schritt]", fr: "/studio/demarrage/[schritt]", it: "/studio/avvio/[schritt]", en: "/studio/start/[schritt]" },
+  "/studio/verifizierung": { de: "/studio/verifizierung", fr: "/studio/verification", it: "/studio/verifica", en: "/studio/verification" },
   "/studio/profil": { de: "/studio/profil", fr: "/studio/profil", it: "/studio/profilo", en: "/studio/profile" },
   "/studio/medien": { de: "/studio/medien", fr: "/studio/medias", it: "/studio/media", en: "/studio/media" },
   "/studio/nachrichten": { de: "/studio/nachrichten", fr: "/studio/messages", it: "/studio/messaggi", en: "/studio/messages" },
