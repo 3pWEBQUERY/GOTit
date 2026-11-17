@@ -39,6 +39,50 @@
     "verificationExpires": "{days, plural, one {La vérification expire dans # jour} other {La vérification expire dans # jours}}",
     "verificationExpired": "Ta vérification a expiré. Ton profil n’est pas public jusqu’à une nouvelle vérification.",
     "renew": "Renouveler la vérification",
-    "verificationLink": "Voir la vérification"
+    "verificationLink": "Voir la vérification",
+    "requests": "{count, plural, one {# demande de rendez-vous attend une réponse} other {# demandes de rendez-vous attendent une réponse}}",
+    "requestsHint": "La prochaine expire le {when}.",
+    "requestFor": "Demande pour le {when}",
+    "openRequests": "Voir les demandes",
+    "unread": "{count, plural, one {# message non lu} other {# messages non lus}}",
+    "openMessages": "Ouvrir les messages",
+    "mediaCorrections": "{count, plural, one {# photo renvoyée pour correction} other {# photos renvoyées pour correction}}",
+    "openMedia": "Voir les médias",
+    "changePending": "Tes modifications sont en cours de vérification.",
+    "changePendingHint": "Jusqu’à la validation, la version actuelle reste visible dans la place de marché.",
+    "changeRejected": "Ta dernière modification a été refusée.",
+    "editProfile": "Modifier le profil",
+    "calendar": {
+      "heading": "Aujourd’hui",
+      "empty": "Rien au calendrier aujourd’hui.",
+      "open": "Ouvrir le calendrier",
+      "booking": "Rendez-vous, {status}",
+      "label": "Entrées d’aujourd’hui"
+    },
+    "kpis": {
+      "heading": "{days, plural, one {Dernier jour} other {# derniers jours}}",
+      "toStats": "Vers les statistiques"
+    },
+    "profile": {
+      "heading": "Ton profil",
+      "complete": "Ton profil est complet.",
+      "partial": "Complet à {percent} : {missing}",
+      "missing": {
+        "shortDescription": "description courte manquante",
+        "description": "description trop courte",
+        "languages": "langues manquantes",
+        "services": "offre manquante",
+        "rates": "tarifs manquants",
+        "photos": "moins de trois photos"
+      },
+      "fix": {
+        "shortDescription": "Ajouter une description courte",
+        "description": "Compléter la description",
+        "languages": "Ajouter des langues",
+        "services": "Compléter l’offre",
+        "rates": "Ajouter des tarifs",
+        "photos": "Téléverser des photos"
+      }
+    }
   }
 }

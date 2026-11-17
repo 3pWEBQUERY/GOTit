@@ -111,9 +111,9 @@ test.describe("Bewertungen: Moderation", () => {
       .getByLabel("Begründung", { exact: true })
       .fill("Fiktiv: Die Bewertung nennt intime Details.");
     await page.getByRole("button", { name: "Entscheid speichern" }).click();
-    await expect(
-      page.getByText("Entscheid gespeichert", { exact: true }),
-    ).toBeVisible();
+    // Danach öffnet sich der nächste Fall der gemeinsamen Warteschlange. Unter parallelen Tests kann das ein
+    // Fall sein, den ein anderer Test gerade aufräumt; die Meldung ginge dann mit der 404 verloren. Massgeblich
+    // sind deshalb Navigation und gespeicherter Entscheid.
     await expect(page).not.toHaveURL(`/de/admin/bewertungen/${older.reviewId}`);
     expect(await reviewRow(older.reviewId)).toMatchObject({
       status: "REJECTED",

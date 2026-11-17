@@ -3,6 +3,8 @@ import { PROFILE_SECTIONS, type ProfileSection } from "@app/core/provider-profil
 import { Breadcrumbs, EmptyState, UiLink, buttonVariants } from "@app/ui";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { after } from "next/server";
+import { recordProfileViewForSlug } from "@app/core/stats";
 import { redirect } from "@/i18n/navigation";
 import { ProfileLinkedClubs } from "../../../clubs/components/profile-linked";
 import { BookingRequestPanel } from "../../../booking/components/request/booking-request-panel";
@@ -13,6 +15,7 @@ import { loadProfileFavorite } from "../../../favorites/queries/load-profile-fav
 import { TopBarTitle } from "../../../shell/components/top-bar-title";
 import { createHref } from "../../../shell/nav/href";
 import { getViewer } from "../../../shell/queries/get-viewer";
+import { countableVisitor } from "../../../stats/lib/countable";
 import { toViewModel } from "../../model";
 import { loadEditor } from "../../queries/load-editor";
 import { loadPublicProfile } from "../../queries/load-public-profile";
@@ -62,6 +65,10 @@ export async function PublicProfilePage({ locale, slug, tab, edit, request }: Pu
     : undefined;
   const editSection = owner ? sectionFromSlug(edit) : null;
   const viewer = await getViewer();
+  // Profilaufruf (Entscheid 0019): nur Besucher eines erreichbaren Profils, nie der Inhaber; nach der Antwort, damit nichts wartet.
+  const counted = !owner && (result.state === "ready" || result.state === "paused");
+  const key = counted ? await countableVisitor(viewer) : null;
+  if (key) after(() => recordProfileViewForSlug(profile.slug, key).catch(() => undefined));
   const editor = editSection && viewer.kind === "account" ? await loadEditor(viewer, locale) : null;
   // Herz und Sammlungen für alle ausser dem Inhaber (PRD v2 9.3); Besucher gehen zur Anmeldung und zurück.
   const favorite = owner ? null : { data: await loadProfileFavorite(viewer, profile.slug), signInHref: viewer.kind === "account" ? null : href({ pathname: "/anmelden", query: { weiter: here } }) };
@@ -99,6 +106,7 @@ export async function PublicProfilePage({ locale, slug, tab, edit, request }: Pu
         nameLevel={1}
         reportHref={href("/melden")}
         mediaHref={tabLinks.media}
+        countViewsFor={counted ? profile.slug : undefined}
         tabs={<ProfileTabs current={tab} links={tabLinks} reviewCount={reviewCount} />}
         after={
           tab === "overview" ? (
@@ -115,7 +123,7 @@ export async function PublicProfilePage({ locale, slug, tab, edit, request }: Pu
       >
         {tab === "reviews" ? reviews("tab") : tab === "media" ? (
           model.media.length > 0 ? (
-            <ProfileGallery name={model.displayName} media={model.media} layout="responsive" variant="grid" />
+            <ProfileGallery name={model.displayName} media={model.media} layout="responsive" variant="grid" countViewsFor={counted ? profile.slug : undefined} />
           ) : (
             <EmptyState
               title={t("media.empty")}

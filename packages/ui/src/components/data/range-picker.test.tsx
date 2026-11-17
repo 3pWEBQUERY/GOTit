@@ -6,6 +6,7 @@ import { RangePicker, type RangeValue } from "./range-picker";
 
 const labels = {
   group: "Zeitraum",
+  "1d": "Heute",
   "7d": "7 Tage",
   "30d": "30 Tage",
   "90d": "90 Tage",

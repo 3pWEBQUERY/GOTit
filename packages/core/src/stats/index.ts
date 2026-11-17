@@ -22,3 +22,10 @@ export {
   type Kpi,
   type StatsOverview,
 } from "./queries";
+export {
+  UNFILTERED_SEARCH_KEY,
+  impressionSearchKey,
+  recordMediaViewForSlug,
+  recordProfileViewForSlug,
+  recordSearchImpressionsForSlugs,
+} from "./web";

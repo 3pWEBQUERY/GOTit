@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "title": "Statistics"
+  },
+  "title": "Statistics",
+  "intro": "Numbers for your profile. Only totals are shown, never individual visitors.",
+  "period": {
+    "1d": "Today",
+    "group": "Period",
+    "7d": "7 days",
+    "30d": "30 days",
+    "90d": "90 days",
+    "custom": "Custom period",
+    "from": "From",
+    "to": "To",
+    "dateHint": "Format: DD.MM.YYYY",
+    "openCalendar": "Open calendar",
+    "previousMonth": "Previous month",
+    "nextMonth": "Next month",
+    "invalidFormat": "Enter a date as DD.MM.YYYY.",
+    "outOfRange": "Choose a day up to today.",
+    "shown": "{range}, compared with {previous}",
+    "problem": {
+      "invalid": "Choose a date for “From” and “To”. Showing the last {days} days.",
+      "order": "“From” is after “To”. Showing the last {days} days.",
+      "future": "“To” is in the future. Showing the last {days} days.",
+      "tooLong": "A period has at most {max} days. Showing the last {days} days."
+    }
+  },
+  "kpi": {
+    "heading": "Key figures",
+    "profileViews": "Profile views",
+    "contactActions": "Contact requests",
+    "bookingRequests": "Booking requests",
+    "favoritesNet": "Favourites",
+    "up": "{amount} more than {previous}",
+    "down": "{amount} fewer than {previous}",
+    "flat": "Same as {previous}",
+    "previous": "{days, plural, one {the day before} other {the # days before}}",
+    "footnote": "Profile views count once per visitor and day, never your own. Contact requests are new conversations, booking requests are requests sent. Favourites are additions minus removals. Days in Swiss time."
+  },
+  "funnel": {
+    "title": "From search to booking",
+    "impressions": "Impressions in search",
+    "profileViews": "Profile views",
+    "contactActions": "Contact actions",
+    "bookingRequests": "Booking requests",
+    "confirmed": "Confirmed bookings",
+    "step": "Step",
+    "count": "Count",
+    "rate": "Rate of the step before",
+    "noRate": "–",
+    "footnote": "An impression counts each time your profile appears on a results page. The rate is the share of the step above; without a number in the step above it shows “–”. Contact actions are new conversations, confirmed bookings are accepted requests."
+  },
+  "views": {
+    "title": "Profile views per day",
+    "day": "Day",
+    "value": "Profile views",
+    "footnote": "One view per visitor and day; your own views do not count. Days in Swiss time."
+  },
+  "chart": {
+    "showTable": "Show as table",
+    "showChart": "Show as chart",
+    "empty": "No data for this period yet"
+  },
+  "searches": {
+    "title": "Searches you appeared in",
+    "search": "Search",
+    "impressions": "Impressions",
+    "footnote": "Only the filters of a search are counted, such as region or language, never the text entered. At most 20 searches are shown."
+  },
+  "media": {
+    "title": "Media by views",
+    "medium": "Media",
+    "views": "Views",
+    "noAlt": "No alternative text",
+    "footnote": "One view per visitor, media item and day, when opened in the large view. At most 20 media items are shown."
+  },
+  "state": {
+    "loading": "Loading statistics",
+    "slow": "Loading is taking longer than usual.",
+    "retry": "Try again",
+    "errorTitle": "Statistics could not be loaded",
+    "errorDescription": "Your numbers are saved. Reload the page to try again.",
+    "reload": "Reload page"
+  }
+}

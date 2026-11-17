@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "title": "Statistiques"
+  },
+  "title": "Statistiques",
+  "intro": "Les chiffres de ton profil. Seuls des totaux sont affichés, jamais des visiteurs individuels.",
+  "period": {
+    "1d": "Aujourd’hui",
+    "group": "Période",
+    "7d": "7 jours",
+    "30d": "30 jours",
+    "90d": "90 jours",
+    "custom": "Période personnalisée",
+    "from": "Du",
+    "to": "Au",
+    "dateHint": "Format : JJ.MM.AAAA",
+    "openCalendar": "Ouvrir le calendrier",
+    "previousMonth": "Mois précédent",
+    "nextMonth": "Mois suivant",
+    "invalidFormat": "Saisis une date au format JJ.MM.AAAA.",
+    "outOfRange": "Choisis un jour jusqu’à aujourd’hui.",
+    "shown": "{range}, comparé à {previous}",
+    "problem": {
+      "invalid": "Choisis une date pour « Du » et pour « Au ». Les {days} derniers jours sont affichés.",
+      "order": "« Du » est après « Au ». Les {days} derniers jours sont affichés.",
+      "future": "« Au » est dans le futur. Les {days} derniers jours sont affichés.",
+      "tooLong": "Une période compte au plus {max} jours. Les {days} derniers jours sont affichés."
+    }
+  },
+  "kpi": {
+    "heading": "Chiffres clés",
+    "profileViews": "Vues du profil",
+    "contactActions": "Demandes de contact",
+    "bookingRequests": "Demandes de rendez-vous",
+    "favoritesNet": "Favoris",
+    "up": "{amount} de plus que {previous}",
+    "down": "{amount} de moins que {previous}",
+    "flat": "Autant que {previous}",
+    "previous": "{days, plural, one {la veille} other {les # jours précédents}}",
+    "footnote": "Les vues du profil comptent une fois par visiteur et par jour, jamais les tiennes. Les demandes de contact sont les nouvelles conversations, les demandes de rendez-vous les demandes envoyées. Les favoris sont les ajouts moins les retraits. Jours à l’heure suisse."
+  },
+  "funnel": {
+    "title": "De la recherche au rendez-vous",
+    "impressions": "Affichages dans la recherche",
+    "profileViews": "Vues du profil",
+    "contactActions": "Prises de contact",
+    "bookingRequests": "Demandes de rendez-vous",
+    "confirmed": "Rendez-vous confirmés",
+    "step": "Étape",
+    "count": "Nombre",
+    "rate": "Taux par rapport à l’étape précédente",
+    "noRate": "–",
+    "footnote": "Un affichage compte chaque fois que ton profil apparaît sur une page de résultats. Le taux est la part de l’étape au-dessus ; sans chiffre à l’étape au-dessus, « – » s’affiche. Les prises de contact sont les nouvelles conversations, les rendez-vous confirmés les demandes acceptées."
+  },
+  "views": {
+    "title": "Vues du profil par jour",
+    "day": "Jour",
+    "value": "Vues du profil",
+    "footnote": "Une vue par visiteur et par jour ; tes propres vues ne comptent pas. Jours à l’heure suisse."
+  },
+  "chart": {
+    "showTable": "Afficher en tableau",
+    "showChart": "Afficher en graphique",
+    "empty": "Pas encore de données pour cette période"
+  },
+  "searches": {
+    "title": "Recherches où tu es apparu·e",
+    "search": "Recherche",
+    "impressions": "Affichages",
+    "footnote": "Seuls les filtres d’une recherche sont comptés, par exemple la région ou la langue, jamais le texte saisi. Au plus 20 recherches sont affichées."
+  },
+  "media": {
+    "title": "Médias par vues",
+    "medium": "Média",
+    "views": "Vues",
+    "noAlt": "Sans texte alternatif",
+    "footnote": "Une vue par visiteur, média et jour, à l’ouverture en grand format. Au plus 20 médias sont affichés."
+  },
+  "state": {
+    "loading": "Chargement des statistiques",
+    "slow": "Le chargement prend plus de temps que d’habitude.",
+    "retry": "Réessayer",
+    "errorTitle": "Les statistiques n’ont pas pu être chargées",
+    "errorDescription": "Tes chiffres sont enregistrés. Recharge la page pour réessayer.",
+    "reload": "Recharger la page"
+  }
+}

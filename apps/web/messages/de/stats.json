@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "title": "Statistik"
+  },
+  "title": "Statistik",
+  "intro": "Zahlen zu deinem Profil. Gezeigt werden nur Summen, nie einzelne Besucher.",
+  "period": {
+    "1d": "Heute",
+    "group": "Zeitraum",
+    "7d": "7 Tage",
+    "30d": "30 Tage",
+    "90d": "90 Tage",
+    "custom": "Eigener Zeitraum",
+    "from": "Von",
+    "to": "Bis",
+    "dateHint": "Format: TT.MM.JJJJ",
+    "openCalendar": "Kalender öffnen",
+    "previousMonth": "Vorheriger Monat",
+    "nextMonth": "Nächster Monat",
+    "invalidFormat": "Gib ein Datum in der Form TT.MM.JJJJ ein.",
+    "outOfRange": "Wähle einen Tag bis heute.",
+    "shown": "{range}, verglichen mit {previous}",
+    "problem": {
+      "invalid": "Wähle bei «Von» und «Bis» je ein Datum. Gezeigt werden die letzten {days} Tage.",
+      "order": "«Von» liegt nach «Bis». Gezeigt werden die letzten {days} Tage.",
+      "future": "«Bis» liegt in der Zukunft. Gezeigt werden die letzten {days} Tage.",
+      "tooLong": "Ein Zeitraum hat höchstens {max} Tage. Gezeigt werden die letzten {days} Tage."
+    }
+  },
+  "kpi": {
+    "heading": "Kennzahlen",
+    "profileViews": "Profilaufrufe",
+    "contactActions": "Kontaktanfragen",
+    "bookingRequests": "Terminanfragen",
+    "favoritesNet": "Favoriten",
+    "up": "{amount} mehr als {previous}",
+    "down": "{amount} weniger als {previous}",
+    "flat": "Gleich viele wie {previous}",
+    "previous": "{days, plural, one {am Tag davor} other {in den # Tagen davor}}",
+    "footnote": "Profilaufrufe zählen einmal pro Besucher und Tag, deine eigenen nicht. Kontaktanfragen sind neue Unterhaltungen, Terminanfragen gestellte Anfragen. Favoriten sind neu gemerkte minus entfernte. Tage in Schweizer Zeit."
+  },
+  "funnel": {
+    "title": "Von der Suche zum Termin",
+    "impressions": "Einblendungen in der Suche",
+    "profileViews": "Profilaufrufe",
+    "contactActions": "Kontaktaktionen",
+    "bookingRequests": "Terminanfragen",
+    "confirmed": "Bestätigte Termine",
+    "step": "Stufe",
+    "count": "Anzahl",
+    "rate": "Quote zur Stufe davor",
+    "noRate": "–",
+    "footnote": "Eine Einblendung zählt jedes Mal, wenn dein Profil auf einer Ergebnisseite erscheint. Die Quote ist der Anteil an der Stufe darüber; ohne Zahl in der Stufe darüber steht «–». Kontaktaktionen sind neue Unterhaltungen, bestätigte Termine angenommene Anfragen."
+  },
+  "views": {
+    "title": "Profilaufrufe pro Tag",
+    "day": "Tag",
+    "value": "Profilaufrufe",
+    "footnote": "Ein Aufruf pro Besucher und Tag; deine eigenen Aufrufe zählen nicht. Tage in Schweizer Zeit."
+  },
+  "chart": {
+    "showTable": "Als Tabelle anzeigen",
+    "showChart": "Als Grafik anzeigen",
+    "empty": "Noch keine Daten für diesen Zeitraum"
+  },
+  "searches": {
+    "title": "Suchen, in denen du erschienst",
+    "search": "Suche",
+    "impressions": "Einblendungen",
+    "footnote": "Gezählt werden die Filter einer Suche, etwa Region oder Sprache, nie der eingegebene Text. Gezeigt werden höchstens 20 Suchen."
+  },
+  "media": {
+    "title": "Medien nach Aufrufen",
+    "medium": "Medium",
+    "views": "Aufrufe",
+    "noAlt": "Ohne Alternativtext",
+    "footnote": "Ein Aufruf pro Besucher, Medium und Tag, beim Öffnen in der Grossansicht. Gezeigt werden höchstens 20 Medien."
+  },
+  "state": {
+    "loading": "Statistik wird geladen",
+    "slow": "Das Laden dauert länger als üblich.",
+    "retry": "Erneut versuchen",
+    "errorTitle": "Die Statistik liess sich nicht laden",
+    "errorDescription": "Deine Zahlen sind gespeichert. Lade die Seite neu, um es nochmals zu versuchen.",
+    "reload": "Seite neu laden"
+  }
+}

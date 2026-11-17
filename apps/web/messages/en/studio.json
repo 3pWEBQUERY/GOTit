@@ -39,6 +39,50 @@
     "verificationExpires": "{days, plural, one {Verification expires in # day} other {Verification expires in # days}}",
     "verificationExpired": "Your verification has expired. Your profile is not public until you verify again.",
     "renew": "Renew verification",
-    "verificationLink": "View verification"
+    "verificationLink": "View verification",
+    "requests": "{count, plural, one {# booking request is waiting for a reply} other {# booking requests are waiting for a reply}}",
+    "requestsHint": "The next one expires on {when}.",
+    "requestFor": "Request for {when}",
+    "openRequests": "View requests",
+    "unread": "{count, plural, one {# unread message} other {# unread messages}}",
+    "openMessages": "Open messages",
+    "mediaCorrections": "{count, plural, one {# photo returned for changes} other {# photos returned for changes}}",
+    "openMedia": "View media",
+    "changePending": "Your changes are being reviewed.",
+    "changePendingHint": "Until they are approved, the marketplace shows the previous version.",
+    "changeRejected": "Your last change was rejected.",
+    "editProfile": "Edit profile",
+    "calendar": {
+      "heading": "Today",
+      "empty": "Nothing in the calendar today.",
+      "open": "Open calendar",
+      "booking": "Booking, {status}",
+      "label": "Today’s entries"
+    },
+    "kpis": {
+      "heading": "{days, plural, one {Last day} other {Last # days}}",
+      "toStats": "Go to statistics"
+    },
+    "profile": {
+      "heading": "Your profile",
+      "complete": "Your profile is complete.",
+      "partial": "{percent} complete: {missing}",
+      "missing": {
+        "shortDescription": "short description missing",
+        "description": "description is short",
+        "languages": "languages missing",
+        "services": "offer missing",
+        "rates": "rates missing",
+        "photos": "fewer than three photos"
+      },
+      "fix": {
+        "shortDescription": "Add short description",
+        "description": "Complete description",
+        "languages": "Add languages",
+        "services": "Complete offer",
+        "rates": "Add rates",
+        "photos": "Upload photos"
+      }
+    }
   }
 }

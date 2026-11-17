@@ -21,6 +21,8 @@ export interface ProfileViewProps {
   reportHref?: string;
   /** Tab «Medien»; fehlt in der Vorschau. */
   mediaHref?: string;
+  /** Slug, wenn Öffnen in der Lightbox als Medienaufruf zählt; nur auf `/p/[name]` für Besucher. */
+  countViewsFor?: string;
   /** Tabs über dem Inhalt; nur auf der Seite. */
   tabs?: ReactNode;
   /** Inhalt statt der Übersicht, zum Beispiel der Tab «Medien». */
@@ -44,13 +46,13 @@ export interface ProfileViewProps {
  * Studio und die Vorschau im Onboarding verwenden ihn. Er liest nur das
  * Modell; was öffentlich sein darf, entscheidet vorher der Kern.
  */
-export function ProfileView({ model, now, layout, nameLevel, idPrefix = "profil", reportHref, mediaHref, tabs, children, after, editLinks, notice, actions, message, request }: ProfileViewProps) {
+export function ProfileView({ model, now, layout, nameLevel, idPrefix = "profil", reportHref, mediaHref, countViewsFor, tabs, children, after, editLinks, notice, actions, message, request }: ProfileViewProps) {
   const classes = LAYOUT[layout];
   const sectionLevel = nextLevel(nameLevel);
   return (
     <article data-profile-view className={classes.root}>
       <div className={classes.gallery}>
-        <ProfileGallery name={model.displayName} media={model.media} layout={layout} mediaHref={mediaHref} />
+        <ProfileGallery name={model.displayName} media={model.media} layout={layout} mediaHref={mediaHref} countViewsFor={countViewsFor} />
       </div>
       <div className={classes.aside}>
         <div className={classes.asideInner}>

@@ -4,7 +4,7 @@ import { ToggleGroup as ToggleGroupPrimitive } from "radix-ui";
 import { cn } from "../../cn";
 import { DateField, type DateFieldLabels } from "../input/date-field";
 
-export type RangePreset = "7d" | "30d" | "90d";
+export type RangePreset = "1d" | "7d" | "30d" | "90d";
 
 /** Voreinstellung oder eigener Zeitraum. `from` und `to` sind `YYYY-MM-DD`; leer heisst «noch nicht gewählt». */
 export type RangeValue = { preset: RangePreset } | { preset: "custom"; from: string; to: string };
@@ -12,6 +12,8 @@ export type RangeValue = { preset: RangePreset } | { preset: "custom"; from: str
 export interface RangePickerLabels {
   /** Zugänglicher Name der Auswahl, zum Beispiel «Zeitraum». */
   group: string;
+  /** «Heute» (PRD v1 7.2). */
+  "1d": string;
   "7d": string;
   "30d": string;
   "90d": string;
@@ -43,7 +45,7 @@ export interface RangePickerProps {
   className?: string;
 }
 
-const PRESETS = ["7d", "30d", "90d", "custom"] as const;
+const PRESETS = ["1d", "7d", "30d", "90d", "custom"] as const;
 
 function isPreset(value: string): value is (typeof PRESETS)[number] {
   return (PRESETS as readonly string[]).includes(value);

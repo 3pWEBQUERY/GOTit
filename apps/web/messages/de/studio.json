@@ -39,6 +39,50 @@
     "verificationExpires": "{days, plural, one {Verifizierung läuft in # Tag ab} other {Verifizierung läuft in # Tagen ab}}",
     "verificationExpired": "Deine Verifizierung ist abgelaufen. Bis zur erneuten Prüfung ist dein Profil nicht öffentlich.",
     "renew": "Verifizierung erneuern",
-    "verificationLink": "Verifizierung ansehen"
+    "verificationLink": "Verifizierung ansehen",
+    "requests": "{count, plural, one {# Terminanfrage wartet auf Antwort} other {# Terminanfragen warten auf Antwort}}",
+    "requestsHint": "Die nächste läuft am {when} ab.",
+    "requestFor": "Anfrage für {when}",
+    "openRequests": "Anfragen ansehen",
+    "unread": "{count, plural, one {# ungelesene Nachricht} other {# ungelesene Nachrichten}}",
+    "openMessages": "Nachrichten öffnen",
+    "mediaCorrections": "{count, plural, one {# Foto zur Korrektur zurückgegeben} other {# Fotos zur Korrektur zurückgegeben}}",
+    "openMedia": "Medien ansehen",
+    "changePending": "Deine Änderungen werden geprüft.",
+    "changePendingHint": "Bis zur Freigabe gilt im Marktplatz der bisherige Stand.",
+    "changeRejected": "Deine letzte Änderung wurde abgelehnt.",
+    "editProfile": "Profil bearbeiten",
+    "calendar": {
+      "heading": "Heute",
+      "empty": "Heute steht nichts im Kalender.",
+      "open": "Kalender öffnen",
+      "booking": "Termin, {status}",
+      "label": "Einträge von heute"
+    },
+    "kpis": {
+      "heading": "{days, plural, one {Letzter Tag} other {Letzte # Tage}}",
+      "toStats": "Zur Statistik"
+    },
+    "profile": {
+      "heading": "Dein Profil",
+      "complete": "Dein Profil ist vollständig.",
+      "partial": "Vollständig zu {percent}: {missing}",
+      "missing": {
+        "shortDescription": "Kurzbeschreibung fehlt",
+        "description": "Beschreibung ist kurz",
+        "languages": "Sprachen fehlen",
+        "services": "Angebot fehlt",
+        "rates": "Preise fehlen",
+        "photos": "Weniger als drei Fotos"
+      },
+      "fix": {
+        "shortDescription": "Kurzbeschreibung ergänzen",
+        "description": "Beschreibung ergänzen",
+        "languages": "Sprachen ergänzen",
+        "services": "Angebot ergänzen",
+        "rates": "Preise ergänzen",
+        "photos": "Fotos hochladen"
+      }
+    }
   }
 }

@@ -1,7 +1,11 @@
 import type { Locale } from "@app/core/locale";
-import type { RawParams } from "@app/core/search/query";
+import { PAGE_SIZE, type RawParams } from "@app/core/search/query";
+import { recordSearchImpressionsForSlugs } from "@app/core/stats";
 import { Breadcrumbs, ErrorState, ResultCount, type Crumb } from "@app/ui";
 import { getTranslations } from "next-intl/server";
+import { after } from "next/server";
+import { getViewer } from "../../shell/queries/get-viewer";
+import { countableVisitor } from "../../stats/lib/countable";
 import type { ReactNode } from "react";
 import { TopBarTitle } from "../../shell/components/top-bar-title";
 import { loadSearchPage } from "../queries/load-search";
@@ -60,6 +64,10 @@ export async function SearchView({
     );
 
   const { query, result, paths, options, chips } = data;
+  // Einblendungen (Entscheid 0019): nur die Treffer der zuletzt geladenen Seite, mit den Filtern als Schlüssel, nie dem Freitext.
+  const shown = result.hits.slice((result.page - 1) * PAGE_SIZE).map((hit) => hit.slug);
+  if (shown.length > 0 && (await countableVisitor(await getViewer())))
+    after(() => recordSearchImpressionsForSlugs(shown, query).catch(() => undefined));
   const count = data.regionName
     ? t("title.countIn", { count: result.total, region: data.regionName })
     : t("title.count", { count: result.total });

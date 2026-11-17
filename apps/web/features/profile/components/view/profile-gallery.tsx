@@ -3,7 +3,8 @@
 import { Lightbox, MediaFrame, MediaGallery, cn, type MediaItem } from "@app/ui";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { recordMediaViewAction } from "../../../stats/actions/record-media-view";
 import { initialsOf, type ViewMedia } from "../../model";
 import type { ProfileLayout } from "./layout-classes";
 
@@ -24,6 +25,8 @@ export interface ProfileGalleryProps {
   mediaHref?: string;
   /** `grid`: alle Medien als Raster (Tab «Medien»). */
   variant?: "gallery" | "grid";
+  /** Slug des Profils, wenn Öffnen in der Lightbox als Medienaufruf zählt (nur Besucher, nie Vorschau oder Inhaber). */
+  countViewsFor?: string;
 }
 
 export function useMediaItems(name: string, media: readonly ViewMedia[]): MediaItem[] {
@@ -42,12 +45,20 @@ export function useMediaItems(name: string, media: readonly ViewMedia[]): MediaI
  * Medien mit Lightbox (PRD v2 10.1): Pfeile wechseln, Escape schliesst. Ohne
  * freigegebene Medien eine neutrale Fläche mit Initialen (PRD v2 4.3).
  */
-export function ProfileGallery({ name, media, layout, mediaHref, variant = "gallery" }: ProfileGalleryProps) {
+export function ProfileGallery({ name, media, layout, mediaHref, variant = "gallery", countViewsFor }: ProfileGalleryProps) {
   const t = useTranslations("profile.media");
   const router = useRouter();
   const items = useMediaItems(name, media);
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
+  const counted = useRef(new Set<string>());
+  const shown = open ? media[index] : undefined;
+  // Ein Aufruf pro Medium und Seitenbesuch; der Kern zählt ohnehin höchstens einmal pro Tag.
+  useEffect(() => {
+    if (!countViewsFor || !shown || shown.locked || counted.current.has(shown.key)) return;
+    counted.current.add(shown.key);
+    void recordMediaViewAction(countViewsFor, shown.key).catch(() => undefined);
+  }, [countViewsFor, shown]);
   const show = (next: number) => {
     setIndex(next);
     setOpen(true);

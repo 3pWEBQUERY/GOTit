@@ -5,6 +5,7 @@ import { useState } from "react";
 
 const rangeLabels = {
   group: "Zeitraum",
+  "1d": "Heute",
   "7d": "7 Tage",
   "30d": "30 Tage",
   "90d": "90 Tage",

@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "title": "Statistiche"
+  },
+  "title": "Statistiche",
+  "intro": "I numeri del tuo profilo. Si vedono solo totali, mai singoli visitatori.",
+  "period": {
+    "1d": "Oggi",
+    "group": "Periodo",
+    "7d": "7 giorni",
+    "30d": "30 giorni",
+    "90d": "90 giorni",
+    "custom": "Periodo personalizzato",
+    "from": "Dal",
+    "to": "Al",
+    "dateHint": "Formato: GG.MM.AAAA",
+    "openCalendar": "Aprire il calendario",
+    "previousMonth": "Mese precedente",
+    "nextMonth": "Mese successivo",
+    "invalidFormat": "Inserisci una data nel formato GG.MM.AAAA.",
+    "outOfRange": "Scegli un giorno fino a oggi.",
+    "shown": "{range}, confrontato con {previous}",
+    "problem": {
+      "invalid": "Scegli una data per «Dal» e per «Al». Si vedono gli ultimi {days} giorni.",
+      "order": "«Dal» è dopo «Al». Si vedono gli ultimi {days} giorni.",
+      "future": "«Al» è nel futuro. Si vedono gli ultimi {days} giorni.",
+      "tooLong": "Un periodo ha al massimo {max} giorni. Si vedono gli ultimi {days} giorni."
+    }
+  },
+  "kpi": {
+    "heading": "Cifre chiave",
+    "profileViews": "Visite al profilo",
+    "contactActions": "Richieste di contatto",
+    "bookingRequests": "Richieste di appuntamento",
+    "favoritesNet": "Preferiti",
+    "up": "{amount} in più rispetto {previous}",
+    "down": "{amount} in meno rispetto {previous}",
+    "flat": "Come {previous}",
+    "previous": "{days, plural, one {al giorno prima} other {ai # giorni precedenti}}",
+    "footnote": "Le visite al profilo contano una volta per visitatore e giorno, mai le tue. Le richieste di contatto sono nuove conversazioni, le richieste di appuntamento quelle inviate. I preferiti sono le aggiunte meno le rimozioni. Giorni in ora svizzera."
+  },
+  "funnel": {
+    "title": "Dalla ricerca all’appuntamento",
+    "impressions": "Visualizzazioni nella ricerca",
+    "profileViews": "Visite al profilo",
+    "contactActions": "Contatti avviati",
+    "bookingRequests": "Richieste di appuntamento",
+    "confirmed": "Appuntamenti confermati",
+    "step": "Fase",
+    "count": "Numero",
+    "rate": "Quota rispetto alla fase precedente",
+    "noRate": "–",
+    "footnote": "Una visualizzazione conta ogni volta che il tuo profilo appare in una pagina di risultati. La quota è la parte della fase sopra; senza numeri nella fase sopra appare «–». I contatti avviati sono nuove conversazioni, gli appuntamenti confermati le richieste accettate."
+  },
+  "views": {
+    "title": "Visite al profilo al giorno",
+    "day": "Giorno",
+    "value": "Visite al profilo",
+    "footnote": "Una visita per visitatore e giorno; le tue visite non contano. Giorni in ora svizzera."
+  },
+  "chart": {
+    "showTable": "Mostrare come tabella",
+    "showChart": "Mostrare come grafico",
+    "empty": "Ancora nessun dato per questo periodo"
+  },
+  "searches": {
+    "title": "Ricerche in cui sei apparso/a",
+    "search": "Ricerca",
+    "impressions": "Visualizzazioni",
+    "footnote": "Si contano solo i filtri di una ricerca, per esempio regione o lingua, mai il testo inserito. Si vedono al massimo 20 ricerche."
+  },
+  "media": {
+    "title": "Media per visite",
+    "medium": "Media",
+    "views": "Visite",
+    "noAlt": "Senza testo alternativo",
+    "footnote": "Una visita per visitatore, media e giorno, all’apertura a grande formato. Si vedono al massimo 20 media."
+  },
+  "state": {
+    "loading": "Caricamento delle statistiche",
+    "slow": "Il caricamento richiede più tempo del solito.",
+    "retry": "Riprovare",
+    "errorTitle": "Non è stato possibile caricare le statistiche",
+    "errorDescription": "I tuoi numeri sono salvati. Ricarica la pagina per riprovare.",
+    "reload": "Ricaricare la pagina"
+  }
+}

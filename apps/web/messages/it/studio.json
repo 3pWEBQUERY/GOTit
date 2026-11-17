@@ -39,6 +39,50 @@
     "verificationExpires": "{days, plural, one {La verifica scade tra # giorno} other {La verifica scade tra # giorni}}",
     "verificationExpired": "La tua verifica è scaduta. Fino a una nuova verifica il tuo profilo non è pubblico.",
     "renew": "Rinnovare la verifica",
-    "verificationLink": "Vedere la verifica"
+    "verificationLink": "Vedere la verifica",
+    "requests": "{count, plural, one {# richiesta di appuntamento attende risposta} other {# richieste di appuntamento attendono risposta}}",
+    "requestsHint": "La prossima scade il {when}.",
+    "requestFor": "Richiesta per {when}",
+    "openRequests": "Vedere le richieste",
+    "unread": "{count, plural, one {# messaggio non letto} other {# messaggi non letti}}",
+    "openMessages": "Aprire i messaggi",
+    "mediaCorrections": "{count, plural, one {# foto rimandata per correzioni} other {# foto rimandate per correzioni}}",
+    "openMedia": "Vedere i media",
+    "changePending": "Le tue modifiche sono in verifica.",
+    "changePendingHint": "Fino all’approvazione nel marketplace resta la versione attuale.",
+    "changeRejected": "La tua ultima modifica è stata respinta.",
+    "editProfile": "Modificare il profilo",
+    "calendar": {
+      "heading": "Oggi",
+      "empty": "Oggi non c’è nulla in calendario.",
+      "open": "Aprire il calendario",
+      "booking": "Appuntamento, {status}",
+      "label": "Voci di oggi"
+    },
+    "kpis": {
+      "heading": "{days, plural, one {Ultimo giorno} other {Ultimi # giorni}}",
+      "toStats": "Alle statistiche"
+    },
+    "profile": {
+      "heading": "Il tuo profilo",
+      "complete": "Il tuo profilo è completo.",
+      "partial": "Completo al {percent}: {missing}",
+      "missing": {
+        "shortDescription": "manca la descrizione breve",
+        "description": "descrizione troppo breve",
+        "languages": "mancano le lingue",
+        "services": "manca l’offerta",
+        "rates": "mancano i prezzi",
+        "photos": "meno di tre foto"
+      },
+      "fix": {
+        "shortDescription": "Aggiungere la descrizione breve",
+        "description": "Completare la descrizione",
+        "languages": "Aggiungere le lingue",
+        "services": "Completare l’offerta",
+        "rates": "Aggiungere i prezzi",
+        "photos": "Caricare foto"
+      }
+    }
   }
 }
