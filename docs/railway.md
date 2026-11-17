@@ -38,8 +38,9 @@ Geteilt (Umgebung `production`): `BETTER_AUTH_SECRET`, `AGE_GATE_SECRET`, `APP_N
 | `BETTER_AUTH_SECRET` | web, realtime | `${{shared.BETTER_AUTH_SECRET}}` |
 | `AGE_GATE_SECRET` | web | `${{shared.AGE_GATE_SECRET}}` |
 | `APP_URL` | web | `https://${{RAILWAY_PUBLIC_DOMAIN}}` |
-| `APP_ENV` | web, worker | `${{shared.APP_ENV}}`; verbietet den E-Mail-Ausgang und fiktive Testkonten |
+| `APP_ENV` | web, worker, cron-purge-expired | `${{shared.APP_ENV}}`; verbietet den E-Mail-Ausgang und fiktive Testkonten |
 | `REALTIME_URL` | web | `wss://${{realtime.RAILWAY_PUBLIC_DOMAIN}}` |
+| `STORAGE_DRIVER=s3`, `S3_*` | web, worker, cron-purge-expired | Referenzen auf die Buckets (`${{originals.BUCKET}}`, `${{originals.ACCESS_KEY_ID}}`, …); der Cron-Dienst löscht Chat-Bilder abgelaufener Konten (Entscheid 0014) |
 
 `NODE_ENV` wird bewusst nicht gesetzt: Mit `production` liesse `pnpm install` beim Build die Entwicklungsabhängigkeiten weg (Next.js-Build, Prisma-CLI, Turbo). `next start` setzt den Produktionsmodus selbst. Eine geteilte `NODE_ENV` liegt noch in der Umgebung, wird aber von keinem Dienst referenziert und wirkt daher nicht; sie lässt sich im Dashboard unter «Shared Variables» löschen.
 

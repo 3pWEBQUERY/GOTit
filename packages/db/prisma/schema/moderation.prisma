@@ -1,0 +1,39 @@
+// Modul moderation: Meldungen (PRD v2 14.5 `Report`, v1 9.3). Schritt 1.8 legt Meldungen zu
+// Nachrichten und Konten an; die allgemeine Moderation mit Zuständigkeit und Einspruch folgt in 1.13.
+enum ReportTarget {
+  MESSAGE
+  USER
+  PROFILE
+  MEDIA
+}
+
+enum ReportStatus {
+  OPEN
+  IN_REVIEW
+  RESOLVED
+  DISMISSED
+}
+
+model Report {
+  id          String       @id @default(cuid(2))
+  // Null bei Meldungen ohne Konto (`/melden`, Schritt 1.13).
+  reporterId  String?
+  targetType  ReportTarget
+  targetId    String
+  // Grund als Schlüssel, zum Beispiel «harassment».
+  reason      String
+  details     String?
+  // Dringende Gründe (Minderjährige, Ausbeutung, akute Gefahr) kommen zuerst.
+  urgent      Boolean      @default(false)
+  // Gemeldete Nachricht als Kopie, damit Löschen durch den Absender den Fall nicht leert (v2 11.4).
+  evidence    Json?
+  status      ReportStatus @default(OPEN)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  reporter User? @relation(fields: [reporterId], references: [id], onDelete: SetNull)
+
+  @@index([status, urgent, createdAt])
+  @@index([targetType, targetId])
+  @@map("report")
+}

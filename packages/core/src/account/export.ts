@@ -28,6 +28,10 @@ export async function exportOwnData(userId: string) {
       passkeys: { select: { name: true, deviceType: true, createdAt: true } },
       securityEvents: { select: { type: true, device: true, createdAt: true }, orderBy: { createdAt: "desc" } },
       consents: { select: { kind: true, version: true, grantedAt: true, withdrawnAt: true }, orderBy: { grantedAt: "desc" } },
+      // Eigene Nachrichten (Schritt 1.8). Nachrichten der Gegenseite gehören deren Konto und fehlen hier.
+      messagesSent: { where: { deletedAt: null }, orderBy: { createdAt: "asc" }, select: { conversationId: true, body: true, createdAt: true } },
+      chatLabels: { select: { name: true } },
+      blocksMade: { select: { createdAt: true } },
     },
   });
   return { exportedAt: new Date().toISOString(), format: "gotit-account-export/1", account: user };

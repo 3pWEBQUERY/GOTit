@@ -1,0 +1,140 @@
+// Modul messaging: Einzelchats zwischen einem Konto und einem Anbieterprofil (PRD v1 5.7, v2 11.4).
+// Die Plattform behauptet keine Ende-zu-Ende-Verschlüsselung (v1 FR-CHAT-005): Inhalte liegen
+// verschlüsselt im Ruhezustand von Railway Postgres und gehen nur über TLS.
+enum ParticipantRole {
+  // Das Konto, das den Chat begonnen hat.
+  MEMBER
+  // Inhaber des Anbieterprofils.
+  PROVIDER
+}
+
+model Conversation {
+  id                String   @id @default(cuid(2))
+  providerProfileId String
+  // Konto auf der Mitgliederseite; zusammen mit dem Profil eindeutig.
+  memberUserId      String
+  lastMessageAt     DateTime @default(now())
+  createdAt         DateTime @default(now())
+
+  providerProfile ProviderProfile           @relation(fields: [providerProfileId], references: [id], onDelete: Cascade)
+  participants    ConversationParticipant[]
+  messages        Message[]
+
+  @@unique([memberUserId, providerProfileId])
+  @@index([providerProfileId, lastMessageAt])
+  @@map("conversation")
+}
+
+// Sicht eines Kontos auf einen Chat: gelesen bis, archiviert, markiert, Labels, Notiz.
+model ConversationParticipant {
+  conversationId String
+  userId         String
+  role           ParticipantRole
+  lastReadAt     DateTime?
+  archivedAt     DateTime?
+  // «Favoriten» im Postfach (v1 FR-CHAT-002).
+  starred        Boolean         @default(false)
+  // Private Notiz des Anbieters (v2 11.4); die Gegenseite sieht sie nie.
+  note           String?
+
+  conversation Conversation        @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  user         User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  labels       ConversationLabel[]
+
+  @@id([conversationId, userId])
+  @@index([userId, archivedAt])
+  @@map("conversation_participant")
+}
+
+model Message {
+  id             String    @id @default(cuid(2))
+  conversationId String
+  senderId       String
+  // Leer nach dem Löschen; die Zeile bleibt als «Nachricht gelöscht» stehen.
+  body           String?
+  // Vom Browser vergeben: Ein erneutes Senden nach einem Fehler erzeugt keine zweite Nachricht.
+  clientId       String
+  createdAt      DateTime  @default(now())
+  deletedAt      DateTime?
+
+  conversation Conversation        @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  sender       User                @relation(fields: [senderId], references: [id], onDelete: Cascade)
+  attachments  MessageAttachment[]
+
+  @@unique([senderId, clientId])
+  @@index([conversationId, createdAt])
+  @@map("message")
+}
+
+enum AttachmentStatus {
+  UPLOADING
+  PROCESSING
+  READY
+  FAILED
+}
+
+// Bild im Chat (v1 FR-CHAT-001). Liegt privat im Bucket «originals» unter `chat/…`; der Worker
+// entfernt EXIF und GPS und erzeugt eine WebP-Fassung. Ausgeliefert nur an Beteiligte, per
+// kurzlebiger signierter URL.
+model MessageAttachment {
+  id            String           @id @default(cuid(2))
+  // Null, solange das Bild hochgeladen, aber noch nicht gesendet ist.
+  messageId     String?
+  ownerUserId   String
+  conversationId String
+  status        AttachmentStatus @default(UPLOADING)
+  originalKey   String           @unique
+  processedKey  String?
+  mimeType      String?
+  sizeBytes     Int?
+  width         Int?
+  height        Int?
+  failureReason String?
+  createdAt     DateTime         @default(now())
+
+  message Message? @relation(fields: [messageId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId, ownerUserId, status])
+  @@map("message_attachment")
+}
+
+// Blockieren (v1 FR-CHAT-005): wirkt sofort und ohne Mitteilung an die Gegenseite.
+model Block {
+  blockerId String
+  blockedId String
+  createdAt DateTime @default(now())
+
+  blocker User @relation("BlocksMade", fields: [blockerId], references: [id], onDelete: Cascade)
+  blocked User @relation("BlocksReceived", fields: [blockedId], references: [id], onDelete: Cascade)
+
+  @@id([blockerId, blockedId])
+  @@index([blockedId])
+  @@map("block")
+}
+
+// Private Labels eines Anbieters (v1 FR-CHAT-003, v2 14.5 `ChatLabel`).
+model ChatLabel {
+  id          String   @id @default(cuid(2))
+  ownerUserId String
+  name        String
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+
+  owner         User                @relation(fields: [ownerUserId], references: [id], onDelete: Cascade)
+  conversations ConversationLabel[]
+
+  @@unique([ownerUserId, name])
+  @@map("chat_label")
+}
+
+model ConversationLabel {
+  conversationId String
+  userId         String
+  labelId        String
+
+  participant ConversationParticipant @relation(fields: [conversationId, userId], references: [conversationId, userId], onDelete: Cascade)
+  label       ChatLabel               @relation(fields: [labelId], references: [id], onDelete: Cascade)
+
+  @@id([conversationId, userId, labelId])
+  @@map("conversation_label")
+}

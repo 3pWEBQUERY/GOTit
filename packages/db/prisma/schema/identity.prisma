@@ -76,6 +76,7 @@ model ProviderProfile {
   media        MediaAsset[]
   searchEntry  SearchProfile?
   favorites    Favorite[]
+  conversations Conversation[]
 
   @@index([status])
   @@map("provider_profile")

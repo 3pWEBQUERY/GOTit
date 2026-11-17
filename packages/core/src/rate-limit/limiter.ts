@@ -18,6 +18,11 @@ export const RATE_LIMITS = {
   searchSuggest: { limit: 90, windowSeconds: 60 },
   // Favoriten, Sammlungen und gespeicherte Suchen pro Konto.
   favorites: { limit: 60, windowSeconds: 60 },
+  // Messenger pro Konto (PRD v1 FR-CHAT-005 «Schutz vor Spam und Nachrichtenfluten»).
+  messageSend: { limit: 30, windowSeconds: 60 },
+  conversationStart: { limit: 10, windowSeconds: 3600 },
+  chatAttachment: { limit: 30, windowSeconds: 3600 },
+  report: { limit: 10, windowSeconds: 3600 },
 } as const satisfies Record<string, RateLimitRule>;
 
 export type RateLimitName = keyof typeof RATE_LIMITS;

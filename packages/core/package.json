@@ -29,7 +29,9 @@
     "./search/query": "./src/search/query.ts",
     "./favorites": "./src/favorites/index.ts",
     "./favorites/schemas": "./src/favorites/schemas.ts",
-    "./search/indexer": "./src/search/indexer.ts"
+    "./search/indexer": "./src/search/indexer.ts",
+    "./messaging": "./src/messaging/index.ts",
+    "./messaging/schemas": "./src/messaging/schemas.ts"
   },
   "scripts": {
     "lint": "eslint .",

@@ -17,3 +17,8 @@ export {
   searchIndexJobSchema,
   type SearchIndexJob,
 } from "./search-job";
+export {
+  chatAttachmentJob,
+  chatAttachmentJobSchema,
+  type ChatAttachmentJob,
+} from "./chat-job";
