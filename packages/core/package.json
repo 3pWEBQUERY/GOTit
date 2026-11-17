@@ -28,6 +28,7 @@
     "./search": "./src/search/index.ts",
     "./search/query": "./src/search/query.ts",
     "./favorites": "./src/favorites/index.ts",
+    "./favorites/schemas": "./src/favorites/schemas.ts",
     "./search/indexer": "./src/search/indexer.ts"
   },
   "scripts": {

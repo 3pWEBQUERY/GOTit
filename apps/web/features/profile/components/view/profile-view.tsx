@@ -29,6 +29,8 @@ export interface ProfileViewProps {
   editLinks?: EditLinks;
   /** Ein Hinweis über dem Kopf, zum Beispiel für Mitglieder. */
   notice?: ReactNode;
+  /** Aktionen des Betrachters unter dem Kopf, zum Beispiel Herz und Sammlungen. Fehlt in der Vorschau und für den Inhaber. */
+  actions?: ReactNode;
 }
 
 /**
@@ -36,7 +38,7 @@ export interface ProfileViewProps {
  * Studio und die Vorschau im Onboarding verwenden ihn. Er liest nur das
  * Modell; was öffentlich sein darf, entscheidet vorher der Kern.
  */
-export function ProfileView({ model, now, layout, nameLevel, idPrefix = "profil", reportHref, mediaHref, tabs, children, editLinks, notice }: ProfileViewProps) {
+export function ProfileView({ model, now, layout, nameLevel, idPrefix = "profil", reportHref, mediaHref, tabs, children, editLinks, notice, actions }: ProfileViewProps) {
   const classes = LAYOUT[layout];
   const sectionLevel = nextLevel(nameLevel);
   return (
@@ -48,6 +50,7 @@ export function ProfileView({ model, now, layout, nameLevel, idPrefix = "profil"
         <div className={classes.asideInner}>
           {notice}
           <ProfileHeader model={model} level={nameLevel} editHref={editLinks?.basics} />
+          {actions}
           <ProfileTrust model={model} now={now} />
           <ProfileContact contact={model.contact} variant="sticky-panel" reportHref={reportHref} className={classes.panel} />
         </div>

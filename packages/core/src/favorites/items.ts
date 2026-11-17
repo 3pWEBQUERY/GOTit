@@ -106,6 +106,21 @@ export async function addToCollection(
   return addTo(collection.id, providerProfileId);
 }
 
+/** Aus einer eigenen Sammlung nehmen, per Profil (Menü «Zu Sammlung hinzufügen» auf der Profilseite). Idempotent. */
+export async function removeFromCollection(
+  userId: string,
+  collectionId: string,
+  slug: string,
+): Promise<FavoriteResult> {
+  const collection = await getOwnCollection(userId, collectionId);
+  if (!collection || !slugSchema.safeParse(slug).success)
+    return { ok: false, reason: "not-found" };
+  await getDb().favorite.deleteMany({
+    where: { collectionId: collection.id, providerProfile: { slug } },
+  });
+  return { ok: true };
+}
+
 /** Entfernt einen Eintrag. Auch nicht mehr erreichbare Profile lassen sich so aufräumen. */
 export async function removeFavorite(
   userId: string,
@@ -180,4 +195,24 @@ export async function collectionsContaining(
     select: { collectionId: true },
   });
   return new Set(rows.map((row) => row.collectionId));
+}
+
+/** Wie `collectionsContaining`, für mehrere Profile auf einmal: Slug → Sammlungs-Ids. Für die Menüs der Einträge einer Sammlung. */
+export async function collectionsContainingMany(
+  userId: string,
+  slugs: readonly string[],
+): Promise<Map<string, string[]>> {
+  const valid = slugs.filter((slug) => slugSchema.safeParse(slug).success);
+  const membership = new Map<string, string[]>();
+  if (valid.length === 0) return membership;
+  const rows = await getDb().favorite.findMany({
+    where: { collection: { userId }, providerProfile: { slug: { in: valid } } },
+    select: { collectionId: true, providerProfile: { select: { slug: true } } },
+  });
+  for (const row of rows) {
+    const list = membership.get(row.providerProfile.slug) ?? [];
+    list.push(row.collectionId);
+    membership.set(row.providerProfile.slug, list);
+  }
+  return membership;
 }

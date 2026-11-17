@@ -3,6 +3,8 @@ import { PROFILE_SECTIONS, type ProfileSection } from "@app/core/provider-profil
 import { Breadcrumbs, EmptyState, UiLink, buttonVariants } from "@app/ui";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { ProfileFavorite } from "../../../favorites/components/profile-favorite";
+import { loadProfileFavorite } from "../../../favorites/queries/load-profile-favorite";
 import { TopBarTitle } from "../../../shell/components/top-bar-title";
 import { createHref } from "../../../shell/nav/href";
 import { getViewer } from "../../../shell/queries/get-viewer";
@@ -48,6 +50,8 @@ export async function PublicProfilePage({ locale, slug, tab, edit }: PublicProfi
   const editSection = owner ? sectionFromSlug(edit) : null;
   const viewer = await getViewer();
   const editor = editSection && viewer.kind === "account" ? await loadEditor(viewer, locale) : null;
+  // Herz und Sammlungen für alle ausser dem Inhaber (PRD v2 9.3); Besucher gehen zur Anmeldung und zurück.
+  const favorite = owner ? null : { data: await loadProfileFavorite(viewer, profile.slug), signInHref: viewer.kind === "account" ? null : href({ pathname: "/anmelden", query: { weiter: here } }) };
   const region = model.regions[0];
 
   return (
@@ -68,6 +72,7 @@ export async function PublicProfilePage({ locale, slug, tab, edit }: PublicProfi
         mediaHref={tabLinks.media}
         tabs={<ProfileTabs current={tab} links={tabLinks} />}
         editLinks={editLinks}
+        actions={favorite ? <ProfileFavorite slug={profile.slug} data={favorite.data} signInHref={favorite.signInHref} favoritesHref={href("/favoriten")} /> : undefined}
       >
         {tab === "media" ? (
           model.media.length > 0 ? (

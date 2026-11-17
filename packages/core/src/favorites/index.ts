@@ -12,9 +12,11 @@ export {
 export {
   addToCollection,
   collectionsContaining,
+  collectionsContainingMany,
   favoriteSlugs,
   moveFavorite,
   removeFavorite,
+  removeFromCollection,
   setFavorite,
   type FavoriteResult,
 } from "./items";

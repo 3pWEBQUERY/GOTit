@@ -1,0 +1,12 @@
+"use client";
+
+import { FavoritesError } from "@/features/favorites/components/favorites-states";
+
+export default function SavedSearchesErrorPage({
+  reset,
+}: {
+  error: Error;
+  reset: () => void;
+}) {
+  return <FavoritesError area="searches" reset={reset} />;
+}

@@ -198,6 +198,21 @@ describe("Favoriten (PRD v1 5.6)", () => {
     expect(await favorites.collectionsContaining(owner.userId, slug)).toEqual(
       new Set([created.id]),
     );
+    expect(
+      await favorites.collectionsContainingMany(owner.userId, [slug, "x"]),
+    ).toEqual(new Map([[slug, [created.id]]]));
+    expect(
+      await favorites.collectionsContainingMany(other.userId, [slug]),
+    ).toEqual(new Map());
+    expect(
+      await favorites.removeFromCollection(other.userId, created.id, slug),
+    ).toEqual({ ok: false, reason: "not-found" });
+    expect(
+      await favorites.removeFromCollection(owner.userId, created.id, slug),
+    ).toEqual({ ok: true });
+    expect(await favorites.collectionsContaining(owner.userId, slug)).toEqual(
+      new Set(),
+    );
     expect(await favorites.deleteCollection(owner.userId, created.id)).toEqual({
       ok: true,
       id: created.id,
