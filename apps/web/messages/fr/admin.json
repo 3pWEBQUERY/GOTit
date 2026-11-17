@@ -6,7 +6,9 @@
     "mediaQueue": "Admin · Médias",
     "mediaCase": "Admin · Média",
     "reportQueue": "Admin · Signalements",
-    "reportCase": "Admin · Signalement"
+    "reportCase": "Admin · Signalement",
+    "reviewQueue": "Admin · Évaluations",
+    "reviewCase": "Admin · Évaluation"
   },
   "shell": {
     "brand": "{appName} Admin",
@@ -22,7 +24,9 @@
     "media": "Médias",
     "openMediaCount": "{count, plural, one {# média en vérification} other {# médias en vérification}}",
     "reports": "Signalements",
-    "openReportCount": "{count, plural, one {# signalement ouvert} other {# signalements ouverts}}"
+    "openReportCount": "{count, plural, one {# signalement ouvert} other {# signalements ouverts}}",
+    "reviews": "Évaluations",
+    "openReviewCount": "{count, plural, one {# cas ouvert} other {# cas ouverts}}"
   },
   "twoFactor": {
     "title": "Configurer le deuxième facteur",
@@ -341,13 +345,15 @@
       "MESSAGE": "Message",
       "USER": "Membre",
       "PROFILE": "Profil de prestataire",
-      "MEDIA": "Média"
+      "MEDIA": "Média",
+      "REVIEW": "Évaluation"
     },
     "caseTitle": {
       "MESSAGE": "Signalement d’un message",
       "USER": "Signalement d’un membre",
       "PROFILE": "Signalement d’un profil de prestataire",
-      "MEDIA": "Signalement d’un média"
+      "MEDIA": "Signalement d’un média",
+      "REVIEW": "Signalement d’une évaluation"
     },
     "meta": "Reçu le {submitted} · {age} · État : {state}",
     "status": {
@@ -382,6 +388,7 @@
       "title": "Décision",
       "laterTitle": "Les décisions arrivent avec l’étape 1.13",
       "laterText": "Le signalement reste ouvert. Valider, retirer et restreindre arrivent avec la modération, avec justification, règle et recours."
-    }
+    },
+    "openReview": "Ouvrir l’évaluation"
   }
 }

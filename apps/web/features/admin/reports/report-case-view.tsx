@@ -1,6 +1,6 @@
 import type { Locale } from "@app/core/locale";
 import type { PartyLabel, ReportView } from "@app/core/moderation";
-import { InlineAlert } from "@app/ui";
+import { InlineAlert, UiLink } from "@app/ui";
 import { getFormatter, getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 import { createHref } from "../../shell/nav/href";
@@ -53,6 +53,14 @@ export async function ReportCaseView({ locale, report, now }: { locale: Locale; 
             <Fact label={t("facts.details")}>{report.details ?? t("facts.noDetails")}</Fact>
             <Fact label={t("facts.target")}>
               {t(`targetType.${report.targetType}`)} · {party(report.target)}
+              {report.reviewId ? (
+                <>
+                  {" · "}
+                  <UiLink href={href({ pathname: "/admin/bewertungen/[id]", params: { id: report.reviewId } })} className="underline underline-offset-4 hover:text-accent">
+                    {t("openReview")}
+                  </UiLink>
+                </>
+              ) : null}
             </Fact>
             <Fact label={t("facts.reporter")}>{party(report.reporter)}</Fact>
           </dl>

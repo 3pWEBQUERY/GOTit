@@ -1,4 +1,5 @@
 import type { Locale } from "@app/core/locale";
+import { listOwnReviews } from "@app/core/review";
 import { Button, EmptyState, StatusPill, UiLink, cn } from "@app/ui";
 import { CalendarCheck, CalendarClock, History } from "lucide-react";
 import { getTranslations } from "next-intl/server";
@@ -36,9 +37,15 @@ export async function MemberRequestsPage({
   tab: MemberTab;
 }) {
   const viewer = await requireAccount(locale);
-  const [t, rows] = await Promise.all([
+  const [t, rows, reviewable] = await Promise.all([
     getTranslations({ locale, namespace: "booking" }),
     loadMemberRequests(viewer.userId, tab),
+    // v2 12.1: Nach «Stattgefunden» erscheint in der Liste «Bewertung schreiben».
+    tab === "vergangen"
+      ? listOwnReviews(viewer.userId).then(
+          (own) => new Set(own.pending.map((entry) => entry.id)),
+        )
+      : Promise.resolve(new Set<string>()),
   ]);
   const href = createHref(locale);
   const Icon = EMPTY_ICONS[tab];
@@ -120,6 +127,21 @@ export async function MemberRequestsPage({
                   ) : null}
                 </span>
               </UiLink>
+              {reviewable.has(row.id) ? (
+                <p className="pb-4">
+                  <UiLink
+                    href={href({
+                      pathname: "/bewertungen/neu/[termin]",
+                      params: { termin: row.id },
+                    })}
+                    className="inline-flex min-h-11 items-center text-small font-[550] text-accent underline underline-offset-4"
+                  >
+                    {t("list.writeReview", {
+                      name: row.counterpartName ?? t("memberFallback"),
+                    })}
+                  </UiLink>
+                </p>
+              ) : null}
             </li>
           ))}
         </ul>

@@ -6,7 +6,9 @@
     "mediaQueue": "Admin · Media",
     "mediaCase": "Admin · Media item",
     "reportQueue": "Admin · Reports",
-    "reportCase": "Admin · Report"
+    "reportCase": "Admin · Report",
+    "reviewQueue": "Admin · Reviews",
+    "reviewCase": "Admin · Review"
   },
   "shell": {
     "brand": "{appName} Admin",
@@ -22,7 +24,9 @@
     "media": "Media",
     "openMediaCount": "{count, plural, one {# media item in review} other {# media items in review}}",
     "reports": "Reports",
-    "openReportCount": "{count, plural, one {# open report} other {# open reports}}"
+    "openReportCount": "{count, plural, one {# open report} other {# open reports}}",
+    "reviews": "Reviews",
+    "openReviewCount": "{count, plural, one {# open case} other {# open cases}}"
   },
   "twoFactor": {
     "title": "Set up a second factor",
@@ -341,13 +345,15 @@
       "MESSAGE": "Message",
       "USER": "Member",
       "PROFILE": "Provider profile",
-      "MEDIA": "Media"
+      "MEDIA": "Media",
+      "REVIEW": "Review"
     },
     "caseTitle": {
       "MESSAGE": "Report about a message",
       "USER": "Report about a member",
       "PROFILE": "Report about a provider profile",
-      "MEDIA": "Report about a media item"
+      "MEDIA": "Report about a media item",
+      "REVIEW": "Report about a review"
     },
     "meta": "Received on {submitted} · {age} · Status: {state}",
     "status": {
@@ -382,6 +388,7 @@
       "title": "Decision",
       "laterTitle": "Decisions come with step 1.13",
       "laterText": "The report stays open. Approve, remove and restrict come with moderation, with reasoning, rule and appeal."
-    }
+    },
+    "openReview": "Open review"
   }
 }

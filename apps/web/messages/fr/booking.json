@@ -227,7 +227,8 @@
         "title": "Rien de passé pour l’instant",
         "text": "Les demandes passées, annulées, refusées et expirées apparaissent ici."
       }
-    }
+    },
+    "writeReview": "Écrire un avis pour {name}"
   },
   "detail": {
     "metaTitle": "Demande de rendez-vous",
@@ -239,7 +240,6 @@
     "message": "Ton message",
     "actions": "Ce que tu peux faire",
     "voluntary": "Chaque demande de rendez-vous est volontaire. Tu peux toujours annuler, sans justification.",
-    "reviewsLater": "Les évaluations après un rendez-vous arrivent avec l’une des prochaines versions de la plateforme.",
     "openThread": "Ouvrir la conversation",
     "openProfile": "Voir le profil"
   },

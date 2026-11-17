@@ -227,7 +227,8 @@
         "title": "Noch nichts Vergangenes",
         "text": "Vergangene, abgesagte, abgelehnte und abgelaufene Anfragen findest du hier."
       }
-    }
+    },
+    "writeReview": "Bewertung schreiben für {name}"
   },
   "detail": {
     "metaTitle": "Terminanfrage",
@@ -239,7 +240,6 @@
     "message": "Deine Nachricht",
     "actions": "Was du tun kannst",
     "voluntary": "Jede Terminanfrage ist freiwillig. Absagen geht immer, ohne Begründung.",
-    "reviewsLater": "Bewertungen nach einem Termin kommen mit einer der nächsten Versionen der Plattform.",
     "openThread": "Unterhaltung öffnen",
     "openProfile": "Profil ansehen"
   },

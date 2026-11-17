@@ -1,1 +1,287 @@
-{}
+{
+  "categories": {
+    "communication": "Kommunikation",
+    "accuracy": "Zuverlässigkeit der Profilangaben",
+    "organization": "Organisation",
+    "overall": "Gesamteindruck"
+  },
+  "categoryHints": {
+    "communication": "Wie klar und freundlich waren Absprachen und Antworten?",
+    "accuracy": "Stimmten Fotos, Angebot und Angaben im Profil?",
+    "organization": "Wie gut waren Ort, Zeit und Ablauf vorbereitet?",
+    "overall": "Wie war der Termin insgesamt?"
+  },
+  "rating": {
+    "value": "{value} von 5",
+    "option": "{category}, {value} von 5"
+  },
+  "verification": "Nach bestätigtem Termin",
+  "status": {
+    "PENDING": "Wird geprüft",
+    "PUBLISHED": "Veröffentlicht",
+    "REJECTED": "Abgelehnt",
+    "REMOVED": "Entfernt"
+  },
+  "public": {
+    "heading": "{count, plural, =0 {Bewertungen} other {Bewertungen (#)}}",
+    "all": "Alle ansehen",
+    "listLabel": "Bewertungen, neueste zuerst",
+    "responseLabel": "Stellungnahme von {name}",
+    "empty": "Noch keine Bewertungen",
+    "emptyHint": "Bewertungen schreiben Mitglieder nach einem Termin, der stattgefunden hat. Sie erscheinen nach der Prüfung durch die Moderation.",
+    "toOverview": "Zur Übersicht",
+    "ownerHint": "Stellungnahme und Einspruch findest du im Studio.",
+    "ownerLink": "Erhaltene Bewertungen öffnen",
+    "limited": "Die neuesten {shown} von {total} Bewertungen."
+  },
+  "report": {
+    "trigger": "Bewertung melden",
+    "title": "Bewertung melden",
+    "description": "Die Moderation erhält eine Kopie dieser Bewertung. Niemand erfährt, wer gemeldet hat.",
+    "sentText": "Die Moderation prüft die Bewertung. Bis zu ihrem Entscheid bleibt sie sichtbar."
+  },
+  "state": {
+    "loading": "Bewertungen werden geladen",
+    "slow": "Das dauert länger als üblich.",
+    "retry": "Erneut versuchen",
+    "errorTitle": "Die Bewertungen liessen sich nicht laden.",
+    "errorDescription": "Es ist nichts verloren gegangen. Lade die Seite neu.",
+    "reload": "Neu laden"
+  },
+  "appeal": {
+    "trigger": "Einspruch erheben",
+    "title": "Einspruch erheben",
+    "description": {
+      "member": "Die Moderation prüft deine Bewertung erneut. Gibt sie die Bewertung frei, erscheint sie auf dem Profil.",
+      "provider": "Die Moderation prüft die Bewertung erneut. Verletzt sie eine Regel, entfernt sie die Moderation vom Profil. Bis dahin bleibt sie sichtbar."
+    },
+    "close": "Einspruch schliessen",
+    "reason": "Begründung",
+    "reasonHint": "Mindestens 10 Zeichen. Nur die Moderation liest sie.",
+    "count": "{used} von {max} Zeichen",
+    "cancel": "Abbrechen",
+    "submit": "Einspruch senden",
+    "sent": "Einspruch gesendet",
+    "running": "Einspruch läuft",
+    "last": {
+      "UPHELD": "Letzter Einspruch: angenommen",
+      "DISMISSED": "Letzter Einspruch: abgewiesen"
+    }
+  },
+  "errors": {
+    "generic": "Das hat nicht geklappt. Deine Eingaben sind erhalten. Versuche es erneut.",
+    "sign-in": "Deine Sitzung ist abgelaufen. Melde dich erneut an; deine Eingaben sind erhalten.",
+    "rate-limited": "Du hast in der letzten Stunde viele Aktionen ausgeführt. Versuche es später erneut.",
+    "not-found": "Diese Bewertung gibt es nicht mehr.",
+    "not-allowed": "Ein Einspruch ist in diesem Status nicht möglich.",
+    "open": "Zu dieser Bewertung läuft bereits ein Einspruch.",
+    "invalid": "Bitte prüfe deine Eingaben.",
+    "not-completed": "Dieser Termin hat noch nicht stattgefunden.",
+    "already-reviewed": "Du hast diesen Termin schon bewertet.",
+    "too-late": "Die Frist für eine Bewertung ist abgelaufen.",
+    "not-published": "Stellungnahmen gibt es nur zu veröffentlichten Bewertungen.",
+    "ratingMissing": "Wähle einen Wert von 1 bis 5.",
+    "textTooShort": "Schreib mindestens 20 Zeichen.",
+    "textTooLong": "Höchstens 2000 Zeichen.",
+    "reasonTooShort": "Schreib mindestens 10 Zeichen.",
+    "reasonTooLong": "Höchstens 1000 Zeichen.",
+    "responseEmpty": "Schreib eine Stellungnahme oder brich ab.",
+    "responseTooLong": "Höchstens 1000 Zeichen."
+  },
+  "member": {
+    "title": "Bewertungen",
+    "intro": "Bewerten kannst du Termine, die stattgefunden haben, bis 30 Tage danach. Öffentlich wird eine Bewertung erst nach der Prüfung, ohne deinen Namen.",
+    "pendingTitle": "Wartet auf deine Bewertung",
+    "pendingEmpty": "Kein Termin wartet auf eine Bewertung.",
+    "pendingEmptyHint": "Nach einem Termin, den eine Seite als «Stattgefunden» bestätigt hat, erscheint er hier.",
+    "appointmentOn": "Termin vom {date}",
+    "write": "Bewertung schreiben",
+    "writtenTitle": "Deine Bewertungen",
+    "writtenEmpty": "Du hast noch keine Bewertung geschrieben.",
+    "writtenEmptyHint": "Vergangene Termine findest du unter Termine.",
+    "toAppointments": "Vergangene Termine ansehen",
+    "writtenOn": "Geschrieben am {date}",
+    "publishedOn": "veröffentlicht am {date}",
+    "statusHint": {
+      "PENDING": "Die Moderation prüft die Bewertung. Danach erscheint sie auf dem Profil.",
+      "PUBLISHED": "Die Bewertung steht auf dem Profil, ohne deinen Namen.",
+      "REJECTED": "Die Moderation hat die Bewertung nicht freigegeben. Sie ist nicht öffentlich.",
+      "REMOVED": "Die Moderation hat die Bewertung vom Profil entfernt."
+    }
+  },
+  "form": {
+    "breadcrumbs": "Brotkrumen",
+    "crumb": "Bewertung schreiben",
+    "title": "Bewertung schreiben",
+    "titleFor": "Bewertung für {name}",
+    "intro": "Termin vom {date}. Du kannst ihn bis am {until} bewerten. Pro Termin gibt es eine Bewertung.",
+    "scaleHint": "1 heisst schlecht, 5 heisst sehr gut.",
+    "noticeTitle": "Was nicht in die Bewertung gehört",
+    "noticeText": "Keine intimen Details und keine Angaben, die jemanden identifizieren, etwa echte Namen, Adressen, Telefonnummern oder Merkmale des Körpers.",
+    "text": "Deine Erfahrung",
+    "textHint": "20 bis 2000 Zeichen.",
+    "count": "{used} von {max} Zeichen",
+    "moderationTitle": "Erst nach der Prüfung öffentlich",
+    "moderationText": "Die Moderation prüft jede Bewertung, bevor sie erscheint. Dein Name steht nie dabei.",
+    "submit": "Bewertung senden",
+    "summaryTitle": "Bitte prüfe die markierten Felder.",
+    "ratingMissingFor": "{category}: Wähle einen Wert von 1 bis 5.",
+    "sent": "Danke. Die Bewertung wird geprüft und erscheint nach der Freigabe.",
+    "ineligible": {
+      "not-completed": {
+        "title": "Dieser Termin hat noch nicht stattgefunden",
+        "text": "Bewerten kannst du, sobald eine Seite den Termin als «Stattgefunden» bestätigt hat.",
+        "action": "Zum Termin"
+      },
+      "already-reviewed": {
+        "title": "Du hast diesen Termin schon bewertet",
+        "text": "Pro Termin gibt es eine Bewertung. Ihren Status siehst du unter Bewertungen.",
+        "action": "Zu deinen Bewertungen"
+      },
+      "too-late": {
+        "title": "Die Frist ist abgelaufen",
+        "text": "Bewerten kannst du einen Termin bis {days} Tage nach seinem Ende.",
+        "action": "Zum Termin"
+      }
+    }
+  },
+  "booking": {
+    "title": "Bewertung",
+    "text": "Wie war der Termin? Du kannst ihn bis {days} Tage nach dem Ende bewerten.",
+    "write": "Bewertung schreiben",
+    "done": "Bewertung geschrieben",
+    "toOwn": "Status ansehen",
+    "tooLate": "Die Frist für eine Bewertung ist abgelaufen ({days} Tage nach dem Termin)."
+  },
+  "studio": {
+    "title": "Bewertungen",
+    "intro": "Bewertungen nach Terminen, die stattgefunden haben, freigegeben von der Moderation. Zu jeder kannst du eine Stellungnahme schreiben; sie steht direkt darunter.",
+    "empty": "Noch keine Bewertungen",
+    "emptyHint": "Bewertungen erscheinen hier, sobald die Moderation sie freigegeben hat.",
+    "noDate": "Ohne Datum",
+    "removedHint": "Die Moderation hat diese Bewertung vom Profil entfernt. Sie ist nicht mehr öffentlich.",
+    "response": {
+      "write": "Stellungnahme schreiben",
+      "edit": "Stellungnahme bearbeiten",
+      "remove": "Stellungnahme entfernen",
+      "removeTitle": "Stellungnahme entfernen?",
+      "removeText": "Die Stellungnahme verschwindet vom Profil und der Text geht verloren. Eine neue kannst du jederzeit schreiben.",
+      "removeConfirm": "Stellungnahme entfernen",
+      "keep": "Behalten",
+      "removed": "Stellungnahme entfernt",
+      "label": "Stellungnahme",
+      "hint": "Sachlich und ohne Angaben, die jemanden identifizieren. Sie erscheint sofort unter der Bewertung.",
+      "count": "{used} von {max} Zeichen",
+      "save": "Stellungnahme speichern",
+      "cancel": "Abbrechen",
+      "saved": "Stellungnahme gespeichert"
+    }
+  },
+  "meta": {
+    "own": "Bewertungen",
+    "new": "Bewertung schreiben",
+    "received": "Bewertungen"
+  },
+  "admin": {
+    "title": "Bewertungen",
+    "intro": "Neue Bewertungen und Einsprüche, älteste zuerst. Eine Bewertung erscheint erst nach deiner Freigabe auf dem Profil.",
+    "restricted": "Dieser Bereich ist für Moderation, Trust & Safety und Plattform-Administration.",
+    "caption": "Bewertungen und Einsprüche",
+    "count": "{count, plural, =0 {Keine offenen Fälle} one {# offener Fall} other {# offene Fälle}}",
+    "next": "Nächsten Fall öffnen",
+    "shortcutAfter": "öffnet den ältesten offenen Fall.",
+    "columns": {
+      "kind": "Art",
+      "profile": "Profil",
+      "submitted": "Eingegangen am",
+      "age": "Alter"
+    },
+    "empty": {
+      "title": "Keine offenen Bewertungen",
+      "description": "Neue Bewertungen und Einsprüche erscheinen hier."
+    },
+    "kind": {
+      "new": "Neue Bewertung",
+      "appealProvider": "Einspruch des Anbieters",
+      "appealMember": "Einspruch des Autors"
+    },
+    "caseTitle": "Bewertung zu {name}",
+    "meta": "Eingegangen am {submitted} · {age} · Stand: {state}",
+    "review": "Bewertung",
+    "facts": {
+      "title": "Angaben",
+      "profile": "Profil",
+      "appointment": "Termin",
+      "appointmentValue": "{start} bis {end} · {status}",
+      "submitted": "Eingegangen am",
+      "published": "Veröffentlicht am",
+      "lastDecision": "Letzter Entscheid",
+      "none": "Keine Angabe"
+    },
+    "appeals": {
+      "title": "Einsprüche",
+      "none": "Zu dieser Bewertung gibt es keinen Einspruch.",
+      "by": {
+        "PROVIDER": "Anbieter",
+        "MEMBER": "Autor"
+      },
+      "status": {
+        "OPEN": "Offen",
+        "UPHELD": "Angenommen",
+        "DISMISSED": "Abgewiesen"
+      }
+    },
+    "decision": {
+      "title": "Entscheid",
+      "decision": "Ergebnis",
+      "option": {
+        "PUBLISHED": "Freigeben",
+        "REJECTED": "Ablehnen",
+        "REMOVED": "Entfernen"
+      },
+      "optionHint": {
+        "PUBLISHED": "Die Bewertung erscheint auf dem Profil. Ein offener Einspruch des Autors gilt als angenommen.",
+        "REJECTED": "Die Bewertung bleibt unveröffentlicht. Der Autor kann Einspruch erheben.",
+        "REMOVED": "Die Bewertung verschwindet vom Profil. Ein offener Einspruch des Anbieters gilt als angenommen."
+      },
+      "rule": "Regel",
+      "rulePlaceholder": "Regel auswählen",
+      "reason": "Begründung",
+      "reasonHint": "Mindestens 10 Zeichen. Sie steht mit dem Entscheid im Audit-Log und ist nur intern.",
+      "save": "Entscheid speichern",
+      "saved": "Entscheid gespeichert",
+      "summaryTitle": "Bitte prüfe die markierten Felder.",
+      "alreadyDecidedHelp": "Die Ansicht zeigt den aktuellen Stand. Prüfe ihn, bevor du erneut entscheidest."
+    },
+    "rules": {
+      "R-REV-1": "Zulässig",
+      "R-REV-2": "Intime oder sensible Details",
+      "R-REV-3": "Identifizierende oder gefährdende Angaben",
+      "R-REV-4": "Rechtswidrig oder persönlichkeitsverletzend",
+      "R-REV-5": "Erpressung, Vergeltung oder Manipulation"
+    },
+    "dismiss": {
+      "title": {
+        "PROVIDER": "Einspruch des Anbieters abweisen",
+        "MEMBER": "Einspruch des Autors abweisen"
+      },
+      "text": "Die Bewertung bleibt, wie sie ist. Der Einspruch gilt als abgewiesen.",
+      "reason": "Begründung der Abweisung",
+      "reasonHint": "Mindestens 10 Zeichen. Sie steht im Audit-Log.",
+      "submit": "Einspruch abweisen",
+      "saved": "Einspruch abgewiesen"
+    },
+    "errors": {
+      "generic": "Das hat nicht geklappt. Es wurde nichts gespeichert.",
+      "signInRequired": "Deine Sitzung ist abgelaufen. Melde dich erneut an.",
+      "forbidden": "Deine Rolle darf keine Bewertungen moderieren. Es wurde nichts gespeichert.",
+      "notFound": "Diese Bewertung gibt es nicht mehr.",
+      "alreadyDecided": "Über diese Bewertung wurde inzwischen entschieden",
+      "appealClosed": "Dieser Einspruch ist bereits abgeschlossen.",
+      "decisionRequired": "Wähle ein Ergebnis.",
+      "ruleRequired": "Wähle eine Regel.",
+      "reasonTooShort": "Die Begründung braucht mindestens 10 Zeichen.",
+      "reasonTooLong": "Die Begründung ist zu lang."
+    }
+  }
+}

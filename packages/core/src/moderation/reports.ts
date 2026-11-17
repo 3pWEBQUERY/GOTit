@@ -101,6 +101,16 @@ async function targetLabel(
       ? { exists: true, name: profile.displayName }
       : { exists: false, name: null };
   }
+  if (targetType === "REVIEW") {
+    // Gemeldet ist die Bewertung eines Profils; der Autor erscheint nie (Entscheid 0017).
+    const review = await getDb().review.findUnique({
+      where: { id: targetId },
+      select: { providerProfile: { select: { displayName: true } } },
+    });
+    return review
+      ? { exists: true, name: review.providerProfile.displayName }
+      : { exists: false, name: null };
+  }
   if (targetType === "USER") return userLabel(targetId);
   if (targetType === "MESSAGE")
     return userLabel(evidence.kind === "message" ? evidence.senderId : null);
@@ -120,6 +130,8 @@ export interface ReportView {
   target: PartyLabel;
   /** Umfang der Kopie; den Inhalt gibt erst `revealReportEvidence` heraus. */
   evidence: { kind: ParsedEvidence["kind"]; count: number };
+  /** Bei einer gemeldeten Bewertung ihre ID, für den Weg zum Fall unter `/admin/bewertungen`. */
+  reviewId: string | null;
 }
 
 async function loadReport(reportId: string) {
@@ -168,6 +180,7 @@ export async function getReport(
     reporter,
     target,
     evidence: { kind: evidence.kind, count: evidenceSize(evidence) },
+    reviewId: report.targetType === "REVIEW" ? report.targetId : null,
   };
 }
 

@@ -8,7 +8,7 @@ import { getAdminContext } from "./access";
  * Seitentitel des Admins. Ohne interne Rolle bleibt er leer, damit auch der
  * Titel der 404 nichts über den Admin verrät (PRD 16.2).
  */
-export async function adminMetadata(locale: Locale, key: "overview" | "queue" | "case" | "mediaQueue" | "mediaCase" | "reportQueue" | "reportCase"): Promise<Metadata> {
+export async function adminMetadata(locale: Locale, key: "overview" | "queue" | "case" | "mediaQueue" | "mediaCase" | "reportQueue" | "reportCase" | "reviewQueue" | "reviewCase"): Promise<Metadata> {
   const { actor } = await getAdminContext();
   const access = adminAccess(actor);
   if (!access.allowed && access.reason === "no-role") return {};

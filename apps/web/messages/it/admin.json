@@ -6,7 +6,9 @@
     "mediaQueue": "Admin · Media",
     "mediaCase": "Admin · Media",
     "reportQueue": "Admin · Segnalazioni",
-    "reportCase": "Admin · Segnalazione"
+    "reportCase": "Admin · Segnalazione",
+    "reviewQueue": "Admin · Valutazioni",
+    "reviewCase": "Admin · Valutazione"
   },
   "shell": {
     "brand": "{appName} Admin",
@@ -22,7 +24,9 @@
     "media": "Media",
     "openMediaCount": "{count, plural, one {# media in verifica} other {# media in verifica}}",
     "reports": "Segnalazioni",
-    "openReportCount": "{count, plural, one {# segnalazione aperta} other {# segnalazioni aperte}}"
+    "openReportCount": "{count, plural, one {# segnalazione aperta} other {# segnalazioni aperte}}",
+    "reviews": "Valutazioni",
+    "openReviewCount": "{count, plural, one {# caso aperto} other {# casi aperti}}"
   },
   "twoFactor": {
     "title": "Configura il secondo fattore",
@@ -341,13 +345,15 @@
       "MESSAGE": "Messaggio",
       "USER": "Membro",
       "PROFILE": "Profilo di fornitore",
-      "MEDIA": "Media"
+      "MEDIA": "Media",
+      "REVIEW": "Valutazione"
     },
     "caseTitle": {
       "MESSAGE": "Segnalazione di un messaggio",
       "USER": "Segnalazione di un membro",
       "PROFILE": "Segnalazione di un profilo di fornitore",
-      "MEDIA": "Segnalazione di un media"
+      "MEDIA": "Segnalazione di un media",
+      "REVIEW": "Segnalazione di una valutazione"
     },
     "meta": "Ricevuta il {submitted} · {age} · Stato: {state}",
     "status": {
@@ -382,6 +388,7 @@
       "title": "Decisione",
       "laterTitle": "Le decisioni arrivano con la fase 1.13",
       "laterText": "La segnalazione resta aperta. Approvare, rimuovere e limitare arrivano con la moderazione, con motivazione, regola e ricorso."
-    }
+    },
+    "openReview": "Apri la valutazione"
   }
 }

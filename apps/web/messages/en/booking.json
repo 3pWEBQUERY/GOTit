@@ -227,7 +227,8 @@
         "title": "Nothing past yet",
         "text": "Past, cancelled, declined and expired requests appear here."
       }
-    }
+    },
+    "writeReview": "Write a review for {name}"
   },
   "detail": {
     "metaTitle": "Appointment request",
@@ -239,7 +240,6 @@
     "message": "Your message",
     "actions": "What you can do",
     "voluntary": "Every appointment request is voluntary. You can always cancel, without giving a reason.",
-    "reviewsLater": "Reviews after an appointment come with one of the next versions of the platform.",
     "openThread": "Open conversation",
     "openProfile": "View profile"
   },

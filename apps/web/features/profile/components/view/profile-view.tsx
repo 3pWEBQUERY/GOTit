@@ -25,6 +25,8 @@ export interface ProfileViewProps {
   tabs?: ReactNode;
   /** Inhalt statt der Übersicht, zum Beispiel der Tab «Medien». */
   children?: ReactNode;
+  /** Abschnitte nach der Übersicht, zum Beispiel die neuesten Bewertungen; nur ohne `children`. */
+  after?: ReactNode;
   /** Für den Inhaber: «Bearbeiten» an den Abschnitten. */
   editLinks?: EditLinks;
   /** Ein Hinweis über dem Kopf, zum Beispiel für Mitglieder. */
@@ -42,7 +44,7 @@ export interface ProfileViewProps {
  * Studio und die Vorschau im Onboarding verwenden ihn. Er liest nur das
  * Modell; was öffentlich sein darf, entscheidet vorher der Kern.
  */
-export function ProfileView({ model, now, layout, nameLevel, idPrefix = "profil", reportHref, mediaHref, tabs, children, editLinks, notice, actions, message, request }: ProfileViewProps) {
+export function ProfileView({ model, now, layout, nameLevel, idPrefix = "profil", reportHref, mediaHref, tabs, children, after, editLinks, notice, actions, message, request }: ProfileViewProps) {
   const classes = LAYOUT[layout];
   const sectionLevel = nextLevel(nameLevel);
   return (
@@ -61,7 +63,12 @@ export function ProfileView({ model, now, layout, nameLevel, idPrefix = "profil"
       </div>
       <div className={classes.main}>
         {tabs}
-        {children ?? <ProfileSections model={model} level={sectionLevel} idPrefix={idPrefix} editLinks={editLinks} />}
+        {children ?? (
+          <>
+            <ProfileSections model={model} level={sectionLevel} idPrefix={idPrefix} editLinks={editLinks} />
+            {after}
+          </>
+        )}
         {reportHref ? <ReportLink href={reportHref} className={classes.bottomReport} /> : null}
       </div>
       {layout === "desktop" ? null : <ProfileContact contact={model.contact} variant="mobile-bar" message={message} request={request} className={layout === "mobile" ? PREVIEW_MOBILE_BAR : undefined} />}

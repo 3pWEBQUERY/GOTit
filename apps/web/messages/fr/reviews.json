@@ -1,1 +1,287 @@
-{}
+{
+  "categories": {
+    "communication": "Communication",
+    "accuracy": "Fiabilité des indications du profil",
+    "organization": "Organisation",
+    "overall": "Impression générale"
+  },
+  "categoryHints": {
+    "communication": "Les échanges et les réponses étaient-ils clairs et aimables ?",
+    "accuracy": "Les photos, l’offre et les indications du profil correspondaient-elles ?",
+    "organization": "Le lieu, l’heure et le déroulement étaient-ils bien préparés ?",
+    "overall": "Comment s’est passé le rendez-vous dans l’ensemble ?"
+  },
+  "rating": {
+    "value": "{value} sur 5",
+    "option": "{category}, {value} sur 5"
+  },
+  "verification": "Après un rendez-vous confirmé",
+  "status": {
+    "PENDING": "En cours de vérification",
+    "PUBLISHED": "Publiée",
+    "REJECTED": "Refusée",
+    "REMOVED": "Retirée"
+  },
+  "public": {
+    "heading": "{count, plural, =0 {Évaluations} other {Évaluations (#)}}",
+    "all": "Tout afficher",
+    "listLabel": "Évaluations, les plus récentes d’abord",
+    "responseLabel": "Prise de position de {name}",
+    "empty": "Pas encore d’évaluations",
+    "emptyHint": "Les membres écrivent une évaluation après un rendez-vous qui a eu lieu. Elle paraît après la vérification par la modération.",
+    "toOverview": "Vers l’aperçu",
+    "ownerHint": "Tu trouves la prise de position et l’opposition dans le studio.",
+    "ownerLink": "Ouvrir les évaluations reçues",
+    "limited": "Les {shown} plus récentes sur {total} évaluations."
+  },
+  "report": {
+    "trigger": "Signaler l’évaluation",
+    "title": "Signaler l’évaluation",
+    "description": "La modération reçoit une copie de cette évaluation. Personne n’apprend qui l’a signalée.",
+    "sentText": "La modération examine l’évaluation. Elle reste visible jusqu’à sa décision."
+  },
+  "state": {
+    "loading": "Chargement des évaluations",
+    "slow": "Cela prend plus de temps que d’habitude.",
+    "retry": "Réessayer",
+    "errorTitle": "Les évaluations n’ont pas pu être chargées.",
+    "errorDescription": "Rien n’a été perdu. Recharge la page.",
+    "reload": "Recharger"
+  },
+  "appeal": {
+    "trigger": "Faire opposition",
+    "title": "Faire opposition",
+    "description": {
+      "member": "La modération réexamine ton évaluation. Si elle la publie, elle paraît sur le profil.",
+      "provider": "La modération réexamine l’évaluation. Si elle enfreint une règle, la modération la retire du profil. D’ici là, elle reste visible."
+    },
+    "close": "Fermer l’opposition",
+    "reason": "Motif",
+    "reasonHint": "Au moins 10 caractères. Seule la modération le lit.",
+    "count": "{used} sur {max} caractères",
+    "cancel": "Annuler",
+    "submit": "Envoyer l’opposition",
+    "sent": "Opposition envoyée",
+    "running": "Opposition en cours",
+    "last": {
+      "UPHELD": "Dernière opposition : acceptée",
+      "DISMISSED": "Dernière opposition : rejetée"
+    }
+  },
+  "errors": {
+    "generic": "Cela n’a pas fonctionné. Tes saisies sont conservées. Réessaie.",
+    "sign-in": "Ta session a expiré. Reconnecte-toi ; tes saisies sont conservées.",
+    "rate-limited": "Tu as effectué beaucoup d’actions durant la dernière heure. Réessaie plus tard.",
+    "not-found": "Cette évaluation n’existe plus.",
+    "not-allowed": "Une opposition n’est pas possible dans ce statut.",
+    "open": "Une opposition est déjà en cours pour cette évaluation.",
+    "invalid": "Vérifie tes saisies.",
+    "not-completed": "Ce rendez-vous n’a pas encore eu lieu.",
+    "already-reviewed": "Tu as déjà évalué ce rendez-vous.",
+    "too-late": "Le délai pour une évaluation est écoulé.",
+    "not-published": "Les prises de position ne sont possibles que pour les évaluations publiées.",
+    "ratingMissing": "Choisis une valeur de 1 à 5.",
+    "textTooShort": "Écris au moins 20 caractères.",
+    "textTooLong": "2000 caractères au maximum.",
+    "reasonTooShort": "Écris au moins 10 caractères.",
+    "reasonTooLong": "1000 caractères au maximum.",
+    "responseEmpty": "Écris une prise de position ou annule.",
+    "responseTooLong": "1000 caractères au maximum."
+  },
+  "member": {
+    "title": "Évaluations",
+    "intro": "Tu peux évaluer les rendez-vous qui ont eu lieu, jusqu’à 30 jours après. Une évaluation devient publique seulement après vérification, sans ton nom.",
+    "pendingTitle": "En attente de ton évaluation",
+    "pendingEmpty": "Aucun rendez-vous n’attend d’évaluation.",
+    "pendingEmptyHint": "Après un rendez-vous confirmé par une partie comme «A eu lieu», il apparaît ici.",
+    "appointmentOn": "Rendez-vous du {date}",
+    "write": "Écrire une évaluation",
+    "writtenTitle": "Tes évaluations",
+    "writtenEmpty": "Tu n’as pas encore écrit d’évaluation.",
+    "writtenEmptyHint": "Tu trouves les rendez-vous passés sous Rendez-vous.",
+    "toAppointments": "Voir les rendez-vous passés",
+    "writtenOn": "Écrite le {date}",
+    "publishedOn": "publiée le {date}",
+    "statusHint": {
+      "PENDING": "La modération examine l’évaluation. Ensuite, elle paraît sur le profil.",
+      "PUBLISHED": "L’évaluation figure sur le profil, sans ton nom.",
+      "REJECTED": "La modération n’a pas publié l’évaluation. Elle n’est pas publique.",
+      "REMOVED": "La modération a retiré l’évaluation du profil."
+    }
+  },
+  "form": {
+    "breadcrumbs": "Fil d’Ariane",
+    "crumb": "Écrire une évaluation",
+    "title": "Écrire une évaluation",
+    "titleFor": "Évaluation pour {name}",
+    "intro": "Rendez-vous du {date}. Tu peux l’évaluer jusqu’au {until}. Il y a une évaluation par rendez-vous.",
+    "scaleHint": "1 signifie mauvais, 5 signifie très bien.",
+    "noticeTitle": "Ce qui n’a pas sa place dans une évaluation",
+    "noticeText": "Pas de détails intimes ni d’indications qui identifient quelqu’un, par exemple de vrais noms, des adresses, des numéros de téléphone ou des caractéristiques physiques.",
+    "text": "Ton expérience",
+    "textHint": "20 à 2000 caractères.",
+    "count": "{used} sur {max} caractères",
+    "moderationTitle": "Publique seulement après vérification",
+    "moderationText": "La modération vérifie chaque évaluation avant sa parution. Ton nom n’y figure jamais.",
+    "submit": "Envoyer l’évaluation",
+    "summaryTitle": "Vérifie les champs signalés.",
+    "ratingMissingFor": "{category} : choisis une valeur de 1 à 5.",
+    "sent": "Merci. L’évaluation est en cours de vérification et paraîtra après validation.",
+    "ineligible": {
+      "not-completed": {
+        "title": "Ce rendez-vous n’a pas encore eu lieu",
+        "text": "Tu peux l’évaluer dès qu’une partie a confirmé le rendez-vous comme «A eu lieu».",
+        "action": "Vers le rendez-vous"
+      },
+      "already-reviewed": {
+        "title": "Tu as déjà évalué ce rendez-vous",
+        "text": "Il y a une évaluation par rendez-vous. Tu vois son statut sous Évaluations.",
+        "action": "Vers tes évaluations"
+      },
+      "too-late": {
+        "title": "Le délai est écoulé",
+        "text": "Tu peux évaluer un rendez-vous jusqu’à {days} jours après sa fin.",
+        "action": "Vers le rendez-vous"
+      }
+    }
+  },
+  "booking": {
+    "title": "Évaluation",
+    "text": "Comment s’est passé le rendez-vous ? Tu peux l’évaluer jusqu’à {days} jours après sa fin.",
+    "write": "Écrire une évaluation",
+    "done": "Évaluation écrite",
+    "toOwn": "Voir le statut",
+    "tooLate": "Le délai pour une évaluation est écoulé ({days} jours après le rendez-vous)."
+  },
+  "studio": {
+    "title": "Évaluations",
+    "intro": "Évaluations après des rendez-vous qui ont eu lieu, validées par la modération. Tu peux écrire une prise de position pour chacune ; elle figure juste en dessous.",
+    "empty": "Pas encore d’évaluations",
+    "emptyHint": "Les évaluations apparaissent ici dès que la modération les a validées.",
+    "noDate": "Sans date",
+    "removedHint": "La modération a retiré cette évaluation du profil. Elle n’est plus publique.",
+    "response": {
+      "write": "Écrire une prise de position",
+      "edit": "Modifier la prise de position",
+      "remove": "Retirer la prise de position",
+      "removeTitle": "Retirer la prise de position ?",
+      "removeText": "La prise de position disparaît du profil et le texte est perdu. Tu peux en écrire une nouvelle à tout moment.",
+      "removeConfirm": "Retirer la prise de position",
+      "keep": "Conserver",
+      "removed": "Prise de position retirée",
+      "label": "Prise de position",
+      "hint": "Factuelle et sans indications qui identifient quelqu’un. Elle paraît aussitôt sous l’évaluation.",
+      "count": "{used} sur {max} caractères",
+      "save": "Enregistrer la prise de position",
+      "cancel": "Annuler",
+      "saved": "Prise de position enregistrée"
+    }
+  },
+  "meta": {
+    "own": "Évaluations",
+    "new": "Écrire une évaluation",
+    "received": "Évaluations"
+  },
+  "admin": {
+    "title": "Évaluations",
+    "intro": "Nouvelles évaluations et oppositions, les plus anciennes d’abord. Une évaluation paraît sur le profil seulement après ta validation.",
+    "restricted": "Ce domaine est réservé à la modération, à Trust & Safety et à l’administration de la plateforme.",
+    "caption": "Évaluations et oppositions",
+    "count": "{count, plural, =0 {Aucun cas ouvert} one {# cas ouvert} other {# cas ouverts}}",
+    "next": "Ouvrir le cas suivant",
+    "shortcutAfter": "ouvre le plus ancien cas ouvert.",
+    "columns": {
+      "kind": "Type",
+      "profile": "Profil",
+      "submitted": "Reçu le",
+      "age": "Ancienneté"
+    },
+    "empty": {
+      "title": "Aucune évaluation ouverte",
+      "description": "Les nouvelles évaluations et oppositions apparaissent ici."
+    },
+    "kind": {
+      "new": "Nouvelle évaluation",
+      "appealProvider": "Opposition du prestataire",
+      "appealMember": "Opposition de l’auteur"
+    },
+    "caseTitle": "Évaluation de {name}",
+    "meta": "Reçu le {submitted} · {age} · Statut : {state}",
+    "review": "Évaluation",
+    "facts": {
+      "title": "Indications",
+      "profile": "Profil",
+      "appointment": "Rendez-vous",
+      "appointmentValue": "{start} à {end} · {status}",
+      "submitted": "Reçu le",
+      "published": "Publiée le",
+      "lastDecision": "Dernière décision",
+      "none": "Aucune indication"
+    },
+    "appeals": {
+      "title": "Oppositions",
+      "none": "Il n’y a pas d’opposition pour cette évaluation.",
+      "by": {
+        "PROVIDER": "Prestataire",
+        "MEMBER": "Auteur"
+      },
+      "status": {
+        "OPEN": "Ouverte",
+        "UPHELD": "Acceptée",
+        "DISMISSED": "Rejetée"
+      }
+    },
+    "decision": {
+      "title": "Décision",
+      "decision": "Résultat",
+      "option": {
+        "PUBLISHED": "Publier",
+        "REJECTED": "Refuser",
+        "REMOVED": "Retirer"
+      },
+      "optionHint": {
+        "PUBLISHED": "L’évaluation paraît sur le profil. Une opposition ouverte de l’auteur est considérée comme acceptée.",
+        "REJECTED": "L’évaluation reste non publiée. L’auteur peut faire opposition.",
+        "REMOVED": "L’évaluation disparaît du profil. Une opposition ouverte du prestataire est considérée comme acceptée."
+      },
+      "rule": "Règle",
+      "rulePlaceholder": "Choisir une règle",
+      "reason": "Motif",
+      "reasonHint": "Au moins 10 caractères. Il figure avec la décision dans le journal d’audit et reste interne.",
+      "save": "Enregistrer la décision",
+      "saved": "Décision enregistrée",
+      "summaryTitle": "Vérifie les champs signalés.",
+      "alreadyDecidedHelp": "La vue montre l’état actuel. Vérifie-le avant de décider à nouveau."
+    },
+    "rules": {
+      "R-REV-1": "Admissible",
+      "R-REV-2": "Détails intimes ou sensibles",
+      "R-REV-3": "Indications identifiantes ou dangereuses",
+      "R-REV-4": "Illicite ou portant atteinte à la personnalité",
+      "R-REV-5": "Chantage, représailles ou manipulation"
+    },
+    "dismiss": {
+      "title": {
+        "PROVIDER": "Rejeter l’opposition du prestataire",
+        "MEMBER": "Rejeter l’opposition de l’auteur"
+      },
+      "text": "L’évaluation reste telle quelle. L’opposition est considérée comme rejetée.",
+      "reason": "Motif du rejet",
+      "reasonHint": "Au moins 10 caractères. Il figure dans le journal d’audit.",
+      "submit": "Rejeter l’opposition",
+      "saved": "Opposition rejetée"
+    },
+    "errors": {
+      "generic": "Cela n’a pas fonctionné. Rien n’a été enregistré.",
+      "signInRequired": "Ta session a expiré. Reconnecte-toi.",
+      "forbidden": "Ton rôle ne permet pas de modérer les évaluations. Rien n’a été enregistré.",
+      "notFound": "Cette évaluation n’existe plus.",
+      "alreadyDecided": "Une décision a été prise entre-temps pour cette évaluation",
+      "appealClosed": "Cette opposition est déjà close.",
+      "decisionRequired": "Choisis un résultat.",
+      "ruleRequired": "Choisis une règle.",
+      "reasonTooShort": "Le motif doit compter au moins 10 caractères.",
+      "reasonTooLong": "Le motif est trop long."
+    }
+  }
+}

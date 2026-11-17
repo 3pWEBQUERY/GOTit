@@ -2,6 +2,7 @@ import type { Locale } from "@app/core/locale";
 import { Breadcrumbs, StatusPill, UiLink } from "@app/ui";
 import { MessageSquare, UserRound } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import { BookingReviewNote } from "../../../reviews/components/member/booking-review-note";
 import { TopBarTitle } from "../../../shell/components/top-bar-title";
 import { createHref } from "../../../shell/nav/href";
 import { isOpen, uiStatus } from "../../lib/status-view";
@@ -121,8 +122,8 @@ export async function RequestDetailPage({
           <BookingActions booking={booking} slots={slots} />
         </section>
       ) : null}
-      {booking.status === "COMPLETED" ? (
-        <p className="text-small text-ink-muted">{t("detail.reviewsLater")}</p>
+      {booking.status === "COMPLETED" && booking.role === "MEMBER" ? (
+        <BookingReviewNote locale={locale} requestId={booking.id} />
       ) : null}
 
       <div className="flex flex-col gap-1 xs:flex-row xs:flex-wrap xs:gap-6">

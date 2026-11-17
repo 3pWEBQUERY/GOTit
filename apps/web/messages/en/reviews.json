@@ -1,1 +1,287 @@
-{}
+{
+  "categories": {
+    "communication": "Communication",
+    "accuracy": "Accuracy of the profile",
+    "organization": "Organisation",
+    "overall": "Overall impression"
+  },
+  "categoryHints": {
+    "communication": "How clear and friendly were arrangements and replies?",
+    "accuracy": "Did photos, offer and details in the profile match?",
+    "organization": "How well were place, time and process prepared?",
+    "overall": "How was the appointment overall?"
+  },
+  "rating": {
+    "value": "{value} of 5",
+    "option": "{category}, {value} of 5"
+  },
+  "verification": "After a confirmed appointment",
+  "status": {
+    "PENDING": "Under review",
+    "PUBLISHED": "Published",
+    "REJECTED": "Rejected",
+    "REMOVED": "Removed"
+  },
+  "public": {
+    "heading": "{count, plural, =0 {Reviews} other {Reviews (#)}}",
+    "all": "View all",
+    "listLabel": "Reviews, newest first",
+    "responseLabel": "Statement by {name}",
+    "empty": "No reviews yet",
+    "emptyHint": "Members write reviews after an appointment that took place. They appear after moderation has checked them.",
+    "toOverview": "To the overview",
+    "ownerHint": "You find statements and appeals in the studio.",
+    "ownerLink": "Open received reviews",
+    "limited": "The newest {shown} of {total} reviews."
+  },
+  "report": {
+    "trigger": "Report review",
+    "title": "Report review",
+    "description": "Moderation receives a copy of this review. Nobody learns who reported it.",
+    "sentText": "Moderation checks the review. It stays visible until they decide."
+  },
+  "state": {
+    "loading": "Loading reviews",
+    "slow": "This is taking longer than usual.",
+    "retry": "Try again",
+    "errorTitle": "The reviews could not be loaded.",
+    "errorDescription": "Nothing was lost. Reload the page.",
+    "reload": "Reload"
+  },
+  "appeal": {
+    "trigger": "File an appeal",
+    "title": "File an appeal",
+    "description": {
+      "member": "Moderation checks your review again. If they publish it, it appears on the profile.",
+      "provider": "Moderation checks the review again. If it breaks a rule, moderation removes it from the profile. Until then it stays visible."
+    },
+    "close": "Close appeal",
+    "reason": "Reason",
+    "reasonHint": "At least 10 characters. Only moderation reads it.",
+    "count": "{used} of {max} characters",
+    "cancel": "Cancel",
+    "submit": "Send appeal",
+    "sent": "Appeal sent",
+    "running": "Appeal in progress",
+    "last": {
+      "UPHELD": "Last appeal: upheld",
+      "DISMISSED": "Last appeal: dismissed"
+    }
+  },
+  "errors": {
+    "generic": "That did not work. Your input is kept. Try again.",
+    "sign-in": "Your session has expired. Sign in again; your input is kept.",
+    "rate-limited": "You took many actions in the last hour. Try again later.",
+    "not-found": "This review no longer exists.",
+    "not-allowed": "An appeal is not possible in this status.",
+    "open": "An appeal for this review is already in progress.",
+    "invalid": "Please check your input.",
+    "not-completed": "This appointment has not taken place yet.",
+    "already-reviewed": "You have already reviewed this appointment.",
+    "too-late": "The period for a review has ended.",
+    "not-published": "Statements are only possible for published reviews.",
+    "ratingMissing": "Choose a value from 1 to 5.",
+    "textTooShort": "Write at least 20 characters.",
+    "textTooLong": "At most 2000 characters.",
+    "reasonTooShort": "Write at least 10 characters.",
+    "reasonTooLong": "At most 1000 characters.",
+    "responseEmpty": "Write a statement or cancel.",
+    "responseTooLong": "At most 1000 characters."
+  },
+  "member": {
+    "title": "Reviews",
+    "intro": "You can review appointments that took place, up to 30 days afterwards. A review becomes public only after checking, without your name.",
+    "pendingTitle": "Waiting for your review",
+    "pendingEmpty": "No appointment is waiting for a review.",
+    "pendingEmptyHint": "After an appointment that one side confirmed as «Took place», it appears here.",
+    "appointmentOn": "Appointment on {date}",
+    "write": "Write a review",
+    "writtenTitle": "Your reviews",
+    "writtenEmpty": "You have not written a review yet.",
+    "writtenEmptyHint": "You find past appointments under Appointments.",
+    "toAppointments": "View past appointments",
+    "writtenOn": "Written on {date}",
+    "publishedOn": "published on {date}",
+    "statusHint": {
+      "PENDING": "Moderation is checking the review. Afterwards it appears on the profile.",
+      "PUBLISHED": "The review is on the profile, without your name.",
+      "REJECTED": "Moderation did not publish the review. It is not public.",
+      "REMOVED": "Moderation removed the review from the profile."
+    }
+  },
+  "form": {
+    "breadcrumbs": "Breadcrumbs",
+    "crumb": "Write a review",
+    "title": "Write a review",
+    "titleFor": "Review for {name}",
+    "intro": "Appointment on {date}. You can review it until {until}. There is one review per appointment.",
+    "scaleHint": "1 means poor, 5 means very good.",
+    "noticeTitle": "What does not belong in a review",
+    "noticeText": "No intimate details and no information that identifies anyone, such as real names, addresses, phone numbers or physical features.",
+    "text": "Your experience",
+    "textHint": "20 to 2000 characters.",
+    "count": "{used} of {max} characters",
+    "moderationTitle": "Public only after checking",
+    "moderationText": "Moderation checks every review before it appears. Your name is never shown.",
+    "submit": "Send review",
+    "summaryTitle": "Please check the marked fields.",
+    "ratingMissingFor": "{category}: choose a value from 1 to 5.",
+    "sent": "Thank you. The review is being checked and appears once it is approved.",
+    "ineligible": {
+      "not-completed": {
+        "title": "This appointment has not taken place yet",
+        "text": "You can review it as soon as one side has confirmed the appointment as «Took place».",
+        "action": "To the appointment"
+      },
+      "already-reviewed": {
+        "title": "You have already reviewed this appointment",
+        "text": "There is one review per appointment. You see its status under Reviews.",
+        "action": "To your reviews"
+      },
+      "too-late": {
+        "title": "The period has ended",
+        "text": "You can review an appointment up to {days} days after it ended.",
+        "action": "To the appointment"
+      }
+    }
+  },
+  "booking": {
+    "title": "Review",
+    "text": "How was the appointment? You can review it up to {days} days after it ended.",
+    "write": "Write a review",
+    "done": "Review written",
+    "toOwn": "View status",
+    "tooLate": "The period for a review has ended ({days} days after the appointment)."
+  },
+  "studio": {
+    "title": "Reviews",
+    "intro": "Reviews after appointments that took place, approved by moderation. You can write a statement on each; it appears directly beneath.",
+    "empty": "No reviews yet",
+    "emptyHint": "Reviews appear here as soon as moderation has approved them.",
+    "noDate": "No date",
+    "removedHint": "Moderation removed this review from the profile. It is no longer public.",
+    "response": {
+      "write": "Write a statement",
+      "edit": "Edit statement",
+      "remove": "Remove statement",
+      "removeTitle": "Remove statement?",
+      "removeText": "The statement disappears from the profile and the text is lost. You can write a new one at any time.",
+      "removeConfirm": "Remove statement",
+      "keep": "Keep",
+      "removed": "Statement removed",
+      "label": "Statement",
+      "hint": "Factual and without information that identifies anyone. It appears beneath the review right away.",
+      "count": "{used} of {max} characters",
+      "save": "Save statement",
+      "cancel": "Cancel",
+      "saved": "Statement saved"
+    }
+  },
+  "meta": {
+    "own": "Reviews",
+    "new": "Write a review",
+    "received": "Reviews"
+  },
+  "admin": {
+    "title": "Reviews",
+    "intro": "New reviews and appeals, oldest first. A review appears on the profile only after you approve it.",
+    "restricted": "This area is for moderation, trust & safety and platform administration.",
+    "caption": "Reviews and appeals",
+    "count": "{count, plural, =0 {No open cases} one {# open case} other {# open cases}}",
+    "next": "Open next case",
+    "shortcutAfter": "opens the oldest open case.",
+    "columns": {
+      "kind": "Type",
+      "profile": "Profile",
+      "submitted": "Received on",
+      "age": "Age"
+    },
+    "empty": {
+      "title": "No open reviews",
+      "description": "New reviews and appeals appear here."
+    },
+    "kind": {
+      "new": "New review",
+      "appealProvider": "Appeal by the provider",
+      "appealMember": "Appeal by the author"
+    },
+    "caseTitle": "Review of {name}",
+    "meta": "Received on {submitted} · {age} · Status: {state}",
+    "review": "Review",
+    "facts": {
+      "title": "Details",
+      "profile": "Profile",
+      "appointment": "Appointment",
+      "appointmentValue": "{start} to {end} · {status}",
+      "submitted": "Received on",
+      "published": "Published on",
+      "lastDecision": "Last decision",
+      "none": "None"
+    },
+    "appeals": {
+      "title": "Appeals",
+      "none": "There is no appeal for this review.",
+      "by": {
+        "PROVIDER": "Provider",
+        "MEMBER": "Author"
+      },
+      "status": {
+        "OPEN": "Open",
+        "UPHELD": "Upheld",
+        "DISMISSED": "Dismissed"
+      }
+    },
+    "decision": {
+      "title": "Decision",
+      "decision": "Result",
+      "option": {
+        "PUBLISHED": "Publish",
+        "REJECTED": "Reject",
+        "REMOVED": "Remove"
+      },
+      "optionHint": {
+        "PUBLISHED": "The review appears on the profile. An open appeal by the author counts as upheld.",
+        "REJECTED": "The review stays unpublished. The author can appeal.",
+        "REMOVED": "The review disappears from the profile. An open appeal by the provider counts as upheld."
+      },
+      "rule": "Rule",
+      "rulePlaceholder": "Choose a rule",
+      "reason": "Reason",
+      "reasonHint": "At least 10 characters. It is stored with the decision in the audit log and stays internal.",
+      "save": "Save decision",
+      "saved": "Decision saved",
+      "summaryTitle": "Please check the marked fields.",
+      "alreadyDecidedHelp": "The view shows the current state. Check it before deciding again."
+    },
+    "rules": {
+      "R-REV-1": "Permitted",
+      "R-REV-2": "Intimate or sensitive details",
+      "R-REV-3": "Identifying or endangering information",
+      "R-REV-4": "Unlawful or violating personal rights",
+      "R-REV-5": "Blackmail, retaliation or manipulation"
+    },
+    "dismiss": {
+      "title": {
+        "PROVIDER": "Dismiss the provider’s appeal",
+        "MEMBER": "Dismiss the author’s appeal"
+      },
+      "text": "The review stays as it is. The appeal counts as dismissed.",
+      "reason": "Reason for dismissal",
+      "reasonHint": "At least 10 characters. It is stored in the audit log.",
+      "submit": "Dismiss appeal",
+      "saved": "Appeal dismissed"
+    },
+    "errors": {
+      "generic": "That did not work. Nothing was saved.",
+      "signInRequired": "Your session has expired. Sign in again.",
+      "forbidden": "Your role may not moderate reviews. Nothing was saved.",
+      "notFound": "This review no longer exists.",
+      "alreadyDecided": "This review has been decided in the meantime",
+      "appealClosed": "This appeal is already closed.",
+      "decisionRequired": "Choose a result.",
+      "ruleRequired": "Choose a rule.",
+      "reasonTooShort": "The reason needs at least 10 characters.",
+      "reasonTooLong": "The reason is too long."
+    }
+  }
+}

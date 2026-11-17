@@ -6,7 +6,9 @@
     "mediaQueue": "Admin · Medien",
     "mediaCase": "Admin · Medium",
     "reportQueue": "Admin · Meldungen",
-    "reportCase": "Admin · Meldung"
+    "reportCase": "Admin · Meldung",
+    "reviewQueue": "Admin · Bewertungen",
+    "reviewCase": "Admin · Bewertung"
   },
   "shell": {
     "brand": "{appName} Admin",
@@ -22,7 +24,9 @@
     "media": "Medien",
     "openMediaCount": "{count, plural, one {# Medium in Prüfung} other {# Medien in Prüfung}}",
     "reports": "Meldungen",
-    "openReportCount": "{count, plural, one {# offene Meldung} other {# offene Meldungen}}"
+    "openReportCount": "{count, plural, one {# offene Meldung} other {# offene Meldungen}}",
+    "reviews": "Bewertungen",
+    "openReviewCount": "{count, plural, one {# offener Fall} other {# offene Fälle}}"
   },
   "twoFactor": {
     "title": "Zweiten Faktor einrichten",
@@ -341,13 +345,15 @@
       "MESSAGE": "Nachricht",
       "USER": "Mitglied",
       "PROFILE": "Anbieterprofil",
-      "MEDIA": "Medium"
+      "MEDIA": "Medium",
+      "REVIEW": "Bewertung"
     },
     "caseTitle": {
       "MESSAGE": "Meldung zu einer Nachricht",
       "USER": "Meldung zu einem Mitglied",
       "PROFILE": "Meldung zu einem Anbieterprofil",
-      "MEDIA": "Meldung zu einem Medium"
+      "MEDIA": "Meldung zu einem Medium",
+      "REVIEW": "Meldung zu einer Bewertung"
     },
     "meta": "Eingegangen am {submitted} · {age} · Stand: {state}",
     "status": {
@@ -382,6 +388,7 @@
       "title": "Entscheid",
       "laterTitle": "Entscheide folgen mit Schritt 1.13",
       "laterText": "Die Meldung bleibt offen. Freigeben, Entfernen und Einschränken kommen mit der Moderation, dann mit Begründung, Regel und Einspruch."
-    }
+    },
+    "openReview": "Bewertung öffnen"
   }
 }

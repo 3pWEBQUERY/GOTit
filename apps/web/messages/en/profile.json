@@ -7,7 +7,8 @@
     "notFound": "Profile not found",
     "mediaTitle": "Media of {name}",
     "description": "{name} in {regions}: details, rates and checked signals.",
-    "descriptionNoRegion": "{name}: details, rates and checked signals."
+    "descriptionNoRegion": "{name}: details, rates and checked signals.",
+    "reviewsTitle": "Reviews of {name}"
   },
   "header": {
     "edit": "Edit basics",
@@ -83,7 +84,8 @@
   "tabs": {
     "label": "Profile areas",
     "overview": "Overview",
-    "media": "Media"
+    "media": "Media",
+    "reviews": "Reviews"
   },
   "membersOnly": {
     "title": "Only signed-in members can see this profile.",

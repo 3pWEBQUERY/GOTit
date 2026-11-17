@@ -227,7 +227,8 @@
         "title": "Ancora niente di passato",
         "text": "Qui trovi le richieste passate, annullate, rifiutate e scadute."
       }
-    }
+    },
+    "writeReview": "Scrivi una recensione per {name}"
   },
   "detail": {
     "metaTitle": "Richiesta di appuntamento",
@@ -239,7 +240,6 @@
     "message": "Il tuo messaggio",
     "actions": "Cosa puoi fare",
     "voluntary": "Ogni richiesta di appuntamento è volontaria. Puoi sempre annullare, senza motivazione.",
-    "reviewsLater": "Le valutazioni dopo un appuntamento arrivano con una delle prossime versioni della piattaforma.",
     "openThread": "Apri la conversazione",
     "openProfile": "Vedi il profilo"
   },

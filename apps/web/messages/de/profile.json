@@ -7,7 +7,8 @@
     "notFound": "Profil nicht gefunden",
     "mediaTitle": "Medien von {name}",
     "description": "{name} in {regions}: Angaben, Preise und geprüfte Signale.",
-    "descriptionNoRegion": "{name}: Angaben, Preise und geprüfte Signale."
+    "descriptionNoRegion": "{name}: Angaben, Preise und geprüfte Signale.",
+    "reviewsTitle": "Bewertungen von {name}"
   },
   "header": {
     "edit": "Basis bearbeiten",
@@ -83,7 +84,8 @@
   "tabs": {
     "label": "Bereiche des Profils",
     "overview": "Übersicht",
-    "media": "Medien"
+    "media": "Medien",
+    "reviews": "Bewertungen"
   },
   "membersOnly": {
     "title": "Dieses Profil sehen nur angemeldete Mitglieder.",

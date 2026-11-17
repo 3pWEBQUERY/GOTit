@@ -11,6 +11,7 @@ import {
   MapPin,
   Megaphone,
   MessageSquare,
+  MessageSquareText,
   PenSquare,
   Settings,
   Sun,
@@ -50,6 +51,7 @@ export function buildProviderSidebar(t: Translate, href: HrefBuilder, flags: Stu
     unread && unread.value > 0 ? { ...messages, badge: unread.value, badgeLabel: unread.label } : messages,
     item(t("studio.calendar"), href("/studio/kalender"), CalendarDays),
     item(t("studio.requests"), href("/studio/anfragen"), Inbox),
+    item(t("studio.reviews"), href("/studio/bewertungen"), MessageSquareText),
     ...(flags.communityEnabled ? [item(t("studio.posts"), href("/studio/beitraege"), PenSquare)] : []),
     item(t("studio.statistics"), href("/studio/statistik"), BarChart3),
     ...(flags.businessSuiteEnabled

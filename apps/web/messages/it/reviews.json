@@ -1,1 +1,287 @@
-{}
+{
+  "categories": {
+    "communication": "Comunicazione",
+    "accuracy": "Affidabilità dei dati del profilo",
+    "organization": "Organizzazione",
+    "overall": "Impressione generale"
+  },
+  "categoryHints": {
+    "communication": "Accordi e risposte erano chiari e cortesi?",
+    "accuracy": "Foto, offerta e dati del profilo corrispondevano?",
+    "organization": "Luogo, orario e svolgimento erano ben preparati?",
+    "overall": "Com’è andato l’appuntamento nel complesso?"
+  },
+  "rating": {
+    "value": "{value} su 5",
+    "option": "{category}, {value} su 5"
+  },
+  "verification": "Dopo un appuntamento confermato",
+  "status": {
+    "PENDING": "In verifica",
+    "PUBLISHED": "Pubblicata",
+    "REJECTED": "Respinta",
+    "REMOVED": "Rimossa"
+  },
+  "public": {
+    "heading": "{count, plural, =0 {Valutazioni} other {Valutazioni (#)}}",
+    "all": "Vedi tutte",
+    "listLabel": "Valutazioni, le più recenti prima",
+    "responseLabel": "Presa di posizione di {name}",
+    "empty": "Ancora nessuna valutazione",
+    "emptyHint": "I membri scrivono una valutazione dopo un appuntamento avvenuto. Appare dopo la verifica della moderazione.",
+    "toOverview": "Alla panoramica",
+    "ownerHint": "Presa di posizione e opposizione si trovano nello studio.",
+    "ownerLink": "Apri le valutazioni ricevute",
+    "limited": "Le {shown} più recenti su {total} valutazioni."
+  },
+  "report": {
+    "trigger": "Segnala la valutazione",
+    "title": "Segnala la valutazione",
+    "description": "La moderazione riceve una copia di questa valutazione. Nessuno viene a sapere chi l’ha segnalata.",
+    "sentText": "La moderazione esamina la valutazione. Resta visibile fino alla sua decisione."
+  },
+  "state": {
+    "loading": "Caricamento delle valutazioni",
+    "slow": "Ci vuole più tempo del solito.",
+    "retry": "Riprova",
+    "errorTitle": "Non è stato possibile caricare le valutazioni.",
+    "errorDescription": "Non è andato perso nulla. Ricarica la pagina.",
+    "reload": "Ricarica"
+  },
+  "appeal": {
+    "trigger": "Presentare opposizione",
+    "title": "Presentare opposizione",
+    "description": {
+      "member": "La moderazione riesamina la tua valutazione. Se la pubblica, appare sul profilo.",
+      "provider": "La moderazione riesamina la valutazione. Se viola una regola, la moderazione la rimuove dal profilo. Fino ad allora resta visibile."
+    },
+    "close": "Chiudi l’opposizione",
+    "reason": "Motivazione",
+    "reasonHint": "Almeno 10 caratteri. La legge solo la moderazione.",
+    "count": "{used} di {max} caratteri",
+    "cancel": "Annulla",
+    "submit": "Invia opposizione",
+    "sent": "Opposizione inviata",
+    "running": "Opposizione in corso",
+    "last": {
+      "UPHELD": "Ultima opposizione: accolta",
+      "DISMISSED": "Ultima opposizione: respinta"
+    }
+  },
+  "errors": {
+    "generic": "Non ha funzionato. I tuoi dati sono conservati. Riprova.",
+    "sign-in": "La tua sessione è scaduta. Accedi di nuovo; i tuoi dati sono conservati.",
+    "rate-limited": "Nell’ultima ora hai eseguito molte azioni. Riprova più tardi.",
+    "not-found": "Questa valutazione non esiste più.",
+    "not-allowed": "In questo stato non è possibile un’opposizione.",
+    "open": "Per questa valutazione è già in corso un’opposizione.",
+    "invalid": "Controlla i tuoi dati.",
+    "not-completed": "Questo appuntamento non è ancora avvenuto.",
+    "already-reviewed": "Hai già valutato questo appuntamento.",
+    "too-late": "Il termine per una valutazione è scaduto.",
+    "not-published": "Le prese di posizione sono possibili solo per valutazioni pubblicate.",
+    "ratingMissing": "Scegli un valore da 1 a 5.",
+    "textTooShort": "Scrivi almeno 20 caratteri.",
+    "textTooLong": "Al massimo 2000 caratteri.",
+    "reasonTooShort": "Scrivi almeno 10 caratteri.",
+    "reasonTooLong": "Al massimo 1000 caratteri.",
+    "responseEmpty": "Scrivi una presa di posizione o annulla.",
+    "responseTooLong": "Al massimo 1000 caratteri."
+  },
+  "member": {
+    "title": "Valutazioni",
+    "intro": "Puoi valutare gli appuntamenti avvenuti, fino a 30 giorni dopo. Una valutazione diventa pubblica solo dopo la verifica, senza il tuo nome.",
+    "pendingTitle": "In attesa della tua valutazione",
+    "pendingEmpty": "Nessun appuntamento attende una valutazione.",
+    "pendingEmptyHint": "Dopo un appuntamento confermato da una parte come «Avvenuto», appare qui.",
+    "appointmentOn": "Appuntamento del {date}",
+    "write": "Scrivi una valutazione",
+    "writtenTitle": "Le tue valutazioni",
+    "writtenEmpty": "Non hai ancora scritto nessuna valutazione.",
+    "writtenEmptyHint": "Gli appuntamenti passati si trovano sotto Appuntamenti.",
+    "toAppointments": "Vedi gli appuntamenti passati",
+    "writtenOn": "Scritta il {date}",
+    "publishedOn": "pubblicata il {date}",
+    "statusHint": {
+      "PENDING": "La moderazione esamina la valutazione. Poi appare sul profilo.",
+      "PUBLISHED": "La valutazione è sul profilo, senza il tuo nome.",
+      "REJECTED": "La moderazione non ha pubblicato la valutazione. Non è pubblica.",
+      "REMOVED": "La moderazione ha rimosso la valutazione dal profilo."
+    }
+  },
+  "form": {
+    "breadcrumbs": "Percorso",
+    "crumb": "Scrivi una valutazione",
+    "title": "Scrivi una valutazione",
+    "titleFor": "Valutazione per {name}",
+    "intro": "Appuntamento del {date}. Puoi valutarlo fino al {until}. C’è una valutazione per appuntamento.",
+    "scaleHint": "1 significa scarso, 5 significa molto buono.",
+    "noticeTitle": "Cosa non va in una valutazione",
+    "noticeText": "Nessun dettaglio intimo e nessun dato che identifichi qualcuno, ad esempio nomi veri, indirizzi, numeri di telefono o caratteristiche fisiche.",
+    "text": "La tua esperienza",
+    "textHint": "Da 20 a 2000 caratteri.",
+    "count": "{used} di {max} caratteri",
+    "moderationTitle": "Pubblica solo dopo la verifica",
+    "moderationText": "La moderazione verifica ogni valutazione prima che appaia. Il tuo nome non compare mai.",
+    "submit": "Invia valutazione",
+    "summaryTitle": "Controlla i campi segnalati.",
+    "ratingMissingFor": "{category}: scegli un valore da 1 a 5.",
+    "sent": "Grazie. La valutazione è in verifica e appare dopo l’approvazione.",
+    "ineligible": {
+      "not-completed": {
+        "title": "Questo appuntamento non è ancora avvenuto",
+        "text": "Puoi valutarlo non appena una parte ha confermato l’appuntamento come «Avvenuto».",
+        "action": "All’appuntamento"
+      },
+      "already-reviewed": {
+        "title": "Hai già valutato questo appuntamento",
+        "text": "C’è una valutazione per appuntamento. Il suo stato si trova sotto Valutazioni.",
+        "action": "Alle tue valutazioni"
+      },
+      "too-late": {
+        "title": "Il termine è scaduto",
+        "text": "Puoi valutare un appuntamento fino a {days} giorni dopo la sua fine.",
+        "action": "All’appuntamento"
+      }
+    }
+  },
+  "booking": {
+    "title": "Valutazione",
+    "text": "Com’è andato l’appuntamento? Puoi valutarlo fino a {days} giorni dopo la fine.",
+    "write": "Scrivi una valutazione",
+    "done": "Valutazione scritta",
+    "toOwn": "Vedi lo stato",
+    "tooLate": "Il termine per una valutazione è scaduto ({days} giorni dopo l’appuntamento)."
+  },
+  "studio": {
+    "title": "Valutazioni",
+    "intro": "Valutazioni dopo appuntamenti avvenuti, approvate dalla moderazione. Per ognuna puoi scrivere una presa di posizione; appare subito sotto.",
+    "empty": "Ancora nessuna valutazione",
+    "emptyHint": "Le valutazioni appaiono qui non appena la moderazione le ha approvate.",
+    "noDate": "Senza data",
+    "removedHint": "La moderazione ha rimosso questa valutazione dal profilo. Non è più pubblica.",
+    "response": {
+      "write": "Scrivi una presa di posizione",
+      "edit": "Modifica la presa di posizione",
+      "remove": "Rimuovi la presa di posizione",
+      "removeTitle": "Rimuovere la presa di posizione?",
+      "removeText": "La presa di posizione scompare dal profilo e il testo va perso. Puoi scriverne una nuova in qualsiasi momento.",
+      "removeConfirm": "Rimuovi la presa di posizione",
+      "keep": "Mantieni",
+      "removed": "Presa di posizione rimossa",
+      "label": "Presa di posizione",
+      "hint": "Oggettiva e senza dati che identifichino qualcuno. Appare subito sotto la valutazione.",
+      "count": "{used} di {max} caratteri",
+      "save": "Salva la presa di posizione",
+      "cancel": "Annulla",
+      "saved": "Presa di posizione salvata"
+    }
+  },
+  "meta": {
+    "own": "Valutazioni",
+    "new": "Scrivi una valutazione",
+    "received": "Valutazioni"
+  },
+  "admin": {
+    "title": "Valutazioni",
+    "intro": "Nuove valutazioni e opposizioni, le più vecchie prima. Una valutazione appare sul profilo solo dopo la tua approvazione.",
+    "restricted": "Quest’area è riservata a moderazione, Trust & Safety e amministrazione della piattaforma.",
+    "caption": "Valutazioni e opposizioni",
+    "count": "{count, plural, =0 {Nessun caso aperto} one {# caso aperto} other {# casi aperti}}",
+    "next": "Apri il caso successivo",
+    "shortcutAfter": "apre il caso aperto più vecchio.",
+    "columns": {
+      "kind": "Tipo",
+      "profile": "Profilo",
+      "submitted": "Ricevuto il",
+      "age": "Età"
+    },
+    "empty": {
+      "title": "Nessuna valutazione aperta",
+      "description": "Le nuove valutazioni e opposizioni appaiono qui."
+    },
+    "kind": {
+      "new": "Nuova valutazione",
+      "appealProvider": "Opposizione dell’offerente",
+      "appealMember": "Opposizione dell’autore"
+    },
+    "caseTitle": "Valutazione di {name}",
+    "meta": "Ricevuto il {submitted} · {age} · Stato: {state}",
+    "review": "Valutazione",
+    "facts": {
+      "title": "Dati",
+      "profile": "Profilo",
+      "appointment": "Appuntamento",
+      "appointmentValue": "{start} – {end} · {status}",
+      "submitted": "Ricevuto il",
+      "published": "Pubblicata il",
+      "lastDecision": "Ultima decisione",
+      "none": "Nessun dato"
+    },
+    "appeals": {
+      "title": "Opposizioni",
+      "none": "Per questa valutazione non c’è nessuna opposizione.",
+      "by": {
+        "PROVIDER": "Offerente",
+        "MEMBER": "Autore"
+      },
+      "status": {
+        "OPEN": "Aperta",
+        "UPHELD": "Accolta",
+        "DISMISSED": "Respinta"
+      }
+    },
+    "decision": {
+      "title": "Decisione",
+      "decision": "Esito",
+      "option": {
+        "PUBLISHED": "Pubblica",
+        "REJECTED": "Respingi",
+        "REMOVED": "Rimuovi"
+      },
+      "optionHint": {
+        "PUBLISHED": "La valutazione appare sul profilo. Un’opposizione aperta dell’autore vale come accolta.",
+        "REJECTED": "La valutazione resta non pubblicata. L’autore può presentare opposizione.",
+        "REMOVED": "La valutazione scompare dal profilo. Un’opposizione aperta dell’offerente vale come accolta."
+      },
+      "rule": "Regola",
+      "rulePlaceholder": "Scegli una regola",
+      "reason": "Motivazione",
+      "reasonHint": "Almeno 10 caratteri. È registrata con la decisione nel registro di audit e resta interna.",
+      "save": "Salva la decisione",
+      "saved": "Decisione salvata",
+      "summaryTitle": "Controlla i campi segnalati.",
+      "alreadyDecidedHelp": "La vista mostra lo stato attuale. Controllalo prima di decidere di nuovo."
+    },
+    "rules": {
+      "R-REV-1": "Ammissibile",
+      "R-REV-2": "Dettagli intimi o sensibili",
+      "R-REV-3": "Dati identificativi o pericolosi",
+      "R-REV-4": "Illecita o lesiva della personalità",
+      "R-REV-5": "Ricatto, ritorsione o manipolazione"
+    },
+    "dismiss": {
+      "title": {
+        "PROVIDER": "Respingi l’opposizione dell’offerente",
+        "MEMBER": "Respingi l’opposizione dell’autore"
+      },
+      "text": "La valutazione resta com’è. L’opposizione vale come respinta.",
+      "reason": "Motivazione del rigetto",
+      "reasonHint": "Almeno 10 caratteri. È registrata nel registro di audit.",
+      "submit": "Respingi l’opposizione",
+      "saved": "Opposizione respinta"
+    },
+    "errors": {
+      "generic": "Non ha funzionato. Non è stato salvato nulla.",
+      "signInRequired": "La tua sessione è scaduta. Accedi di nuovo.",
+      "forbidden": "Il tuo ruolo non può moderare valutazioni. Non è stato salvato nulla.",
+      "notFound": "Questa valutazione non esiste più.",
+      "alreadyDecided": "Su questa valutazione è stato deciso nel frattempo",
+      "appealClosed": "Questa opposizione è già chiusa.",
+      "decisionRequired": "Scegli un esito.",
+      "ruleRequired": "Scegli una regola.",
+      "reasonTooShort": "La motivazione deve avere almeno 10 caratteri.",
+      "reasonTooLong": "La motivazione è troppo lunga."
+    }
+  }
+}

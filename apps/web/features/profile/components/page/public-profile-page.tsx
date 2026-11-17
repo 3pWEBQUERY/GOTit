@@ -6,6 +6,8 @@ import { notFound } from "next/navigation";
 import { redirect } from "@/i18n/navigation";
 import { BookingRequestPanel } from "../../../booking/components/request/booking-request-panel";
 import { ProfileFavorite } from "../../../favorites/components/profile-favorite";
+import { OVERVIEW_LIMIT, ProfileReviews } from "../../../reviews/components/public/profile-reviews";
+import { loadProfileReviews } from "../../../reviews/queries/public";
 import { loadProfileFavorite } from "../../../favorites/queries/load-profile-favorite";
 import { TopBarTitle } from "../../../shell/components/top-bar-title";
 import { createHref } from "../../../shell/nav/href";
@@ -47,7 +49,11 @@ export async function PublicProfilePage({ locale, slug, tab, edit, request }: Pu
   const { profile, owner } = result;
   // Der Inhaber fragt bei sich selbst nicht an; das Panel gibt es für ihn nicht.
   if (request && owner) redirect({ href: { pathname: "/p/[name]", params: { name: profile.slug } }, locale });
-  const tabLinks = { overview: href({ pathname: "/p/[name]", params: { name: profile.slug } }), media: href({ pathname: "/p/[name]/medien", params: { name: profile.slug } }) };
+  const tabLinks = {
+    overview: href({ pathname: "/p/[name]", params: { name: profile.slug } }),
+    media: href({ pathname: "/p/[name]/medien", params: { name: profile.slug } }),
+    reviews: href({ pathname: "/p/[name]/bewertungen", params: { name: profile.slug } }),
+  };
   const here = tabLinks[tab];
   const model = toViewModel(profile, { paused: result.state === "paused", regionHref: (region) => regionHref(locale, region) });
   const editLinks = owner
@@ -61,6 +67,20 @@ export async function PublicProfilePage({ locale, slug, tab, edit, request }: Pu
   const region = model.regions[0];
   const signInHref = viewer.kind === "account" ? null : href({ pathname: "/anmelden", query: { weiter: here } });
   const requestHref = href({ pathname: "/p/[name]/anfrage", params: { name: profile.slug } });
+  const { total: reviewCount } = await loadProfileReviews(profile.slug, OVERVIEW_LIMIT);
+  const reviews = (variant: "section" | "tab") => (
+    <ProfileReviews
+      locale={locale}
+      slug={profile.slug}
+      providerName={profile.displayName}
+      variant={variant}
+      tabHref={tabLinks.reviews}
+      overviewHref={tabLinks.overview}
+      signInHref={signInHref}
+      owner={owner !== null}
+      studioHref={href("/studio/bewertungen")}
+    />
+  );
 
   return (
     <div className="flex flex-col gap-6">
@@ -78,13 +98,14 @@ export async function PublicProfilePage({ locale, slug, tab, edit, request }: Pu
         nameLevel={1}
         reportHref={href("/melden")}
         mediaHref={tabLinks.media}
-        tabs={<ProfileTabs current={tab} links={tabLinks} />}
+        tabs={<ProfileTabs current={tab} links={tabLinks} reviewCount={reviewCount} />}
+        after={tab === "overview" ? reviews("section") : undefined}
         editLinks={editLinks}
         message={owner ? undefined : { slug: profile.slug, signInHref }}
         request={owner ? undefined : { href: requestHref }}
         actions={favorite ? <ProfileFavorite slug={profile.slug} data={favorite.data} signInHref={favorite.signInHref} favoritesHref={href("/favoriten")} /> : undefined}
       >
-        {tab === "media" ? (
+        {tab === "reviews" ? reviews("tab") : tab === "media" ? (
           model.media.length > 0 ? (
             <ProfileGallery name={model.displayName} media={model.media} layout="responsive" variant="grid" />
           ) : (

@@ -19,7 +19,7 @@ export async function profileMetadata(locale: Locale, slug: string, tab: Profile
   if (result.state === "members-only") return { title: result.displayName, alternates: { canonical }, robots: noindex };
   const { profile } = result;
   const regions = profile.regions.map((region) => region.name).join(", ");
-  const title = tab === "media" ? t("mediaTitle", { name: profile.displayName }) : profile.displayName;
+  const title = tab === "media" ? t("mediaTitle", { name: profile.displayName }) : tab === "reviews" ? t("reviewsTitle", { name: profile.displayName }) : profile.displayName;
   const description = profile.shortDescription ?? (regions ? t("description", { name: profile.displayName, regions }) : t("descriptionNoRegion", { name: profile.displayName }));
   const indexable = result.state === "ready" && tab === "overview";
   return { title, description, alternates: { canonical }, robots: indexable ? undefined : noindex };

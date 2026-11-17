@@ -7,7 +7,8 @@
     "notFound": "Profil introuvable",
     "mediaTitle": "Médias de {name}",
     "description": "{name} à {regions} : informations, tarifs et signaux vérifiés.",
-    "descriptionNoRegion": "{name} : informations, tarifs et signaux vérifiés."
+    "descriptionNoRegion": "{name} : informations, tarifs et signaux vérifiés.",
+    "reviewsTitle": "Évaluations de {name}"
   },
   "header": {
     "edit": "Modifier la base",
@@ -83,7 +84,8 @@
   "tabs": {
     "label": "Rubriques du profil",
     "overview": "Aperçu",
-    "media": "Médias"
+    "media": "Médias",
+    "reviews": "Évaluations"
   },
   "membersOnly": {
     "title": "Seuls les membres connectés voient ce profil.",
