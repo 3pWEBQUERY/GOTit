@@ -35,6 +35,7 @@ export const studioPathnames = {
   "/studio/statistik": { de: "/studio/statistik", fr: "/studio/statistiques", it: "/studio/statistiche", en: "/studio/statistics" },
   "/studio/werbung": { de: "/studio/werbung", fr: "/studio/publicite", it: "/studio/pubblicita", en: "/studio/advertising" },
   "/studio/abrechnung": { de: "/studio/abrechnung", fr: "/studio/facturation", it: "/studio/fatturazione", en: "/studio/billing" },
+  "/studio/verknuepfungen": { de: "/studio/verknuepfungen", fr: "/studio/liens", it: "/studio/collegamenti", en: "/studio/links" },
   "/studio/einstellungen": { de: "/studio/einstellungen", fr: "/studio/parametres", it: "/studio/impostazioni", en: "/studio/settings" },
   "/studio/o/[org]": "/studio/o/[org]",
   "/studio/o/[org]/profil": { de: "/studio/o/[org]/profil", fr: "/studio/o/[org]/profil", it: "/studio/o/[org]/profilo", en: "/studio/o/[org]/profile" },
@@ -43,6 +44,12 @@ export const studioPathnames = {
     fr: "/studio/o/[org]/sites",
     it: "/studio/o/[org]/sedi",
     en: "/studio/o/[org]/locations",
+  },
+  "/studio/o/[org]/standorte/[id]": {
+    de: "/studio/o/[org]/standorte/[id]",
+    fr: "/studio/o/[org]/sites/[id]",
+    it: "/studio/o/[org]/sedi/[id]",
+    en: "/studio/o/[org]/locations/[id]",
   },
   "/studio/o/[org]/anbieter": {
     de: "/studio/o/[org]/anbieter",

@@ -13,6 +13,8 @@ export const marketplacePathnames = {
   "/p/[name]/bewertungen": { de: "/p/[name]/bewertungen", fr: "/p/[name]/avis", it: "/p/[name]/recensioni", en: "/p/[name]/reviews" },
   "/p/[name]/medien": { de: "/p/[name]/medien", fr: "/p/[name]/medias", it: "/p/[name]/media", en: "/p/[name]/media" },
   "/c/[slug]": "/c/[slug]",
+  "/c/[slug]/team": { de: "/c/[slug]/team", fr: "/c/[slug]/equipe", it: "/c/[slug]/team", en: "/c/[slug]/team" },
+  "/c/[slug]/standorte/[id]": { de: "/c/[slug]/standorte/[id]", fr: "/c/[slug]/sites/[id]", it: "/c/[slug]/sedi/[id]", en: "/c/[slug]/locations/[id]" },
   "/touren": { de: "/touren", fr: "/tournees", it: "/tour", en: "/tours" },
   "/alterspruefung": { de: "/alterspruefung", fr: "/verification-age", it: "/verifica-eta", en: "/age-check" },
 } as const;
