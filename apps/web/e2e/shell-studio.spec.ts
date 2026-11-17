@@ -54,7 +54,8 @@ test.describe("Wechsel Marktplatz ↔ Studio (PRD 6.1, 8.1)", () => {
   test("eine begonnene Anbieterrolle führt ins Onboarding", async ({ page }) => {
     await signIn(page, "entwurf");
     await page.goto("/de/studio");
-    await expect(page).toHaveURL(/\/de\/studio\/start$/);
+    // Das Onboarding führt weiter zum ersten offenen Schritt (Schritt 1.5).
+    await expect(page).toHaveURL(/\/de\/studio\/start(\/[a-z-]+)?$/);
   });
 
   test("Organisationsmitglieder landen im Kontext ihrer Organisation, fremde Organisationen existieren für sie nicht", async ({ page }) => {

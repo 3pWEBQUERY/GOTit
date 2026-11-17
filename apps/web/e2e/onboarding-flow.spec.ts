@@ -104,7 +104,7 @@ test.describe("Onboarding: Schritte (PRD 11.8)", () => {
     await expect(steps.first()).toHaveAttribute("aria-current", "step");
     await expect(steps.first()).toContainText("Identität, etwa 5 Minuten");
     await expect(steps.nth(1)).toContainText("offen");
-    await expect(page.getByText("keine Ausweiskopie")).toBeVisible();
+    await expect(page.locator("#inhalt").getByText("keine Ausweiskopie")).toBeVisible();
   });
 
   test("Regionen wählen und speichern; nach dem Neuladen sind sie noch da", async ({ page }) => {
