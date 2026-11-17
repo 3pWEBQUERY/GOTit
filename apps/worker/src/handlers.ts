@@ -1,3 +1,6 @@
+import { getStorage } from "@app/storage";
+import { createDeleteMediaJob } from "./jobs/delete-media";
+import { createProcessMediaJob } from "./jobs/process-media";
 import { createSendEmailJob } from "./jobs/send-email";
 import { createMailSender } from "./mail/transport";
 
@@ -8,5 +11,9 @@ import { createMailSender } from "./mail/transport";
 export type JobHandler = (payload: never) => Promise<void>;
 
 export function createHandlers(): Readonly<Record<string, JobHandler>> {
-  return { email: createSendEmailJob(createMailSender()) };
+  return {
+    email: createSendEmailJob(createMailSender()),
+    "media-process": createProcessMediaJob(getStorage),
+    "media-delete": createDeleteMediaJob(getStorage),
+  };
 }

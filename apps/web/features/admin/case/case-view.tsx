@@ -5,6 +5,7 @@ import { AdminPageHeader } from "../components/page-header";
 import type { ReviewCase } from "../queries/get-case";
 import { caseAge } from "../queue/case-age";
 import { CaseFacts } from "./case-facts";
+import { ChangeComparison } from "./change-comparison";
 import { DecisionPanel } from "./decision-panel";
 import { IdentityPanel } from "./identity-panel";
 
@@ -20,7 +21,7 @@ export async function CaseView({ locale, review, alreadyDecided, now }: { locale
   return (
     <>
       <AdminPageHeader
-        title={t("case.title", { name: review.providerProfile.displayName })}
+        title={t(review.kind === "CHANGE" ? "case.changeTitle" : "case.title", { name: review.providerProfile.displayName })}
         crumbsLabel={t("shell.breadcrumbs")}
         crumbs={[
           { label: t("shell.overview"), href: href("/admin") },
@@ -32,7 +33,10 @@ export async function CaseView({ locale, review, alreadyDecided, now }: { locale
         {t("case.meta", { submitted, age: ageLabel, state })}
       </p>
       <div className="grid gap-8 lg:grid-cols-2 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,22rem)]">
-        <CaseFacts locale={locale} review={review} />
+        <div className="flex min-w-0 flex-col gap-8">
+          {review.kind === "CHANGE" && review.decision === null ? <ChangeComparison locale={locale} review={review} /> : null}
+          <CaseFacts locale={locale} review={review} />
+        </div>
         <IdentityPanel reviewId={review.id} />
         <div className="lg:col-span-2 xl:col-span-1">
           <DecisionPanel locale={locale} review={review} alreadyDecided={alreadyDecided} />

@@ -1,0 +1,245 @@
+{
+  "page": {
+    "breadcrumbs": "Breadcrumbs",
+    "discover": "Discover"
+  },
+  "meta": {
+    "notFound": "Profile not found",
+    "mediaTitle": "Media of {name}",
+    "description": "{name} in {regions}: details, rates and checked signals.",
+    "descriptionNoRegion": "{name}: details, rates and checked signals."
+  },
+  "header": {
+    "edit": "Edit basics",
+    "noRegion": "No region yet",
+    "speaks": "speaks {languages}"
+  },
+  "media": {
+    "label": "Media of {name}",
+    "lightboxTitle": "Media of {name}",
+    "placeholderAlt": "No photos of {name} yet",
+    "neutralAlt": "Photo {index} of {name}",
+    "membersOnly": "For signed-in members",
+    "counter": "{current} / {total}",
+    "all": "View all {count} media",
+    "close": "Close media",
+    "previous": "Previous medium",
+    "next": "Next medium",
+    "empty": "Photos appear here once they have been checked and approved.",
+    "emptyHint": "Until then the profile shows a neutral area.",
+    "toOverview": "View overview"
+  },
+  "trust": {
+    "label": "Trust signals",
+    "none": "No checked details yet.",
+    "close": "Close explanation",
+    "updated": "Updated {relative}",
+    "explanation": {
+      "checked": "What was checked",
+      "checkedAt": "When",
+      "notImplied": "What the signal does not say"
+    },
+    "identity": {
+      "label": "Identity checked",
+      "info": "Show explanation for “Identity checked”",
+      "checked": "Legal age and identity with a verification provider, including a liveness check. The platform stores only the result, no copy of the ID.",
+      "notImplied": "The signal says nothing about services, rates or how a meeting goes. It is not a guarantee."
+    },
+    "photos": {
+      "label": "Photos checked",
+      "info": "Show explanation for “Photos checked”",
+      "checked": "Every photo shown was checked by hand before publication: permitted content and confirmed consent of the people shown.",
+      "checkedAt": "Before each photo was published",
+      "notImplied": "The signal does not say that the photos are recent or unedited."
+    }
+  },
+  "sections": {
+    "about": "About me",
+    "editAbout": "Edit description",
+    "noDescription": "No description yet.",
+    "offer": "Offer",
+    "editOffer": "Edit offer",
+    "rates": "Rates",
+    "editRates": "Edit rates",
+    "onRequest": "Rates on request",
+    "ratesUpdated": "As of: {date}",
+    "columns": {
+      "duration": "Duration",
+      "price": "Price",
+      "note": "Note"
+    }
+  },
+  "contact": {
+    "label": "Contact",
+    "request": "Request appointment",
+    "soonBoth": "Appointment requests and messages become available with the next version of the platform.",
+    "soonMessages": "Messages become available with the next version of the platform.",
+    "soonBookings": "Appointment requests become available with the next version of the platform.",
+    "none": "This profile does not accept requests through the platform at the moment.",
+    "paused": "This profile is paused at the moment",
+    "restricted": "Contact through the platform is not possible for this profile at the moment.",
+    "report": "Report profile"
+  },
+  "tabs": {
+    "label": "Profile areas",
+    "overview": "Overview",
+    "media": "Media"
+  },
+  "membersOnly": {
+    "title": "Only signed-in members can see this profile.",
+    "description": "Sign in or create an account to view it.",
+    "signIn": "Sign in",
+    "register": "Create account"
+  },
+  "owner": {
+    "label": "Your profile",
+    "title": "This is how visitors see your profile",
+    "reachable": "Visitors can see this page.",
+    "notReachable": "Visitors cannot see this page at the moment.",
+    "pendingChange": "A change is under review; the current version applies until it is approved.",
+    "edit": "Edit",
+    "toStudio": "Open my profile in Studio"
+  },
+  "onboardingPreview": {
+    "note": "Once approved, your profile appears exactly like this in the marketplace."
+  },
+  "state": {
+    "loading": "Loading profile",
+    "editorLoading": "Loading your profile",
+    "slow": "This is taking longer than usual.",
+    "retry": "Try again",
+    "errorTitle": "The profile could not be loaded.",
+    "errorDescription": "Saved details are not lost. Unsaved input stays stored in this tab.",
+    "reload": "Reload page"
+  },
+  "form": {
+    "optional": "optional",
+    "count": "{used} of {max} characters"
+  },
+  "fields": {
+    "displayName": "Display name",
+    "displayNameHint": "Appears as the heading of your profile. A change is reviewed.",
+    "shortDescription": "Short description",
+    "shortDescriptionHint": "One sentence below your name, at most 160 characters.",
+    "languages": "Languages",
+    "languagesHint": "Choose the languages you communicate in.",
+    "description": "Description",
+    "descriptionHint": "Appears under “About me”. At least 50 characters. No address and no contact details.",
+    "contactWays": "Contact options",
+    "contactWaysHint": "Switching one on is reviewed, switching one off applies immediately.",
+    "allowMessages": "Allow messages",
+    "allowMessagesHint": "Members can write to you through the platform.",
+    "allowBookingRequests": "Allow appointment requests",
+    "allowBookingRequestsHint": "Members can request an appointment without obligation; you decide freely.",
+    "visibility": "Who sees your profile",
+    "visibilityPublic": "All visitors",
+    "visibilityPublicHint": "Visible after the age check, even without an account.",
+    "visibilityMembers": "Signed-in members only",
+    "visibilityMembersHint": "Visitors without an account see only your name and the way to sign in.",
+    "locationLabel": "Location",
+    "locationLabelHint": "General, for example “District 4”. Never an address.",
+    "offerLater": "You choose services once the categories have been approved.",
+    "offerLaterHint": "Until then your profile describes the offer through the description and rates.",
+    "services": "Services",
+    "servicesHint": "Choose from the centrally maintained categories.",
+    "regionsPrivacy": "Your exact address is never published. New regions are reviewed, removed ones apply immediately.",
+    "regionsCount": "{count, plural, one {# region selected, at most 10} other {# regions selected, at most 10}}",
+    "wholeCanton": "Entire canton of {name}",
+    "otherCities": "Other cities",
+    "ratesEmpty": "No rates yet. Without rates the profile shows “Rates on request”.",
+    "rateRow": "Rate {index}",
+    "duration": "Duration",
+    "price": "Price in CHF",
+    "priceHint": "Whole francs, for example 300.",
+    "note": "Note",
+    "noteHint": "For example “travel included”.",
+    "hideRate": "Hide on profile",
+    "hideRateHint": "The rate stays saved; visitors do not see it.",
+    "removeRate": "Remove rate {index}",
+    "addRate": "Add rate",
+    "ratesMax": "At most {max} rates."
+  },
+  "editor": {
+    "title": "My profile",
+    "sectionsLabel": "Sections",
+    "chooseSection": "Choose a section to edit it. On the right you see the profile as visitors see it.",
+    "viewInMarketplace": "View in marketplace",
+    "backToSections": "All sections",
+    "save": "Save changes",
+    "saved": "Changes saved",
+    "savedPending": "Change submitted for review",
+    "summaryTitle": "Please check these details",
+    "reviewNotice": "This change is reviewed before it becomes visible. Your current profile stays online in the meantime.",
+    "pendingTitle": "Change under review",
+    "pendingText": "Until it is approved, visitors see the current version.",
+    "pendingSince": "Submitted on {date}. Until it is approved, visitors see the current version.",
+    "rejectedTitle": "Your last change was not applied. Reason given by the review:",
+    "restored": "Unsaved changes from this tab restored.",
+    "discard": "Discard changes",
+    "panelDescription": "The change applies to your public profile.",
+    "closePanel": "Close editing",
+    "cancel": "Cancel",
+    "unsavedTitle": "Your changes are not saved yet.",
+    "unsavedText": "Save or discard them before you close the panel.",
+    "discardAndClose": "Discard changes",
+    "keepEditing": "Keep editing",
+    "locked": {
+      "inReview": "Your profile is under review. Changes are possible again after the decision.",
+      "blocked": "Your profile is suspended or archived and cannot be edited. Support can help you."
+    },
+    "section": {
+      "basics": "Basics",
+      "description": "Description",
+      "offer": "Offer",
+      "rates": "Rates",
+      "contact": "Contact",
+      "visibility": "Visibility",
+      "regions": "Regions"
+    },
+    "status": {
+      "complete": "complete",
+      "missing": "missing",
+      "later": "coming later",
+      "pending": "under review"
+    },
+    "leave": {
+      "title": "Leave the page with unsaved changes?",
+      "description": "Your input stays stored in this tab until you save or discard it. Visitors only see it after saving.",
+      "confirm": "Leave page",
+      "cancel": "Keep editing"
+    },
+    "preview": {
+      "title": "Preview",
+      "modeLabel": "Preview view",
+      "mobile": "Mobile",
+      "desktop": "Desktop",
+      "open": "View preview",
+      "close": "Close preview",
+      "handle": "Toggle height"
+    }
+  },
+  "errors": {
+    "generic": "That did not work. Your input is still there; please try again.",
+    "notAllowed": "Only the person with this provider profile can edit it.",
+    "locked": "Your profile cannot be edited right now. Your input is still there.",
+    "displayNameTooShort": "The display name needs at least 2 characters.",
+    "displayNameTooLong": "The display name can have at most 60 characters.",
+    "shortDescriptionTooLong": "The short description can have at most 160 characters.",
+    "descriptionTooShort": "The description needs at least 50 characters.",
+    "descriptionTooLong": "The description can have at most 4000 characters.",
+    "languagesRequired": "Choose at least one language.",
+    "servicesTooMany": "Choose at most 30 services.",
+    "invalidCategory": "A selected service is no longer approved. Choose your services again.",
+    "ratesTooMany": "At most 12 rates.",
+    "durationTooShort": "The duration is at least 15 minutes.",
+    "durationTooLong": "The duration is at most 24 hours.",
+    "priceTooLow": "The price is at least CHF 1.",
+    "priceTooHigh": "The price is at most CHF 100,000.",
+    "priceInvalid": "Enter the price in whole francs, for example 300.",
+    "noteTooLong": "The note can have at most 120 characters.",
+    "locationLabelTooLong": "The location can have at most 60 characters.",
+    "regionsRequired": "Choose at least one region.",
+    "regionsTooMany": "Choose at most ten regions.",
+    "invalidRegion": "A selected region is no longer approved. Choose your regions again."
+  }
+}

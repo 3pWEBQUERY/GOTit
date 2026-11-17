@@ -1,3 +1,4 @@
+import { storageOrigins } from "@app/storage/origins";
 import createMiddleware from "next-intl/middleware";
 import type { NextRequest } from "next/server";
 import { routing } from "./i18n/routing";
@@ -7,15 +8,17 @@ const handleI18nRouting = createMiddleware(routing);
 /** Strikte Content Security Policy mit Nonce pro Anfrage (PRD 16.2). */
 function buildCsp(nonce: string): string {
   const development = process.env.NODE_ENV === "development";
+  // Treiber s3: Uploads gehen direkt in den Bucket, geschützte Varianten leiten auf presigned URLs um (Entscheid 0011).
+  const storage = storageOrigins().map((origin) => ` ${origin}`).join("");
   return [
     "default-src 'self'",
     `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${development ? " 'unsafe-eval'" : ""}`,
     `style-src 'self' 'nonce-${nonce}'${development ? " 'unsafe-inline'" : ""}`,
     // Radix und Diagramme positionieren über style-Attribute; Skripte sind davon nicht betroffen.
     "style-src-attr 'unsafe-inline'",
-    "img-src 'self' blob: data:",
+    `img-src 'self' blob: data:${storage}`,
     "font-src 'self'",
-    `connect-src 'self'${development ? " ws:" : ""}`,
+    `connect-src 'self'${storage}${development ? " ws:" : ""}`,
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self'",

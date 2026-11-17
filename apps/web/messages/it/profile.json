@@ -1,0 +1,245 @@
+{
+  "page": {
+    "breadcrumbs": "Percorso",
+    "discover": "Scopri"
+  },
+  "meta": {
+    "notFound": "Profilo non trovato",
+    "mediaTitle": "Media di {name}",
+    "description": "{name} a {regions}: informazioni, prezzi e segnali verificati.",
+    "descriptionNoRegion": "{name}: informazioni, prezzi e segnali verificati."
+  },
+  "header": {
+    "edit": "Modifica la base",
+    "noRegion": "Ancora nessuna regione",
+    "speaks": "parla {languages}"
+  },
+  "media": {
+    "label": "Media di {name}",
+    "lightboxTitle": "Media di {name}",
+    "placeholderAlt": "Ancora nessuna foto di {name}",
+    "neutralAlt": "Foto {index} di {name}",
+    "membersOnly": "Per i membri connessi",
+    "counter": "{current} / {total}",
+    "all": "Vedi tutti i {count} media",
+    "close": "Chiudi i media",
+    "previous": "Media precedente",
+    "next": "Media successivo",
+    "empty": "Le foto appaiono qui non appena sono state verificate e approvate.",
+    "emptyHint": "Fino ad allora il profilo mostra una superficie neutra.",
+    "toOverview": "Vedi la panoramica"
+  },
+  "trust": {
+    "label": "Segnali di fiducia",
+    "none": "Ancora nessuna informazione verificata.",
+    "close": "Chiudi la spiegazione",
+    "updated": "Aggiornato {relative}",
+    "explanation": {
+      "checked": "Che cosa è stato verificato",
+      "checkedAt": "Quando",
+      "notImplied": "Che cosa il segnale non dice"
+    },
+    "identity": {
+      "label": "Identità verificata",
+      "info": "Mostra la spiegazione di «Identità verificata»",
+      "checked": "Maggiore età e identità presso un fornitore di verifica, con controllo di presenza. La piattaforma salva solo il risultato, nessuna copia del documento.",
+      "notImplied": "Il segnale non dice nulla sulle prestazioni, sui prezzi o sullo svolgimento di un incontro. Non è una garanzia."
+    },
+    "photos": {
+      "label": "Foto verificate",
+      "info": "Mostra la spiegazione di «Foto verificate»",
+      "checked": "Ogni foto mostrata è stata verificata a mano prima della pubblicazione: contenuto ammesso e consenso confermato delle persone ritratte.",
+      "checkedAt": "Prima della pubblicazione di ogni foto",
+      "notImplied": "Il segnale non dice che le foto sono recenti o non ritoccate."
+    }
+  },
+  "sections": {
+    "about": "Su di me",
+    "editAbout": "Modifica la descrizione",
+    "noDescription": "Ancora nessuna descrizione.",
+    "offer": "Offerta",
+    "editOffer": "Modifica l’offerta",
+    "rates": "Prezzi",
+    "editRates": "Modifica i prezzi",
+    "onRequest": "Prezzi su richiesta",
+    "ratesUpdated": "Stato: {date}",
+    "columns": {
+      "duration": "Durata",
+      "price": "Prezzo",
+      "note": "Nota"
+    }
+  },
+  "contact": {
+    "label": "Contatto",
+    "request": "Richiedi un appuntamento",
+    "soonBoth": "Le richieste di appuntamento e i messaggi saranno possibili con la prossima versione della piattaforma.",
+    "soonMessages": "I messaggi saranno possibili con la prossima versione della piattaforma.",
+    "soonBookings": "Le richieste di appuntamento saranno possibili con la prossima versione della piattaforma.",
+    "none": "Questo profilo al momento non accetta richieste tramite la piattaforma.",
+    "paused": "Questo profilo è attualmente in pausa",
+    "restricted": "Il contatto tramite la piattaforma al momento non è possibile per questo profilo.",
+    "report": "Segnala il profilo"
+  },
+  "tabs": {
+    "label": "Sezioni del profilo",
+    "overview": "Panoramica",
+    "media": "Media"
+  },
+  "membersOnly": {
+    "title": "Solo i membri connessi vedono questo profilo.",
+    "description": "Accedi o crea un account per vederlo.",
+    "signIn": "Accedi",
+    "register": "Crea un account"
+  },
+  "owner": {
+    "label": "Il tuo profilo",
+    "title": "Così i visitatori vedono il tuo profilo",
+    "reachable": "I visitatori vedono questa pagina.",
+    "notReachable": "Al momento i visitatori non vedono questa pagina.",
+    "pendingChange": "Una modifica è in verifica; fino all’approvazione vale la versione attuale.",
+    "edit": "Modifica",
+    "toStudio": "Apri il mio profilo nello Studio"
+  },
+  "onboardingPreview": {
+    "note": "Dopo l’approvazione il tuo profilo appare esattamente così sulla piattaforma."
+  },
+  "state": {
+    "loading": "Caricamento del profilo",
+    "editorLoading": "Caricamento del tuo profilo",
+    "slow": "Ci vuole più tempo del solito.",
+    "retry": "Riprova",
+    "errorTitle": "Non è stato possibile caricare il profilo.",
+    "errorDescription": "Le informazioni salvate non sono perse. Gli inserimenti non salvati restano conservati in questa scheda.",
+    "reload": "Ricarica la pagina"
+  },
+  "form": {
+    "optional": "facoltativo",
+    "count": "{used} di {max} caratteri"
+  },
+  "fields": {
+    "displayName": "Nome visualizzato",
+    "displayNameHint": "Appare come titolo del tuo profilo. Una modifica viene verificata.",
+    "shortDescription": "Descrizione breve",
+    "shortDescriptionHint": "Una frase sotto il tuo nome, al massimo 160 caratteri.",
+    "languages": "Lingue",
+    "languagesHint": "Scegli le lingue in cui comunichi.",
+    "description": "Descrizione",
+    "descriptionHint": "Appare sotto «Su di me». Almeno 50 caratteri. Nessun indirizzo e nessun recapito.",
+    "contactWays": "Modalità di contatto",
+    "contactWaysHint": "L’attivazione viene verificata, la disattivazione vale subito.",
+    "allowMessages": "Consenti i messaggi",
+    "allowMessagesHint": "I membri possono scriverti tramite la piattaforma.",
+    "allowBookingRequests": "Consenti le richieste di appuntamento",
+    "allowBookingRequestsHint": "I membri possono richiedere un appuntamento senza impegno; decidi liberamente.",
+    "visibility": "Chi vede il tuo profilo",
+    "visibilityPublic": "Tutti i visitatori",
+    "visibilityPublicHint": "Visibile dopo la verifica dell’età, anche senza account.",
+    "visibilityMembers": "Solo i membri connessi",
+    "visibilityMembersHint": "I visitatori senza account vedono solo il tuo nome e la via per accedere.",
+    "locationLabel": "Località",
+    "locationLabelHint": "Generica, per esempio «Centro». Mai un indirizzo.",
+    "offerLater": "Scegli le prestazioni non appena le categorie sono approvate.",
+    "offerLaterHint": "Fino ad allora il tuo profilo descrive l’offerta tramite la descrizione e i prezzi.",
+    "services": "Prestazioni",
+    "servicesHint": "Scegli tra le categorie gestite centralmente.",
+    "regionsPrivacy": "Il tuo indirizzo esatto non viene mai pubblicato. Le nuove regioni vengono verificate, quelle tolte valgono subito.",
+    "regionsCount": "{count, plural, one {# regione scelta, al massimo 10} other {# regioni scelte, al massimo 10}}",
+    "wholeCanton": "Tutto il cantone {name}",
+    "otherCities": "Altre città",
+    "ratesEmpty": "Ancora nessun prezzo. Senza prezzi il profilo mostra «Prezzi su richiesta».",
+    "rateRow": "Prezzo {index}",
+    "duration": "Durata",
+    "price": "Prezzo in CHF",
+    "priceHint": "In franchi interi, per esempio 300.",
+    "note": "Nota",
+    "noteHint": "Per esempio «trasferta inclusa».",
+    "hideRate": "Nascondi nel profilo",
+    "hideRateHint": "Il prezzo resta salvato, i visitatori non lo vedono.",
+    "removeRate": "Rimuovi il prezzo {index}",
+    "addRate": "Aggiungi un prezzo",
+    "ratesMax": "Al massimo {max} prezzi."
+  },
+  "editor": {
+    "title": "Il mio profilo",
+    "sectionsLabel": "Sezioni",
+    "chooseSection": "Scegli una sezione per modificarla. A destra vedi il profilo come lo vedono i visitatori.",
+    "viewInMarketplace": "Vedi sulla piattaforma",
+    "backToSections": "Tutte le sezioni",
+    "save": "Salva le modifiche",
+    "saved": "Modifiche salvate",
+    "savedPending": "Modifica inviata alla verifica",
+    "summaryTitle": "Controlla queste informazioni",
+    "reviewNotice": "Questa modifica viene verificata prima di essere visibile. Nel frattempo il tuo profilo attuale resta online.",
+    "pendingTitle": "Modifica in verifica",
+    "pendingText": "Fino all’approvazione i visitatori vedono la versione attuale.",
+    "pendingSince": "Inviata il {date}. Fino all’approvazione i visitatori vedono la versione attuale.",
+    "rejectedTitle": "La tua ultima modifica non è stata applicata. Motivazione della verifica:",
+    "restored": "Modifiche non salvate di questa scheda ripristinate.",
+    "discard": "Scarta le modifiche",
+    "panelDescription": "La modifica vale per il tuo profilo pubblico.",
+    "closePanel": "Chiudi la modifica",
+    "cancel": "Annulla",
+    "unsavedTitle": "Le tue modifiche non sono ancora salvate.",
+    "unsavedText": "Salvale o scartale prima di chiudere il pannello.",
+    "discardAndClose": "Scarta le modifiche",
+    "keepEditing": "Continua a modificare",
+    "locked": {
+      "inReview": "Il tuo profilo è in verifica. Le modifiche saranno di nuovo possibili dopo la decisione.",
+      "blocked": "Il tuo profilo è bloccato o archiviato e non può essere modificato. Il supporto ti aiuta."
+    },
+    "section": {
+      "basics": "Base",
+      "description": "Descrizione",
+      "offer": "Offerta",
+      "rates": "Prezzi",
+      "contact": "Contatto",
+      "visibility": "Visibilità",
+      "regions": "Regioni"
+    },
+    "status": {
+      "complete": "completo",
+      "missing": "mancante",
+      "later": "in arrivo",
+      "pending": "in verifica"
+    },
+    "leave": {
+      "title": "Lasciare la pagina con modifiche non salvate?",
+      "description": "I tuoi inserimenti restano conservati in questa scheda finché li salvi o li scarti. I visitatori li vedono solo dopo il salvataggio.",
+      "confirm": "Lascia la pagina",
+      "cancel": "Continua a modificare"
+    },
+    "preview": {
+      "title": "Anteprima",
+      "modeLabel": "Visualizzazione dell’anteprima",
+      "mobile": "Mobile",
+      "desktop": "Desktop",
+      "open": "Vedi l’anteprima",
+      "close": "Chiudi l’anteprima",
+      "handle": "Cambia l’altezza"
+    }
+  },
+  "errors": {
+    "generic": "Non ha funzionato. I tuoi inserimenti sono ancora qui; riprova.",
+    "notAllowed": "Solo la persona titolare di questo profilo può modificarlo.",
+    "locked": "Al momento il tuo profilo non può essere modificato. I tuoi inserimenti sono ancora qui.",
+    "displayNameTooShort": "Il nome visualizzato deve avere almeno 2 caratteri.",
+    "displayNameTooLong": "Il nome visualizzato può avere al massimo 60 caratteri.",
+    "shortDescriptionTooLong": "La descrizione breve può avere al massimo 160 caratteri.",
+    "descriptionTooShort": "La descrizione deve avere almeno 50 caratteri.",
+    "descriptionTooLong": "La descrizione può avere al massimo 4000 caratteri.",
+    "languagesRequired": "Scegli almeno una lingua.",
+    "servicesTooMany": "Scegli al massimo 30 prestazioni.",
+    "invalidCategory": "Una prestazione scelta non è più approvata. Scegli di nuovo le tue prestazioni.",
+    "ratesTooMany": "Al massimo 12 prezzi.",
+    "durationTooShort": "La durata è di almeno 15 minuti.",
+    "durationTooLong": "La durata è di al massimo 24 ore.",
+    "priceTooLow": "Il prezzo è di almeno CHF 1.",
+    "priceTooHigh": "Il prezzo è di al massimo CHF 100 000.",
+    "priceInvalid": "Indica il prezzo in franchi interi, per esempio 300.",
+    "noteTooLong": "La nota può avere al massimo 120 caratteri.",
+    "locationLabelTooLong": "La località può avere al massimo 60 caratteri.",
+    "regionsRequired": "Scegli almeno una regione.",
+    "regionsTooMany": "Scegli al massimo dieci regioni.",
+    "invalidRegion": "Una regione scelta non è più approvata. Scegli di nuovo le tue regioni."
+  }
+}

@@ -2,7 +2,9 @@
   "meta": {
     "overview": "Admin · Vue d’ensemble",
     "queue": "Admin · Vérifications",
-    "case": "Admin · Dossier de vérification"
+    "case": "Admin · Dossier de vérification",
+    "mediaQueue": "Admin · Médias",
+    "mediaCase": "Admin · Média"
   },
   "shell": {
     "brand": "{appName} Admin",
@@ -14,7 +16,9 @@
     "signedInAs": "Connecté en tant que {name}",
     "toMarketplace": "Aller à la place de marché",
     "signOut": "Se déconnecter",
-    "breadcrumbs": "Chemin"
+    "breadcrumbs": "Chemin",
+    "media": "Médias",
+    "openMediaCount": "{count, plural, one {# média en vérification} other {# médias en vérification}}"
   },
   "twoFactor": {
     "title": "Configurer le deuxième facteur",
@@ -74,6 +78,9 @@
       "lessThanHour": "depuis moins d’une heure",
       "hours": "{count, plural, one {depuis # heure} other {depuis # heures}}",
       "days": "{count, plural, one {depuis # jour} other {depuis # jours}}"
+    },
+    "kind": {
+      "CHANGE": "Modification"
     }
   },
   "case": {
@@ -100,6 +107,22 @@
       "noRates": "Aucun tarif indiqué.",
       "earlier": "Dossiers précédents",
       "noEarlier": "C’est le premier dossier pour ce profil."
+    },
+    "changeTitle": "Modification de {name}",
+    "change": {
+      "title": "Modification demandée",
+      "intro": "La version actuelle est en ligne. Approuver reprend la modification, refuser la rejette. Dans les deux cas, le profil reste en ligne.",
+      "caption": "Avant et après",
+      "field": "Champ",
+      "before": "Avant (en ligne)",
+      "after": "Après (demandé)",
+      "displayName": "Nom affiché",
+      "allowMessages": "Messages",
+      "allowBookingRequests": "Demandes de rendez-vous",
+      "regionIds": "Régions",
+      "on": "autorisés",
+      "off": "non autorisés",
+      "none": "Aucune modification n’est plus en attente."
     }
   },
   "identity": {
@@ -167,7 +190,11 @@
     "readOnlyDescription": "Sur cet écran, l’admin est en lecture seule. Ouvre le dossier sur un écran plus large pour décider.",
     "alreadyDecidedHelp": "Ta décision n’a pas été enregistrée. Voici l’état actuel.",
     "result": "Résultat",
-    "decidedAt": "Décidé le"
+    "decidedAt": "Décidé le",
+    "changeOptionHint": {
+      "APPROVED": "La modification devient visible immédiatement.",
+      "REJECTED": "La modification est rejetée ; la version actuelle reste en ligne."
+    }
   },
   "rules": {
     "complete": "Informations complètes",
@@ -190,6 +217,86 @@
     "identityInvalid": "La vérification d’identité n’est pas valable. La validation est impossible.",
     "alreadyDecided": "Ce dossier a déjà été décidé",
     "revealReasonTooShort": "Indique un motif d’au moins 10 caractères.",
-    "revealReasonTooLong": "Le motif peut comporter au plus 500 caractères."
+    "revealReasonTooLong": "Le motif peut comporter au plus 500 caractères.",
+    "mediaAlreadyDecided": "Une décision a déjà été prise sur ce média",
+    "decisionNotAllowed": "Pour une modification, tu décides en approuvant ou en refusant."
+  },
+  "media": {
+    "title": "Médias",
+    "intro": "Photos téléchargées en vérification, les plus anciennes d’abord. Une photo n’apparaît sur le profil qu’après ta validation.",
+    "caption": "Médias en vérification",
+    "count": "{count, plural, =0 {Aucun média en vérification} one {# média en vérification} other {# médias en vérification}}",
+    "next": "Ouvrir le média suivant",
+    "shortcutAfter": "ouvre le plus ancien média en vérification.",
+    "noProfile": "Sans profil",
+    "columns": {
+      "profile": "Profil",
+      "submitted": "Reçu le",
+      "age": "Âge",
+      "visibility": "Visibilité"
+    },
+    "empty": {
+      "title": "Aucun média en vérification",
+      "description": "Dès qu’un prestataire télécharge une photo et que le traitement est terminé, elle apparaît ici."
+    },
+    "visibility": {
+      "PUBLIC": "Public",
+      "MEMBERS": "Membres uniquement"
+    },
+    "caseTitle": "Média de {name}",
+    "meta": "Reçu le {submitted} · {age} · État : {state}",
+    "status": {
+      "IN_REVIEW": "En vérification",
+      "PUBLISHED": "Publié",
+      "CHANGES_REQUESTED": "À corriger",
+      "BLOCKED": "Bloqué"
+    },
+    "preview": {
+      "title": "Aperçu",
+      "hidden": "La photo est masquée pour qu’elle ne s’affiche pas par mégarde. Affiche-la seulement quand tu veux la vérifier.",
+      "show": "Afficher le média",
+      "hide": "Masquer le média",
+      "neutralAlt": "Photo téléchargée en vérification",
+      "unavailable": "L’aperçu n’existe que pour les médias en vérification."
+    },
+    "facts": {
+      "title": "Informations",
+      "profile": "Profil",
+      "visibility": "Visibilité",
+      "altText": "Texte alternatif",
+      "size": "Taille",
+      "dimensions": "{width} × {height} pixels",
+      "none": "Non renseigné"
+    },
+    "decision": {
+      "title": "Décision",
+      "decision": "Résultat",
+      "option": {
+        "PUBLISHED": "Valider",
+        "CHANGES_REQUESTED": "Demander une correction",
+        "BLOCKED": "Bloquer"
+      },
+      "optionHint": {
+        "PUBLISHED": "La photo apparaît sur le profil avec la visibilité choisie.",
+        "CHANGES_REQUESTED": "Le prestataire voit ta justification et peut télécharger une photo adaptée.",
+        "BLOCKED": "La photo n’est jamais diffusée. Le prestataire voit ta justification."
+      },
+      "reason": "Justification",
+      "reasonHint": "Au moins 10 caractères. Le prestataire la voit pour «Demander une correction» et «Bloquer» ; elle figure dans le journal d’audit.",
+      "rule": "Règle",
+      "rulePlaceholder": "Choisir une règle",
+      "save": "Enregistrer la décision",
+      "saved": "Décision enregistrée",
+      "summaryTitle": "Vérifie les champs signalés.",
+      "result": "Résultat",
+      "note": "Justification transmise au prestataire"
+    },
+    "rules": {
+      "compliant": "Conforme aux directives",
+      "quality": "Image floue ou inadaptée",
+      "identifying": "Montre une adresse ou des détails identifiants",
+      "consent": "Consentement des personnes représentées douteux",
+      "policyViolation": "Violation des directives"
+    }
   }
 }

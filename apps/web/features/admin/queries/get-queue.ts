@@ -1,8 +1,11 @@
 import { getDb } from "@app/db";
+import type { ReviewKind } from "@app/db";
 import { listOpenReviews } from "@app/core/verification";
 
 export interface QueueCase {
   id: string;
+  /** Erstprüfung oder Änderung eines veröffentlichten Profils (PRD v2 11.2). */
+  kind: ReviewKind;
   displayName: string;
   submittedAt: Date;
   assigneeName: string | null;
@@ -17,6 +20,7 @@ export async function getQueue(): Promise<QueueCase[]> {
   const names = new Map(assignees.map((user) => [user.id, user.name]));
   return reviews.map((review) => ({
     id: review.id,
+    kind: review.kind,
     displayName: review.providerProfile.displayName,
     submittedAt: review.submittedAt,
     assigneeName: review.assignedToId ? (names.get(review.assignedToId) ?? null) : null,

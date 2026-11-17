@@ -36,7 +36,7 @@ export async function DecisionPanel({ locale, review, alreadyDecided }: Decision
       <section aria-labelledby="entscheid-titel" className="flex min-w-0 flex-col gap-4">
         {heading}
         <div className="hidden lg:block">
-          <DecisionForm reviewId={review.id} queueHref={createHref(locale)("/admin/verifizierungen")} />
+          <DecisionForm reviewId={review.id} kind={review.kind} queueHref={createHref(locale)("/admin/verifizierungen")} />
         </div>
         <div className="lg:hidden" data-read-only-notice>
           <InlineAlert title={t("decision.readOnlyTitle")}>{t("decision.readOnlyDescription")}</InlineAlert>

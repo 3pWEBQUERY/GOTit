@@ -3,6 +3,7 @@ import { Button, SkipLink, UiLink } from "@app/ui";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 import { createHref } from "../../shell/nav/href";
+import { countMediaInReview } from "../media/queries";
 import { AdminNav, type AdminNavItem } from "./admin-nav";
 import { SignOutButton } from "./sign-out-button";
 
@@ -11,7 +12,7 @@ const APP_NAME = process.env.APP_NAME ?? "GOTit";
 export interface AdminShellProps {
   locale: Locale;
   name: string;
-  /** Offene Prüffälle; nur für Personen mit Prüfrolle, sonst null. */
+  /** Offene Prüffälle; nur für Personen mit Prüfrolle, sonst null. Dann zählt auch der Bereich Medien seine offenen Fälle. */
   openCases: number | null;
   children: ReactNode;
 }
@@ -21,7 +22,7 @@ export interface AdminShellProps {
  * darüber ein Kopf mit Konto, Weg zum Marktplatz und Abmelden. Kein Glas.
  */
 export async function AdminShell({ locale, name, openCases, children }: AdminShellProps) {
-  const t = await getTranslations({ locale, namespace: "admin.shell" });
+  const [t, openMedia] = await Promise.all([getTranslations({ locale, namespace: "admin.shell" }), openCases !== null ? countMediaInReview() : Promise.resolve(null)]);
   const href = createHref(locale);
   const items: AdminNavItem[] = [
     { key: "overview", href: href("/admin"), label: t("overview") },
@@ -30,6 +31,12 @@ export async function AdminShell({ locale, name, openCases, children }: AdminShe
       href: href("/admin/verifizierungen"),
       label: t("verifications"),
       ...(openCases !== null && openCases > 0 ? { count: { value: openCases, label: t("openCount", { count: openCases }) } } : {}),
+    },
+    {
+      key: "media",
+      href: href("/admin/medien"),
+      label: t("media"),
+      ...(openMedia !== null && openMedia > 0 ? { count: { value: openMedia, label: t("openMediaCount", { count: openMedia }) } } : {}),
     },
   ];
   return (

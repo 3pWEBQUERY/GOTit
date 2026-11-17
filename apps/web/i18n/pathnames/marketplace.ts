@@ -9,6 +9,7 @@ export const marketplacePathnames = {
   "/ch/[kanton]/[stadt]": "/ch/[kanton]/[stadt]",
   "/kategorie/[slug]": { de: "/kategorie/[slug]", fr: "/categorie/[slug]", it: "/categoria/[slug]", en: "/category/[slug]" },
   "/p/[name]": "/p/[name]",
+  "/p/[name]/medien": { de: "/p/[name]/medien", fr: "/p/[name]/medias", it: "/p/[name]/media", en: "/p/[name]/media" },
   "/c/[slug]": "/c/[slug]",
   "/touren": { de: "/touren", fr: "/tournees", it: "/tour", en: "/tours" },
   "/alterspruefung": { de: "/alterspruefung", fr: "/verification-age", it: "/verifica-eta", en: "/age-check" },

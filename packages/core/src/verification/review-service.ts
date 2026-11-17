@@ -2,6 +2,7 @@ import { getDb, type Prisma, type ReviewDecision } from "@app/db";
 import { adminAccess } from "../admin/policy";
 import { loadAdminActor } from "../admin/service";
 import { z } from "zod";
+import { decideChangeReview } from "../provider-profile/change-review";
 import { canApprove } from "./policy";
 
 /** Rollen, die Profile prüfen und freigeben dürfen (PRD 3, 7.8). */
@@ -38,7 +39,7 @@ export async function listOpenReviews() {
     where: { decision: null },
     orderBy: { submittedAt: "asc" },
     take: REVIEW_QUEUE_LIMIT,
-    select: { id: true, submittedAt: true, assignedToId: true, providerProfile: { select: { slug: true, displayName: true, status: true } } },
+    select: { id: true, kind: true, submittedAt: true, assignedToId: true, providerProfile: { select: { slug: true, displayName: true, status: true } } },
   });
 }
 
@@ -47,6 +48,7 @@ export async function getReviewCase(reviewId: string) {
     where: { id: reviewId },
     select: {
       id: true,
+      kind: true,
       submittedAt: true,
       decision: true,
       decidedAt: true,
@@ -62,9 +64,13 @@ export async function getReviewCase(reviewId: string) {
           description: true,
           languages: true,
           status: true,
-          regions: { select: { region: { select: { nameDe: true, nameFr: true, nameIt: true, nameEn: true } } } },
+          // Für Änderungsprüfungen: Online-Stand der prüfpflichtigen Felder und die wartende Änderung.
+          allowMessages: true,
+          allowBookingRequests: true,
+          pendingChanges: true,
+          regions: { select: { regionId: true, region: { select: { nameDe: true, nameFr: true, nameIt: true, nameEn: true } } } },
           rates: { orderBy: { sortOrder: "asc" }, select: { durationMinutes: true, priceChf: true, note: true } },
-          reviews: { orderBy: { submittedAt: "desc" }, take: 5, select: { id: true, decision: true, decidedAt: true, reason: true } },
+          reviews: { orderBy: { submittedAt: "desc" }, take: 5, select: { id: true, kind: true, decision: true, decidedAt: true, reason: true } },
         },
       },
     },
@@ -85,12 +91,13 @@ export async function revealIdentityDetails(actorId: string, reviewId: string, r
   });
 }
 
-export type DecideReviewResult = { ok: true } | { ok: false; reason: "not-open" | "identity-invalid" };
+export type DecideReviewResult = { ok: true } | { ok: false; reason: "not-open" | "identity-invalid" | "invalid-decision" };
 
 /**
  * Entscheid über einen Fall: Begründung und Regel sind Pflicht, jeder Entscheid
  * landet im Audit-Log. Freigeben prüft die Identität erneut zum Zeitpunkt des
- * Entscheids (PRD 16.1).
+ * Entscheids (PRD 16.1). Ein Fall `CHANGE` kennt nur Freigeben und Ablehnen;
+ * er ändert nie den Status des Profils (Entscheid 0012).
  */
 export async function decideReview(actorId: string, reviewId: string, input: unknown, now = new Date()): Promise<DecideReviewResult> {
   const data = reviewDecisionSchema.parse(input);
@@ -98,10 +105,15 @@ export async function decideReview(actorId: string, reviewId: string, input: unk
   const db = getDb();
   const review = await db.profileReview.findUniqueOrThrow({
     where: { id: reviewId },
-    select: { decision: true, providerProfile: { select: { id: true, userId: true, status: true } } },
+    select: { kind: true, decision: true, providerProfile: { select: { id: true, userId: true, status: true } } },
   });
   if (review.decision !== null) return { ok: false, reason: "not-open" };
   const profile = review.providerProfile;
+  if (review.kind === "CHANGE") {
+    if (data.decision === "CHANGES_REQUESTED") return { ok: false, reason: "invalid-decision" };
+    const decided = await decideChangeReview(actorId, reviewId, profile.id, { decision: data.decision, reason: data.reason, rule: data.rule }, now);
+    return decided ? { ok: true } : { ok: false, reason: "not-open" };
+  }
   if (data.decision === "APPROVED") {
     const identity = await db.identityCheck.findFirst({ where: { userId: profile.userId }, orderBy: { createdAt: "desc" } });
     if (!canApprove(profile.status, identity, now)) return { ok: false, reason: "identity-invalid" };
@@ -111,7 +123,7 @@ export async function decideReview(actorId: string, reviewId: string, input: unk
   // Zwei gleichzeitige Entscheide ergeben genau einen Gewinner.
   const decided = await db.$transaction(async (tx) => {
     const { count } = await tx.profileReview.updateMany({
-      where: { id: reviewId, decision: null },
+      where: { id: reviewId, kind: "PROFILE", decision: null },
       data: { decision: data.decision, decidedAt: now, decidedById: actorId, reason: data.reason, rule: data.rule, fieldNotes: data.fieldNotes as Prisma.InputJsonValue },
     });
     if (count === 0) return false;

@@ -2,7 +2,9 @@
   "meta": {
     "overview": "Admin · Panoramica",
     "queue": "Admin · Verifiche",
-    "case": "Admin · Pratica di verifica"
+    "case": "Admin · Pratica di verifica",
+    "mediaQueue": "Admin · Media",
+    "mediaCase": "Admin · Media"
   },
   "shell": {
     "brand": "{appName} Admin",
@@ -14,7 +16,9 @@
     "signedInAs": "Accesso come {name}",
     "toMarketplace": "Vai al marketplace",
     "signOut": "Esci",
-    "breadcrumbs": "Percorso"
+    "breadcrumbs": "Percorso",
+    "media": "Media",
+    "openMediaCount": "{count, plural, one {# media in verifica} other {# media in verifica}}"
   },
   "twoFactor": {
     "title": "Configura il secondo fattore",
@@ -74,6 +78,9 @@
       "lessThanHour": "da meno di un’ora",
       "hours": "{count, plural, one {da # ora} other {da # ore}}",
       "days": "{count, plural, one {da # giorno} other {da # giorni}}"
+    },
+    "kind": {
+      "CHANGE": "Modifica"
     }
   },
   "case": {
@@ -100,6 +107,22 @@
       "noRates": "Nessun prezzo indicato.",
       "earlier": "Pratiche precedenti",
       "noEarlier": "Questa è la prima pratica per questo profilo."
+    },
+    "changeTitle": "Modifica di {name}",
+    "change": {
+      "title": "Modifica richiesta",
+      "intro": "Online c’è la versione attuale. Approvare applica la modifica, rifiutare la scarta. In entrambi i casi il profilo resta online.",
+      "caption": "Prima e dopo",
+      "field": "Campo",
+      "before": "Prima (online)",
+      "after": "Dopo (richiesto)",
+      "displayName": "Nome visualizzato",
+      "allowMessages": "Messaggi",
+      "allowBookingRequests": "Richieste di appuntamento",
+      "regionIds": "Regioni",
+      "on": "consentiti",
+      "off": "non consentiti",
+      "none": "Non c’è più nessuna modifica in attesa."
     }
   },
   "identity": {
@@ -167,7 +190,11 @@
     "readOnlyDescription": "Su questo schermo l’admin è in sola lettura. Apri la pratica su uno schermo più largo per decidere.",
     "alreadyDecidedHelp": "La tua decisione non è stata salvata. Qui trovi lo stato attuale.",
     "result": "Esito",
-    "decidedAt": "Deciso il"
+    "decidedAt": "Deciso il",
+    "changeOptionHint": {
+      "APPROVED": "La modifica diventa subito visibile.",
+      "REJECTED": "La modifica viene scartata; la versione attuale resta online."
+    }
   },
   "rules": {
     "complete": "Dati completi",
@@ -190,6 +217,86 @@
     "identityInvalid": "La verifica d’identità non è valida. Approvare non è possibile.",
     "alreadyDecided": "Questa pratica è già stata decisa",
     "revealReasonTooShort": "Indica un motivo di almeno 10 caratteri.",
-    "revealReasonTooLong": "Il motivo può avere al massimo 500 caratteri."
+    "revealReasonTooLong": "Il motivo può avere al massimo 500 caratteri.",
+    "mediaAlreadyDecided": "Su questo media è già stata presa una decisione",
+    "decisionNotAllowed": "Su una modifica decidi approvando o rifiutando."
+  },
+  "media": {
+    "title": "Media",
+    "intro": "Foto caricate in verifica, le più vecchie prima. Una foto appare sul profilo solo dopo la tua approvazione.",
+    "caption": "Media in verifica",
+    "count": "{count, plural, =0 {Nessun media in verifica} one {# media in verifica} other {# media in verifica}}",
+    "next": "Apri il media successivo",
+    "shortcutAfter": "apre il media in verifica più vecchio.",
+    "noProfile": "Senza profilo",
+    "columns": {
+      "profile": "Profilo",
+      "submitted": "Ricevuto il",
+      "age": "Età",
+      "visibility": "Visibilità"
+    },
+    "empty": {
+      "title": "Nessun media in verifica",
+      "description": "Appena un fornitore carica una foto e l’elaborazione è terminata, appare qui."
+    },
+    "visibility": {
+      "PUBLIC": "Pubblico",
+      "MEMBERS": "Solo membri"
+    },
+    "caseTitle": "Media di {name}",
+    "meta": "Ricevuto il {submitted} · {age} · Stato: {state}",
+    "status": {
+      "IN_REVIEW": "In verifica",
+      "PUBLISHED": "Pubblicato",
+      "CHANGES_REQUESTED": "Da correggere",
+      "BLOCKED": "Bloccato"
+    },
+    "preview": {
+      "title": "Anteprima",
+      "hidden": "La foto è nascosta perché non appaia per sbaglio. Mostrala solo quando vuoi verificarla.",
+      "show": "Mostra media",
+      "hide": "Nascondi media",
+      "neutralAlt": "Foto caricata in verifica",
+      "unavailable": "L’anteprima è disponibile solo per i media in verifica."
+    },
+    "facts": {
+      "title": "Dati",
+      "profile": "Profilo",
+      "visibility": "Visibilità",
+      "altText": "Testo alternativo",
+      "size": "Dimensioni",
+      "dimensions": "{width} × {height} pixel",
+      "none": "Nessuna indicazione"
+    },
+    "decision": {
+      "title": "Decisione",
+      "decision": "Esito",
+      "option": {
+        "PUBLISHED": "Approva",
+        "CHANGES_REQUESTED": "Chiedi una correzione",
+        "BLOCKED": "Blocca"
+      },
+      "optionHint": {
+        "PUBLISHED": "La foto appare sul profilo con la visibilità scelta.",
+        "CHANGES_REQUESTED": "Il fornitore vede la tua motivazione e può caricare una foto adatta.",
+        "BLOCKED": "La foto non viene mai mostrata. Il fornitore vede la tua motivazione."
+      },
+      "reason": "Motivazione",
+      "reasonHint": "Almeno 10 caratteri. Il fornitore la vede per «Chiedi una correzione» e «Blocca»; è registrata nel registro di audit.",
+      "rule": "Regola",
+      "rulePlaceholder": "Scegli una regola",
+      "save": "Salva decisione",
+      "saved": "Decisione salvata",
+      "summaryTitle": "Controlla i campi segnalati.",
+      "result": "Esito",
+      "note": "Motivazione comunicata al fornitore"
+    },
+    "rules": {
+      "compliant": "Conforme alle linee guida",
+      "quality": "Immagine sfocata o inadatta",
+      "identifying": "Mostra un indirizzo o dettagli identificativi",
+      "consent": "Consenso delle persone ritratte dubbio",
+      "policyViolation": "Violazione delle linee guida"
+    }
   }
 }

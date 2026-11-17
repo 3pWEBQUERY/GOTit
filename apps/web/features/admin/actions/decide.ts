@@ -46,7 +46,10 @@ export async function decideCase(input: unknown): Promise<ActionResult<{ nextId:
   if (Object.keys(fieldErrors).length > 0) return { ok: false, fieldErrors };
   try {
     const result = await decideReview(access.userId, ids.data.reviewId, data);
-    if (!result.ok) return { ok: false, formError: result.reason === "not-open" ? "alreadyDecided" : "identityInvalid" };
+    if (!result.ok) {
+      const formError = { "not-open": "alreadyDecided", "identity-invalid": "identityInvalid", "invalid-decision": "decisionNotAllowed" } as const;
+      return { ok: false, formError: formError[result.reason] };
+    }
   } catch (error) {
     if (isRecordNotFound(error)) return { ok: false, formError: "notFound" };
     throw error;

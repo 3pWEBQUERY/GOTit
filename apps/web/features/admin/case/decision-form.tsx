@@ -6,7 +6,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
 import { FormErrorSummary, type SummaryEntry } from "../../settings/components/form-error-summary";
 import { checkDecision, decideCase } from "../actions/decide";
-import { DECISIONS, FIELD_NOTE_AREAS, REVIEW_RULES, type Decision, type FieldNoteArea } from "../rules";
+import type { ReviewKind } from "@app/db";
+import { CHANGE_DECISIONS, DECISIONS, FIELD_NOTE_AREAS, REVIEW_RULES, type Decision, type FieldNoteArea } from "../rules";
 import { FieldNotes, fieldNoteId } from "./field-notes";
 import { useAdminErrorText } from "./use-admin-error-text";
 
@@ -31,13 +32,14 @@ function focusField(key: string) {
  * Korrektur» kommt je Bereich ein Grund dazu. Nach dem Speichern geht es zum
  * nächsten offenen Fall oder zurück zur Warteschlange.
  */
-export function DecisionForm({ reviewId, queueHref }: { reviewId: string; queueHref: string }) {
+export function DecisionForm({ reviewId, kind, queueHref }: { reviewId: string; kind: ReviewKind; queueHref: string }) {
   const t = useTranslations("admin.decision");
   const tRules = useTranslations("admin.rules");
   const errorText = useAdminErrorText();
   const router = useRouter();
   const pathname = usePathname();
   const { toast } = useToast();
+  const hintKey = kind === "CHANGE" ? "changeOptionHint" : "optionHint";
   const [decision, setDecision] = useState<Decision | "">("");
   const [reason, setReason] = useState("");
   const [rule, setRule] = useState("");
@@ -113,7 +115,7 @@ export function DecisionForm({ reviewId, queueHref }: { reviewId: string; queueH
             setDecision(value as Decision);
             setErrors(({ decision: _removed, ...rest }) => rest);
           }}
-          options={DECISIONS.map((value) => ({ value, label: t(`option.${value}`), description: t(`optionHint.${value}`) }))}
+          options={(kind === "CHANGE" ? CHANGE_DECISIONS : DECISIONS).map((value) => ({ value, label: t(`option.${value}`), description: t(`${hintKey}.${value}`) }))}
           error={errorFor("decision")}
         />
       </div>

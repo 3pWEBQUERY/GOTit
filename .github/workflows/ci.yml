@@ -22,6 +22,9 @@ env:
   AGE_GATE_SECRET: ci-only-age-gate-ci-only-age-gate-ci-only
   MAIL_TRANSPORT: outbox
   IDENTITY_PROVIDER: test
+  # Medien: Treiber fs, Ablage ausserhalb des Repos (Entscheid 0011). s3 nur auf Railway.
+  STORAGE_DRIVER: fs
+  STORAGE_FS_ROOT: /tmp/gotit-local/storage
 
 jobs:
   quality:

@@ -22,3 +22,6 @@ export type FieldNoteArea = (typeof FIELD_NOTE_AREAS)[number];
 
 export const DECISIONS = ["APPROVED", "CHANGES_REQUESTED", "REJECTED"] as const;
 export type Decision = (typeof DECISIONS)[number];
+
+/** Eine Änderung wird freigegeben oder abgelehnt; zurückgeben gibt es dort nicht (Entscheid 0012). */
+export const CHANGE_DECISIONS = ["APPROVED", "REJECTED"] as const satisfies readonly Decision[];

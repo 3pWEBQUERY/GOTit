@@ -12,6 +12,7 @@
     "./age-gate": "./src/age-gate/index.ts",
     "./observability": "./src/observability/index.ts",
     "./provider-profile": "./src/provider-profile/index.ts",
+    "./provider-profile/schemas": "./src/provider-profile/schemas.ts",
     "./mail": "./src/mail/index.ts",
     "./rate-limit": "./src/rate-limit/index.ts",
     "./retention": "./src/retention/index.ts",
@@ -22,7 +23,8 @@
     "./onboarding/schemas": "./src/onboarding/schemas.ts",
     "./admin": "./src/admin/index.ts",
     "./media": "./src/media/index.ts",
-    "./media/variants": "./src/media/variants.ts"
+    "./media/variants": "./src/media/variants.ts",
+    "./media/schemas": "./src/media/schemas.ts"
   },
   "scripts": {
     "lint": "eslint .",
@@ -31,9 +33,10 @@
   },
   "dependencies": {
     "@app/db": "workspace:*",
-    "zod": "^4.6.7",
     "@app/jobs": "workspace:*",
-    "ioredis": "^5.6.0"
+    "@app/storage": "workspace:*",
+    "ioredis": "^5.6.0",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@app/config": "workspace:*",

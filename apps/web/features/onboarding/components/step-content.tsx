@@ -9,6 +9,7 @@ import { stepHref } from "../step-href";
 import { neighbours } from "../steps";
 import { IdentityStep } from "./identity-step";
 import { InfoStep } from "./info-step";
+import { MediaStep } from "./media-step";
 import { OfferForm } from "./offer-form";
 import { PreviewStep } from "./preview-step";
 import { ProfileForm } from "./profile-form";
@@ -86,6 +87,7 @@ export async function StepContent({ locale, step, data }: { locale: Locale; step
         </div>
       );
     case "media":
+      return <MediaStep locale={locale} nextHref={nextHref} back={back} studioOpen={profile.status !== "DRAFT"} />;
     case "availability":
       return <InfoStep locale={locale} step={step} nextHref={nextHref} back={back} />;
     case "offer":

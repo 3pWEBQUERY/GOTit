@@ -2,7 +2,9 @@
   "meta": {
     "overview": "Admin · Übersicht",
     "queue": "Admin · Verifizierungen",
-    "case": "Admin · Prüffall"
+    "case": "Admin · Prüffall",
+    "mediaQueue": "Admin · Medien",
+    "mediaCase": "Admin · Medium"
   },
   "shell": {
     "brand": "{appName} Admin",
@@ -14,7 +16,9 @@
     "signedInAs": "Angemeldet als {name}",
     "toMarketplace": "Zum Marktplatz",
     "signOut": "Abmelden",
-    "breadcrumbs": "Pfad"
+    "breadcrumbs": "Pfad",
+    "media": "Medien",
+    "openMediaCount": "{count, plural, one {# Medium in Prüfung} other {# Medien in Prüfung}}"
   },
   "twoFactor": {
     "title": "Zweiten Faktor einrichten",
@@ -74,6 +78,9 @@
       "lessThanHour": "seit weniger als einer Stunde",
       "hours": "{count, plural, one {seit # Stunde} other {seit # Stunden}}",
       "days": "{count, plural, one {seit # Tag} other {seit # Tagen}}"
+    },
+    "kind": {
+      "CHANGE": "Änderung"
     }
   },
   "case": {
@@ -100,6 +107,22 @@
       "noRates": "Keine Preise angegeben.",
       "earlier": "Frühere Fälle",
       "noEarlier": "Dies ist der erste Fall zu diesem Profil."
+    },
+    "changeTitle": "Änderung von {name}",
+    "change": {
+      "title": "Beantragte Änderung",
+      "intro": "Online ist der bisherige Stand. Freigeben übernimmt die Änderung, Ablehnen verwirft sie. Das Profil bleibt in beiden Fällen online.",
+      "caption": "Vorher und nachher",
+      "field": "Feld",
+      "before": "Vorher (online)",
+      "after": "Nachher (beantragt)",
+      "displayName": "Anzeigename",
+      "allowMessages": "Nachrichten",
+      "allowBookingRequests": "Terminanfragen",
+      "regionIds": "Regionen",
+      "on": "erlaubt",
+      "off": "nicht erlaubt",
+      "none": "Es wartet keine Änderung mehr."
     }
   },
   "identity": {
@@ -167,7 +190,11 @@
     "readOnlyDescription": "Auf diesem Bildschirm ist der Admin nur lesend. Öffne den Fall auf einem breiteren Bildschirm, um zu entscheiden.",
     "alreadyDecidedHelp": "Dein Entscheid wurde nicht gespeichert. Hier steht der aktuelle Stand.",
     "result": "Ergebnis",
-    "decidedAt": "Entschieden am"
+    "decidedAt": "Entschieden am",
+    "changeOptionHint": {
+      "APPROVED": "Die Änderung wird sofort sichtbar.",
+      "REJECTED": "Die Änderung wird verworfen; der bisherige Stand bleibt online."
+    }
   },
   "rules": {
     "complete": "Angaben vollständig",
@@ -190,6 +217,86 @@
     "identityInvalid": "Die Identitätsprüfung ist nicht gültig. Freigeben ist nicht möglich.",
     "alreadyDecided": "Dieser Fall wurde bereits entschieden",
     "revealReasonTooShort": "Gib einen Grund mit mindestens 10 Zeichen an.",
-    "revealReasonTooLong": "Der Grund darf höchstens 500 Zeichen lang sein."
+    "revealReasonTooLong": "Der Grund darf höchstens 500 Zeichen lang sein.",
+    "mediaAlreadyDecided": "Über dieses Medium wurde bereits entschieden",
+    "decisionNotAllowed": "Über eine Änderung entscheidest du mit Freigeben oder Ablehnen."
+  },
+  "media": {
+    "title": "Medien",
+    "intro": "Hochgeladene Fotos in Prüfung, älteste zuerst. Ein Foto erscheint erst nach deiner Freigabe auf dem Profil.",
+    "caption": "Medien in Prüfung",
+    "count": "{count, plural, =0 {Keine Medien in Prüfung} one {# Medium in Prüfung} other {# Medien in Prüfung}}",
+    "next": "Nächstes Medium öffnen",
+    "shortcutAfter": "öffnet das älteste Medium in Prüfung.",
+    "noProfile": "Ohne Profil",
+    "columns": {
+      "profile": "Profil",
+      "submitted": "Eingegangen am",
+      "age": "Alter",
+      "visibility": "Sichtbarkeit"
+    },
+    "empty": {
+      "title": "Keine Medien in Prüfung",
+      "description": "Sobald ein Anbieter ein Foto hochlädt und die Verarbeitung fertig ist, erscheint es hier."
+    },
+    "visibility": {
+      "PUBLIC": "Öffentlich",
+      "MEMBERS": "Nur Mitglieder"
+    },
+    "caseTitle": "Medium von {name}",
+    "meta": "Eingegangen am {submitted} · {age} · Stand: {state}",
+    "status": {
+      "IN_REVIEW": "In Prüfung",
+      "PUBLISHED": "Veröffentlicht",
+      "CHANGES_REQUESTED": "Zur Korrektur",
+      "BLOCKED": "Gesperrt"
+    },
+    "preview": {
+      "title": "Vorschau",
+      "hidden": "Das Foto ist verdeckt, damit es nicht versehentlich sichtbar wird. Zeig es erst, wenn du es prüfen willst.",
+      "show": "Medium anzeigen",
+      "hide": "Medium verdecken",
+      "neutralAlt": "Hochgeladenes Foto in Prüfung",
+      "unavailable": "Die Vorschau gibt es nur für Medien in Prüfung."
+    },
+    "facts": {
+      "title": "Angaben",
+      "profile": "Profil",
+      "visibility": "Sichtbarkeit",
+      "altText": "Alternativtext",
+      "size": "Grösse",
+      "dimensions": "{width} × {height} Pixel",
+      "none": "Keine Angabe"
+    },
+    "decision": {
+      "title": "Entscheid",
+      "decision": "Ergebnis",
+      "option": {
+        "PUBLISHED": "Freigeben",
+        "CHANGES_REQUESTED": "Zur Korrektur",
+        "BLOCKED": "Sperren"
+      },
+      "optionHint": {
+        "PUBLISHED": "Das Foto erscheint auf dem Profil mit der gewählten Sichtbarkeit.",
+        "CHANGES_REQUESTED": "Der Anbieter sieht deine Begründung und kann ein passendes Foto hochladen.",
+        "BLOCKED": "Das Foto wird nie ausgeliefert. Der Anbieter sieht deine Begründung."
+      },
+      "reason": "Begründung",
+      "reasonHint": "Mindestens 10 Zeichen. Der Anbieter sieht sie bei «Zur Korrektur» und «Sperren»; sie steht im Audit-Log.",
+      "rule": "Regel",
+      "rulePlaceholder": "Regel auswählen",
+      "save": "Entscheid speichern",
+      "saved": "Entscheid gespeichert",
+      "summaryTitle": "Bitte prüfe die markierten Felder.",
+      "result": "Ergebnis",
+      "note": "Begründung an den Anbieter"
+    },
+    "rules": {
+      "compliant": "Entspricht den Richtlinien",
+      "quality": "Bild unscharf oder ungeeignet",
+      "identifying": "Zeigt Adresse oder identifizierende Details",
+      "consent": "Einwilligung abgebildeter Personen zweifelhaft",
+      "policyViolation": "Verstoss gegen Richtlinien"
+    }
   }
 }

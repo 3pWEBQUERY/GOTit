@@ -1,0 +1,245 @@
+{
+  "page": {
+    "breadcrumbs": "Brotkrumen",
+    "discover": "Entdecken"
+  },
+  "meta": {
+    "notFound": "Profil nicht gefunden",
+    "mediaTitle": "Medien von {name}",
+    "description": "{name} in {regions}: Angaben, Preise und geprüfte Signale.",
+    "descriptionNoRegion": "{name}: Angaben, Preise und geprüfte Signale."
+  },
+  "header": {
+    "edit": "Basis bearbeiten",
+    "noRegion": "Noch keine Region",
+    "speaks": "spricht {languages}"
+  },
+  "media": {
+    "label": "Medien von {name}",
+    "lightboxTitle": "Medien von {name}",
+    "placeholderAlt": "Noch keine Fotos von {name}",
+    "neutralAlt": "Foto {index} von {name}",
+    "membersOnly": "Für angemeldete Mitglieder",
+    "counter": "{current} / {total}",
+    "all": "Alle {count} Medien ansehen",
+    "close": "Medien schliessen",
+    "previous": "Vorheriges Medium",
+    "next": "Nächstes Medium",
+    "empty": "Hier erscheinen die Fotos, sobald sie geprüft und freigegeben sind.",
+    "emptyHint": "Bis dahin zeigt das Profil eine neutrale Fläche.",
+    "toOverview": "Übersicht ansehen"
+  },
+  "trust": {
+    "label": "Vertrauenssignale",
+    "none": "Noch keine geprüften Angaben.",
+    "close": "Erklärung schliessen",
+    "updated": "Aktualisiert {relative}",
+    "explanation": {
+      "checked": "Was geprüft wurde",
+      "checkedAt": "Wann",
+      "notImplied": "Was das Signal nicht aussagt"
+    },
+    "identity": {
+      "label": "Identität geprüft",
+      "info": "Erklärung zu «Identität geprüft» anzeigen",
+      "checked": "Volljährigkeit und Identität bei einem Prüfdienstleister, mit Lebendigkeitsprüfung. Die Plattform speichert nur das Ergebnis, keine Ausweiskopie.",
+      "notImplied": "Das Signal sagt nichts über Leistungen, Preise oder den Ablauf eines Treffens aus. Es ist keine Garantie."
+    },
+    "photos": {
+      "label": "Fotos geprüft",
+      "info": "Erklärung zu «Fotos geprüft» anzeigen",
+      "checked": "Jedes gezeigte Foto wurde vor der Veröffentlichung von Hand geprüft: zulässiger Inhalt und bestätigte Einwilligung der abgebildeten Personen.",
+      "checkedAt": "Vor der Veröffentlichung jedes Fotos",
+      "notImplied": "Das Signal sagt nicht, dass die Fotos aktuell oder unbearbeitet sind."
+    }
+  },
+  "sections": {
+    "about": "Über mich",
+    "editAbout": "Beschreibung bearbeiten",
+    "noDescription": "Noch keine Beschreibung.",
+    "offer": "Angebot",
+    "editOffer": "Angebot bearbeiten",
+    "rates": "Preise",
+    "editRates": "Preise bearbeiten",
+    "onRequest": "Preise auf Anfrage",
+    "ratesUpdated": "Stand: {date}",
+    "columns": {
+      "duration": "Dauer",
+      "price": "Preis",
+      "note": "Hinweis"
+    }
+  },
+  "contact": {
+    "label": "Kontakt",
+    "request": "Termin anfragen",
+    "soonBoth": "Terminanfragen und Nachrichten sind mit der nächsten Version der Plattform möglich.",
+    "soonMessages": "Nachrichten sind mit der nächsten Version der Plattform möglich.",
+    "soonBookings": "Terminanfragen sind mit der nächsten Version der Plattform möglich.",
+    "none": "Dieses Profil nimmt zurzeit keine Anfragen über die Plattform an.",
+    "paused": "Dieses Profil ist zurzeit pausiert",
+    "restricted": "Kontakt über die Plattform ist für dieses Profil zurzeit nicht möglich.",
+    "report": "Profil melden"
+  },
+  "tabs": {
+    "label": "Bereiche des Profils",
+    "overview": "Übersicht",
+    "media": "Medien"
+  },
+  "membersOnly": {
+    "title": "Dieses Profil sehen nur angemeldete Mitglieder.",
+    "description": "Melde dich an oder erstelle ein Konto, um es anzusehen.",
+    "signIn": "Anmelden",
+    "register": "Konto erstellen"
+  },
+  "owner": {
+    "label": "Dein Profil",
+    "title": "So sehen Besucher dein Profil",
+    "reachable": "Besucher sehen diese Seite.",
+    "notReachable": "Besucher sehen diese Seite zurzeit nicht.",
+    "pendingChange": "Eine Änderung ist in Prüfung; bis zur Freigabe gilt der bisherige Stand.",
+    "edit": "Bearbeiten",
+    "toStudio": "Mein Profil im Studio öffnen"
+  },
+  "onboardingPreview": {
+    "note": "Nach der Freigabe erscheint dein Profil genau so im Marktplatz."
+  },
+  "state": {
+    "loading": "Profil wird geladen",
+    "editorLoading": "Dein Profil wird geladen",
+    "slow": "Das dauert länger als üblich.",
+    "retry": "Erneut versuchen",
+    "errorTitle": "Das Profil liess sich nicht laden.",
+    "errorDescription": "Gespeicherte Angaben sind nicht verloren. Ungespeicherte Eingaben bleiben in diesem Tab zwischengespeichert.",
+    "reload": "Seite neu laden"
+  },
+  "form": {
+    "optional": "optional",
+    "count": "{used} von {max} Zeichen"
+  },
+  "fields": {
+    "displayName": "Anzeigename",
+    "displayNameHint": "Erscheint als Überschrift deines Profils. Eine Änderung wird geprüft.",
+    "shortDescription": "Kurzbeschreibung",
+    "shortDescriptionHint": "Ein Satz unter deinem Namen, höchstens 160 Zeichen.",
+    "languages": "Sprachen",
+    "languagesHint": "Wähle die Sprachen, in denen du dich verständigst.",
+    "description": "Beschreibung",
+    "descriptionHint": "Erscheint unter «Über mich». Mindestens 50 Zeichen. Keine Adresse und keine Kontaktdaten.",
+    "contactWays": "Kontaktwege",
+    "contactWaysHint": "Einschalten wird geprüft, ausschalten gilt sofort.",
+    "allowMessages": "Nachrichten erlauben",
+    "allowMessagesHint": "Mitglieder können dir über die Plattform schreiben.",
+    "allowBookingRequests": "Terminanfragen erlauben",
+    "allowBookingRequestsHint": "Mitglieder können unverbindlich einen Termin anfragen; du entscheidest frei.",
+    "visibility": "Wer dein Profil sieht",
+    "visibilityPublic": "Alle Besucher",
+    "visibilityPublicHint": "Nach der Altersprüfung sichtbar, auch ohne Konto.",
+    "visibilityMembers": "Nur angemeldete Mitglieder",
+    "visibilityMembersHint": "Besucher ohne Konto sehen nur deinen Namen und den Weg zur Anmeldung.",
+    "locationLabel": "Ortsangabe",
+    "locationLabelHint": "Allgemein, zum Beispiel «Kreis 4». Nie eine Adresse.",
+    "offerLater": "Leistungen wählst du, sobald die Kategorien freigegeben sind.",
+    "offerLaterHint": "Bis dahin beschreibt dein Profil das Angebot über die Beschreibung und die Preise.",
+    "services": "Leistungen",
+    "servicesHint": "Wähle aus den zentral gepflegten Kategorien.",
+    "regionsPrivacy": "Deine genaue Adresse wird nie veröffentlicht. Neue Regionen werden geprüft, entfernte gelten sofort.",
+    "regionsCount": "{count, plural, one {# Region gewählt, höchstens 10} other {# Regionen gewählt, höchstens 10}}",
+    "wholeCanton": "Ganzer Kanton {name}",
+    "otherCities": "Weitere Städte",
+    "ratesEmpty": "Noch keine Preise. Ohne Preise steht im Profil «Preise auf Anfrage».",
+    "rateRow": "Preis {index}",
+    "duration": "Dauer",
+    "price": "Preis in CHF",
+    "priceHint": "Ganze Franken, zum Beispiel 300.",
+    "note": "Hinweis",
+    "noteHint": "Zum Beispiel «inklusive Anfahrt».",
+    "hideRate": "Im Profil ausblenden",
+    "hideRateHint": "Der Preis bleibt gespeichert, Besucher sehen ihn nicht.",
+    "removeRate": "Preis {index} entfernen",
+    "addRate": "Preis hinzufügen",
+    "ratesMax": "Höchstens {max} Preise."
+  },
+  "editor": {
+    "title": "Mein Profil",
+    "sectionsLabel": "Abschnitte",
+    "chooseSection": "Wähle einen Abschnitt, um ihn zu bearbeiten. Rechts siehst du das Profil, wie Besucher es sehen.",
+    "viewInMarketplace": "Im Marktplatz ansehen",
+    "backToSections": "Alle Abschnitte",
+    "save": "Änderungen speichern",
+    "saved": "Änderungen gespeichert",
+    "savedPending": "Änderung zur Prüfung eingereicht",
+    "summaryTitle": "Bitte prüfe diese Angaben",
+    "reviewNotice": "Diese Änderung wird geprüft, bevor sie sichtbar ist. Dein bisheriges Profil bleibt solange online.",
+    "pendingTitle": "Änderung in Prüfung",
+    "pendingText": "Bis zur Freigabe sehen Besucher den bisherigen Stand.",
+    "pendingSince": "Eingereicht am {date}. Bis zur Freigabe sehen Besucher den bisherigen Stand.",
+    "rejectedTitle": "Deine letzte Änderung wurde nicht übernommen. Begründung der Prüfung:",
+    "restored": "Ungespeicherte Änderungen aus diesem Tab wiederhergestellt.",
+    "discard": "Änderungen verwerfen",
+    "panelDescription": "Die Änderung gilt für dein öffentliches Profil.",
+    "closePanel": "Bearbeiten schliessen",
+    "cancel": "Abbrechen",
+    "unsavedTitle": "Deine Änderungen sind noch nicht gespeichert.",
+    "unsavedText": "Speichere sie oder verwirf sie, bevor du das Panel schliesst.",
+    "discardAndClose": "Änderungen verwerfen",
+    "keepEditing": "Weiter bearbeiten",
+    "locked": {
+      "inReview": "Dein Profil ist in Prüfung. Änderungen sind nach dem Entscheid wieder möglich.",
+      "blocked": "Dein Profil ist gesperrt oder archiviert und lässt sich nicht bearbeiten. Der Support hilft dir weiter."
+    },
+    "section": {
+      "basics": "Basis",
+      "description": "Beschreibung",
+      "offer": "Angebot",
+      "rates": "Preise",
+      "contact": "Kontakt",
+      "visibility": "Sichtbarkeit",
+      "regions": "Regionen"
+    },
+    "status": {
+      "complete": "vollständig",
+      "missing": "fehlt",
+      "later": "folgt",
+      "pending": "in Prüfung"
+    },
+    "leave": {
+      "title": "Seite mit ungespeicherten Änderungen verlassen?",
+      "description": "Deine Eingaben bleiben in diesem Tab zwischengespeichert, bis du sie speicherst oder verwirfst. Besucher sehen sie erst nach dem Speichern.",
+      "confirm": "Seite verlassen",
+      "cancel": "Weiter bearbeiten"
+    },
+    "preview": {
+      "title": "Vorschau",
+      "modeLabel": "Ansicht der Vorschau",
+      "mobile": "Mobile",
+      "desktop": "Desktop",
+      "open": "Vorschau ansehen",
+      "close": "Vorschau schliessen",
+      "handle": "Höhe umschalten"
+    }
+  },
+  "errors": {
+    "generic": "Das hat nicht geklappt. Deine Eingaben sind noch da; versuche es erneut.",
+    "notAllowed": "Nur die Person mit diesem Anbieterprofil kann es bearbeiten.",
+    "locked": "Dein Profil lässt sich gerade nicht bearbeiten. Deine Eingaben sind noch da.",
+    "displayNameTooShort": "Der Anzeigename braucht mindestens 2 Zeichen.",
+    "displayNameTooLong": "Der Anzeigename darf höchstens 60 Zeichen haben.",
+    "shortDescriptionTooLong": "Die Kurzbeschreibung darf höchstens 160 Zeichen haben.",
+    "descriptionTooShort": "Die Beschreibung braucht mindestens 50 Zeichen.",
+    "descriptionTooLong": "Die Beschreibung darf höchstens 4000 Zeichen haben.",
+    "languagesRequired": "Wähle mindestens eine Sprache.",
+    "servicesTooMany": "Wähle höchstens 30 Leistungen.",
+    "invalidCategory": "Eine gewählte Leistung ist nicht mehr freigegeben. Wähle deine Leistungen erneut.",
+    "ratesTooMany": "Höchstens 12 Preise.",
+    "durationTooShort": "Die Dauer beträgt mindestens 15 Minuten.",
+    "durationTooLong": "Die Dauer beträgt höchstens 24 Stunden.",
+    "priceTooLow": "Der Preis beträgt mindestens CHF 1.",
+    "priceTooHigh": "Der Preis beträgt höchstens CHF 100 000.",
+    "priceInvalid": "Gib den Preis in ganzen Franken an, zum Beispiel 300.",
+    "noteTooLong": "Der Hinweis darf höchstens 120 Zeichen haben.",
+    "locationLabelTooLong": "Die Ortsangabe darf höchstens 60 Zeichen haben.",
+    "regionsRequired": "Wähle mindestens eine Region.",
+    "regionsTooMany": "Wähle höchstens zehn Regionen.",
+    "invalidRegion": "Eine gewählte Region ist nicht mehr freigegeben. Wähle deine Regionen erneut."
+  }
+}

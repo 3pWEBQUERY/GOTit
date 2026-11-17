@@ -8,6 +8,8 @@ import { queueSortQuery } from "./queue-sort";
 export interface QueueRow {
   id: string;
   href: string;
+  /** «Änderung» bei einer Änderung an einem veröffentlichten Profil; null bei einer Erstprüfung. */
+  kindLabel: string | null;
   displayName: string;
   submittedIso: string;
   submittedLabel: string;
@@ -32,9 +34,16 @@ export function QueueTable({ rows, sort, labels, empty }: QueueTableProps) {
       header: labels.displayName,
       priority: 1,
       cell: (row) => (
-        <UiLink href={row.href} className="font-[550] text-ink underline-offset-4 hover:underline" data-case-link={row.id}>
-          {row.displayName}
-        </UiLink>
+        <span className="inline-flex flex-wrap items-baseline gap-x-2">
+          <UiLink href={row.href} className="font-[550] text-ink underline-offset-4 hover:underline" data-case-link={row.id}>
+            {row.displayName}
+          </UiLink>
+          {row.kindLabel ? (
+            <span data-case-kind className="rounded-chip border border-border px-1 text-small text-ink">
+              {row.kindLabel}
+            </span>
+          ) : null}
+        </span>
       ),
     },
     {

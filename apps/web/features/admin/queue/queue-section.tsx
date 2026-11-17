@@ -20,6 +20,7 @@ export async function QueueSection({ locale, sort, now }: { locale: Locale; sort
     return {
       id: entry.id,
       href: caseHref(entry.id),
+      kindLabel: entry.kind === "CHANGE" ? t("kind.CHANGE") : null,
       displayName: entry.displayName,
       submittedIso: entry.submittedAt.toISOString(),
       submittedLabel: format.dateTime(entry.submittedAt, { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" }),

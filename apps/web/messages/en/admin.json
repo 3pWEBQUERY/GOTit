@@ -2,7 +2,9 @@
   "meta": {
     "overview": "Admin · Overview",
     "queue": "Admin · Verifications",
-    "case": "Admin · Review case"
+    "case": "Admin · Review case",
+    "mediaQueue": "Admin · Media",
+    "mediaCase": "Admin · Media item"
   },
   "shell": {
     "brand": "{appName} Admin",
@@ -14,7 +16,9 @@
     "signedInAs": "Signed in as {name}",
     "toMarketplace": "Go to marketplace",
     "signOut": "Sign out",
-    "breadcrumbs": "Path"
+    "breadcrumbs": "Path",
+    "media": "Media",
+    "openMediaCount": "{count, plural, one {# media item in review} other {# media items in review}}"
   },
   "twoFactor": {
     "title": "Set up a second factor",
@@ -74,6 +78,9 @@
       "lessThanHour": "for less than an hour",
       "hours": "{count, plural, one {for # hour} other {for # hours}}",
       "days": "{count, plural, one {for # day} other {for # days}}"
+    },
+    "kind": {
+      "CHANGE": "Change"
     }
   },
   "case": {
@@ -100,6 +107,22 @@
       "noRates": "No rates provided.",
       "earlier": "Earlier cases",
       "noEarlier": "This is the first case for this profile."
+    },
+    "changeTitle": "Change by {name}",
+    "change": {
+      "title": "Requested change",
+      "intro": "The current version is online. Approving applies the change, rejecting discards it. In both cases the profile stays online.",
+      "caption": "Before and after",
+      "field": "Field",
+      "before": "Before (online)",
+      "after": "After (requested)",
+      "displayName": "Display name",
+      "allowMessages": "Messages",
+      "allowBookingRequests": "Appointment requests",
+      "regionIds": "Regions",
+      "on": "allowed",
+      "off": "not allowed",
+      "none": "No change is pending any more."
     }
   },
   "identity": {
@@ -167,7 +190,11 @@
     "readOnlyDescription": "On this screen the admin is read-only. Open the case on a wider screen to decide.",
     "alreadyDecidedHelp": "Your decision was not saved. This is the current state.",
     "result": "Result",
-    "decidedAt": "Decided on"
+    "decidedAt": "Decided on",
+    "changeOptionHint": {
+      "APPROVED": "The change becomes visible immediately.",
+      "REJECTED": "The change is discarded; the current version stays online."
+    }
   },
   "rules": {
     "complete": "Details complete",
@@ -190,6 +217,86 @@
     "identityInvalid": "The identity check is not valid. Approving is not possible.",
     "alreadyDecided": "This case has already been decided",
     "revealReasonTooShort": "Give a reason of at least 10 characters.",
-    "revealReasonTooLong": "The reason may be at most 500 characters long."
+    "revealReasonTooLong": "The reason may be at most 500 characters long.",
+    "mediaAlreadyDecided": "A decision has already been made on this media item",
+    "decisionNotAllowed": "For a change you decide by approving or rejecting."
+  },
+  "media": {
+    "title": "Media",
+    "intro": "Uploaded photos in review, oldest first. A photo only appears on the profile after your approval.",
+    "caption": "Media in review",
+    "count": "{count, plural, =0 {No media in review} one {# media item in review} other {# media items in review}}",
+    "next": "Open next media item",
+    "shortcutAfter": "opens the oldest media item in review.",
+    "noProfile": "No profile",
+    "columns": {
+      "profile": "Profile",
+      "submitted": "Received on",
+      "age": "Age",
+      "visibility": "Visibility"
+    },
+    "empty": {
+      "title": "No media in review",
+      "description": "As soon as a provider uploads a photo and processing is finished, it appears here."
+    },
+    "visibility": {
+      "PUBLIC": "Public",
+      "MEMBERS": "Members only"
+    },
+    "caseTitle": "Media item from {name}",
+    "meta": "Received on {submitted} · {age} · Status: {state}",
+    "status": {
+      "IN_REVIEW": "In review",
+      "PUBLISHED": "Published",
+      "CHANGES_REQUESTED": "Changes requested",
+      "BLOCKED": "Blocked"
+    },
+    "preview": {
+      "title": "Preview",
+      "hidden": "The photo is hidden so that it does not appear by accident. Only show it when you want to review it.",
+      "show": "Show media item",
+      "hide": "Hide media item",
+      "neutralAlt": "Uploaded photo in review",
+      "unavailable": "The preview is only available for media in review."
+    },
+    "facts": {
+      "title": "Details",
+      "profile": "Profile",
+      "visibility": "Visibility",
+      "altText": "Alternative text",
+      "size": "Size",
+      "dimensions": "{width} × {height} pixels",
+      "none": "Not provided"
+    },
+    "decision": {
+      "title": "Decision",
+      "decision": "Outcome",
+      "option": {
+        "PUBLISHED": "Approve",
+        "CHANGES_REQUESTED": "Request changes",
+        "BLOCKED": "Block"
+      },
+      "optionHint": {
+        "PUBLISHED": "The photo appears on the profile with the chosen visibility.",
+        "CHANGES_REQUESTED": "The provider sees your reason and can upload a suitable photo.",
+        "BLOCKED": "The photo is never delivered. The provider sees your reason."
+      },
+      "reason": "Reason",
+      "reasonHint": "At least 10 characters. The provider sees it for «Request changes» and «Block»; it is stored in the audit log.",
+      "rule": "Rule",
+      "rulePlaceholder": "Choose a rule",
+      "save": "Save decision",
+      "saved": "Decision saved",
+      "summaryTitle": "Please check the marked fields.",
+      "result": "Outcome",
+      "note": "Reason given to the provider"
+    },
+    "rules": {
+      "compliant": "Complies with the guidelines",
+      "quality": "Image blurry or unsuitable",
+      "identifying": "Shows an address or identifying details",
+      "consent": "Consent of people shown is doubtful",
+      "policyViolation": "Violation of the guidelines"
+    }
   }
 }

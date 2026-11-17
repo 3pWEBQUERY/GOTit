@@ -1,2 +1,10 @@
 export { pauseAvailability, type PauseAvailability, type PauseBlockReason } from "./policy";
 export { setOwnProfilePaused, type SetPausedResult } from "./service";
+export { getPublicProfile, type OwnerView, type PublicProfile, type PublicProfileResult, type PublicRate, type PublicRegion } from "./public-profile";
+export { contactOptions, isReachable, publicState, type ContactOptions, type PublicState, type PublicStateFacts } from "./public-policy";
+export { getOwnProfileForEditor, type EditorRate, type OwnProfileEditor } from "./editor";
+export { saveProfileSection, type SaveSectionResult } from "./save-section";
+export { decideChangeReview, type ChangeDecision } from "./change-review";
+export * from "./editor-schemas";
+export * from "./change-policy";
+export { sectionStatus, type SectionStatus } from "./section-status";
