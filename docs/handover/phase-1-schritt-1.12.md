@@ -37,7 +37,7 @@ Abnahmekriterium von 1.12 «Zahlen stimmen mit den Rohereignissen eines Testdate
 | --- | --- |
 | `pnpm check:file-size` | keine Datei über 600 Zeilen |
 | Lint, Typen, Unit- und Integrationstests (Turbo, alle Pakete) | 30 von 30 Aufgaben grün |
-| Playwright gegen den Produktions-Build, alle Schritte 1.1 bis 1.12 | 258 von 259 im ersten Lauf; der Ausfall war ein Wettlauf zwischen parallelen Tests in der Moderation der Bewertungen (behoben, danach 20 von 20 in Wiederholung). Ergebnis des zweiten Gesamtlaufs: E2E_ZWEITER_LAUF |
+| Playwright gegen den Produktions-Build, alle Schritte 1.1 bis 1.12 | 258 von 259 im ersten Lauf; der Ausfall war ein Wettlauf zwischen parallelen Tests in der Moderation der Bewertungen (behoben, danach 20 von 20 in Wiederholung). Zweiter Gesamtlauf: **259 von 259 grün**, ohne Wiederholung |
 
 ## Was nicht geprüft ist
 
