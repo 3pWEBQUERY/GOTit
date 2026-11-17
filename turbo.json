@@ -60,6 +60,7 @@
     "APP_ENV",
     "MAIL_TRANSPORT",
     "SMTP_URL",
+    "RESEND_API_KEY",
     "MAIL_FROM",
     "ENABLE_DEV_UI",
     "CI",

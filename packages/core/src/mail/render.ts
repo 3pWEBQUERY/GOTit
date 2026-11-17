@@ -11,6 +11,15 @@ const catalogues: Record<Locale, typeof de> = { de, fr, it, en };
 export function renderMail(request: MailRequest): RenderedMail {
   const messages = catalogues[request.locale];
   const template = messages[request.template];
-  const text = [template.intro, "", template.action, request.url, "", template.expiry, "", messages.appSignature].join("\n");
+  const text = [
+    template.intro,
+    "",
+    template.action,
+    request.url,
+    "",
+    template.expiry,
+    "",
+    messages.appSignature,
+  ].join("\n");
   return { to: request.to, subject: template.subject, text };
 }

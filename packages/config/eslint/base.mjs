@@ -9,8 +9,10 @@ import tseslint from "typescript-eslint";
  */
 export const deepImportPatterns = [
   { group: ["@app/*/src", "@app/*/src/**"], message: "Importiere über die exports des Pakets, nicht aus src/." },
-  // Ausnahme: `<modul>/schemas` ist der browsertaugliche Einstieg (nur Zod, kein Servercode).
-  { group: ["@app/core/*/**", "!@app/core/*/schemas", "!@app/core/*/variants"], message: "Module von core nur über ihr index.ts importieren (oder `<modul>/schemas`)." },
+  // Ausnahme: `<modul>/schemas` ist der browsertaugliche Einstieg (nur Zod, kein Servercode),
+  // ebenso `search/query` (Suchparameter der URL, rein und ohne Datenbank) und
+  // `search/indexer` (schmaler Einstieg für worker und cron, ohne Queue-Abhängigkeiten).
+  { group: ["@app/core/*/**", "!@app/core/*/schemas", "!@app/core/*/variants", "!@app/core/search/query", "!@app/core/search/indexer"], message: "Module von core nur über ihr index.ts importieren (oder `<modul>/schemas`)." },
   { group: ["@app/ui/*/**", "!@app/ui/tokens/*.css", "!@app/ui/glass/*.css"], message: "UI nur über @app/ui importieren." },
 ];
 

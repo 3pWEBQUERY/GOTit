@@ -49,7 +49,10 @@ Die PRD verlangt `railway.json` pro Dienst. Railway nimmt für neu angelegte Die
 
 ## E-Mail-Versand
 
-Nicht eingerichtet: Gate 16.3 der PRD (Anbieter, der die Branche zulässt) ist offen. Solange `MAIL_TRANSPORT` fehlt, ist die Registrierung geschlossen und sagt das; der Worker lehnt E-Mail-Jobs sichtbar ab. Nach der Wahl des Anbieters an `web` und `worker` setzen: `MAIL_TRANSPORT=smtp`, `SMTP_URL` (als Geheimnis), `MAIL_FROM`.
+Anbieter: **Resend** (Entscheid vom 17.11.2026), angebunden über die HTTP-API (`MAIL_TRANSPORT=resend`), weil Railway ausgehendes SMTP je nach Tarif sperrt. Noch nicht aktiv. Solange es fehlt, ist die Registrierung geschlossen und sagt das; der Worker lehnt E-Mail-Jobs sichtbar ab. Zum Einschalten:
+1. Gate 16.3: bestätigen, dass die Nutzungsbedingungen von Resend den Versand für diese Plattform zulassen (die E-Mails selbst sind neutral: Bestätigung, Passwort, Sicherheitshinweise).
+2. Bei Resend eine Absender-Domain verifizieren (DNS-Einträge SPF und DKIM) und einen API-Schlüssel nur mit Senderecht anlegen.
+3. An `web` und `worker` setzen: `MAIL_TRANSPORT=resend`, `MAIL_FROM` (zum Beispiel `Name <hallo@domain>`), `RESEND_API_KEY` als versiegelte Variable im Dashboard, nie im Repo oder Chat.
 
 ## Noch nicht eingerichtet
 
@@ -58,6 +61,8 @@ Nicht eingerichtet: Gate 16.3 der PRD (Anbieter, der die Branche zulässt) ist o
   2. In `staging` für `web` und `realtime` je eine Domain erzeugen.
   3. In `staging` neue Werte für `BETTER_AUTH_SECRET` und `AGE_GATE_SECRET` setzen (die Duplizierung kopiert die Werte aus Produktion; Geheimnisse sind pro Umgebung getrennt).
   4. Bei Bedarf in `staging` `MAIL_TRANSPORT=outbox` setzen, damit sich die Registrierung ohne echten Versand testen lässt.
+  5. `APP_ENV=staging` als gemeinsame Variable setzen; die Duplizierung übernimmt sonst `production`.
+  6. Den kopierten Dienst `staging` in der neuen Umgebung löschen. Er war eine Kopie von `web` in `production` mit der Produktionsdatenbank und wird auch dort gelöscht.
 - **PR-Umgebungen:** in den Projekteinstellungen einschalten, sobald Pull Requests genutzt werden.
 - Tägliche Backups von Postgres mit getestetem Restore und verschlüsseltem Dump in einen dritten Bucket (PRD 14.2): kommt mit dem `cron`-Dienst in Schritt 1.14.
 - Bucket-Zugangsdaten für `web` und `worker`: kommen mit der Medien-Pipeline in Schritt 1.6.

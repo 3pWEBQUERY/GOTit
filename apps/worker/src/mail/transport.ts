@@ -1,6 +1,7 @@
 import { resolveMailTransport, type RenderedMail } from "@app/core/mail";
 import { getDb } from "@app/db";
 import { createTransport } from "nodemailer";
+import { createResendSender } from "./resend";
 
 export type SendMail = (mail: RenderedMail) => Promise<void>;
 
@@ -12,6 +13,13 @@ export function createMailSender(
   env: Record<string, string | undefined> = process.env,
 ): SendMail {
   const transport = resolveMailTransport(env);
+  if (transport === "resend") {
+    const send = createResendSender(
+      env.RESEND_API_KEY as string,
+      env.MAIL_FROM as string,
+    );
+    return async (mail) => send(mail);
+  }
   if (transport === "smtp") {
     const smtp = createTransport(env.SMTP_URL as string);
     return async (mail) => {
