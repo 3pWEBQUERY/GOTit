@@ -15,6 +15,7 @@ Projekt **GOTit** im Workspace «3pwebquery's Projects», Umgebung `production`,
 | `realtime` | GitHub `3pWEBQUERY/GOTit` | `pnpm turbo run build --filter=@app/realtime` | `pnpm --filter @app/realtime start` | `/health` | Ja |
 | `worker` | GitHub `3pWEBQUERY/GOTit` | `pnpm turbo run build --filter=@app/worker` | `pnpm --filter @app/worker start` | – | Nein |
 | `cron-purge-expired` | GitHub `3pWEBQUERY/GOTit` | `pnpm turbo run build --filter=@app/cron` | `pnpm --filter @app/cron start purge-expired`, täglich 03:17 UTC | – | Nein |
+| `cron-rebuild-search-index` | GitHub `3pWEBQUERY/GOTit` | `pnpm turbo run build --filter=@app/cron` | `pnpm --filter @app/cron start rebuild-search-index`, täglich 02:47 UTC | – | Nein |
 | `Postgres` | Vorlage (Postgres 18) | – | – | – | Nein |
 | `Redis` | Vorlage (Redis 8) | – | – | – | Nein |
 | Bucket `originals` | – | – | – | – | privat |
@@ -24,7 +25,7 @@ Projekt **GOTit** im Workspace «3pwebquery's Projects», Umgebung `production`,
 - **Pre-Deploy von `web`:** `pnpm release` führt die Migrationen aus und lädt die Referenzdaten (Regionen, Flags). Fiktive Testkonten werden dort nie geladen.
 - **Watch-Pfade:** Jeder Dienst baut nur bei Änderungen an seinem Ordner und den Paketen, die er nutzt.
 - **Neustart:** bei Fehler, höchstens 5 Versuche.
-- **`cron`:** Ein Dienst pro Aufgabe aus `apps/cron/src/tasks.ts`, mit Zeitplan und Start `pnpm --filter @app/cron start <aufgabe>`; er erledigt die Aufgabe und beendet sich (Neustart: nie). Bisher: `purge-expired` setzt die Aufbewahrungsfristen durch und löscht Konten nach Ablauf der 30-Tage-Frist.
+- **`cron`:** Ein Dienst pro Aufgabe aus `apps/cron/src/tasks.ts`, mit Zeitplan und Start `pnpm --filter @app/cron start <aufgabe>`; er erledigt die Aufgabe und beendet sich (Neustart: nie). Bisher: `purge-expired` setzt die Aufbewahrungsfristen durch und löscht Konten nach Ablauf der 30-Tage-Frist; `rebuild-search-index` baut den Suchindex neu auf (Entscheid 0013).
 
 ## Variablen
 
@@ -32,7 +33,7 @@ Geteilt (Umgebung `production`): `BETTER_AUTH_SECRET`, `AGE_GATE_SECRET`, `APP_N
 
 | Variable | Dienste | Wert |
 | --- | --- | --- |
-| `DATABASE_URL` | web, worker, cron-purge-expired | `${{Postgres.DATABASE_URL}}` |
+| `DATABASE_URL` | web, worker, cron-purge-expired, cron-rebuild-search-index | `${{Postgres.DATABASE_URL}}` |
 | `REDIS_URL` | web, realtime, worker | `${{Redis.REDIS_URL}}` |
 | `BETTER_AUTH_SECRET` | web, realtime | `${{shared.BETTER_AUTH_SECRET}}` |
 | `AGE_GATE_SECRET` | web | `${{shared.AGE_GATE_SECRET}}` |
