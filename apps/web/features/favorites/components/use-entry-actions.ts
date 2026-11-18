@@ -3,7 +3,7 @@
 import { useToast } from "@app/ui";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import { useTransition } from "react";
+import { useRef, useTransition } from "react";
 import {
   moveEntriesAction,
   removeEntriesAction,
@@ -42,13 +42,29 @@ export function useEntryActions(collectionName: string) {
     reason: "generic",
   });
 
+  // Verschieben läuft nacheinander: Ein zweiter Klick, während der erste noch
+  // speichert, geht nicht verloren, sondern wartet. Neu geladen wird erst nach
+  // dem letzten Schritt, damit der gespeicherte Stand die Anzeige nicht
+  // zwischendurch zurücksetzt.
+  const moves = useRef<{ chain: Promise<void>; open: number }>({
+    chain: Promise.resolve(),
+    open: 0,
+  });
+
   function move(favoriteId: string, direction: "up" | "down") {
-    startTransition(async () => {
+    const queue = moves.current;
+    queue.open += 1;
+    queue.chain = queue.chain.then(async () => {
       const result = await moveEntryAction(favoriteId, direction).catch(
         generic,
       );
-      if (!result.ok) fail(result.reason);
-      else router.refresh();
+      queue.open -= 1;
+      if (!result.ok) {
+        // Fehler im Toast, danach der gespeicherte Stand (fail lädt neu).
+        fail(result.reason);
+        return;
+      }
+      if (queue.open === 0) startTransition(() => router.refresh());
     });
   }
 

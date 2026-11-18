@@ -18,11 +18,14 @@ export function DiscoverRowSection({
   profileHref,
   hearted,
   signInHref,
+  priority = false,
 }: {
   row: DiscoverRow;
   profileHref: (slug: string) => string;
   hearted: ReadonlySet<string>;
   signInHref: string | null;
+  /** Erste Reihe der Seite: Bilder der ersten Karten sofort laden (LCP). */
+  priority?: boolean;
 }) {
   return (
     <section aria-labelledby={`row-${row.id}`} className="flex flex-col gap-4">
@@ -37,13 +40,14 @@ export function DiscoverRowSection({
         ) : null}
       </div>
       <ul className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-5">
-        {row.hits.map((hit) => (
+        {row.hits.map((hit, index) => (
           <li key={hit.slug}>
             <SearchHitCard
               hit={hit}
               href={profileHref(hit.slug)}
               favorite={hearted.has(hit.slug)}
               signInHref={signInHref}
+              priority={priority && index < 5}
             />
           </li>
         ))}

@@ -66,8 +66,7 @@ export function EntryGrid({
   function move(index: number, direction: "up" | "down") {
     const target = direction === "up" ? index - 1 : index + 1;
     const entry = items[index];
-    if (actions.pending || !entry || target < 0 || target >= items.length)
-      return;
+    if (!entry || target < 0 || target >= items.length) return;
     const next = [...items];
     [next[index], next[target]] = [next[target] as EntryItem, entry];
     setItems(next);

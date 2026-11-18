@@ -8,6 +8,7 @@ import { searchPort } from "@app/core/search";
 import { isAgeConfirmed } from "@/features/age-gate/queries/is-age-confirmed";
 import { createHref } from "@/features/shell/nav/href";
 import { getViewer } from "@/features/shell/queries/get-viewer";
+import { searchServerTiming, timed } from "@/features/search/timing";
 
 export const dynamic = "force-dynamic";
 
@@ -37,10 +38,9 @@ export async function GET(request: Request) {
     ? (requested as Locale)
     : DEFAULT_LOCALE;
   const href = createHref(locale);
-  const suggestions = await searchPort.suggest(params.get("q") ?? "", {
-    viewer,
-    locale,
-  });
+  const { value: suggestions, ms } = await timed(() =>
+    searchPort.suggest(params.get("q") ?? "", { viewer, locale }),
+  );
   return Response.json(
     {
       suggestions: suggestions.map((suggestion) =>
@@ -61,6 +61,11 @@ export async function GET(request: Request) {
             },
       ),
     },
-    { headers: { "cache-control": "no-store" } },
+    {
+      headers: {
+        "cache-control": "no-store",
+        "server-timing": searchServerTiming(ms),
+      },
+    },
   );
 }

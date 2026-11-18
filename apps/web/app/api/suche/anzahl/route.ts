@@ -9,6 +9,7 @@ import { parseSearchQuery } from "@app/core/search/query";
 import { isAgeConfirmed } from "@/features/age-gate/queries/is-age-confirmed";
 import { getViewer } from "@/features/shell/queries/get-viewer";
 import { searchParamsRecord } from "@/features/search/raw-params";
+import { searchServerTiming, timed } from "@/features/search/timing";
 
 export const dynamic = "force-dynamic";
 
@@ -32,9 +33,16 @@ export async function GET(request: Request) {
   const query = parseSearchQuery(
     searchParamsRecord(new URL(request.url).searchParams),
   );
-  const total = await searchPort.count(query, {
-    viewer,
-    locale: DEFAULT_LOCALE,
-  });
-  return Response.json({ total }, { headers: { "cache-control": "no-store" } });
+  const { value: total, ms } = await timed(() =>
+    searchPort.count(query, { viewer, locale: DEFAULT_LOCALE }),
+  );
+  return Response.json(
+    { total },
+    {
+      headers: {
+        "cache-control": "no-store",
+        "server-timing": searchServerTiming(ms),
+      },
+    },
+  );
 }

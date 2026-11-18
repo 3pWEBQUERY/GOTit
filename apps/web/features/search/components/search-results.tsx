@@ -50,7 +50,7 @@ export async function SearchResults({
             : "grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 xl:grid-cols-4"
         }
       >
-        {hits.map((hit) => (
+        {hits.map((hit, index) => (
           <li key={hit.slug} className={list ? "py-4 first:pt-0" : undefined}>
             <SearchHitCard
               hit={hit}
@@ -58,6 +58,7 @@ export async function SearchResults({
               variant={list ? "list" : "grid"}
               favorite={favorites.has(hit.slug)}
               signInHref={signInHref}
+              priority={index < (list ? 2 : 4)}
             />
           </li>
         ))}

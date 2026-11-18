@@ -165,7 +165,7 @@ export async function DiscoverPage({ locale }: { locale: Locale }) {
           otherRegions={others}
         />
       ) : (
-        rows.map((row) => (
+        rows.map((row, index) => (
           <DiscoverRowSection
             key={row.id}
             row={row}
@@ -174,6 +174,7 @@ export async function DiscoverPage({ locale }: { locale: Locale }) {
             }
             hearted={hearted}
             signInHref={signInHref}
+            priority={index === 0}
           />
         ))
       )}

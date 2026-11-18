@@ -56,6 +56,7 @@ export function MediaFrame({ item, fit = "cover", eager, className }: MediaFrame
         src={item.src}
         alt={item.alt}
         loading={eager ? "eager" : "lazy"}
+        fetchPriority={eager ? "high" : "auto"}
         decoding="async"
         className={cn("size-full", fit === "cover" ? "object-cover" : "object-contain")}
       />

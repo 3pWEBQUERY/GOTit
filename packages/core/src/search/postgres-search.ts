@@ -139,11 +139,13 @@ function orderBy(
         ? Prisma.sql`ts_rank(sp.search_vector, to_tsquery('simple', ${compiled.tsQuery})) * 2 + word_similarity(${query.q ?? ""}, sp."displayName")`
         : Prisma.sql`0`;
       const region = compiled.regionId
-        ? Prisma.sql`CASE WHEN sp."primaryRegionId" = ${compiled.regionId} THEN 0.2 ELSE 0 END`
+        ? Prisma.sql`CASE WHEN sp."primaryRegionId" = ${compiled.regionId} THEN 0.2::float8 ELSE 0 END`
         : Prisma.sql`0`;
       // Aktualität: halbiert sich alle 30 Tage seit der letzten Änderung.
-      const days = Prisma.sql`GREATEST(EXTRACT(EPOCH FROM (${now}::timestamp - sp."contentUpdatedAt")) / 86400, 0)`;
-      return Prisma.sql`(${text}) + (${region}) + sp.completeness / 200.0 + 0.3 * power(0.5, ${days} / 30.0) DESC, ${tie}`;
+      // Durchgehend double precision: EXTRACT liefert numeric, und power() auf
+      // numeric kostet bei 10'000 Profilen rund 90 ms je Abfrage (Messung 1.14).
+      const days = Prisma.sql`GREATEST(EXTRACT(EPOCH FROM (${now}::timestamp - sp."contentUpdatedAt"))::float8 / 86400, 0)`;
+      return Prisma.sql`(${text}) + (${region}) + sp.completeness / 200.0::float8 + 0.3 * power(0.5::float8, ${days} / 30.0) DESC, ${tie}`;
     }
   }
 }
@@ -200,11 +202,16 @@ async function findMostRestrictive(
   query: SearchQuery,
   context: SearchContext,
 ): Promise<SearchResult["mostRestrictive"]> {
+  // Parallel statt nacheinander: bei fünf Filtern sonst fünf Abfragen in Folge (Messung 1.14).
+  const keys = activeFilters(query);
+  const totals = await Promise.all(
+    keys.map(async (key) =>
+      countCompiled(await compile(withoutFilter(query, key), context)),
+    ),
+  );
   let best: { key: FilterKey; total: number } | null = null;
-  for (const key of activeFilters(query)) {
-    const total = await countCompiled(
-      await compile(withoutFilter(query, key), context),
-    );
+  for (const [index, key] of keys.entries()) {
+    const total = totals[index] ?? 0;
     if (total > 0 && (!best || total > best.total)) best = { key, total };
   }
   return best;

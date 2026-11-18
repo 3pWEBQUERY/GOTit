@@ -1,5 +1,6 @@
 import { favoriteSlugs } from "@app/core/favorites";
 import type { Locale } from "@app/core/locale";
+import { createLogger } from "@app/core/observability";
 import {
   clientIp,
   consumeRateLimit,
@@ -15,6 +16,7 @@ import { headers } from "next/headers";
 import { createHref } from "../../shell/nav/href";
 import { getViewer } from "../../shell/queries/get-viewer";
 import { filterLabels, type FilterLabel } from "../filter-labels";
+import { timed } from "../timing";
 import {
   presetQuery,
   searchUrl,
@@ -26,6 +28,8 @@ import {
   loadFilterOptions,
   type FilterOptions,
 } from "./filter-options";
+
+const log = createLogger("web");
 
 export interface SearchPageReady {
   state: "ready";
@@ -71,10 +75,12 @@ export async function loadSearchPage(
   const paths: SearchPaths = { search: href("/suche"), preset };
   const query = presetQuery(raw, preset);
   const viewer = await getViewer();
-  const [result, options] = await Promise.all([
-    searchPort.search(query, { viewer, locale }),
+  const [{ value: result, ms }, options] = await Promise.all([
+    timed(() => searchPort.search(query, { viewer, locale })),
     loadFilterOptions(locale),
   ]);
+  // Nur die Dauer, keine Suchbegriffe oder Filter (PRD 16.2). Auswertung: docs/performance/messung-1.14.md.
+  log.info("search.timing", { durationMs: Math.round(ms * 10) / 10 });
   const [favorites, savedId, source] = await Promise.all([
     favoriteSlugs(
       viewer,

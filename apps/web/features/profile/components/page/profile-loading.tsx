@@ -4,7 +4,11 @@ import { Button, LoadingRegion, Skeleton } from "@app/ui";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 
-/** Ladezustand der Profilseite in der Form des Inhalts: Foto, Name, Signale, Abschnitte (PRD 13). */
+/**
+ * Ladezustand der Profilseite in der Form des Inhalts: Foto, Name, Signale, Abschnitte (PRD 13).
+ * Mindestens so hoch wie der Bildschirm: Sonst stünde die Fusszeile beim Laden im Bild und
+ * spränge weg, sobald das Profil kommt (CLS 0,98 auf dem Desktop, Messung 1.14).
+ */
 export function ProfileLoading() {
   const t = useTranslations("profile.state");
   const router = useRouter();
@@ -17,7 +21,7 @@ export function ProfileLoading() {
           <Button onClick={() => router.refresh()}>{t("retry")}</Button>
         </div>
       }
-      className="gap-6"
+      className="min-h-dvh gap-6"
     >
       <div className="flex flex-col gap-6 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] md:gap-x-8">
         <Skeleton variant="block" className="aspect-4/5 w-full rounded-card md:aspect-video" />

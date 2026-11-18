@@ -15,6 +15,8 @@ export interface SearchHitCardProps {
   favorite: boolean;
   /** Für Besucher: Ziel des Herzens (Anmeldung mit Rückweg). Angemeldet: null. */
   signInHref: string | null;
+  /** Karte über dem Falz: Bild sofort laden (LCP). */
+  priority?: boolean;
 }
 
 /**
@@ -29,6 +31,7 @@ export function SearchHitCard({
   headingLevel = 3,
   favorite,
   signInHref,
+  priority = false,
 }: SearchHitCardProps) {
   const t = useTranslations("search.card");
   const locale = useLocale();
@@ -74,6 +77,7 @@ export function SearchHitCard({
               ),
               alt: hit.cover.alt ?? t("coverAlt", { name: hit.displayName }),
               ...(hit.cover.color ? { placeholderColor: hit.cover.color } : {}),
+              ...(priority ? { priority: true } : {}),
             }
           : undefined
       }

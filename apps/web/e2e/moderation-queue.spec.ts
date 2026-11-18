@@ -105,6 +105,11 @@ test.describe("Warteschlange der Moderation", () => {
     await expect(next).toHaveAttribute("aria-keyshortcuts", "n");
     await expect(page.getByText("öffnet den dringendsten, ältesten Fall, der frei oder dir zugewiesen ist.")).toBeVisible();
 
+    // Das Kürzel hängt erst nach der Hydrierung am Dokument; unter Last käme der Tastendruck sonst zu früh.
+    await page.waitForFunction(() => {
+      const link = document.querySelector('a[aria-keyshortcuts="n"]');
+      return link !== null && Object.keys(link).some((key) => key.startsWith("__react"));
+    });
     await page.keyboard.press("n");
     await expect(page).toHaveURL(`/de/admin/moderation/${oldest}`);
     await expect(page.getByRole("heading", { level: 1, name: `Fall ${caseLabel(await caseNumber(oldest))} · Mitglied · Kritisch` })).toBeVisible();

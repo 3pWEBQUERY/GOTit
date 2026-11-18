@@ -14,6 +14,8 @@ export interface ProfileCardImage {
   alt: string;
   /** Dominante Farbe des Bilds als CSS-Farbwert; füllt die Fläche, solange das Bild lädt. */
   placeholderColor?: string;
+  /** Bild über dem Falz (erste Karten): sofort und mit hoher Priorität laden, sonst verzögert (LCP, Messung 1.14). */
+  priority?: boolean;
 }
 
 export interface ProfileCardSignal {
@@ -73,7 +75,14 @@ function Photo({ image, initials, className }: { image: ProfileCardImage | undef
   return (
     <div className={cn("flex aspect-4/5 items-center justify-center overflow-hidden rounded-card bg-surface-2", className)} style={style}>
       {image ? (
-        <img src={image.src} alt={image.alt} loading="lazy" decoding="async" className="size-full object-cover" />
+        <img
+          src={image.src}
+          alt={image.alt}
+          loading={image.priority ? "eager" : "lazy"}
+          fetchPriority={image.priority ? "high" : "auto"}
+          decoding="async"
+          className="size-full object-cover"
+        />
       ) : (
         <span aria-hidden className="text-h2 text-ink-muted select-none">
           {initials}
