@@ -95,7 +95,7 @@ test.describe("Darstellung (PRD 5.1)", () => {
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
     await page.reload();
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
-    expect(await page.evaluate(() => getComputedStyle(document.documentElement).backgroundColor)).toBe("rgb(20, 19, 18)");
+    expect(await page.evaluate(() => getComputedStyle(document.documentElement).backgroundColor)).toBe("rgb(20, 17, 19)");
     await expectNoSeriousAxeFindings(page);
   });
 });

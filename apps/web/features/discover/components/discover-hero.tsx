@@ -47,8 +47,8 @@ export function DiscoverHero({ eyebrow, title, lead, regionMenu, search, quickLi
   ];
   const [first, second, third] = covers;
   return (
-    <section
-      aria-labelledby="discover-title"
+    // Ein Block, keine benannte Region: Die Reihen darunter sind die Regionen der Seite.
+    <div
       className="-mx-4 -mt-4 grid gap-8 overflow-hidden bg-surface px-4 pt-8 pb-8 text-ink scheme-dark md:mx-0 md:mt-0 md:rounded-sheet md:p-12 lg:grid-cols-12 lg:gap-12"
     >
       <div className="flex min-w-0 flex-col gap-6 lg:col-span-7">
@@ -81,7 +81,7 @@ export function DiscoverHero({ eyebrow, title, lead, regionMenu, search, quickLi
           {third ? <Cover cover={third} className="col-span-2" /> : null}
         </div>
       ) : null}
-    </section>
+    </div>
   );
 }
 
