@@ -86,6 +86,11 @@ Seit dem 17.11.2026 sind alle fünf Domains bestätigt, die Zertifikate gültig 
 
     Beides ist in `production` gesperrt.
   - **Geheimnisse:** `BETTER_AUTH_SECRET` und `AGE_GATE_SECRET` haben in Staging eigene Werte (17.11.2026); eine Sitzung aus Staging gilt nie in der Produktion.
+  - **Cron-Dienste:**
+    - Bis zum 18.11.2026 gab es in Staging nur `cron-purge-expired` und `cron-rebuild-search-index`; die Übergaben 1.9 und 1.12 nannten Staging zu Unrecht.
+    - Seit dem 18.11.2026 laufen dort zusätzlich `cron-booking-maintenance-0uq2`, `cron-aggregate-stats-CsX7` und `cron-lift-expired-restrictions-zyoF`.
+    - Das sind eigene Dienste nur in Staging: Railway legt eine bestehende Produktionsinstanz nicht nachträglich in einer zweiten Umgebung an und hängt an den Namen eine Endung an.
+    - Befehl, Zeitplan und Variablen sind dieselben wie in der Produktion, die Referenzen zeigen auf Postgres, Redis und `web` von Staging.
 - **PR-Umgebungen:** in den Projekteinstellungen einschalten, sobald Pull Requests genutzt werden.
 - Tägliche Backups von Postgres mit getestetem Restore und verschlüsseltem Dump in einen dritten Bucket (PRD 14.2): kommt mit dem `cron`-Dienst in Schritt 1.14.
 - Bucket-Zugangsdaten für `web` und `worker`: kommen mit der Medien-Pipeline in Schritt 1.6.
