@@ -11,7 +11,7 @@ export type EditLinks = Partial<Record<ProfileSection, string>>;
 
 function Section({ id, level, title, editHref, editLabel, children }: { id: string; level: HeadingLevel; title: string; editHref?: string; editLabel: string; children: ReactNode }) {
   return (
-    <section aria-labelledby={id} className="flex flex-col gap-3">
+    <section aria-labelledby={id} className="flex flex-col gap-3 rounded-card border border-border bg-surface p-5 md:p-6">
       <div className="flex flex-wrap items-baseline justify-between gap-x-4">
         <Heading level={level} id={id} className={level <= 2 ? "text-h2" : "text-h3"}>
           {title}
@@ -36,7 +36,7 @@ export function ProfileSections({ model, level, idPrefix, editLinks }: { model: 
   const updated = model.ratesUpdatedAt ? format.dateTime(new Date(model.ratesUpdatedAt), { day: "2-digit", month: "2-digit", year: "numeric" }) : null;
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-4">
       <Section id={`${idPrefix}-ueber`} level={level} title={t("about")} editHref={editLinks?.description} editLabel={t("editAbout")}>
         <p className="max-w-prose text-body whitespace-pre-line text-ink">{model.description || t("noDescription")}</p>
       </Section>

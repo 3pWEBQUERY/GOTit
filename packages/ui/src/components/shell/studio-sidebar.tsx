@@ -41,7 +41,7 @@ export function StudioSidebar({ label, items, status, secondaryItems, collapsed,
         data-studio-sidebar
         data-collapsed={collapsed || undefined}
         className={cn(
-          "sticky top-16 hidden h-[calc(100dvh-4rem)] w-16 shrink-0 animate-sidebar-in flex-col overflow-y-auto border-r border-border bg-bg transition-[width] duration-layer md:flex xl:w-58",
+          "sticky top-16 hidden h-[calc(100dvh-4rem)] w-16 shrink-0 animate-sidebar-in flex-col overflow-y-auto border-r border-border bg-surface text-ink scheme-dark transition-[width] duration-layer md:flex xl:w-58",
           !collapsed && "lg:w-58",
         )}
       >
@@ -86,7 +86,8 @@ function SidebarLink({ item, collapsed }: { item: SidebarItem; collapsed: boolea
             aria-current={item.current ? "page" : undefined}
             className={cn(
               "flex min-h-11 items-center gap-3 rounded-control px-3 text-small font-[550] transition-colors duration-state [&_svg]:size-5 [&_svg]:shrink-0",
-              item.current ? "bg-surface-2 text-accent" : "text-ink hover:bg-surface-2",
+              // Aktiver Punkt hell aufgelöst: Aubergine mit weisser Schrift auf der dunklen Leiste (Entscheid 0025).
+              item.current ? "bg-accent text-on-accent scheme-light" : "text-ink-muted hover:bg-surface-2 hover:text-ink",
             )}
           >
             <span aria-hidden className="contents">
@@ -104,7 +105,7 @@ function SidebarLink({ item, collapsed }: { item: SidebarItem; collapsed: boolea
               )}
             </span>
             {item.badge ? (
-              <span aria-hidden={item.badgeLabel ? true : undefined} className={cn("tabular rounded-full bg-ink px-2 text-[0.8125rem]/5 text-bg", labelClass, "flex-none")}>
+              <span aria-hidden={item.badgeLabel ? true : undefined} className={cn("tabular min-w-6 rounded-full bg-ink px-2 text-center text-[0.8125rem]/5 text-bg", labelClass, "flex-none")}>
                 {item.badgeLabel && item.badge > 99 ? "99+" : item.badge}
               </span>
             ) : null}

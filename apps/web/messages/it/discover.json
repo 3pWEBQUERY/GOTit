@@ -39,7 +39,21 @@
     "inRegion": "A {region}",
     "new": "Nuovi arrivi",
     "allIn": "Tutti i profili a {region}",
-    "allNew": "Tutti i nuovi profili"
+    "allNew": "Tutti i nuovi profili",
+    "seeAll": "Vedi tutti"
   },
-  "regions": "Regioni"
+  "regions": "Regioni",
+  "hero": {
+    "eyebrow": "Discreto · Verificato · Personale",
+    "lead": "Profili con identità verificata, messaggi diretti e richieste di appuntamento – con discrezione e in un unico posto.",
+    "features": "Cosa offre la piattaforma",
+    "identity": "Identità verificata",
+    "booking": "Richieste di appuntamento",
+    "messenger": "Messaggi discreti",
+    "reviews": "Recensioni solo dopo un appuntamento"
+  },
+  "categories": {
+    "title": "Scopri le categorie",
+    "all": "Tutte le categorie"
+  }
 }

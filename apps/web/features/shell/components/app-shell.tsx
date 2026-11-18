@@ -19,7 +19,7 @@ import { NavigationSheet } from "./navigation-sheet";
 import { ProfileStatusForViewer } from "./profile-status-for-viewer";
 import { ModeSwitchForViewer, ShellHeader, studioRootHref, type ShellNavigation } from "./shell-header";
 
-const APP_NAME = process.env.APP_NAME ?? "GOTit";
+const APP_NAME = process.env.APP_NAME ?? "TheGND";
 
 /**
  * Die eine Shell für Marktplatz, Community, Mitgliederbereich und Studio

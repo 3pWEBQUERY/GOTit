@@ -1,3 +1,4 @@
+import { MapPin } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { languageName } from "../../../onboarding/format";
 import type { ProfileViewModel } from "../../model";
@@ -21,9 +22,12 @@ export function ProfileHeader({ model, level, editHref }: { model: ProfileViewMo
           <EditLink href={editHref}>{t("edit")}</EditLink>
         ) : null}
       </div>
-      <p className="text-body text-ink-muted">
-        {where || t("noRegion")}
-        {languages ? ` · ${t("speaks", { languages })}` : null}
+      <p className="flex items-start gap-1 text-body text-ink-muted">
+        <MapPin aria-hidden strokeWidth={1.5} className="mt-1 size-4 shrink-0" />
+        <span className="min-w-0">
+          {where || t("noRegion")}
+          {languages ? ` · ${t("speaks", { languages })}` : null}
+        </span>
       </p>
       {model.shortDescription ? <p className="max-w-prose text-body text-ink">{model.shortDescription}</p> : null}
     </header>

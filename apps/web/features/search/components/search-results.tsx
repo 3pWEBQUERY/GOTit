@@ -46,12 +46,12 @@ export async function SearchResults({
         data-search-results={list ? "list" : "grid"}
         className={
           list
-            ? "flex flex-col divide-y divide-border"
-            : "grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 xl:grid-cols-4"
+            ? "flex flex-col gap-3"
+            : "grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 xl:grid-cols-4"
         }
       >
         {hits.map((hit) => (
-          <li key={hit.slug} className={list ? "py-4 first:pt-0" : undefined}>
+          <li key={hit.slug}>
             <SearchHitCard
               hit={hit}
               href={href({ pathname: "/p/[name]", params: { name: hit.slug } })}

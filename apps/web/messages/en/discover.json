@@ -39,7 +39,21 @@
     "inRegion": "In {region}",
     "new": "New here",
     "allIn": "All profiles in {region}",
-    "allNew": "All new profiles"
+    "allNew": "All new profiles",
+    "seeAll": "See all"
   },
-  "regions": "Regions"
+  "regions": "Regions",
+  "hero": {
+    "eyebrow": "Discreet · Verified · Personal",
+    "lead": "Identity-verified profiles, direct messages and booking requests – discreet and in one place.",
+    "features": "What the platform offers",
+    "identity": "Verified identity",
+    "booking": "Booking requests",
+    "messenger": "Discreet messenger",
+    "reviews": "Reviews only after a booking"
+  },
+  "categories": {
+    "title": "Explore categories",
+    "all": "All categories"
+  }
 }

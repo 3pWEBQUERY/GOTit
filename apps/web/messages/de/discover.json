@@ -39,7 +39,21 @@
     "inRegion": "In {region}",
     "new": "Neu dabei",
     "allIn": "Alle Profile in {region}",
-    "allNew": "Alle neuen Profile"
+    "allNew": "Alle neuen Profile",
+    "seeAll": "Alle ansehen"
   },
-  "regions": "Regionen"
+  "regions": "Regionen",
+  "hero": {
+    "eyebrow": "Diskret · Geprüft · Persönlich",
+    "lead": "Identitätsgeprüfte Profile, direkte Nachrichten und Terminanfragen – diskret und an einem Ort.",
+    "features": "Was die Plattform bietet",
+    "identity": "Geprüfte Identität",
+    "booking": "Terminanfragen",
+    "messenger": "Diskreter Messenger",
+    "reviews": "Bewertungen nur nach Termin"
+  },
+  "categories": {
+    "title": "Kategorien entdecken",
+    "all": "Alle Kategorien"
+  }
 }

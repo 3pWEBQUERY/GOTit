@@ -54,9 +54,16 @@ describe("ProfileCard", () => {
     expect(screen.getByText("Anzeige")).toBeTruthy();
   });
 
-  it("zeigt höchstens zwei Signale und Verfügbarkeit nur, wenn sie übergeben ist", () => {
+  it("zeigt im Raster ein Signal auf dem Foto, in der Liste höchstens zwei", () => {
     const { rerender } = render(<ProfileCard href="/p/a" name="Beispielname" signals={signals} />);
+    expect(within(screen.getByRole("list")).getAllByRole("listitem")).toHaveLength(1);
+    rerender(<ProfileCard variant="list" href="/p/a" name="Beispielname" signals={signals} />);
     expect(within(screen.getByRole("list")).getAllByRole("listitem")).toHaveLength(2);
+    expect(screen.queryByText("Telefon geprüft")).toBeNull();
+  });
+
+  it("zeigt Verfügbarkeit nur, wenn sie übergeben ist", () => {
+    const { rerender } = render(<ProfileCard href="/p/a" name="Beispielname" signals={signals} />);
     expect(screen.queryByText("Telefon geprüft")).toBeNull();
     expect(screen.queryByText("Heute verfügbar")).toBeNull();
     rerender(<ProfileCard href="/p/a" name="Beispielname" signals={signals} availability="Heute verfügbar" />);

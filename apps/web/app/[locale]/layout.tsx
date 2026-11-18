@@ -2,7 +2,7 @@ import { isLocale } from "@app/core/locale";
 import type { Metadata, Viewport } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Inter } from "next/font/google";
+import { Inter, Newsreader } from "next/font/google";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { MOTION_COOKIE, NEUTRAL_TITLE_COOKIE } from "@/features/appearance/preference-cookies";
@@ -13,8 +13,10 @@ import "../globals.css";
 
 // Inter Variable mit optischer Grösse; next/font hostet die Dateien beim Build selbst (PRD 5.2).
 const inter = Inter({ subsets: ["latin", "latin-ext"], axes: ["opsz"], display: "swap", variable: "--font-inter" });
+// Serifenschrift für Wortmarke und grosse Überschriften (Entscheid 0025), ebenfalls selbst gehostet.
+const newsreader = Newsreader({ subsets: ["latin", "latin-ext"], style: ["normal", "italic"], axes: ["opsz"], display: "swap", variable: "--font-newsreader" });
 
-const APP_NAME = process.env.APP_NAME ?? "GOTit";
+const APP_NAME = process.env.APP_NAME ?? "TheGND";
 
 export const metadata: Metadata = {
   title: { default: APP_NAME, template: `%s · ${APP_NAME}` },
@@ -35,7 +37,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[lo
   const t = await getTranslations({ locale, namespace: "common" });
 
   return (
-    <html lang={locale} data-theme={theme === "system" ? undefined : theme} data-motion={reducedMotion ? "reduced" : undefined} className={inter.variable}>
+    <html lang={locale} data-theme={theme === "system" ? undefined : theme} data-motion={reducedMotion ? "reduced" : undefined} className={`${inter.variable} ${newsreader.variable}`}>
       <body>
         {neutralTitle ? <NeutralTitle title={t("neutralTitle")} /> : null}
         <NextIntlClientProvider>

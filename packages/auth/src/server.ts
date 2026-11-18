@@ -12,7 +12,7 @@ import { redisSecondaryStorage } from "./redis-storage";
 function createAuth() {
   const secret = process.env.BETTER_AUTH_SECRET;
   if (!secret || secret.length < 32) throw new Error("BETTER_AUTH_SECRET fehlt oder ist kürzer als 32 Zeichen.");
-  const appName = process.env.APP_NAME ?? "GOTit";
+  const appName = process.env.APP_NAME ?? "TheGND";
   const appUrl = new URL(process.env.APP_URL ?? "http://localhost:3000");
   // Secure-Cookies, sobald die App über HTTPS läuft; hängt nicht an NODE_ENV, das auf Railway nicht gesetzt ist (docs/railway.md).
   const secureCookies = appUrl.protocol === "https:";

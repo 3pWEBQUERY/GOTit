@@ -67,7 +67,7 @@ export async function ShellHeader({ locale, viewer, href, navigation, appName }:
     <AppHeader
       navigationLabel={t("mainNavigation")}
       logo={
-        <UiLink href={href("/")} className="inline-flex min-h-11 items-center rounded-control px-1 text-h3 text-ink">
+        <UiLink href={href("/")} className="inline-flex min-h-11 items-center rounded-control px-1 text-h2 text-ink">
           {appName}
         </UiLink>
       }
@@ -104,10 +104,11 @@ async function HeaderActions({ locale, viewer, href }: Pick<Props, "locale" | "v
   if (viewer.kind === "visitor") {
     return (
       <>
-        <Button asChild variant="quiet">
+        <Button asChild variant="secondary" className="bg-transparent">
           <UiLink href={href("/anmelden")}>{t("signIn")}</UiLink>
         </Button>
-        <Button asChild variant="primary">
+        {/* Hell aufgelöst: Aubergine mit weisser Schrift auf der dunklen Kopfzeile (Entscheid 0025). */}
+        <Button asChild variant="primary" className="ml-2 scheme-light">
           <UiLink href={href("/fuer-anbieter")}>{t("startAsProvider")}</UiLink>
         </Button>
       </>

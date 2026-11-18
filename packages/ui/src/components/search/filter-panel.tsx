@@ -23,12 +23,12 @@ export interface FilterPanelProps {
 export function FilterPanel({ title, titleAs: Heading = "h2", resetLabel, onReset, resetDisabled, children, className }: FilterPanelProps) {
   const titleId = useId();
   return (
-    <aside aria-labelledby={titleId} className={cn("flex w-70 max-w-full shrink-0 flex-col text-ink", className)}>
+    <aside aria-labelledby={titleId} className={cn("flex w-70 max-w-full shrink-0 flex-col self-start rounded-card border border-border bg-surface px-5 pt-3 pb-2 text-ink", className)}>
       <div className="flex min-h-11 flex-wrap items-center justify-between gap-2 border-b border-border pb-2">
         <Heading id={titleId} className="text-h3">
           {title}
         </Heading>
-        <Button variant="quiet" disabled={resetDisabled} onClick={onReset} className="-mr-4">
+        <Button variant="quiet" disabled={resetDisabled} onClick={onReset} className="-mr-3">
           {resetLabel}
         </Button>
       </div>

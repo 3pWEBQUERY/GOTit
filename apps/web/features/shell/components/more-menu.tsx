@@ -10,7 +10,7 @@ export function MoreMenu({ label, links }: { label: string; links: readonly Mega
       <MenuTrigger asChild>
         <button
           type="button"
-          className="inline-flex min-h-10 items-center gap-1 rounded-control px-3 text-small font-[550] text-ink transition-colors duration-state hover:bg-surface-2 aria-expanded:text-accent"
+          className="inline-flex min-h-10 items-center gap-1 rounded-control px-3 text-small font-[550] text-ink-muted transition-colors duration-state hover:text-ink aria-expanded:text-ink"
         >
           {label}
           <ChevronDown aria-hidden strokeWidth={1.5} className="size-4" />

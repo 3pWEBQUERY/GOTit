@@ -39,7 +39,21 @@
     "inRegion": "À {region}",
     "new": "Nouveaux",
     "allIn": "Tous les profils à {region}",
-    "allNew": "Tous les nouveaux profils"
+    "allNew": "Tous les nouveaux profils",
+    "seeAll": "Tout voir"
   },
-  "regions": "Régions"
+  "regions": "Régions",
+  "hero": {
+    "eyebrow": "Discret · Vérifié · Personnel",
+    "lead": "Des profils à l’identité vérifiée, des messages directs et des demandes de rendez-vous – discrètement et en un seul endroit.",
+    "features": "Ce que propose la plateforme",
+    "identity": "Identité vérifiée",
+    "booking": "Demandes de rendez-vous",
+    "messenger": "Messagerie discrète",
+    "reviews": "Avis uniquement après rendez-vous"
+  },
+  "categories": {
+    "title": "Découvrir les catégories",
+    "all": "Toutes les catégories"
+  }
 }

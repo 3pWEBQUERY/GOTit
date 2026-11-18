@@ -7,7 +7,8 @@
     "priceOnRequest": "Preise auf Anfrage",
     "coverAlt": "Titelbild von {name}",
     "favoriteAdd": "{name} als Favorit speichern",
-    "favoriteRemove": "{name} aus Favoriten entfernen"
+    "favoriteRemove": "{name} aus Favoriten entfernen",
+    "viewProfile": "Profil ansehen"
   },
   "meta": {
     "searchTitle": "Suche",

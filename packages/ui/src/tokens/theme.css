@@ -19,6 +19,7 @@
   --color-current: currentColor;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-newsreader), ui-serif, Georgia, serif;
 }
 
 @theme {
@@ -85,6 +86,12 @@
   @keyframes skeleton {
     50% { opacity: 0.55; }
   }
+}
+
+/* Lesbarkeit von Text auf Fotos (Entscheid 0025): dunkler Schleier von unten.
+   Einzige erlaubte Verwendung eines Verlaufs; nie als Schmuck auf Flächen. */
+@utility scrim-bottom {
+  background-image: linear-gradient(to top, color-mix(in oklab, black 78%, transparent) 0%, color-mix(in oklab, black 35%, transparent) 38%, transparent 62%);
 }
 
 /* Dauer der zwei Bewegungsarten (PRD 5.3). */

@@ -75,8 +75,12 @@ export function MegaMenu({ label, columns, current }: MegaMenuProps) {
         aria-controls={panelId}
         onClick={() => setOpen((value) => !value)}
         className={cn(
-          "inline-flex min-h-10 items-center gap-1 rounded-control px-3 text-small font-[550] transition-colors duration-state hover:bg-surface-2",
-          current || open ? "text-accent" : "text-ink",
+          "relative inline-flex min-h-10 items-center gap-1 rounded-control px-3 text-small font-[550] transition-colors duration-state",
+          current
+            ? "text-ink after:absolute after:inset-x-3 after:bottom-0.5 after:h-0.5 after:rounded-full after:bg-ink"
+            : open
+              ? "text-ink"
+              : "text-ink-muted hover:text-ink",
         )}
       >
         {label}

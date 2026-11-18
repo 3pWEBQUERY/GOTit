@@ -12,8 +12,10 @@ export function NavLink({ href, label }: { href: string; label: string }) {
       href={href}
       aria-current={current ? "page" : undefined}
       className={cn(
-        "inline-flex min-h-10 items-center rounded-control px-3 text-small font-[550] transition-colors duration-state hover:bg-surface-2",
-        current ? "text-accent" : "text-ink",
+        "relative inline-flex min-h-10 items-center rounded-control px-3 text-small font-[550] transition-colors duration-state",
+        current
+          ? "text-ink after:absolute after:inset-x-3 after:bottom-0.5 after:h-0.5 after:rounded-full after:bg-ink"
+          : "text-ink-muted hover:text-ink",
       )}
     >
       {label}

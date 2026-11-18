@@ -18,7 +18,7 @@ export interface FooterProps {
 export function Footer({ label, groups, controls, legalNote }: FooterProps) {
   const id = useId();
   return (
-    <footer aria-label={label} className="border-t border-border bg-surface-2">
+    <footer aria-label={label} className="border-t border-border bg-surface text-ink scheme-dark">
       <div className="mx-auto grid max-w-content gap-8 px-4 py-12 xs:grid-cols-2 md:px-6 lg:grid-cols-[repeat(4,1fr)_auto]">
         {groups.map((group, index) => (
           <div key={group.heading}>

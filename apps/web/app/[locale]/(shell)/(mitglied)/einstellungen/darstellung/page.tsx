@@ -10,7 +10,7 @@ import { AppearanceSettings } from "@/features/settings/appearance/appearance-se
 import { SettingsHeader } from "@/features/settings/components/settings-header";
 import { getPathname } from "@/i18n/navigation";
 
-const APP_NAME = process.env.APP_NAME ?? "GOTit";
+const APP_NAME = process.env.APP_NAME ?? "TheGND";
 const LOCALE_NAMES: Record<Locale, string> = { de: "Deutsch", fr: "Français", it: "Italiano", en: "English" };
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/einstellungen/darstellung">): Promise<Metadata> {

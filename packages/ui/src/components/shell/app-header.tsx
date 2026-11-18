@@ -18,17 +18,19 @@ export interface AppHeaderProps {
 
 /**
  * Kopfzeile der einen Shell: 64 px, einzeilig, deckend, ab 768 px sichtbar.
+ * Dunkle Fläche über `scheme-dark` (Entscheid 0025): Alle Bausteine darin
+ * nehmen die dunklen Werte der Tokens an.
  * Sie steht über Marktplatz, Community, Mitgliederbereich und Studio und wird
  * beim Wechsel zwischen ihnen nicht neu aufgebaut (PRD 6).
  */
 export function AppHeader({ logo, modeSwitch, navigation, navigationLabel, navigationTrigger, search, searchTrigger, actions }: AppHeaderProps) {
   return (
-    <header data-app-header className="sticky top-0 z-40 hidden h-16 border-b border-border bg-bg md:block">
-      <div className="relative mx-auto flex h-16 max-w-content items-center gap-3 px-6">
+    <header data-app-header className="sticky top-0 z-40 hidden h-16 border-b border-border bg-surface text-ink scheme-dark md:block">
+      <div className="relative mx-auto flex h-16 max-w-content items-center gap-4 px-6">
         <div className="lg:hidden">{navigationTrigger}</div>
         {logo}
         {modeSwitch}
-        <nav aria-label={navigationLabel} className="hidden items-center gap-1 lg:flex">
+        <nav aria-label={navigationLabel} className="hidden items-center gap-1 border-l border-border pl-4 lg:flex">
           {navigation}
         </nav>
         <div className="ml-auto hidden w-72 xl:block">{search}</div>

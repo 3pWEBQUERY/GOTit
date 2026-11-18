@@ -22,15 +22,15 @@ export interface StatFigureProps {
 const directionIcons = { up: TrendingUp, down: TrendingDown, flat: Minus };
 
 /**
- * Kennzahl mit Wert, Vergleich und Zeitraum (PRD 11.1). Keine Kachel: eine
- * Linie oben und Abstand trennen sie von der nächsten. Die Richtung ist nicht
- * gefärbt, weil «mehr» nicht bei jeder Zahl «besser» heisst.
+ * Kennzahl mit Wert, Vergleich und Zeitraum (PRD 11.1) als Karte (Entscheid
+ * 0025). Die Richtung ist nicht gefärbt, weil «mehr» nicht bei jeder Zahl
+ * «besser» heisst.
  */
 export function StatFigure({ label, value, comparison, period, className }: StatFigureProps) {
   const labelId = useId();
   const Icon = comparison ? directionIcons[comparison.direction] : null;
   return (
-    <div role="group" aria-labelledby={labelId} className={cn("flex min-w-0 flex-col gap-1 border-t border-border pt-3 text-ink", className)}>
+    <div role="group" aria-labelledby={labelId} className={cn("flex min-w-0 flex-col gap-1 rounded-card border border-border bg-surface p-5 text-ink", className)}>
       <p id={labelId} className="text-small text-ink-muted">
         {label}
       </p>

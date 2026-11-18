@@ -33,16 +33,18 @@ export function ProfileTrust({ model, now }: { model: ProfileViewModel; now: str
 
   if (signals.length === 0 && !updated) return <p className="text-small text-ink-muted">{t("none")}</p>;
   return (
-    <TrustSignals
-      label={t("label")}
-      signals={signals}
-      explanationLabels={{ checked: t("explanation.checked"), checkedAt: t("explanation.checkedAt"), notImplied: t("explanation.notImplied") }}
-      closeLabel={t("close")}
-      updated={
-        updated
-          ? { label: t("updated", { relative: format.relativeTime(updated, new Date(now)) }), exact: format.dateTime(updated, DATE), dateTime: updated.toISOString() }
-          : undefined
-      }
-    />
+    <div className="rounded-card border border-border bg-surface px-4 py-3">
+      <TrustSignals
+        label={t("label")}
+        signals={signals}
+        explanationLabels={{ checked: t("explanation.checked"), checkedAt: t("explanation.checkedAt"), notImplied: t("explanation.notImplied") }}
+        closeLabel={t("close")}
+        updated={
+          updated
+            ? { label: t("updated", { relative: format.relativeTime(updated, new Date(now)) }), exact: format.dateTime(updated, DATE), dateTime: updated.toISOString() }
+            : undefined
+        }
+      />
+    </div>
   );
 }

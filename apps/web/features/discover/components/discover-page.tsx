@@ -3,6 +3,7 @@ import type { Viewer } from "@app/core/identity";
 import type { Locale } from "@app/core/locale";
 import { searchPort } from "@app/core/search";
 import { EMPTY_QUERY, type SearchQuery } from "@app/core/search/query";
+import { mediaUrl } from "@app/core/media/variants";
 import { getTranslations } from "next-intl/server";
 import { DiscoverClubs } from "../../clubs/components/discover-clubs";
 import { loadFilterOptions } from "../../search/queries/filter-options";
@@ -12,6 +13,7 @@ import { createHref } from "../../shell/nav/href";
 import { getViewer } from "../../shell/queries/get-viewer";
 import { currentRegion, type DiscoverRegion } from "../queries/current-region";
 import { DiscoverEmpty } from "./discover-empty";
+import { DiscoverCategories, DiscoverHero, type HeroCover } from "./discover-hero";
 import {
   DiscoverQuickLinks,
   DiscoverRegionLinks,
@@ -70,6 +72,76 @@ async function loadRows(
   return { base, rows, hearted };
 }
 
+/** Kopf von Entdecken mit Region, Suche und Schnellfiltern (Entscheid 0025). */
+function Hero({
+  t,
+  title,
+  covers,
+  region,
+  featured,
+  allRegionsHref,
+  paths,
+  base,
+  categories,
+}: {
+  t: Translate;
+  title: string;
+  covers: HeroCover[];
+  region: DiscoverRegion;
+  featured: readonly DiscoverRegion[];
+  allRegionsHref: string;
+  paths: SearchPaths;
+  base: SearchQuery;
+  categories: readonly { slug: string; name: string }[];
+}) {
+  return (
+    <DiscoverHero
+      eyebrow={t("hero.eyebrow")}
+      title={title}
+      lead={t("hero.lead")}
+      covers={covers}
+      features={{
+        label: t("hero.features"),
+        identity: t("hero.identity"),
+        booking: t("hero.booking"),
+        messenger: t("hero.messenger"),
+        reviews: t("hero.reviews"),
+      }}
+      regionMenu={
+        <RegionMenu
+          current={region.slug}
+          regions={featured.map((entry) => ({
+            slug: entry.slug,
+            name: entry.name,
+          }))}
+          allRegionsHref={allRegionsHref}
+        />
+      }
+      search={
+        <DiscoverSearch
+          searchPath={paths.search}
+          categories={categories}
+        />
+      }
+      quickLinks={
+        <DiscoverQuickLinks
+          label={t("quick.label")}
+          links={[
+            {
+              label: t("quick.photos"),
+              href: searchUrl(paths, { ...base, photos: true }),
+            },
+            {
+              label: t("quick.newOnly"),
+              href: searchUrl(paths, { ...base, newOnly: true }),
+            },
+          ]}
+        />
+      }
+    />
+  );
+}
+
 /**
  * Entdecken (PRD v2 9.1): Suchfeld, Region und echte Profile, keine
  * Marketingfläche. Eine Reihe ohne Einträge entfällt; Reihen für Verfügbarkeit,
@@ -124,39 +196,33 @@ export async function DiscoverPage({ locale }: { locale: Locale }) {
       ? null
       : href({ pathname: "/anmelden", query: { weiter: href("/") } });
 
+  const covers = (rows[0]?.hits ?? [])
+    .flatMap((hit) => (hit.cover ? [{ src: mediaUrl(hit.cover.mediaId, 640, "webp"), color: hit.cover.color }] : []))
+    .slice(0, 3);
+
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-12">
       <TopBarTitle title={title} />
-      <div className="flex flex-col gap-4">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <h1 className="text-h1">{title}</h1>
-          <RegionMenu
-            current={region.slug}
-            regions={featured.map((entry) => ({
-              slug: entry.slug,
-              name: entry.name,
-            }))}
-            allRegionsHref={href("/ch")}
-          />
-        </div>
-        <DiscoverSearch
-          searchPath={paths.search}
-          categories={options.categories}
-        />
-        <DiscoverQuickLinks
-          label={t("quick.label")}
-          links={[
-            {
-              label: t("quick.photos"),
-              href: searchUrl(paths, { ...base, photos: true }),
-            },
-            {
-              label: t("quick.newOnly"),
-              href: searchUrl(paths, { ...base, newOnly: true }),
-            },
-          ]}
-        />
-      </div>
+      <Hero
+        t={t}
+        title={title}
+        covers={covers}
+        region={region}
+        featured={featured}
+        allRegionsHref={href("/ch")}
+        paths={paths}
+        base={base}
+        categories={options.categories}
+      />
+      <DiscoverCategories
+        title={t("categories.title")}
+        allLabel={t("categories.all")}
+        allHref={paths.search}
+        categories={options.categories.map((category) => ({
+          ...category,
+          href: href({ pathname: "/kategorie/[slug]", params: { slug: category.slug } }),
+        }))}
+      />
       {rows.length === 0 ? (
         <DiscoverEmpty
           title={t("empty.title", { region: region.name })}

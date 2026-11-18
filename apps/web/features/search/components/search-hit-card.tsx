@@ -89,6 +89,7 @@ export function SearchHitCard({
       }}
       languages={variant === "list" ? languages : undefined}
       priceFrom={variant === "list" ? price : undefined}
+      actionLabel={variant === "list" ? t("viewProfile") : undefined}
     />
   );
 }

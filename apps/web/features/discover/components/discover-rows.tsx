@@ -1,5 +1,6 @@
 import type { SearchHit } from "@app/core/search";
 import { UiLink } from "@app/ui";
+import { ArrowRight } from "lucide-react";
 import { SearchHitCard } from "../../search/components/search-hit-card";
 
 export const linkClass =
@@ -31,12 +32,16 @@ export function DiscoverRowSection({
           {row.title}
         </h2>
         {row.more ? (
-          <UiLink href={row.more.href} className={linkClass}>
+          <UiLink
+            href={row.more.href}
+            className="inline-flex min-h-11 items-center gap-1 text-small font-[550] text-accent hover:underline"
+          >
             {row.more.label}
+            <ArrowRight aria-hidden strokeWidth={1.5} className="size-4" />
           </UiLink>
         ) : null}
       </div>
-      <ul className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-5">
+      <ul className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5">
         {row.hits.map((hit) => (
           <li key={hit.slug}>
             <SearchHitCard

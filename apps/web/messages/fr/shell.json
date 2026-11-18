@@ -38,5 +38,6 @@
     "title": "Chercher une page",
     "input": "Saisir une page ou un espace",
     "empty": "Aucune page trouvée. Vérifie l’orthographe ou cherche dans la place de marché."
-  }
+  },
+  "authTitle": "Des rencontres en confiance."
 }

@@ -8,7 +8,7 @@ import { countMediaInReview } from "../media/queries";
 import { AdminNav, type AdminNavItem } from "./admin-nav";
 import { SignOutButton } from "./sign-out-button";
 
-const APP_NAME = process.env.APP_NAME ?? "GOTit";
+const APP_NAME = process.env.APP_NAME ?? "TheGND";
 
 export interface AdminShellProps {
   locale: Locale;
