@@ -40,6 +40,8 @@ try {
     if (password) {
       out("Demo-Logins (Passwort aus DEMO_PASSWORD):");
       for (const login of summary.logins) out(`  ${login.email}  ${login.role}`);
+    } else if (process.env.APP_ENV?.trim() === "production") {
+      out("Produktion: Demo-Konten haben nie ein Passwort und lassen sich nicht anmelden.");
     } else {
       out("Ohne DEMO_PASSWORD: Demo-Konten haben kein Passwort und lassen sich nicht anmelden.");
       out(`Logins mit DEMO_PASSWORD: ${summary.logins.map((login) => login.email).join(", ")}`);
