@@ -172,8 +172,8 @@
     "servicesText": "Sceglierai le prestazioni appena le categorie saranno gestite. Fino ad allora la tua offerta è composta dai prezzi."
   },
   "availability": {
-    "text": "Presto gestirai orari di lavoro e assenze nel calendario dello Studio. Puoi saltare questo passo ora.",
-    "neutral": "Senza disponibilità gestita il tuo profilo non mostra una sezione al riguardo."
+    "intro": "Indica in quali giorni e a che ora accetti appuntamenti. I visitatori vedono solo gli orari liberi, mai il tuo calendario.",
+    "later": "Margine, preavviso, assenze e blocchi li gestisci più tardi nel calendario dello Studio. Senza orari di lavoro il tuo profilo non accetta richieste di appuntamento; i messaggi restano possibili."
   },
   "preview": {
     "intro": "Così i visitatori vedrebbero il tuo profilo.",

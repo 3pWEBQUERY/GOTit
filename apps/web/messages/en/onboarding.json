@@ -172,8 +172,8 @@
     "servicesText": "You choose services as soon as the categories are maintained. Until then your offer consists of rates."
   },
   "availability": {
-    "text": "You will soon maintain working hours and absences in the Studio calendar. You can skip this step now.",
-    "neutral": "Without maintained availability your profile shows no section about it."
+    "intro": "Enter the days and times when you accept appointments. Visitors only see free times, never your calendar.",
+    "later": "You maintain buffer, notice, absences and blockers later in the Studio calendar. Without working hours your profile accepts no appointment requests; messages still work."
   },
   "preview": {
     "intro": "This is how visitors would see your profile.",

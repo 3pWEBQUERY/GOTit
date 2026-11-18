@@ -22,7 +22,7 @@ export default async function SignInPage({ params, searchParams }: PageProps<"/[
     target,
     twoFactor: getPathname({ href: { pathname: "/anmelden/2fa", query }, locale }),
     forgotPassword: getPathname({ href: "/passwort/vergessen", locale }),
-    register: getPathname({ href: "/registrieren", locale }),
+    register: getPathname({ href: { pathname: "/registrieren", query }, locale }),
     contact: getPathname({ href: "/kontakt", locale }),
     verifyCallback: getPathname({ href: { pathname: "/registrieren/bestaetigen", query: { status: "bestaetigt" } }, locale }),
   };

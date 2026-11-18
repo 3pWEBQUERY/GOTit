@@ -9,8 +9,27 @@ import { priorityForReason } from "./rules";
  * Gefahr) werden sofort an Trust & Safety eskaliert, und der gemeldete
  * Inhalt wird gesperrt, bis jemand entscheidet. Meldungen ohne Konto sperren
  * nicht automatisch (Entscheid 0020): sonst liesse sich jedes Profil anonym
- * aus der Öffentlichkeit nehmen.
+ * aus der Öffentlichkeit nehmen. Aus demselben Grund sperrt auch ein Konto
+ * nur automatisch, wenn es seine Adresse bestätigt hat, mindestens 7 Tage alt
+ * ist und in den letzten 24 Stunden nicht schon 3 Sofortsperren ausgelöst hat
+ * (Sicherheitsprüfung 1.14). Eskaliert wird in jedem Fall.
  */
+
+/** Mindestalter des meldenden Kontos für eine Sofortsperre (Vorschlag aus Entscheid 0020). */
+export const AUTO_BLOCK_MIN_ACCOUNT_AGE_DAYS = 7;
+/** Höchstzahl Sofortsperren pro meldendem Konto in 24 Stunden. */
+export const AUTO_BLOCK_MAX_PER_DAY = 3;
+
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+/** Darf eine Meldung dieses Kontos den Inhalt sofort sperren? */
+async function mayAutoBlock(tx: Prisma.TransactionClient, reporterId: string, now: Date): Promise<boolean> {
+  const reporter = await tx.user.findUnique({ where: { id: reporterId }, select: { emailVerified: true, createdAt: true } });
+  if (!reporter?.emailVerified) return false;
+  if (now.getTime() - reporter.createdAt.getTime() < AUTO_BLOCK_MIN_ACCOUNT_AGE_DAYS * DAY_MS) return false;
+  const recent = await tx.report.count({ where: { reporterId, contentBlockedAt: { gte: new Date(now.getTime() - DAY_MS) } } });
+  return recent < AUTO_BLOCK_MAX_PER_DAY;
+}
 export interface FileReportInput {
   reporterId: string | null;
   targetType: ReportTarget;
@@ -26,7 +45,7 @@ export async function fileReport(input: FileReportInput, now = new Date()): Prom
   const priority = priorityForReason(input.reason);
   const critical = priority === "CRITICAL";
   const outcome = await getDb().$transaction(async (tx) => {
-    const block = critical && input.reporterId ? await blockContent(tx, input.targetType, input.targetId, null, now) : null;
+    const block = critical && input.reporterId && (await mayAutoBlock(tx, input.reporterId, now)) ? await blockContent(tx, input.targetType, input.targetId, null, now) : null;
     const report = await tx.report.create({
       data: {
         reporterId: input.reporterId,

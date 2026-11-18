@@ -172,8 +172,8 @@
     "servicesText": "Leistungen wählst du, sobald die Kategorien gepflegt sind. Bis dahin besteht dein Angebot aus Preisen."
   },
   "availability": {
-    "text": "Arbeitszeiten und Abwesenheiten pflegst du bald im Kalender des Studios. Du kannst diesen Schritt jetzt überspringen.",
-    "neutral": "Ohne gepflegte Verfügbarkeit zeigt dein Profil keinen Abschnitt dazu."
+    "intro": "Trag ein, an welchen Tagen und zu welchen Zeiten du Termine annimmst. Besucher sehen nur freie Zeiten, nie deinen Kalender.",
+    "later": "Puffer, Vorlauf, Abwesenheiten und Blocker pflegst du später im Kalender des Studios. Ohne Arbeitszeiten nimmt dein Profil keine Terminanfragen an; Nachrichten gehen trotzdem."
   },
   "preview": {
     "intro": "So würden Besucher dein Profil sehen.",

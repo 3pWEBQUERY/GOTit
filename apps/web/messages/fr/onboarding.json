@@ -172,8 +172,8 @@
     "servicesText": "Tu choisiras les prestations dès que les catégories seront gérées. D’ici là, ton offre se compose de tarifs."
   },
   "availability": {
-    "text": "Tu pourras bientôt gérer tes horaires et tes absences dans le calendrier du Studio. Tu peux passer cette étape maintenant.",
-    "neutral": "Sans disponibilité gérée, ton profil n’affiche pas de section à ce sujet."
+    "intro": "Indique les jours et les heures où tu acceptes des rendez-vous. Les visiteurs ne voient que les créneaux libres, jamais ton calendrier.",
+    "later": "Tu gères plus tard la marge, le délai, les absences et les blocages dans le calendrier du Studio. Sans horaires, ton profil n’accepte pas de demandes de rendez-vous ; les messages restent possibles."
   },
   "preview": {
     "intro": "Voici comment les visiteurs verraient ton profil.",

@@ -19,16 +19,19 @@ Projekt **GOTit** im Workspace «3pwebquery's Projects», Umgebung `production`,
 | `cron-booking-maintenance` | GitHub `3pWEBQUERY/GOTit` | `pnpm turbo run build --filter=@app/cron` | `pnpm --filter @app/cron start booking-maintenance`, stündlich zur Minute 7 | – | Nein |
 | `cron-lift-expired-restrictions` | GitHub `3pWEBQUERY/GOTit` | `pnpm turbo run build --filter=@app/cron` | `pnpm --filter @app/cron start lift-expired-restrictions`, stündlich zur Minute 17 | – | Nein |
 | `cron-aggregate-stats` | GitHub `3pWEBQUERY/GOTit` | `pnpm turbo run build --filter=@app/cron` | `pnpm --filter @app/cron start aggregate-stats`, täglich 01:23 UTC | – | Nein |
+| `cron-backup-database` | GitHub `3pWEBQUERY/GOTit` | Dockerfile `apps/cron/backup.Dockerfile` (`RAILWAY_DOCKERFILE_PATH`), wegen `pg_dump` 18 und `age` | `node apps/cron/dist/index.js backup-database` (CMD des Images), täglich 02:13 UTC | – | Nein |
 | `Postgres` | Vorlage (Postgres 18) | – | – | – | Nein |
 | `Redis` | Vorlage (Redis 8) | – | – | – | Nein |
 | Bucket `originals` | – | – | – | – | privat |
 | Bucket `derivatives` | – | – | – | – | privat |
+| Bucket `backups` | – | – | – | – | privat; nur `cron-backup-database` hat Zugangsdaten |
 
 - Root Directory aller Dienste ist `/` (geteiltes Monorepo). Builder ist Railpack; es liest Node-Version (`.nvmrc`) und pnpm-Version (`packageManager`).
-- **Pre-Deploy von `web`:** `pnpm release` führt die Migrationen aus und lädt die Referenzdaten (Regionen, Flags). Fiktive Testkonten werden dort nie geladen.
+- **Pre-Deploy von `web`:** `pnpm release` führt die Migrationen aus und lädt die Referenzdaten (Regionen, Flags). Fiktive Testkonten werden dort nie geladen. Nur mit `SEED_DEMO=1` lädt er danach die Demo-Daten (Entscheid 0023); in der Produktion braucht es zusätzlich `DEMO_ALLOW_PRODUCTION=1`.
 - **Watch-Pfade:** Jeder Dienst baut nur bei Änderungen an seinem Ordner und den Paketen, die er nutzt.
 - **Neustart:** bei Fehler, höchstens 5 Versuche.
-- **`cron`:** Ein Dienst pro Aufgabe aus `apps/cron/src/tasks.ts`, mit Zeitplan und Start `pnpm --filter @app/cron start <aufgabe>`; er erledigt die Aufgabe und beendet sich (Neustart: nie). Bisher: `purge-expired` setzt die Aufbewahrungsfristen durch und löscht Konten nach Ablauf der 30-Tage-Frist; `rebuild-search-index` baut den Suchindex neu auf (Entscheid 0013).
+- **`cron`:** Ein Dienst pro Aufgabe aus `apps/cron/src/tasks.ts`, mit Zeitplan und Start `pnpm --filter @app/cron start <aufgabe>`; er erledigt die Aufgabe und beendet sich (Neustart: nie). Bisher: `purge-expired` setzt die Aufbewahrungsfristen durch und löscht Konten nach Ablauf der 30-Tage-Frist; `rebuild-search-index` baut den Suchindex neu auf (Entscheid 0013); `backup-database` sichert die Datenbank verschlüsselt in den Bucket `backups` (Entscheid 0024).
+- **`cron-backup-database`:** als einziger Dienst mit Dockerfile statt Railpack, weil Debian kein `postgresql-client-18` hat (Entscheid 0024). Watch-Pfade wie die übrigen Cron-Dienste plus `apps/cron/backup.Dockerfile`.
 
 ## Variablen
 
@@ -44,6 +47,11 @@ Geteilt (Umgebung `production`): `BETTER_AUTH_SECRET`, `AGE_GATE_SECRET`, `APP_N
 | `APP_ENV` | web, worker, cron-purge-expired | `${{shared.APP_ENV}}`; verbietet den E-Mail-Ausgang und fiktive Testkonten |
 | `REALTIME_URL` | web | `wss://realtime.thegnd.net` (staging `wss://realtime-staging.thegnd.net`) |
 | `STORAGE_DRIVER=s3`, `S3_*` | web, worker, cron-purge-expired | Referenzen auf die Buckets (`${{originals.BUCKET}}`, `${{originals.ACCESS_KEY_ID}}`, …); der Cron-Dienst löscht Chat-Bilder abgelaufener Konten (Entscheid 0014) |
+| `DATABASE_URL`, `APP_ENV` | cron-backup-database | `${{Postgres.DATABASE_URL}}`, `${{shared.APP_ENV}}` |
+| `STORAGE_DRIVER=s3`, `S3_ENDPOINT`, `S3_REGION` | cron-backup-database | wie bei den anderen Buckets |
+| `S3_BACKUPS_BUCKET`, `S3_BACKUPS_ACCESS_KEY_ID`, `S3_BACKUPS_SECRET_ACCESS_KEY` | nur cron-backup-database | Referenzen auf den Bucket `backups` (`${{backups.BUCKET}}`, …) |
+| `BACKUP_AGE_RECIPIENTS` | cron-backup-database | öffentliche age-Schlüssel `age1…`, kommagetrennt (Haupt- und Notfallschlüssel); ohne sie bricht die Sicherung ab. Der private Schlüssel ist nie auf Railway (Entscheid 0024) |
+| `RAILWAY_DOCKERFILE_PATH` | cron-backup-database | `apps/cron/backup.Dockerfile` |
 
 `NODE_ENV` wird bewusst nicht gesetzt: Mit `production` liesse `pnpm install` beim Build die Entwicklungsabhängigkeiten weg (Next.js-Build, Prisma-CLI, Turbo). `next start` setzt den Produktionsmodus selbst. Eine geteilte `NODE_ENV` liegt noch in der Umgebung, wird aber von keinem Dienst referenziert und wirkt daher nicht; sie lässt sich im Dashboard unter «Shared Variables» löschen.
 
@@ -91,6 +99,15 @@ Seit dem 17.11.2026 sind alle fünf Domains bestätigt, die Zertifikate gültig 
     - Seit dem 18.11.2026 laufen dort zusätzlich `cron-booking-maintenance-0uq2`, `cron-aggregate-stats-CsX7` und `cron-lift-expired-restrictions-zyoF`.
     - Das sind eigene Dienste nur in Staging: Railway legt eine bestehende Produktionsinstanz nicht nachträglich in einer zweiten Umgebung an und hängt an den Namen eine Endung an.
     - Befehl, Zeitplan und Variablen sind dieselben wie in der Produktion, die Referenzen zeigen auf Postgres, Redis und `web` von Staging.
+  - **Demo-Daten** (Entscheid 0023), eingeschaltet am 18.11.2026 in `staging` und `production`:
+    - Einschalten: `SEED_DEMO=1` am Dienst `web` in `staging`, optional `DEMO_PASSWORD` (mindestens 12 Zeichen) für die Logins `demo-mitglied@demo.invalid`, `demo-anbieter@demo.invalid` und `demo-club@demo.invalid`. Danach `web` neu bereitstellen; `pnpm release` lädt die Daten nach den Referenzdaten.
+    - Bilder: `DEMO_MEDIA_BUDGET_SECONDS=1200` und eine Pre-Deploy-Frist von 1800 Sekunden am Dienst `web`, damit der erste Lauf alle etwa 98 Bilder erzeugt (rund 10 Minuten); spätere Läufe dauern etwa 20 Sekunden. Scheitert das Laden, scheitert die Bereitstellung (gewollt).
+    - Ausschalten: `SEED_DEMO` entfernen. Entfernen der Daten: `pnpm --filter @app/demo seed --reset-only` mit der Umgebung von Staging.
+    - In `production` zusätzlich `DEMO_ALLOW_PRODUCTION=1`; dort gibt es nie Logins. **Vor dem öffentlichen Start** beide Variablen entfernen und die Daten mit `--reset-only` löschen.
 - **PR-Umgebungen:** in den Projekteinstellungen einschalten, sobald Pull Requests genutzt werden.
-- Tägliche Backups von Postgres mit getestetem Restore und verschlüsseltem Dump in einen dritten Bucket (PRD 14.2): kommt mit dem `cron`-Dienst in Schritt 1.14.
+- **Backups von Postgres** (PRD 14.2, Entscheid 0024), Code fertig, auf Railway noch einzurichten:
+  - Erste Schicht: am Dienst `Postgres` unter «Backups» den Zeitplan täglich, wöchentlich und monatlich einschalten (Railway hält sie 6, 27 und 89 Tage; mit dem Volume gehen auch sie verloren).
+  - Zweite Schicht: Bucket `backups` anlegen (`ams`), Dienst `cron-backup-database` mit den Variablen oben, in `production` und `staging` (in Staging mit eigenem Bucket).
+  - Schlüsselpaar offline erzeugen, nur die öffentlichen Schlüssel in `BACKUP_AGE_RECIPIENTS`.
+  - Erster Lauf von Hand («Run now»), danach die Restore-Probe auf Staging nach Entscheid 0024.
 - Bucket-Zugangsdaten für `web` und `worker`: kommen mit der Medien-Pipeline in Schritt 1.6.

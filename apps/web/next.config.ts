@@ -9,6 +9,8 @@ const securityHeaders = [
   { key: "X-Frame-Options", value: "DENY" },
   { key: "Permissions-Policy", value: "geolocation=(self), camera=(), microphone=(), payment=()" },
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" },
+  // Fremde Fenster erhalten keinen Verweis auf die Plattform (window.opener), Sicherheitsprüfung 1.14.
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
 ];
 
 const config: NextConfig = {

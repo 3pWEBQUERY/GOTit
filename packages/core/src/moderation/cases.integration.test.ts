@@ -39,7 +39,10 @@ function account(id: string): Extract<Viewer, { kind: "account" }> {
   return { kind: "account", userId: id, name: "Fiktiv", ageConfirmed: true, provider: null, organizations: [] };
 }
 
-async function user(label: string, roles: InternalRole[] = [], twoFactor = true) {
+// Konten der Tests sind «etabliert»: älter als die 7 Tage, ab denen eine kritische Meldung sofort sperrt.
+const ESTABLISHED = new Date(Date.now() - 30 * 86_400_000);
+
+async function user(label: string, roles: InternalRole[] = [], twoFactor = true, extra: { createdAt?: Date; emailVerified?: boolean } = {}) {
   const id = `it_case_${label}_${run}`;
   users.push(id);
   await db.user.create({
@@ -47,7 +50,8 @@ async function user(label: string, roles: InternalRole[] = [], twoFactor = true)
       id,
       name: `Fiktiv ${label}`,
       email: `${id}@fiktiv.test`,
-      emailVerified: true,
+      emailVerified: extra.emailVerified ?? true,
+      createdAt: extra.createdAt ?? ESTABLISHED,
       ageConfirmedAt: new Date(),
       twoFactorEnabled: twoFactor,
       username: `f_${label}_${run}`.slice(0, 30),
@@ -150,6 +154,33 @@ describe("Eingang und Sofortsperre (v2 12.4)", () => {
     expect((await db.providerProfile.findUniqueOrThrow({ where: { id: anbieter.profileId } })).status).toBe("PUBLISHED");
     await db.report.update({ where: { id: report.id }, data: { targetUrl: `/de/p/${anbieter.slug}#${run}` } });
     expect(await moderation.fileAnonymousReport({ url: "https://example.org/x", reason: "spam" }, ["thegnd.net"])).toEqual({ ok: false, reason: "foreign-url" });
+  });
+});
+
+describe("Sofortsperre nur durch vertrauenswürdige Konten (Sicherheitsprüfung 1.14)", () => {
+  it("neues oder unbestätigtes Konto: eskaliert, sperrt aber nichts; höchstens 3 Sofortsperren pro Tag", async () => {
+    const fresh = await user("neu", [], true, { createdAt: new Date() });
+    const unverified = await user("unbest", [], true, { emailVerified: false });
+    const serial = await user("serie");
+    const [first, ...others] = await Promise.all(["z1", "z2", "z3", "z4", "z5"].map((label) => provider(label)));
+    if (!first || others.length !== 4) throw new Error("Profile fehlen");
+    const status = async (profileId: string) => (await db.providerProfile.findUniqueOrThrow({ where: { id: profileId } })).status;
+
+    for (const reporterId of [fresh, unverified]) {
+      const filed = await moderation.fileReport({ reporterId, targetType: "PROFILE", targetId: first.profileId, reason: "minor", details: null });
+      expect(filed.blocked).toBe(false);
+      const report = await db.report.findUniqueOrThrow({ where: { id: filed.reportId } });
+      expect(report).toMatchObject({ priority: "CRITICAL", contentBlockedAt: null });
+      expect(report.escalatedAt).not.toBeNull();
+    }
+    expect(await status(first.profileId)).toBe("PUBLISHED");
+
+    const outcomes = [];
+    for (const target of others) {
+      outcomes.push((await moderation.fileReport({ reporterId: serial, targetType: "PROFILE", targetId: target.profileId, reason: "exploitation", details: null })).blocked);
+    }
+    expect(outcomes).toEqual([true, true, true, false]);
+    expect((await Promise.all(others.map((target) => status(target.profileId))))).toEqual(["SUSPENDED", "SUSPENDED", "SUSPENDED", "PUBLISHED"]);
   });
 });
 

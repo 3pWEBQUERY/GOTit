@@ -7,8 +7,8 @@ import { listApprovedRegions } from "../queries/list-approved-regions";
 import type { OnboardingData } from "../queries/load-onboarding";
 import { stepHref } from "../step-href";
 import { neighbours } from "../steps";
+import { AvailabilityStep } from "./availability-step";
 import { IdentityStep } from "./identity-step";
-import { InfoStep } from "./info-step";
 import { MediaStep } from "./media-step";
 import { OfferForm } from "./offer-form";
 import { PreviewStep } from "./preview-step";
@@ -89,7 +89,14 @@ export async function StepContent({ locale, step, data }: { locale: Locale; step
     case "media":
       return <MediaStep locale={locale} nextHref={nextHref} back={back} studioOpen={profile.status !== "DRAFT"} />;
     case "availability":
-      return <InfoStep locale={locale} step={step} nextHref={nextHref} back={back} />;
+      return (
+        <AvailabilityStep
+          locale={locale}
+          nextHref={nextHref}
+          nextLabel={t("nav.continueTo", { step: t(`steps.${next ?? "submit"}.name`) })}
+          back={back}
+        />
+      );
     case "offer":
       return (
         <div className="flex flex-col gap-6">

@@ -39,3 +39,22 @@ export async function mailCount(to: string): Promise<number> {
 export function uniqueEmail(prefix: string): string {
   return `${prefix}-${Date.now()}-${Math.floor(Math.random() * 1e6)}@fiktiv.test`;
 }
+
+/** Wartet auf die neueste E-Mail mit diesem Betreff an eine Adresse und liefert ihren Link. */
+export async function mailBySubject(to: string, subject: string, timeoutMs = 20_000): Promise<{ text: string; link: string }> {
+  const client = new pg.Client({ connectionString: process.env.DATABASE_URL });
+  await client.connect();
+  try {
+    let text = "";
+    await expect(async () => {
+      const result = await client.query<{ text: string }>('select text from email_outbox where "to" = $1 and subject = $2 order by "createdAt" desc limit 1', [to, subject]);
+      expect(result.rows[0], `E-Mail «${subject}» an ${to}`).toBeDefined();
+      text = result.rows[0]?.text ?? "";
+    }).toPass({ timeout: timeoutMs });
+    const link = text.match(/https?:\/\/\S+/)?.[0] ?? "";
+    expect(link, "Link in der E-Mail").toBeTruthy();
+    return { text, link };
+  } finally {
+    await client.end();
+  }
+}

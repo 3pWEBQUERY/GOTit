@@ -54,3 +54,15 @@ describe("Registrierung (PRD 7.4, 16.2)", () => {
     expect(response.headers.get("set-cookie") ?? "").not.toContain("session_token=");
   });
 });
+
+describe("Passkeys (Sicherheitsprüfung 1.14)", () => {
+  it("verlangen Benutzerverifikation, weil sie Passwort und zweiten Faktor ersetzen", async () => {
+    const response = await getAuth().handler(
+      new Request("http://localhost:3000/api/auth/passkey/generate-authenticate-options", {
+        headers: { origin: "http://localhost:3000", "x-real-ip": `10.0.1.${Date.now() % 250}` },
+      }),
+    );
+    expect(response.status).toBe(200);
+    expect(await response.json()).toMatchObject({ userVerification: "required" });
+  });
+});

@@ -3,6 +3,7 @@ import {
   purgeMessagingData,
   purgeOrphanConversations,
 } from "../messaging/retention";
+import { purgeMediaObjectsOfUsers } from "../media/purge-storage";
 import { RETENTION_DAYS, cutoff } from "./policy";
 
 export interface PurgeResult {
@@ -11,6 +12,8 @@ export interface PurgeResult {
   emailOutbox: number;
   verifications: number;
   chatAttachments: number;
+  /** Medien abgelaufener Konten, deren Dateien aus den Buckets entfernt wurden. */
+  media: number;
   orphanConversations: number;
 }
 
@@ -29,6 +32,7 @@ export async function purgeExpiredData(now = new Date()): Promise<PurgeResult> {
     },
     select: { id: true },
   });
+  const media = await purgeMediaObjectsOfUsers(expiring.map((user) => user.id));
   const messaging = await purgeMessagingData(
     expiring.map((user) => user.id),
     now,
@@ -62,6 +66,7 @@ export async function purgeExpiredData(now = new Date()): Promise<PurgeResult> {
     emailOutbox: emailOutbox.count,
     verifications: verifications.count,
     chatAttachments: messaging.attachments + messaging.unsent,
+    media,
     orphanConversations: await purgeOrphanConversations(),
   };
 }

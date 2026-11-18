@@ -1,3 +1,4 @@
+import { safeReturnPath } from "@app/core/age-gate";
 import type { Locale } from "@app/core/locale";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
@@ -18,7 +19,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/registri
  */
 export default async function ConfirmEmailPage({ params, searchParams }: PageProps<"/[locale]/registrieren/bestaetigen">) {
   const locale = (await params).locale as Locale;
-  const { status, error } = await searchParams;
+  const { status, error, weiter } = await searchParams;
   const t = await getTranslations({ locale, namespace: "auth.confirm" });
   const callbackURL = getPathname({ href: { pathname: "/registrieren/bestaetigen", query: { status: "bestaetigt" } }, locale });
 
@@ -34,7 +35,7 @@ export default async function ConfirmEmailPage({ params, searchParams }: PagePro
     return (
       <AuthColumn>
         <AuthIntro title={t("verified.title")} />
-        <EmailVerified locale={locale} />
+        <EmailVerified locale={locale} returnTo={typeof weiter === "string" ? safeReturnPath(weiter, "") || undefined : undefined} />
       </AuthColumn>
     );
   }

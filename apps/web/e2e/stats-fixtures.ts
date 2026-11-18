@@ -31,7 +31,12 @@ export async function insertEvents(
   batches: readonly EventBatch[],
 ): Promise<void> {
   for (const batch of batches) {
-    const at = zurichTime(zurichDay(batch.day).day, "12:00");
+    // Heute: vor einer Minute, frühestens um Mitternacht; 12 Uhr läge vormittags noch in der Zukunft.
+    const today = zurichDay(0).day;
+    const at =
+      batch.day === 0
+        ? new Date(Math.max(zurichTime(today, "00:00").getTime(), Date.now() - 60_000))
+        : zurichTime(zurichDay(batch.day).day, "12:00");
     for (let index = 0; index < batch.count; index += 1)
       await query(
         `insert into stat_event (id, "providerProfileId", kind, "mediaId", "searchKey", "occurredAt") values ($1, $2, $3::"StatKind", $4, $5, $6)`,

@@ -46,7 +46,7 @@ function toInput(values: RegisterValues) {
 }
 
 /** Registrierung (PRD 7.4, Abnahme 1–5): Prüfung mit `registrationSchema`, Senden über die Server Action. */
-export function RegisterForm({ locale }: { locale: Locale }) {
+export function RegisterForm({ locale, returnTo }: { locale: Locale; returnTo?: string }) {
   const t = useTranslations("auth.register");
   const message = useErrorMessage();
   const router = useRouter();
@@ -66,7 +66,7 @@ export function RegisterForm({ locale }: { locale: Locale }) {
     if (!checked.ok) return focusFirstError(ORDER, checked.errors, idFor);
     startTransition(async () => {
       try {
-        const result = await register(locale, toInput(values));
+        const result = await register(locale, toInput(values), returnTo);
         if (result.ok) {
           rememberPendingEmail(checked.data.email);
           router.push("/registrieren/bestaetigen");

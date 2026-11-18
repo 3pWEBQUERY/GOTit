@@ -137,7 +137,18 @@ beforeAll(async () => {
   });
 });
 
+// Tage, die schon vor dem Test aggregiert waren. Der Test aggregiert mit einem Datum in 2030 alle offenen
+// Tage, also auch heutige aus anderen lokalen Daten; die Markierungen dieser Tage räumt afterAll wieder weg.
+const aggregatedBefore = new Set(
+  (await db.statAggregatedDay.findMany({ select: { day: true } })).map((row) => row.day),
+);
+
 afterAll(async () => {
+  const added = (await db.statAggregatedDay.findMany({ select: { day: true } }))
+    .map((row) => row.day)
+    .filter((day) => !aggregatedBefore.has(day));
+  await db.statDaily.deleteMany({ where: { day: { in: added } } });
+  await db.statAggregatedDay.deleteMany({ where: { day: { in: added } } });
   await db.statAggregatedDay.deleteMany({
     where: { day: { gte: "2030-03-01", lte: "2030-03-31" } },
   });

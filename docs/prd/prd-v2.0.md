@@ -1007,6 +1007,11 @@ Die Admin-Anwendung nutzt dieselben Tokens und Komponenten, aber eine eigene, di
 - Sensible Daten (Verifizierungsdetails, private Nachrichten in Meldefällen) sind standardmässig verdeckt. Das Aufdecken verlangt einen Grund und erzeugt einen Audit-Eintrag.
 - Warteschlangen sind Tabellen mit Filter, Sortierung nach Priorität und Alter, Zuweisung und Tastaturkürzeln für «Nächster Fall».
 - Verdacht auf Minderjährigkeit, Zwang oder Menschenhandel hat eine eigene Kategorie mit höchster Priorität, sofortiger Sperre des Inhalts und dokumentiertem Eskalationsweg an Trust & Safety.
+  - **Ergänzt am 18.11.2026 (Entscheid der Betreiberin, Entscheid 0020):**
+    - Jede solche Meldung wird sofort an Trust & Safety eskaliert.
+    - Den Inhalt sperrt sie sofort nur, wenn das meldende Konto seine E-Mail bestätigt hat, mindestens 7 Tage alt ist und in den letzten 24 Stunden höchstens 3 Sofortsperren ausgelöst hat.
+    - Meldungen ohne Konto (`/melden`) sperren nie automatisch.
+    - So lässt sich kein Profil mit falschen Meldungen aus der Öffentlichkeit nehmen.
 
 ## 13. Zustände und UX-Verhalten
 

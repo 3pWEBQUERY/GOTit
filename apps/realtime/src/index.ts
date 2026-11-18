@@ -1,6 +1,6 @@
 import { createLogger } from "@app/core/observability";
 import { createRedisConnection } from "@app/jobs/redis";
-import { createRealtimeServer } from "./server";
+import { allowedOriginsFromEnv, createRealtimeServer } from "./server";
 
 const logger = createLogger("realtime");
 const port = Number(process.env.PORT ?? process.env.REALTIME_PORT ?? 4001);
@@ -8,7 +8,7 @@ const port = Number(process.env.PORT ?? process.env.REALTIME_PORT ?? 4001);
 const host = process.env.REALTIME_HOST ?? "::";
 const subscriber = createRedisConnection();
 
-const server = createRealtimeServer({ secret: process.env.BETTER_AUTH_SECRET, subscriber, logger });
+const server = createRealtimeServer({ secret: process.env.BETTER_AUTH_SECRET, subscriber, logger, allowedOrigins: allowedOriginsFromEnv() });
 server.listen(port, host, () => logger.info("listening", { port }));
 
 process.on("SIGTERM", () => {

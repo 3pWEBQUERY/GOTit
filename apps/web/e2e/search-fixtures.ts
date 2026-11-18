@@ -1,6 +1,6 @@
 import { randomBytes, randomUUID } from "node:crypto";
 import type { Browser, Page } from "@playwright/test";
-import { createAccount, query } from "./admin-fixtures";
+import { createAccount, query, type FreshAccount } from "./admin-fixtures";
 import { indexProfiles } from "./support/search-index";
 import { confirmAge } from "./support/session";
 import { testClientIp } from "./support/test";
@@ -27,6 +27,8 @@ export interface SearchProvider {
   profileId: string;
   slug: string;
   name: string;
+  /** Konto hinter dem Profil, zum Anmelden als Anbieter. */
+  account: FreshAccount;
 }
 
 /**
@@ -95,7 +97,7 @@ export async function searchProvider(
     `insert into profile_review (id, "providerProfileId", "submittedAt", decision, "decidedAt") values ($1, $2, now() - interval '70 days', 'APPROVED', now())`,
     [`e2e_suche_review_${suffix}`, profileId],
   );
-  return { profileId, slug, name };
+  return { profileId, slug, name, account };
 }
 
 /** Legt mehrere Profile an und wartet, bis alle im Suchindex stehen. */

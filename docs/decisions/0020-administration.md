@@ -83,4 +83,4 @@ Jede Funktion im Kern prüft ihr Recht selbst (`packages/core/src/admin/permissi
    - Wiederholte falsche kritische Meldungen schränken das meldende Konto ein.
    - Trust & Safety muss kritische Fälle innerhalb einer festen Frist entscheiden, zum Beispiel 4 Stunden.
 
-   Entscheid der Betreiberin ausstehend.
+   **Entschieden am 18.11.2026:** Die Betreiberin behält die umgesetzte Regel; die PRD v2 12.4 ist ergänzt. **Umgesetzt in Schritt 1.14** (Sicherheitsprüfung, B-01): der erste Punkt, dazu höchstens 3 Sofortsperren pro meldendem Konto in 24 Stunden (`packages/core/src/moderation/intake.ts`). Frist für Trust & Safety und Einschränkung bei wiederholten Falschmeldungen sind nicht umgesetzt.

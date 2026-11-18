@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "exports": {
+    "./process-media": "./src/jobs/process-media.ts"
+  },
   "scripts": {
     "dev": "tsx watch --env-file-if-exists=../../.env src/index.ts",
     "build": "node build.mjs",
@@ -23,7 +26,7 @@
     "bullmq": "^6.7.6",
     "file-type": "^22.3.0",
     "ioredis": "^5.6.0",
-    "nodemailer": "^7.0.0",
+    "nodemailer": "^10.6.0",
     "pg": "^8.23.1",
     "sharp": "^0.35.5",
     "zod": "^4.6.7"
@@ -31,7 +34,7 @@
   "devDependencies": {
     "@app/config": "workspace:*",
     "@types/node": "^22.20.5",
-    "@types/nodemailer": "^7.0.0",
+    "@types/nodemailer": "^8.0.2",
     "eslint": "^9.39.5",
     "tsx": "^4.23.15",
     "typescript": "~6.0.3",

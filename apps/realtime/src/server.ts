@@ -14,6 +14,28 @@ export interface RealtimeOptions {
   secret: string | undefined;
   subscriber: Subscriber;
   logger: Logger;
+  /**
+   * Erlaubte Herkünfte des Browsers (`https://thegnd.net`). Leer: keine
+   * Prüfung. Eine Verbindung mit fremdem `Origin` wird abgewiesen, auch mit
+   * gültigem Token (Schutz in der Tiefe gegen Cross-Site WebSocket Hijacking).
+   * Clients ohne `Origin` (keine Browser) brauchen weiterhin das Token.
+   */
+  allowedOrigins?: readonly string[];
+}
+
+/** Herkünfte aus `REALTIME_ALLOWED_ORIGINS` (durch Komma getrennt), sonst aus `APP_URL`. */
+export function allowedOriginsFromEnv(env: Record<string, string | undefined> = process.env): string[] {
+  const raw = env.REALTIME_ALLOWED_ORIGINS ?? env.APP_URL ?? "";
+  return raw
+    .split(",")
+    .map((entry) => {
+      try {
+        return new URL(entry.trim()).origin;
+      } catch {
+        return null;
+      }
+    })
+    .filter((origin): origin is string => Boolean(origin) && origin !== "null");
 }
 
 const PING_INTERVAL_MS = 30_000;
@@ -23,7 +45,7 @@ const PING_INTERVAL_MS = 30_000;
  * und reicht Ereignisse aus dem Redis-Kanal des Kontos durch. Er liest keine
  * Inhalte und protokolliert keine Payloads.
  */
-export function createRealtimeServer({ secret, subscriber, logger }: RealtimeOptions): Server {
+export function createRealtimeServer({ secret, subscriber, logger, allowedOrigins = [] }: RealtimeOptions): Server {
   const socketsByUser = new Map<string, Set<WebSocket>>();
   const sockets = new WebSocketServer({ noServer: true, maxPayload: 1024 });
 
@@ -36,6 +58,12 @@ export function createRealtimeServer({ secret, subscriber, logger }: RealtimeOpt
   });
 
   server.on("upgrade", (request, socket, head) => {
+    const origin = request.headers.origin;
+    if (origin && allowedOrigins.length > 0 && !allowedOrigins.includes(origin)) {
+      socket.write("HTTP/1.1 403 Forbidden\r\nConnection: close\r\n\r\n");
+      socket.destroy();
+      return;
+    }
     const token = new URL(request.url ?? "/", "http://localhost").searchParams.get("token");
     const userId = verifyRealtimeToken(token, secret);
     if (!userId) {

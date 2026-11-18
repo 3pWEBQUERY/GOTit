@@ -1,32 +1,7 @@
-import type { Page } from "@playwright/test";
 import { expectNoHorizontalScroll, expectNoSeriousAxeFindings } from "./support/checks";
 import { latestMail, mailCount, uniqueEmail } from "./support/outbox";
+import { REGISTER_PASSWORD as PASSWORD, registerViaUi, waitForHydration } from "./support/register";
 import { expect, test } from "./support/test";
-
-const PASSWORD = "ein-langes-test-passwort-1";
-
-/** Wartet, bis React das Formular übernommen hat; vorher gehen Eingaben bei der Hydrierung verloren. */
-async function waitForHydration(page: Page): Promise<void> {
-  await page.waitForFunction(() => {
-    const form = document.querySelector("main form");
-    return form !== null && Object.keys(form).some((key) => key.startsWith("__react"));
-  });
-}
-
-async function registerViaUi(page: Page, account: { type: string; name: string; email: string; organization?: string }): Promise<void> {
-  await page.goto("/de/registrieren");
-  await waitForHydration(page);
-  await page.getByRole("radio", { name: account.type }).click();
-  await page.getByLabel("Name", { exact: true }).fill(account.name);
-  if (account.organization) await page.getByLabel(/^Name (des Clubs|der Agentur)$/).fill(account.organization);
-  await page.getByLabel("E-Mail-Adresse").fill(account.email);
-  await page.getByLabel("Passwort", { exact: true }).fill(PASSWORD);
-  await page.getByRole("checkbox", { name: "Ich bin mindestens 18 Jahre alt." }).click();
-  await page.getByRole("checkbox", { name: /Ich akzeptiere die Bedingungen/ }).click();
-  await page.getByRole("button", { name: "Konto erstellen" }).click();
-  await expect(page).toHaveURL(/\/de\/registrieren\/bestaetigen$/);
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Prüfe dein Postfach");
-}
 
 test.describe("Registrierung (PRD 7.4, Abnahme 1–7)", () => {
   test("als Mitglied: neutrale E-Mail auf Deutsch, Bestätigung, danach Anmeldung zurück zu ?weiter", async ({ page }) => {

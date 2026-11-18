@@ -4,7 +4,7 @@ import { createLogger } from "@app/core/observability";
 import { userChannel } from "@app/jobs/redis";
 import { afterEach, describe, expect, it } from "vitest";
 import { WebSocket } from "ws";
-import { createRealtimeServer, type Subscriber } from "./server";
+import { allowedOriginsFromEnv, createRealtimeServer, type Subscriber } from "./server";
 
 const secret = "r".repeat(32);
 
@@ -20,9 +20,9 @@ function fakeSubscriber() {
 }
 
 const servers: Array<ReturnType<typeof createRealtimeServer>> = [];
-async function start() {
+async function start(allowedOrigins: string[] = []) {
   const fake = fakeSubscriber();
-  const server = createRealtimeServer({ secret, subscriber: fake.subscriber, logger: createLogger("test") });
+  const server = createRealtimeServer({ secret, subscriber: fake.subscriber, logger: createLogger("test"), allowedOrigins });
   servers.push(server);
   await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
   return { ...fake, port: (server.address() as AddressInfo).port };
@@ -53,6 +53,26 @@ describe("Echtzeit-Dienst", () => {
       });
       expect(status).toBe(401);
     }
+  });
+
+  it("weist fremde Herkünfte mit 403 ab, auch mit gültigem Token (Sicherheitsprüfung 1.14)", async () => {
+    const { port } = await start(["https://thegnd.net"]);
+    const status = (origin?: string) =>
+      new Promise<number>((resolve) => {
+        const client = new WebSocket(`ws://127.0.0.1:${port}/?token=${createRealtimeToken("anna", secret)}`, origin ? { origin } : {});
+        client.on("unexpected-response", (_request, response) => resolve(response.statusCode ?? 0));
+        client.on("open", () => {
+          resolve(101);
+          client.close();
+        });
+        client.on("error", () => undefined);
+      });
+    expect(await status("https://evil.example")).toBe(403);
+    expect(await status("https://thegnd.net")).toBe(101);
+    expect(await status()).toBe(101);
+    expect(allowedOriginsFromEnv({ APP_URL: "https://thegnd.net/" })).toEqual(["https://thegnd.net"]);
+    expect(allowedOriginsFromEnv({ REALTIME_ALLOWED_ORIGINS: "https://a.test, kaputt ,https://b.test", APP_URL: "https://c.test" })).toEqual(["https://a.test", "https://b.test"]);
+    expect(allowedOriginsFromEnv({})).toEqual([]);
   });
 
   it("stellt Ereignisse nur dem Konto zu, an das sie gerichtet sind", async () => {

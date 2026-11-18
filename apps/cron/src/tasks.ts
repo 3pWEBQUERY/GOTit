@@ -1,4 +1,5 @@
 import { aggregateStats } from "./tasks/aggregate-stats";
+import { backupDatabase } from "./tasks/backup-database";
 import { bookingMaintenance } from "./tasks/booking-maintenance";
 import { liftExpiredRestrictions } from "./tasks/lift-expired-restrictions";
 import { purgeExpired } from "./tasks/purge-expired";
@@ -13,6 +14,7 @@ export type CronTask = () => Promise<void>;
 
 export const tasks: Readonly<Record<string, CronTask>> = {
   "aggregate-stats": aggregateStats,
+  "backup-database": backupDatabase,
   "booking-maintenance": bookingMaintenance,
   "lift-expired-restrictions": liftExpiredRestrictions,
   "purge-expired": purgeExpired,

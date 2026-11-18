@@ -8,3 +8,8 @@ onlyBuiltDependencies:
   - "sharp"
   - "msgpackr-extract"
   - "unrs-resolver"
+# Audit (Sicherheitsprüfung 1.14, docs/security/sicherheitspruefung-1.14.md): picomatch kommt nur über
+# better-auth → vitest in den Produktionsbaum, wird zur Laufzeit nie geladen und hat keine behobene Version.
+auditConfig:
+  ignoreGhsas:
+    - GHSA-fc5q-39xc-vjpf

@@ -52,6 +52,9 @@ jobs:
           node-version-file: .nvmrc
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      # Restore-Probe der Datenbank-Sicherung (Entscheid 0024) braucht age; pg_dump hat der Runner.
+      - name: age installieren
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends age
       - name: Dateigrössen-Prüfung (PRD 4.1, harte Grenze 600 Zeilen)
         run: pnpm check:file-size
       - run: pnpm lint
@@ -60,6 +63,9 @@ jobs:
       - name: Referenzdaten und fiktive Testkonten laden
         run: pnpm --filter @app/db seed:fixtures
       - run: pnpm test
+      # Nach allen anderen Tests: schreibt Demoprofile in die Datenbank und entfernt sie wieder (Entscheid 0023).
+      - name: Demo-Daten laden und entfernen
+        run: pnpm --filter @app/demo test:integration
       - name: Abhängigkeits-Scan (PRD 16.2)
         run: pnpm audit --prod --audit-level high
 

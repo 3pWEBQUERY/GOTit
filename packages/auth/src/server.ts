@@ -14,7 +14,8 @@ function createAuth() {
   if (!secret || secret.length < 32) throw new Error("BETTER_AUTH_SECRET fehlt oder ist kürzer als 32 Zeichen.");
   const appName = process.env.APP_NAME ?? "GOTit";
   const appUrl = new URL(process.env.APP_URL ?? "http://localhost:3000");
-  const production = process.env.NODE_ENV === "production";
+  // Secure-Cookies, sobald die App über HTTPS läuft; hängt nicht an NODE_ENV, das auf Railway nicht gesetzt ist (docs/railway.md).
+  const secureCookies = appUrl.protocol === "https:";
 
   return betterAuth({
     appName,
@@ -52,16 +53,21 @@ function createAuth() {
         "/passkey/*": { window: 60, max: 10 },
         "/request-password-reset": { window: 3600, max: 3 },
         "/send-verification-email": { window: 900, max: 3 },
+        // Passwort prüfen oder ändern mit einer bestehenden Sitzung: kein Raten mit einem gestohlenen Cookie.
+        "/verify-password": { window: 60, max: 5 },
+        "/change-password": { window: 60, max: 5 },
       },
     },
     hooks: { after: afterHook },
     databaseHooks,
     // Rate Limits nach der Adresse, die Railway am Rand setzt, nicht nach dem fälschbaren x-forwarded-for.
-    advanced: { cookiePrefix: "app", useSecureCookies: production, ipAddress: { ipAddressHeaders: [CLIENT_IP_HEADER] } },
+    advanced: { cookiePrefix: "app", useSecureCookies: secureCookies, ipAddress: { ipAddressHeaders: [CLIENT_IP_HEADER] } },
     telemetry: { enabled: false },
     plugins: [
       twoFactor({ issuer: appName }),
-      passkey({ rpID: appUrl.hostname, rpName: appName, origin: appUrl.origin }),
+      // Benutzerverifikation (PIN, Biometrie) ist Pflicht: Ein Passkey ersetzt Passwort und zweiten Faktor,
+      // auch für den Admin-Zugang (PRD 16.2). «preferred» liesse einen Sicherheitsschlüssel ohne PIN genügen.
+      passkey({ rpID: appUrl.hostname, rpName: appName, origin: appUrl.origin, authenticatorSelection: { residentKey: "preferred", userVerification: "required" } }),
       // Muss das letzte Plugin sein: setzt Cookies auch aus Server Actions.
       nextCookies(),
     ],
