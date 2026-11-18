@@ -211,10 +211,42 @@ Playwright auf Staging, `PerformanceObserver` für `event`-Einträge (`durationT
 | CLS < 0,1 | **Nicht erfüllt** auf der Profilseite am Desktop (0,98 im Median von Lighthouse, 0,41 in Playwright). Alle anderen Seiten und mobil 0,000. |
 | INP < 200 ms | **Im Labor nicht messbar.** Ersatz: Interaktionen ohne Drosselung ≤ 56 ms, mit CPU ×4 bis auf «Filter-Sheet öffnen» (Median 200 ms, max. 360 ms) unter 110 ms; TBT mobil 216 bis 304 ms. Tendenz: knapp, auf langsamen Geräten gefährdet beim Filter-Sheet. |
 
+## 3a. Nachmessung nach den Korrekturen (18.11.2026, Commit 18f8533)
+
+Gleiche Methode wie oben (Lighthouse 12, je 3 Läufe, Median). Bereitgestellt waren:
+- Bilder der ersten Karten und der Galerie sofort und mit `fetchpriority="high"`.
+- Ladezustand der Profilseite mindestens bildschirmhoch.
+- Ranking in `float8` und parallele Zählungen.
+- `Server-Timing` an den Such-APIs. Gemessen: `/api/suche/anzahl?ort=zuerich` meldet `search;dur=24.2`.
+
+| Seite | LCP mobil | LCP Desktop | CLS mobil | CLS Desktop (Median, max) | TBT mobil |
+| --- | --- | --- | --- | --- | --- |
+| Entdecken | 3,97 s | 0,77 s | 0,000 | 0,000 (max 0,804) | 316 ms |
+| Suche | 3,86 s | 0,76 s | 0,000 | 0,000 (max 0,000) | 436 ms |
+| Profil | 3,94 s | 0,78 s | 0,000 | **0,000** (max 0,000, vorher 0,979) | 270 ms |
+| Club | 3,66 s | 0,74 s | 0,000 | 0,000 (max 0,979) | 288 ms |
+| Hilfe | 3,48 s | 0,65 s | 0,000 | 0,000 (max 0,000) | 145 ms |
+
+**CLS:**
+- Die Profilseite ist behoben.
+- Entdecken und Club hatten je einen Ausreisser mit demselben Muster: Die Fusszeile steht beim Laden im Bild.
+- Deshalb sind ihre Ladezustände (`SearchLoading`, `ClubLoading`) jetzt ebenfalls bildschirmhoch. Das wirkt mit der nächsten Bereitstellung und ist dann nachzumessen.
+
+**LCP mobil bleibt bei 3,5 bis 4,0 s und ist damit nicht erfüllt.** Das Vorladen allein hilft nicht.
+- **Zerlegung bei der Suche mobil:** TTFB 0,71 s, Ladeverzögerung 1,64 s, Ladezeit 1,19 s, Renderverzögerung 0,32 s.
+- **Ursache:** Das LCP-Bild steckt im nachgestreamten Teil der Seite. Der Browser entdeckt es erst, wenn dieser Teil ankommt, unter «Slow 4G» also spät. Dazu kommen 1,1 bis 1,4 s JavaScript beim Start.
+- **Hilfe:** Das LCP-Element ist Text, und 80 % sind Renderverzögerung, weil React den gestreamten Inhalt erst nach dem Laden des Skripts einblendet.
+- **Abhilfe:** Sie braucht Arbeit an der Architektur (siehe «Nächste Schritte», Punkt 1). Das gehört nicht mehr in diesen Schritt.
+
 ## 4. Nächste Schritte
 
-1. **LCP-Bild früh laden** (grösster Hebel mobil): Für die ersten Karten oberhalb des Falzes (z. B. die ersten 2 bis 4 in Suche und Entdecken) `loading="eager"` und `fetchpriority="high"` für die erste; `ProfileCard` braucht dafür eine Prop wie `MediaFrame` (`eager`). Titelbild auf Profil und Club zusätzlich mit `fetchpriority="high"`; prüfen, ob für 412 px `w640` statt `w960` reicht (`srcset`/`sizes`). Danach Lighthouse mobil wiederholen.
-2. **CLS Profil Desktop beheben:** Den Ladezustand der Profilseite mindestens so hoch machen wie den Inhalt oberhalb des Falzes, oder `main` eine Mindesthöhe von einem Fenster geben (`min-h-dvh` abzüglich Kopfzeile), damit die Fusszeile beim Streamen nicht im Bild steht. Mit `cls.mjs`-ähnlicher Messung (Layout-Shift-Observer) und Lighthouse Desktop prüfen; gleiche Prüfung für Club und Suche am Desktop.
+1. **LCP mobil:** Mit `eager` und `fetchpriority` umgesetzt, aber ohne Wirkung (Nachmessung oben). Der nächste Hebel ist, das LCP-Bild im ersten Teil der Antwort bekanntzumachen. Möglich sind:
+   - `preload` für das erste Kartenbild aus dem Layout oder dem ersten gestreamten Teil, oder die erste Kartenreihe ohne Suspense-Grenze rendern.
+   - Kleinere Varianten mit `srcset` und `sizes` für 412 px.
+   - Weniger JavaScript beim Start (Punkt 6).
+
+   Danach Lighthouse mobil wiederholen.
+2. **CLS (umgesetzt):** Die Ladezustände von Profil, Suche, Entdecken und Club sind bildschirmhoch; Profil ist nachgemessen. Ursprünglich vorgeschlagen war: Den Ladezustand der Profilseite mindestens so hoch machen wie den Inhalt oberhalb des Falzes, oder `main` eine Mindesthöhe von einem Fenster geben (`min-h-dvh` abzüglich Kopfzeile), damit die Fusszeile beim Streamen nicht im Bild steht. Mit `cls.mjs`-ähnlicher Messung (Layout-Shift-Observer) und Lighthouse Desktop prüfen; gleiche Prüfung für Club und Suche am Desktop.
 3. **Korrekturen bereitstellen und nachmessen:** Ranking in `float8`, parallele Zählungen und Messpunkte nach Staging bringen; danach `Server-Timing` der API-Routen und die Log-Zeile `search.timing` auswerten (p95 über einen Tag).
 4. **Feldmessung für INP, LCP, CLS:** Ohne Feldwerte bleibt INP offen. Vorschlag: `useReportWebVitals` (Next.js) mit einem eigenen, datensparsamen Endpunkt (nur Metrik, Wert, Routenmuster, Gerätetyp; keine IDs, keine URL-Parameter), aggregiert in `stat_daily` oder in Logs; Entscheid nötig (Datenschutz, PRD 16.2). Alternativ der Chrome UX Report, sobald die Produktion genug Verkehr hat.
 5. **Filter-Sheet:** Leistungsaufzeichnung mit CPU ×4 beim Öffnen; falls der Glas-Hintergrund oder das Rendern aller Gruppen teuer ist, Gruppen erst beim Aufklappen rendern oder den Unschärfe-Effekt beim Einblenden abschwächen.

@@ -21,7 +21,7 @@ Entscheide und Berichte:
 | Lasttest der Suche | Erfüllt, lokal mit 10'000 Profilen: p95 der Suche 24 ms bei einem, 150 ms bei 20 und 461 ms bei 50 gleichzeitigen Clients. Dabei behoben: Die Sortierung nach Relevanz rechnete mit `numeric` (106 → 17 ms) |
 | Restore-Test | Erfüllt: automatischer Test mit echtem `pg_dump` und `age` in Wegwerf-Datenbanken, dazu eine Probe auf dem echten Schema. Ein Restore auf Railway folgt mit den Schlüsseln der Betreiberin |
 | Sicherheitsprüfung | Intern erfüllt: kein Befund «hoch», vier «mittel» behoben. Der unabhängige Check folgt vor dem Start (vereinbart) |
-| Leistungsziele aus 14.6 auf Staging gemessen und dokumentiert | Gemessen und dokumentiert. Die Suche erfüllt das Ziel: 80 ms p95 auf dem Server. LCP mobil und CLS auf der Profilseite verfehlten es; beide sind behoben, die Nachmessung steht unten |
+| Leistungsziele aus 14.6 auf Staging gemessen und dokumentiert | Gemessen, nachgemessen und dokumentiert (`docs/performance/messung-1.14.md`):<br>• **Suche erfüllt:** 80 ms p95 auf dem Server, `Server-Timing` 24 ms.<br>• **LCP Desktop erfüllt:** 0,65 bis 0,78 s.<br>• **CLS:** auf der Profilseite behoben (0,979 → 0), die Ladezustände von Entdecken und Club sind ebenso angepasst.<br>• **LCP mobil im Labor nicht erfüllt:** 3,5 bis 4,0 s, weil das LCP-Bild im gestreamten Teil steckt; nächste Schritte im Bericht.<br>• **INP** ist im Labor nicht messbar |
 
 ### 20.7 aus v1.0
 
@@ -106,6 +106,7 @@ Entscheide und Berichte:
    - Rechtstexte ersetzen.
    - Demo-Daten aus der Produktion entfernen (Entscheid 0023).
 3. **Leistung** (Messbericht, «Nächste Schritte»):
+   - **LCP mobil unter 2,5 s bringen:** das LCP-Bild im ersten Teil der Antwort, weniger JavaScript beim Start.
    - Feldmessung der Web Vitals; braucht einen Entscheid zum Datenschutz.
    - Öffnen des Filter-Sheets beschleunigen.
    - Unnötiges JavaScript kürzen.

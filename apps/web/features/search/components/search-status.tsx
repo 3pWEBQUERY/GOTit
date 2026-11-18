@@ -45,7 +45,8 @@ export function SearchLoading({ cards = 8 }: { cards?: number }) {
           <Button onClick={() => router.refresh()}>{t("retry")}</Button>
         </div>
       }
-      className="gap-6"
+      // Mindestens bildschirmhoch: sonst springt die Fusszeile weg, sobald der Inhalt kommt (CLS, Messung 1.14).
+      className="min-h-dvh gap-6"
     >
       <Skeleton variant="block" className="h-9 w-2/3 max-w-md rounded-chip" />
       <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[17.5rem_minmax(0,1fr)] lg:gap-8">

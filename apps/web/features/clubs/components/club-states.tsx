@@ -20,7 +20,8 @@ export function ClubLoading({ shape }: { shape: ClubLoadingShape }) {
   return (
     <LoadingRegion
       label={t("loading")}
-      className="gap-6"
+      // Mindestens bildschirmhoch: sonst springt die Fusszeile weg, sobald der Inhalt kommt (CLS, Messung 1.14).
+      className="min-h-dvh gap-6"
       slowFallback={
         <div className="flex flex-wrap items-center gap-3 text-small text-ink-muted">
           {t("slow")}
